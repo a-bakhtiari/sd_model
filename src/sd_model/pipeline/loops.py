@@ -1,0 +1,29 @@
+from __future__ import annotations
+import json
+from pathlib import Path
+import networkx as nx
+from sd_model.graph.builder import build_signed_digraph
+from sd_model.graph.loops import simple_cycles_with_polarity
+
+
+def compute_loops(connections_path: Path, out_path: Path) -> dict:
+    with open(connections_path, "r") as f:
+        connections = json.load(f)["connections"]
+
+    G: nx.DiGraph = build_signed_digraph(connections)
+    cycles = simple_cycles_with_polarity(G)
+
+    output = {
+        "total_loops": len(cycles),
+        "loops": cycles,
+        "summary": {
+            "reinforcing_loops": sum(1 for l in cycles if l["type"] == "R"),
+            "balancing_loops": sum(1 for l in cycles if l["type"] == "B"),
+            "shortest_loop": min((l["length"] for l in cycles), default=0),
+            "longest_loop": max((l["length"] for l in cycles), default=0),
+        },
+    }
+
+    out_path.write_text(json.dumps(output, indent=2))
+    return output
+
