@@ -11,7 +11,9 @@ class Settings(BaseSettings):
     # Read from environment or .env
     deepseek_api_key: str | None = Field(default=None, env="DEEPSEEK_API_KEY")
     model_name: str = Field(default="deepseek-chat", env="DEEPSEEK_MODEL")
-    provenance_db: str = Field(default="provenance.sqlite", env="PROVENANCE_DB")
+    provenance_db: str | None = Field(default=None, env="PROVENANCE_DB")
+    projects_dir: str = Field(default="projects", env="PROJECTS_DIR")
+    project_name: str = Field(default="default", env="PROJECT_NAME")
 
 
 settings = Settings()
