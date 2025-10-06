@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "connections.schema.json",
+  "title": "Connections",
+  "type": "object",
+  "required": ["connections"],
+  "properties": {
+    "connections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "relationship"],
+        "properties": {
+          "from": {"type": "string"},
+          "to": {"type": "string"},
+          "relationship": {"type": "string", "enum": ["positive", "negative"]},
+          "type_from": {"type": "string", "enum": ["stock", "flow", "auxiliary"], "nullable": true},
+          "type_to": {"type": "string", "enum": ["stock", "flow", "auxiliary"], "nullable": true},
+          "evidence": {"type": "array"}
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}
+

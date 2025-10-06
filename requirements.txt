@@ -1,0 +1,5 @@
+networkx
+requests
+pandas
+typer
+pydantic
