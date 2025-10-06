@@ -24,258 +24,24 @@
     },
     {
       "nodes": [
-        "Feedback",
-        "Open Issues"
+        "Open Issues",
+        "Feedback"
       ],
       "edges": [
-        {
-          "from": "Feedback",
-          "to": "Open Issues",
-          "relationship": "positive"
-        },
         {
           "from": "Open Issues",
           "to": "Feedback",
           "relationship": "positive"
-        }
-      ],
-      "negative_edges": 0,
-      "type": "R",
-      "length": 2
-    },
-    {
-      "nodes": [
-        "Pull Request Under review",
-        "PR Feedback"
-      ],
-      "edges": [
-        {
-          "from": "Pull Request Under review",
-          "to": "PR Feedback",
-          "relationship": "positive"
         },
         {
-          "from": "PR Feedback",
-          "to": "Pull Request Under review",
+          "from": "Feedback",
+          "to": "Open Issues",
           "relationship": "positive"
         }
       ],
       "negative_edges": 0,
       "type": "R",
       "length": 2
-    },
-    {
-      "nodes": [
-        "Experienced Contributors",
-        "PR Feedback"
-      ],
-      "edges": [
-        {
-          "from": "Experienced Contributors",
-          "to": "PR Feedback",
-          "relationship": "positive"
-        },
-        {
-          "from": "PR Feedback",
-          "to": "Experienced Contributors",
-          "relationship": "positive"
-        }
-      ],
-      "negative_edges": 0,
-      "type": "R",
-      "length": 2
-    },
-    {
-      "nodes": [
-        "New Contributors",
-        "PR Feedback"
-      ],
-      "edges": [
-        {
-          "from": "New Contributors",
-          "to": "PR Feedback",
-          "relationship": "positive"
-        },
-        {
-          "from": "PR Feedback",
-          "to": "New Contributors",
-          "relationship": "positive"
-        }
-      ],
-      "negative_edges": 0,
-      "type": "R",
-      "length": 2
-    },
-    {
-      "nodes": [
-        "Implicit Knowledge Transfer (Mentorship)",
-        "Promotion Rate",
-        "Core Developer"
-      ],
-      "edges": [
-        {
-          "from": "Implicit Knowledge Transfer (Mentorship)",
-          "to": "Promotion Rate",
-          "relationship": "positive"
-        },
-        {
-          "from": "Promotion Rate",
-          "to": "Core Developer",
-          "relationship": "positive"
-        },
-        {
-          "from": "Core Developer",
-          "to": "Implicit Knowledge Transfer (Mentorship)",
-          "relationship": "positive"
-        }
-      ],
-      "negative_edges": 0,
-      "type": "R",
-      "length": 3
-    },
-    {
-      "nodes": [
-        "PR Review Delay",
-        "PR Feedback",
-        "Core Developer"
-      ],
-      "edges": [
-        {
-          "from": "PR Review Delay",
-          "to": "PR Feedback",
-          "relationship": "positive"
-        },
-        {
-          "from": "PR Feedback",
-          "to": "Core Developer",
-          "relationship": "positive"
-        },
-        {
-          "from": "Core Developer",
-          "to": "PR Review Delay",
-          "relationship": "positive"
-        }
-      ],
-      "negative_edges": 0,
-      "type": "R",
-      "length": 3
-    },
-    {
-      "nodes": [
-        "Implicit Knowledge Transfer (Mentorship)",
-        "Skill up",
-        "Experienced Contributors",
-        "PR Feedback",
-        "Core Developer"
-      ],
-      "edges": [
-        {
-          "from": "Implicit Knowledge Transfer (Mentorship)",
-          "to": "Skill up",
-          "relationship": "positive"
-        },
-        {
-          "from": "Skill up",
-          "to": "Experienced Contributors",
-          "relationship": "positive"
-        },
-        {
-          "from": "Experienced Contributors",
-          "to": "PR Feedback",
-          "relationship": "positive"
-        },
-        {
-          "from": "PR Feedback",
-          "to": "Core Developer",
-          "relationship": "positive"
-        },
-        {
-          "from": "Core Developer",
-          "to": "Implicit Knowledge Transfer (Mentorship)",
-          "relationship": "positive"
-        }
-      ],
-      "negative_edges": 0,
-      "type": "R",
-      "length": 5
-    },
-    {
-      "nodes": [
-        "Implicit Knowledge Transfer (Mentorship)",
-        "Skill up",
-        "New Contributors",
-        "PR Feedback",
-        "Core Developer"
-      ],
-      "edges": [
-        {
-          "from": "Implicit Knowledge Transfer (Mentorship)",
-          "to": "Skill up",
-          "relationship": "positive"
-        },
-        {
-          "from": "Skill up",
-          "to": "New Contributors",
-          "relationship": "negative"
-        },
-        {
-          "from": "New Contributors",
-          "to": "PR Feedback",
-          "relationship": "positive"
-        },
-        {
-          "from": "PR Feedback",
-          "to": "Core Developer",
-          "relationship": "positive"
-        },
-        {
-          "from": "Core Developer",
-          "to": "Implicit Knowledge Transfer (Mentorship)",
-          "relationship": "positive"
-        }
-      ],
-      "negative_edges": 1,
-      "type": "B",
-      "length": 5
-    },
-    {
-      "nodes": [
-        "Implicit Knowledge Transfer (Mentorship)",
-        "Promotion Rate",
-        "Experienced Contributors",
-        "PR Feedback",
-        "Core Developer"
-      ],
-      "edges": [
-        {
-          "from": "Implicit Knowledge Transfer (Mentorship)",
-          "to": "Promotion Rate",
-          "relationship": "positive"
-        },
-        {
-          "from": "Promotion Rate",
-          "to": "Experienced Contributors",
-          "relationship": "negative"
-        },
-        {
-          "from": "Experienced Contributors",
-          "to": "PR Feedback",
-          "relationship": "positive"
-        },
-        {
-          "from": "PR Feedback",
-          "to": "Core Developer",
-          "relationship": "positive"
-        },
-        {
-          "from": "Core Developer",
-          "to": "Implicit Knowledge Transfer (Mentorship)",
-          "relationship": "positive"
-        }
-      ],
-      "negative_edges": 1,
-      "type": "B",
-      "length": 5
     },
     {
       "nodes": [
@@ -411,6 +177,240 @@
       "negative_edges": 1,
       "type": "B",
       "length": 6
+    },
+    {
+      "nodes": [
+        "Core Developer",
+        "PR Review Delay",
+        "PR Feedback"
+      ],
+      "edges": [
+        {
+          "from": "Core Developer",
+          "to": "PR Review Delay",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Review Delay",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Feedback",
+          "to": "Core Developer",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 3
+    },
+    {
+      "nodes": [
+        "Core Developer",
+        "Implicit Knowledge Transfer (Mentorship)",
+        "Skill up",
+        "Experienced Contributors",
+        "PR Feedback"
+      ],
+      "edges": [
+        {
+          "from": "Core Developer",
+          "to": "Implicit Knowledge Transfer (Mentorship)",
+          "relationship": "positive"
+        },
+        {
+          "from": "Implicit Knowledge Transfer (Mentorship)",
+          "to": "Skill up",
+          "relationship": "positive"
+        },
+        {
+          "from": "Skill up",
+          "to": "Experienced Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from": "Experienced Contributors",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Feedback",
+          "to": "Core Developer",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 5
+    },
+    {
+      "nodes": [
+        "Core Developer",
+        "Implicit Knowledge Transfer (Mentorship)",
+        "Skill up",
+        "New Contributors",
+        "PR Feedback"
+      ],
+      "edges": [
+        {
+          "from": "Core Developer",
+          "to": "Implicit Knowledge Transfer (Mentorship)",
+          "relationship": "positive"
+        },
+        {
+          "from": "Implicit Knowledge Transfer (Mentorship)",
+          "to": "Skill up",
+          "relationship": "positive"
+        },
+        {
+          "from": "Skill up",
+          "to": "New Contributors",
+          "relationship": "negative"
+        },
+        {
+          "from": "New Contributors",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Feedback",
+          "to": "Core Developer",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 1,
+      "type": "B",
+      "length": 5
+    },
+    {
+      "nodes": [
+        "Core Developer",
+        "Implicit Knowledge Transfer (Mentorship)",
+        "Promotion Rate"
+      ],
+      "edges": [
+        {
+          "from": "Core Developer",
+          "to": "Implicit Knowledge Transfer (Mentorship)",
+          "relationship": "positive"
+        },
+        {
+          "from": "Implicit Knowledge Transfer (Mentorship)",
+          "to": "Promotion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Promotion Rate",
+          "to": "Core Developer",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 3
+    },
+    {
+      "nodes": [
+        "Core Developer",
+        "Implicit Knowledge Transfer (Mentorship)",
+        "Promotion Rate",
+        "Experienced Contributors",
+        "PR Feedback"
+      ],
+      "edges": [
+        {
+          "from": "Core Developer",
+          "to": "Implicit Knowledge Transfer (Mentorship)",
+          "relationship": "positive"
+        },
+        {
+          "from": "Implicit Knowledge Transfer (Mentorship)",
+          "to": "Promotion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Promotion Rate",
+          "to": "Experienced Contributors",
+          "relationship": "negative"
+        },
+        {
+          "from": "Experienced Contributors",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Feedback",
+          "to": "Core Developer",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 1,
+      "type": "B",
+      "length": 5
+    },
+    {
+      "nodes": [
+        "Pull Request Under review",
+        "PR Feedback"
+      ],
+      "edges": [
+        {
+          "from": "Pull Request Under review",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Feedback",
+          "to": "Pull Request Under review",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 2
+    },
+    {
+      "nodes": [
+        "PR Feedback",
+        "Experienced Contributors"
+      ],
+      "edges": [
+        {
+          "from": "PR Feedback",
+          "to": "Experienced Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from": "Experienced Contributors",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 2
+    },
+    {
+      "nodes": [
+        "PR Feedback",
+        "New Contributors"
+      ],
+      "edges": [
+        {
+          "from": "PR Feedback",
+          "to": "New Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from": "New Contributors",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 2
     }
   ],
   "summary": {

@@ -1,6 +1,6 @@
 {
   "theories_applied": 2,
-  "average_alignment": 5.5,
+  "average_alignment": 5,
   "consistent_issues": [
     {
       "connection": {
@@ -8,7 +8,7 @@
         "to": "Projects's Explicit Knowledge",
         "relationship": "negative"
       },
-      "issue": "Contradicts Wenger's view that knowledge conversion is complementary, not zero-sum. Explicit and tacit knowledge should reinforce each other"
+      "issue": "Contradicts Wenger's view that explicit and tacit knowledge coexist and complement each other; knowledge conversion should not diminish explicit knowledge"
     },
     {
       "connection": {
@@ -16,41 +16,41 @@
         "to": "PR Feedback",
         "relationship": "positive"
       },
-      "issue": "Unsupported - delays typically hinder legitimate peripheral participation by creating barriers to engagement and learning"
+      "issue": "Oversimplifies the feedback process; delays typically hinder learning and participation rather than enhancing feedback quality"
     },
     {
       "connection": {
-        "from": "Knowledge Conversion Rate",
+        "from": "Explicit to Implicit Conversion",
         "to": "Projects's Explicit Knowledge",
-        "relationship": "positive"
+        "relationship": "negative"
       },
-      "issue": "Oversimplifies knowledge dynamics - conversion involves complex social processes beyond simple accumulation"
+      "issue": "Misrepresents Internalization - converting explicit to tacit knowledge should not deplete explicit knowledge; they should coexist and reinforce each other"
     }
   ],
   "consistent_missing": [
     {
       "suggested": {
         "from": "Community Participation",
-        "to": "Experienced Contributors",
+        "to": "Identity Formation",
         "relationship": "positive"
       },
-      "rationale": "Wenger emphasizes that sustained participation transforms peripheral members into core practitioners"
-    },
-    {
-      "suggested": {
-        "from": "Shared Practice",
-        "to": "Community Identity",
-        "relationship": "positive"
-      },
-      "rationale": "Core to CoP theory - mutual engagement in joint enterprise creates shared identity and meaning"
+      "rationale": "Wenger emphasizes that participation leads to identity formation as a key outcome of community engagement"
     },
     {
       "suggested": {
         "from": "Mentoring Activities",
-        "to": "New Contributors Retention",
+        "to": "Movement from Periphery to Core",
         "relationship": "positive"
       },
-      "rationale": "Legitimate peripheral participation requires guidance from experienced members to facilitate learning"
+      "rationale": "Missing the crucial mechanism of legitimate peripheral participation where experienced members mentor newcomers along the trajectory"
+    },
+    {
+      "suggested": {
+        "from": "Shared Practice",
+        "to": "Community Cohesion",
+        "relationship": "positive"
+      },
+      "rationale": "Wenger's theory centers on shared practice as the binding element that creates community coherence and mutual engagement"
     }
   ],
   "theory_validations": [
@@ -60,30 +60,26 @@
         {
           "connection": {
             "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
-            "to": "Joining Rate"
+            "to": "Joining Rate",
+            "relationship": "positive"
           },
-          "explanation": "Aligns with legitimate peripheral participation - explicit knowledge provides entry points for newcomers to join the community"
+          "explanation": "Aligns with legitimate peripheral participation - explicit knowledge provides entry points for newcomers to join the community from the periphery"
         },
         {
           "connection": {
             "from": "Experienced Contributors",
-            "to": "PR Feedback"
+            "to": "PR Feedback",
+            "relationship": "positive"
           },
-          "explanation": "Represents core members' role in mentoring and guiding peripheral participants through practice"
+          "explanation": "Reflects how experienced community members (core participants) provide guidance and feedback to newcomers, facilitating learning through participation"
         },
         {
           "connection": {
             "from": "New Contributors",
-            "to": "PR Feedback"
+            "to": "PR Feedback",
+            "relationship": "positive"
           },
-          "explanation": "Shows newcomers' participation through contributing, which is essential for moving from periphery to core"
-        },
-        {
-          "connection": {
-            "from": "Project Reputation",
-            "to": "Joining Rate"
-          },
-          "explanation": "Reflects how community identity and reputation attract new participants seeking to join the practice"
+          "explanation": "Shows participation across different levels of experience, supporting the continuum from peripheral to core participation"
         }
       ],
       "problematic_connections": [
@@ -93,7 +89,7 @@
             "to": "Projects's Explicit Knowledge",
             "relationship": "negative"
           },
-          "issue": "Contradicts Wenger's view that knowledge conversion is complementary, not zero-sum. Explicit and tacit knowledge should reinforce each other"
+          "issue": "Contradicts Wenger's view that explicit and tacit knowledge coexist and complement each other; knowledge conversion should not diminish explicit knowledge"
         },
         {
           "connection": {
@@ -101,41 +97,33 @@
             "to": "PR Feedback",
             "relationship": "positive"
           },
-          "issue": "Unsupported - delays typically hinder legitimate peripheral participation by creating barriers to engagement and learning"
-        },
-        {
-          "connection": {
-            "from": "Knowledge Conversion Rate",
-            "to": "Projects's Explicit Knowledge",
-            "relationship": "positive"
-          },
-          "issue": "Oversimplifies knowledge dynamics - conversion involves complex social processes beyond simple accumulation"
+          "issue": "Oversimplifies the feedback process; delays typically hinder learning and participation rather than enhancing feedback quality"
         }
       ],
       "missing_connections": [
         {
           "suggested": {
             "from": "Community Participation",
-            "to": "Experienced Contributors",
+            "to": "Identity Formation",
             "relationship": "positive"
           },
-          "rationale": "Wenger emphasizes that sustained participation transforms peripheral members into core practitioners"
-        },
-        {
-          "suggested": {
-            "from": "Shared Practice",
-            "to": "Community Identity",
-            "relationship": "positive"
-          },
-          "rationale": "Core to CoP theory - mutual engagement in joint enterprise creates shared identity and meaning"
+          "rationale": "Wenger emphasizes that participation leads to identity formation as a key outcome of community engagement"
         },
         {
           "suggested": {
             "from": "Mentoring Activities",
-            "to": "New Contributors Retention",
+            "to": "Movement from Periphery to Core",
             "relationship": "positive"
           },
-          "rationale": "Legitimate peripheral participation requires guidance from experienced members to facilitate learning"
+          "rationale": "Missing the crucial mechanism of legitimate peripheral participation where experienced members mentor newcomers along the trajectory"
+        },
+        {
+          "suggested": {
+            "from": "Shared Practice",
+            "to": "Community Cohesion",
+            "relationship": "positive"
+          },
+          "rationale": "Wenger's theory centers on shared practice as the binding element that creates community coherence and mutual engagement"
         },
         {
           "suggested": {
@@ -143,19 +131,19 @@
             "to": "Knowledge Sharing",
             "relationship": "positive"
           },
-          "rationale": "Wenger identifies artifacts that enable coordination between different communities and knowledge domains"
+          "rationale": "Missing Wenger's concept of boundary objects (artifacts, documents, tools) that enable knowledge sharing across different participation levels"
         },
         {
           "suggested": {
-            "from": "Community Events",
-            "to": "Social Learning",
+            "from": "Mutual Engagement",
+            "to": "Trust Building",
             "relationship": "positive"
           },
-          "rationale": "Communities develop through shared experiences and negotiated meaning, not just formal processes"
+          "rationale": "The model lacks the social dimension of mutual engagement that builds trust and enables collaborative learning"
         }
       ],
-      "alignment_score": 6,
-      "recommendations": "Add variables for community identity formation, social learning processes, and legitimate peripheral participation pathways. Include feedback loops showing how participation transforms newcomers into core members. Model knowledge as socially constructed rather than simply converted. Add boundary objects and community events as key enablers of practice sharing. Focus more on the social aspects of learning rather than just technical processes."
+      "alignment_score": 5,
+      "recommendations": "Add variables for identity formation, mentoring relationships, shared practice development, and mutual engagement. Include feedback loops that show the trajectory from peripheral to core participation. Model knowledge as complementary rather than competitive between explicit and tacit forms. Emphasize the social learning processes and community-building aspects central to Wenger's theory."
     },
     {
       "theory": "Nonaka's SECI Model",
@@ -166,7 +154,7 @@
             "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
             "relationship": "positive"
           },
-          "explanation": "Aligns with Combination mode - explicit knowledge is systematically organized and shared through documentation"
+          "explanation": "Aligns with Combination phase - explicit knowledge is systematically organized and shared through documentation"
         },
         {
           "connection": {
@@ -174,7 +162,7 @@
             "to": "Joining Rate",
             "relationship": "positive"
           },
-          "explanation": "Supports Internalization - explicit documentation helps newcomers convert explicit knowledge to tacit understanding, facilitating onboarding"
+          "explanation": "Supports Internalization - newcomers convert explicit documentation into personal knowledge to join effectively"
         },
         {
           "connection": {
@@ -182,7 +170,7 @@
             "to": "PR Feedback",
             "relationship": "positive"
           },
-          "explanation": "Represents Socialization - experienced contributors share tacit knowledge through code review and feedback"
+          "explanation": "Represents Socialization - experienced contributors share tacit knowledge through code review interactions"
         },
         {
           "connection": {
@@ -190,7 +178,7 @@
             "to": "Projects's Explicit Knowledge",
             "relationship": "positive"
           },
-          "explanation": "Aligns with Externalization - converting tacit knowledge to explicit forms that can be captured"
+          "explanation": "Directly supports Externalization - converting tacit knowledge into explicit forms"
         }
       ],
       "problematic_connections": [
@@ -200,7 +188,7 @@
             "to": "Projects's Explicit Knowledge",
             "relationship": "negative"
           },
-          "issue": "Conceptually confusing - Internalization (explicit to tacit) should not deplete explicit knowledge; rather, it creates personal tacit knowledge while explicit knowledge remains available"
+          "issue": "Misrepresents Internalization - converting explicit to tacit knowledge should not deplete explicit knowledge; they should coexist and reinforce each other"
         },
         {
           "connection": {
@@ -208,61 +196,45 @@
             "to": "PR Feedback",
             "relationship": "positive"
           },
-          "issue": "Contradicts SECI theory - delays typically hinder knowledge transfer processes rather than enhancing them"
-        },
-        {
-          "connection": {
-            "from": "Feedback",
-            "to": "Open Issues",
-            "relationship": "positive"
-          },
-          "issue": "Oversimplifies knowledge creation - feedback should ideally lead to knowledge capture and problem resolution, not just issue accumulation"
+          "issue": "Contradicts SECI - delays in feedback loops hinder the Socialization and Externalization processes by creating barriers to knowledge sharing"
         }
       ],
       "missing_connections": [
         {
           "suggested": {
-            "from": "PR Feedback",
-            "to": "Projects's Explicit Knowledge",
-            "relationship": "positive"
-          },
-          "rationale": "SECI predicts Externalization - valuable insights from code reviews should be captured as explicit knowledge (documentation, best practices)"
-        },
-        {
-          "suggested": {
-            "from": "Closed Issues",
-            "to": "Projects's Explicit Knowledge",
-            "relationship": "positive"
-          },
-          "rationale": "Combination mode - resolved issues represent learning that should be systematically incorporated into project knowledge"
-        },
-        {
-          "suggested": {
-            "from": "Experienced Contributors",
+            "from": "Tacit Knowledge Sharing",
             "to": "Knowledge Conversion Rate",
             "relationship": "positive"
           },
-          "rationale": "Externalization - experienced contributors are better at articulating tacit knowledge into explicit forms"
+          "rationale": "Missing Socialization to Externalization link - tacit knowledge sharing through pair programming, mentoring should feed knowledge conversion"
         },
         {
           "suggested": {
-            "from": "Projects's Explicit Knowledge",
-            "to": "Issue Resolution Rate",
+            "from": "Community Interactions",
+            "to": "Tacit Knowledge Base",
             "relationship": "positive"
           },
-          "rationale": "Internalization - explicit knowledge helps maintainers solve issues more efficiently by building on documented solutions"
+          "rationale": "Missing Socialization foundation - direct interactions build shared tacit understanding and mental models"
         },
         {
           "suggested": {
-            "from": "Community Health",
-            "to": "Knowledge Conversion Rate",
+            "from": "Learning by Doing",
+            "to": "Experienced Contributors",
             "relationship": "positive"
           },
-          "rationale": "Socialization - healthy communities facilitate better tacit knowledge sharing and conversion"
+          "rationale": "Missing Internalization mechanism - practice and application convert explicit knowledge into personal tacit expertise"
+        },
+        {
+          "suggested": {
+            "from": "Documentation Quality",
+            "to": "Learning by Doing",
+            "relationship": "positive"
+          },
+          "rationale": "Missing Combination to Internalization link - well-structured explicit knowledge facilitates learning and skill development"
         }
       ],
       "alignment_score": 5,
-      "recommendations": "Strengthen the model by: 1) Adding explicit feedback loops between knowledge creation activities and problem-solving capabilities, 2) Creating connections that show how tacit knowledge from experienced contributors gets externalized into project documentation, 3) Modeling how issue resolution contributes to knowledge accumulation rather than just reducing backlog, 4) Adding a 'Tacit Knowledge' stock that grows through Socialization and Internalization processes, 5) Ensuring knowledge conversion processes are bidirectional as per SECI's knowledge spiral concept."
+      "recommendations": "Add explicit Socialization mechanisms (mentoring, community events), strengthen Internalization processes (learning pathways, practice opportunities), clarify that knowledge conversion should be additive rather than zero-sum, and create feedback loops between all four SECI phases to enable the complete knowledge spiral."
     }
   ]
 }

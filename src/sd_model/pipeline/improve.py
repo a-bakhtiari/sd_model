@@ -4,6 +4,7 @@ from pathlib import Path
 from sd_model.llm.client import LLMClient
 from sd_model.validation.schema import validate_json
 from sd_model.provenance.store import init_db, add_artifact
+from sd_model.config import settings
 import hashlib
 
 
@@ -69,8 +70,8 @@ def generate_updated_connections(current_connections: list[dict], improvements: 
 
 
 def improve_model(validation_path: Path, connections_path: Path, out_path: Path,
-                  api_key: str | None = None, model: str = "deepseek-chat",
-                  provenance_db: Path | None = Path("provenance.sqlite")) -> dict:
+                  api_key: str | None = None, model: str | None = None,
+                  provenance_db: Path | None = None) -> dict:
     validation_results = json.loads(validation_path.read_text())
     connections_data = json.loads(connections_path.read_text())
     connections = connections_data["connections"]
@@ -108,8 +109,9 @@ def improve_model(validation_path: Path, connections_path: Path, out_path: Path,
     out_path.write_text(json.dumps(output, indent=2))
 
     # Provenance
-    if provenance_db:
-        init_db(provenance_db)
+    db_path = Path(provenance_db or settings.provenance_db)
+    if db_path:
+        init_db(db_path)
         sha = hashlib.sha256(out_path.read_bytes()).hexdigest()
-        add_artifact(provenance_db, kind="model_improvements", path=str(out_path), sha256=sha)
+        add_artifact(db_path, kind="model_improvements", path=str(out_path), sha256=sha)
     return output

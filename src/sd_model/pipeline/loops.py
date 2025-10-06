@@ -6,10 +6,11 @@ from sd_model.graph.builder import build_signed_digraph
 from sd_model.graph.loops import simple_cycles_with_polarity
 from sd_model.validation.schema import validate_json
 from sd_model.provenance.store import init_db, add_artifact, record_loops
+from sd_model.config import settings
 import hashlib
 
 
-def compute_loops(connections_path: Path, out_path: Path, provenance_db: Path | None = Path("provenance.sqlite")) -> dict:
+def compute_loops(connections_path: Path, out_path: Path, provenance_db: Path | None = None) -> dict:
     with open(connections_path, "r") as f:
         connections = json.load(f)["connections"]
 
@@ -33,9 +34,10 @@ def compute_loops(connections_path: Path, out_path: Path, provenance_db: Path | 
     out_path.write_text(json.dumps(output, indent=2))
 
     # Record provenance
-    if provenance_db:
-        init_db(provenance_db)
+    db_path = Path(provenance_db or settings.provenance_db)
+    if db_path:
+        init_db(db_path)
         sha = hashlib.sha256(out_path.read_bytes()).hexdigest()
-        artifact_id = add_artifact(provenance_db, kind="loops", path=str(out_path), sha256=sha)
-        record_loops(provenance_db, artifact_id, output.get("loops", []))
+        artifact_id = add_artifact(db_path, kind="loops", path=str(out_path), sha256=sha)
+        record_loops(db_path, artifact_id, output.get("loops", []))
     return output

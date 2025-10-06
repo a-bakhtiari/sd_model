@@ -13,3 +13,13 @@ High-level Workflow
 
 See `docs/architecture.md` for the new layout and planned modules.
 
+Quick start
+- Install deps: `pip install -r requirements.txt`
+- Copy `.env.example` to `.env` and set `DEEPSEEK_API_KEY`
+- Run the whole pipeline: `PYTHONPATH=src python3 main.py`
+- Or run step-by-step via CLI:
+  - `PYTHONPATH=src python -m sd_model.cli parse untitled.mdl`
+  - `PYTHONPATH=src python -m sd_model.cli loops`
+  - `PYTHONPATH=src python -m sd_model.cli interpret`
+  - `PYTHONPATH=src python -m sd_model.cli validate-theory`
+  - `PYTHONPATH=src python -m sd_model.cli improve`

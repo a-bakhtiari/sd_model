@@ -4,3 +4,4 @@ pandas
 typer
 pydantic
 jsonschema
+python-dotenv

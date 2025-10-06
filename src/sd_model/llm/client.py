@@ -1,12 +1,12 @@
 from __future__ import annotations
-import os
 import requests
+from sd_model.config import settings
 
 
 class LLMClient:
-    def __init__(self, api_key: str | None = None, model: str = "deepseek-chat"):
-        self.api_key = api_key or os.getenv("DEEPSEEK_API_KEY")
-        self.model = model
+    def __init__(self, api_key: str | None = None, model: str | None = None):
+        self.api_key = api_key or settings.deepseek_api_key
+        self.model = model or settings.model_name
 
     def chat(self, prompt: str, temperature: float = 0.0) -> str:
         if not self.api_key:
@@ -23,4 +23,3 @@ class LLMClient:
             else:
                 content = content.split("```")[-2]
         return content
-

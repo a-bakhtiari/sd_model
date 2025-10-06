@@ -3,157 +3,165 @@
     "priority_additions": [
       {
         "from": "Community Participation",
-        "to": "Experienced Contributors",
+        "to": "Identity Formation",
         "relationship": "positive",
-        "rationale": "Wenger's Communities of Practice theory emphasizes that sustained participation transforms peripheral members into core practitioners through legitimate peripheral participation",
-        "expected_impact": "Captures the essential community maturation process missing from current model"
-      },
-      {
-        "from": "Shared Practice",
-        "to": "Community Identity",
-        "relationship": "positive",
-        "rationale": "Core to CoP theory - mutual engagement in joint enterprise creates shared repertoire and collective identity",
-        "expected_impact": "Models the social fabric that sustains community engagement beyond technical contributions"
+        "rationale": "Wenger's Communities of Practice theory emphasizes that sustained participation leads to identity formation as members develop shared understanding and belonging",
+        "expected_impact": "Better capture of community member development and long-term engagement drivers"
       },
       {
         "from": "Mentoring Activities",
-        "to": "New Contributors Retention",
+        "to": "Movement from Periphery to Core",
         "relationship": "positive",
-        "rationale": "Legitimate peripheral participation requires guidance from experienced members to facilitate learning and integration",
-        "expected_impact": "Addresses the critical onboarding process that determines long-term contributor sustainability"
+        "rationale": "Legitimate peripheral participation requires mentoring to facilitate newcomers' trajectory toward core participation",
+        "expected_impact": "More accurate representation of community member progression and knowledge transfer"
       },
       {
-        "from": "Tacit Knowledge Sharing",
-        "to": "Explicit Knowledge Creation",
+        "from": "Shared Practice",
+        "to": "Community Cohesion",
         "relationship": "positive",
-        "rationale": "Nonaka's SECI model emphasizes socialization (tacit-tacit) enables externalization (tacit-explicit) through dialogue and collective reflection",
-        "expected_impact": "Corrects the zero-sum misconception and models knowledge creation as complementary processes"
+        "rationale": "Wenger identifies shared practice as the fundamental binding element that creates mutual engagement and community coherence",
+        "expected_impact": "Improved modeling of community sustainability and collaborative capacity"
+      },
+      {
+        "from": "Identity Formation",
+        "to": "Long-term Engagement",
+        "relationship": "positive",
+        "rationale": "Strong community identity increases commitment and reduces contributor turnover",
+        "expected_impact": "Better prediction of contributor retention and community stability"
       }
     ],
     "recommended_removals": [
       {
         "from": "Explicit to Implicit Conversion",
         "to": "Projects's Explicit Knowledge",
-        "reason": "Contradicts Wenger's view that knowledge conversion is complementary, not zero-sum. Explicit and tacit knowledge should reinforce each other in a virtuous cycle"
+        "reason": "Contradicts Nonaka's SECI model where knowledge conversion processes complement rather than deplete knowledge stocks"
       },
       {
         "from": "PR Review Delay",
         "to": "PR Feedback",
-        "reason": "Unsupported by theory - delays typically hinder legitimate peripheral participation by creating barriers to engagement and learning"
-      },
-      {
-        "from": "Knowledge Conversion Rate",
-        "to": "Projects's Explicit Knowledge",
-        "reason": "Oversimplifies knowledge dynamics - conversion involves complex social processes beyond simple accumulation"
+        "reason": "Oversimplifies feedback dynamics; delays typically reduce feedback quality and learning opportunities"
       }
     ],
     "new_variables_needed": [
       {
         "name": "Community Identity Strength",
         "type": "stock",
-        "purpose": "Represents the collective sense of belonging and shared purpose within the community",
+        "purpose": "Represent the collective identity formation within the community as described by Wenger",
         "connects_to": [
-          "Shared Practice",
           "Community Participation",
-          "Contributor Retention",
+          "Long-term Engagement",
           "Knowledge Sharing Willingness"
         ]
       },
       {
-        "name": "Legitimate Peripheral Participation",
+        "name": "Periphery-to-Core Progression",
         "type": "flow",
-        "purpose": "Models the process where newcomers gradually move from periphery to core through guided participation",
+        "purpose": "Model the trajectory of community members from peripheral to core participation",
         "connects_to": [
-          "New Contributors",
           "Mentoring Activities",
           "Community Participation",
-          "Experienced Contributors"
+          "Core Contributors"
         ]
       },
       {
-        "name": "Ba (Knowledge Creation Context)",
+        "name": "Practice Coherence",
         "type": "auxiliary",
-        "purpose": "Represents the shared context for knowledge creation as per Nonaka's theory - the physical, virtual, and mental spaces where knowledge is shared",
+        "purpose": "Measure the alignment and shared understanding of community practices",
         "connects_to": [
-          "Community Participation",
-          "Knowledge Sharing",
-          "Tacit Knowledge Sharing",
-          "Explicit Knowledge Creation"
+          "Shared Practice",
+          "Community Cohesion",
+          "Collaboration Efficiency"
+        ]
+      },
+      {
+        "name": "Knowledge Complementarity",
+        "type": "auxiliary",
+        "purpose": "Represent how explicit and tacit knowledge reinforce each other in SECI model",
+        "connects_to": [
+          "Explicit Knowledge",
+          "Tacit Knowledge",
+          "Knowledge Creation"
         ]
       }
     ],
     "structural_changes": [
       {
-        "change": "Replace linear knowledge conversion with Nonaka's SECI spiral model structure",
-        "justification": "Knowledge creation should be modeled as a dynamic spiral where socialization, externalization, combination, and internalization reinforce each other"
+        "change": "Replace negative connection between Explicit-to-Implicit conversion and Explicit Knowledge with positive connection to Knowledge Complementarity",
+        "justification": "Aligns with Nonaka's SECI model where knowledge conversion processes enhance overall knowledge ecosystem rather than depleting sources"
       },
       {
-        "change": "Add feedback loop: Community Identity \u2192 Shared Practice \u2192 Community Participation \u2192 Community Identity",
-        "justification": "Wenger's theory emphasizes the reciprocal relationship between practice, community, and identity formation"
+        "change": "Add feedback loop: Community Participation \u2192 Identity Formation \u2192 Long-term Engagement \u2192 Community Participation",
+        "justification": "Implements Wenger's identity-based engagement cycle that sustains community participation"
       },
       {
-        "change": "Restructure contributor progression: New Contributors \u2192 Legitimate Peripheral Participation \u2192 Community Participation \u2192 Experienced Contributors",
-        "justification": "Better represents the trajectory of learning and participation described in Communities of Practice theory"
+        "change": "Restructure PR feedback mechanism to separate timeliness from quality dimensions",
+        "justification": "Addresses oversimplification where delays were incorrectly modeled as improving feedback"
       }
     ],
     "implementation_order": [
-      "Step 1: Add Community Identity and Legitimate Peripheral Participation variables",
-      "Step 2: Implement the three priority addition connections with proper feedback loops",
-      "Step 3: Remove problematic connections and restructure knowledge conversion processes",
-      "Step 4: Add Ba variable and integrate SECI model structure",
-      "Step 5: Validate revised model against Communities of Practice and SECI theoretical principles"
+      "Step 1: Add Identity Formation and related connections to capture Wenger's identity theory",
+      "Step 2: Restructure knowledge conversion connections to align with SECI model complementarity",
+      "Step 3: Implement periphery-to-core progression with mentoring mechanisms",
+      "Step 4: Add shared practice and community cohesion variables with proper connections",
+      "Step 5: Refine PR feedback system to separate delay effects from quality effects"
     ],
-    "expected_improvement": "Model alignment with theory should improve from 5.5/10 to 8.5/10 by properly capturing the social learning dynamics, knowledge creation processes, and community identity formation central to both Communities of Practice and SECI theories. The revised model will better represent how open-source communities actually develop and sustain themselves over time."
+    "expected_improvement": "Model theory alignment should improve from 5/10 to 8/10 by properly implementing core theoretical mechanisms from Wenger's Communities of Practice and Nonaka's SECI model, particularly around identity formation, legitimate peripheral participation, and knowledge complementarity. This will enable more accurate simulation of community sustainability and knowledge dynamics."
   },
   "implementation_script": {
     "additions": [
       {
-        "command": "Add connection: Community Participation \u2192 Experienced Contributors (positive)",
-        "mdl_fragment": "Experienced Contributors = A FUNCTION OF(..., Community Participation)",
-        "rationale": "Wenger's Communities of Practice theory emphasizes that sustained participation transforms peripheral members into core practitioners through legitimate peripheral participation"
+        "command": "Add connection: Community Participation \u2192 Identity Formation (positive)",
+        "mdl_fragment": "Identity Formation = A FUNCTION OF(..., Community Participation)",
+        "rationale": "Wenger's Communities of Practice theory emphasizes that sustained participation leads to identity formation as members develop shared understanding and belonging"
       },
       {
-        "command": "Add connection: Shared Practice \u2192 Community Identity (positive)",
-        "mdl_fragment": "Community Identity = A FUNCTION OF(..., Shared Practice)",
-        "rationale": "Core to CoP theory - mutual engagement in joint enterprise creates shared repertoire and collective identity"
+        "command": "Add connection: Mentoring Activities \u2192 Movement from Periphery to Core (positive)",
+        "mdl_fragment": "Movement from Periphery to Core = A FUNCTION OF(..., Mentoring Activities)",
+        "rationale": "Legitimate peripheral participation requires mentoring to facilitate newcomers' trajectory toward core participation"
       },
       {
-        "command": "Add connection: Mentoring Activities \u2192 New Contributors Retention (positive)",
-        "mdl_fragment": "New Contributors Retention = A FUNCTION OF(..., Mentoring Activities)",
-        "rationale": "Legitimate peripheral participation requires guidance from experienced members to facilitate learning and integration"
+        "command": "Add connection: Shared Practice \u2192 Community Cohesion (positive)",
+        "mdl_fragment": "Community Cohesion = A FUNCTION OF(..., Shared Practice)",
+        "rationale": "Wenger identifies shared practice as the fundamental binding element that creates mutual engagement and community coherence"
       },
       {
-        "command": "Add connection: Tacit Knowledge Sharing \u2192 Explicit Knowledge Creation (positive)",
-        "mdl_fragment": "Explicit Knowledge Creation = A FUNCTION OF(..., Tacit Knowledge Sharing)",
-        "rationale": "Nonaka's SECI model emphasizes socialization (tacit-tacit) enables externalization (tacit-explicit) through dialogue and collective reflection"
+        "command": "Add connection: Identity Formation \u2192 Long-term Engagement (positive)",
+        "mdl_fragment": "Long-term Engagement = A FUNCTION OF(..., Identity Formation)",
+        "rationale": "Strong community identity increases commitment and reduces contributor turnover"
       }
     ],
     "removals": [],
     "new_variables": [
       {
         "command": "Create variable: Community Identity Strength",
-        "mdl_fragment": "Community Identity Strength = A FUNCTION OF(Shared Practice, Community Participation, Contributor Retention, Knowledge Sharing Willingness)",
+        "mdl_fragment": "Community Identity Strength = A FUNCTION OF(Community Participation, Long-term Engagement, Knowledge Sharing Willingness)",
         "type": "stock",
-        "purpose": "Represents the collective sense of belonging and shared purpose within the community"
+        "purpose": "Represent the collective identity formation within the community as described by Wenger"
       },
       {
-        "command": "Create variable: Legitimate Peripheral Participation",
-        "mdl_fragment": "Legitimate Peripheral Participation = A FUNCTION OF(New Contributors, Mentoring Activities, Community Participation, Experienced Contributors)",
+        "command": "Create variable: Periphery-to-Core Progression",
+        "mdl_fragment": "Periphery-to-Core Progression = A FUNCTION OF(Mentoring Activities, Community Participation, Core Contributors)",
         "type": "flow",
-        "purpose": "Models the process where newcomers gradually move from periphery to core through guided participation"
+        "purpose": "Model the trajectory of community members from peripheral to core participation"
       },
       {
-        "command": "Create variable: Ba (Knowledge Creation Context)",
-        "mdl_fragment": "Ba (Knowledge Creation Context) = A FUNCTION OF(Community Participation, Knowledge Sharing, Tacit Knowledge Sharing, Explicit Knowledge Creation)",
+        "command": "Create variable: Practice Coherence",
+        "mdl_fragment": "Practice Coherence = A FUNCTION OF(Shared Practice, Community Cohesion, Collaboration Efficiency)",
         "type": "auxiliary",
-        "purpose": "Represents the shared context for knowledge creation as per Nonaka's theory - the physical, virtual, and mental spaces where knowledge is shared"
+        "purpose": "Measure the alignment and shared understanding of community practices"
+      },
+      {
+        "command": "Create variable: Knowledge Complementarity",
+        "mdl_fragment": "Knowledge Complementarity = A FUNCTION OF(Explicit Knowledge, Tacit Knowledge, Knowledge Creation)",
+        "type": "auxiliary",
+        "purpose": "Represent how explicit and tacit knowledge reinforce each other in SECI model"
       }
     ]
   },
   "statistics": {
     "additions_proposed": 4,
-    "removals_suggested": 3,
-    "new_variables": 3,
+    "removals_suggested": 2,
+    "new_variables": 4,
     "total_connections_after": 62
   },
   "updated_connections": [
@@ -202,7 +210,7 @@
       "to": "PR Feedback",
       "relationship": "positive",
       "marked_for_review": true,
-      "removal_reason": "Unsupported by theory - delays typically hinder legitimate peripheral participation by creating barriers to engagement and learning"
+      "removal_reason": "Oversimplifies feedback dynamics; delays typically reduce feedback quality and learning opportunities"
     },
     {
       "from": "Pull Request Under review",
@@ -254,14 +262,12 @@
       "to": "Projects's Explicit Knowledge",
       "relationship": "negative",
       "marked_for_review": true,
-      "removal_reason": "Contradicts Wenger's view that knowledge conversion is complementary, not zero-sum. Explicit and tacit knowledge should reinforce each other in a virtuous cycle"
+      "removal_reason": "Contradicts Nonaka's SECI model where knowledge conversion processes complement rather than deplete knowledge stocks"
     },
     {
       "from": "Knowledge Conversion Rate",
       "to": "Projects's Explicit Knowledge",
-      "relationship": "positive",
-      "marked_for_review": true,
-      "removal_reason": "Oversimplifies knowledge dynamics - conversion involves complex social processes beyond simple accumulation"
+      "relationship": "positive"
     },
     {
       "from": "Searchable Knowledge Base",
@@ -455,22 +461,22 @@
     },
     {
       "from": "Community Participation",
-      "to": "Experienced Contributors",
-      "relationship": "positive"
-    },
-    {
-      "from": "Shared Practice",
-      "to": "Community Identity",
+      "to": "Identity Formation",
       "relationship": "positive"
     },
     {
       "from": "Mentoring Activities",
-      "to": "New Contributors Retention",
+      "to": "Movement from Periphery to Core",
       "relationship": "positive"
     },
     {
-      "from": "Tacit Knowledge Sharing",
-      "to": "Explicit Knowledge Creation",
+      "from": "Shared Practice",
+      "to": "Community Cohesion",
+      "relationship": "positive"
+    },
+    {
+      "from": "Identity Formation",
+      "to": "Long-term Engagement",
       "relationship": "positive"
     }
   ]

@@ -4,6 +4,7 @@ from pathlib import Path
 from sd_model.llm.client import LLMClient
 from sd_model.validation.schema import validate_json
 from sd_model.provenance.store import init_db, add_artifact, add_evidence
+from sd_model.config import settings
 import hashlib
 
 
@@ -63,10 +64,11 @@ def combine_analysis(loops_data: dict, interpretations: dict) -> dict:
     }
 
 
-def interpret_loops(loops_path: Path, out_path: Path, api_key: str | None = None, model: str = "deepseek-chat",
-                    provenance_db: Path | None = Path("provenance.sqlite")) -> dict:
+def interpret_loops(loops_path: Path, out_path: Path, api_key: str | None = None, model: str | None = None,
+                    provenance_db: Path | None = None) -> dict:
     loops_data = json.loads(Path(loops_path).read_text())
-    prompt = INTERPRET_PROMPT.format(loops_json=json.dumps(loops_data.get("loops", []), indent=2))
+    # Avoid .format() because template contains many braces; simple token replace
+    prompt = INTERPRET_PROMPT.replace("{loops_json}", json.dumps(loops_data.get("loops", []), indent=2))
 
     client = LLMClient(api_key=api_key, model=model)
     content = client.chat(prompt, temperature=0.3)
@@ -80,12 +82,13 @@ def interpret_loops(loops_path: Path, out_path: Path, api_key: str | None = None
     out_path.write_text(json.dumps(final, indent=2))
 
     # Provenance
-    if provenance_db:
-        init_db(provenance_db)
+    db_path = Path(provenance_db or settings.provenance_db)
+    if db_path:
+        init_db(db_path)
         sha = hashlib.sha256(out_path.read_bytes()).hexdigest()
-        artifact_id = add_artifact(provenance_db, kind="loops_interpreted", path=str(out_path), sha256=sha)
+        artifact_id = add_artifact(db_path, kind="loops_interpreted", path=str(out_path), sha256=sha)
         si = final.get("system_insights", "")
         if si:
-            add_evidence(provenance_db, item_type="artifact", item_id=artifact_id,
+            add_evidence(db_path, item_type="artifact", item_id=artifact_id,
                          source="interpret_llm", ref=None, confidence=None, note=si)
     return final

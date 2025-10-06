@@ -4,6 +4,7 @@ from pathlib import Path
 from sd_model.llm.client import LLMClient
 from sd_model.validation.schema import validate_json
 from sd_model.provenance.store import init_db, add_artifact, record_connections
+from sd_model.config import settings
 import hashlib
 
 
@@ -45,10 +46,11 @@ MDL FILE CONTENT:
 """
 
 
-def parse_mdl(mdl_path: Path, out_path: Path, api_key: str | None = None, model: str = "deepseek-chat",
-              provenance_db: Path | None = Path("provenance.sqlite")) -> dict:
+def parse_mdl(mdl_path: Path, out_path: Path, api_key: str | None = None, model: str | None = None,
+              provenance_db: Path | None = None) -> dict:
     mdl_text = Path(mdl_path).read_text()
-    prompt = PROMPT_TEMPLATE.format(mdl_content=mdl_text)
+    # Avoid .format() due to braces in JSON example; do a simple token replace
+    prompt = PROMPT_TEMPLATE.replace("{mdl_content}", mdl_text)
 
     client = LLMClient(api_key=api_key, model=model)
     content = client.chat(prompt, temperature=0.0)
@@ -59,9 +61,10 @@ def parse_mdl(mdl_path: Path, out_path: Path, api_key: str | None = None, model:
     out_path.write_text(json.dumps(data, indent=2))
 
     # Record provenance
-    if provenance_db:
-        init_db(provenance_db)
+    db_path = Path(provenance_db or settings.provenance_db)
+    if db_path:
+        init_db(db_path)
         sha = hashlib.sha256(out_path.read_bytes()).hexdigest()
-        artifact_id = add_artifact(provenance_db, kind="connections", path=str(out_path), sha256=sha)
-        record_connections(provenance_db, artifact_id, data.get("connections", []))
+        artifact_id = add_artifact(db_path, kind="connections", path=str(out_path), sha256=sha)
+        record_connections(db_path, artifact_id, data.get("connections", []))
     return data
