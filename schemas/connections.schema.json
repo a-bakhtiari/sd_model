@@ -14,8 +14,8 @@
           "from": {"type": "string"},
           "to": {"type": "string"},
           "relationship": {"type": "string", "enum": ["positive", "negative"]},
-          "type_from": {"type": "string", "enum": ["stock", "flow", "auxiliary"], "nullable": true},
-          "type_to": {"type": "string", "enum": ["stock", "flow", "auxiliary"], "nullable": true},
+          "type_from": {"type": ["string", "null"], "enum": ["stock", "flow", "auxiliary", null]},
+          "type_to": {"type": ["string", "null"], "enum": ["stock", "flow", "auxiliary", null]},
           "evidence": {"type": "array"}
         },
         "additionalProperties": true
@@ -23,4 +23,3 @@
     }
   }
 }
-

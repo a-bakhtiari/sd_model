@@ -2,6 +2,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from sd_model.llm.client import LLMClient
+from sd_model.validation.schema import validate_json
+from sd_model.provenance.store import init_db, add_artifact, record_connections
+import hashlib
 
 
 PROMPT_TEMPLATE = """Extract all variable dependencies from this Vensim MDL file.
@@ -42,14 +45,23 @@ MDL FILE CONTENT:
 """
 
 
-def parse_mdl(mdl_path: Path, out_path: Path, api_key: str | None = None, model: str = "deepseek-chat") -> dict:
+def parse_mdl(mdl_path: Path, out_path: Path, api_key: str | None = None, model: str = "deepseek-chat",
+              provenance_db: Path | None = Path("provenance.sqlite")) -> dict:
     mdl_text = Path(mdl_path).read_text()
     prompt = PROMPT_TEMPLATE.format(mdl_content=mdl_text)
 
     client = LLMClient(api_key=api_key, model=model)
     content = client.chat(prompt, temperature=0.0)
     data = json.loads(content)
+    # Validate against schema
+    validate_json(data, Path("schemas/connections.schema.json"))
 
     out_path.write_text(json.dumps(data, indent=2))
-    return data
 
+    # Record provenance
+    if provenance_db:
+        init_db(provenance_db)
+        sha = hashlib.sha256(out_path.read_bytes()).hexdigest()
+        artifact_id = add_artifact(provenance_db, kind="connections", path=str(out_path), sha256=sha)
+        record_connections(provenance_db, artifact_id, data.get("connections", []))
+    return data

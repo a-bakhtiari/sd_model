@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "loops_interpreted.schema.json",
+  "title": "Loops Interpreted",
+  "type": "object",
+  "required": ["total_loops", "summary", "enhanced_loops", "dominant_loops", "system_insights"],
+  "properties": {
+    "total_loops": {"type": "integer"},
+    "summary": {"type": "object"},
+    "enhanced_loops": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["nodes", "edges", "type", "length"],
+        "properties": {
+          "nodes": {"type": "array", "items": {"type": "string"}},
+          "edges": {"type": "array"},
+          "type": {"type": "string", "enum": ["R", "B"]},
+          "length": {"type": "integer"},
+          "name": {"type": ["string", "null"]},
+          "meaning": {"type": ["string", "null"]},
+          "impact": {"type": ["string", "null"]},
+          "explanation": {"type": ["string", "null"]}
+        },
+        "additionalProperties": true
+      }
+    },
+    "dominant_loops": {"type": "array", "items": {"type": "string"}},
+    "system_insights": {"type": "string"}
+  }
+}
+

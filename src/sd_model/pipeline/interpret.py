@@ -2,6 +2,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from sd_model.llm.client import LLMClient
+from sd_model.validation.schema import validate_json
+from sd_model.provenance.store import init_db, add_artifact, add_evidence
+import hashlib
 
 
 INTERPRET_PROMPT = """Analyze these feedback loops from an open-source software community system dynamics model.
@@ -60,7 +63,8 @@ def combine_analysis(loops_data: dict, interpretations: dict) -> dict:
     }
 
 
-def interpret_loops(loops_path: Path, out_path: Path, api_key: str | None = None, model: str = "deepseek-chat") -> dict:
+def interpret_loops(loops_path: Path, out_path: Path, api_key: str | None = None, model: str = "deepseek-chat",
+                    provenance_db: Path | None = Path("provenance.sqlite")) -> dict:
     loops_data = json.loads(Path(loops_path).read_text())
     prompt = INTERPRET_PROMPT.format(loops_json=json.dumps(loops_data.get("loops", []), indent=2))
 
@@ -69,6 +73,19 @@ def interpret_loops(loops_path: Path, out_path: Path, api_key: str | None = None
     interpretations = json.loads(content)
 
     final = combine_analysis(loops_data, interpretations)
-    out_path.write_text(json.dumps(final, indent=2))
-    return final
 
+    # Validate
+    validate_json(final, Path("schemas/loops_interpreted.schema.json"))
+
+    out_path.write_text(json.dumps(final, indent=2))
+
+    # Provenance
+    if provenance_db:
+        init_db(provenance_db)
+        sha = hashlib.sha256(out_path.read_bytes()).hexdigest()
+        artifact_id = add_artifact(provenance_db, kind="loops_interpreted", path=str(out_path), sha256=sha)
+        si = final.get("system_insights", "")
+        if si:
+            add_evidence(provenance_db, item_type="artifact", item_id=artifact_id,
+                         source="interpret_llm", ref=None, confidence=None, note=si)
+    return final

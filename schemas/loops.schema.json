@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "loops.schema.json",
+  "title": "Loops",
+  "type": "object",
+  "required": ["total_loops", "loops", "summary"],
+  "properties": {
+    "total_loops": {"type": "integer", "minimum": 0},
+    "loops": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["nodes", "edges", "negative_edges", "type", "length"],
+        "properties": {
+          "nodes": {"type": "array", "items": {"type": "string"}},
+          "edges": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["from", "to", "relationship"],
+              "properties": {
+                "from": {"type": "string"},
+                "to": {"type": "string"},
+                "relationship": {"type": "string", "enum": ["positive", "negative"]}
+              },
+              "additionalProperties": true
+            }
+          },
+          "negative_edges": {"type": "integer", "minimum": 0},
+          "type": {"type": "string", "enum": ["R", "B"]},
+          "length": {"type": "integer", "minimum": 0}
+        },
+        "additionalProperties": true
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["reinforcing_loops", "balancing_loops", "shortest_loop", "longest_loop"],
+      "properties": {
+        "reinforcing_loops": {"type": "integer", "minimum": 0},
+        "balancing_loops": {"type": "integer", "minimum": 0},
+        "shortest_loop": {"type": "integer", "minimum": 0},
+        "longest_loop": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": true
+    }
+  }
+}
+

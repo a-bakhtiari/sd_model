@@ -2,6 +2,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from sd_model.llm.client import LLMClient
+from sd_model.validation.schema import validate_json
+from sd_model.provenance.store import init_db, add_artifact
+import hashlib
 
 
 IMPROVE_PROMPT = """Based on theory validation of an open-source community system dynamics model, generate specific improvements.
@@ -66,7 +69,8 @@ def generate_updated_connections(current_connections: list[dict], improvements: 
 
 
 def improve_model(validation_path: Path, connections_path: Path, out_path: Path,
-                  api_key: str | None = None, model: str = "deepseek-chat") -> dict:
+                  api_key: str | None = None, model: str = "deepseek-chat",
+                  provenance_db: Path | None = Path("provenance.sqlite")) -> dict:
     validation_results = json.loads(validation_path.read_text())
     connections_data = json.loads(connections_path.read_text())
     connections = connections_data["connections"]
@@ -98,6 +102,14 @@ def improve_model(validation_path: Path, connections_path: Path, out_path: Path,
         "updated_connections": updated_connections,
     }
 
-    out_path.write_text(json.dumps(output, indent=2))
-    return output
+    # Validate
+    validate_json(output, Path("schemas/model_improvements.schema.json"))
 
+    out_path.write_text(json.dumps(output, indent=2))
+
+    # Provenance
+    if provenance_db:
+        init_db(provenance_db)
+        sha = hashlib.sha256(out_path.read_bytes()).hexdigest()
+        add_artifact(provenance_db, kind="model_improvements", path=str(out_path), sha256=sha)
+    return output

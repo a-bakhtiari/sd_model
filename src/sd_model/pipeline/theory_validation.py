@@ -4,6 +4,9 @@ import json
 from pathlib import Path
 from statistics import mean
 from sd_model.llm.client import LLMClient
+from sd_model.validation.schema import validate_json
+from sd_model.provenance.store import init_db, add_artifact, add_evidence
+import hashlib
 
 
 VALIDATE_PROMPT = """Analyze this system dynamics model against {theory_name}.
@@ -78,7 +81,8 @@ def synthesize_validations(all_validations: list[dict]) -> dict:
 
 
 def validate_model(connections_path: Path, loops_path: Path, theories_csv: Path, out_path: Path,
-                   api_key: str | None = None, model: str = "deepseek-chat") -> dict:
+                   api_key: str | None = None, model: str = "deepseek-chat",
+                   provenance_db: Path | None = Path("provenance.sqlite")) -> dict:
     connections = json.loads(connections_path.read_text())["connections"]
     loops_data = json.loads(loops_path.read_text())
     loops = loops_data.get("enhanced_loops", loops_data.get("loops", []))
@@ -91,6 +95,19 @@ def validate_model(connections_path: Path, loops_path: Path, theories_csv: Path,
         all_validations.append(v)
 
     synthesis = synthesize_validations(all_validations)
-    out_path.write_text(json.dumps(synthesis, indent=2))
-    return synthesis
 
+    # Validate
+    validate_json(synthesis, Path("schemas/theory_validation.schema.json"))
+
+    out_path.write_text(json.dumps(synthesis, indent=2))
+
+    # Provenance
+    if provenance_db:
+        init_db(provenance_db)
+        sha = hashlib.sha256(out_path.read_bytes()).hexdigest()
+        artifact_id = add_artifact(provenance_db, kind="theory_validation", path=str(out_path), sha256=sha)
+        avg = synthesis.get("average_alignment")
+        add_evidence(provenance_db, item_type="artifact", item_id=artifact_id, source="theory_validation_llm",
+                     ref=None, confidence=float(avg) / 10.0 if isinstance(avg, (int, float)) else None,
+                     note="Average alignment from synthesis")
+    return synthesis

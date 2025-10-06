@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "theory_validation.schema.json",
+  "title": "Theory Validation",
+  "type": "object",
+  "required": ["theories_applied", "average_alignment", "theory_validations"],
+  "properties": {
+    "theories_applied": {"type": "integer", "minimum": 0},
+    "average_alignment": {"type": "number"},
+    "consistent_issues": {"type": "array"},
+    "consistent_missing": {"type": "array"},
+    "theory_validations": {"type": "array"}
+  }
+}
+

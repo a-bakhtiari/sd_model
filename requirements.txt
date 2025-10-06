@@ -3,3 +3,4 @@ requests
 pandas
 typer
 pydantic
+jsonschema
