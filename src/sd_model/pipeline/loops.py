@@ -7,6 +7,7 @@ from sd_model.graph.loops import simple_cycles_with_polarity
 from sd_model.validation.schema import validate_json
 from sd_model.provenance.store import init_db, add_artifact, record_loops
 from sd_model.config import settings
+from sd_model.paths import provenance_db_path
 import hashlib
 
 
@@ -34,7 +35,7 @@ def compute_loops(connections_path: Path, out_path: Path, provenance_db: Path | 
     out_path.write_text(json.dumps(output, indent=2))
 
     # Record provenance
-    db_path = Path(provenance_db or settings.provenance_db)
+    db_path = Path(provenance_db) if provenance_db else (Path(settings.provenance_db) if settings.provenance_db else provenance_db_path())
     if db_path:
         init_db(db_path)
         sha = hashlib.sha256(out_path.read_bytes()).hexdigest()

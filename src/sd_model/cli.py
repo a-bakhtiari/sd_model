@@ -1,4 +1,6 @@
+from __future__ import annotations
 from pathlib import Path
+from typing import Optional
 import sqlite3
 import typer
 from sd_model.pipeline.parse import parse_mdl
@@ -15,6 +17,7 @@ from sd_model.paths import (
     model_improvements_path as p_impr,
     mdl_dir,
     provenance_db_path,
+    knowledge_theories_csv as p_theories,
 )
 
 app = typer.Typer(help="SD Model CLI: parse, analyze, validate, improve")
@@ -22,18 +25,18 @@ app = typer.Typer(help="SD Model CLI: parse, analyze, validate, improve")
 
 @app.command()
 def parse(mdl: Path = typer.Argument(Path("untitled.mdl"), help="Path to .mdl file"),
-          out: Path | None = typer.Option(None, help="Output connections JSON (defaults to project path)"),
-          project: str | None = typer.Option(None, help="Project name"),
-          model: str | None = typer.Option(None, help="LLM model name (default from config)")):
+          out: Optional[Path] = typer.Option(None, help="Output connections JSON (defaults to project path)"),
+          project: Optional[str] = typer.Option(None, help="Project name"),
+          model: Optional[str] = typer.Option(None, help="LLM model name (default from config)")):
     out_path = out or p_connections(project)
     data = parse_mdl(mdl, out_path, api_key=None, model=model or settings.model_name)
     typer.echo(f"Extracted {len(data.get('connections', []))} connections → {out_path}")
 
 
 @app.command()
-def loops(connections: Path | None = typer.Option(None, help="Input connections JSON (defaults to project path)"),
-          out: Path | None = typer.Option(None, help="Output loops JSON (defaults to project path)"),
-          project: str | None = typer.Option(None)):
+def loops(connections: Optional[Path] = typer.Option(None, help="Input connections JSON (defaults to project path)"),
+          out: Optional[Path] = typer.Option(None, help="Output loops JSON (defaults to project path)"),
+          project: Optional[str] = typer.Option(None)):
     in_path = connections or p_connections(project)
     out_path = out or p_loops(project)
     result = compute_loops(in_path, out_path)
@@ -41,10 +44,10 @@ def loops(connections: Path | None = typer.Option(None, help="Input connections 
 
 
 @app.command("interpret")
-def interpret_loops(loops_path: Path | None = typer.Option(None),
-                    out: Path | None = typer.Option(None),
-                    project: str | None = typer.Option(None),
-                    model: str | None = typer.Option(None)):
+def interpret_loops(loops_path: Optional[Path] = typer.Option(None),
+                    out: Optional[Path] = typer.Option(None),
+                    project: Optional[str] = typer.Option(None),
+                    model: Optional[str] = typer.Option(None)):
     in_path = loops_path or p_loops(project)
     out_path = out or p_loops_i(project)
     result = interpret_loops_pipeline(in_path, out_path, api_key=None, model=model or settings.model_name)
@@ -52,25 +55,26 @@ def interpret_loops(loops_path: Path | None = typer.Option(None),
 
 
 @app.command("validate-theory")
-def validate_theory(connections: Path | None = typer.Option(None),
-                    loops_path: Path | None = typer.Option(None),
-                    theories_csv: Path = typer.Option(Path("knowledge/theories.csv")),
-                    out: Path | None = typer.Option(None),
-                    project: str | None = typer.Option(None),
-                    model: str | None = typer.Option(None)):
+def validate_theory(connections: Optional[Path] = typer.Option(None),
+                    loops_path: Optional[Path] = typer.Option(None),
+                    theories_csv: Optional[Path] = typer.Option(None),
+                    out: Optional[Path] = typer.Option(None),
+                    project: Optional[str] = typer.Option(None),
+                    model: Optional[str] = typer.Option(None)):
     in_conn = connections or p_connections(project)
     in_loops = loops_path or p_loops_i(project)
+    in_theories = theories_csv or p_theories(project)
     out_path = out or p_val(project)
-    result = validate_model_pipeline(in_conn, in_loops, theories_csv, out_path, api_key=None, model=model or settings.model_name)
+    result = validate_model_pipeline(in_conn, in_loops, in_theories, out_path, api_key=None, model=model or settings.model_name)
     typer.echo(f"Theory validation saved → {out_path} (avg={result.get('average_alignment', 0):.1f})")
 
 
 @app.command("improve")
-def improve_model(connections: Path | None = typer.Option(None),
-                  validation: Path | None = typer.Option(None),
-                  out: Path | None = typer.Option(None),
-                  project: str | None = typer.Option(None),
-                  model: str | None = typer.Option(None)):
+def improve_model(connections: Optional[Path] = typer.Option(None),
+                  validation: Optional[Path] = typer.Option(None),
+                  out: Optional[Path] = typer.Option(None),
+                  project: Optional[str] = typer.Option(None),
+                  model: Optional[str] = typer.Option(None)):
     in_conn = connections or p_connections(project)
     in_val = validation or p_val(project)
     out_path = out or p_impr(project)
@@ -79,9 +83,9 @@ def improve_model(connections: Path | None = typer.Option(None),
 
 
 @app.command("run-all")
-def run_all(mdl: Path | None = typer.Option(None),
-            theories_csv: Path = typer.Option(Path("knowledge/theories.csv")),
-            project: str | None = typer.Option(None)):
+def run_all(mdl: Optional[Path] = typer.Option(None),
+            theories_csv: Optional[Path] = typer.Option(None),
+            project: Optional[str] = typer.Option(None)):
     """Run full pipeline: parse → loops → interpret → validate-theory → improve."""
     mdl_path = mdl or (mdl_dir(project) / "untitled.mdl")
     out_conn = p_connections(project)
@@ -96,7 +100,7 @@ def run_all(mdl: Path | None = typer.Option(None),
     typer.echo(f"Found {loops_res.get('total_loops', 0)} loops → {out_loops}")
     inter = interpret_loops_pipeline(out_loops, out_loops_i, api_key=None, model=settings.model_name)
     typer.echo(f"Interpreted loops → {out_loops_i}; insights present: {bool(inter.get('system_insights'))}")
-    val = validate_model_pipeline(out_conn, out_loops_i, theories_csv, out_val, api_key=None, model=settings.model_name)
+    val = validate_model_pipeline(out_conn, out_loops_i, theories_csv or p_theories(project), out_val, api_key=None, model=settings.model_name)
     typer.echo(f"Theory validation → {out_val}; average alignment: {val.get('average_alignment', 'n/a')}")
     imp = improve_model_pipeline(out_val, out_conn, out_impr, api_key=None, model=settings.model_name)
     typer.echo(f"Improvements → {out_impr}; +{imp.get('statistics', {}).get('additions_proposed', 0)} additions, new vars {imp.get('statistics', {}).get('new_variables', 0)}")
@@ -106,7 +110,7 @@ provenance_app = typer.Typer(help="Inspect provenance database")
 
 
 @provenance_app.command("stats")
-def prov_stats(project: str | None = typer.Option(None)):
+def prov_stats(project: Optional[str] = typer.Option(None)):
     db = provenance_db_path(project)
     con = sqlite3.connect(db)
     cur = con.cursor()
@@ -122,7 +126,7 @@ def prov_stats(project: str | None = typer.Option(None)):
 
 
 @provenance_app.command("list")
-def prov_list(project: str | None = typer.Option(None), kind: str | None = typer.Option(None), limit: int = typer.Option(20)):
+def prov_list(project: Optional[str] = typer.Option(None), kind: Optional[str] = typer.Option(None), limit: int = typer.Option(20)):
     db = provenance_db_path(project)
     con = sqlite3.connect(db)
     cur = con.cursor()
@@ -137,7 +141,7 @@ def prov_list(project: str | None = typer.Option(None), kind: str | None = typer
 
 
 @provenance_app.command("evidence")
-def prov_evidence(project: str | None = typer.Option(None), artifact_id: int = typer.Argument(...)):
+def prov_evidence(project: Optional[str] = typer.Option(None), artifact_id: int = typer.Argument(...)):
     db = provenance_db_path(project)
     con = sqlite3.connect(db)
     cur = con.cursor()
@@ -149,7 +153,7 @@ def prov_evidence(project: str | None = typer.Option(None), artifact_id: int = t
 
 
 @provenance_app.command("diff-connections")
-def prov_diff_connections(project: str | None = typer.Option(None), a: int = typer.Argument(...), b: int = typer.Argument(...)):
+def prov_diff_connections(project: Optional[str] = typer.Option(None), a: int = typer.Argument(...), b: int = typer.Argument(...)):
     db = provenance_db_path(project)
     con = sqlite3.connect(db)
     cur = con.cursor()

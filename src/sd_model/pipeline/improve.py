@@ -5,6 +5,7 @@ from sd_model.llm.client import LLMClient
 from sd_model.validation.schema import validate_json
 from sd_model.provenance.store import init_db, add_artifact
 from sd_model.config import settings
+from sd_model.paths import provenance_db_path
 import hashlib
 
 
@@ -109,7 +110,7 @@ def improve_model(validation_path: Path, connections_path: Path, out_path: Path,
     out_path.write_text(json.dumps(output, indent=2))
 
     # Provenance
-    db_path = Path(provenance_db or settings.provenance_db)
+    db_path = Path(provenance_db) if provenance_db else (Path(settings.provenance_db) if settings.provenance_db else provenance_db_path())
     if db_path:
         init_db(db_path)
         sha = hashlib.sha256(out_path.read_bytes()).hexdigest()
