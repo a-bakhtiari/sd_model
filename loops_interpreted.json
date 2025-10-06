@@ -1,0 +1,480 @@
+{
+  "total_loops": 13,
+  "summary": {
+    "reinforcing_loops": 10,
+    "balancing_loops": 3,
+    "shortest_loop": 2,
+    "longest_loop": 6
+  },
+  "enhanced_loops": [
+    {
+      "nodes": [
+        "Project Reputation",
+        "User Base"
+      ],
+      "edges": [
+        {
+          "from": "Project Reputation",
+          "to": "User Base",
+          "relationship": "positive"
+        },
+        {
+          "from": "User Base",
+          "to": "Project Reputation",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 2,
+      "name": "Reputation-Growth Loop",
+      "meaning": "As project reputation increases, it attracts more users, which further enhances reputation through network effects and word-of-mouth",
+      "impact": "positive",
+      "explanation": "This virtuous cycle drives project visibility and adoption, creating momentum that sustains the community"
+    },
+    {
+      "nodes": [
+        "Feedback",
+        "Open Issues"
+      ],
+      "edges": [
+        {
+          "from": "Feedback",
+          "to": "Open Issues",
+          "relationship": "positive"
+        },
+        {
+          "from": "Open Issues",
+          "to": "Feedback",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 2,
+      "name": "Issue-Feedback Cycle",
+      "meaning": "More user feedback leads to more identified issues, which generates more discussion and feedback about those issues",
+      "impact": "mixed",
+      "explanation": "While feedback is valuable, this can create overwhelming issue backlogs if not managed properly"
+    },
+    {
+      "nodes": [
+        "Pull Request Under review",
+        "PR Feedback"
+      ],
+      "edges": [
+        {
+          "from": "Pull Request Under review",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Feedback",
+          "to": "Pull Request Under review",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 2,
+      "name": "PR Review Bottleneck",
+      "meaning": "More PRs under review generate more feedback requests, which slows down the review process as attention is divided",
+      "impact": "negative",
+      "explanation": "This reinforcing loop can create review bottlenecks that frustrate contributors and slow development"
+    },
+    {
+      "nodes": [
+        "Experienced Contributors",
+        "PR Feedback"
+      ],
+      "edges": [
+        {
+          "from": "Experienced Contributors",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Feedback",
+          "to": "Experienced Contributors",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 2,
+      "name": "Expert Feedback Loop",
+      "meaning": "Experienced contributors provide more PR feedback, which helps them become more experienced through the review process",
+      "impact": "positive",
+      "explanation": "Builds reviewer expertise and maintains code quality through knowledge sharing"
+    },
+    {
+      "nodes": [
+        "New Contributors",
+        "PR Feedback"
+      ],
+      "edges": [
+        {
+          "from": "New Contributors",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Feedback",
+          "to": "New Contributors",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 2,
+      "name": "Newcomer Engagement Loop",
+      "meaning": "New contributors generate PRs that need feedback, and receiving feedback helps them learn and stay engaged",
+      "impact": "positive",
+      "explanation": "Critical for onboarding and retaining new contributors through active engagement"
+    },
+    {
+      "nodes": [
+        "Implicit Knowledge Transfer (Mentorship)",
+        "Promotion Rate",
+        "Core Developer"
+      ],
+      "edges": [
+        {
+          "from": "Implicit Knowledge Transfer (Mentorship)",
+          "to": "Promotion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Promotion Rate",
+          "to": "Core Developer",
+          "relationship": "positive"
+        },
+        {
+          "from": "Core Developer",
+          "to": "Implicit Knowledge Transfer (Mentorship)",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 3,
+      "name": "Mentorship Pipeline",
+      "meaning": "Mentorship helps contributors get promoted to core roles, and core developers provide more mentorship",
+      "impact": "positive",
+      "explanation": "Creates sustainable leadership pipeline and ensures knowledge continuity"
+    },
+    {
+      "nodes": [
+        "PR Review Delay",
+        "PR Feedback",
+        "Core Developer"
+      ],
+      "edges": [
+        {
+          "from": "PR Review Delay",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Feedback",
+          "to": "Core Developer",
+          "relationship": "positive"
+        },
+        {
+          "from": "Core Developer",
+          "to": "PR Review Delay",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 3,
+      "name": "Review Capacity Constraint",
+      "meaning": "Review delays reduce feedback quality, slowing contributor development and limiting core developer growth",
+      "impact": "negative",
+      "explanation": "This bottleneck can severely constrain project velocity and contributor progression"
+    },
+    {
+      "nodes": [
+        "Implicit Knowledge Transfer (Mentorship)",
+        "Skill up",
+        "Experienced Contributors",
+        "PR Feedback",
+        "Core Developer"
+      ],
+      "edges": [
+        {
+          "from": "Implicit Knowledge Transfer (Mentorship)",
+          "to": "Skill up",
+          "relationship": "positive"
+        },
+        {
+          "from": "Skill up",
+          "to": "Experienced Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from": "Experienced Contributors",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Feedback",
+          "to": "Core Developer",
+          "relationship": "positive"
+        },
+        {
+          "from": "Core Developer",
+          "to": "Implicit Knowledge Transfer (Mentorship)",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 5,
+      "name": "Experience Growth Engine",
+      "meaning": "Mentorship builds skills that create experienced contributors who provide quality feedback, developing future core developers",
+      "impact": "positive",
+      "explanation": "Comprehensive virtuous cycle for developing project leadership and expertise"
+    },
+    {
+      "nodes": [
+        "Implicit Knowledge Transfer (Mentorship)",
+        "Skill up",
+        "New Contributors",
+        "PR Feedback",
+        "Core Developer"
+      ],
+      "edges": [
+        {
+          "from": "Implicit Knowledge Transfer (Mentorship)",
+          "to": "Skill up",
+          "relationship": "positive"
+        },
+        {
+          "from": "Skill up",
+          "to": "New Contributors",
+          "relationship": "negative"
+        },
+        {
+          "from": "New Contributors",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Feedback",
+          "to": "Core Developer",
+          "relationship": "positive"
+        },
+        {
+          "from": "Core Developer",
+          "to": "Implicit Knowledge Transfer (Mentorship)",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 1,
+      "type": "B",
+      "length": 5,
+      "name": "Newcomer Skill Transition",
+      "meaning": "Mentorship helps newcomers skill up and transition out of the 'new contributor' category while still contributing to core development",
+      "impact": "positive",
+      "explanation": "Balances the flow of contributors from novice to experienced roles"
+    },
+    {
+      "nodes": [
+        "Implicit Knowledge Transfer (Mentorship)",
+        "Promotion Rate",
+        "Experienced Contributors",
+        "PR Feedback",
+        "Core Developer"
+      ],
+      "edges": [
+        {
+          "from": "Implicit Knowledge Transfer (Mentorship)",
+          "to": "Promotion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Promotion Rate",
+          "to": "Experienced Contributors",
+          "relationship": "negative"
+        },
+        {
+          "from": "Experienced Contributors",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Feedback",
+          "to": "Core Developer",
+          "relationship": "positive"
+        },
+        {
+          "from": "Core Developer",
+          "to": "Implicit Knowledge Transfer (Mentorship)",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 1,
+      "type": "B",
+      "length": 5,
+      "name": "Experience Promotion Balance",
+      "meaning": "Mentorship promotes experienced contributors to core roles, reducing their availability for PR feedback but strengthening core team",
+      "impact": "positive",
+      "explanation": "Balances the need for experienced reviewers with the need to grow core leadership"
+    },
+    {
+      "nodes": [
+        "Searchable Knowledge Base",
+        "Projects's Explicit Knowledge",
+        "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+        "Joining Rate",
+        "New Contributors",
+        "PR Feedback"
+      ],
+      "edges": [
+        {
+          "from": "Searchable Knowledge Base",
+          "to": "Projects's Explicit Knowledge",
+          "relationship": "positive"
+        },
+        {
+          "from": "Projects's Explicit Knowledge",
+          "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+          "relationship": "positive"
+        },
+        {
+          "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+          "to": "Joining Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Joining Rate",
+          "to": "New Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from": "New Contributors",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Feedback",
+          "to": "Searchable Knowledge Base",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 6,
+      "name": "Documentation Onboarding Loop",
+      "meaning": "Good documentation attracts and enables new contributors, whose work enhances the knowledge base",
+      "impact": "positive",
+      "explanation": "Scalable approach to onboarding that reduces reliance on individual mentorship"
+    },
+    {
+      "nodes": [
+        "Searchable Knowledge Base",
+        "Projects's Explicit Knowledge",
+        "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+        "Skill up",
+        "Experienced Contributors",
+        "PR Feedback"
+      ],
+      "edges": [
+        {
+          "from": "Searchable Knowledge Base",
+          "to": "Projects's Explicit Knowledge",
+          "relationship": "positive"
+        },
+        {
+          "from": "Projects's Explicit Knowledge",
+          "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+          "relationship": "positive"
+        },
+        {
+          "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+          "to": "Skill up",
+          "relationship": "positive"
+        },
+        {
+          "from": "Skill up",
+          "to": "Experienced Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from": "Experienced Contributors",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Feedback",
+          "to": "Searchable Knowledge Base",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 0,
+      "type": "R",
+      "length": 6,
+      "name": "Documentation Skill Development",
+      "meaning": "Documentation helps contributors skill up into experienced roles, improving feedback quality and knowledge base",
+      "impact": "positive",
+      "explanation": "Complements mentorship with scalable knowledge transfer for skill development"
+    },
+    {
+      "nodes": [
+        "Searchable Knowledge Base",
+        "Projects's Explicit Knowledge",
+        "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+        "Skill up",
+        "New Contributors",
+        "PR Feedback"
+      ],
+      "edges": [
+        {
+          "from": "Searchable Knowledge Base",
+          "to": "Projects's Explicit Knowledge",
+          "relationship": "positive"
+        },
+        {
+          "from": "Projects's Explicit Knowledge",
+          "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+          "relationship": "positive"
+        },
+        {
+          "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+          "to": "Skill up",
+          "relationship": "positive"
+        },
+        {
+          "from": "Skill up",
+          "to": "New Contributors",
+          "relationship": "negative"
+        },
+        {
+          "from": "New Contributors",
+          "to": "PR Feedback",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Feedback",
+          "to": "Searchable Knowledge Base",
+          "relationship": "positive"
+        }
+      ],
+      "negative_edges": 1,
+      "type": "B",
+      "length": 6,
+      "name": "Newcomer Documentation Pathway",
+      "meaning": "Documentation helps newcomers skill up and transition out of novice status while contributing to project knowledge",
+      "impact": "positive",
+      "explanation": "Balances the flow of newcomers becoming experienced through documented learning"
+    }
+  ],
+  "dominant_loops": [
+    "Experience Growth Engine",
+    "Review Capacity Constraint",
+    "Documentation Onboarding Loop"
+  ],
+  "system_insights": "The model reveals a system fundamentally constrained by review capacity and mentorship bandwidth, where documentation serves as a scalable alternative to implicit knowledge transfer. The most critical insight is the tension between growing contributor bases (through reputation and documentation) and the limited capacity to review their contributions. Successful projects must balance reinforcing growth loops with managing the bottleneck loops around PR review and knowledge transfer. Documentation emerges as a crucial leverage point for scaling beyond individual mentorship limitations."
+}

@@ -1,0 +1,294 @@
+{
+  "connections": [
+    {
+      "from": "Maintainer time",
+      "to": "Issue Resolution Rate",
+      "relationship": "positive"
+    },
+    {
+      "from": "Projects's Explicit Knowledge",
+      "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "relationship": "positive"
+    },
+    {
+      "from": "Issue Resolution Rate",
+      "to": "Closed Issues",
+      "relationship": "positive"
+    },
+    {
+      "from": "Feedback",
+      "to": "Open Issues",
+      "relationship": "positive"
+    },
+    {
+      "from": "Issue Creation Rate",
+      "to": "Open Issues",
+      "relationship": "positive"
+    },
+    {
+      "from": "Issue Resolution Rate",
+      "to": "Open Issues",
+      "relationship": "negative"
+    },
+    {
+      "from": "Experienced Contributors",
+      "to": "PR Feedback",
+      "relationship": "positive"
+    },
+    {
+      "from": "New Contributors",
+      "to": "PR Feedback",
+      "relationship": "positive"
+    },
+    {
+      "from": "PR Review Delay",
+      "to": "PR Feedback",
+      "relationship": "positive"
+    },
+    {
+      "from": "Pull Request Under review",
+      "to": "PR Feedback",
+      "relationship": "positive"
+    },
+    {
+      "from": "Source Code",
+      "to": "Issue Creation Rate",
+      "relationship": "positive"
+    },
+    {
+      "from": "Community Health",
+      "to": "Project Reputation",
+      "relationship": "positive"
+    },
+    {
+      "from": "Reputation Building",
+      "to": "Project Reputation",
+      "relationship": "positive"
+    },
+    {
+      "from": "Reputation Decline",
+      "to": "Project Reputation",
+      "relationship": "negative"
+    },
+    {
+      "from": "Software Quality and Features",
+      "to": "Project Reputation",
+      "relationship": "positive"
+    },
+    {
+      "from": "User Base",
+      "to": "Project Reputation",
+      "relationship": "positive"
+    },
+    {
+      "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "to": "Joining Rate",
+      "relationship": "positive"
+    },
+    {
+      "from": "Project Reputation",
+      "to": "Joining Rate",
+      "relationship": "positive"
+    },
+    {
+      "from": "Explicit to Implicit Conversion",
+      "to": "Projects's Explicit Knowledge",
+      "relationship": "negative"
+    },
+    {
+      "from": "Knowledge Conversion Rate",
+      "to": "Projects's Explicit Knowledge",
+      "relationship": "positive"
+    },
+    {
+      "from": "Searchable Knowledge Base",
+      "to": "Projects's Explicit Knowledge",
+      "relationship": "positive"
+    },
+    {
+      "from": "Adoption Rate",
+      "to": "User Base",
+      "relationship": "positive"
+    },
+    {
+      "from": "Project Reputation",
+      "to": "User Base",
+      "relationship": "positive"
+    },
+    {
+      "from": "User Churn Rate",
+      "to": "User Base",
+      "relationship": "negative"
+    },
+    {
+      "from": "Merge/Commit",
+      "to": "Pull Request Under review",
+      "relationship": "negative"
+    },
+    {
+      "from": "PR Feedback",
+      "to": "Pull Request Under review",
+      "relationship": "positive"
+    },
+    {
+      "from": "Rejection Rate",
+      "to": "Pull Request Under review",
+      "relationship": "negative"
+    },
+    {
+      "from": "Review Rate",
+      "to": "Pull Request Under review",
+      "relationship": "positive"
+    },
+    {
+      "from": "Open Issues",
+      "to": "Feedback",
+      "relationship": "positive"
+    },
+    {
+      "from": "Merge/Commit",
+      "to": "Source Code",
+      "relationship": "positive"
+    },
+    {
+      "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "to": "Skill up",
+      "relationship": "positive"
+    },
+    {
+      "from": "Implicit Knowledge Transfer (Mentorship)",
+      "to": "Skill up",
+      "relationship": "positive"
+    },
+    {
+      "from": "Closed Issues",
+      "to": "Searchable Knowledge Base",
+      "relationship": "positive"
+    },
+    {
+      "from": "Community engagement",
+      "to": "Searchable Knowledge Base",
+      "relationship": "positive"
+    },
+    {
+      "from": "Discussions",
+      "to": "Searchable Knowledge Base",
+      "relationship": "positive"
+    },
+    {
+      "from": "PR Feedback",
+      "to": "Searchable Knowledge Base",
+      "relationship": "positive"
+    },
+    {
+      "from": "Open Issues",
+      "to": "New Pr rate",
+      "relationship": "positive"
+    },
+    {
+      "from": "New Pr rate",
+      "to": "New Pull request",
+      "relationship": "positive"
+    },
+    {
+      "from": "Review Rate",
+      "to": "New Pull request",
+      "relationship": "negative"
+    },
+    {
+      "from": "Developer's Turnover",
+      "to": "Core Developer",
+      "relationship": "negative"
+    },
+    {
+      "from": "PR Feedback",
+      "to": "Core Developer",
+      "relationship": "positive"
+    },
+    {
+      "from": "Promotion Rate",
+      "to": "Core Developer",
+      "relationship": "positive"
+    },
+    {
+      "from": "Implicit Knowledge Transfer (Mentorship)",
+      "to": "Promotion Rate",
+      "relationship": "positive"
+    },
+    {
+      "from": "Developer's Turnover",
+      "to": "Depreciation/Loss of Knowledge",
+      "relationship": "positive"
+    },
+    {
+      "from": "PR Feedback",
+      "to": "Experienced Contributors",
+      "relationship": "positive"
+    },
+    {
+      "from": "Promotion Rate",
+      "to": "Experienced Contributors",
+      "relationship": "negative"
+    },
+    {
+      "from": "Skill up",
+      "to": "Experienced Contributors",
+      "relationship": "positive"
+    },
+    {
+      "from": "Core Developer",
+      "to": "PR Review Delay",
+      "relationship": "positive"
+    },
+    {
+      "from": "Core Developer",
+      "to": "Implicit Knowledge Transfer (Mentorship)",
+      "relationship": "positive"
+    },
+    {
+      "from": "Project's Implicit Knowledge",
+      "to": "Implicit Knowledge Transfer (Mentorship)",
+      "relationship": "positive"
+    },
+    {
+      "from": "Joining Rate",
+      "to": "New Contributors",
+      "relationship": "positive"
+    },
+    {
+      "from": "PR Feedback",
+      "to": "New Contributors",
+      "relationship": "positive"
+    },
+    {
+      "from": "Skill up",
+      "to": "New Contributors",
+      "relationship": "negative"
+    },
+    {
+      "from": "Depreciation/Loss of Knowledge",
+      "to": "Project's Implicit Knowledge",
+      "relationship": "negative"
+    },
+    {
+      "from": "Explicit to Implicit Conversion",
+      "to": "Project's Implicit Knowledge",
+      "relationship": "positive"
+    },
+    {
+      "from": "Knowledge Conversion Rate",
+      "to": "Project's Implicit Knowledge",
+      "relationship": "negative"
+    },
+    {
+      "from": "Culture Erosion",
+      "to": "Community Health",
+      "relationship": "negative"
+    },
+    {
+      "from": "Trust Building",
+      "to": "Community Health",
+      "relationship": "positive"
+    }
+  ]
+}
