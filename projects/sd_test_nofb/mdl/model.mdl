@@ -1,0 +1,4 @@
+Potential Adopters = 10 - Adopters ~ ppl ~| potential
+New Adopters = Adoption Rate * Potential Adopters ~ ppl/month ~| flow
+Adopters = INTEG(New Adopters, 0) ~ ppl ~| stock
+Adoption Rate = 0.1 ~ 1/month ~| param

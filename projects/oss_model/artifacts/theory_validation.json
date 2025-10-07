@@ -1,240 +1,352 @@
 {
-  "theories_applied": 2,
-  "average_alignment": 5,
-  "consistent_issues": [
+  "summary": {
+    "theory_count": 0,
+    "model_edge_count": 56,
+    "confirmed_count": 0,
+    "contradicted_count": 0,
+    "missing_count": 0,
+    "novel_count": 56
+  },
+  "confirmed": [],
+  "contradicted": [],
+  "missing": [],
+  "novel": [
     {
-      "connection": {
-        "from": "Explicit to Implicit Conversion",
-        "to": "Projects's Explicit Knowledge",
-        "relationship": "negative"
-      },
-      "issue": "Contradicts Wenger's view that explicit and tacit knowledge coexist and complement each other; knowledge conversion should not diminish explicit knowledge"
+      "from_var": "Adoption Rate",
+      "to_var": "User Base",
+      "relationship": "unknown",
+      "citation_key": null
     },
     {
-      "connection": {
-        "from": "PR Review Delay",
-        "to": "PR Feedback",
-        "relationship": "positive"
-      },
-      "issue": "Oversimplifies the feedback process; delays typically hinder learning and participation rather than enhancing feedback quality"
+      "from_var": "Closed Issues",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "unknown",
+      "citation_key": null
     },
     {
-      "connection": {
-        "from": "Explicit to Implicit Conversion",
-        "to": "Projects's Explicit Knowledge",
-        "relationship": "negative"
-      },
-      "issue": "Misrepresents Internalization - converting explicit to tacit knowledge should not deplete explicit knowledge; they should coexist and reinforce each other"
+      "from_var": "Community Health",
+      "to_var": "Project Reputation",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Community engagement",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Core Developer",
+      "to_var": "Implicit Knowledge Transfer (Mentorship)",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Core Developer",
+      "to_var": "PR Review Delay",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Culture Erosion",
+      "to_var": "Community Health",
+      "relationship": "negative",
+      "citation_key": null
+    },
+    {
+      "from_var": "Depreciation/Loss of Knowledge",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "negative",
+      "citation_key": null
+    },
+    {
+      "from_var": "Developer's Turnover",
+      "to_var": "Core Developer",
+      "relationship": "negative",
+      "citation_key": null
+    },
+    {
+      "from_var": "Developer's Turnover",
+      "to_var": "Depreciation/Loss of Knowledge",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Discussions",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Experienced Contributors",
+      "to_var": "PR Feedback",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Explicit to Implicit Conversion",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Explicit to Implicit Conversion",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "negative",
+      "citation_key": null
+    },
+    {
+      "from_var": "Feedback",
+      "to_var": "Open Issues",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Implicit Knowledge Transfer (Mentorship)",
+      "to_var": "Promotion Rate",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Implicit Knowledge Transfer (Mentorship)",
+      "to_var": "Skill up",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Issue Creation Rate",
+      "to_var": "Open Issues",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Issue Resolution Rate",
+      "to_var": "Closed Issues",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Issue Resolution Rate",
+      "to_var": "Open Issues",
+      "relationship": "negative",
+      "citation_key": null
+    },
+    {
+      "from_var": "Joining Rate",
+      "to_var": "New Contributors",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Knowledge Conversion Rate",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "negative",
+      "citation_key": null
+    },
+    {
+      "from_var": "Knowledge Conversion Rate",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Maintainer time",
+      "to_var": "Issue Resolution Rate",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Merge/Commit",
+      "to_var": "Pull Request Under review",
+      "relationship": "negative",
+      "citation_key": null
+    },
+    {
+      "from_var": "Merge/Commit",
+      "to_var": "Source Code",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "New Contributors",
+      "to_var": "PR Feedback",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "New Pr rate",
+      "to_var": "New Pull request",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Open Issues",
+      "to_var": "Feedback",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Open Issues",
+      "to_var": "New Pr rate",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "PR Feedback",
+      "to_var": "Core Developer",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "PR Feedback",
+      "to_var": "Experienced Contributors",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "PR Feedback",
+      "to_var": "New Contributors",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "PR Feedback",
+      "to_var": "Pull Request Under review",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "PR Feedback",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "PR Review Delay",
+      "to_var": "PR Feedback",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Project Reputation",
+      "to_var": "Joining Rate",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Project Reputation",
+      "to_var": "User Base",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Project's Implicit Knowledge",
+      "to_var": "Implicit Knowledge Transfer (Mentorship)",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Projects's Explicit Knowledge",
+      "to_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Promotion Rate",
+      "to_var": "Core Developer",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Promotion Rate",
+      "to_var": "Experienced Contributors",
+      "relationship": "negative",
+      "citation_key": null
+    },
+    {
+      "from_var": "Pull Request Under review",
+      "to_var": "PR Feedback",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Rejection Rate",
+      "to_var": "Pull Request Under review",
+      "relationship": "negative",
+      "citation_key": null
+    },
+    {
+      "from_var": "Reputation Building",
+      "to_var": "Project Reputation",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Reputation Decline",
+      "to_var": "Project Reputation",
+      "relationship": "negative",
+      "citation_key": null
+    },
+    {
+      "from_var": "Review Rate",
+      "to_var": "New Pull request",
+      "relationship": "negative",
+      "citation_key": null
+    },
+    {
+      "from_var": "Review Rate",
+      "to_var": "Pull Request Under review",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Searchable Knowledge Base",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Skill up",
+      "to_var": "Experienced Contributors",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Skill up",
+      "to_var": "New Contributors",
+      "relationship": "negative",
+      "citation_key": null
+    },
+    {
+      "from_var": "Software Quality and Features",
+      "to_var": "Project Reputation",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Source Code",
+      "to_var": "Issue Creation Rate",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "Trust Building",
+      "to_var": "Community Health",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "User Base",
+      "to_var": "Project Reputation",
+      "relationship": "unknown",
+      "citation_key": null
+    },
+    {
+      "from_var": "User Churn Rate",
+      "to_var": "User Base",
+      "relationship": "negative",
+      "citation_key": null
     }
   ],
-  "consistent_missing": [
-    {
-      "suggested": {
-        "from": "Community Participation",
-        "to": "Identity Formation",
-        "relationship": "positive"
-      },
-      "rationale": "Wenger emphasizes that participation leads to identity formation as a key outcome of community engagement"
-    },
-    {
-      "suggested": {
-        "from": "Mentoring Activities",
-        "to": "Movement from Periphery to Core",
-        "relationship": "positive"
-      },
-      "rationale": "Missing the crucial mechanism of legitimate peripheral participation where experienced members mentor newcomers along the trajectory"
-    },
-    {
-      "suggested": {
-        "from": "Shared Practice",
-        "to": "Community Cohesion",
-        "relationship": "positive"
-      },
-      "rationale": "Wenger's theory centers on shared practice as the binding element that creates community coherence and mutual engagement"
-    }
-  ],
-  "theory_validations": [
-    {
-      "theory": "Communities of Practice (Wenger)",
-      "aligned_connections": [
-        {
-          "connection": {
-            "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
-            "to": "Joining Rate",
-            "relationship": "positive"
-          },
-          "explanation": "Aligns with legitimate peripheral participation - explicit knowledge provides entry points for newcomers to join the community from the periphery"
-        },
-        {
-          "connection": {
-            "from": "Experienced Contributors",
-            "to": "PR Feedback",
-            "relationship": "positive"
-          },
-          "explanation": "Reflects how experienced community members (core participants) provide guidance and feedback to newcomers, facilitating learning through participation"
-        },
-        {
-          "connection": {
-            "from": "New Contributors",
-            "to": "PR Feedback",
-            "relationship": "positive"
-          },
-          "explanation": "Shows participation across different levels of experience, supporting the continuum from peripheral to core participation"
-        }
-      ],
-      "problematic_connections": [
-        {
-          "connection": {
-            "from": "Explicit to Implicit Conversion",
-            "to": "Projects's Explicit Knowledge",
-            "relationship": "negative"
-          },
-          "issue": "Contradicts Wenger's view that explicit and tacit knowledge coexist and complement each other; knowledge conversion should not diminish explicit knowledge"
-        },
-        {
-          "connection": {
-            "from": "PR Review Delay",
-            "to": "PR Feedback",
-            "relationship": "positive"
-          },
-          "issue": "Oversimplifies the feedback process; delays typically hinder learning and participation rather than enhancing feedback quality"
-        }
-      ],
-      "missing_connections": [
-        {
-          "suggested": {
-            "from": "Community Participation",
-            "to": "Identity Formation",
-            "relationship": "positive"
-          },
-          "rationale": "Wenger emphasizes that participation leads to identity formation as a key outcome of community engagement"
-        },
-        {
-          "suggested": {
-            "from": "Mentoring Activities",
-            "to": "Movement from Periphery to Core",
-            "relationship": "positive"
-          },
-          "rationale": "Missing the crucial mechanism of legitimate peripheral participation where experienced members mentor newcomers along the trajectory"
-        },
-        {
-          "suggested": {
-            "from": "Shared Practice",
-            "to": "Community Cohesion",
-            "relationship": "positive"
-          },
-          "rationale": "Wenger's theory centers on shared practice as the binding element that creates community coherence and mutual engagement"
-        },
-        {
-          "suggested": {
-            "from": "Boundary Objects",
-            "to": "Knowledge Sharing",
-            "relationship": "positive"
-          },
-          "rationale": "Missing Wenger's concept of boundary objects (artifacts, documents, tools) that enable knowledge sharing across different participation levels"
-        },
-        {
-          "suggested": {
-            "from": "Mutual Engagement",
-            "to": "Trust Building",
-            "relationship": "positive"
-          },
-          "rationale": "The model lacks the social dimension of mutual engagement that builds trust and enables collaborative learning"
-        }
-      ],
-      "alignment_score": 5,
-      "recommendations": "Add variables for identity formation, mentoring relationships, shared practice development, and mutual engagement. Include feedback loops that show the trajectory from peripheral to core participation. Model knowledge as complementary rather than competitive between explicit and tacit forms. Emphasize the social learning processes and community-building aspects central to Wenger's theory."
-    },
-    {
-      "theory": "Nonaka's SECI Model",
-      "aligned_connections": [
-        {
-          "connection": {
-            "from": "Projects's Explicit Knowledge",
-            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
-            "relationship": "positive"
-          },
-          "explanation": "Aligns with Combination phase - explicit knowledge is systematically organized and shared through documentation"
-        },
-        {
-          "connection": {
-            "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
-            "to": "Joining Rate",
-            "relationship": "positive"
-          },
-          "explanation": "Supports Internalization - newcomers convert explicit documentation into personal knowledge to join effectively"
-        },
-        {
-          "connection": {
-            "from": "Experienced Contributors",
-            "to": "PR Feedback",
-            "relationship": "positive"
-          },
-          "explanation": "Represents Socialization - experienced contributors share tacit knowledge through code review interactions"
-        },
-        {
-          "connection": {
-            "from": "Knowledge Conversion Rate",
-            "to": "Projects's Explicit Knowledge",
-            "relationship": "positive"
-          },
-          "explanation": "Directly supports Externalization - converting tacit knowledge into explicit forms"
-        }
-      ],
-      "problematic_connections": [
-        {
-          "connection": {
-            "from": "Explicit to Implicit Conversion",
-            "to": "Projects's Explicit Knowledge",
-            "relationship": "negative"
-          },
-          "issue": "Misrepresents Internalization - converting explicit to tacit knowledge should not deplete explicit knowledge; they should coexist and reinforce each other"
-        },
-        {
-          "connection": {
-            "from": "PR Review Delay",
-            "to": "PR Feedback",
-            "relationship": "positive"
-          },
-          "issue": "Contradicts SECI - delays in feedback loops hinder the Socialization and Externalization processes by creating barriers to knowledge sharing"
-        }
-      ],
-      "missing_connections": [
-        {
-          "suggested": {
-            "from": "Tacit Knowledge Sharing",
-            "to": "Knowledge Conversion Rate",
-            "relationship": "positive"
-          },
-          "rationale": "Missing Socialization to Externalization link - tacit knowledge sharing through pair programming, mentoring should feed knowledge conversion"
-        },
-        {
-          "suggested": {
-            "from": "Community Interactions",
-            "to": "Tacit Knowledge Base",
-            "relationship": "positive"
-          },
-          "rationale": "Missing Socialization foundation - direct interactions build shared tacit understanding and mental models"
-        },
-        {
-          "suggested": {
-            "from": "Learning by Doing",
-            "to": "Experienced Contributors",
-            "relationship": "positive"
-          },
-          "rationale": "Missing Internalization mechanism - practice and application convert explicit knowledge into personal tacit expertise"
-        },
-        {
-          "suggested": {
-            "from": "Documentation Quality",
-            "to": "Learning by Doing",
-            "relationship": "positive"
-          },
-          "rationale": "Missing Combination to Internalization link - well-structured explicit knowledge facilitates learning and skill development"
-        }
-      ],
-      "alignment_score": 5,
-      "recommendations": "Add explicit Socialization mechanisms (mentoring, community events), strengthen Internalization processes (learning pathways, practice opportunities), clarify that knowledge conversion should be additive rather than zero-sum, and create feedback loops between all four SECI phases to enable the complete knowledge spiral."
-    }
-  ]
+  "bibliography_loaded": false
 }

@@ -1,0 +1,20 @@
+add a review section in the loop weher the generated feedback by the llm considers the rview(which might be your additinal text that want to be considered)
+
+add UI for easier analysis
+
+Are the loops only between two variables? what if we have loops taht are 
+betweeen more than one variable? Can I denote that in the diagram if necessary? or add a comment somewehre about it or sth
+
+
+new, adjacent theory recommendation -> this will be based on my reserach question, what could matter as a result of AI
+
+
+eventually this will become aware of the knowledge from the other project but not yet.
+
+You need an early UI to be able to validate what you get quickly and be able to move forward faster.
+
+Restructuration prompt needed: the project can get significant improvement in implementation and functionality but chatgpt couldn't quite do it, I need a better prompt for the structure
+
+is there a GPT.md? this is not doing waht I want it to and is incredibly slow
+
+

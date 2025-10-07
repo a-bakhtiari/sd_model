@@ -1,44 +1,20 @@
 from __future__ import annotations
+
 import json
 from pathlib import Path
-import networkx as nx
-from sd_model.graph.builder import build_signed_digraph
-from sd_model.graph.loops import simple_cycles_with_polarity
-from sd_model.validation.schema import validate_json
-from sd_model.provenance.store import init_db, add_artifact, record_loops
-from sd_model.config import settings
-from sd_model.paths import provenance_db_path
-import hashlib
+from typing import Dict, List
 
 
-def compute_loops(connections_path: Path, out_path: Path, provenance_db: Path | None = None) -> dict:
-    with open(connections_path, "r") as f:
-        connections = json.load(f)["connections"]
+def compute_loops(parsed: Dict, out_path: Path) -> Dict:
+    """Stub loop detection. Produces an empty set or trivial hints.
 
-    G: nx.DiGraph = build_signed_digraph(connections)
-    cycles = simple_cycles_with_polarity(G)
+    For maintainability, we keep this deterministic and minimal. Advanced loop
+    detection can be integrated later without changing the artifact contract.
+    """
+    variables: List[str] = parsed.get("variables", [])
+    loops = {"balancing": [], "reinforcing": [], "notes": []}
+    if len(variables) > 5:
+        loops["notes"].append("Model has more than 5 variables; loop detection TBD.")
+    out_path.write_text(json.dumps(loops, indent=2), encoding="utf-8")
+    return loops
 
-    output = {
-        "total_loops": len(cycles),
-        "loops": cycles,
-        "summary": {
-            "reinforcing_loops": sum(1 for l in cycles if l["type"] == "R"),
-            "balancing_loops": sum(1 for l in cycles if l["type"] == "B"),
-            "shortest_loop": min((l["length"] for l in cycles), default=0),
-            "longest_loop": max((l["length"] for l in cycles), default=0),
-        },
-    }
-
-    # Validate against schema
-    validate_json(output, Path("schemas/loops.schema.json"))
-
-    out_path.write_text(json.dumps(output, indent=2))
-
-    # Record provenance
-    db_path = Path(provenance_db) if provenance_db else (Path(settings.provenance_db) if settings.provenance_db else provenance_db_path())
-    if db_path:
-        init_db(db_path)
-        sha = hashlib.sha256(out_path.read_bytes()).hexdigest()
-        artifact_id = add_artifact(db_path, kind="loops", path=str(out_path), sha256=sha)
-        record_loops(db_path, artifact_id, output.get("loops", []))
-    return output

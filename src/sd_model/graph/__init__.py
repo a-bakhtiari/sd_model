@@ -1,2 +1,2 @@
-# graph subpackage
+"""Graph-related utilities (placeholder)."""
 

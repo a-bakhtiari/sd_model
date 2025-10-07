@@ -1,2 +1,2 @@
-# validation subpackage
+"""Validation utilities and JSON Schema helpers."""
 

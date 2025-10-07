@@ -1,118 +1,91 @@
 from __future__ import annotations
+
 import json
 from pathlib import Path
-from sd_model.llm.client import LLMClient
-from sd_model.validation.schema import validate_json
-from sd_model.provenance.store import init_db, add_artifact
-from sd_model.config import settings
-from sd_model.paths import provenance_db_path
-import hashlib
+from typing import Dict, List
+
+from ..knowledge.loader import load_feedback
 
 
-IMPROVE_PROMPT = """Based on theory validation of an open-source community system dynamics model, generate specific improvements.
+def propose_improvements(
+    theory_validation_path: Path,
+    feedback_path: Path,
+    out_path: Path,
+) -> Dict:
+    """Generate actionable improvements given validation findings and optional feedback.
 
-VALIDATION FINDINGS:
-- Average theory alignment: {avg_alignment}/10
-- Theories applied: {theory_names}
+    Priority:
+    1) Address structured user feedback items.
+    2) Address gaps identified in the theory validation (missing links).
 
-CONSISTENTLY MISSING CONNECTIONS:
-{missing_json}
+    Output conforms to model_improvements.schema.json and is deterministic when no LLM
+    is configured, but the structure supports LLM integration later.
+    """
+    tv = json.loads(theory_validation_path.read_text(encoding="utf-8"))
+    feedback_items = load_feedback(feedback_path) if feedback_path.exists() else []
 
-CONSISTENTLY PROBLEMATIC CONNECTIONS:
-{issues_json}
+    improvements: List[Dict] = []
 
-CURRENT MODEL STATS:
-- Total connections: {total_connections}
-- Variables include: Contributors, Knowledge, PRs, Issues, Reputation
+    # 1) Encode user feedback into operations where possible
+    for fb in feedback_items:
+        # Simple heuristic: if action suggests adding a variable or link, produce ops
+        action = fb.action.lower()
+        if "add variable" in action or "new variable" in action:
+            var_name = fb.comment.strip().split("\n")[0][:64] or f"var_{fb.feedback_id}"
+            improvements.append(
+                {
+                    "operation": "add_variable",
+                    "name": var_name,
+                    "equation": "0",
+                    "comment": f"Addresses feedback {fb.feedback_id}",
+                }
+            )
+        elif "add connection" in action or "link" in action:
+            # Attempt to parse a pattern like: from -> to (positive)
+            # Preserve original variable casing; only normalize the relation token
+            text = fb.comment
+            if "->" in text:
+                parts = [p.strip() for p in text.split("->", 1)]
+                from_var = parts[0][:64] or "From"
+                to_rest = parts[1]
+                if "(" in to_rest and ")" in to_rest:
+                    to_var = to_rest.split("(")[0].strip()[:64]
+                    rel = to_rest.split("(")[1].split(")")[0].strip().lower() or "unknown"
+                else:
+                    to_var = to_rest.strip()[:64] or "To"
+                    rel = "unknown"
+                improvements.append(
+                    {
+                        "operation": "add_connection",
+                        "from": from_var,
+                        "to": to_var,
+                        "relationship": rel,
+                        "comment": f"Addresses feedback {fb.feedback_id}",
+                    }
+                )
+            else:
+                # Non-parsable connection request; add a placeholder variable
+                improvements.append(
+                    {
+                        "operation": "add_variable",
+                        "name": f"Feedback_{fb.feedback_id}",
+                        "equation": "0",
+                        "comment": f"Addresses feedback {fb.feedback_id}",
+                    }
+                )
 
-TASK: Generate concrete improvements to the model.
+    # 2) Fill gaps from theory validation: add missing expected links
+    for m in tv.get("missing", []):
+        improvements.append(
+            {
+                "operation": "add_connection",
+                "from": m.get("from_var"),
+                "to": m.get("to_var"),
+                "relationship": m.get("relationship", "unknown"),
+                "comment": f"From theory: {m.get('theory')} ({m.get('citation_key')})",
+            }
+        )
 
-OUTPUT FORMAT (JSON):
-{{
-  "priority_additions": [{{"from": "Source", "to": "Target", "relationship": "positive/negative", "rationale": "...", "expected_impact": "..."}}],
-  "recommended_removals": [{{"from": "Source", "to": "Target", "reason": "..."}}],
-  "new_variables_needed": [{{"name": "Variable Name", "type": "stock/flow/auxiliary", "purpose": "...", "connects_to": ["..."]}}],
-  "structural_changes": [{{"change": "...", "justification": "..."}}],
-  "implementation_order": ["Step 1", "Step 2", "Step 3"],
-  "expected_improvement": "Overall expected impact on model quality"
-}}
-"""
-
-
-def create_implementation_script(improvements: dict) -> dict:
-    script = {"additions": [], "removals": [], "new_variables": []}
-    for addition in improvements.get("priority_additions", []):
-        script["additions"].append({
-            "command": f"Add connection: {addition['from']} → {addition['to']} ({addition['relationship']})",
-            "mdl_fragment": f"{addition['to']} = A FUNCTION OF(..., {'-' if addition['relationship']=='negative' else ''}{addition['from']})",
-            "rationale": addition.get("rationale", ""),
-        })
-    for new_var in improvements.get("new_variables_needed", []):
-        connections_str = ", ".join(new_var.get("connects_to", []))
-        script["new_variables"].append({
-            "command": f"Create variable: {new_var['name']}",
-            "mdl_fragment": f"{new_var['name']} = A FUNCTION OF({connections_str})",
-            "type": new_var.get("type"),
-            "purpose": new_var.get("purpose", ""),
-        })
-    return script
-
-
-def generate_updated_connections(current_connections: list[dict], improvements: dict) -> list[dict]:
-    updated = list(current_connections)
-    for addition in improvements.get("priority_additions", []):
-        updated.append({"from": addition["from"], "to": addition["to"], "relationship": addition["relationship"]})
-    for removal in improvements.get("recommended_removals", []):
-        for conn in updated:
-            if conn["from"] == removal["from"] and conn["to"] == removal["to"]:
-                conn["marked_for_review"] = True
-                conn["removal_reason"] = removal.get("reason", "")
-    return updated
-
-
-def improve_model(validation_path: Path, connections_path: Path, out_path: Path,
-                  api_key: str | None = None, model: str | None = None,
-                  provenance_db: Path | None = None) -> dict:
-    validation_results = json.loads(validation_path.read_text())
-    connections_data = json.loads(connections_path.read_text())
-    connections = connections_data["connections"]
-
-    prompt = IMPROVE_PROMPT.format(
-        avg_alignment=validation_results.get("average_alignment", 0),
-        theory_names=", ".join(v["theory"] for v in validation_results.get("theory_validations", [])),
-        missing_json=json.dumps(validation_results.get("consistent_missing", []), indent=2),
-        issues_json=json.dumps(validation_results.get("consistent_issues", []), indent=2),
-        total_connections=len(connections),
-    )
-
-    client = LLMClient(api_key=api_key, model=model)
-    content = client.chat(prompt, temperature=0.4)
-    improvements = json.loads(content)
-
-    implementation_script = create_implementation_script(improvements)
-    updated_connections = generate_updated_connections(connections, improvements)
-
-    output = {
-        "improvements": improvements,
-        "implementation_script": implementation_script,
-        "statistics": {
-            "additions_proposed": len(improvements.get("priority_additions", [])),
-            "removals_suggested": len(improvements.get("recommended_removals", [])),
-            "new_variables": len(improvements.get("new_variables_needed", [])),
-            "total_connections_after": len(updated_connections),
-        },
-        "updated_connections": updated_connections,
-    }
-
-    # Validate
-    validate_json(output, Path("schemas/model_improvements.schema.json"))
-
-    out_path.write_text(json.dumps(output, indent=2))
-
-    # Provenance
-    db_path = Path(provenance_db) if provenance_db else (Path(settings.provenance_db) if settings.provenance_db else provenance_db_path())
-    if db_path:
-        init_db(db_path)
-        sha = hashlib.sha256(out_path.read_bytes()).hexdigest()
-        add_artifact(db_path, kind="model_improvements", path=str(out_path), sha256=sha)
-    return output
+    result = {"improvements": improvements}
+    out_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
+    return result

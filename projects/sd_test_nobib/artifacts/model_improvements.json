@@ -1,0 +1,18 @@
+{
+  "improvements": [
+    {
+      "operation": "add_connection",
+      "from": "Potential Adopters",
+      "to": "New Adopters",
+      "relationship": "positive",
+      "comment": "From theory: Test Theory (ajzen1991)"
+    },
+    {
+      "operation": "add_connection",
+      "from": "Market Saturation",
+      "to": "New Adopters",
+      "relationship": "negative",
+      "comment": "From theory: Test Theory (ajzen1991)"
+    }
+  ]
+}

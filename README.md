@@ -23,3 +23,13 @@ Quick start
   - `PYTHONPATH=src python -m sd_model.cli interpret`
   - `PYTHONPATH=src python -m sd_model.cli validate-theory`
   - `PYTHONPATH=src python -m sd_model.cli improve`
+
+Web UI (one command)
+- Streamlit UI with everything wired up:
+  - `streamlit run streamlit_app.py`
+  - If using a venv: `.venv/bin/streamlit run streamlit_app.py`
+  - Then open the browser (Streamlit prints the URL). Select a project, optionally toggle “Apply patch”, click “Run Pipeline,” and view artifacts inline.
+
+Alternative launchers
+- Streamlit via CLI: `python -m src.sd_model.cli ui --framework streamlit`
+- Flask API UI: `python -m src.sd_model.cli ui` then visit http://127.0.0.1:5000

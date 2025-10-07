@@ -1,0 +1,224 @@
+{
+  "variables": [
+    {
+      "id": 1,
+      "name": "New Contributors",
+      "type": "Stock"
+    },
+    {
+      "id": 2,
+      "name": "Core Developer",
+      "type": "Stock"
+    },
+    {
+      "id": 3,
+      "name": "PR Feedback",
+      "type": "Auxiliary"
+    },
+    {
+      "id": 4,
+      "name": "Source Code",
+      "type": "Stock"
+    },
+    {
+      "id": 5,
+      "name": "User Base",
+      "type": "Stock"
+    },
+    {
+      "id": 6,
+      "name": "Project Reputation",
+      "type": "Stock"
+    },
+    {
+      "id": 11,
+      "name": "Adoption Rate",
+      "type": "Flow"
+    },
+    {
+      "id": 16,
+      "name": "User Churn Rate",
+      "type": "Flow"
+    },
+    {
+      "id": 21,
+      "name": "Reputation Building",
+      "type": "Flow"
+    },
+    {
+      "id": 26,
+      "name": "Reputation Decline",
+      "type": "Flow"
+    },
+    {
+      "id": 27,
+      "name": "Software Quality and Features",
+      "type": "Auxiliary"
+    },
+    {
+      "id": 30,
+      "name": "Community Health",
+      "type": "Stock"
+    },
+    {
+      "id": 35,
+      "name": "Trust Building",
+      "type": "Flow"
+    },
+    {
+      "id": 40,
+      "name": "Culture Erosion",
+      "type": "Flow"
+    },
+    {
+      "id": 41,
+      "name": "PR Review Delay",
+      "type": "Auxiliary"
+    },
+    {
+      "id": 46,
+      "name": "Developer's Turnover",
+      "type": "Flow"
+    },
+    {
+      "id": 47,
+      "name": "New Pull request",
+      "type": "Stock"
+    },
+    {
+      "id": 48,
+      "name": "Open Issues",
+      "type": "Stock"
+    },
+    {
+      "id": 49,
+      "name": "Project's Implicit Knowledge",
+      "type": "Stock"
+    },
+    {
+      "id": 50,
+      "name": "Projects's Explicit Knowledge",
+      "type": "Stock"
+    },
+    {
+      "id": 55,
+      "name": "New Pr rate",
+      "type": "Flow"
+    },
+    {
+      "id": 56,
+      "name": "Pull Request Under review",
+      "type": "Stock"
+    },
+    {
+      "id": 60,
+      "name": "Review Rate",
+      "type": "Flow"
+    },
+    {
+      "id": 64,
+      "name": "Merge/Commit",
+      "type": "Flow"
+    },
+    {
+      "id": 69,
+      "name": "Rejection Rate",
+      "type": "Flow"
+    },
+    {
+      "id": 72,
+      "name": "Experienced Contributors",
+      "type": "Stock"
+    },
+    {
+      "id": 76,
+      "name": "Skill up",
+      "type": "Flow"
+    },
+    {
+      "id": 80,
+      "name": "Promotion Rate",
+      "type": "Flow"
+    },
+    {
+      "id": 85,
+      "name": "Joining Rate",
+      "type": "Flow"
+    },
+    {
+      "id": 91,
+      "name": "Depreciation/Loss of Knowledge",
+      "type": "Flow"
+    },
+    {
+      "id": 93,
+      "name": "Implicit Knowledge Transfer (Mentorship)",
+      "type": "Auxiliary"
+    },
+    {
+      "id": 101,
+      "name": "Knowledge Conversion Rate",
+      "type": "Flow"
+    },
+    {
+      "id": 105,
+      "name": "Explicit to Implicit Conversion",
+      "type": "Flow"
+    },
+    {
+      "id": 106,
+      "name": "Searchable Knowledge Base",
+      "type": "Stock"
+    },
+    {
+      "id": 113,
+      "name": "Closed Issues",
+      "type": "Stock"
+    },
+    {
+      "id": 114,
+      "name": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "type": "Auxiliary"
+    },
+    {
+      "id": 122,
+      "name": "Issue Creation Rate",
+      "type": "Flow"
+    },
+    {
+      "id": 126,
+      "name": "Issue Resolution Rate",
+      "type": "Flow"
+    },
+    {
+      "id": 132,
+      "name": "Community engagement",
+      "type": "Flow"
+    },
+    {
+      "id": 136,
+      "name": "Discussions",
+      "type": "Auxiliary"
+    },
+    {
+      "id": 138,
+      "name": "Joining Rate",
+      "type": "Auxiliary"
+    },
+    {
+      "id": 141,
+      "name": "hi",
+      "type": "Stock"
+    },
+    {
+      "id": 147,
+      "name": "Feedback",
+      "type": "Auxiliary"
+    },
+    {
+      "id": 154,
+      "name": "Maintainer time",
+      "type": "Auxiliary"
+    }
+  ]
+}

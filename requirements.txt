@@ -5,3 +5,7 @@ typer
 pydantic
 jsonschema
 python-dotenv
+PyYAML
+bibtexparser
+Flask
+streamlit

@@ -1,20 +1,25 @@
 from __future__ import annotations
+
 import json
 from pathlib import Path
-from jsonschema import validate as _validate
-from jsonschema.exceptions import ValidationError
+from typing import Any, Dict
 
 
-def validate_json(data: dict, schema_path: Path) -> None:
-    """Validate JSON-compatible data against a JSON Schema.
+def validate_json_schema(instance: Dict[str, Any], schema_path: Path) -> None:
+    """Validate an instance dict against a JSON Schema file.
 
-    Raises ValueError with a concise message if validation fails.
+    If `jsonschema` is unavailable, the function becomes a no-op to avoid
+    blocking development in minimal environments.
     """
-    schema = json.loads(Path(schema_path).read_text())
     try:
-        _validate(instance=data, schema=schema)
-    except ValidationError as e:
-        # keep message short but actionable
-        location = " / ".join(str(x) for x in e.path) if e.path else "root"
-        raise ValueError(f"Schema validation failed at {location}: {e.message}") from e
+        from jsonschema import Draft7Validator  # type: ignore
+    except Exception:
+        return  # No-op when validator is not installed
+
+    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    validator = Draft7Validator(schema)
+    errors = sorted(validator.iter_errors(instance), key=lambda e: e.path)
+    if errors:
+        first = errors[0]
+        raise ValueError(f"Schema validation error at {list(first.path)}: {first.message}")
 

@@ -1,0 +1,34 @@
+{
+  "connections": [
+    {
+      "from_var": "Adopters",
+      "to_var": "Potential Adopters",
+      "relationship": "unknown"
+    },
+    {
+      "from_var": "Adopters",
+      "to_var": "New Adopters",
+      "relationship": "unknown"
+    },
+    {
+      "from_var": "Adoption Rate",
+      "to_var": "New Adopters",
+      "relationship": "unknown"
+    },
+    {
+      "from_var": "Potential Adopters",
+      "to_var": "New Adopters",
+      "relationship": "unknown"
+    },
+    {
+      "from_var": "Attrition",
+      "to_var": "Adopters",
+      "relationship": "unknown"
+    },
+    {
+      "from_var": "New Adopters",
+      "to_var": "Adopters",
+      "relationship": "unknown"
+    }
+  ]
+}

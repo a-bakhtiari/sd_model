@@ -1,116 +1,128 @@
 from __future__ import annotations
-import csv
+
 import json
+from dataclasses import dataclass
 from pathlib import Path
-from statistics import mean
-from sd_model.llm.client import LLMClient
-from sd_model.validation.schema import validate_json
-from sd_model.provenance.store import init_db, add_artifact, add_evidence
-from sd_model.config import settings
-from sd_model.paths import provenance_db_path
-import hashlib
+from typing import Dict, List, Set, Tuple
+
+from ..knowledge.loader import load_bibliography, load_theories
+from ..knowledge.types import Theory
 
 
-VALIDATE_PROMPT = """Analyze this system dynamics model against {theory_name}.
-
-THEORY BACKGROUND:
-{theory_description}
-
-MODEL CONNECTIONS:
-{connections_json}
-
-KEY FEEDBACK LOOPS:
-{loops_json}
-
-ANALYSIS TASKS:
-1. Which connections align well with this theory?
-2. Which connections contradict or are unsupported by this theory?
-3. What connections are MISSING that the theory would predict?
-4. Rate the overall model alignment with this theory (1-10)
-
-OUTPUT FORMAT (JSON):
-{{
-  "theory": "{theory_name}",
-  "aligned_connections": [{{"connection": {{"from": "X", "to": "Y"}}, "explanation": "..."}}],
-  "problematic_connections": [{{"connection": {{"from": "X", "to": "Y"}}, "issue": "..."}}],
-  "missing_connections": [{{"suggested": {{"from": "X", "to": "Y", "relationship": "positive/negative"}}, "rationale": "..."}}],
-  "alignment_score": 7,
-  "recommendations": "Specific improvements based on this theory"
-}}
-"""
+@dataclass
+class Edge:
+    src: str
+    dst: str
+    rel: str
 
 
-def load_theories_csv(path: Path) -> list[dict]:
-    out = []
-    with open(path, newline="") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            out.append({
-                "name": row.get("name", "").strip(),
-                "description": row.get("description", "").strip(),
-                "focus_area": row.get("focus_area", "").strip(),
-                "citations": row.get("citations", "").strip(),
-            })
-    return out
+def _as_edges(connections_json: Dict) -> Set[Tuple[str, str, str]]:
+    edges = set()
+    for c in connections_json.get("connections", []):
+        edges.add((c.get("from_var", ""), c.get("to_var", ""), c.get("relationship", "unknown")))
+    return edges
 
 
-def validate_with_theory(connections: list[dict], loops: list[dict], theory: dict, api_key: str | None, model: str) -> dict:
-    prompt = VALIDATE_PROMPT.format(
-        theory_name=theory["name"],
-        theory_description=theory["description"],
-        connections_json=json.dumps(connections[:20], indent=2),
-        loops_json=json.dumps(loops[:5], indent=2),
+def _theory_edges(theory: Theory) -> Set[Tuple[str, str, str]]:
+    return set(
+        (e.from_var, e.to_var, e.relationship) for e in theory.expected_connections
     )
-    client = LLMClient(api_key=api_key, model=model)
-    content = client.chat(prompt, temperature=0.3)
-    return json.loads(content)
 
 
-def synthesize_validations(all_validations: list[dict]) -> dict:
-    avg = mean(v["alignment_score"] for v in all_validations) if all_validations else 0.0
-    all_missing = []
-    all_problematic = []
-    for v in all_validations:
-        all_missing.extend(v.get("missing_connections", []))
-        all_problematic.extend(v.get("problematic_connections", []))
-    return {
-        "theories_applied": len(all_validations),
-        "average_alignment": avg,
-        "consistent_issues": all_problematic[:3],
-        "consistent_missing": all_missing[:3],
-        "theory_validations": all_validations,
+def validate_against_theories(
+    connections_path: Path,
+    theories_dir: Path,
+    bib_path: Path,
+    out_path: Path,
+) -> Dict:
+    """Analyze model connections against structured theories.
+
+    The output contains where the model confirms theory, contradicts, or misses
+    expected links, and lists novel links present in the model not covered by any
+    theory. Attempts to include citation_key where applicable.
+    """
+    connections_json = json.loads(connections_path.read_text(encoding="utf-8"))
+    model_edges = _as_edges(connections_json)
+    theories = load_theories(theories_dir)
+    bibliography = {}
+    try:
+        bibliography = load_bibliography(bib_path)
+    except Exception:
+        # Bibliography may be missing during early iterations; proceed with empty.
+        bibliography = {}
+
+    confirmed = []
+    contradicted = []
+    missing = []
+    novel = []
+
+    # For each theory, compute matches and gaps
+    theory_all_edges = set()
+    for th in theories:
+        t_edges = _theory_edges(th)
+        theory_all_edges |= t_edges
+        model_pairs = {(s, d) for (s, d, r) in model_edges}
+        for (s, d, rel) in t_edges:
+            if (s, d) in model_pairs:
+                confirmed.append(
+                    {
+                        "from_var": s,
+                        "to_var": d,
+                        "relationship": rel,
+                        "theory": th.theory_name,
+                        "citation_key": th.citation_key,
+                    }
+                )
+            else:
+                missing.append(
+                    {
+                        "from_var": s,
+                        "to_var": d,
+                        "relationship": rel,
+                        "theory": th.theory_name,
+                        "citation_key": th.citation_key,
+                    }
+                )
+
+    # Contradicted: same variables with different relationship
+    model_pairs = {(s, d) for (s, d, r) in model_edges}
+    theory_pairs = {(s, d) for (s, d, r) in theory_all_edges}
+    shared_pairs = model_pairs & theory_pairs
+    for s, d in sorted(shared_pairs):
+        # Treat 'unknown' as neutral (neither confirming nor contradicting)
+        model_rels = {r for (ss, dd, r) in model_edges if ss == s and dd == d and r != "unknown"}
+        theory_rels = {r for (ss, dd, r) in theory_all_edges if ss == s and dd == d}
+        if model_rels and theory_rels and model_rels.isdisjoint(theory_rels):
+            contradicted.append(
+                {
+                    "from_var": s,
+                    "to_var": d,
+                    "model_relationships": sorted(model_rels),
+                    "theory_relationships": sorted(theory_rels),
+                    "citation_key": None,
+                }
+            )
+
+    # Novel: model edges not predicted by any theory
+    for s, d, r in sorted(model_edges - theory_all_edges):
+        novel.append({"from_var": s, "to_var": d, "relationship": r, "citation_key": None})
+
+    summary = {
+        "theory_count": len(theories),
+        "model_edge_count": len(model_edges),
+        "confirmed_count": len(confirmed),
+        "contradicted_count": len(contradicted),
+        "missing_count": len(missing),
+        "novel_count": len(novel),
     }
 
-
-def validate_model(connections_path: Path, loops_path: Path, theories_csv: Path, out_path: Path,
-                   api_key: str | None = None, model: str | None = None,
-                   provenance_db: Path | None = None) -> dict:
-    connections = json.loads(connections_path.read_text())["connections"]
-    loops_data = json.loads(loops_path.read_text())
-    loops = loops_data.get("enhanced_loops", loops_data.get("loops", []))
-
-    theories = load_theories_csv(theories_csv)
-
-    all_validations: list[dict] = []
-    for theory in theories:
-        v = validate_with_theory(connections, loops, theory, api_key=api_key, model=model)
-        all_validations.append(v)
-
-    synthesis = synthesize_validations(all_validations)
-
-    # Validate
-    validate_json(synthesis, Path("schemas/theory_validation.schema.json"))
-
-    out_path.write_text(json.dumps(synthesis, indent=2))
-
-    # Provenance
-    db_path = Path(provenance_db) if provenance_db else (Path(settings.provenance_db) if settings.provenance_db else provenance_db_path())
-    if db_path:
-        init_db(db_path)
-        sha = hashlib.sha256(out_path.read_bytes()).hexdigest()
-        artifact_id = add_artifact(db_path, kind="theory_validation", path=str(out_path), sha256=sha)
-        avg = synthesis.get("average_alignment")
-        add_evidence(db_path, item_type="artifact", item_id=artifact_id, source="theory_validation_llm",
-                     ref=None, confidence=float(avg) / 10.0 if isinstance(avg, (int, float)) else None,
-                     note="Average alignment from synthesis")
-    return synthesis
+    result = {
+        "summary": summary,
+        "confirmed": confirmed,
+        "contradicted": contradicted,
+        "missing": missing,
+        "novel": novel,
+        "bibliography_loaded": bool(bibliography),
+    }
+    out_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
+    return result

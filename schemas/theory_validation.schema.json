@@ -1,15 +1,84 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "theory_validation.schema.json",
-  "title": "Theory Validation",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TheoryValidation",
   "type": "object",
-  "required": ["theories_applied", "average_alignment", "theory_validations"],
   "properties": {
-    "theories_applied": {"type": "integer", "minimum": 0},
-    "average_alignment": {"type": "number"},
-    "consistent_issues": {"type": "array"},
-    "consistent_missing": {"type": "array"},
-    "theory_validations": {"type": "array"}
-  }
+    "summary": {
+      "type": "object",
+      "properties": {
+        "theory_count": {"type": "integer"},
+        "model_edge_count": {"type": "integer"},
+        "confirmed_count": {"type": "integer"},
+        "contradicted_count": {"type": "integer"},
+        "missing_count": {"type": "integer"},
+        "novel_count": {"type": "integer"}
+      },
+      "required": [
+        "theory_count",
+        "model_edge_count",
+        "confirmed_count",
+        "contradicted_count",
+        "missing_count",
+        "novel_count"
+      ]
+    },
+    "confirmed": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from_var": {"type": "string"},
+          "to_var": {"type": "string"},
+          "relationship": {"type": "string"},
+          "theory": {"type": "string"},
+          "citation_key": {"type": "string"}
+        },
+        "required": ["from_var", "to_var", "relationship", "theory", "citation_key"]
+      }
+    },
+    "contradicted": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from_var": {"type": "string"},
+          "to_var": {"type": "string"},
+          "model_relationships": {"type": "array", "items": {"type": "string"}},
+          "theory_relationships": {"type": "array", "items": {"type": "string"}},
+          "citation_key": {"type": ["string", "null"]}
+        },
+        "required": ["from_var", "to_var", "model_relationships", "theory_relationships", "citation_key"]
+      }
+    },
+    "missing": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from_var": {"type": "string"},
+          "to_var": {"type": "string"},
+          "relationship": {"type": "string"},
+          "theory": {"type": "string"},
+          "citation_key": {"type": "string"}
+        },
+        "required": ["from_var", "to_var", "relationship", "theory", "citation_key"]
+      }
+    },
+    "novel": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from_var": {"type": "string"},
+          "to_var": {"type": "string"},
+          "relationship": {"type": "string"},
+          "citation_key": {"type": ["string", "null"]}
+        },
+        "required": ["from_var", "to_var", "relationship", "citation_key"]
+      }
+    },
+    "bibliography_loaded": {"type": "boolean"}
+  },
+  "required": ["summary", "confirmed", "contradicted", "missing", "novel", "bibliography_loaded"]
 }
 

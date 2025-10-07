@@ -1,31 +1,36 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "model_improvements.schema.json",
-  "title": "Model Improvements",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ModelImprovements",
   "type": "object",
-  "required": ["improvements", "implementation_script", "statistics", "updated_connections"],
   "properties": {
-    "improvements": {"type": "object"},
-    "implementation_script": {
-      "type": "object",
-      "required": ["additions", "removals", "new_variables"],
-      "properties": {
-        "additions": {"type": "array"},
-        "removals": {"type": "array"},
-        "new_variables": {"type": "array"}
+    "improvements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "oneOf": [
+          {
+            "properties": {
+              "operation": {"const": "add_variable"},
+              "name": {"type": "string"},
+              "equation": {"type": "string"},
+              "comment": {"type": "string"}
+            },
+            "required": ["operation", "name", "equation"]
+          },
+          {
+            "properties": {
+              "operation": {"const": "add_connection"},
+              "from": {"type": "string"},
+              "to": {"type": "string"},
+              "relationship": {"type": "string"},
+              "comment": {"type": "string"}
+            },
+            "required": ["operation", "from", "to", "relationship"]
+          }
+        ]
       }
-    },
-    "statistics": {
-      "type": "object",
-      "required": ["additions_proposed", "removals_suggested", "new_variables", "total_connections_after"],
-      "properties": {
-        "additions_proposed": {"type": "integer"},
-        "removals_suggested": {"type": "integer"},
-        "new_variables": {"type": "integer"},
-        "total_connections_after": {"type": "integer"}
-      }
-    },
-    "updated_connections": {"type": "array"}
-  }
+    }
+  },
+  "required": ["improvements"]
 }
 

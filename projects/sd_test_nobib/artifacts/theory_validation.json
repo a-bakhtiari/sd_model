@@ -1,0 +1,30 @@
+{
+  "summary": {
+    "theory_count": 1,
+    "model_edge_count": 0,
+    "confirmed_count": 0,
+    "contradicted_count": 0,
+    "missing_count": 2,
+    "novel_count": 0
+  },
+  "confirmed": [],
+  "contradicted": [],
+  "missing": [
+    {
+      "from_var": "Potential Adopters",
+      "to_var": "New Adopters",
+      "relationship": "positive",
+      "theory": "Test Theory",
+      "citation_key": "ajzen1991"
+    },
+    {
+      "from_var": "Market Saturation",
+      "to_var": "New Adopters",
+      "relationship": "negative",
+      "theory": "Test Theory",
+      "citation_key": "ajzen1991"
+    }
+  ],
+  "novel": [],
+  "bibliography_loaded": false
+}
