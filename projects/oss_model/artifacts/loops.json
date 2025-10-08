@@ -6,7 +6,7 @@
         "Project Reputation",
         "Joining Rate",
         "New Contributors",
-        "Core Developer",
+        "PR Feedback",
         "Software Quality and Features",
         "Project Reputation"
       ],
@@ -19,15 +19,15 @@
         {
           "from_var": "Joining Rate",
           "to_var": "New Contributors",
-          "relationship": "unknown"
+          "relationship": "positive"
         },
         {
           "from_var": "New Contributors",
-          "to_var": "Core Developer",
-          "relationship": "unknown"
+          "to_var": "PR Feedback",
+          "relationship": "positive"
         },
         {
-          "from_var": "Core Developer",
+          "from_var": "PR Feedback",
           "to_var": "Software Quality and Features",
           "relationship": "positive"
         },
@@ -38,8 +38,8 @@
         }
       ],
       "length": 6,
-      "loop": "Project Reputation \u2192 Joining Rate \u2192 New Contributors \u2192 Core Developer \u2192 Software Quality and Features \u2192 Project Reputation",
-      "confidence": 0.8
+      "loop": "Project Reputation \u2192 Joining Rate \u2192 New Contributors \u2192 PR Feedback \u2192 Software Quality and Features \u2192 Project Reputation",
+      "confidence": 0.85
     },
     {
       "id": "R02",
@@ -52,20 +52,55 @@
         {
           "from_var": "Project Reputation",
           "to_var": "User Base",
-          "relationship": "unknown"
+          "relationship": "positive"
         },
         {
           "from_var": "User Base",
           "to_var": "Project Reputation",
-          "relationship": "unknown"
+          "relationship": "positive"
         }
       ],
       "length": 3,
       "loop": "Project Reputation \u2192 User Base \u2192 Project Reputation",
-      "confidence": 0.75
+      "confidence": 0.8
     },
     {
       "id": "R03",
+      "variables": [
+        "Core Developer",
+        "Implicit Knowledge Transfer (Mentorship)",
+        "Promotion Rate",
+        "Experienced Contributors",
+        "Core Developer"
+      ],
+      "edges": [
+        {
+          "from_var": "Core Developer",
+          "to_var": "Implicit Knowledge Transfer (Mentorship)",
+          "relationship": "positive"
+        },
+        {
+          "from_var": "Implicit Knowledge Transfer (Mentorship)",
+          "to_var": "Promotion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from_var": "Promotion Rate",
+          "to_var": "Experienced Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from_var": "Experienced Contributors",
+          "to_var": "Core Developer",
+          "relationship": "positive"
+        }
+      ],
+      "length": 5,
+      "loop": "Core Developer \u2192 Implicit Knowledge Transfer (Mentorship) \u2192 Promotion Rate \u2192 Experienced Contributors \u2192 Core Developer",
+      "confidence": 0.75
+    },
+    {
+      "id": "R04",
       "variables": [
         "Open Issues",
         "New Pr rate",
@@ -84,61 +119,32 @@
         {
           "from_var": "New Pr rate",
           "to_var": "New Pull request",
-          "relationship": "unknown"
+          "relationship": "positive"
         },
         {
           "from_var": "New Pull request",
           "to_var": "Pull Request Under review",
-          "relationship": "unknown"
+          "relationship": "positive"
         },
         {
           "from_var": "Pull Request Under review",
           "to_var": "Source Code",
-          "relationship": "unknown"
+          "relationship": "positive"
         },
         {
           "from_var": "Source Code",
           "to_var": "Issue Creation Rate",
-          "relationship": "unknown"
+          "relationship": "positive"
         },
         {
           "from_var": "Issue Creation Rate",
           "to_var": "Open Issues",
-          "relationship": "unknown"
+          "relationship": "positive"
         }
       ],
       "length": 7,
       "loop": "Open Issues \u2192 New Pr rate \u2192 New Pull request \u2192 Pull Request Under review \u2192 Source Code \u2192 Issue Creation Rate \u2192 Open Issues",
       "confidence": 0.7
-    },
-    {
-      "id": "R04",
-      "variables": [
-        "Core Developer",
-        "Implicit Knowledge Transfer (Mentorship)",
-        "Promotion Rate",
-        "Core Developer"
-      ],
-      "edges": [
-        {
-          "from_var": "Core Developer",
-          "to_var": "Implicit Knowledge Transfer (Mentorship)",
-          "relationship": "positive"
-        },
-        {
-          "from_var": "Implicit Knowledge Transfer (Mentorship)",
-          "to_var": "Promotion Rate",
-          "relationship": "positive"
-        },
-        {
-          "from_var": "Promotion Rate",
-          "to_var": "Core Developer",
-          "relationship": "unknown"
-        }
-      ],
-      "length": 4,
-      "loop": "Core Developer \u2192 Implicit Knowledge Transfer (Mentorship) \u2192 Promotion Rate \u2192 Core Developer",
-      "confidence": 0.8
     }
   ],
   "balancing": [
@@ -187,7 +193,7 @@
         {
           "from_var": "New Pull request",
           "to_var": "Pull Request Under review",
-          "relationship": "unknown"
+          "relationship": "positive"
         }
       ],
       "length": 4,
@@ -196,29 +202,6 @@
     },
     {
       "id": "B03",
-      "variables": [
-        "Pull Request Under review",
-        "Merge/Commit",
-        "Pull Request Under review"
-      ],
-      "edges": [
-        {
-          "from_var": "Pull Request Under review",
-          "to_var": "Merge/Commit",
-          "relationship": "positive"
-        },
-        {
-          "from_var": "Merge/Commit",
-          "to_var": "Pull Request Under review",
-          "relationship": "negative"
-        }
-      ],
-      "length": 3,
-      "loop": "Pull Request Under review \u2192 Merge/Commit \u2192 Pull Request Under review",
-      "confidence": 0.9
-    },
-    {
-      "id": "B04",
       "variables": [
         "User Base",
         "User Churn Rate",
@@ -238,10 +221,10 @@
       ],
       "length": 3,
       "loop": "User Base \u2192 User Churn Rate \u2192 User Base",
-      "confidence": 0.9
+      "confidence": 0.8
     },
     {
-      "id": "B05",
+      "id": "B04",
       "variables": [
         "Project Reputation",
         "Reputation Decline",
@@ -261,10 +244,10 @@
       ],
       "length": 3,
       "loop": "Project Reputation \u2192 Reputation Decline \u2192 Project Reputation",
-      "confidence": 0.85
+      "confidence": 0.75
     },
     {
-      "id": "B06",
+      "id": "B05",
       "variables": [
         "Community Health",
         "Culture Erosion",
@@ -284,53 +267,7 @@
       ],
       "length": 3,
       "loop": "Community Health \u2192 Culture Erosion \u2192 Community Health",
-      "confidence": 0.8
-    },
-    {
-      "id": "B07",
-      "variables": [
-        "Core Developer",
-        "Developer's Turnover",
-        "Core Developer"
-      ],
-      "edges": [
-        {
-          "from_var": "Core Developer",
-          "to_var": "Developer's Turnover",
-          "relationship": "positive"
-        },
-        {
-          "from_var": "Developer's Turnover",
-          "to_var": "Core Developer",
-          "relationship": "negative"
-        }
-      ],
-      "length": 3,
-      "loop": "Core Developer \u2192 Developer's Turnover \u2192 Core Developer",
-      "confidence": 0.85
-    },
-    {
-      "id": "B08",
-      "variables": [
-        "Project's Implicit Knowledge",
-        "Depreciation/Loss of Knowledge",
-        "Project's Implicit Knowledge"
-      ],
-      "edges": [
-        {
-          "from_var": "Project's Implicit Knowledge",
-          "to_var": "Depreciation/Loss of Knowledge",
-          "relationship": "positive"
-        },
-        {
-          "from_var": "Depreciation/Loss of Knowledge",
-          "to_var": "Project's Implicit Knowledge",
-          "relationship": "negative"
-        }
-      ],
-      "length": 3,
-      "loop": "Project's Implicit Knowledge \u2192 Depreciation/Loss of Knowledge \u2192 Project's Implicit Knowledge",
-      "confidence": 0.8
+      "confidence": 0.7
     }
   ],
   "notes": []

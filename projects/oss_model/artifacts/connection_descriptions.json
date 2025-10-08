@@ -6,227 +6,223 @@
     },
     {
       "id": "C02",
-      "description": "The issue resolution rate increases the stock of closed issues."
+      "description": "A higher issue resolution rate increases the stock of closed issues."
     },
     {
       "id": "C03",
-      "description": "Greater explicit knowledge enables more effective knowledge transfer through documentation."
+      "description": "A larger base of explicit knowledge enables more effective knowledge transfer through documentation."
     },
     {
       "id": "C04",
-      "description": "Better documentation lowers the barrier to entry, increasing the joining rate."
+      "description": "Better documentation lowers the barrier to entry, increasing the potential joining rate."
     },
     {
       "id": "C05",
-      "description": "Clear documentation helps contributors learn faster, accelerating their skill-up."
+      "description": "Clear documentation helps contributors learn faster, increasing their skill-up rate."
     },
     {
       "id": "C06",
-      "description": "More feedback from the community can lead to the identification of new issues."
+      "description": "A better project reputation attracts more potential contributors, increasing the joining rate."
     },
     {
       "id": "C07",
-      "description": "A high number of open issues generates more user feedback and discussion."
+      "description": "A higher project reputation attracts more potential contributors, increasing the joining rate."
     },
     {
       "id": "C08",
-      "description": "A higher issue creation rate directly increases the stock of open issues."
+      "description": "More feedback from users and developers can lead to the identification of new issues."
     },
     {
       "id": "C09",
-      "description": "A higher issue resolution rate decreases the stock of open issues."
+      "description": "More open issues generate more feedback from users and contributors."
     },
     {
       "id": "C10",
-      "description": "More open issues often inspire contributors to submit pull requests to fix them."
+      "description": "More open issues represent more work, stimulating contributors to create new pull requests."
     },
     {
       "id": "C11",
-      "description": "A higher review rate decreases the stock of new pull requests by processing them."
+      "description": "A higher rate of new pull requests increases the stock of pull requests awaiting action."
     },
     {
       "id": "C12",
-      "description": "A higher new PR rate increases the stock of new pull requests."
+      "description": "New pull requests move into the 'under review' stock as they begin the review process."
     },
     {
       "id": "C13",
-      "description": "New pull requests move into the 'under review' stock once work begins on them."
+      "description": "A faster review rate decreases the stock of new pull requests awaiting initial attention."
     },
     {
       "id": "C14",
-      "description": "Providing PR feedback is a key activity that occurs on pull requests under review."
+      "description": "Pull requests under review contain potential code improvements that enhance the source code's value."
     },
     {
       "id": "C15",
-      "description": "A higher rejection rate decreases the stock of pull requests under review."
+      "description": "Merging pull requests removes them from the 'under review' stock."
     },
     {
       "id": "C16",
-      "description": "Merging or committing a PR removes it from the 'under review' stock."
+      "description": "Rejecting pull requests removes them from the 'under review' stock."
     },
     {
       "id": "C17",
-      "description": "The code from reviewed and merged pull requests contributes to the project's source code."
+      "description": "Providing PR feedback is a core activity performed on pull requests under review."
     },
     {
       "id": "C18",
-      "description": "More source code provides more surface area for users to discover and report issues."
+      "description": "A larger backlog of pull requests under review can increase the rate of rejections due to quality or relevance scrutiny."
     },
     {
       "id": "C19",
-      "description": "More core developers reduce the average delay for pull request reviews."
+      "description": "More core developers reduce the average delay in providing pull request reviews."
     },
     {
       "id": "C20",
-      "description": "Shorter review delays enable faster and more timely feedback on pull requests."
+      "description": "Shorter review delays enable more timely and frequent feedback on pull requests."
     },
     {
       "id": "C21",
-      "description": "As new contributors skill up, they graduate out of the 'new contributors' stock."
+      "description": "New contributors gain experience over time, transitioning into the experienced contributors stock."
     },
     {
       "id": "C22",
-      "description": "A higher joining rate increases the stock of new contributors."
+      "description": "As contributors skill up, they transition out of the 'new contributors' stock."
     },
     {
       "id": "C23",
-      "description": "Receiving constructive PR feedback helps retain new contributors."
+      "description": "Experienced contributors are promoted into the core developer role based on merit and involvement."
     },
     {
       "id": "C24",
-      "description": "The promotion rate decreases the stock of experienced contributors as they move up."
+      "description": "The promotion rate decreases the stock of experienced contributors as they move to core roles."
     },
     {
       "id": "C25",
-      "description": "The skill-up flow increases the stock of experienced contributors."
+      "description": "Constructive PR feedback helps experienced contributors refine their skills and understanding."
     },
     {
       "id": "C26",
-      "description": "Positive PR feedback reinforces an experienced contributor's commitment and skills."
+      "description": "Receiving PR feedback is a primary learning mechanism for new contributors."
     },
     {
       "id": "C27",
-      "description": "Consistently high-quality contributions and feedback can lead to promotion to core developer."
+      "description": "PR feedback helps core developers stay aligned on project standards and technical direction."
     },
     {
       "id": "C28",
-      "description": "The promotion rate directly increases the stock of core developers."
+      "description": "Experienced contributors provide valuable feedback due to their deeper project knowledge."
     },
     {
       "id": "C29",
-      "description": "Developer turnover decreases the stock of core developers when they leave the project."
+      "description": "New contributors generate questions and discussions that lead to PR feedback."
     },
     {
       "id": "C30",
-      "description": "A larger stock of implicit knowledge provides more material for mentorship."
+      "description": "PR feedback discussions are archived, contributing to the searchable knowledge base."
     },
     {
       "id": "C31",
-      "description": "More core developers increase the capacity for mentorship and implicit knowledge transfer."
+      "description": "A larger stock of implicit knowledge is subject to greater loss through forgetting or context decay."
     },
     {
       "id": "C32",
-      "description": "Effective mentorship accelerates the skill-up of contributors."
+      "description": "Higher developer turnover accelerates the loss of implicit, undocumented knowledge from the project."
     },
     {
       "id": "C33",
-      "description": "Mentorship prepares contributors for greater responsibility, increasing the promotion rate."
+      "description": "Implicit knowledge held by contributors can be formalized and converted into explicit knowledge."
     },
     {
       "id": "C34",
-      "description": "When developers leave, their unique, tacit knowledge is lost."
+      "description": "Converting implicit knowledge to explicit knowledge increases the stock of explicit knowledge."
     },
     {
       "id": "C35",
-      "description": "The loss of knowledge through turnover depletes the project's implicit knowledge stock."
+      "description": "Existing explicit knowledge provides a foundation for creating and converting more implicit understanding."
     },
     {
       "id": "C36",
-      "description": "Converting explicit knowledge to implicit understanding enriches the project's implicit knowledge."
+      "description": "A rich base of implicit knowledge among core members enables more effective mentorship."
     },
     {
       "id": "C37",
-      "description": "The knowledge conversion rate depletes implicit knowledge as it is formalized into explicit forms."
+      "description": "Effective mentorship directly accelerates the skill development of less experienced contributors."
     },
     {
       "id": "C38",
-      "description": "The knowledge conversion rate increases explicit knowledge by documenting tacit understanding."
+      "description": "Successful mentorship increases the rate at which contributors are promoted by building their competence."
     },
     {
       "id": "C39",
-      "description": "Converting knowledge from explicit to implicit form utilizes and transforms that explicit knowledge."
+      "description": "More core developers increase the project's capacity for providing mentorship."
     },
     {
       "id": "C40",
-      "description": "A more comprehensive searchable knowledge base directly represents more explicit knowledge."
+      "description": "A comprehensive knowledge base directly adds to the project's stock of explicit knowledge."
     },
     {
       "id": "C41",
-      "description": "Feedback from PR reviews often contains insights that are added to the knowledge base."
+      "description": "Resolved issues and their solutions are documented, enriching the searchable knowledge base."
     },
     {
       "id": "C42",
-      "description": "Closed issues, especially their resolutions, become valuable entries in the knowledge base."
+      "description": "Community discussions generate insights and solutions that are added to the knowledge base."
     },
     {
       "id": "C43",
-      "description": "Community engagement through forums and chats generates content for the knowledge base."
+      "description": "Feedback from pull request reviews is documented and becomes part of the searchable knowledge base."
     },
     {
       "id": "C44",
-      "description": "Discussions often resolve problems and create documentation for the knowledge base."
+      "description": "A higher issue creation rate increases the stock of open issues."
     },
     {
       "id": "C45",
-      "description": "The adoption rate increases the user base as new users start using the software."
+      "description": "More source code provides a larger surface area for bugs and feature requests, increasing issue creation."
     },
     {
       "id": "C46",
-      "description": "User churn decreases the user base as users stop using the software."
+      "description": "Resolving issues decreases the stock of open issues."
     },
     {
       "id": "C47",
-      "description": "A larger user base contributes to the project's visibility and reputation."
+      "description": "A higher adoption rate increases the size of the user base."
     },
     {
       "id": "C48",
-      "description": "Reputation building through success and advocacy increases the project's reputation stock."
+      "description": "User churn decreases the size of the user base."
     },
     {
       "id": "C49",
-      "description": "Reputation decline, from bugs or poor support, decreases the project's reputation."
+      "description": "A larger user base contributes to project visibility and reputation through usage and advocacy."
     },
     {
       "id": "C50",
-      "description": "High software quality and rich features directly enhance the project's reputation."
+      "description": "Positive project activities and outcomes build up the project's reputation over time."
     },
     {
       "id": "C51",
-      "description": "A healthy, vibrant community signals project stability and increases its reputation."
+      "description": "Negative events or poor project health cause a decline in project reputation."
     },
     {
       "id": "C52",
-      "description": "A large user base demonstrates popularity and validation, boosting reputation."
+      "description": "High-quality software with good features enhances the project's reputation."
     },
     {
       "id": "C53",
-      "description": "Trust building through positive interactions strengthens the overall health of the community."
+      "description": "A large user base signals popularity and utility, bolstering the project's reputation."
     },
     {
       "id": "C54",
-      "description": "Culture erosion from conflict or toxicity damages the health of the community."
+      "description": "A healthy, collaborative community positively reflects on and enhances the project's reputation."
     },
     {
       "id": "C55",
-      "description": "A good project reputation attracts more potential contributors, influencing the joining rate."
+      "description": "Positive interactions and reliable contributions build trust, strengthening community health."
     },
     {
       "id": "C56",
-      "description": "Good documentation makes the project more accessible, increasing the joining rate."
-    },
-    {
-      "id": "C57",
-      "description": "A strong project reputation attracts more contributors, increasing the joining rate."
+      "description": "Toxic interactions and burnout erode collaborative norms, damaging community health."
     }
   ]
 }

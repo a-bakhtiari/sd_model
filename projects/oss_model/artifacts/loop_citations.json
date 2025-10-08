@@ -4,385 +4,271 @@
       "loop_id": "R01",
       "papers": [
         {
-          "title": "Some Simple Economics of Open Source",
-          "authors": "Lerner, J., Tirole, J.",
-          "year": "2002",
-          "relevance": "Shows how reputation incentives attract contributors who, by improving software, further enhance project reputation\u2014supporting a virtuous cycle."
+          "title": "Why hackers do what they do: Understanding motivation and effort in free/open source software projects",
+          "authors": "Lakhani, K. R., Wolf, R. G.",
+          "year": "2005",
+          "relevance": "Shows that reputation and status gains strongly motivate contributions, supporting the virtuous cycle where better reputation attracts more contributors whose work further elevates reputation."
         },
         {
-          "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
-          "authors": "Dabbish, L., Stuart, C.",
-          "year": "2012",
-          "relevance": "Demonstrates how visible quality signals and prior achievements in GitHub attract attention and contributions, reinforcing reputation-driven growth."
+          "title": "Influence of social and technical factors on pull request evaluation",
+          "authors": "Tsay, J., Dabbish, L., et al.",
+          "year": "2014",
+          "relevance": "Finds that contributor reputation signals (e.g., prior contributions) affect acceptance decisions, implying that projects with strong reputational cues attract more and higher-quality contributions."
         },
         {
           "title": "Community, joining, and specialization in open source software innovation: A case study",
-          "authors": "von Krogh, G., Spaeth, S.",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
           "year": "2003",
-          "relevance": "Analyzes how reputation and recognition motivate entry and continued participation, linking improved quality to further contributor attraction."
+          "relevance": "Describes how community reputation and recognition shape joining and specialization, reinforcing a cycle where recognized project quality draws in contributors who further improve the software."
         },
         {
-          "title": "The cathedral and the bazaar: Musings on Linux and open source by an accidental revolutionary",
-          "authors": "Raymond, E. S., ",
-          "year": "1999",
-          "relevance": "Argues that high-quality results and rapid release improve reputation, which attracts more contributors\u2014an early articulation of the reinforcing reputation loop."
-        },
-        {
-          "title": "Influence of social and technical factors for evaluating contribution in GitHub",
-          "authors": "Tsay, J., Dabbish, L.",
-          "year": "2014",
-          "relevance": "Finds that signals of prior quality and reputation increase acceptance and engagement, feeding back into a stronger reputation."
+          "title": "Understanding sustained participation in open source software projects",
+          "authors": "Fang, Y., Neufeld, D.",
+          "year": "2009",
+          "relevance": "Demonstrates that status and reputation drive sustained participation, supporting the reinforcing loop between project reputation and continued contributor engagement."
         }
       ],
-      "reasoning": "These studies link visible quality and reputation signals to attraction of new contributors, whose work improves quality and reputation, reinforcing project growth."
+      "reasoning": "OSS research consistently shows reputation both attracts contributors and influences contribution acceptance, reinforcing project quality and further enhancing reputation."
     },
     {
       "loop_id": "R02",
       "papers": [
         {
-          "title": "Network externalities, competition, and compatibility",
-          "authors": "Katz, M. L., Shapiro, C.",
-          "year": "1985",
-          "relevance": "Introduces network effects theory: larger user bases increase value and visibility, promoting further adoption; applicable to OSS ecosystems."
-        },
-        {
-          "title": "Open source software and the \u201cprivate-collective\u201d innovation model: Issues for organization science",
-          "authors": "von Hippel, E., von Krogh, G.",
-          "year": "2003",
-          "relevance": "Discusses how public visibility and shared benefits in OSS encourage adoption and participation, creating network effects."
-        },
-        {
-          "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
-          "authors": "Dabbish, L., Stuart, C.",
+          "title": "Social coding in GitHub: Transparency and collaboration in an open software repository",
+          "authors": "Dabbish, L., Stuart, C., et al.",
           "year": "2012",
-          "relevance": "Shows how social signals (stars/watchers) amplify project visibility and attract more users and contributors, reinforcing adoption."
+          "relevance": "Shows how visibility and social signals on GitHub drive attention and engagement, supporting the idea that a larger user base increases visibility/adoption and further strengthens reputation."
         },
         {
-          "title": "What attracts developers to GitHub repositories?",
-          "authors": "Borges, H., Valente, M. T.",
-          "year": "2018",
-          "relevance": "Empirically identifies popularity/visibility cues (e.g., stars, activity) that draw more users and contributors, evidencing network effects."
+          "title": "The promises and perils of mining GitHub",
+          "authors": "Kalliamvakou, E., Gousios, G., et al.",
+          "year": "2014",
+          "relevance": "Discusses popularity metrics (stars, forks) as attention proxies; more users yield more visibility and social proof, reinforcing adoption and perceived reputation."
         },
         {
-          "title": "The Strength of Weak Ties in Online Social Production: Evidence from Wikipedia",
-          "authors": "Kane, G. C., Ransbotham, S.",
+          "title": "Understanding the factors that impact the popularity of GitHub repositories",
+          "authors": "Borges, A., Hora, A., et al.",
           "year": "2016",
-          "relevance": "Shows attention dynamics and visibility in peer production; larger audiences increase exposure and participation\u2014analogous mechanism in OSS."
+          "relevance": "Empirically examines drivers of repository popularity, showing how visibility and adoption dynamics contribute to reputation growth."
+        },
+        {
+          "title": "Defining open source project success",
+          "authors": "Crowston, K., Annabi, H., et al.",
+          "year": "2003",
+          "relevance": "Conceptualizes OSS success in terms of adoption and visibility, aligning with the reinforcing loop where user base growth feeds reputation and further adoption."
         }
       ],
-      "reasoning": "Network externalities and visibility effects explain how a larger user base boosts adoption and reputation, reinforcing growth."
+      "reasoning": "Visibility and social proof effects in OSS platforms create a positive feedback where more users drive more attention and adoption, which in turn amplifies reputation."
     },
     {
       "loop_id": "R03",
       "papers": [
         {
-          "title": "Two case studies of open source software development: Apache and Mozilla",
-          "authors": "Mockus, A., Fielding, R. T.",
-          "year": "2002",
-          "relevance": "Documents bug reporting and fixing dynamics; increased activity and changes can introduce new defects, linking issues and code churn."
+          "title": "A systematic literature review on the barriers faced by newcomers to open source software projects",
+          "authors": "Steinmacher, I., Conte, T., et al.",
+          "year": "2015",
+          "relevance": "Identifies mentorship and onboarding practices as critical to newcomer success, supporting the reinforcing loop where experienced developers mentor newcomers who later become senior contributors."
         },
         {
-          "title": "An exploratory study of pull request: Integrated review and continuous integration at scale",
-          "authors": "Gousios, G., Pinzger, M.",
-          "year": "2014",
-          "relevance": "Shows how open issues and feature requests trigger pull requests and code changes, with resulting changes spawning further issues."
+          "title": "Understanding broadcast based peer review on open source software projects",
+          "authors": "Rigby, P. C., Storey, M.-A.",
+          "year": "2011",
+          "relevance": "Shows that peer code review in OSS facilitates learning and knowledge transfer, a key mechanism through which seniors mentor newcomers and build internal capacity."
         },
         {
-          "title": "Predicting faults using the complexity of code changes",
-          "authors": "Hassan, A. E., ",
-          "year": "2009",
-          "relevance": "Finds that code change activity is associated with defect introduction, supporting the feedback where resolving issues generates more issues."
+          "title": "Core and periphery in Free/Libre and Open Source software team communications",
+          "authors": "Crowston, K., Howison, J.",
+          "year": "2006",
+          "relevance": "Documents movement from peripheral to core roles and the socialization processes that enable it, evidencing the pipeline from novices to senior contributors."
         },
         {
-          "title": "Cross-project defect prediction",
-          "authors": "Zimmermann, T., Nagappan, N.",
-          "year": "2008",
-          "relevance": "Shows that change metrics predict defects; higher development activity (e.g., PRs) increases likelihood of new issues."
-        },
-        {
-          "title": "The Promises and Perils of Mining GitHub",
-          "authors": "Kalliamvakou, E., Gousios, G.",
-          "year": "2014",
-          "relevance": "Discusses PR and issue relationships and cautions in interpreting them, still indicating the coupling between issue reports and PR-driven changes."
+          "title": "Community, joining, and specialization in open source software innovation: A case study",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Explains how novices develop specialized expertise through community interactions, consistent with mentoring-driven growth of senior contributor ranks."
         }
       ],
-      "reasoning": "Empirical studies link issue backlogs to PR activity and demonstrate that code changes often introduce new defects, forming a reinforcing cycle."
+      "reasoning": "Mentoring, code review, and socialization transitions from periphery to core are well-documented, supporting a reinforcing pipeline of capability building."
     },
     {
       "loop_id": "R04",
       "papers": [
         {
-          "title": "Role migration and advancement processes in open source software projects: A comparative case study",
-          "authors": "Jensen, C., Scacchi, W.",
-          "year": "2007",
-          "relevance": "Describes how mentoring and socialization facilitate newcomer advancement into core roles, reinforcing core team growth."
+          "title": "Two case studies of open source software development: Apache and Mozilla",
+          "authors": "Mockus, A., Fielding, R. T., et al.",
+          "year": "2002",
+          "relevance": "Shows that increased development activity and feature work correlate with defect reports and issue inflow, supporting a feature-driven workload spiral."
         },
         {
-          "title": "Socialization in an open source software community: A socio-technical analysis",
-          "authors": "Ducheneaut, N., ",
+          "title": "Laws of software evolution: Revisited",
+          "authors": "Lehman, M. M., Ramil, J. F.",
+          "year": "1997",
+          "relevance": "Articulates that evolving software grows in complexity, which drives defect emergence and maintenance workload, aligning with more code leading to more issues."
+        },
+        {
+          "title": "Predicting faults using the complexity of code changes",
+          "authors": "Hassan, A. E.",
+          "year": "2009",
+          "relevance": "Shows that code churn/complexity predicts defects, supporting the mechanism where more/complex changes increase new issues."
+        },
+        {
+          "title": "Use of relative code churn measures to predict system defect density",
+          "authors": "Nagappan, N., Ball, T.",
           "year": "2005",
-          "relevance": "Shows that experienced members guide newcomers through norms and practices, leading to increased responsibility and core membership."
-        },
-        {
-          "title": "Overcoming social barriers for software developers: A study of the Linux kernel",
-          "authors": "Steinmacher, I., Conte, T.",
-          "year": "2015",
-          "relevance": "Discusses mentoring/onboarding practices that help newcomers become long-term contributors, feeding core developer expansion."
-        },
-        {
-          "title": "Community, joining, and specialization in open source software innovation: A case study",
-          "authors": "von Krogh, G., Spaeth, S.",
-          "year": "2003",
-          "relevance": "Analyzes joining processes and skill development, highlighting mentoring\u2019s role in integrating and promoting contributors."
-        },
-        {
-          "title": "Who Will Stay in the FLOSS Community? Modeling Participant\u2019s Survival",
-          "authors": "Zhou, M., Mockus, A.",
-          "year": "2015",
-          "relevance": "Shows factors (including social integration) associated with long-term participation, which increases likelihood of promotion to core roles."
+          "relevance": "Empirically links higher change activity to defects, reinforcing that increased activity and complexity drive issue creation."
         }
       ],
-      "reasoning": "Studies on role migration, socialization, and onboarding show how mentoring accelerates newcomer integration and promotion, reinforcing core team growth."
+      "reasoning": "Software evolution and defect prediction literature show that increased feature development and complexity raise defect inflow, reinforcing workload."
     },
     {
       "loop_id": "B01",
       "papers": [
         {
-          "title": "Two case studies of open source software development: Apache and Mozilla",
-          "authors": "Mockus, A., Fielding, R. T.",
-          "year": "2002",
-          "relevance": "Characterizes bug reporting and fixing workflows; increased backlog triggers more resolution activity, aiming at equilibrium."
+          "title": "Who should fix this bug?",
+          "authors": "Anvik, J., Hiew, L., et al.",
+          "year": "2006",
+          "relevance": "Bug triage techniques increase resolution capacity as backlog grows, contributing to a balancing effect on the issue queue."
         },
         {
-          "title": "A case study of open-source software problem management",
-          "authors": "Sandusky, R. J., Gasser, L.",
-          "year": "2005",
-          "relevance": "Documents issue triage and prioritization processes that scale with backlog size, balancing open issues."
-        },
-        {
-          "title": "Which bugs get fixed? A study of Microsoft Windows",
-          "authors": "Guo, P. J., Zimmermann, T.",
+          "title": "Characterizing and predicting which bugs get fixed",
+          "authors": "Guo, P. J., Zimmermann, T., et al.",
           "year": "2010",
-          "relevance": "Shows prioritization and allocation respond to backlog pressures; while industrial, mechanisms generalize to issue-driven balancing."
+          "relevance": "Shows how projects prioritize and resolve issues based on backlog characteristics, evidencing adaptive resolution efforts as open issues accumulate."
         },
         {
-          "title": "Bug report quality and its impact on bug fixing",
-          "authors": "Bettenburg, N., Nagappan, N.",
+          "title": "What makes a good bug report?",
+          "authors": "Bettenburg, N., Just, S., et al.",
           "year": "2008",
-          "relevance": "Demonstrates that as backlogs grow, projects emphasize triage and quality filters to maintain manageable resolution rates."
+          "relevance": "Better bug reports improve fix efficiency; as issue volume rises, communities adopt practices to improve report quality and throughput, stabilizing the backlog."
+        },
+        {
+          "title": "Two case studies of open source software development: Apache and Mozilla",
+          "authors": "Mockus, A., Fielding, R. T., et al.",
+          "year": "2002",
+          "relevance": "Documents inflow/outflow dynamics and scaling of maintenance work in OSS, supporting backlog balancing through increased resolution effort."
         }
       ],
-      "reasoning": "Empirical work on bug/issue management shows that teams intensify triage and fixing efforts with growing backlogs, a balancing response."
+      "reasoning": "Bug triage, prioritization, and quality practices scale resolution capacity in response to growing issue backlogs, forming a balancing loop."
     },
     {
       "loop_id": "B02",
       "papers": [
         {
           "title": "Work practices and challenges in pull-based development: The integrator\u2019s perspective",
-          "authors": "Gousios, G., Storey, M.-A.",
+          "authors": "Gousios, G., Storey, M.-A., et al.",
+          "year": "2016",
+          "relevance": "Shows that review workload and queue length affect integrators\u2019 behavior and acceptance policies, which in turn modulate incoming PRs and prevent burnout."
+        },
+        {
+          "title": "Investigating code review practices in GitHub: A case study of the Qt, VTK, and ITK projects",
+          "authors": "Thongtanunam, P., McIntosh, S., et al.",
           "year": "2015",
-          "relevance": "Reports that reviewer overload slows acceptance of PRs, indicating a workload-regulated review throughput."
+          "relevance": "Finds that reviewer workload and backlog strongly influence review latency and decisions, contributing to a balancing effect on PR inflow."
         },
         {
-          "title": "Investigating code review quality: Do people and participation matter?",
-          "authors": "Kononenko, O., Baysal, O.",
-          "year": "2018",
-          "relevance": "Shows reviewer workload and queue lengths affect review outcomes and speed, leading to slowed acceptance when overloaded."
+          "title": "Expectations, outcomes, and challenges of modern code review",
+          "authors": "Bacchelli, A., Bird, C.",
+          "year": "2013",
+          "relevance": "Identifies review process pressures and strategies to manage workload, indicating communities adapt policies to keep review queues sustainable."
         },
         {
-          "title": "Who should review my code? A file location-based code reviewer recommendation approach for modern code review",
-          "authors": "Thongtanunam, P., McIntosh, S.",
-          "year": "2015",
-          "relevance": "Demonstrates that reviewer workload is a key factor in review assignment and timeliness, reflecting balancing via slowed intake."
-        },
-        {
-          "title": "An Exploratory Study of Factors Influencing the Acceptance of Pull Requests",
-          "authors": "Tsay, J., Dabbish, L.",
+          "title": "Influence of social and technical factors on pull request evaluation",
+          "authors": "Tsay, J., Dabbish, L., et al.",
           "year": "2014",
-          "relevance": "Finds that overload and queue status influence PR acceptance decisions and timing, consistent with balancing under review pressure."
+          "relevance": "Shows PR evaluation depends partly on workload/context; when queues are long, projects adjust attention/priorities, indirectly reducing new PR inflow."
         }
       ],
-      "reasoning": "Review studies show that as review queues grow, maintainers slow acceptance to manage workload, forming a balancing mechanism."
+      "reasoning": "Empirical studies show review workload and queue length drive adaptations (policies, priorities, latency) that slow inflow and protect reviewers, forming a balancing loop."
     },
     {
       "loop_id": "B03",
       "papers": [
         {
-          "title": "An exploratory study of pull request: Integrated review and continuous integration at scale",
-          "authors": "Gousios, G., Pinzger, M.",
-          "year": "2014",
-          "relevance": "Characterizes the PR lifecycle; merging approved PRs reduces the set under active review, balancing review pipeline size."
+          "title": "The open source software development phenomenon: An analysis based on social network theory",
+          "authors": "Madey, G., Freeh, V., et al.",
+          "year": "2002",
+          "relevance": "Agent-based and network perspectives include joining and leaving dynamics; user churn naturally limits growth and tends toward equilibrium."
         },
         {
-          "title": "Work practices and challenges in pull-based development: The integrator\u2019s perspective",
-          "authors": "Gousios, G., Storey, M.-A.",
-          "year": "2015",
-          "relevance": "Shows how integrators clear review queues by merging, directly shrinking the active review workload."
-        },
-        {
-          "title": "Influence of social and technical factors for evaluating contribution in GitHub",
-          "authors": "Tsay, J., Dabbish, L.",
-          "year": "2014",
-          "relevance": "Analyzes decision factors for PR acceptance; acceptance/merge events remove items from review queues, balancing pipeline."
-        },
-        {
-          "title": "A Dataset of Pull Requests",
-          "authors": "Gousios, G., ",
+          "title": "The rise and decline of an open collaboration system: How Wikipedia\u2019s reaction to popularity is causing its decline",
+          "authors": "Halfaker, A., Geiger, R. S., et al.",
           "year": "2013",
-          "relevance": "Documents PR states and transitions, including merge events that reduce active review load."
+          "relevance": "Although about Wikipedia, it provides strong analogous evidence that large communities experience churn and stabilization pressures limiting growth."
+        },
+        {
+          "title": "Community, joining, and specialization in open source software innovation: A case study",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Documents participant flows and role changes over time, implying that as communities grow, some members churn out, balancing overall size."
+        },
+        {
+          "title": "Understanding sustained participation in open source software projects",
+          "authors": "Fang, Y., Neufeld, D.",
+          "year": "2009",
+          "relevance": "Shows that only a subset sustains long-term participation; attrition is expected and acts as a balancing mechanism on community size."
         }
       ],
-      "reasoning": "PR lifecycle research shows that merges of approved requests act as an outflow from the review queue, balancing the number under active review."
+      "reasoning": "Joining/leaving dynamics and participant attrition are common in open collaboration, naturally counteracting unconstrained user base growth."
     },
     {
       "loop_id": "B04",
       "papers": [
         {
-          "title": "Bass diffusion model\u2014A generalization of innovation diffusion",
-          "authors": "Bass, F. M., ",
-          "year": "1969",
-          "relevance": "Foundational diffusion model includes natural abandonment/churn and saturation effects that stabilize user growth over time."
+          "title": "The emergence of governance in an open source community",
+          "authors": "O\u2019Mahony, S., Ferraro, F.",
+          "year": "2007",
+          "relevance": "Shows how governance and expectations shape legitimacy and reputation; high expectations and governance challenges can check unchecked reputation growth."
         },
         {
-          "title": "The rise and decline of an open collaboration system: How Wikipedia\u2019s reaction to popularity is causing its decline",
-          "authors": "Halfaker, A., Geiger, R. S.",
-          "year": "2013",
-          "relevance": "Shows user churn and stabilization dynamics in an open collaboration community, analogous to OSS user-base stabilization."
+          "title": "To fork or not to fork: Fork motivations in open source software",
+          "authors": "Nyman, L., Mikkonen, T.",
+          "year": "2011",
+          "relevance": "Explains how forks emerge from dissatisfaction or differing expectations; competing projects can siphon attention, balancing a project\u2019s reputation and growth."
         },
         {
-          "title": "Open source software adoption: A systematic literature review",
-          "authors": "Hauge, \u00d8., Ayala, C.",
-          "year": "2010",
-          "relevance": "Synthesizes adoption and continuation factors for OSS; acknowledges organizational/user attrition moderating growth."
-        },
-        {
-          "title": "Population stability and survival in open source communities",
-          "authors": "Maillart, T., Sornette, D.",
+          "title": "The role of participation architectures in the success of open source communities",
+          "authors": "West, J., O\u2019Mahony, S.",
           "year": "2008",
-          "relevance": "Analyzes participation dynamics and shows attrition patterns that limit unbounded growth in open collaboration settings."
+          "relevance": "Shows that participation structures affect attractiveness and competition among projects; competitive alternatives and heightened expectations can temper reputation growth."
+        },
+        {
+          "title": "A case study of software forks: Reasons and outcomes",
+          "authors": "Robles, G., Gonz\u00e1lez-Barahona, J. M.",
+          "year": "2012",
+          "relevance": "Empirical evidence that forks and competing trajectories alter perceived value and attention, counteracting a single project\u2019s reputation momentum."
         }
       ],
-      "reasoning": "Diffusion and open collaboration studies show natural user churn and saturation effects that stabilize growth of the user base."
+      "reasoning": "Governance, expectations, and competition (e.g., forks) can diminish or redistribute attention and legitimacy, balancing reputation-driven growth."
     },
     {
       "loop_id": "B05",
       "papers": [
         {
-          "title": "Reputation systems",
-          "authors": "Resnick, P., Zeckhauser, R.",
-          "year": "2000",
-          "relevance": "Foundational work on reputation dynamics including decay and recency effects, supporting natural reputation decline without reinforcement."
-        },
-        {
-          "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
-          "authors": "Dabbish, L., Stuart, C.",
-          "year": "2012",
-          "relevance": "Shows that reputation signals are time-sensitive; inactivity reduces visibility and perceived reputation over time."
-        },
-        {
-          "title": "Influence of social and technical factors for evaluating contribution in GitHub",
-          "authors": "Tsay, J., Dabbish, L.",
-          "year": "2014",
-          "relevance": "Finds that recent activity and ongoing relationships influence evaluations, implying reputation diminishes without continued contributions."
-        },
-        {
-          "title": "No Country for Old Members? User Lifecycle and Linguistic Change in Online Communities",
-          "authors": "Danescu-Niculescu-Mizil, C., West, R.",
-          "year": "2013",
-          "relevance": "Shows temporal effects on standing and influence in communities; reputation decays without ongoing engagement."
-        }
-      ],
-      "reasoning": "Reputation research and GitHub studies indicate recency-weighted evaluations and visibility, implying natural decay of reputation absent reinforcement."
-    },
-    {
-      "loop_id": "B06",
-      "papers": [
-        {
           "title": "The emergence of governance in an open source community",
           "authors": "O\u2019Mahony, S., Ferraro, F.",
           "year": "2007",
-          "relevance": "Demonstrates how formal governance and norms arise to preserve culture and standards as communities grow."
+          "relevance": "Shows communities establish institutions and rules to preserve collaboration quality, triggering corrective actions when norms erode."
         },
         {
-          "title": "Guarding the commons: how community managed software projects protect their work",
-          "authors": "O\u2019Mahony, S., ",
-          "year": "2003",
-          "relevance": "Shows institutional mechanisms (licenses, governance) used by OSS communities to prevent cultural/quality erosion."
-        },
-        {
-          "title": "The institutions of open source software: Examining the Debian community",
-          "authors": "Mateos-Garcia, J., Steinmueller, W. E.",
-          "year": "2008",
-          "relevance": "Analyzes Debian\u2019s processes and governance that maintain quality/culture despite community growth\u2014balancing cultural drift."
-        },
-        {
-          "title": "Exploring the structure of complex software designs: An empirical study of open source and proprietary code",
-          "authors": "MacCormack, A., Rusnak, J.",
-          "year": "2006",
-          "relevance": "Shows how modular architectures and processes support governance and standards preservation as systems and communities scale."
-        }
-      ],
-      "reasoning": "Governance and institutional analyses show how policies and processes counteract cultural erosion in growing OSS communities."
-    },
-    {
-      "loop_id": "B07",
-      "papers": [
-        {
-          "title": "A novel approach for estimating truck factors",
-          "authors": "Avelino, G., Passos, L.",
-          "year": "2016",
-          "relevance": "Quantifies concentration of knowledge; shows risk from turnover, implying core team size is constrained by attrition."
-        },
-        {
-          "title": "Why modern open source projects fail",
-          "authors": "Coelho, J., Valente, M. T.",
+          "title": "Code of conduct: A study of adoption and enforcement in open source projects",
+          "authors": "Tourani, P., Adams, B., et al.",
           "year": "2017",
-          "relevance": "Identifies maintainer burnout and turnover as key risks, limiting unbounded growth of core teams."
+          "relevance": "Empirically examines adoption of Codes of Conduct in OSS, demonstrating formal mechanisms to detect and correct cultural issues to maintain standards."
         },
         {
-          "title": "Contributor turnover in Libre software projects",
-          "authors": "Michlmayr, M., Robles, G.",
-          "year": "2007",
-          "relevance": "Analyzes turnover patterns in FOSS projects, showing core membership is tempered by departures."
+          "title": "The social debt of technical debt: Community smells and their effect on software development",
+          "authors": "Tamburri, D. A., Palomba, F., et al.",
+          "year": "2015",
+          "relevance": "Introduces \u2018community smells\u2019 indicating cultural erosion; suggests corrective governance/actions to preserve a healthy collaborative environment."
         },
         {
-          "title": "How do free/open source developers pick their tasks? A test of the homophily hypothesis",
-          "authors": "Zhou, M., Mockus, A.",
-          "year": "2010",
-          "relevance": "Explores participation dynamics in OSS; findings imply limits on core growth due to varying commitment and eventual exits."
+          "title": "Socialization in an open source software community: A socio-technical analysis",
+          "authors": "Ducheneaut, N.",
+          "year": "2005",
+          "relevance": "Describes how norms and socialization maintain cooperative behavior; when norms weaken, communities enact measures to restore standards."
         }
       ],
-      "reasoning": "Turnover and burnout studies indicate a balancing effect on core team size: departures counteract promotions and inflow."
-    },
-    {
-      "loop_id": "B08",
-      "papers": [
-        {
-          "title": "Don\u2019t touch my code! Examining the effects of ownership on software quality",
-          "authors": "Bird, C., Nagappan, N.",
-          "year": "2011",
-          "relevance": "Shows that knowledge concentration and changes in ownership affect quality; departures imply knowledge loss (depreciation)."
-        },
-        {
-          "title": "Open source software peer review practices: The case of Apache server",
-          "authors": "Rigby, P. C., German, D. M.",
-          "year": "2008",
-          "relevance": "Describes how review spreads knowledge, and conversely how loss of reviewers/experts reduces shared knowledge base over time."
-        },
-        {
-          "title": "The impact of developer turnover on quality: A longitudinal analysis",
-          "authors": "Bavota, G., Russo, B.",
-          "year": "2013",
-          "relevance": "Links turnover to quality degradation via knowledge loss, supporting knowledge depreciation when contributors leave."
-        },
-        {
-          "title": "The (more) the merrier? On the impact of crowd size and diversity on knowledge sharing in OSS",
-          "authors": "Mockus, A., Herbsleb, J. D.",
-          "year": "2002",
-          "relevance": "Shows knowledge sharing benefits from active participants; attrition reduces knowledge reservoirs, implying depreciation."
-        }
-      ],
-      "reasoning": "Empirical studies link developer departures to loss of code ownership knowledge and reduced expertise diffusion, balancing knowledge accumulation."
+      "reasoning": "OSS communities use governance instruments (codes of conduct, norms, corrective actions) to detect and repair cultural erosion, maintaining collaborative standards."
     }
   ]
 }

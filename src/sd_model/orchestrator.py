@@ -15,9 +15,10 @@ from .pipeline.theory_validation import validate_against_theories
 from .pipeline.verify_citations import verify_citations
 from .pipeline.improve import propose_improvements
 from .pipeline.apply_patch import apply_model_patch
-from .pipeline.citation_verification import verify_all_citations, generate_connection_citation_table
+from .pipeline.citation_verification import verify_all_citations, generate_connection_citation_table, verify_llm_generated_citations
 from .pipeline.gap_analysis import identify_gaps
 from .pipeline.paper_discovery import suggest_papers_for_gaps
+from .pipeline.csv_export import generate_connections_csv, generate_loops_csv
 from .llm.client import LLMClient
 from .pipeline.llm_extraction import infer_variable_types, infer_connections
 from .provenance.store import log_event
@@ -135,6 +136,42 @@ def run_pipeline(project: str, apply_patch: bool = False, verify_cit: bool = Fal
     )
     log_event(paths.db_dir / "provenance.sqlite", "loop_citations", {"count": len(loop_cites.get("citations", []))})
 
+    # Verify LLM-generated connection citations
+    from .external.semantic_scholar import SemanticScholarClient
+    s2_client = SemanticScholarClient()
+    connection_citations_verified_path = paths.artifacts_dir / "connection_citations_verified.json"
+    connection_citations_debug_path = paths.artifacts_dir / "connection_citations_verification_debug.txt"
+    verified_conn_citations = verify_llm_generated_citations(
+        citations_path=connection_citations_path,
+        output_path=connection_citations_verified_path,
+        s2_client=s2_client,
+        llm_client=client,
+        debug_path=connection_citations_debug_path,
+        verbose=False  # Don't print to console during pipeline run
+    )
+    log_event(
+        paths.db_dir / "provenance.sqlite",
+        "connection_citations_verified",
+        verified_conn_citations.get("summary", {})
+    )
+
+    # Verify LLM-generated loop citations
+    loop_citations_verified_path = paths.artifacts_dir / "loop_citations_verified.json"
+    loop_citations_debug_path = paths.artifacts_dir / "loop_citations_verification_debug.txt"
+    verified_loop_citations = verify_llm_generated_citations(
+        citations_path=loop_citations_path,
+        output_path=loop_citations_verified_path,
+        s2_client=s2_client,
+        llm_client=client,
+        debug_path=loop_citations_debug_path,
+        verbose=False  # Don't print to console during pipeline run
+    )
+    log_event(
+        paths.db_dir / "provenance.sqlite",
+        "loop_citations_verified",
+        verified_loop_citations.get("summary", {})
+    )
+
     tv = validate_against_theories(
         connections_path=paths.connections_path,
         theories_dir=paths.theories_dir,
@@ -184,7 +221,7 @@ def run_pipeline(project: str, apply_patch: bool = False, verify_cit: bool = Fal
     paper_suggestions_path = paths.artifacts_dir / "paper_suggestions.json"
 
     if verify_cit:
-        s2_client = SemanticScholarClient()
+        # s2_client already initialized above for LLM citation verification
         verified_cits = verify_all_citations(
             theories_dir=paths.theories_dir,
             bib_path=paths.references_bib_path,
@@ -237,6 +274,27 @@ def run_pipeline(project: str, apply_patch: bool = False, verify_cit: bool = Fal
         patched_file = apply_model_patch(mdl_path, paths.model_improvements_path, out_copy_path)
         log_event(paths.db_dir / "provenance.sqlite", "apply_patch", {"output": str(patched_file)})
 
+    # Generate CSV exports
+    connections_csv_path = paths.artifacts_dir / "connections_export.csv"
+    loops_csv_path = paths.artifacts_dir / "loops_export.csv"
+
+    conn_csv_rows = generate_connections_csv(
+        connections_path=paths.connections_path,
+        descriptions_path=connection_descriptions_path,
+        variables_path=variables_path,
+        citations_path=connection_citations_verified_path,
+        output_path=connections_csv_path,
+    )
+    log_event(paths.db_dir / "provenance.sqlite", "csv_export_connections", {"rows": conn_csv_rows})
+
+    loop_csv_rows = generate_loops_csv(
+        loops_path=paths.loops_path,
+        descriptions_path=loop_descriptions_path,
+        citations_path=loop_citations_verified_path,
+        output_path=loops_csv_path,
+    )
+    log_event(paths.db_dir / "provenance.sqlite", "csv_export_loops", {"rows": loop_csv_rows})
+
     return {
         "parsed": str(paths.parsed_path),
         "loops": str(paths.loops_path),
@@ -245,11 +303,15 @@ def run_pipeline(project: str, apply_patch: bool = False, verify_cit: bool = Fal
         "connections_llm": str(connections_llm_path),
         "connection_descriptions": str(connection_descriptions_path),
         "connection_citations": str(connection_citations_path),
+        "connection_citations_verified": str(connection_citations_verified_path),
         "loop_citations": str(loop_citations_path),
+        "loop_citations_verified": str(loop_citations_verified_path),
         "theory_validation": str(paths.theory_validation_path),
         "improvements": str(paths.model_improvements_path),
         "citations_verified": str(citations_verified_path) if verify_cit else None,
         "gap_analysis": str(gap_analysis_path) if verify_cit else None,
         "paper_suggestions": str(paper_suggestions_path) if (verify_cit and discover_papers) else None,
         "patched": str(patched_file) if patched_file else None,
+        "connections_csv": str(connections_csv_path),
+        "loops_csv": str(loops_csv_path),
     }

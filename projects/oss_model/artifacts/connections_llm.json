@@ -26,6 +26,16 @@
       "polarity": "UNDECLARED"
     },
     {
+      "from": 6,
+      "to": 138,
+      "polarity": "POSITIVE"
+    },
+    {
+      "from": 6,
+      "to": 85,
+      "polarity": "UNDECLARED"
+    },
+    {
       "from": 147,
       "to": 48,
       "polarity": "UNDECLARED"
@@ -36,24 +46,9 @@
       "polarity": "UNDECLARED"
     },
     {
-      "from": 122,
-      "to": 48,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 126,
-      "to": 48,
-      "polarity": "NEGATIVE"
-    },
-    {
       "from": 48,
       "to": 55,
       "polarity": "POSITIVE"
-    },
-    {
-      "from": 60,
-      "to": 47,
-      "polarity": "NEGATIVE"
     },
     {
       "from": 55,
@@ -66,18 +61,8 @@
       "polarity": "UNDECLARED"
     },
     {
-      "from": 3,
-      "to": 56,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 69,
-      "to": 56,
-      "polarity": "NEGATIVE"
-    },
-    {
-      "from": 64,
-      "to": 56,
+      "from": 60,
+      "to": 47,
       "polarity": "NEGATIVE"
     },
     {
@@ -86,8 +71,23 @@
       "polarity": "UNDECLARED"
     },
     {
-      "from": 4,
-      "to": 122,
+      "from": 64,
+      "to": 56,
+      "polarity": "NEGATIVE"
+    },
+    {
+      "from": 69,
+      "to": 56,
+      "polarity": "NEGATIVE"
+    },
+    {
+      "from": 3,
+      "to": 56,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 56,
+      "to": 69,
       "polarity": "UNDECLARED"
     },
     {
@@ -101,18 +101,18 @@
       "polarity": "UNDECLARED"
     },
     {
+      "from": 1,
+      "to": 72,
+      "polarity": "UNDECLARED"
+    },
+    {
       "from": 76,
       "to": 1,
       "polarity": "NEGATIVE"
     },
     {
-      "from": 85,
-      "to": 1,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 3,
-      "to": 1,
+      "from": 72,
+      "to": 2,
       "polarity": "UNDECLARED"
     },
     {
@@ -121,13 +121,13 @@
       "polarity": "NEGATIVE"
     },
     {
-      "from": 76,
+      "from": 3,
       "to": 72,
       "polarity": "UNDECLARED"
     },
     {
       "from": 3,
-      "to": 72,
+      "to": 1,
       "polarity": "UNDECLARED"
     },
     {
@@ -136,24 +136,49 @@
       "polarity": "UNDECLARED"
     },
     {
-      "from": 80,
-      "to": 2,
+      "from": 72,
+      "to": 3,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 1,
+      "to": 3,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 3,
+      "to": 106,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 49,
+      "to": 91,
       "polarity": "UNDECLARED"
     },
     {
       "from": 46,
-      "to": 2,
+      "to": 91,
+      "polarity": "POSITIVE"
+    },
+    {
+      "from": 49,
+      "to": 105,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 105,
+      "to": 50,
       "polarity": "NEGATIVE"
+    },
+    {
+      "from": 50,
+      "to": 105,
+      "polarity": "UNDECLARED"
     },
     {
       "from": 49,
       "to": 93,
       "polarity": "UNDECLARED"
-    },
-    {
-      "from": 2,
-      "to": 93,
-      "polarity": "POSITIVE"
     },
     {
       "from": 93,
@@ -166,34 +191,9 @@
       "polarity": "POSITIVE"
     },
     {
-      "from": 46,
-      "to": 91,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 91,
-      "to": 49,
-      "polarity": "NEGATIVE"
-    },
-    {
-      "from": 105,
-      "to": 49,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 101,
-      "to": 49,
-      "polarity": "NEGATIVE"
-    },
-    {
-      "from": 101,
-      "to": 50,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 105,
-      "to": 50,
-      "polarity": "NEGATIVE"
+      "from": 2,
+      "to": 93,
+      "polarity": "POSITIVE"
     },
     {
       "from": 106,
@@ -201,17 +201,7 @@
       "polarity": "POSITIVE"
     },
     {
-      "from": 3,
-      "to": 106,
-      "polarity": "UNDECLARED"
-    },
-    {
       "from": 113,
-      "to": 106,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 132,
       "to": 106,
       "polarity": "UNDECLARED"
     },
@@ -219,6 +209,26 @@
       "from": 136,
       "to": 106,
       "polarity": "UNDECLARED"
+    },
+    {
+      "from": 3,
+      "to": 106,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 122,
+      "to": 48,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 4,
+      "to": 122,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 126,
+      "to": 48,
+      "polarity": "NEGATIVE"
     },
     {
       "from": 11,
@@ -251,14 +261,14 @@
       "polarity": "POSITIVE"
     },
     {
-      "from": 30,
-      "to": 6,
-      "polarity": "POSITIVE"
-    },
-    {
       "from": 5,
       "to": 6,
       "polarity": "UNDECLARED"
+    },
+    {
+      "from": 30,
+      "to": 6,
+      "polarity": "POSITIVE"
     },
     {
       "from": 35,
@@ -269,21 +279,6 @@
       "from": 40,
       "to": 30,
       "polarity": "NEGATIVE"
-    },
-    {
-      "from": 6,
-      "to": 85,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 114,
-      "to": 138,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 6,
-      "to": 138,
-      "polarity": "POSITIVE"
     }
   ]
 }
