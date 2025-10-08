@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 from pathlib import Path
+from dotenv import load_dotenv
 
 
 @dataclass
@@ -34,12 +35,16 @@ def detect_repo_root() -> Path:
 
 
 def load_config() -> AppConfig:
+    # Load .env file from repository root
     root = detect_repo_root()
+    load_dotenv(root / ".env")
+
     projects_dir = root / "projects"
     schemas_dir = root / "schemas"
     env = {
         "USE_LLM": os.getenv("SD_USE_LLM", "0") in {"1", "true", "True"},
         "OPENAI_API_KEY": os.getenv("OPENAI_API_KEY"),
+        "SEMANTIC_SCHOLAR_API_KEY": os.getenv("SEMANTIC_SCHOLAR_API_KEY"),
     }
     return AppConfig(
         root_dir=root,

@@ -1,3 +1,24 @@
 {
-  "variables": []
+  "variables": [
+    {
+      "id": 11,
+      "name": "Adoption Rate",
+      "type": "Flow"
+    },
+    {
+      "id": 16,
+      "name": "User Churn Rate",
+      "type": "Flow"
+    },
+    {
+      "id": 76,
+      "name": "Skill up",
+      "type": "Flow"
+    },
+    {
+      "id": 85,
+      "name": "Joining Rate",
+      "type": "Flow"
+    }
+  ]
 }

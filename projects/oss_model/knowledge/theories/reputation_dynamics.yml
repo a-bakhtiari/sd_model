@@ -1,0 +1,19 @@
+theory_name: "OSS Reputation Dynamics"
+citation_key: "vonkrogh2003"
+expected_connections:
+  - from_var: "Project Reputation"
+    to_var: "User Base"
+    relationship: "positive"
+    citations: ["vonkrogh2003"]
+  - from_var: "User Base"
+    to_var: "Project Reputation"
+    relationship: "positive"
+    citations: ["vonkrogh2003"]
+  - from_var: "Software Quality and Features"
+    to_var: "Project Reputation"
+    relationship: "positive"
+    citations: ["vonkrogh2003"]
+  - from_var: "Community Health"
+    to_var: "Project Reputation"
+    relationship: "positive"
+    citations: ["vonkrogh2003"]

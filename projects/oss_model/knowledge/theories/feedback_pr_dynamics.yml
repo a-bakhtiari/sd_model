@@ -1,0 +1,27 @@
+theory_name: "Pull Request and Feedback Dynamics"
+citation_key: "gousios2015"
+expected_connections:
+  - from_var: "New Pr rate"
+    to_var: "New Pull request"
+    relationship: "positive"
+    citations: ["gousios2015"]
+  - from_var: "Review Rate"
+    to_var: "New Pull request"
+    relationship: "negative"
+    citations: ["gousios2015"]
+  - from_var: "PR Feedback"
+    to_var: "Pull Request Under review"
+    relationship: "positive"
+    citations: ["gousios2015"]
+  - from_var: "Merge/Commit"
+    to_var: "Pull Request Under review"
+    relationship: "negative"
+    citations: ["gousios2015"]
+  - from_var: "Merge/Commit"
+    to_var: "Source Code"
+    relationship: "positive"
+    citations: ["gousios2015"]
+  - from_var: "Core Developer"
+    to_var: "PR Review Delay"
+    relationship: "positive"
+    citations: ["gousios2015"]

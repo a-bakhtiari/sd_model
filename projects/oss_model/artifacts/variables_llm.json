@@ -198,7 +198,7 @@
     {
       "id": 136,
       "name": "Discussions",
-      "type": "Auxiliary"
+      "type": "Stock"
     },
     {
       "id": 138,
@@ -208,7 +208,7 @@
     {
       "id": 141,
       "name": "hi",
-      "type": "Stock"
+      "type": "Auxiliary"
     },
     {
       "id": 147,

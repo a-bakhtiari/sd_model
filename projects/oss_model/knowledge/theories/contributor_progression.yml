@@ -1,0 +1,23 @@
+theory_name: "Contributor Progression and Mentorship"
+citation_key: "ye2005"
+expected_connections:
+  - from_var: "Core Developer"
+    to_var: "Implicit Knowledge Transfer (Mentorship)"
+    relationship: "positive"
+    citations: ["ye2005"]
+  - from_var: "Implicit Knowledge Transfer (Mentorship)"
+    to_var: "Skill up"
+    relationship: "positive"
+    citations: ["ye2005"]
+  - from_var: "Skill up"
+    to_var: "Experienced Contributors"
+    relationship: "positive"
+    citations: ["ye2005"]
+  - from_var: "Experienced Contributors"
+    to_var: "PR Feedback"
+    relationship: "positive"
+    citations: ["ye2005"]
+  - from_var: "PR Feedback"
+    to_var: "New Contributors"
+    relationship: "positive"
+    citations: ["ye2005"]

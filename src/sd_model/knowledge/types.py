@@ -21,6 +21,8 @@ class ExpectedConnection(BaseModel):
     from_var: str = Field(..., description="Source variable name")
     to_var: str = Field(..., description="Target variable name")
     relationship: str = Field(..., description="Type of relation, e.g., positive/negative")
+    citations: List[str] = Field(default_factory=list, description="Citation keys supporting this connection")
+    page_numbers: Optional[List[str]] = Field(default=None, description="Optional page references")
 
 
 class Theory(BaseModel):
@@ -31,6 +33,36 @@ class Theory(BaseModel):
     expected_connections: List[ExpectedConnection] = Field(
         default_factory=list, description="List of expected causal links"
     )
+
+
+class VerifiedCitation(BaseModel):
+    """A citation that has been verified via Semantic Scholar."""
+
+    citation_key: str = Field(..., description="BibTeX citation key")
+    verified: bool = Field(..., description="Whether the paper was found in Semantic Scholar")
+    paper_id: Optional[str] = Field(default=None, description="Semantic Scholar paper ID")
+    title: Optional[str] = Field(default=None, description="Paper title")
+    authors: Optional[List[str]] = Field(default_factory=list, description="Author names")
+    year: Optional[int] = Field(default=None, description="Publication year")
+    citation_count: Optional[int] = Field(default=None, description="Number of citations")
+    url: Optional[str] = Field(default=None, description="Semantic Scholar URL")
+    abstract: Optional[str] = Field(default=None, description="Paper abstract")
+    verified_at: Optional[str] = Field(default=None, description="Verification timestamp")
+
+
+class PaperSuggestion(BaseModel):
+    """A paper suggested by Semantic Scholar for a connection or loop."""
+
+    paper_id: str = Field(..., description="Semantic Scholar paper ID")
+    title: str = Field(..., description="Paper title")
+    authors: List[str] = Field(..., description="Author names")
+    year: Optional[int] = Field(..., description="Publication year")
+    citation_count: int = Field(..., description="Number of citations")
+    relevance_score: float = Field(..., description="Relevance score (0-1)")
+    abstract: Optional[str] = Field(default=None, description="Paper abstract")
+    url: str = Field(..., description="Semantic Scholar URL")
+    suggested_for: str = Field(..., description="What this paper is suggested for: 'connection', 'loop', or 'variable'")
+    target: str = Field(..., description="The specific target (e.g., 'Reputation → User Base')")
 
 
 class FeedbackItem(BaseModel):

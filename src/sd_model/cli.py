@@ -16,7 +16,12 @@ import subprocess
 
 
 def cmd_run(args: argparse.Namespace) -> None:
-    result = run_pipeline(project=args.project, apply_patch=args.apply_patch)
+    result = run_pipeline(
+        project=args.project,
+        apply_patch=args.apply_patch,
+        verify_cit=args.verify_citations,
+        discover_papers=args.discover_papers,
+    )
     print(json.dumps(result, indent=2))
 
 
@@ -72,6 +77,12 @@ def build_parser() -> argparse.ArgumentParser:
     p_run.add_argument("--project", required=True, help="Project name under projects/")
     p_run.add_argument(
         "--apply-patch", action="store_true", help="Automatically apply patch to .mdl"
+    )
+    p_run.add_argument(
+        "--verify-citations", action="store_true", help="Verify citations via Semantic Scholar"
+    )
+    p_run.add_argument(
+        "--discover-papers", action="store_true", help="Search for papers for unsupported connections"
     )
     p_run.set_defaults(func=cmd_run)
 

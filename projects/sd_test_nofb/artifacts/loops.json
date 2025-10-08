@@ -1,5 +1,8 @@
 {
   "balancing": [],
   "reinforcing": [],
-  "notes": []
+  "undetermined": [],
+  "notes": [
+    "No connection data supplied; loop detection skipped."
+  ]
 }

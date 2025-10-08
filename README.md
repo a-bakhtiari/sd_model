@@ -1,35 +1,66 @@
-SD Model: Modular Architecture (WIP)
+SD Model: Citation-Driven Research Companion for System Dynamics
 
-This repository analyzes and improves system dynamics (Vensim MDL) models for open-source communities through a literature- and theory-driven pipeline.
 
-Status: baseline committed and modular scaffolding in progress.
+This repository analyzes and improves system dynamics (Vensim MDL) models for open-source communities through a **literature-driven, citation-verified pipeline** with integrated paper discovery.
+
+**Status:** ✅ Core system complete with citation verification, gap analysis, and paper discovery!
+
+## 🌟 New Features
+- **Citation Verification** - Verify all theory citations via Semantic Scholar API
+- **Gap Analysis** - Identify connections lacking literature support
+- **Paper Discovery** - Find relevant papers to support unsupported connections
+- **Interactive UI** - Streamlit interface with Citation Verification and Paper Discovery tabs
 
 High-level Workflow
 - Parse MDL → connections (signed graph)
 - Find and interpret feedback loops (LLM)
-- Validate against theories/literature
+- **Validate against theories/literature with citation verification** ✨
+- **Discover papers for unsupported connections** ✨
 - Generate improvements and MDL patch guidance
-- Optionally simulate scenarios and feed results back
+- Iterate: add citations, refine model, repeat
 
 See `docs/architecture.md` for the new layout and planned modules.
 
-Quick start
-- Install deps: `pip install -r requirements.txt`
-- Copy `.env.example` to `.env` and set `DEEPSEEK_API_KEY`
-- Run the whole pipeline: `PYTHONPATH=src python3 main.py`
-- Or run step-by-step via CLI:
-  - `PYTHONPATH=src python -m sd_model.cli parse untitled.mdl`
-  - `PYTHONPATH=src python -m sd_model.cli loops`
-  - `PYTHONPATH=src python -m sd_model.cli interpret`
-  - `PYTHONPATH=src python -m sd_model.cli validate-theory`
-  - `PYTHONPATH=src python -m sd_model.cli improve`
+## Quick Start
 
-Web UI (one command)
-- Streamlit UI with everything wired up:
-  - `streamlit run streamlit_app.py`
-  - If using a venv: `.venv/bin/streamlit run streamlit_app.py`
-  - Then open the browser (Streamlit prints the URL). Select a project, optionally toggle “Apply patch”, click “Run Pipeline,” and view artifacts inline.
+### 1. Install and Configure
+```bash
+# Install dependencies
+pip install -r requirements.txt
 
-Alternative launchers
-- Streamlit via CLI: `python -m src.sd_model.cli ui --framework streamlit`
+# Configure API keys
+cp .env.example .env
+# Edit .env and set:
+#   - DEEPSEEK_API_KEY (for LLM analysis)
+#   - SEMANTIC_SCHOLAR_API_KEY (for citation verification)
+```
+
+### 2. Run Pipeline with Citation Verification
+```bash
+# Run full pipeline with citation verification
+python3 -m src.sd_model.cli run --project oss_model --verify-citations
+
+# Run with paper discovery too
+python3 -m src.sd_model.cli run --project oss_model --verify-citations --discover-papers
+```
+
+### 3. Launch Interactive UI
+```bash
+# Launch Streamlit UI
+python3 -m src.sd_model.cli ui --framework streamlit
+
+# Then open browser and explore:
+#   - Dashboard: Overview of model
+#   - Stage 2: Feedback loops with theory alignment
+#   - Citation Verification: Verify citations, view coverage
+#   - Paper Discovery: Find papers for gaps
+```
+
+## 📚 Documentation
+
+- **[CITATION_SYSTEM_SUMMARY.md](CITATION_SYSTEM_SUMMARY.md)** - Complete guide to the citation verification system
+- **[IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md)** - Detailed implementation status
+- **[docs/architecture.md](docs/architecture.md)** - System architecture
+
+## Alternative Launchers
 - Flask API UI: `python -m src.sd_model.cli ui` then visit http://127.0.0.1:5000

@@ -11,16 +11,16 @@
   "contradicted": [],
   "missing": [
     {
-      "from_var": "Potential Adopters",
+      "from_var": "Market Saturation",
       "to_var": "New Adopters",
-      "relationship": "positive",
+      "relationship": "negative",
       "theory": "Test Theory",
       "citation_key": "ajzen1991"
     },
     {
-      "from_var": "Market Saturation",
+      "from_var": "Potential Adopters",
       "to_var": "New Adopters",
-      "relationship": "negative",
+      "relationship": "positive",
       "theory": "Test Theory",
       "citation_key": "ajzen1991"
     }

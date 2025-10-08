@@ -1,0 +1,31 @@
+theory_name: "Knowledge Management in OSS"
+citation_key: "haefliger2008"
+expected_connections:
+  - from_var: "Project's Implicit Knowledge"
+    to_var: "Implicit Knowledge Transfer (Mentorship)"
+    relationship: "positive"
+    citations: ["haefliger2008"]
+  - from_var: "Knowledge Conversion Rate"
+    to_var: "Projects's Explicit Knowledge"
+    relationship: "positive"
+    citations: ["haefliger2008"]
+  - from_var: "Knowledge Conversion Rate"
+    to_var: "Project's Implicit Knowledge"
+    relationship: "negative"
+    citations: ["haefliger2008"]
+  - from_var: "Projects's Explicit Knowledge"
+    to_var: "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"
+    relationship: "positive"
+    citations: ["haefliger2008"]
+  - from_var: "Searchable Knowledge Base"
+    to_var: "Projects's Explicit Knowledge"
+    relationship: "positive"
+    citations: ["haefliger2008"]
+  - from_var: "Developer's Turnover"
+    to_var: "Depreciation/Loss of Knowledge"
+    relationship: "positive"
+    citations: ["haefliger2008"]
+  - from_var: "Depreciation/Loss of Knowledge"
+    to_var: "Project's Implicit Knowledge"
+    relationship: "negative"
+    citations: ["haefliger2008"]

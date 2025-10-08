@@ -1,14 +1,11 @@
 from __future__ import annotations
 
 import json
-import re
-import csv
-from dataclasses import dataclass
+import os
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict
 
 from ..llm.client import LLMClient
-from .parse import parse_mdl  # fallback heuristics
 
 
 VARIABLE_PROMPT = """
@@ -53,36 +50,132 @@ MODEL TEXT START\n```mdl\n{mdl_text}\n```\nMODEL TEXT END
 
 
 CONNECTION_PROMPT = """
-You are a system dynamics model parser. Analyze the provided Vensim .mdl text and return a JSON object describing causal connections.
+Extract all causal connections from this Vensim model file with their polarity.
 
-Follow these instructions:
-1. Parse the equation section (before the \\---/// Sketch information block).
-2. Equations appear as `Target Variable = A FUNCTION OF(Source1, -Source2, ...)`.
-3. For each source variable:
-   - If prefixed with `-`, polarity is `NEGATIVE` (remove the minus when recording the name).
-   - If prefixed with `+`, polarity is `POSITIVE`.
-   - Otherwise polarity is `UNDECLARED`.
-4. Use the sketch information (lines starting with `10,`) to map names to IDs.
-5. Output JSON ONLY with this schema:
+FILE STRUCTURE:
+The file has two parts separated by "\\---/// Sketch information":
+- EQUATIONS (before separator): Define mathematical relationships
+- SKETCH (after separator): Define visual diagram with polarity markers
+
+TASK:
+1. Extract all connections from equations
+2. Determine polarity for each connection using sketch data
+3. Output JSON with connection list
+
+POLARITY RULES (check in this order):
+1. NEGATIVE: Source variable has "-" prefix in equation (e.g., "A FUNCTION OF(-X, Y)" means X→target is NEGATIVE)
+2. POSITIVE: Sketch arrow has EXACTLY value 43 in the 7th field (field[6]=43)
+3. UNDECLARED: Everything else (including field[6]=0 or any value other than 43)
+
+IMPORTANT: Only mark as POSITIVE if you find field[6]=43 in a sketch arrow. Do NOT assume positive polarity from equations or valve presence alone.
+
+SKETCH FORMAT:
+Lines starting with "10," define variables:
+  10,<id>,<name>,...
+  Example: 10,93,Implicit Knowledge Transfer,...
+
+Lines starting with "1," define arrows:
+  1,arrow_id,from_id,to_id,field4,field5,field6,field7,...
+  Example: 1,97,93,80,1,0,43,0,...
+
+  This arrow goes from variable 93 to variable 80.
+  The 7th field is 43, so this connection is POSITIVE.
+  Split by commas and count: field1=arrow_id, field2=from_id, field3=to_id, field4=1, field5=0, field6=43, field7=0
+
+Lines starting with "11," define valves (flow control symbols):
+  11,<valve_id>,...
+
+VALVE HANDLING:
+Valves act as intermediaries for flow variables. Two cases:
+
+Case A: Arrow from variable to valve
+  1. Find all arrows FROM that valve (arrows where from_id = valve_id)
+  2. These arrows point to stocks
+  3. Look at each stock's equation to find which flow variable appears in it
+  4. The connection is: original_source_variable → that_flow_variable
+  5. Check the original arrow to the valve: if field[6]=43 then POSITIVE, else UNDECLARED (or NEGATIVE if equation has "-")
+
+Case B: Arrow from valve to valve
+  1. First valve represents a flow variable
+  2. Second valve represents another flow variable
+  3. Find which flow variables these valves control (by looking at stock equations)
+  4. The connection is: first_flow → second_flow
+  5. Check the arrow between valves: if field[6]=43 then POSITIVE, else UNDECLARED (or NEGATIVE if equation has "-")
+
+EXAMPLE 1 - Variable to valve (generic scenario):
+Equation: "Worker Productivity = A FUNCTION OF(Training Quality,...)"
+Sketch arrow: 1,201,15,42,1,0,43,0,...
+Sketch valve: 11,42,...
+Sketch variable: 10,15,Training Quality,...
+Sketch variable: 10,18,Worker Productivity,...
+
+Step 1: Equation shows connection exists (15 → something)
+Step 2: Sketch arrow 1,201,15,42 shows arrow from variable 15 to 42 with field[6]=43 (POSITIVE)
+Step 3: ID 42 is a valve (found in 11,42,... line)
+Step 4: Find arrows FROM valve 42, they point to stocks
+Step 5: Check those stock equations to find which flow appears → find "Worker Productivity" (ID 18)
+Step 6: Output connection: 15 → 18 with POSITIVE polarity
+Reason: "sketch arrow 15→42 (valve) has field[6]=43, valve controls flow 18"
+
+EXAMPLE 2 - Valve to valve (generic scenario):
+Equation: "Onboarding Rate = A FUNCTION OF(Hiring Rate)"
+Sketch arrow: 1,305,33,37,1,0,43,0,...
+Sketch valve: 11,33,... (represents Hiring Rate, ID 52)
+Sketch valve: 11,37,... (represents Onboarding Rate, ID 58)
+
+Step 1: Equation shows connection (52 → 58)
+Step 2: Sketch arrow 1,305,33,37 shows arrow from valve 33 to valve 37 with field[6]=43 (POSITIVE)
+Step 3: Both 33 and 37 are valves (found in 11,33,... and 11,37,... lines)
+Step 4: Check stock equations to identify: valve 33 represents flow 52, valve 37 represents flow 58
+Step 5: Output connection: 52 → 58 with POSITIVE polarity
+Reason: "sketch arrow from valve 33 to valve 37 has field[6]=43, representing flow 52→58"
+
+EXAMPLE 3 - Valve with NO positive marker (generic scenario):
+Equation: "Inventory Level = A FUNCTION OF(Production Rate,...)"
+Sketch arrow: 1,410,25,200,4,0,0,22,...
+Sketch valve: 11,25,...
+Sketch variable: 10,12,Production Rate,...
+
+Analysis: Arrow from valve 25 to stock 200 has field[6]=0 (NOT 43)
+Even though valve 25 represents flow "Production Rate", the connection 12→200 is UNDECLARED
+Do NOT assume positive polarity just because a valve exists - must see field[6]=43
+
+OUTPUT FORMAT (JSON only, no markdown):
 {
   "connections": [
-    {"from": <source_id>, "to": <target_id>, "polarity": "POSITIVE"|"NEGATIVE"|"UNDECLARED"}
+    {"from": <id>, "to": <id>, "polarity": "POSITIVE"|"NEGATIVE"|"UNDECLARED"}
   ]
 }
-6. Ignore sources you cannot map to an ID (e.g., constants).
 
-MODEL TEXT START\n```mdl\n{mdl_text}\n```\nMODEL TEXT END
+MODEL FILE:
+{mdl_text}
 """
 
 
-def _call_llm_json(client: LLMClient, prompt: str, fallback) -> Dict:
-    if client.enabled:
-        response = client.complete(prompt, temperature=0.0)
-        try:
-            return json.loads(response)
-        except Exception:
-            pass  # fall back to heuristic implementation
-    return fallback()
+def _call_llm_json(client: LLMClient, prompt: str) -> Dict:
+    if not client.enabled:
+        raise RuntimeError(f"LLM client is NOT enabled! Check your .env file.")
+
+    response = client.complete(prompt, temperature=0.0)
+
+    # Strip markdown code blocks if present
+    cleaned = response.strip()
+    if cleaned.startswith("```json"):
+        cleaned = cleaned[7:]  # Remove ```json
+    elif cleaned.startswith("```"):
+        cleaned = cleaned[3:]  # Remove ```
+    if cleaned.endswith("```"):
+        cleaned = cleaned[:-3]  # Remove trailing ```
+    cleaned = cleaned.strip()
+
+    try:
+        result = json.loads(cleaned)
+        print(f"JSON parsed successfully! Found {len(result.get('connections', []))} connections")
+        return result
+    except Exception as e:
+        print(f"JSON parse error: {e}")
+        print(f"Cleaned response:\n{cleaned[:500]}\n")
+        raise RuntimeError(f"LLM returned invalid JSON: {e}")
 
 
 def _load_mdl_text(mdl_path: Path) -> str:
@@ -113,113 +206,10 @@ def _sketch_lines(mdl_text: str) -> List[List[str]]:
     return parsed
 
 
-def _fallback_variable_types(mdl_path: Path) -> Dict:
-    mdl_text = _load_mdl_text(mdl_path)
-    sketch = _sketch_lines(mdl_text)
-    flows = set()
-    name_by_id: Dict[int, str] = {}
-    type_by_id: Dict[int, str] = {}
-
-    for fields in sketch:
-        if not fields:
-            continue
-        if fields[0] == "10" and len(fields) >= 8:
-            try:
-                var_id = int(fields[1])
-            except ValueError:
-                continue
-            name = fields[2].strip()
-            if name.startswith('"') and name.endswith('"'):
-                name = name[1:-1]
-            name_by_id[var_id] = name
-            shape = fields[7].strip()
-            if shape == "40":
-                type_by_id[var_id] = "Flow"
-
-    valve_ids = set()
-    for fields in sketch:
-        if fields and fields[0] == "11" and len(fields) >= 2:
-            try:
-                valve_ids.add(int(fields[1]))
-            except ValueError:
-                continue
-
-    stock_ids = set()
-    for fields in sketch:
-        if fields and fields[0] == "1" and len(fields) >= 4:
-            try:
-                from_id = int(fields[2])
-                to_id = int(fields[3])
-            except ValueError:
-                continue
-            if from_id in valve_ids:
-                stock_ids.add(to_id)
-
-    variables = []
-    for var_id, name in name_by_id.items():
-        if var_id in type_by_id:
-            var_type = type_by_id[var_id]
-        elif var_id in stock_ids:
-            var_type = "Stock"
-        else:
-            var_type = "Auxiliary"
-        variables.append({"id": var_id, "name": name, "type": var_type})
-
-    variables.sort(key=lambda v: v["id"])
-    return {"variables": variables}
-
-
-def _fallback_equations(mdl_path: Path) -> Dict[str, str]:
-    mdl_text = _load_mdl_text(mdl_path)
-    eq_pattern = re.compile(r"^\s*([^=\n]+?)\s*=\s*(.+?)\s*~", re.MULTILINE | re.DOTALL)
-    equations: Dict[str, str] = {}
-    for match in eq_pattern.finditer(mdl_text.split("\\\\---///")[0]):
-        var = match.group(1).strip()
-        eq = match.group(2).replace("\\\n", " ")
-        eq = " ".join(eq.split())
-        equations[var] = eq
-    return equations
-
-
-def _fallback_connections(mdl_path: Path, variables: Dict[int, str]) -> Dict:
-    equations = _fallback_equations(mdl_path)
-    name_to_id = {name: vid for vid, name in variables.items()}
-    connections: List[Dict[str, object]] = []
-    func_pattern = re.compile(r"A FUNCTION OF\((.*)\)")
-    for target, expr in equations.items():
-        match = func_pattern.search(expr)
-        if not match:
-            continue
-        sources = [s.strip() for s in match.group(1).split(",") if s.strip()]
-        target_id = name_to_id.get(target.strip('"'))
-        if target_id is None:
-            continue
-        for src in sources:
-            polarity = "UNDECLARED"
-            if src.startswith("-"):
-                polarity = "NEGATIVE"
-                src = src[1:]
-            elif src.startswith("+"):
-                polarity = "POSITIVE"
-                src = src[1:]
-            src = src.strip()
-            if src.startswith('"') and src.endswith('"'):
-                src = src[1:-1]
-            from_id = name_to_id.get(src)
-            if from_id is None:
-                continue
-            connections.append({"from": from_id, "to": target_id, "polarity": polarity})
-    return {"connections": connections}
-
-
 def infer_variable_types(mdl_path: Path, client: LLMClient) -> Dict:
     mdl_text = _load_mdl_text(mdl_path)
-
-    def fallback():
-        return _fallback_variable_types(mdl_path)
-
     prompt = VARIABLE_PROMPT.replace("{mdl_text}", mdl_text)
-    result = _call_llm_json(client, prompt, fallback)
+    result = _call_llm_json(client, prompt)
     # sanitize result to expected schema
     variables = result.get("variables", [])
     cleaned = []
@@ -235,7 +225,7 @@ def infer_variable_types(mdl_path: Path, client: LLMClient) -> Dict:
             continue
     cleaned.sort(key=lambda v: v["id"])
     if not cleaned:
-        return fallback()
+        raise RuntimeError("LLM returned no valid variables - check the model output")
     return {"variables": cleaned}
 
 
@@ -243,11 +233,8 @@ def infer_connections(mdl_path: Path, variables_data: Dict, client: LLMClient) -
     mdl_text = _load_mdl_text(mdl_path)
     id_to_name = {int(v["id"]): v["name"] for v in variables_data.get("variables", [])}
 
-    def fallback():
-        return _fallback_connections(mdl_path, id_to_name)
-
     prompt = CONNECTION_PROMPT.replace("{mdl_text}", mdl_text)
-    result = _call_llm_json(client, prompt, fallback)
+    result = _call_llm_json(client, prompt)
     connections = result.get("connections", [])
     cleaned = []
     for item in connections:
@@ -263,5 +250,5 @@ def infer_connections(mdl_path: Path, variables_data: Dict, client: LLMClient) -
         except Exception:
             continue
     if not cleaned:
-        return fallback()
+        raise RuntimeError("LLM returned no valid connections - check the model output")
     return {"connections": cleaned}

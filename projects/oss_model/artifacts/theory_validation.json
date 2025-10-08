@@ -1,352 +1,441 @@
 {
   "summary": {
-    "theory_count": 0,
-    "model_edge_count": 56,
-    "confirmed_count": 0,
-    "contradicted_count": 0,
-    "missing_count": 0,
-    "novel_count": 56
+    "theory_count": 4,
+    "model_edge_count": 57,
+    "confirmed_count": 18,
+    "contradicted_count": 2,
+    "missing_count": 4,
+    "novel_count": 41
   },
-  "confirmed": [],
-  "contradicted": [],
-  "missing": [],
-  "novel": [
+  "confirmed": [
     {
-      "from_var": "Adoption Rate",
-      "to_var": "User Base",
-      "relationship": "unknown",
-      "citation_key": null
+      "from_var": "Implicit Knowledge Transfer (Mentorship)",
+      "to_var": "Skill up",
+      "relationship": "positive",
+      "theory": "Contributor Progression and Mentorship",
+      "citation_key": "ye2005"
     },
     {
-      "from_var": "Closed Issues",
-      "to_var": "Searchable Knowledge Base",
-      "relationship": "unknown",
-      "citation_key": null
+      "from_var": "Experienced Contributors",
+      "to_var": "PR Feedback",
+      "relationship": "positive",
+      "theory": "Contributor Progression and Mentorship",
+      "citation_key": "ye2005"
     },
     {
-      "from_var": "Community Health",
-      "to_var": "Project Reputation",
-      "relationship": "unknown",
-      "citation_key": null
-    },
-    {
-      "from_var": "Community engagement",
-      "to_var": "Searchable Knowledge Base",
-      "relationship": "unknown",
-      "citation_key": null
+      "from_var": "PR Feedback",
+      "to_var": "New Contributors",
+      "relationship": "positive",
+      "theory": "Contributor Progression and Mentorship",
+      "citation_key": "ye2005"
     },
     {
       "from_var": "Core Developer",
       "to_var": "Implicit Knowledge Transfer (Mentorship)",
-      "relationship": "unknown",
-      "citation_key": null
+      "relationship": "positive",
+      "theory": "Contributor Progression and Mentorship",
+      "citation_key": "ye2005"
+    },
+    {
+      "from_var": "Skill up",
+      "to_var": "Experienced Contributors",
+      "relationship": "positive",
+      "theory": "Contributor Progression and Mentorship",
+      "citation_key": "ye2005"
+    },
+    {
+      "from_var": "Merge/Commit",
+      "to_var": "Pull Request Under review",
+      "relationship": "negative",
+      "theory": "Pull Request and Feedback Dynamics",
+      "citation_key": "gousios2015"
+    },
+    {
+      "from_var": "PR Feedback",
+      "to_var": "Pull Request Under review",
+      "relationship": "positive",
+      "theory": "Pull Request and Feedback Dynamics",
+      "citation_key": "gousios2015"
+    },
+    {
+      "from_var": "New Pr rate",
+      "to_var": "New Pull request",
+      "relationship": "positive",
+      "theory": "Pull Request and Feedback Dynamics",
+      "citation_key": "gousios2015"
     },
     {
       "from_var": "Core Developer",
       "to_var": "PR Review Delay",
-      "relationship": "unknown",
-      "citation_key": null
+      "relationship": "positive",
+      "theory": "Pull Request and Feedback Dynamics",
+      "citation_key": "gousios2015"
     },
     {
-      "from_var": "Culture Erosion",
-      "to_var": "Community Health",
-      "relationship": "negative",
-      "citation_key": null
+      "from_var": "Knowledge Conversion Rate",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "positive",
+      "theory": "Knowledge Management in OSS",
+      "citation_key": "haefliger2008"
+    },
+    {
+      "from_var": "Project's Implicit Knowledge",
+      "to_var": "Implicit Knowledge Transfer (Mentorship)",
+      "relationship": "positive",
+      "theory": "Knowledge Management in OSS",
+      "citation_key": "haefliger2008"
+    },
+    {
+      "from_var": "Searchable Knowledge Base",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "positive",
+      "theory": "Knowledge Management in OSS",
+      "citation_key": "haefliger2008"
     },
     {
       "from_var": "Depreciation/Loss of Knowledge",
       "to_var": "Project's Implicit Knowledge",
       "relationship": "negative",
+      "theory": "Knowledge Management in OSS",
+      "citation_key": "haefliger2008"
+    },
+    {
+      "from_var": "Projects's Explicit Knowledge",
+      "to_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "relationship": "positive",
+      "theory": "Knowledge Management in OSS",
+      "citation_key": "haefliger2008"
+    },
+    {
+      "from_var": "Developer's Turnover",
+      "to_var": "Depreciation/Loss of Knowledge",
+      "relationship": "positive",
+      "theory": "Knowledge Management in OSS",
+      "citation_key": "haefliger2008"
+    },
+    {
+      "from_var": "Software Quality and Features",
+      "to_var": "Project Reputation",
+      "relationship": "positive",
+      "theory": "OSS Reputation Dynamics",
+      "citation_key": "vonkrogh2003"
+    },
+    {
+      "from_var": "User Base",
+      "to_var": "Project Reputation",
+      "relationship": "positive",
+      "theory": "OSS Reputation Dynamics",
+      "citation_key": "vonkrogh2003"
+    },
+    {
+      "from_var": "Community Health",
+      "to_var": "Project Reputation",
+      "relationship": "positive",
+      "theory": "OSS Reputation Dynamics",
+      "citation_key": "vonkrogh2003"
+    }
+  ],
+  "contradicted": [
+    {
+      "from_var": "Depreciation/Loss of Knowledge",
+      "to_var": "Project's Implicit Knowledge",
+      "model_relationships": [
+        "positive"
+      ],
+      "theory_relationships": [
+        "negative"
+      ],
+      "citation_key": null
+    },
+    {
+      "from_var": "Merge/Commit",
+      "to_var": "Pull Request Under review",
+      "model_relationships": [
+        "positive"
+      ],
+      "theory_relationships": [
+        "negative"
+      ],
+      "citation_key": null
+    }
+  ],
+  "missing": [
+    {
+      "from_var": "Review Rate",
+      "to_var": "New Pull request",
+      "relationship": "negative",
+      "theory": "Pull Request and Feedback Dynamics",
+      "citation_key": "gousios2015"
+    },
+    {
+      "from_var": "Merge/Commit",
+      "to_var": "Source Code",
+      "relationship": "positive",
+      "theory": "Pull Request and Feedback Dynamics",
+      "citation_key": "gousios2015"
+    },
+    {
+      "from_var": "Knowledge Conversion Rate",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "negative",
+      "theory": "Knowledge Management in OSS",
+      "citation_key": "haefliger2008"
+    },
+    {
+      "from_var": "Project Reputation",
+      "to_var": "User Base",
+      "relationship": "positive",
+      "theory": "OSS Reputation Dynamics",
+      "citation_key": "vonkrogh2003"
+    }
+  ],
+  "novel": [
+    {
+      "from_var": "Adoption Rate",
+      "to_var": "User Base",
+      "relationship": "positive",
+      "citation_key": null
+    },
+    {
+      "from_var": "Closed Issues",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "positive",
+      "citation_key": null
+    },
+    {
+      "from_var": "Community engagement",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "positive",
+      "citation_key": null
+    },
+    {
+      "from_var": "Culture Erosion",
+      "to_var": "Community Health",
+      "relationship": "positive",
+      "citation_key": null
+    },
+    {
+      "from_var": "Depreciation/Loss of Knowledge",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Developer's Turnover",
       "to_var": "Core Developer",
-      "relationship": "negative",
-      "citation_key": null
-    },
-    {
-      "from_var": "Developer's Turnover",
-      "to_var": "Depreciation/Loss of Knowledge",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Discussions",
       "to_var": "Searchable Knowledge Base",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Experienced Contributors",
-      "to_var": "PR Feedback",
-      "relationship": "unknown",
+      "to_var": "Promotion Rate",
+      "relationship": "positive",
       "citation_key": null
     },
     {
-      "from_var": "Explicit to Implicit Conversion",
-      "to_var": "Project's Implicit Knowledge",
-      "relationship": "unknown",
+      "from_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "to_var": "Joining Rate",
+      "relationship": "positive",
+      "citation_key": null
+    },
+    {
+      "from_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "to_var": "Skill up",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Explicit to Implicit Conversion",
       "to_var": "Projects's Explicit Knowledge",
-      "relationship": "negative",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Feedback",
       "to_var": "Open Issues",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Implicit Knowledge Transfer (Mentorship)",
       "to_var": "Promotion Rate",
-      "relationship": "unknown",
-      "citation_key": null
-    },
-    {
-      "from_var": "Implicit Knowledge Transfer (Mentorship)",
-      "to_var": "Skill up",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Issue Creation Rate",
       "to_var": "Open Issues",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Issue Resolution Rate",
       "to_var": "Closed Issues",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Issue Resolution Rate",
       "to_var": "Open Issues",
-      "relationship": "negative",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Joining Rate",
       "to_var": "New Contributors",
-      "relationship": "unknown",
-      "citation_key": null
-    },
-    {
-      "from_var": "Knowledge Conversion Rate",
-      "to_var": "Project's Implicit Knowledge",
-      "relationship": "negative",
-      "citation_key": null
-    },
-    {
-      "from_var": "Knowledge Conversion Rate",
-      "to_var": "Projects's Explicit Knowledge",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Maintainer time",
       "to_var": "Issue Resolution Rate",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Merge/Commit",
       "to_var": "Pull Request Under review",
-      "relationship": "negative",
-      "citation_key": null
-    },
-    {
-      "from_var": "Merge/Commit",
-      "to_var": "Source Code",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "New Contributors",
       "to_var": "PR Feedback",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
-      "from_var": "New Pr rate",
-      "to_var": "New Pull request",
-      "relationship": "unknown",
+      "from_var": "New Contributors",
+      "to_var": "Skill up",
+      "relationship": "positive",
+      "citation_key": null
+    },
+    {
+      "from_var": "New Pull request",
+      "to_var": "Pull Request Under review",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Open Issues",
       "to_var": "Feedback",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Open Issues",
       "to_var": "New Pr rate",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "PR Feedback",
       "to_var": "Core Developer",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "PR Feedback",
       "to_var": "Experienced Contributors",
-      "relationship": "unknown",
-      "citation_key": null
-    },
-    {
-      "from_var": "PR Feedback",
-      "to_var": "New Contributors",
-      "relationship": "unknown",
-      "citation_key": null
-    },
-    {
-      "from_var": "PR Feedback",
-      "to_var": "Pull Request Under review",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "PR Feedback",
       "to_var": "Searchable Knowledge Base",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "PR Review Delay",
       "to_var": "PR Feedback",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Project Reputation",
       "to_var": "Joining Rate",
-      "relationship": "unknown",
-      "citation_key": null
-    },
-    {
-      "from_var": "Project Reputation",
-      "to_var": "User Base",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Project's Implicit Knowledge",
-      "to_var": "Implicit Knowledge Transfer (Mentorship)",
-      "relationship": "unknown",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Projects's Explicit Knowledge",
-      "to_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
-      "relationship": "unknown",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Promotion Rate",
       "to_var": "Core Developer",
-      "relationship": "unknown",
-      "citation_key": null
-    },
-    {
-      "from_var": "Promotion Rate",
-      "to_var": "Experienced Contributors",
-      "relationship": "negative",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Pull Request Under review",
       "to_var": "PR Feedback",
-      "relationship": "unknown",
+      "relationship": "positive",
+      "citation_key": null
+    },
+    {
+      "from_var": "Pull Request Under review",
+      "to_var": "Source Code",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Rejection Rate",
       "to_var": "Pull Request Under review",
-      "relationship": "negative",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Reputation Building",
       "to_var": "Project Reputation",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Reputation Decline",
       "to_var": "Project Reputation",
-      "relationship": "negative",
-      "citation_key": null
-    },
-    {
-      "from_var": "Review Rate",
-      "to_var": "New Pull request",
-      "relationship": "negative",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Review Rate",
       "to_var": "Pull Request Under review",
-      "relationship": "unknown",
-      "citation_key": null
-    },
-    {
-      "from_var": "Searchable Knowledge Base",
-      "to_var": "Projects's Explicit Knowledge",
-      "relationship": "unknown",
-      "citation_key": null
-    },
-    {
-      "from_var": "Skill up",
-      "to_var": "Experienced Contributors",
-      "relationship": "unknown",
-      "citation_key": null
-    },
-    {
-      "from_var": "Skill up",
-      "to_var": "New Contributors",
-      "relationship": "negative",
-      "citation_key": null
-    },
-    {
-      "from_var": "Software Quality and Features",
-      "to_var": "Project Reputation",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Source Code",
       "to_var": "Issue Creation Rate",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "Trust Building",
       "to_var": "Community Health",
-      "relationship": "unknown",
-      "citation_key": null
-    },
-    {
-      "from_var": "User Base",
-      "to_var": "Project Reputation",
-      "relationship": "unknown",
+      "relationship": "positive",
       "citation_key": null
     },
     {
       "from_var": "User Churn Rate",
       "to_var": "User Base",
-      "relationship": "negative",
+      "relationship": "positive",
       "citation_key": null
     }
   ],
-  "bibliography_loaded": false
+  "bibliography_loaded": true
 }

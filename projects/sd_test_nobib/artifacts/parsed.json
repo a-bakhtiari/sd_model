@@ -1,4 +1,9 @@
 {
-  "variables": [],
+  "variables": [
+    "Adoption Rate",
+    "User Churn Rate",
+    "Skill up",
+    "Joining Rate"
+  ],
   "equations": {}
 }

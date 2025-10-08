@@ -1,5 +1,7 @@
 # OS
 .DS_Store
+*.swp
+*~
 
 # Python
 __pycache__/
@@ -11,12 +13,14 @@ coverage.xml
 htmlcov/
 .mypy_cache/
 .ruff_cache/
+*.pyc
 
 # Environments
 .venv/
 venv/
 .env
 .env.*
+!.env.example
 
 # Jupyter
 .ipynb_checkpoints/
@@ -35,4 +39,9 @@ dist/
 # IDE
 .vscode/
 .idea/
+*.code-workspace
+
+# Project-specific artifacts (optional - uncomment if you don't want to track)
+# projects/*/artifacts/*.json
+# projects/*/db/*.sqlite
 
