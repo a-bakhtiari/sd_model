@@ -2,8 +2,8 @@
   "improvements": [
     {
       "operation": "add_connection",
-      "from": "Experienced Contributors",
-      "to": "PR Feedback",
+      "from": "Skill up",
+      "to": "Experienced Contributors",
       "relationship": "positive",
       "comment": "From theory: Contributor Progression and Mentorship (ye2005)"
     },
@@ -13,6 +13,27 @@
       "to": "Source Code",
       "relationship": "positive",
       "comment": "From theory: Pull Request and Feedback Dynamics (gousios2015)"
+    },
+    {
+      "operation": "add_connection",
+      "from": "Knowledge Conversion Rate",
+      "to": "Project's Implicit Knowledge",
+      "relationship": "negative",
+      "comment": "From theory: Knowledge Management in OSS (haefliger2008)"
+    },
+    {
+      "operation": "add_connection",
+      "from": "Depreciation/Loss of Knowledge",
+      "to": "Project's Implicit Knowledge",
+      "relationship": "negative",
+      "comment": "From theory: Knowledge Management in OSS (haefliger2008)"
+    },
+    {
+      "operation": "add_connection",
+      "from": "Knowledge Conversion Rate",
+      "to": "Projects's Explicit Knowledge",
+      "relationship": "positive",
+      "comment": "From theory: Knowledge Management in OSS (haefliger2008)"
     }
   ]
 }

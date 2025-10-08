@@ -162,7 +162,7 @@ def generate_loops_csv(
             loop["loop_type"] = loop_type
             all_loops.append(loop)
 
-    descriptions = {d["loop_id"]: d["description"] for d in descriptions_data.get("descriptions", [])}
+    descriptions = {d["id"]: d["description"] for d in descriptions_data.get("descriptions", [])}
     citations = {c["loop_id"]: c for c in citations_data.get("citations", [])}
 
     # CSV columns

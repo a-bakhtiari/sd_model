@@ -1,0 +1,556 @@
+{
+  "citations": [
+    {
+      "loop_id": "R01",
+      "papers": [
+        {
+          "title": "Community, joining, and specialization in open source software innovation: A case study",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Describes how community reputation and recognition shape joining and specialization, reinforcing a cycle where recognized project quality draws in contributors who further improve the software.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Community, Joining, and Specialization in Open Source Software Innovation: A Case Study",
+            "authors": [
+              "G. Krogh",
+              "Sebastian Spaeth",
+              "K. Lakhani"
+            ],
+            "year": 2003,
+            "url": "https://www.semanticscholar.org/paper/b5ad2a6d67b8031668a53b704d7da9c0a8adbdce",
+            "paper_id": "b5ad2a6d67b8031668a53b704d7da9c0a8adbdce",
+            "citation_count": 1095,
+            "abstract": null,
+            "venue": "",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        },
+        {
+          "title": "Understanding sustained participation in open source software projects",
+          "authors": "Fang, Y., Neufeld, D.",
+          "year": "2009",
+          "relevance": "Demonstrates that status and reputation drive sustained participation, supporting the reinforcing loop between project reputation and continued contributor engagement.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Understanding Sustained Participation in Open Source Software Projects",
+            "authors": [
+              "Yulin Fang",
+              "D. Neufeld"
+            ],
+            "year": 2009,
+            "url": "https://www.semanticscholar.org/paper/9e3beb8d9aa67d2cc705dff13577443ebb7f77d8",
+            "paper_id": "9e3beb8d9aa67d2cc705dff13577443ebb7f77d8",
+            "citation_count": 387,
+            "abstract": null,
+            "venue": "Journal of Management Information Systems",
+            "fields_of_study": [
+              "Sociology",
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "OSS research consistently shows reputation both attracts contributors and influences contribution acceptance, reinforcing project quality and further enhancing reputation."
+    },
+    {
+      "loop_id": "R02",
+      "papers": [
+        {
+          "title": "Social coding in GitHub: Transparency and collaboration in an open software repository",
+          "authors": "Dabbish, L., Stuart, C., et al.",
+          "year": "2012",
+          "relevance": "Shows how visibility and social signals on GitHub drive attention and engagement, supporting the idea that a larger user base increases visibility/adoption and further strengthens reputation.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+            "authors": [
+              "Laura A. Dabbish",
+              "Colleen Stuart",
+              "Jason Tsay",
+              "J. Herbsleb"
+            ],
+            "year": 2012,
+            "url": "https://www.semanticscholar.org/paper/aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "paper_id": "aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "citation_count": 1071,
+            "abstract": null,
+            "venue": "Conference on Computer Supported Cooperative Work",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        },
+        {
+          "title": "Understanding the factors that impact the popularity of GitHub repositories",
+          "authors": "Borges, A., Hora, A., et al.",
+          "year": "2016",
+          "relevance": "Empirically examines drivers of repository popularity, showing how visibility and adoption dynamics contribute to reputation growth.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Understanding the Factors That Impact the Popularity of GitHub Repositories",
+            "authors": [
+              "H. Borges",
+              "Andr\u00e9 C. Hora",
+              "M. T. Valente"
+            ],
+            "year": 2016,
+            "url": "https://www.semanticscholar.org/paper/3ae5917f7c8875b380627053829f638be89aee88",
+            "paper_id": "3ae5917f7c8875b380627053829f638be89aee88",
+            "citation_count": 306,
+            "abstract": "Software popularity is a valuable information to modern open source developers, who constantly want to know if their systems are attracting new users, if new releases are gaining acceptance, or if they are meeting user's expectations. In this paper, we describe a study on the popularity of software systems hosted at GitHub, which is the world's largest collection of open source software. GitHub provides an explicit way for users to manifest their satisfaction with a hosted repository: the stargazers button. In our study, we reveal the main factors that impact the number of stars of GitHub projects, including programming language and application domain. We also study the impact of new features on project popularity. Finally, we identify four main patterns of popularity growth, which are derived after clustering the time series representing the number of stars of 2,279 popular GitHub repositories. We hope our results provide valuable insights to developers and maintainers, which could help them on building and evolving systems in a competitive software market.",
+            "venue": "IEEE International Conference on Software Maintenance and Evolution",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Visibility and social proof effects in OSS platforms create a positive feedback where more users drive more attention and adoption, which in turn amplifies reputation."
+    },
+    {
+      "loop_id": "R03",
+      "papers": [
+        {
+          "title": "A systematic literature review on the barriers faced by newcomers to open source software projects",
+          "authors": "Steinmacher, I., Conte, T., et al.",
+          "year": "2015",
+          "relevance": "Identifies mentorship and onboarding practices as critical to newcomer success, supporting the reinforcing loop where experienced developers mentor newcomers who later become senior contributors.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "A systematic literature review on the barriers faced by newcomers to open source software projects",
+            "authors": [
+              "Igor Steinmacher",
+              "Marco Aur\u00e9lio Graciotto Silva",
+              "M. Gerosa",
+              "D. Redmiles"
+            ],
+            "year": 2015,
+            "url": "https://www.semanticscholar.org/paper/2cc084ac5f98ad2d4c7955b009b787a22f96b385",
+            "paper_id": "2cc084ac5f98ad2d4c7955b009b787a22f96b385",
+            "citation_count": 220,
+            "abstract": null,
+            "venue": "Information and Software Technology",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        },
+        {
+          "title": "Understanding broadcast based peer review on open source software projects",
+          "authors": "Rigby, P. C., Storey, M.-A.",
+          "year": "2011",
+          "relevance": "Shows that peer code review in OSS facilitates learning and knowledge transfer, a key mechanism through which seniors mentor newcomers and build internal capacity.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Understanding broadcast based peer review on open source software projects",
+            "authors": [
+              "Peter C. Rigby",
+              "M. Storey"
+            ],
+            "year": 2011,
+            "url": "https://www.semanticscholar.org/paper/ad65fc79f86f659c1b5b6fc15337c151a6673aa6",
+            "paper_id": "ad65fc79f86f659c1b5b6fc15337c151a6673aa6",
+            "citation_count": 191,
+            "abstract": null,
+            "venue": "International Conference on Software Engineering",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        },
+        {
+          "title": "Community, joining, and specialization in open source software innovation: A case study",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Explains how novices develop specialized expertise through community interactions, consistent with mentoring-driven growth of senior contributor ranks.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Community, Joining, and Specialization in Open Source Software Innovation: A Case Study",
+            "authors": [
+              "G. Krogh",
+              "Sebastian Spaeth",
+              "K. Lakhani"
+            ],
+            "year": 2003,
+            "url": "https://www.semanticscholar.org/paper/b5ad2a6d67b8031668a53b704d7da9c0a8adbdce",
+            "paper_id": "b5ad2a6d67b8031668a53b704d7da9c0a8adbdce",
+            "citation_count": 1095,
+            "abstract": null,
+            "venue": "",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Mentoring, code review, and socialization transitions from periphery to core are well-documented, supporting a reinforcing pipeline of capability building."
+    },
+    {
+      "loop_id": "R04",
+      "papers": [
+        {
+          "title": "Two case studies of open source software development: Apache and Mozilla",
+          "authors": "Mockus, A., Fielding, R. T., et al.",
+          "year": "2002",
+          "relevance": "Shows that increased development activity and feature work correlate with defect reports and issue inflow, supporting a feature-driven workload spiral.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Two case studies of open source software development: Apache and Mozilla",
+            "authors": [
+              "A. Mockus",
+              "R. Fielding",
+              "J. Herbsleb"
+            ],
+            "year": 2002,
+            "url": "https://www.semanticscholar.org/paper/b452c83fcdee0b9f3e02573144919487c1eae4d3",
+            "paper_id": "b452c83fcdee0b9f3e02573144919487c1eae4d3",
+            "citation_count": 1905,
+            "abstract": null,
+            "venue": "TSEM",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        },
+        {
+          "title": "Laws of software evolution: Revisited",
+          "authors": "Lehman, M. M., Ramil, J. F.",
+          "year": "1997",
+          "relevance": "Articulates that evolving software grows in complexity, which drives defect emergence and maintenance workload, aligning with more code leading to more issues.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Laws of Software Evolution Revisited",
+            "authors": [
+              "M. Lehman"
+            ],
+            "year": 1996,
+            "url": "https://www.semanticscholar.org/paper/54545a907a43c798c1193be643395bda3c8548e0",
+            "paper_id": "54545a907a43c798c1193be643395bda3c8548e0",
+            "citation_count": 686,
+            "abstract": null,
+            "venue": "European Workshop on Software Process Technology",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        },
+        {
+          "title": "Predicting faults using the complexity of code changes",
+          "authors": "Hassan, A. E.",
+          "year": "2009",
+          "relevance": "Shows that code churn/complexity predicts defects, supporting the mechanism where more/complex changes increase new issues.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Predicting faults using the complexity of code changes",
+            "authors": [
+              "A. Hassan"
+            ],
+            "year": 2009,
+            "url": "https://www.semanticscholar.org/paper/30ea1d7526f120b1275e045f4318e9fb57cc73de",
+            "paper_id": "30ea1d7526f120b1275e045f4318e9fb57cc73de",
+            "citation_count": 695,
+            "abstract": null,
+            "venue": "2009 IEEE 31st International Conference on Software Engineering",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        },
+        {
+          "title": "Use of relative code churn measures to predict system defect density",
+          "authors": "Nagappan, N., Ball, T.",
+          "year": "2005",
+          "relevance": "Empirically links higher change activity to defects, reinforcing that increased activity and complexity drive issue creation.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Use of relative code churn measures to predict system defect density",
+            "authors": [
+              "Nachiappan Nagappan",
+              "T. Ball"
+            ],
+            "year": 2005,
+            "url": "https://www.semanticscholar.org/paper/b65c215021f062ad66e1c5080d762f589b0dbbf4",
+            "paper_id": "b65c215021f062ad66e1c5080d762f589b0dbbf4",
+            "citation_count": 881,
+            "abstract": null,
+            "venue": "Proceedings. 27th International Conference on Software Engineering, 2005. ICSE 2005.",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Software evolution and defect prediction literature show that increased feature development and complexity raise defect inflow, reinforcing workload."
+    },
+    {
+      "loop_id": "B01",
+      "papers": [
+        {
+          "title": "Who should fix this bug?",
+          "authors": "Anvik, J., Hiew, L., et al.",
+          "year": "2006",
+          "relevance": "Bug triage techniques increase resolution capacity as backlog grows, contributing to a balancing effect on the issue queue.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Who should fix this bug?",
+            "authors": [
+              "J. Anvik",
+              "L. Hiew",
+              "G. Murphy"
+            ],
+            "year": 2006,
+            "url": "https://www.semanticscholar.org/paper/b3b3c562a45d7710d6f62ad8f210ebca9a47d23f",
+            "paper_id": "b3b3c562a45d7710d6f62ad8f210ebca9a47d23f",
+            "citation_count": 1087,
+            "abstract": null,
+            "venue": "International Conference on Software Engineering",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        },
+        {
+          "title": "Characterizing and predicting which bugs get fixed",
+          "authors": "Guo, P. J., Zimmermann, T., et al.",
+          "year": "2010",
+          "relevance": "Shows how projects prioritize and resolve issues based on backlog characteristics, evidencing adaptive resolution efforts as open issues accumulate.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Characterizing and predicting which bugs get fixed: an empirical study of Microsoft Windows",
+            "authors": [
+              "Philip J. Guo",
+              "Thomas Zimmermann",
+              "Nachiappan Nagappan",
+              "Brendan Murphy"
+            ],
+            "year": 2010,
+            "url": "https://www.semanticscholar.org/paper/8f0dd644726fca7a553ea4ab424c5c48da9053a5",
+            "paper_id": "8f0dd644726fca7a553ea4ab424c5c48da9053a5",
+            "citation_count": 275,
+            "abstract": null,
+            "venue": "2010 ACM/IEEE 32nd International Conference on Software Engineering",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        },
+        {
+          "title": "What makes a good bug report?",
+          "authors": "Bettenburg, N., Just, S., et al.",
+          "year": "2008",
+          "relevance": "Better bug reports improve fix efficiency; as issue volume rises, communities adopt practices to improve report quality and throughput, stabilizing the backlog.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "What Makes a Good Bug Report?",
+            "authors": [
+              "Thomas Zimmermann",
+              "Rahul Premraj",
+              "Nicolas Bettenburg",
+              "Sascha Just",
+              "Adrian Schr\u00f6ter",
+              "Cathrin Weiss"
+            ],
+            "year": 2008,
+            "url": "https://www.semanticscholar.org/paper/21fa1dba8539598210496cfcdb853fef719a0805",
+            "paper_id": "21fa1dba8539598210496cfcdb853fef719a0805",
+            "citation_count": 879,
+            "abstract": null,
+            "venue": "IEEE Transactions on Software Engineering",
+            "fields_of_study": [
+              "Computer Science",
+              "Engineering"
+            ]
+          }
+        },
+        {
+          "title": "Two case studies of open source software development: Apache and Mozilla",
+          "authors": "Mockus, A., Fielding, R. T., et al.",
+          "year": "2002",
+          "relevance": "Documents inflow/outflow dynamics and scaling of maintenance work in OSS, supporting backlog balancing through increased resolution effort.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Two case studies of open source software development: Apache and Mozilla",
+            "authors": [
+              "A. Mockus",
+              "R. Fielding",
+              "J. Herbsleb"
+            ],
+            "year": 2002,
+            "url": "https://www.semanticscholar.org/paper/b452c83fcdee0b9f3e02573144919487c1eae4d3",
+            "paper_id": "b452c83fcdee0b9f3e02573144919487c1eae4d3",
+            "citation_count": 1905,
+            "abstract": null,
+            "venue": "TSEM",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Bug triage, prioritization, and quality practices scale resolution capacity in response to growing issue backlogs, forming a balancing loop."
+    },
+    {
+      "loop_id": "B02",
+      "papers": [
+        {
+          "title": "Expectations, outcomes, and challenges of modern code review",
+          "authors": "Bacchelli, A., Bird, C.",
+          "year": "2013",
+          "relevance": "Identifies review process pressures and strategies to manage workload, indicating communities adapt policies to keep review queues sustainable.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Expectations, outcomes, and challenges of modern code review",
+            "authors": [
+              "Alberto Bacchelli",
+              "C. Bird"
+            ],
+            "year": 2013,
+            "url": "https://www.semanticscholar.org/paper/3ad467fe13ffa8ee705d62d8228a2c254a96f5bd",
+            "paper_id": "3ad467fe13ffa8ee705d62d8228a2c254a96f5bd",
+            "citation_count": 744,
+            "abstract": null,
+            "venue": "International Conference on Software Engineering",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Empirical studies show review workload and queue length drive adaptations (policies, priorities, latency) that slow inflow and protect reviewers, forming a balancing loop."
+    },
+    {
+      "loop_id": "B03",
+      "papers": [
+        {
+          "title": "The open source software development phenomenon: An analysis based on social network theory",
+          "authors": "Madey, G., Freeh, V., et al.",
+          "year": "2002",
+          "relevance": "Agent-based and network perspectives include joining and leaving dynamics; user churn naturally limits growth and tends toward equilibrium.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "THE OPEN SOURCE SOFTWARE DEVELOPMENT PHENOMENON: AN ANALYSIS BASED ON SOCIAL NETWORK THEORY",
+            "authors": [
+              "G. Madey",
+              "Vincent W. Freeh",
+              "Renee Tynan"
+            ],
+            "year": 2002,
+            "url": "https://www.semanticscholar.org/paper/0634bf158f995676141846fb0d3e3e5a3ced5eb0",
+            "paper_id": "0634bf158f995676141846fb0d3e3e5a3ced5eb0",
+            "citation_count": 291,
+            "abstract": null,
+            "venue": "",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        },
+        {
+          "title": "Community, joining, and specialization in open source software innovation: A case study",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Documents participant flows and role changes over time, implying that as communities grow, some members churn out, balancing overall size.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Community, Joining, and Specialization in Open Source Software Innovation: A Case Study",
+            "authors": [
+              "G. Krogh",
+              "Sebastian Spaeth",
+              "K. Lakhani"
+            ],
+            "year": 2003,
+            "url": "https://www.semanticscholar.org/paper/b5ad2a6d67b8031668a53b704d7da9c0a8adbdce",
+            "paper_id": "b5ad2a6d67b8031668a53b704d7da9c0a8adbdce",
+            "citation_count": 1095,
+            "abstract": null,
+            "venue": "",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        },
+        {
+          "title": "Understanding sustained participation in open source software projects",
+          "authors": "Fang, Y., Neufeld, D.",
+          "year": "2009",
+          "relevance": "Shows that only a subset sustains long-term participation; attrition is expected and acts as a balancing mechanism on community size.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Understanding Sustained Participation in Open Source Software Projects",
+            "authors": [
+              "Yulin Fang",
+              "D. Neufeld"
+            ],
+            "year": 2009,
+            "url": "https://www.semanticscholar.org/paper/9e3beb8d9aa67d2cc705dff13577443ebb7f77d8",
+            "paper_id": "9e3beb8d9aa67d2cc705dff13577443ebb7f77d8",
+            "citation_count": 387,
+            "abstract": null,
+            "venue": "Journal of Management Information Systems",
+            "fields_of_study": [
+              "Sociology",
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Joining/leaving dynamics and participant attrition are common in open collaboration, naturally counteracting unconstrained user base growth."
+    },
+    {
+      "loop_id": "B05",
+      "papers": [
+        {
+          "title": "Socialization in an open source software community: A socio-technical analysis",
+          "authors": "Ducheneaut, N.",
+          "year": "2005",
+          "relevance": "Describes how norms and socialization maintain cooperative behavior; when norms weaken, communities enact measures to restore standards.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Socialization in an Open Source Software Community: A Socio-Technical Analysis",
+            "authors": [
+              "Nicolas Ducheneaut"
+            ],
+            "year": 2005,
+            "url": "https://www.semanticscholar.org/paper/9e13b0df8c772d05019d54c453a51942151938ca",
+            "paper_id": "9e13b0df8c772d05019d54c453a51942151938ca",
+            "citation_count": 479,
+            "abstract": null,
+            "venue": "Computer Supported Cooperative Work (CSCW)",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "OSS communities use governance instruments (codes of conduct, norms, corrective actions) to detect and repair cultural erosion, maintaining collaborative standards."
+    }
+  ],
+  "summary": {
+    "total_papers": 36,
+    "verified": 20,
+    "unverified": 16,
+    "verification_rate": 0.556
+  }
+}
