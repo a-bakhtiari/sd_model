@@ -7,6 +7,10 @@ from typing import Dict
 from .config import load_config
 from .paths import first_mdl_file, for_project
 from .pipeline.loops import compute_loops
+from .pipeline.connection_descriptions import generate_connection_descriptions
+from .pipeline.connection_citations import find_connection_citations
+from .pipeline.loop_descriptions import generate_loop_descriptions
+from .pipeline.loop_citations import find_loop_citations
 from .pipeline.theory_validation import validate_against_theories
 from .pipeline.verify_citations import verify_citations
 from .pipeline.improve import propose_improvements
@@ -57,7 +61,7 @@ def run_pipeline(project: str, apply_patch: bool = False, verify_cit: bool = Fal
     paths.parsed_path.write_text(json.dumps(parsed, indent=2), encoding="utf-8")
 
     connections_named = []
-    for edge in connections_data.get("connections", []):
+    for idx, edge in enumerate(connections_data.get("connections", [])):
         from_name = id_to_name.get(int(edge.get("from", -1)))
         to_name = id_to_name.get(int(edge.get("to", -1)))
         if not from_name or not to_name:
@@ -68,9 +72,10 @@ def run_pipeline(project: str, apply_patch: bool = False, verify_cit: bool = Fal
         elif polarity == "NEGATIVE":
             relationship = "negative"
         else:
-            relationship = "positive"
+            relationship = "undeclared"
         connections_named.append(
             {
+                "id": f"C{idx+1:02d}",  # Python generates sequential ID
                 "from_var": from_name,
                 "to_var": to_name,
                 "relationship": relationship,
@@ -81,8 +86,54 @@ def run_pipeline(project: str, apply_patch: bool = False, verify_cit: bool = Fal
 
     log_event(paths.db_dir / "provenance.sqlite", "parsed", {"variables": len(parsed["variables"])})
 
-    loops = compute_loops(parsed, paths.loops_path, {"connections": connections_named})
+    loops = compute_loops(
+        parsed,
+        paths.loops_path,
+        connections=connections_data,
+        variables_data=variables_data,
+        llm_client=client
+    )
     log_event(paths.db_dir / "provenance.sqlite", "loops", {})
+
+    # Generate loop descriptions
+    loop_descriptions_path = paths.artifacts_dir / "loop_descriptions.json"
+    loop_descriptions = generate_loop_descriptions(
+        loops_data=loops,
+        llm_client=client,
+        out_path=loop_descriptions_path,
+        domain_context="open source software development"
+    )
+    log_event(paths.db_dir / "provenance.sqlite", "loop_descriptions", {"count": len(loop_descriptions.get("descriptions", []))})
+
+    # Generate connection descriptions
+    connection_descriptions_path = paths.artifacts_dir / "connection_descriptions.json"
+    descriptions = generate_connection_descriptions(
+        connections_data={"connections": connections_named},
+        variables_data=variables_data,
+        llm_client=client,
+        out_path=connection_descriptions_path
+    )
+    log_event(paths.db_dir / "provenance.sqlite", "connection_descriptions", {"count": len(descriptions.get("descriptions", []))})
+
+    # Find citations for connections
+    connection_citations_path = paths.artifacts_dir / "connection_citations.json"
+    conn_citations = find_connection_citations(
+        connections_data={"connections": connections_named},
+        descriptions_data=descriptions,
+        llm_client=client,
+        out_path=connection_citations_path
+    )
+    log_event(paths.db_dir / "provenance.sqlite", "connection_citations", {"count": len(conn_citations.get("citations", []))})
+
+    # Find citations for loops
+    loop_citations_path = paths.artifacts_dir / "loop_citations.json"
+    loop_cites = find_loop_citations(
+        loops_data=loops,
+        descriptions_data=loop_descriptions,
+        llm_client=client,
+        out_path=loop_citations_path
+    )
+    log_event(paths.db_dir / "provenance.sqlite", "loop_citations", {"count": len(loop_cites.get("citations", []))})
 
     tv = validate_against_theories(
         connections_path=paths.connections_path,
@@ -127,9 +178,8 @@ def run_pipeline(project: str, apply_patch: bool = False, verify_cit: bool = Fal
     except Exception:
         pass
 
-    # Citation verification (on-demand)
+    # Citation verification (on-demand) - OLD SYSTEM, kept for compatibility
     citations_verified_path = paths.artifacts_dir / "citations_verified.json"
-    connection_citations_path = paths.artifacts_dir / "connection_citations.json"
     gap_analysis_path = paths.artifacts_dir / "gap_analysis.json"
     paper_suggestions_path = paths.artifacts_dir / "paper_suggestions.json"
 
@@ -141,12 +191,13 @@ def run_pipeline(project: str, apply_patch: bool = False, verify_cit: bool = Fal
             s2_client=s2_client,
             out_path=citations_verified_path,
         )
-        connection_cits = generate_connection_citation_table(
+        # Note: connection_citations_path now generated by LLM-based citation finder above
+        connection_cits_legacy = generate_connection_citation_table(
             connections_path=paths.connections_path,
             theories_dir=paths.theories_dir,
             verified_citations_path=citations_verified_path,
             loops_path=paths.loops_path,
-            out_path=connection_citations_path,
+            out_path=paths.artifacts_dir / "connection_citations_legacy.json",
         )
         log_event(
             paths.db_dir / "provenance.sqlite",
@@ -157,7 +208,7 @@ def run_pipeline(project: str, apply_patch: bool = False, verify_cit: bool = Fal
             },
         )
 
-        # Gap analysis
+        # Gap analysis (using new connection citations)
         gaps = identify_gaps(connection_citations_path, gap_analysis_path)
         log_event(
             paths.db_dir / "provenance.sqlite",
@@ -192,10 +243,12 @@ def run_pipeline(project: str, apply_patch: bool = False, verify_cit: bool = Fal
         "connections": str(paths.connections_path),
         "variables_llm": str(variables_path),
         "connections_llm": str(connections_llm_path),
+        "connection_descriptions": str(connection_descriptions_path),
+        "connection_citations": str(connection_citations_path),
+        "loop_citations": str(loop_citations_path),
         "theory_validation": str(paths.theory_validation_path),
         "improvements": str(paths.model_improvements_path),
         "citations_verified": str(citations_verified_path) if verify_cit else None,
-        "connection_citations": str(connection_citations_path) if verify_cit else None,
         "gap_analysis": str(gap_analysis_path) if verify_cit else None,
         "paper_suggestions": str(paper_suggestions_path) if (verify_cit and discover_papers) else None,
         "patched": str(patched_file) if patched_file else None,

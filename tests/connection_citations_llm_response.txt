@@ -1,0 +1,504 @@
+```json
+{
+  "citations": [
+    {
+      "connection_id": "C01",
+      "papers": [
+        {
+          "title": "A systematic literature review on the barriers faced by newcomers to open source software projects",
+          "authors": "Steinmacher, I., Conte, T., et al.",
+          "year": "2015",
+          "relevance": "Shows how limited maintainer time creates bottlenecks in issue resolution and onboarding processes"
+        },
+        {
+          "title": "Coordination in open source software development: The role of core developers",
+          "authors": "Crowston, K., Howison, J.",
+          "year": "2006",
+          "relevance": "Demonstrates how core developer availability affects project throughput and issue resolution capacity"
+        }
+      ],
+      "reasoning": "Multiple studies document how maintainer time constraints create bottlenecks in OSS projects."
+    },
+    {
+      "connection_id": "C02",
+      "papers": [
+        {
+          "title": "The social side of software platform ecosystems",
+          "authors": "Tiwana, A.",
+          "year": "2015",
+          "relevance": "Documents how user feedback increases with platform usage and issue discovery"
+        },
+        {
+          "title": "User feedback in the appstore: An empirical study",
+          "authors": "Pagano, D., Maalej, W.",
+          "year": "2013",
+          "relevance": "Shows direct correlation between software issues and user feedback generation"
+        }
+      ],
+      "reasoning": "Empirical studies consistently show that open issues generate user feedback in software ecosystems."
+    },
+    {
+      "connection_id": "C03",
+      "papers": [
+        {
+          "title": "User feedback in the appstore: An empirical study",
+          "authors": "Pagano, D., Maalej, W.",
+          "year": "2013",
+          "relevance": "Demonstrates how user feedback often reveals previously unknown issues and feature requests"
+        }
+      ],
+      "reasoning": "Research shows user feedback serves as a primary mechanism for issue discovery in software projects."
+    },
+    {
+      "connection_id": "C04",
+      "papers": [
+        {
+          "title": "Why developers contribute to open source projects: First results of a large scale motivation study",
+          "authors": "Hars, A., Ou, S.",
+          "year": "2002",
+          "relevance": "Identifies problem-solving and addressing community needs as key motivations for OSS contributions"
+        },
+        {
+          "title": "Understanding the motivations, participation and performance of open source software developers: A longitudinal study of the Apache projects",
+          "authors": "Hann, I.-H., Roberts, J., et al.",
+          "year": "2004",
+          "relevance": "Shows how visible project needs drive contributor participation and pull request submission"
+        }
+      ],
+      "reasoning": "Multiple motivation studies confirm that visible project needs drive contributor activity."
+    },
+    {
+      "connection_id": "C07",
+      "papers": [
+        {
+          "title": "Pull request based contribution workflow in GitHub based projects",
+          "authors": "Gousios, G., Pinzger, M., et al.",
+          "year": "2014",
+          "relevance": "Documents the pull request review and merge process as the primary mechanism for code integration"
+        }
+      ],
+      "reasoning": "The pull request workflow as a code integration mechanism is well-documented in GitHub studies."
+    },
+    {
+      "connection_id": "C08",
+      "papers": [
+        {
+          "title": "The pull request model of collaborative development in GitHub",
+          "authors": "Gousios, G., Storey, M.-A., et al.",
+          "year": "2015",
+          "relevance": "Shows how project maintainers become more selective with pull requests as project scale increases"
+        }
+      ],
+      "reasoning": "Research indicates that maintainers apply stricter standards when facing large backlogs."
+    },
+    {
+      "connection_id": "C09",
+      "papers": [
+        {
+          "title": "Work practices and challenges in pull-based development: The integrator's perspective",
+          "authors": "Gousios, G., Storey, M.-A., et al.",
+          "year": "2015",
+          "relevance": "Documents how core developer availability directly impacts review delays"
+        }
+      ],
+      "reasoning": "Studies of pull-based development consistently identify core developer availability as critical for review throughput."
+    },
+    {
+      "connection_id": "C10",
+      "papers": [
+        {
+          "title": "The promises and perils of mining GitHub",
+          "authors": "Kalliamvakou, E., Gousios, G., et al.",
+          "year": "2014",
+          "relevance": "Shows correlation between review response times and contributor engagement"
+        }
+      ],
+      "reasoning": "GitHub mining studies demonstrate that timely feedback improves contributor experience and engagement."
+    },
+    {
+      "connection_id": "C11",
+      "papers": [
+        {
+          "title": "The hidden burden of onboarding: A study of the transition from newcomers to core developers",
+          "authors": "Steinmacher, I., Wiese, I., et al.",
+          "year": "2018",
+          "relevance": "Documents the progression path from newcomer to experienced contributor through skill acquisition"
+        }
+      ],
+      "reasoning": "Longitudinal studies track contributor progression through experience accumulation in OSS projects."
+    },
+    {
+      "connection_id": "C12",
+      "papers": [
+        {
+          "title": "Socialization in an open source software community: A socio-technical analysis",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Describes the process of experienced contributors becoming core developers through sustained contribution"
+        }
+      ],
+      "reasoning": "OSS community studies document the promotion pathways from experienced contributor to core developer."
+    },
+    {
+      "connection_id": "C13",
+      "papers": [
+        {
+          "title": "Core-periphery in open source software development: A network analysis of GitHub projects",
+          "authors": "Joblin, M., Apel, S., et al.",
+          "year": "2015",
+          "relevance": "Shows how experienced contributors provide more substantial code reviews and technical feedback"
+        }
+      ],
+      "reasoning": "Network analysis studies demonstrate the review quality differences between contributor experience levels."
+    },
+    {
+      "connection_id": "C14",
+      "papers": [
+        {
+          "title": "A systematic literature review on the barriers faced by newcomers to open source software projects",
+          "authors": "Steinmacher, I., Conte, T., et al.",
+          "year": "2015",
+          "relevance": "Identifies positive feedback as critical for newcomer retention in OSS projects"
+        }
+      ],
+      "reasoning": "Multiple studies identify constructive feedback as essential for newcomer onboarding and retention."
+    },
+    {
+      "connection_id": "C15",
+      "papers": [
+        {
+          "title": "Socialization in an open source software community: A socio-technical analysis",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Describes how feedback mechanisms help identify and cultivate future core developers"
+        }
+      ],
+      "reasoning": "Community socialization research shows how feedback serves as a core developer identification mechanism."
+    },
+    {
+      "connection_id": "C16",
+      "papers": [
+        {
+          "title": "Work practices and challenges in pull-based development: The integrator's perspective",
+          "authors": "Gousios, G., Storey, M.-A., et al.",
+          "year": "2015",
+          "relevance": "Documents how timely feedback accelerates pull request processing and reduces bottlenecks"
+        }
+      ],
+      "reasoning": "Pull-based development research consistently identifies feedback timing as critical for workflow efficiency."
+    },
+    {
+      "connection_id": "C17",
+      "papers": [
+        {
+          "title": "Mining software repositories for research and practice",
+          "authors": "Hassan, A. E.",
+          "year": "2009",
+          "relevance": "Discusses how development artifacts including PR discussions become valuable knowledge repositories"
+        }
+      ],
+      "reasoning": "MSR research recognizes development artifacts as valuable organizational memory and knowledge bases."
+    },
+    {
+      "connection_id": "C18",
+      "papers": [
+        {
+          "title": "Knowledge management in open source software communities",
+          "authors": "Agerfalk, P. J., Fitzgerald, B.",
+          "year": "2008",
+          "relevance": "Discusses the challenges of implicit knowledge retention and the risk of knowledge loss in OSS"
+        }
+      ],
+      "reasoning": "OSS knowledge management literature addresses the vulnerability of implicit knowledge to attrition."
+    },
+    {
+      "connection_id": "C22",
+      "papers": [
+        {
+          "title": "Documentation in open source software: The role of documentation in OSS development",
+          "authors": "Spinellis, D., Louridas, P.",
+          "year": "2008",
+          "relevance": "Shows how explicit knowledge enables comprehensive documentation creation"
+        }
+      ],
+      "reasoning": "Research on OSS documentation demonstrates its dependence on available explicit knowledge."
+    },
+    {
+      "connection_id": "C23",
+      "papers": [
+        {
+          "title": "A systematic literature review on the barriers faced by newcomers to open source software projects",
+          "authors": "Steinmacher, I., Conte, T., et al.",
+          "year": "2015",
+          "relevance": "Identifies documentation quality as a critical factor in newcomer onboarding success"
+        }
+      ],
+      "reasoning": "Multiple barrier studies identify documentation as essential for lowering entry barriers."
+    },
+    {
+      "connection_id": "C24",
+      "papers": [
+        {
+          "title": "Learning in open source software communities",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Documents how documentation accelerates contributor learning and skill development"
+        }
+      ],
+      "reasoning": "OSS learning research shows documentation's role in accelerating contributor proficiency."
+    },
+    {
+      "connection_id": "C25",
+      "papers": [
+        {
+          "title": "Socialization in an open source software community: A socio-technical analysis",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Describes how implicit knowledge enables effective mentorship in OSS communities"
+        }
+      ],
+      "reasoning": "Community socialization research demonstrates how implicit knowledge facilitates mentorship."
+    },
+    {
+      "connection_id": "C26",
+      "papers": [
+        {
+          "title": "The hidden burden of onboarding: A study of the transition from newcomers to core developers",
+          "authors": "Steinmacher, I., Wiese, I., et al.",
+          "year": "2018",
+          "relevance": "Shows how mentorship accelerates skill acquisition and contributor development"
+        }
+      ],
+      "reasoning": "Onboarding research consistently identifies mentorship as critical for skill development."
+    },
+    {
+      "connection_id": "C27",
+      "papers": [
+        {
+          "title": "Socialization in an open source software community: A socio-technical analysis",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Documents how mentorship prepares contributors for advancement to core roles"
+        }
+      ],
+      "reasoning": "Community studies show mentorship's role in preparing contributors for promotion."
+    },
+    {
+      "connection_id": "C28",
+      "papers": [
+        {
+          "title": "Core-periphery in open source software development: A network analysis of GitHub projects",
+          "authors": "Joblin, M., Apel, S., et al.",
+          "year": "2015",
+          "relevance": "Shows how core developers provide mentorship and guidance to peripheral contributors"
+        }
+      ],
+      "reasoning": "Network analysis studies demonstrate core developers' central role in mentorship activities."
+    },
+    {
+      "connection_id": "C29",
+      "papers": [
+        {
+          "title": "An empirical study of the effect of issue reporting on software quality",
+          "authors": "Anvik, J., Hiew, L., et al.",
+          "year": "2006",
+          "relevance": "Shows how large issue backlogs can discourage duplicate issue reporting"
+        }
+      ],
+      "reasoning": "Issue tracking research documents how backlog size affects user reporting behavior."
+    },
+    {
+      "connection_id": "C30",
+      "papers": [
+        {
+          "title": "Work practices and challenges in pull-based development: The integrator's perspective",
+          "authors": "Gousios, G., Storey, M.-A., et al.",
+          "year": "2015",
+          "relevance": "Documents how large backlogs create maintainer overload and slow resolution rates"
+        }
+      ],
+      "reasoning": "Maintainer workload studies show how large backlogs create processing bottlenecks."
+    },
+    {
+      "connection_id": "C31",
+      "papers": [
+        {
+          "title": "Mining software repositories for research and practice",
+          "authors": "Hassan, A. E.",
+          "year": "2009",
+          "relevance": "Discusses how resolved issues become valuable knowledge artifacts for future problem-solving"
+        }
+      ],
+      "reasoning": "MSR research recognizes closed issues as important organizational memory artifacts."
+    },
+    {
+      "connection_id": "C32",
+      "papers": [
+        {
+          "title": "The social side of software platform ecosystems",
+          "authors": "Tiwana, A.",
+          "year": "2015",
+          "relevance": "Documents how community discussions create valuable knowledge repositories"
+        }
+      ],
+      "relevance": "Platform ecosystem research shows how discussions become archived knowledge resources."
+    },
+    {
+      "connection_id": "C33",
+      "papers": [
+        {
+          "title": "Knowledge management in open source software communities",
+          "authors": "Agerfalk, P. J., Fitzgerald, B.",
+          "year": "2008",
+          "relevance": "Discusses how knowledge bases serve as repositories of explicit project knowledge"
+        }
+      ],
+      "reasoning": "OSS knowledge management literature identifies knowledge bases as explicit knowledge sources."
+    },
+    {
+      "connection_id": "C34",
+      "papers": [
+        {
+          "title": "Why developers contribute to open source projects: First results of a large scale motivation study",
+          "authors": "Hars, A., Ou, S.",
+          "year": "2002",
+          "relevance": "Identifies project reputation as a key factor attracting new contributors"
+        }
+      ],
+      "reasoning": "Motivation studies consistently identify project reputation as a key attraction factor."
+    },
+    {
+      "connection_id": "C35",
+      "papers": [
+        {
+          "title": "The social side of software platform ecosystems",
+          "authors": "Tiwana, A.",
+          "year": "2015",
+          "relevance": "Shows how project reputation drives user adoption and platform growth"
+        }
+      ],
+      "reasoning": "Platform ecosystem research demonstrates reputation's role in user acquisition."
+    },
+    {
+      "connection_id": "C36",
+      "papers": [
+        {
+          "title": "Community, joining process and innovation in open source software",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Documents how healthy community dynamics enhance project reputation"
+        }
+      ],
+      "reasoning": "Community studies show the relationship between community health and project reputation."
+    },
+    {
+      "connection_id": "C37",
+      "papers": [
+        {
+          "title": "Why developers contribute to open source projects: First results of a large scale motivation study",
+          "authors": "Hars, A., Ou, S.",
+          "year": "2002",
+          "relevance": "Shows how software quality and features build project reputation and attract contributors"
+        }
+      ],
+      "reasoning": "Multiple studies document how technical quality drives reputation in OSS ecosystems."
+    },
+    {
+      "connection_id": "C44",
+      "papers": [
+        {
+          "title": "Turnover of developers in libre software projects",
+          "authors": "Robles, G., Gonzalez-Barahona, J. M., et al.",
+          "year": "2009",
+          "relevance": "Documents developer turnover patterns and their impact on core developer teams"
+        }
+      ],
+      "reasoning": "Longitudinal studies specifically examine developer turnover in OSS projects."
+    },
+    {
+      "connection_id": "C45",
+      "papers": [
+        {
+          "title": "The pull request model of collaborative development in GitHub",
+          "authors": "Gousios, G., Storey, M.-A., et al.",
+          "year": "2015",
+          "relevance": "Documents the review rate as a key flow in pull request processing"
+        }
+      ],
+      "reasoning": "Pull-based development research explicitly models review rates as workflow components."
+    },
+    {
+      "connection_id": "C46",
+      "papers": [
+        {
+          "title": "Pull request based contribution workflow in GitHub based projects",
+          "authors": "Gousios, G., Pinzger, M., et al.",
+          "year": "2014",
+          "relevance": "Documents the merge/commit process as the mechanism for code integration"
+        }
+      ],
+      "reasoning": "GitHub workflow studies document the merge process as the primary code integration mechanism."
+    },
+    {
+      "connection_id": "C47",
+      "papers": [
+        {
+          "title": "The pull request model of collaborative development in GitHub",
+          "authors": "Gousios, G., Storey, M.-A., et al.",
+          "year": "2015",
+          "relevance": "Documents rejection as a key outflow from the pull request review process"
+        }
+      ],
+      "reasoning": "Pull request research explicitly models rejection as a workflow component."
+    },
+    {
+      "connection_id": "C52",
+      "papers": [
+        {
+          "title": "A systematic literature review on the barriers faced by newcomers to open source software projects",
+          "authors": "Steinmacher, I., Conte, T., et al.",
+          "year": "2015",
+          "relevance": "Documents factors affecting newcomer joining rates in OSS projects"
+        }
+      ],
+      "reasoning": "Barrier studies explicitly examine the factors influencing newcomer joining rates."
+    },
+    {
+      "connection_id": "C56",
+      "papers": [
+        {
+          "title": "An empirical study of the effect of issue reporting on software quality",
+          "authors": "Anvik, J., Hiew, L., et al.",
+          "year": "2006",
+          "relevance": "Documents issue creation patterns and their impact on project maintenance"
+        }
+      ],
+      "reasoning": "Issue tracking research explicitly models issue creation as an inflow to open issues."
+    },
+    {
+      "connection_id": "C57",
+      "papers": [
+        {
+          "title": "An empirical study of the effect of issue reporting on software quality",
+          "authors": "Anvik, J., Hiew, L., et al.",
+          "year": "2006",
+          "relevance": "Documents issue resolution patterns and their relationship to project maintenance"
+        }
+      ],
+      "reasoning": "Issue tracking research explicitly models issue resolution as an outflow from open issues."
+    },
+    {
+      "connection_id": "C58",
+      "papers": [
+        {
+          "title": "The social side of software platform ecosystems",
+          "authors": "Tiwana, A.",
+          "year": "2015",
+          "relevance": "Documents how community engagement creates valuable knowledge artifacts"
+        }
+      ],
+      "reasoning": "Platform ecosystem research shows how community interactions generate knowledge base content."
+    }
+  ]
+}
+```

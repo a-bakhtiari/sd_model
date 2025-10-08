@@ -63,32 +63,39 @@ class LLMClient:
     def enabled(self) -> bool:
         return self._enabled
 
-    def complete(self, prompt: str, temperature: float = 0.0) -> str:
+    def complete(self, prompt: str, temperature: float = 0.0, max_tokens: Optional[int] = None) -> str:
         if not self._enabled or not self._provider:
             return "[LLM Fallback] Deterministic summary generated without external calls."
 
         try:
             if self._provider == "openai" and self._openai:
-                resp = self._openai.ChatCompletion.create(
-                    model=self.model,
-                    messages=[{"role": "user", "content": prompt}],
-                    temperature=temperature,
-                )
+                kwargs = {
+                    "model": self.model,
+                    "messages": [{"role": "user", "content": prompt}],
+                    "temperature": temperature,
+                }
+                if max_tokens:
+                    kwargs["max_tokens"] = max_tokens
+                resp = self._openai.ChatCompletion.create(**kwargs)
                 return resp.choices[0].message["content"]
 
             if self._provider == "deepseek" and self._api_key:
+                payload = {
+                    "model": self.model,
+                    "messages": [{"role": "user", "content": prompt}],
+                    "temperature": temperature,
+                    "stream": False,
+                }
+                if max_tokens:
+                    payload["max_tokens"] = max_tokens
+
                 response = requests.post(
                     "https://api.deepseek.com/v1/chat/completions",
                     headers={
                         "Authorization": f"Bearer {self._api_key}",
                         "Content-Type": "application/json",
                     },
-                    json={
-                        "model": self.model,
-                        "messages": [{"role": "user", "content": prompt}],
-                        "temperature": temperature,
-                        "stream": False,
-                    },
+                    json=payload,
                     timeout=180,  # Increased to 3 minutes for large prompts
                 )
                 response.raise_for_status()

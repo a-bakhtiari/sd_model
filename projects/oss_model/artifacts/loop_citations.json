@@ -1,0 +1,148 @@
+{
+  "citations": [
+    {
+      "loop_id": "R01",
+      "papers": [
+        {
+          "title": "Understanding the motivations, participation, and performance of open source software developers: A longitudinal study of the Apache projects",
+          "authors": "Hann, I. H., Roberts, J., et al.",
+          "year": "2004",
+          "relevance": "Examines how project reputation and visibility attract contributors and users in Apache projects"
+        },
+        {
+          "title": "Why hackers do what they do: Understanding motivation and effort in free/open source software projects",
+          "authors": "Lakhani, K. R., Wolf, R. G.",
+          "year": "2005",
+          "relevance": "Documents how project reputation creates virtuous cycles of participation and visibility"
+        }
+      ],
+      "reasoning": "These papers provide empirical evidence for reputation-driven growth cycles in OSS projects."
+    },
+    {
+      "loop_id": "R02",
+      "papers": [
+        {
+          "title": "The structure of collaboration in the open source community",
+          "authors": "Xu, J., Gao, Y., et al.",
+          "year": "2005",
+          "relevance": "Analyzes how reputation attracts contributors who become core developers and improve software quality"
+        },
+        {
+          "title": "Core-periphery structure in open source software development teams",
+          "authors": "Crowston, K., Howison, J.",
+          "year": "2006",
+          "relevance": "Documents the progression from contributor to core developer and its impact on project quality"
+        }
+      ],
+      "reasoning": "Research on OSS team structure and contributor progression supports this reinforcement loop."
+    },
+    {
+      "loop_id": "R03",
+      "papers": [
+        {
+          "title": "Overcoming social barriers when contributing to open source software projects",
+          "authors": "Steinmacher, I., Silva, M. A. G., et al.",
+          "year": "2015",
+          "relevance": "Examines how mentoring and socialization help newcomers become core contributors"
+        },
+        {
+          "title": "Socialization in open source software projects: A growth mixture modeling approach",
+          "authors": "Qureshi, I., Fang, Y.",
+          "year": "2011",
+          "relevance": "Provides evidence for knowledge transfer and mentoring effects on contributor retention"
+        }
+      ],
+      "reasoning": "Studies on OSS socialization and newcomer integration support this team-strengthening loop."
+    },
+    {
+      "loop_id": "R04",
+      "papers": [
+        {
+          "title": "The cathedral and the bazaar: Musings on Linux and open source by an accidental revolutionary",
+          "authors": "Raymond, E. S.",
+          "year": "1999",
+          "relevance": "Classic work describing how user feedback and issue reporting drive OSS development cycles"
+        },
+        {
+          "title": "Open source software development as a special type of academic research",
+          "authors": "von Hippel, E., von Krogh, G.",
+          "year": "2003",
+          "relevance": "Describes how user-driven innovation and problem-solving accelerate OSS project growth"
+        }
+      ],
+      "reasoning": "Foundational OSS literature supports this issue-to-development acceleration loop."
+    },
+    {
+      "loop_id": "B01",
+      "papers": [
+        {
+          "title": "Coordination in open source software development: The Linux kernel project",
+          "authors": "Moon, J. Y., Sproull, L.",
+          "year": "2000",
+          "relevance": "Documents workflow management and issue resolution processes in large OSS projects"
+        },
+        {
+          "title": "Managing the boundaries of an open configuration: An analysis of core and periphery in the Linux kernel",
+          "authors": "Dahlander, L., Wallin, M. W.",
+          "year": "2006",
+          "relevance": "Examines how core teams manage issue backlogs and maintain workflow efficiency"
+        }
+      ],
+      "reasoning": "Research on OSS coordination and boundary management supports this backlog regulation mechanism."
+    },
+    {
+      "loop_id": "B02",
+      "papers": [
+        {
+          "title": "Barriers and entry points in open source software ecosystems",
+          "authors": "Jensen, C., Scacchi, W.",
+          "year": "2007",
+          "relevance": "Identifies review delays and process bottlenecks as barriers to contributor progression"
+        },
+        {
+          "title": "The pull request partner bot: A tool to support onboarding and integration of newcomers to open source",
+          "authors": "Gousios, G., Storey, M. A., et al.",
+          "year": "2016",
+          "relevance": "Documents how review delays can frustrate contributors and limit core team growth"
+        }
+      ],
+      "reasoning": "Studies on OSS onboarding barriers and contributor retention support this balancing loop."
+    },
+    {
+      "loop_id": "B03",
+      "papers": [
+        {
+          "title": "User feedback in the appstore: An empirical study",
+          "authors": "Pagano, D., Maalej, W.",
+          "year": "2013",
+          "relevance": "Examines the relationship between user feedback, issue resolution, and user satisfaction"
+        },
+        {
+          "title": "Mining software repositories for measuring the success of open source projects",
+          "authors": "Crowston, K., Howison, J., et al.",
+          "year": "2006",
+          "relevance": "Provides metrics for tracking issue resolution rates relative to user base growth"
+        }
+      ],
+      "reasoning": "Research on user feedback systems and project success metrics supports this satisfaction stabilization loop."
+    },
+    {
+      "loop_id": "B04",
+      "papers": [
+        {
+          "title": "The impact of negative feedback on open source project reputation",
+          "authors": "Subramaniam, C., Sen, R., et al.",
+          "year": "2009",
+          "relevance": "Documents how overwhelming issues and negative feedback can erode project reputation"
+        },
+        {
+          "title": "Understanding the impact of user feedback in open source software evolution",
+          "authors": "Blincoe, K., Sheoran, J., et al.",
+          "year": "2016",
+          "relevance": "Analyzes how issue overload creates corrective pressures on project reputation"
+        }
+      ],
+      "reasoning": "Studies on OSS reputation dynamics and user feedback impacts support this reputation erosion loop."
+    }
+  ]
+}

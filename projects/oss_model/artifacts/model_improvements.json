@@ -2,13 +2,6 @@
   "improvements": [
     {
       "operation": "add_connection",
-      "from": "Review Rate",
-      "to": "New Pull request",
-      "relationship": "negative",
-      "comment": "From theory: Pull Request and Feedback Dynamics (gousios2015)"
-    },
-    {
-      "operation": "add_connection",
       "from": "Merge/Commit",
       "to": "Source Code",
       "relationship": "positive",
@@ -23,10 +16,17 @@
     },
     {
       "operation": "add_connection",
-      "from": "Project Reputation",
-      "to": "User Base",
+      "from": "Depreciation/Loss of Knowledge",
+      "to": "Project's Implicit Knowledge",
+      "relationship": "negative",
+      "comment": "From theory: Knowledge Management in OSS (haefliger2008)"
+    },
+    {
+      "operation": "add_connection",
+      "from": "Knowledge Conversion Rate",
+      "to": "Projects's Explicit Knowledge",
       "relationship": "positive",
-      "comment": "From theory: OSS Reputation Dynamics (vonkrogh2003)"
+      "comment": "From theory: Knowledge Management in OSS (haefliger2008)"
     }
   ]
 }

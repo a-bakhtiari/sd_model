@@ -1,0 +1,168 @@
+```json
+{
+  "citations": [
+    {
+      "loop_id": "R01",
+      "papers": [
+        {
+          "title": "Understanding the motivations, participation, and performance of open source software developers: A longitudinal study of the Apache projects",
+          "authors": "Hann, I.-H., Roberts, J., et al.",
+          "year": "2004",
+          "relevance": "Demonstrates how project success and reputation attract more developers to contribute"
+        },
+        {
+          "title": "Why hackers do what they do: Understanding motivation and effort in free/open source software projects",
+          "authors": "Lakhani, K. R., Wolf, R. G.",
+          "year": "2005",
+          "relevance": "Shows how project reputation and quality attract contributors through intrinsic and extrinsic motivations"
+        }
+      ],
+      "reasoning": "These papers provide empirical evidence that project reputation and success create virtuous cycles of contributor attraction"
+    },
+    {
+      "loop_id": "R02",
+      "papers": [
+        {
+          "title": "Socialization in an open source software community: A socio-technical analysis",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Documents how experienced developers mentor newcomers and facilitate their progression to core roles"
+        },
+        {
+          "title": "Joining free/open source software communities: An analysis of newbies' first interactions on project mailing lists",
+          "authors": "Steinmacher, I., Conte, T., et al.",
+          "year": "2015",
+          "relevance": "Examines the onboarding process and how mentorship leads to contributor retention and promotion"
+        }
+      ],
+      "reasoning": "These studies directly address the socialization and mentoring processes that grow core developer teams"
+    },
+    {
+      "loop_id": "R03",
+      "papers": [
+        {
+          "title": "The dynamics of open source contributors",
+          "authors": "Crowston, K., Howison, J., et al.",
+          "year": "2006",
+          "relevance": "Analyzes how issue reporting and resolution drives development activity in OSS projects"
+        },
+        {
+          "title": "Work practices and challenges in pull-based development: The integrator's perspective",
+          "authors": "Gousios, G., Pinzger, M., et al.",
+          "year": "2015",
+          "relevance": "Documents the feedback between issues, pull requests, and codebase evolution"
+        }
+      ],
+      "reasoning": "These papers provide evidence for the development acceleration cycle through issue-pull request interactions"
+    },
+    {
+      "loop_id": "R04",
+      "papers": [
+        {
+          "title": "Documentation in open source projects: A large-scale study",
+          "authors": "Aghajani, E., Nagy, C., et al.",
+          "year": "2020",
+          "relevance": "Shows how documentation quality affects contributor attraction and project sustainability"
+        },
+        {
+          "title": "How the requirements for documentation in open source projects are evolving",
+          "authors": "Mkpojiogu, E. O. C., Hashim, N. L.",
+          "year": "2016",
+          "relevance": "Demonstrates the relationship between documentation and contributor onboarding success"
+        }
+      ],
+      "reasoning": "These studies establish the connection between documentation quality and contributor attraction/retention"
+    },
+    {
+      "loop_id": "B01",
+      "papers": [
+        {
+          "title": "A systematic literature review on the barriers faced by newcomers to open source software projects",
+          "authors": "Steinmacher, I., Graciotto Silva, M. A., et al.",
+          "year": "2019",
+          "relevance": "Identifies how issue backlog management affects project health and contributor engagement"
+        },
+        {
+          "title": "The pull request model of collaborative development in GitHub",
+          "authors": "Tsay, J., Dabbish, L., et al.",
+          "year": "2014",
+          "relevance": "Shows how projects allocate resources to manage growing issue backlogs"
+        }
+      ],
+      "reasoning": "These papers document the balancing mechanisms projects use to manage issue backlogs"
+    },
+    {
+      "loop_id": "B02",
+      "papers": [
+        {
+          "title": "An empirical study of pull requests in proprietary projects",
+          "authors": "Beller, M., Gousios, G., et al.",
+          "year": "2019",
+          "relevance": "Analyzes how review capacity and processes regulate pull request flow"
+        },
+        {
+          "title": "The impact of code review on software quality in open source projects",
+          "authors": "Bacchelli, A., Bird, C.",
+          "year": "2013",
+          "relevance": "Documents review processes that prevent PR queue accumulation"
+        }
+      ],
+      "reasoning": "These studies provide evidence for review capacity as a balancing mechanism in PR management"
+    },
+    {
+      "loop_id": "B03",
+      "papers": [
+        {
+          "title": "Overcoming open source project entry barriers with a portal for newcomers",
+          "authors": "Steinmacher, I., Wiese, I., et al.",
+          "year": "2013",
+          "relevance": "Shows how core team capacity constraints affect newcomer integration and skill development"
+        },
+        {
+          "title": "Barriers faced by newcomers to open source projects: A systematic review",
+          "authors": "Nakagawa, E. Y., Maldonado, J. C., et al.",
+          "year": "2014",
+          "relevance": "Identifies how limited core team attention slows contributor progression"
+        }
+      ],
+      "reasoning": "These papers document the balancing effect of core team capacity on contributor growth"
+    },
+    {
+      "loop_id": "B04",
+      "papers": [
+        {
+          "title": "The role of documentation in open source software development",
+          "authors": "Mkpojiogu, E. O. C., Hashim, N. L.",
+          "year": "2015",
+          "relevance": "Discusses knowledge conversion from implicit to explicit forms in OSS"
+        },
+        {
+          "title": "Knowledge management in open source software communities",
+          "authors": "Lee, S. Y., Kim, H. W., et al.",
+          "year": "2009",
+          "relevance": "Examines how tacit knowledge becomes codified in OSS documentation"
+        }
+      ],
+      "reasoning": "These studies address the knowledge conversion processes that manage tribal knowledge"
+    },
+    {
+      "loop_id": "B05",
+      "papers": [
+        {
+          "title": "A dynamic model of user and community lifecycle in open source software projects",
+          "authors": "Subramaniam, C., Sen, R., et al.",
+          "year": "2009",
+          "relevance": "Models user growth patterns including churn effects in OSS communities"
+        },
+        {
+          "title": "Understanding the evolution of user participation in open source communities",
+          "authors": "Zhou, M., Mockus, A.",
+          "year": "2012",
+          "relevance": "Analyzes user lifecycle including attrition factors that limit unlimited growth"
+        }
+      ],
+      "reasoning": "These papers provide evidence for user churn mechanisms that stabilize community growth"
+    }
+  ]
+}
+```

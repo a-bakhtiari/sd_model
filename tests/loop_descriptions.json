@@ -1,0 +1,40 @@
+{
+  "descriptions": [
+    {
+      "id": "R01",
+      "description": "This reinforcing loop creates a virtuous cycle where a good reputation attracts more contributors, whose work improves the software, further strengthening the project's reputation."
+    },
+    {
+      "id": "R02",
+      "description": "This reinforcing loop amplifies the core team as experienced developers mentor newcomers, increasing the promotion rate and growing the core developer base over time."
+    },
+    {
+      "id": "R03",
+      "description": "This reinforcing loop accelerates development activity as open issues stimulate pull requests, which, when merged, expand the codebase and can lead to the creation of more issues."
+    },
+    {
+      "id": "R04",
+      "description": "This reinforcing loop grows project knowledge and contributor onboarding; better documentation attracts more contributors who then contribute back to the knowledge base."
+    },
+    {
+      "id": "B01",
+      "description": "This balancing loop stabilizes the issue backlog by increasing resolution efforts as the number of open issues grows, seeking an equilibrium."
+    },
+    {
+      "id": "B02",
+      "description": "This balancing loop regulates the pull request queue, as a growing backlog increases review activity to prevent infinite accumulation."
+    },
+    {
+      "id": "B03",
+      "description": "This balancing loop creates a delay in contributor growth; a strained core team slows feedback, hindering the skill development needed to become a core developer."
+    },
+    {
+      "id": "B04",
+      "description": "This balancing loop manages implicit knowledge by converting it into explicit forms, which simultaneously depletes the stock of undocumented tribal knowledge."
+    },
+    {
+      "id": "B05",
+      "description": "This balancing loop stabilizes the user base; as it grows, the absolute number of users leaving increases, counteracting unlimited growth."
+    }
+  ]
+}
