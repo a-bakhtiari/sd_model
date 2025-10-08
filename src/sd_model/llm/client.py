@@ -38,12 +38,11 @@ class LLMClient:
         deepseek_key = os.getenv("DEEPSEEK_API_KEY")
 
         if provider == "openai" and openai_key:
-            self.model = model or os.getenv("OPENAI_MODEL", "gpt-4o")
+            self.model = model or os.getenv("OPENAI_MODEL", "gpt-5")
             try:
-                import openai  # type: ignore
+                from openai import OpenAI  # type: ignore
 
-                openai.api_key = openai_key
-                self._openai = openai
+                self._openai = OpenAI(api_key=openai_key)
                 self._provider = "openai"
                 self._api_key = openai_key
                 self._enabled = True
@@ -69,15 +68,12 @@ class LLMClient:
 
         try:
             if self._provider == "openai" and self._openai:
-                kwargs = {
-                    "model": self.model,
-                    "messages": [{"role": "user", "content": prompt}],
-                    "temperature": temperature,
-                }
-                if max_tokens:
-                    kwargs["max_tokens"] = max_tokens
-                resp = self._openai.ChatCompletion.create(**kwargs)
-                return resp.choices[0].message["content"]
+                result = self._openai.responses.create(
+                    model=self.model,
+                    input=prompt,
+                    reasoning={"effort": "low"}
+                )
+                return result.output_text
 
             if self._provider == "deepseek" and self._api_key:
                 payload = {

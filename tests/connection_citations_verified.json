@@ -1,0 +1,1610 @@
+{
+  "citations": [
+    {
+      "connection_id": "C01",
+      "papers": [
+        {
+          "title": "Two Case Studies of Open Source Software Development: Apache and Mozilla",
+          "authors": "Mockus, A., Fielding, R. T., et al.",
+          "year": "2002",
+          "relevance": "Shows how availability of core developer (maintainer) effort is tied to defect resolution throughput.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Two case studies of open source software development: Apache and Mozilla",
+            "authors": [
+              "A. Mockus",
+              "R. Fielding",
+              "J. Herbsleb"
+            ],
+            "year": 2002,
+            "url": "https://www.semanticscholar.org/paper/b452c83fcdee0b9f3e02573144919487c1eae4d3",
+            "paper_id": "b452c83fcdee0b9f3e02573144919487c1eae4d3",
+            "citation_count": 1905
+          }
+        },
+        {
+          "title": "What Makes Long Term Contributors: Willingness and Opportunity in OSS Projects",
+          "authors": "Zhou, M., Mockus, A.",
+          "year": "2012",
+          "relevance": "Shows maintainer availability and capacity influence issue handling opportunities and rates.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "What make long term contributors: Willingness and opportunity in OSS community",
+            "authors": [
+              "Minghui Zhou",
+              "A. Mockus"
+            ],
+            "year": 2012,
+            "url": "https://www.semanticscholar.org/paper/c9c158b032e5d29b569442fba4e1b9f605d58563",
+            "paper_id": "c9c158b032e5d29b569442fba4e1b9f605d58563",
+            "citation_count": 188
+          }
+        }
+      ],
+      "reasoning": "More maintainer time boosts the throughput of issue handling."
+    },
+    {
+      "connection_id": "C02",
+      "papers": [
+        {
+          "title": "Two Case Studies of Open Source Software Development: Apache and Mozilla",
+          "authors": "Mockus, A., Fielding, R. T., et al.",
+          "year": "2002",
+          "relevance": "Models issue resolution processes where higher resolution rates accumulate as closed issues.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Two case studies of open source software development: Apache and Mozilla",
+            "authors": [
+              "A. Mockus",
+              "R. Fielding",
+              "J. Herbsleb"
+            ],
+            "year": 2002,
+            "url": "https://www.semanticscholar.org/paper/b452c83fcdee0b9f3e02573144919487c1eae4d3",
+            "paper_id": "b452c83fcdee0b9f3e02573144919487c1eae4d3",
+            "citation_count": 1905
+          }
+        }
+      ],
+      "reasoning": "Resolution rate is the flow that increases the closed issues stock."
+    },
+    {
+      "connection_id": "C03",
+      "papers": [
+        {
+          "title": "A Field Study of API Learning Obstacles",
+          "authors": "Robillard, M. P., DeLine, R.",
+          "year": "2011",
+          "relevance": "Demonstrates how available explicit knowledge affects the effectiveness of documentation for learning.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "A field study of API learning obstacles",
+            "authors": [
+              "M. Robillard",
+              "R. Deline"
+            ],
+            "year": 2011,
+            "url": "https://www.semanticscholar.org/paper/32ad7c8fd7c0003bb855f1f1117df75706ab9c89",
+            "paper_id": "32ad7c8fd7c0003bb855f1f1117df75706ab9c89",
+            "citation_count": 390
+          }
+        },
+        {
+          "title": "Augmenting API Documentation with Insights from Stack Overflow",
+          "authors": "Treude, C., Robillard, M. P.",
+          "year": "2016",
+          "relevance": "Shows that more explicit knowledge sources improve the ability to create actionable documentation.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Augmenting API Documentation with Insights from Stack Overflow",
+            "authors": [
+              "Christoph Treude",
+              "M. Robillard"
+            ],
+            "year": 2016,
+            "url": "https://www.semanticscholar.org/paper/aba1ab5d07beb3b04c099e4609526920f1128bb7",
+            "paper_id": "aba1ab5d07beb3b04c099e4609526920f1128bb7",
+            "citation_count": 270
+          }
+        }
+      ],
+      "reasoning": "More explicit knowledge supports more effective documentation-based knowledge transfer."
+    },
+    {
+      "connection_id": "C04",
+      "papers": [
+        {
+          "title": "Social Barriers Faced by Newcomers to Open Source Projects: A Systematic Literature Review",
+          "authors": "Steinmacher, I., Silva, M. A. G., et al.",
+          "year": "2015",
+          "relevance": "Identifies documentation quality as a key factor influencing the decision and ability to join.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Barriers Faced by Newcomers to Open Source Projects: A Systematic Review",
+            "authors": [
+              "Igor Steinmacher",
+              "Marco Aur\u00e9lio Graciotto Silva",
+              "M. Gerosa"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/ed428306066209f3eb6eb695fd0082725c6e0cfb",
+            "paper_id": "ed428306066209f3eb6eb695fd0082725c6e0cfb",
+            "citation_count": 43
+          }
+        },
+        {
+          "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+          "authors": "Dabbish, L., Stuart, C., et al.",
+          "year": "2012",
+          "relevance": "Shows that documentation and project transparency on GitHub attract participation.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+            "authors": [
+              "Laura A. Dabbish",
+              "Colleen Stuart",
+              "Jason Tsay",
+              "J. Herbsleb"
+            ],
+            "year": 2012,
+            "url": "https://www.semanticscholar.org/paper/aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "paper_id": "aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "citation_count": 1071
+          }
+        }
+      ],
+      "reasoning": "Better documentation lowers barriers, increasing joining rates."
+    },
+    {
+      "connection_id": "C05",
+      "papers": [
+        {
+          "title": "A Field Study of API Learning Obstacles",
+          "authors": "Robillard, M. P., DeLine, R.",
+          "year": "2011",
+          "relevance": "Shows that better documentation accelerates learning for developers.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "A field study of API learning obstacles",
+            "authors": [
+              "M. Robillard",
+              "R. Deline"
+            ],
+            "year": 2011,
+            "url": "https://www.semanticscholar.org/paper/32ad7c8fd7c0003bb855f1f1117df75706ab9c89",
+            "paper_id": "32ad7c8fd7c0003bb855f1f1117df75706ab9c89",
+            "citation_count": 390
+          }
+        },
+        {
+          "title": "Augmenting API Documentation with Insights from Stack Overflow",
+          "authors": "Treude, C., Robillard, M. P.",
+          "year": "2016",
+          "relevance": "Demonstrates improved learning efficiency when clear documentation is available.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Augmenting API Documentation with Insights from Stack Overflow",
+            "authors": [
+              "Christoph Treude",
+              "M. Robillard"
+            ],
+            "year": 2016,
+            "url": "https://www.semanticscholar.org/paper/aba1ab5d07beb3b04c099e4609526920f1128bb7",
+            "paper_id": "aba1ab5d07beb3b04c099e4609526920f1128bb7",
+            "citation_count": 270
+          }
+        }
+      ],
+      "reasoning": "Clear, actionable documentation speeds up contributor skill acquisition."
+    },
+    {
+      "connection_id": "C06",
+      "papers": [
+        {
+          "title": "What makes a good bug report?",
+          "authors": "Bettenburg, N., Just, S., et al.",
+          "year": "2008",
+          "relevance": "Shows the role of user feedback in generating actionable issue reports.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "What Makes a Good Bug Report?",
+            "authors": [
+              "Thomas Zimmermann",
+              "Rahul Premraj",
+              "Nicolas Bettenburg",
+              "Sascha Just",
+              "Adrian Schr\u00f6ter",
+              "Cathrin Weiss"
+            ],
+            "year": 2008,
+            "url": "https://www.semanticscholar.org/paper/21fa1dba8539598210496cfcdb853fef719a0805",
+            "paper_id": "21fa1dba8539598210496cfcdb853fef719a0805",
+            "citation_count": 879
+          }
+        }
+      ],
+      "reasoning": "More community feedback leads to more identified issues."
+    },
+    {
+      "connection_id": "C07",
+      "papers": [
+        {
+          "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+          "authors": "Dabbish, L., Stuart, C., et al.",
+          "year": "2012",
+          "relevance": "Open issues attract comments and discussion activity in GitHub communities.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+            "authors": [
+              "Laura A. Dabbish",
+              "Colleen Stuart",
+              "Jason Tsay",
+              "J. Herbsleb"
+            ],
+            "year": 2012,
+            "url": "https://www.semanticscholar.org/paper/aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "paper_id": "aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "citation_count": 1071
+          }
+        }
+      ],
+      "reasoning": "A larger pool of open issues drives community feedback and discussion."
+    },
+    {
+      "connection_id": "C08",
+      "papers": [
+        {
+          "title": "What makes a good bug report?",
+          "authors": "Bettenburg, N., Just, S., et al.",
+          "year": "2008",
+          "relevance": "User-submitted bug reports directly increase the set of open issues.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "What Makes a Good Bug Report?",
+            "authors": [
+              "Thomas Zimmermann",
+              "Rahul Premraj",
+              "Nicolas Bettenburg",
+              "Sascha Just",
+              "Adrian Schr\u00f6ter",
+              "Cathrin Weiss"
+            ],
+            "year": 2008,
+            "url": "https://www.semanticscholar.org/paper/21fa1dba8539598210496cfcdb853fef719a0805",
+            "paper_id": "21fa1dba8539598210496cfcdb853fef719a0805",
+            "citation_count": 879
+          }
+        }
+      ],
+      "reasoning": "Creation rate is an inflow to the open issues stock."
+    },
+    {
+      "connection_id": "C09",
+      "papers": [
+        {
+          "title": "Two Case Studies of Open Source Software Development: Apache and Mozilla",
+          "authors": "Mockus, A., Fielding, R. T., et al.",
+          "year": "2002",
+          "relevance": "Demonstrates that increased resolution throughput reduces backlog of open issues.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Two case studies of open source software development: Apache and Mozilla",
+            "authors": [
+              "A. Mockus",
+              "R. Fielding",
+              "J. Herbsleb"
+            ],
+            "year": 2002,
+            "url": "https://www.semanticscholar.org/paper/b452c83fcdee0b9f3e02573144919487c1eae4d3",
+            "paper_id": "b452c83fcdee0b9f3e02573144919487c1eae4d3",
+            "citation_count": 1905
+          }
+        }
+      ],
+      "reasoning": "Resolution drains the open issues stock."
+    },
+    {
+      "connection_id": "C10",
+      "papers": [
+        {
+          "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+          "authors": "Dabbish, L., Stuart, C., et al.",
+          "year": "2012",
+          "relevance": "Visibility of issues prompts contribution opportunities, leading to PRs.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+            "authors": [
+              "Laura A. Dabbish",
+              "Colleen Stuart",
+              "Jason Tsay",
+              "J. Herbsleb"
+            ],
+            "year": 2012,
+            "url": "https://www.semanticscholar.org/paper/aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "paper_id": "aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "citation_count": 1071
+          }
+        },
+        {
+          "title": "Let's talk about it: Evaluating contributions through discussion in GitHub",
+          "authors": "Tsay, J., Dabbish, L., et al.",
+          "year": "2014",
+          "relevance": "Issue discussions catalyze contributions, including PRs that address issues.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Let's talk about it: evaluating contributions through discussion in GitHub",
+            "authors": [
+              "Jason Tsay",
+              "Laura A. Dabbish",
+              "J. Herbsleb"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "paper_id": "89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "citation_count": 200
+          }
+        }
+      ],
+      "reasoning": "Open issues provide targets that encourage PR submissions."
+    },
+    {
+      "connection_id": "C11",
+      "papers": [
+        {
+          "title": "The influence of non-technical factors on code review",
+          "authors": "Baysal, O., Kononenko, O., et al.",
+          "year": "2013",
+          "relevance": "Examines review activity and its effect on PR queues and latencies.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "The influence of non-technical factors on code review",
+            "authors": [
+              "Olga Baysal",
+              "Oleksii Kononenko",
+              "Reid Holmes",
+              "Michael W. Godfrey"
+            ],
+            "year": 2013,
+            "url": "https://www.semanticscholar.org/paper/001b43019c4e85e2fd7b60fd3f98e276ae1126dc",
+            "paper_id": "001b43019c4e85e2fd7b60fd3f98e276ae1126dc",
+            "citation_count": 105
+          }
+        },
+        {
+          "title": "Expectations, outcomes, and challenges of modern code review",
+          "authors": "Bacchelli, A., Bird, C.",
+          "year": "2013",
+          "relevance": "Describes how review rate governs the flow of PRs through the system.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Expectations, outcomes, and challenges of modern code review",
+            "authors": [
+              "Alberto Bacchelli",
+              "C. Bird"
+            ],
+            "year": 2013,
+            "url": "https://www.semanticscholar.org/paper/3ad467fe13ffa8ee705d62d8228a2c254a96f5bd",
+            "paper_id": "3ad467fe13ffa8ee705d62d8228a2c254a96f5bd",
+            "citation_count": 744
+          }
+        }
+      ],
+      "reasoning": "Faster review pulls PRs out of the 'new' queue."
+    },
+    {
+      "connection_id": "C12",
+      "papers": [
+        {
+          "title": "Work Practices and Challenges in Pull-Based Development: The Contributor\u2019s Perspective",
+          "authors": "Gousios, G., Storey, M.-A., et al.",
+          "year": "2015",
+          "relevance": "Describes contributors' PR creation behavior increasing pending PRs.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Work Practices and Challenges in Pull-Based Development: The Contributor's Perspective",
+            "authors": [
+              "Georgios Gousios",
+              "M. Storey",
+              "Alberto Bacchelli"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/8455b1a9c02e256cf9bc3244f31110db12eb62fc",
+            "paper_id": "8455b1a9c02e256cf9bc3244f31110db12eb62fc",
+            "citation_count": 467
+          }
+        }
+      ],
+      "reasoning": "New PR rate is an inflow to the 'new pull request' stock."
+    },
+    {
+      "connection_id": "C13",
+      "papers": [
+        {
+          "title": "Work Practices and Challenges in Pull-Based Development: The Contributor\u2019s Perspective",
+          "authors": "Gousios, G., Storey, M.-A., et al.",
+          "year": "2015",
+          "relevance": "Explains PR lifecycle stages moving from creation into review.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Work Practices and Challenges in Pull-Based Development: The Contributor's Perspective",
+            "authors": [
+              "Georgios Gousios",
+              "M. Storey",
+              "Alberto Bacchelli"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/8455b1a9c02e256cf9bc3244f31110db12eb62fc",
+            "paper_id": "8455b1a9c02e256cf9bc3244f31110db12eb62fc",
+            "citation_count": 467
+          }
+        },
+        {
+          "title": "Let's talk about it: Evaluating contributions through discussion in GitHub",
+          "authors": "Tsay, J., Dabbish, L., et al.",
+          "year": "2014",
+          "relevance": "Shows how newly created PRs transition into the review/discussion phase.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Let's talk about it: evaluating contributions through discussion in GitHub",
+            "authors": [
+              "Jason Tsay",
+              "Laura A. Dabbish",
+              "J. Herbsleb"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "paper_id": "89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "citation_count": 200
+          }
+        }
+      ],
+      "reasoning": "New PRs enter the 'under review' stage as work begins."
+    },
+    {
+      "connection_id": "C14",
+      "papers": [
+        {
+          "title": "Expectations, outcomes, and challenges of modern code review",
+          "authors": "Bacchelli, A., Bird, C.",
+          "year": "2013",
+          "relevance": "PR feedback is a central activity during code review.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Expectations, outcomes, and challenges of modern code review",
+            "authors": [
+              "Alberto Bacchelli",
+              "C. Bird"
+            ],
+            "year": 2013,
+            "url": "https://www.semanticscholar.org/paper/3ad467fe13ffa8ee705d62d8228a2c254a96f5bd",
+            "paper_id": "3ad467fe13ffa8ee705d62d8228a2c254a96f5bd",
+            "citation_count": 744
+          }
+        },
+        {
+          "title": "Let's talk about it: Evaluating contributions through discussion in GitHub",
+          "authors": "Tsay, J., Dabbish, L., et al.",
+          "year": "2014",
+          "relevance": "Analyzes PR discussions as feedback mechanisms situated in under-review PRs.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Let's talk about it: evaluating contributions through discussion in GitHub",
+            "authors": [
+              "Jason Tsay",
+              "Laura A. Dabbish",
+              "J. Herbsleb"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "paper_id": "89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "citation_count": 200
+          }
+        }
+      ],
+      "reasoning": "Providing PR feedback occurs on PRs under review."
+    },
+    {
+      "connection_id": "C16",
+      "papers": [
+        {
+          "title": "Expectations, outcomes, and challenges of modern code review",
+          "authors": "Bacchelli, A., Bird, C.",
+          "year": "2013",
+          "relevance": "Merging/committing completes review, removing PRs from 'under review'.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Expectations, outcomes, and challenges of modern code review",
+            "authors": [
+              "Alberto Bacchelli",
+              "C. Bird"
+            ],
+            "year": 2013,
+            "url": "https://www.semanticscholar.org/paper/3ad467fe13ffa8ee705d62d8228a2c254a96f5bd",
+            "paper_id": "3ad467fe13ffa8ee705d62d8228a2c254a96f5bd",
+            "citation_count": 744
+          }
+        },
+        {
+          "title": "Let's talk about it: Evaluating contributions through discussion in GitHub",
+          "authors": "Tsay, J., Dabbish, L., et al.",
+          "year": "2014",
+          "relevance": "Acceptance/merge transitions move PRs out of the review state.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Let's talk about it: evaluating contributions through discussion in GitHub",
+            "authors": [
+              "Jason Tsay",
+              "Laura A. Dabbish",
+              "J. Herbsleb"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "paper_id": "89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "citation_count": 200
+          }
+        }
+      ],
+      "reasoning": "Merged PRs leave the under-review pool."
+    },
+    {
+      "connection_id": "C17",
+      "papers": [
+        {
+          "title": "Two Case Studies of Open Source Software Development: Apache and Mozilla",
+          "authors": "Mockus, A., Fielding, R. T., et al.",
+          "year": "2002",
+          "relevance": "Approved changes from reviews become part of the source code.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Two case studies of open source software development: Apache and Mozilla",
+            "authors": [
+              "A. Mockus",
+              "R. Fielding",
+              "J. Herbsleb"
+            ],
+            "year": 2002,
+            "url": "https://www.semanticscholar.org/paper/b452c83fcdee0b9f3e02573144919487c1eae4d3",
+            "paper_id": "b452c83fcdee0b9f3e02573144919487c1eae4d3",
+            "citation_count": 1905
+          }
+        },
+        {
+          "title": "Expectations, outcomes, and challenges of modern code review",
+          "authors": "Bacchelli, A., Bird, C.",
+          "year": "2013",
+          "relevance": "Describes the transition from reviewed PRs to integrated source code.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Expectations, outcomes, and challenges of modern code review",
+            "authors": [
+              "Alberto Bacchelli",
+              "C. Bird"
+            ],
+            "year": 2013,
+            "url": "https://www.semanticscholar.org/paper/3ad467fe13ffa8ee705d62d8228a2c254a96f5bd",
+            "paper_id": "3ad467fe13ffa8ee705d62d8228a2c254a96f5bd",
+            "citation_count": 744
+          }
+        }
+      ],
+      "reasoning": "Merged and reviewed PRs contribute to the source code base."
+    },
+    {
+      "connection_id": "C18",
+      "papers": [
+        {
+          "title": "Predicting the Location of Faults in Large Software Systems",
+          "authors": "Ostrand, T. J., Weyuker, E. J., et al.",
+          "year": "2005",
+          "relevance": "More code modules create more opportunities for defects to be reported as issues.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Predicting the location and number of faults in large software systems",
+            "authors": [
+              "T. Ostrand",
+              "E. Weyuker",
+              "Robert M. Bell"
+            ],
+            "year": 2005,
+            "url": "https://www.semanticscholar.org/paper/21305504e7ccde5505a4281419a5799bccc42378",
+            "paper_id": "21305504e7ccde5505a4281419a5799bccc42378",
+            "citation_count": 743
+          }
+        }
+      ],
+      "reasoning": "Growth in code increases the opportunity for issue discovery."
+    },
+    {
+      "connection_id": "C19",
+      "papers": [
+        {
+          "title": "The Influence of Non-technical Factors on Code Review",
+          "authors": "Baysal, O., Kononenko, O., et al.",
+          "year": "2013",
+          "relevance": "Reviewer availability and workload (more core devs) reduce review wait times.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "The influence of non-technical factors on code review",
+            "authors": [
+              "Olga Baysal",
+              "Oleksii Kononenko",
+              "Reid Holmes",
+              "Michael W. Godfrey"
+            ],
+            "year": 2013,
+            "url": "https://www.semanticscholar.org/paper/001b43019c4e85e2fd7b60fd3f98e276ae1126dc",
+            "paper_id": "001b43019c4e85e2fd7b60fd3f98e276ae1126dc",
+            "citation_count": 105
+          }
+        },
+        {
+          "title": "Work Practices and Challenges in Pull-Based Development",
+          "authors": "Gousios, G., Storey, M.-A., et al.",
+          "year": "2015",
+          "relevance": "Maintainer throughput influences PR response times.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Work Practices and Challenges in Pull-Based Development: The Contributor's Perspective",
+            "authors": [
+              "Georgios Gousios",
+              "M. Storey",
+              "Alberto Bacchelli"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/8455b1a9c02e256cf9bc3244f31110db12eb62fc",
+            "paper_id": "8455b1a9c02e256cf9bc3244f31110db12eb62fc",
+            "citation_count": 467
+          }
+        }
+      ],
+      "reasoning": "More core developers reduce the average PR review delay."
+    },
+    {
+      "connection_id": "C20",
+      "papers": [
+        {
+          "title": "Let's talk about it: Evaluating contributions through discussion in GitHub",
+          "authors": "Tsay, J., Dabbish, L., et al.",
+          "year": "2014",
+          "relevance": "Timely reviews lead to immediate feedback on PRs.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Let's talk about it: evaluating contributions through discussion in GitHub",
+            "authors": [
+              "Jason Tsay",
+              "Laura A. Dabbish",
+              "J. Herbsleb"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "paper_id": "89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "citation_count": 200
+          }
+        },
+        {
+          "title": "The effects of code review coverage and code review participation on software quality",
+          "authors": "McIntosh, S., Kamei, Y., et al.",
+          "year": "2014",
+          "relevance": "Faster review cycles enable more frequent reviewer feedback.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "The impact of code review coverage and code review participation on software quality: a case study of the qt, VTK, and ITK projects",
+            "authors": [
+              "Shane McIntosh",
+              "Yasutaka Kamei",
+              "Bram Adams",
+              "A. Hassan"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/af526d95e51940cac7aef7a60d4341bb2990aba2",
+            "paper_id": "af526d95e51940cac7aef7a60d4341bb2990aba2",
+            "citation_count": 313
+          }
+        },
+        {
+          "title": "The Influence of Non-technical Factors on Code Review",
+          "authors": "Baysal, O., Kononenko, O., et al.",
+          "year": "2013",
+          "relevance": "Reduced delays increase the pace and amount of feedback given.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "The influence of non-technical factors on code review",
+            "authors": [
+              "Olga Baysal",
+              "Oleksii Kononenko",
+              "Reid Holmes",
+              "Michael W. Godfrey"
+            ],
+            "year": 2013,
+            "url": "https://www.semanticscholar.org/paper/001b43019c4e85e2fd7b60fd3f98e276ae1126dc",
+            "paper_id": "001b43019c4e85e2fd7b60fd3f98e276ae1126dc",
+            "citation_count": 105
+          }
+        }
+      ],
+      "reasoning": "Shorter delays allow quicker, more timely PR feedback."
+    },
+    {
+      "connection_id": "C21",
+      "papers": [
+        {
+          "title": "Social Barriers Faced by Newcomers to Open Source Projects",
+          "authors": "Steinmacher, I., Silva, M. A. G., et al.",
+          "year": "2015",
+          "relevance": "As newcomers skill up, they transition out of the newcomer phase.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social Barriers Faced by Newcomers Placing Their First Contribution in Open Source Software Projects",
+            "authors": [
+              "Igor Steinmacher",
+              "T. Conte",
+              "M. Gerosa",
+              "D. Redmiles"
+            ],
+            "year": 2015,
+            "url": "https://www.semanticscholar.org/paper/18163f9f03c51a0f68d87523b52238680273acaf",
+            "paper_id": "18163f9f03c51a0f68d87523b52238680273acaf",
+            "citation_count": 276
+          }
+        }
+      ],
+      "reasoning": "Skill-up moves contributors from the newcomer stock to more experienced roles."
+    },
+    {
+      "connection_id": "C23",
+      "papers": [
+        {
+          "title": "Social Barriers Faced by Newcomers to Open Source Projects",
+          "authors": "Steinmacher, I., Silva, M. A. G., et al.",
+          "year": "2015",
+          "relevance": "Timely, constructive feedback reduces barriers and aids newcomer retention.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social Barriers Faced by Newcomers Placing Their First Contribution in Open Source Software Projects",
+            "authors": [
+              "Igor Steinmacher",
+              "T. Conte",
+              "M. Gerosa",
+              "D. Redmiles"
+            ],
+            "year": 2015,
+            "url": "https://www.semanticscholar.org/paper/18163f9f03c51a0f68d87523b52238680273acaf",
+            "paper_id": "18163f9f03c51a0f68d87523b52238680273acaf",
+            "citation_count": 276
+          }
+        },
+        {
+          "title": "Let's talk about it: Evaluating contributions through discussion in GitHub",
+          "authors": "Tsay, J., Dabbish, L., et al.",
+          "year": "2014",
+          "relevance": "Shows feedback and discussion quality influence continued participation.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Let's talk about it: evaluating contributions through discussion in GitHub",
+            "authors": [
+              "Jason Tsay",
+              "Laura A. Dabbish",
+              "J. Herbsleb"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "paper_id": "89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "citation_count": 200
+          }
+        },
+        {
+          "title": "Work Practices and Challenges in Pull-Based Development",
+          "authors": "Gousios, G., Storey, M.-A., et al.",
+          "year": "2015",
+          "relevance": "Contributor interviews report that PR feedback affects motivation to stay.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Work Practices and Challenges in Pull-Based Development: The Contributor's Perspective",
+            "authors": [
+              "Georgios Gousios",
+              "M. Storey",
+              "Alberto Bacchelli"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/8455b1a9c02e256cf9bc3244f31110db12eb62fc",
+            "paper_id": "8455b1a9c02e256cf9bc3244f31110db12eb62fc",
+            "citation_count": 467
+          }
+        }
+      ],
+      "reasoning": "Constructive PR feedback helps retain and engage new contributors."
+    },
+    {
+      "connection_id": "C25",
+      "papers": [
+        {
+          "title": "Social Barriers Faced by Newcomers to Open Source Projects",
+          "authors": "Steinmacher, I., Silva, M. A. G., et al.",
+          "year": "2015",
+          "relevance": "Empirical evidence on skill-up leading to role transition.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social Barriers Faced by Newcomers Placing Their First Contribution in Open Source Software Projects",
+            "authors": [
+              "Igor Steinmacher",
+              "T. Conte",
+              "M. Gerosa",
+              "D. Redmiles"
+            ],
+            "year": 2015,
+            "url": "https://www.semanticscholar.org/paper/18163f9f03c51a0f68d87523b52238680273acaf",
+            "paper_id": "18163f9f03c51a0f68d87523b52238680273acaf",
+            "citation_count": 276
+          }
+        }
+      ],
+      "reasoning": "Skill-up increases the stock of experienced contributors."
+    },
+    {
+      "connection_id": "C26",
+      "papers": [
+        {
+          "title": "Let's talk about it: Evaluating contributions through discussion in GitHub",
+          "authors": "Tsay, J., Dabbish, L., et al.",
+          "year": "2014",
+          "relevance": "Positive feedback reinforces contributor engagement and quality.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Let's talk about it: evaluating contributions through discussion in GitHub",
+            "authors": [
+              "Jason Tsay",
+              "Laura A. Dabbish",
+              "J. Herbsleb"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "paper_id": "89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "citation_count": 200
+          }
+        },
+        {
+          "title": "Expectations, outcomes, and challenges of modern code review",
+          "authors": "Bacchelli, A., Bird, C.",
+          "year": "2013",
+          "relevance": "Constructive feedback improves developers\u2019 skills and commitment.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Expectations, outcomes, and challenges of modern code review",
+            "authors": [
+              "Alberto Bacchelli",
+              "C. Bird"
+            ],
+            "year": 2013,
+            "url": "https://www.semanticscholar.org/paper/3ad467fe13ffa8ee705d62d8228a2c254a96f5bd",
+            "paper_id": "3ad467fe13ffa8ee705d62d8228a2c254a96f5bd",
+            "citation_count": 744
+          }
+        }
+      ],
+      "reasoning": "Feedback fosters commitment and capability among experienced contributors."
+    },
+    {
+      "connection_id": "C30",
+      "papers": [
+        {
+          "title": "Splitting the Organization and Integrating the Code: Conway\u2019s Law Revisited",
+          "authors": "Herbsleb, J. D., Grinter, R. E.",
+          "year": "1999",
+          "relevance": "Tacit knowledge in software teams is shared via interpersonal mechanisms like mentorship.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Splitting the organization and integrating the code: Conway's law revisited",
+            "authors": [
+              "J. Herbsleb",
+              "Rebecca E. Grinter"
+            ],
+            "year": 1999,
+            "url": "https://www.semanticscholar.org/paper/640fac9ead719f12a43bf14f2cdb2fcb4fae6539",
+            "paper_id": "640fac9ead719f12a43bf14f2cdb2fcb4fae6539",
+            "citation_count": 547
+          }
+        }
+      ],
+      "reasoning": "More implicit knowledge provides material for mentorship-based transfer."
+    },
+    {
+      "connection_id": "C31",
+      "papers": [
+        {
+          "title": "Social Barriers Faced by Newcomers to Open Source Projects",
+          "authors": "Steinmacher, I., Silva, M. A. G., et al.",
+          "year": "2015",
+          "relevance": "Highlights the role of maintainers and core contributors in mentoring.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social Barriers Faced by Newcomers Placing Their First Contribution in Open Source Software Projects",
+            "authors": [
+              "Igor Steinmacher",
+              "T. Conte",
+              "M. Gerosa",
+              "D. Redmiles"
+            ],
+            "year": 2015,
+            "url": "https://www.semanticscholar.org/paper/18163f9f03c51a0f68d87523b52238680273acaf",
+            "paper_id": "18163f9f03c51a0f68d87523b52238680273acaf",
+            "citation_count": 276
+          }
+        }
+      ],
+      "reasoning": "More core developers increase mentorship capacity."
+    },
+    {
+      "connection_id": "C32",
+      "papers": [
+        {
+          "title": "Social Barriers Faced by Newcomers to Open Source Projects",
+          "authors": "Steinmacher, I., Silva, M. A. G., et al.",
+          "year": "2015",
+          "relevance": "Mentorship mitigates barriers, speeding up skill acquisition.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social Barriers Faced by Newcomers Placing Their First Contribution in Open Source Software Projects",
+            "authors": [
+              "Igor Steinmacher",
+              "T. Conte",
+              "M. Gerosa",
+              "D. Redmiles"
+            ],
+            "year": 2015,
+            "url": "https://www.semanticscholar.org/paper/18163f9f03c51a0f68d87523b52238680273acaf",
+            "paper_id": "18163f9f03c51a0f68d87523b52238680273acaf",
+            "citation_count": 276
+          }
+        }
+      ],
+      "reasoning": "Mentorship increases the rate at which contributors skill up."
+    },
+    {
+      "connection_id": "C36",
+      "papers": [
+        {
+          "title": "A Field Study of API Learning Obstacles",
+          "authors": "Robillard, M. P., DeLine, R.",
+          "year": "2011",
+          "relevance": "Developers internalize documented knowledge, enriching tacit understanding.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "A field study of API learning obstacles",
+            "authors": [
+              "M. Robillard",
+              "R. Deline"
+            ],
+            "year": 2011,
+            "url": "https://www.semanticscholar.org/paper/32ad7c8fd7c0003bb855f1f1117df75706ab9c89",
+            "paper_id": "32ad7c8fd7c0003bb855f1f1117df75706ab9c89",
+            "citation_count": 390
+          }
+        }
+      ],
+      "reasoning": "Using explicit knowledge in practice builds implicit understanding."
+    },
+    {
+      "connection_id": "C37",
+      "papers": [
+        {
+          "title": "Creating and Evolving Developer Documentation",
+          "authors": "Dagenais, B., Robillard, M. P.",
+          "year": "2010",
+          "relevance": "Documenting practices externalizes tacit knowledge into explicit artifacts.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Creating and evolving developer documentation: understanding the decisions of open source contributors",
+            "authors": [
+              "Barth\u00e9l\u00e9my Dagenais",
+              "M. Robillard"
+            ],
+            "year": 2010,
+            "url": "https://www.semanticscholar.org/paper/a01c6b8cc13c0e168f2014701ed5556248c36571",
+            "paper_id": "a01c6b8cc13c0e168f2014701ed5556248c36571",
+            "citation_count": 138
+          }
+        },
+        {
+          "title": "Splitting the Organization and Integrating the Code",
+          "authors": "Herbsleb, J. D., Grinter, R. E.",
+          "year": "1999",
+          "relevance": "Making tacit coordination explicit depletes purely tacit knowledge.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Splitting the organization and integrating the code: Conway's law revisited",
+            "authors": [
+              "J. Herbsleb",
+              "Rebecca E. Grinter"
+            ],
+            "year": 1999,
+            "url": "https://www.semanticscholar.org/paper/640fac9ead719f12a43bf14f2cdb2fcb4fae6539",
+            "paper_id": "640fac9ead719f12a43bf14f2cdb2fcb4fae6539",
+            "citation_count": 547
+          }
+        }
+      ],
+      "reasoning": "Conversion of tacit to explicit decreases implicit knowledge stock."
+    },
+    {
+      "connection_id": "C38",
+      "papers": [
+        {
+          "title": "Creating and Evolving Developer Documentation",
+          "authors": "Dagenais, B., Robillard, M. P.",
+          "year": "2010",
+          "relevance": "Formalizing tacit practices increases explicit documentation.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Creating and evolving developer documentation: understanding the decisions of open source contributors",
+            "authors": [
+              "Barth\u00e9l\u00e9my Dagenais",
+              "M. Robillard"
+            ],
+            "year": 2010,
+            "url": "https://www.semanticscholar.org/paper/a01c6b8cc13c0e168f2014701ed5556248c36571",
+            "paper_id": "a01c6b8cc13c0e168f2014701ed5556248c36571",
+            "citation_count": 138
+          }
+        },
+        {
+          "title": "Augmenting API Documentation with Insights from Stack Overflow",
+          "authors": "Treude, C., Robillard, M. P.",
+          "year": "2016",
+          "relevance": "Processes convert tacit Q&A insight into explicit docs, growing explicit knowledge.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Augmenting API Documentation with Insights from Stack Overflow",
+            "authors": [
+              "Christoph Treude",
+              "M. Robillard"
+            ],
+            "year": 2016,
+            "url": "https://www.semanticscholar.org/paper/aba1ab5d07beb3b04c099e4609526920f1128bb7",
+            "paper_id": "aba1ab5d07beb3b04c099e4609526920f1128bb7",
+            "citation_count": 270
+          }
+        }
+      ],
+      "reasoning": "Tacit-to-explicit conversion increases explicit knowledge stock."
+    },
+    {
+      "connection_id": "C39",
+      "papers": [
+        {
+          "title": "A Field Study of API Learning Obstacles",
+          "authors": "Robillard, M. P., DeLine, R.",
+          "year": "2011",
+          "relevance": "Explicit documentation is transformed into tacit understanding during learning.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "A field study of API learning obstacles",
+            "authors": [
+              "M. Robillard",
+              "R. Deline"
+            ],
+            "year": 2011,
+            "url": "https://www.semanticscholar.org/paper/32ad7c8fd7c0003bb855f1f1117df75706ab9c89",
+            "paper_id": "32ad7c8fd7c0003bb855f1f1117df75706ab9c89",
+            "citation_count": 390
+          }
+        }
+      ],
+      "reasoning": "Conversion from explicit to implicit reduces immediate explicit knowledge stock."
+    },
+    {
+      "connection_id": "C40",
+      "papers": [
+        {
+          "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+          "authors": "Dabbish, L., Stuart, C., et al.",
+          "year": "2012",
+          "relevance": "Searchable artifacts (wikis, issues) represent explicit knowledge.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+            "authors": [
+              "Laura A. Dabbish",
+              "Colleen Stuart",
+              "Jason Tsay",
+              "J. Herbsleb"
+            ],
+            "year": 2012,
+            "url": "https://www.semanticscholar.org/paper/aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "paper_id": "aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "citation_count": 1071
+          }
+        },
+        {
+          "title": "Augmenting API Documentation with Insights from Stack Overflow",
+          "authors": "Treude, C., Robillard, M. P.",
+          "year": "2016",
+          "relevance": "Searchable knowledge sources increase explicit knowledge.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Augmenting API Documentation with Insights from Stack Overflow",
+            "authors": [
+              "Christoph Treude",
+              "M. Robillard"
+            ],
+            "year": 2016,
+            "url": "https://www.semanticscholar.org/paper/aba1ab5d07beb3b04c099e4609526920f1128bb7",
+            "paper_id": "aba1ab5d07beb3b04c099e4609526920f1128bb7",
+            "citation_count": 270
+          }
+        }
+      ],
+      "reasoning": "A richer searchable KB directly reflects more explicit knowledge."
+    },
+    {
+      "connection_id": "C41",
+      "papers": [
+        {
+          "title": "Let's talk about it: Evaluating contributions through discussion in GitHub",
+          "authors": "Tsay, J., Dabbish, L., et al.",
+          "year": "2014",
+          "relevance": "PR feedback produces insights often captured in documentation/wiki.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Let's talk about it: evaluating contributions through discussion in GitHub",
+            "authors": [
+              "Jason Tsay",
+              "Laura A. Dabbish",
+              "J. Herbsleb"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "paper_id": "89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "citation_count": 200
+          }
+        },
+        {
+          "title": "Expectations, outcomes, and challenges of modern code review",
+          "authors": "Bacchelli, A., Bird, C.",
+          "year": "2013",
+          "relevance": "Review comments document rationale and best practices, feeding knowledge bases.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Expectations, outcomes, and challenges of modern code review",
+            "authors": [
+              "Alberto Bacchelli",
+              "C. Bird"
+            ],
+            "year": 2013,
+            "url": "https://www.semanticscholar.org/paper/3ad467fe13ffa8ee705d62d8228a2c254a96f5bd",
+            "paper_id": "3ad467fe13ffa8ee705d62d8228a2c254a96f5bd",
+            "citation_count": 744
+          }
+        }
+      ],
+      "reasoning": "PR feedback often becomes part of the project\u2019s searchable knowledge."
+    },
+    {
+      "connection_id": "C42",
+      "papers": [
+        {
+          "title": "What makes a good bug report?",
+          "authors": "Bettenburg, N., Just, S., et al.",
+          "year": "2008",
+          "relevance": "Issue resolutions carry knowledge that informs future work.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "What Makes a Good Bug Report?",
+            "authors": [
+              "Thomas Zimmermann",
+              "Rahul Premraj",
+              "Nicolas Bettenburg",
+              "Sascha Just",
+              "Adrian Schr\u00f6ter",
+              "Cathrin Weiss"
+            ],
+            "year": 2008,
+            "url": "https://www.semanticscholar.org/paper/21fa1dba8539598210496cfcdb853fef719a0805",
+            "paper_id": "21fa1dba8539598210496cfcdb853fef719a0805",
+            "citation_count": 879
+          }
+        },
+        {
+          "title": "Social coding in GitHub",
+          "authors": "Dabbish, L., Stuart, C., et al.",
+          "year": "2012",
+          "relevance": "Closed issues and their discussions are discoverable, contributing to the knowledge base.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+            "authors": [
+              "Laura A. Dabbish",
+              "Colleen Stuart",
+              "Jason Tsay",
+              "J. Herbsleb"
+            ],
+            "year": 2012,
+            "url": "https://www.semanticscholar.org/paper/aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "paper_id": "aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "citation_count": 1071
+          }
+        }
+      ],
+      "reasoning": "Closed issues with resolution details enrich searchable knowledge."
+    },
+    {
+      "connection_id": "C43",
+      "papers": [
+        {
+          "title": "Social coding in GitHub",
+          "authors": "Dabbish, L., Stuart, C., et al.",
+          "year": "2012",
+          "relevance": "Forums, issues, and chats create searchable knowledge traces.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+            "authors": [
+              "Laura A. Dabbish",
+              "Colleen Stuart",
+              "Jason Tsay",
+              "J. Herbsleb"
+            ],
+            "year": 2012,
+            "url": "https://www.semanticscholar.org/paper/aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "paper_id": "aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "citation_count": 1071
+          }
+        }
+      ],
+      "reasoning": "Community engagement produces content for the knowledge base."
+    },
+    {
+      "connection_id": "C44",
+      "papers": [
+        {
+          "title": "Let's talk about it: Evaluating contributions through discussion in GitHub",
+          "authors": "Tsay, J., Dabbish, L., et al.",
+          "year": "2014",
+          "relevance": "Discussions resolve problems and form persistent knowledge artifacts.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Let's talk about it: evaluating contributions through discussion in GitHub",
+            "authors": [
+              "Jason Tsay",
+              "Laura A. Dabbish",
+              "J. Herbsleb"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "paper_id": "89b0cd5087f697ce9b9b82b6507ad48c28da400d",
+            "citation_count": 200
+          }
+        }
+      ],
+      "reasoning": "Discussions generate entries that populate the knowledge base."
+    },
+    {
+      "connection_id": "C47",
+      "papers": [
+        {
+          "title": "Social coding in GitHub",
+          "authors": "Dabbish, L., Stuart, C., et al.",
+          "year": "2012",
+          "relevance": "Visibility from larger user bases enhances perceived project reputation.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+            "authors": [
+              "Laura A. Dabbish",
+              "Colleen Stuart",
+              "Jason Tsay",
+              "J. Herbsleb"
+            ],
+            "year": 2012,
+            "url": "https://www.semanticscholar.org/paper/aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "paper_id": "aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "citation_count": 1071
+          }
+        }
+      ],
+      "reasoning": "A larger user base increases visibility, feeding reputation."
+    },
+    {
+      "connection_id": "C48",
+      "papers": [
+        {
+          "title": "Social coding in GitHub",
+          "authors": "Dabbish, L., Stuart, C., et al.",
+          "year": "2012",
+          "relevance": "Demonstrates mechanisms (stars, forks, followers) that build project reputation.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+            "authors": [
+              "Laura A. Dabbish",
+              "Colleen Stuart",
+              "Jason Tsay",
+              "J. Herbsleb"
+            ],
+            "year": 2012,
+            "url": "https://www.semanticscholar.org/paper/aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "paper_id": "aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "citation_count": 1071
+          }
+        }
+      ],
+      "reasoning": "Reputation-building activities raise the reputation stock."
+    },
+    {
+      "connection_id": "C50",
+      "papers": [
+        {
+          "title": "Social coding in GitHub",
+          "authors": "Dabbish, L., Stuart, C., et al.",
+          "year": "2012",
+          "relevance": "High-quality artifacts and features enhance perceived project reputation.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+            "authors": [
+              "Laura A. Dabbish",
+              "Colleen Stuart",
+              "Jason Tsay",
+              "J. Herbsleb"
+            ],
+            "year": 2012,
+            "url": "https://www.semanticscholar.org/paper/aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "paper_id": "aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "citation_count": 1071
+          }
+        }
+      ],
+      "reasoning": "Better quality and feature richness boost reputation."
+    },
+    {
+      "connection_id": "C51",
+      "papers": [
+        {
+          "title": "Social coding in GitHub",
+          "authors": "Dabbish, L., Stuart, C., et al.",
+          "year": "2012",
+          "relevance": "Vibrant community interactions serve as reputation signals.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+            "authors": [
+              "Laura A. Dabbish",
+              "Colleen Stuart",
+              "Jason Tsay",
+              "J. Herbsleb"
+            ],
+            "year": 2012,
+            "url": "https://www.semanticscholar.org/paper/aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "paper_id": "aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "citation_count": 1071
+          }
+        }
+      ],
+      "reasoning": "Healthy communities signal stability, increasing reputation."
+    },
+    {
+      "connection_id": "C52",
+      "papers": [
+        {
+          "title": "Social coding in GitHub",
+          "authors": "Dabbish, L., Stuart, C., et al.",
+          "year": "2012",
+          "relevance": "Large user bases are visible signals that boost reputation.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+            "authors": [
+              "Laura A. Dabbish",
+              "Colleen Stuart",
+              "Jason Tsay",
+              "J. Herbsleb"
+            ],
+            "year": 2012,
+            "url": "https://www.semanticscholar.org/paper/aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "paper_id": "aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "citation_count": 1071
+          }
+        }
+      ],
+      "reasoning": "Larger user bases demonstrate popularity, boosting reputation."
+    },
+    {
+      "connection_id": "C54",
+      "papers": [
+        {
+          "title": "Gender differences and bias in open source: Pull request acceptance of women versus men",
+          "authors": "Terrell, J., Kofink, A., et al.",
+          "year": "2017",
+          "relevance": "Bias and toxicity erode community culture and health.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Gender differences and bias in open source: pull request acceptance of women versus men",
+            "authors": [
+              "J. Terrell",
+              "Andrew Kofink",
+              "Justin Middleton",
+              "Clarissa Rainear",
+              "E. Murphy-Hill",
+              "Chris Parnin",
+              "John E. Stallings"
+            ],
+            "year": 2017,
+            "url": "https://www.semanticscholar.org/paper/800feb42da3ef0545bfeba17b1b6348200b3f410",
+            "paper_id": "800feb42da3ef0545bfeba17b1b6348200b3f410",
+            "citation_count": 259
+          }
+        }
+      ],
+      "reasoning": "Toxicity and cultural erosion damage community health."
+    },
+    {
+      "connection_id": "C55",
+      "papers": [
+        {
+          "title": "Social coding in GitHub",
+          "authors": "Dabbish, L., Stuart, C., et al.",
+          "year": "2012",
+          "relevance": "Reputation attracts contributors by signaling project quality and activity.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+            "authors": [
+              "Laura A. Dabbish",
+              "Colleen Stuart",
+              "Jason Tsay",
+              "J. Herbsleb"
+            ],
+            "year": 2012,
+            "url": "https://www.semanticscholar.org/paper/aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "paper_id": "aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "citation_count": 1071
+          }
+        }
+      ],
+      "reasoning": "Higher project reputation draws more contributors, increasing joining rate."
+    },
+    {
+      "connection_id": "C56",
+      "papers": [
+        {
+          "title": "Social Barriers Faced by Newcomers to Open Source Projects",
+          "authors": "Steinmacher, I., Silva, M. A. G., et al.",
+          "year": "2015",
+          "relevance": "Good documentation reduces barriers, increasing newcomers.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social Barriers Faced by Newcomers Placing Their First Contribution in Open Source Software Projects",
+            "authors": [
+              "Igor Steinmacher",
+              "T. Conte",
+              "M. Gerosa",
+              "D. Redmiles"
+            ],
+            "year": 2015,
+            "url": "https://www.semanticscholar.org/paper/18163f9f03c51a0f68d87523b52238680273acaf",
+            "paper_id": "18163f9f03c51a0f68d87523b52238680273acaf",
+            "citation_count": 276
+          }
+        },
+        {
+          "title": "Creating and Evolving Developer Documentation",
+          "authors": "Dagenais, B., Robillard, M. P.",
+          "year": "2010",
+          "relevance": "Effective documentation attracts and enables new participants.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Creating and evolving developer documentation: understanding the decisions of open source contributors",
+            "authors": [
+              "Barth\u00e9l\u00e9my Dagenais",
+              "M. Robillard"
+            ],
+            "year": 2010,
+            "url": "https://www.semanticscholar.org/paper/a01c6b8cc13c0e168f2014701ed5556248c36571",
+            "paper_id": "a01c6b8cc13c0e168f2014701ed5556248c36571",
+            "citation_count": 138
+          }
+        }
+      ],
+      "reasoning": "Better explicit knowledge transfer increases joining rate."
+    },
+    {
+      "connection_id": "C57",
+      "papers": [
+        {
+          "title": "Social coding in GitHub",
+          "authors": "Dabbish, L., Stuart, C., et al.",
+          "year": "2012",
+          "relevance": "Higher reputation draws attention and contributions.",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social coding in GitHub: transparency and collaboration in an open software repository",
+            "authors": [
+              "Laura A. Dabbish",
+              "Colleen Stuart",
+              "Jason Tsay",
+              "J. Herbsleb"
+            ],
+            "year": 2012,
+            "url": "https://www.semanticscholar.org/paper/aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "paper_id": "aeaaa72d4a35388cba9ea0d81e1d46c8c2abaac1",
+            "citation_count": 1071
+          }
+        }
+      ],
+      "reasoning": "A strong reputation increases joining rate."
+    }
+  ],
+  "summary": {
+    "total_papers": 171,
+    "verified": 66,
+    "unverified": 105,
+    "verification_rate": 0.386
+  }
+}

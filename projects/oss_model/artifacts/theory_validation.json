@@ -2,15 +2,15 @@
   "summary": {
     "theory_count": 4,
     "model_edge_count": 56,
-    "confirmed_count": 18,
-    "contradicted_count": 11,
-    "missing_count": 4,
-    "novel_count": 49
+    "confirmed_count": 20,
+    "contradicted_count": 12,
+    "missing_count": 2,
+    "novel_count": 48
   },
   "confirmed": [
     {
-      "from_var": "PR Feedback",
-      "to_var": "New Contributors",
+      "from_var": "Skill up",
+      "to_var": "Experienced Contributors",
       "relationship": "positive",
       "theory": "Contributor Progression and Mentorship",
       "citation_key": "ye2005"
@@ -23,8 +23,8 @@
       "citation_key": "ye2005"
     },
     {
-      "from_var": "Experienced Contributors",
-      "to_var": "PR Feedback",
+      "from_var": "PR Feedback",
+      "to_var": "New Contributors",
       "relationship": "positive",
       "theory": "Contributor Progression and Mentorship",
       "citation_key": "ye2005"
@@ -35,34 +35,6 @@
       "relationship": "positive",
       "theory": "Contributor Progression and Mentorship",
       "citation_key": "ye2005"
-    },
-    {
-      "from_var": "Skill up",
-      "to_var": "Experienced Contributors",
-      "relationship": "positive",
-      "theory": "Contributor Progression and Mentorship",
-      "citation_key": "ye2005"
-    },
-    {
-      "from_var": "Merge/Commit",
-      "to_var": "Pull Request Under review",
-      "relationship": "negative",
-      "theory": "Pull Request and Feedback Dynamics",
-      "citation_key": "gousios2015"
-    },
-    {
-      "from_var": "Review Rate",
-      "to_var": "New Pull request",
-      "relationship": "negative",
-      "theory": "Pull Request and Feedback Dynamics",
-      "citation_key": "gousios2015"
-    },
-    {
-      "from_var": "PR Feedback",
-      "to_var": "Pull Request Under review",
-      "relationship": "positive",
-      "theory": "Pull Request and Feedback Dynamics",
-      "citation_key": "gousios2015"
     },
     {
       "from_var": "New Pr rate",
@@ -79,15 +51,50 @@
       "citation_key": "gousios2015"
     },
     {
-      "from_var": "Developer's Turnover",
-      "to_var": "Depreciation/Loss of Knowledge",
+      "from_var": "PR Feedback",
+      "to_var": "Pull Request Under review",
+      "relationship": "positive",
+      "theory": "Pull Request and Feedback Dynamics",
+      "citation_key": "gousios2015"
+    },
+    {
+      "from_var": "Review Rate",
+      "to_var": "New Pull request",
+      "relationship": "negative",
+      "theory": "Pull Request and Feedback Dynamics",
+      "citation_key": "gousios2015"
+    },
+    {
+      "from_var": "Merge/Commit",
+      "to_var": "Pull Request Under review",
+      "relationship": "negative",
+      "theory": "Pull Request and Feedback Dynamics",
+      "citation_key": "gousios2015"
+    },
+    {
+      "from_var": "Knowledge Conversion Rate",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "negative",
+      "theory": "Knowledge Management in OSS",
+      "citation_key": "haefliger2008"
+    },
+    {
+      "from_var": "Depreciation/Loss of Knowledge",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "negative",
+      "theory": "Knowledge Management in OSS",
+      "citation_key": "haefliger2008"
+    },
+    {
+      "from_var": "Searchable Knowledge Base",
+      "to_var": "Projects's Explicit Knowledge",
       "relationship": "positive",
       "theory": "Knowledge Management in OSS",
       "citation_key": "haefliger2008"
     },
     {
-      "from_var": "Project's Implicit Knowledge",
-      "to_var": "Implicit Knowledge Transfer (Mentorship)",
+      "from_var": "Developer's Turnover",
+      "to_var": "Depreciation/Loss of Knowledge",
       "relationship": "positive",
       "theory": "Knowledge Management in OSS",
       "citation_key": "haefliger2008"
@@ -100,25 +107,18 @@
       "citation_key": "haefliger2008"
     },
     {
-      "from_var": "Searchable Knowledge Base",
+      "from_var": "Knowledge Conversion Rate",
       "to_var": "Projects's Explicit Knowledge",
       "relationship": "positive",
       "theory": "Knowledge Management in OSS",
       "citation_key": "haefliger2008"
     },
     {
-      "from_var": "User Base",
-      "to_var": "Project Reputation",
+      "from_var": "Project's Implicit Knowledge",
+      "to_var": "Implicit Knowledge Transfer (Mentorship)",
       "relationship": "positive",
-      "theory": "OSS Reputation Dynamics",
-      "citation_key": "vonkrogh2003"
-    },
-    {
-      "from_var": "Community Health",
-      "to_var": "Project Reputation",
-      "relationship": "positive",
-      "theory": "OSS Reputation Dynamics",
-      "citation_key": "vonkrogh2003"
+      "theory": "Knowledge Management in OSS",
+      "citation_key": "haefliger2008"
     },
     {
       "from_var": "Project Reputation",
@@ -128,7 +128,21 @@
       "citation_key": "vonkrogh2003"
     },
     {
+      "from_var": "User Base",
+      "to_var": "Project Reputation",
+      "relationship": "positive",
+      "theory": "OSS Reputation Dynamics",
+      "citation_key": "vonkrogh2003"
+    },
+    {
       "from_var": "Software Quality and Features",
+      "to_var": "Project Reputation",
+      "relationship": "positive",
+      "theory": "OSS Reputation Dynamics",
+      "citation_key": "vonkrogh2003"
+    },
+    {
+      "from_var": "Community Health",
       "to_var": "Project Reputation",
       "relationship": "positive",
       "theory": "OSS Reputation Dynamics",
@@ -148,8 +162,8 @@
       "citation_key": null
     },
     {
-      "from_var": "Experienced Contributors",
-      "to_var": "PR Feedback",
+      "from_var": "Developer's Turnover",
+      "to_var": "Depreciation/Loss of Knowledge",
       "model_relationships": [
         "undeclared"
       ],
@@ -161,6 +175,17 @@
     {
       "from_var": "Implicit Knowledge Transfer (Mentorship)",
       "to_var": "Skill up",
+      "model_relationships": [
+        "undeclared"
+      ],
+      "theory_relationships": [
+        "positive"
+      ],
+      "citation_key": null
+    },
+    {
+      "from_var": "Knowledge Conversion Rate",
+      "to_var": "Projects's Explicit Knowledge",
       "model_relationships": [
         "undeclared"
       ],
@@ -260,32 +285,18 @@
   ],
   "missing": [
     {
+      "from_var": "Experienced Contributors",
+      "to_var": "PR Feedback",
+      "relationship": "positive",
+      "theory": "Contributor Progression and Mentorship",
+      "citation_key": "ye2005"
+    },
+    {
       "from_var": "Merge/Commit",
       "to_var": "Source Code",
       "relationship": "positive",
       "theory": "Pull Request and Feedback Dynamics",
       "citation_key": "gousios2015"
-    },
-    {
-      "from_var": "Knowledge Conversion Rate",
-      "to_var": "Project's Implicit Knowledge",
-      "relationship": "negative",
-      "theory": "Knowledge Management in OSS",
-      "citation_key": "haefliger2008"
-    },
-    {
-      "from_var": "Depreciation/Loss of Knowledge",
-      "to_var": "Project's Implicit Knowledge",
-      "relationship": "negative",
-      "theory": "Knowledge Management in OSS",
-      "citation_key": "haefliger2008"
-    },
-    {
-      "from_var": "Knowledge Conversion Rate",
-      "to_var": "Projects's Explicit Knowledge",
-      "relationship": "positive",
-      "theory": "Knowledge Management in OSS",
-      "citation_key": "haefliger2008"
     }
   ],
   "novel": [
@@ -326,14 +337,14 @@
       "citation_key": null
     },
     {
-      "from_var": "Discussions",
-      "to_var": "Searchable Knowledge Base",
+      "from_var": "Developer's Turnover",
+      "to_var": "Depreciation/Loss of Knowledge",
       "relationship": "undeclared",
       "citation_key": null
     },
     {
-      "from_var": "Experienced Contributors",
-      "to_var": "PR Feedback",
+      "from_var": "Discussions",
+      "to_var": "Searchable Knowledge Base",
       "relationship": "undeclared",
       "citation_key": null
     },
@@ -392,20 +403,26 @@
       "citation_key": null
     },
     {
+      "from_var": "Issue Resolution Rate",
+      "to_var": "Open Issues",
+      "relationship": "negative",
+      "citation_key": null
+    },
+    {
+      "from_var": "Joining Rate",
+      "to_var": "New Contributors",
+      "relationship": "undeclared",
+      "citation_key": null
+    },
+    {
+      "from_var": "Knowledge Conversion Rate",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "undeclared",
+      "citation_key": null
+    },
+    {
       "from_var": "Maintainer time",
       "to_var": "Issue Resolution Rate",
-      "relationship": "undeclared",
-      "citation_key": null
-    },
-    {
-      "from_var": "New Contributors",
-      "to_var": "Experienced Contributors",
-      "relationship": "undeclared",
-      "citation_key": null
-    },
-    {
-      "from_var": "New Contributors",
-      "to_var": "PR Feedback",
       "relationship": "undeclared",
       "citation_key": null
     },
@@ -494,12 +511,6 @@
       "citation_key": null
     },
     {
-      "from_var": "Project's Implicit Knowledge",
-      "to_var": "Projects's Explicit Knowledge",
-      "relationship": "undeclared",
-      "citation_key": null
-    },
-    {
       "from_var": "Projects's Explicit Knowledge",
       "to_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
       "relationship": "undeclared",
@@ -515,12 +526,6 @@
       "from_var": "Promotion Rate",
       "to_var": "Experienced Contributors",
       "relationship": "negative",
-      "citation_key": null
-    },
-    {
-      "from_var": "Pull Request Under review",
-      "to_var": "Closed Issues",
-      "relationship": "undeclared",
       "citation_key": null
     },
     {

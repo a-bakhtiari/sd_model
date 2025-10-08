@@ -12,7 +12,7 @@ def find_connection_citations(
     descriptions_data: Dict,
     llm_client: LLMClient,
     out_path: Path,
-    max_citations: int = 2
+    max_citations: int = 3
 ) -> Dict:
     """
     Find citations for each connection using LLM's knowledge.
@@ -25,7 +25,7 @@ def find_connection_citations(
         descriptions_data: Descriptions from connection_descriptions.json
         llm_client: LLM client for suggesting citations
         out_path: Path to write connection_citations.json
-        max_citations: Maximum citations per connection (default 2)
+        max_citations: Maximum citations per connection (default 3)
 
     Returns:
         Dict with connection citations and reasoning
@@ -55,14 +55,9 @@ def find_connection_citations(
     prompt = _create_citation_prompt(connections_with_desc, max_citations)
 
     try:
-        # Use 8192 max tokens for DeepSeek to handle large responses
-        response = llm_client.complete(prompt, temperature=0.1, max_tokens=8192)
-
-        # Save raw LLM response for debugging
-        debug_path = out_path.parent / f"{out_path.stem}_llm_response.txt"
-        debug_path.write_text(response, encoding="utf-8")
-        print(f"[DEBUG] Raw LLM response saved to: {debug_path}")
-
+        # Use GPT-5 for citation generation (more accurate than DeepSeek)
+        citation_llm = LLMClient(provider="openai", model="gpt-5")
+        response = citation_llm.complete(prompt, temperature=0.1)
         result = _parse_citation_response(response, connections_with_desc)
     except Exception as e:
         result = {
@@ -88,20 +83,22 @@ def _create_citation_prompt(
 
     return f"""You are an expert in system dynamics and open source software research. Your task is to suggest relevant academic papers that support causal connections in an open source software development system dynamics model.
 
+Think step by step. Consider the question carefully and think of the academic or professional expertise of someone that could best answer this question. You have the experience of someone with expert knowledge in that area. Be helpful and answer in detail while preferring to use information from reputable sources.
+
 CONNECTIONS TO CITE:
 {connections_info}
 
 TASK:
-For EVERY connection, suggest 1-{max_citations} relevant academic papers from your knowledge of the literature. You MUST find at least 1 paper for each connection.
+For EVERY connection, suggest at least 3 relevant academic papers from your knowledge of the literature. You MUST find at least 3 papers for each connection.
 
 GUIDELINES:
 - Suggest papers about open source software development, community dynamics, software engineering, or related fields
 - Each paper should support the specific causal connection (can be indirect support)
 - Provide citation information: title, first 2 authors (use "et al." if more), year
-- Suggest 1-{max_citations} papers per connection (prefer {max_citations} when possible)
+- Suggest at least 3 papers per connection (prefer 3 or more)
 - Explain why each paper is relevant to the connection
-- Be creative: if no direct study exists, cite related work, theoretical foundations, or analogous findings
-- ALL connections must appear in the output with at least 1 paper
+- Be creative: if no direct study exists, cite related work, theoretical frameworks, or analogous findings
+- ALL connections must appear in the output with at least 3 papers
 - Even for basic flow relationships, cite papers that describe the process or mechanism
 
 OUTPUT FORMAT (JSON only):
@@ -141,7 +138,7 @@ OUTPUT FORMAT (JSON only):
 }}
 
 IMPORTANT:
-- ALL {len(connections)} connections MUST appear in output with at least 1 paper
+- ALL {len(connections)} connections MUST appear in output with at least 3 papers
 - Do NOT skip any connections
 - Only suggest real academic papers that you are confident exist
 - Do not hallucinate or make up papers

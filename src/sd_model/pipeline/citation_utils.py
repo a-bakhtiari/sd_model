@@ -14,7 +14,7 @@ def generate_citations(
     item_type: str,
     llm_client: LLMClient,
     out_path: Path,
-    max_citations: int = 2
+    max_citations: int = 3
 ) -> Dict:
     """
     Generate citations for items (connections or loops) using LLM.
@@ -24,7 +24,7 @@ def generate_citations(
         item_type: "connection" or "loop" for prompt customization
         llm_client: LLM client for suggesting citations
         out_path: Path to write citations JSON
-        max_citations: Maximum citations per item (default 2)
+        max_citations: Maximum citations per item (default 3)
 
     Returns:
         Dict with citations and reasoning
@@ -38,8 +38,9 @@ def generate_citations(
     prompt = _create_citation_prompt(items, item_type, max_citations)
 
     try:
-        # Use 8192 max tokens for DeepSeek to handle large responses
-        response = llm_client.complete(prompt, temperature=0.1, max_tokens=8192)
+        # Use GPT-5 for citation generation (more accurate than DeepSeek)
+        citation_llm = LLMClient(provider="openai", model="gpt-5")
+        response = citation_llm.complete(prompt, temperature=0.1)
         result = _parse_citation_response(response)
     except Exception as e:
         result = {
@@ -75,20 +76,22 @@ def _create_citation_prompt(
 
     return f"""You are an expert in system dynamics and open source software research. Your task is to suggest relevant academic papers that support {task_desc} in an open source software development system dynamics model.
 
+Think step by step. Consider the question carefully and think of the academic or professional expertise of someone that could best answer this question. You have the experience of someone with expert knowledge in that area. Be helpful and answer in detail while preferring to use information from reputable sources.
+
 {item_type.upper()}S TO CITE:
 {items_info}
 
 TASK:
-For EVERY {item_type}, suggest 1-{max_citations} relevant academic papers from your knowledge of the literature. You MUST find at least 1 paper for each {item_type}.
+For EVERY {item_type}, suggest at least 3 relevant academic papers from your knowledge of the literature. You MUST find at least 3 papers for each {item_type}.
 
 GUIDELINES:
 - Suggest papers about open source software development, community dynamics, software engineering, or related fields
 - Each paper should support the specific {task_desc} (can be indirect support)
 - Provide citation information: title, first 2 authors (use "et al." if more), year
-- Suggest 1-{max_citations} papers per {item_type} (prefer {max_citations} when possible)
+- Suggest at least 3 papers per {item_type} (prefer 3 or more)
 - Explain why each paper is relevant
-- Be creative: if no direct study exists, cite related work, theoretical foundations, or analogous findings
-- ALL {item_type}s must appear in the output with at least 1 paper
+- Be creative: if no direct study exists, cite related work, theoretical frameworks, or analogous findings
+- ALL {item_type}s must appear in the output with at least 3 papers
 - Even for basic flow relationships, cite papers that describe the process or mechanism
 
 OUTPUT FORMAT (JSON only):
@@ -128,7 +131,7 @@ OUTPUT FORMAT (JSON only):
 }}
 
 IMPORTANT:
-- ALL {len(items)} {item_type}s MUST appear in output with at least 1 paper
+- ALL {len(items)} {item_type}s MUST appear in output with at least 3 papers
 - Do NOT skip any {item_type}s
 - Only suggest real academic papers that you are confident exist
 - Do not hallucinate or make up papers
