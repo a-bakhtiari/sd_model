@@ -64,6 +64,47 @@ class SemanticScholarClient:
             time.sleep(self._min_request_interval - elapsed)
         self._last_request_time = time.time()
 
+    def _retry_with_backoff(self, func, max_retries: int = 3):
+        """Retry a function with exponential backoff on rate limit errors.
+
+        Args:
+            func: Function to retry (should return requests.Response)
+            max_retries: Maximum number of retry attempts
+
+        Returns:
+            Response object from successful request
+
+        Raises:
+            Exception if all retries fail
+        """
+        for attempt in range(max_retries + 1):
+            try:
+                response = func()
+
+                # Handle 429 specifically
+                if response.status_code == 429:
+                    if attempt < max_retries:
+                        # Exponential backoff: 2, 4, 8 seconds
+                        wait_time = 2 ** (attempt + 1)
+                        print(f"Rate limit hit (429), waiting {wait_time}s before retry {attempt + 1}/{max_retries}...")
+                        time.sleep(wait_time)
+                        continue
+                    else:
+                        response.raise_for_status()  # Raise on final attempt
+
+                response.raise_for_status()
+                return response
+
+            except requests.exceptions.HTTPError as e:
+                if attempt < max_retries and (e.response.status_code == 429 or e.response.status_code >= 500):
+                    wait_time = 2 ** (attempt + 1)
+                    print(f"HTTP error {e.response.status_code}, waiting {wait_time}s before retry {attempt + 1}/{max_retries}...")
+                    time.sleep(wait_time)
+                    continue
+                raise
+
+        raise Exception("Max retries exceeded")
+
     def _get_cache_path(self, cache_key: str) -> Path:
         """Get cache file path for a given key."""
         # Use hash of key to avoid filesystem issues
@@ -181,17 +222,19 @@ class SemanticScholarClient:
         self._rate_limit()
 
         try:
-            response = requests.get(
-                f"{self.BASE_URL}/paper/search",
-                headers=self._get_headers(),
-                params={
-                    "query": query,
-                    "limit": limit,
-                    "fields": ",".join(fields),
-                },
-                timeout=30,
+            # Use retry wrapper for resilience against rate limits
+            response = self._retry_with_backoff(
+                lambda: requests.get(
+                    f"{self.BASE_URL}/paper/search",
+                    headers=self._get_headers(),
+                    params={
+                        "query": query,
+                        "limit": limit,
+                        "fields": ",".join(fields),
+                    },
+                    timeout=30,
+                )
             )
-            response.raise_for_status()
             data = response.json()
 
             papers = []
@@ -225,15 +268,17 @@ class SemanticScholarClient:
         self._rate_limit()
 
         try:
-            response = requests.get(
-                f"{self.BASE_URL}/paper/{paper_id}",
-                headers=self._get_headers(),
-                params={
-                    "fields": "title,authors,year,citationCount,abstract,venue,fieldsOfStudy,externalIds"
-                },
-                timeout=30,
+            # Use retry wrapper for resilience against rate limits
+            response = self._retry_with_backoff(
+                lambda: requests.get(
+                    f"{self.BASE_URL}/paper/{paper_id}",
+                    headers=self._get_headers(),
+                    params={
+                        "fields": "title,authors,year,citationCount,abstract,venue,fieldsOfStudy,externalIds"
+                    },
+                    timeout=30,
+                )
             )
-            response.raise_for_status()
             data = response.json()
 
             paper = self._parse_paper(data)
@@ -263,16 +308,18 @@ class SemanticScholarClient:
         self._rate_limit()
 
         try:
-            response = requests.get(
-                f"{self.BASE_URL}/paper/{paper_id}/recommendations",
-                headers=self._get_headers(),
-                params={
-                    "limit": limit,
-                    "fields": "title,authors,year,citationCount,abstract"
-                },
-                timeout=30,
+            # Use retry wrapper for resilience against rate limits
+            response = self._retry_with_backoff(
+                lambda: requests.get(
+                    f"{self.BASE_URL}/paper/{paper_id}/recommendations",
+                    headers=self._get_headers(),
+                    params={
+                        "limit": limit,
+                        "fields": "title,authors,year,citationCount,abstract"
+                    },
+                    timeout=30,
+                )
             )
-            response.raise_for_status()
             data = response.json()
 
             papers = []
