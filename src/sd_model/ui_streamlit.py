@@ -871,6 +871,165 @@ def _last_provenance_events(db_path: Path, limit: int = 5) -> pd.DataFrame:
     return pd.DataFrame(rows, columns=["ts", "event", "payload"])
 
 
+def _build_connections_dataframe(artifacts_dir: Path) -> pd.DataFrame:
+    """Build comprehensive connections dataframe from artifacts.
+
+    Combines connection data with descriptions, variable types, and verified citations.
+    Returns one row per connection-citation pair (connections without citations get one row).
+    """
+    def load_json_safe(path: Path) -> dict:
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8"))
+        return {}
+
+    # Load all data sources
+    connections_data = load_json_safe(artifacts_dir / "connections.json")
+    descriptions_data = load_json_safe(artifacts_dir / "connection_descriptions.json")
+    variables_data = load_json_safe(artifacts_dir / "variables_llm.json")
+    citations_data = load_json_safe(artifacts_dir / "connection_citations_verified.json")
+
+    # Build lookup dictionaries
+    descriptions = {d["id"]: d["description"] for d in descriptions_data.get("descriptions", [])}
+    variables = {v["name"]: v["type"] for v in variables_data.get("variables", [])}
+    citations = {c["connection_id"]: c for c in citations_data.get("citations", [])}
+
+    rows = []
+
+    for conn in connections_data.get("connections", []):
+        conn_id = conn.get("id")
+        from_var = conn.get("from_var", "")
+        to_var = conn.get("to_var", "")
+        relationship = conn.get("relationship", "")
+        description = descriptions.get(conn_id, "")
+        from_type = variables.get(from_var, "Unknown")
+        to_type = variables.get(to_var, "Unknown")
+
+        # Get citations for this connection
+        citation_info = citations.get(conn_id)
+
+        if citation_info and citation_info.get("papers"):
+            # One row per citation
+            for paper in citation_info.get("papers", []):
+                s2_match = paper.get("semantic_scholar_match", {})
+                rows.append({
+                    "Connection ID": conn_id,
+                    "From": from_var,
+                    "To": to_var,
+                    "Relationship": relationship,
+                    "From Type": from_type,
+                    "To Type": to_type,
+                    "Description": description,
+                    "Citation": paper.get("title", ""),
+                    "Authors": paper.get("authors", ""),
+                    "Year": paper.get("year", ""),
+                    "Relevance": paper.get("relevance", ""),
+                    "Citations": s2_match.get("citation_count", 0) if s2_match.get("citation_count") else 0,
+                    "URL": s2_match.get("url", ""),
+                    "Abstract": (s2_match.get("abstract", "")[:200] + "...") if s2_match.get("abstract") else "",
+                    "Venue": s2_match.get("venue", ""),
+                })
+        else:
+            # No citations - single row
+            rows.append({
+                "Connection ID": conn_id,
+                "From": from_var,
+                "To": to_var,
+                "Relationship": relationship,
+                "From Type": from_type,
+                "To Type": to_type,
+                "Description": description,
+                "Citation": "",
+                "Authors": "",
+                "Year": "",
+                "Relevance": "",
+                "Citations": 0,
+                "URL": "",
+                "Abstract": "",
+                "Venue": "",
+            })
+
+    return pd.DataFrame(rows)
+
+
+def _build_loops_dataframe(artifacts_dir: Path) -> pd.DataFrame:
+    """Build comprehensive loops dataframe from artifacts.
+
+    Combines loop data with descriptions and verified citations.
+    Returns one row per loop-citation pair (loops without citations get one row).
+    """
+    def load_json_safe(path: Path) -> dict:
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8"))
+        return {}
+
+    # Load all data sources
+    loops_data = load_json_safe(artifacts_dir / "loops.json")
+    descriptions_data = load_json_safe(artifacts_dir / "loop_descriptions.json")
+    citations_data = load_json_safe(artifacts_dir / "loop_citations_verified.json")
+
+    # Collect all loops
+    all_loops = []
+    for loop_type in ["reinforcing", "balancing", "undetermined"]:
+        for loop in loops_data.get(loop_type, []):
+            loop["loop_type"] = loop_type
+            all_loops.append(loop)
+
+    descriptions = {d["id"]: d["description"] for d in descriptions_data.get("descriptions", [])}
+    citations = {c["loop_id"]: c for c in citations_data.get("citations", [])}
+
+    rows = []
+
+    for loop in all_loops:
+        loop_id = loop.get("id")
+        loop_type = loop.get("loop_type", "")
+
+        # Format edges as a path string
+        edges = loop.get("edges", [])
+        loop_path = " → ".join([e.get("from_var", "") for e in edges] + [edges[0].get("from_var", "")] if edges else [])
+
+        description = descriptions.get(loop_id, "")
+
+        # Get citations for this loop
+        citation_info = citations.get(loop_id)
+
+        if citation_info and citation_info.get("papers"):
+            # One row per citation
+            for paper in citation_info.get("papers", []):
+                s2_match = paper.get("semantic_scholar_match", {})
+                rows.append({
+                    "Loop ID": loop_id,
+                    "Type": loop_type.capitalize(),
+                    "Path": loop_path,
+                    "Description": description,
+                    "Citation": paper.get("title", ""),
+                    "Authors": paper.get("authors", ""),
+                    "Year": paper.get("year", ""),
+                    "Relevance": paper.get("relevance", ""),
+                    "Citations": s2_match.get("citation_count", 0) if s2_match.get("citation_count") else 0,
+                    "URL": s2_match.get("url", ""),
+                    "Abstract": (s2_match.get("abstract", "")[:200] + "...") if s2_match.get("abstract") else "",
+                    "Venue": s2_match.get("venue", ""),
+                })
+        else:
+            # No citations - single row
+            rows.append({
+                "Loop ID": loop_id,
+                "Type": loop_type.capitalize(),
+                "Path": loop_path,
+                "Description": description,
+                "Citation": "",
+                "Authors": "",
+                "Year": "",
+                "Relevance": "",
+                "Citations": 0,
+                "URL": "",
+                "Abstract": "",
+                "Venue": "",
+            })
+
+    return pd.DataFrame(rows)
+
+
 def main() -> None:
     st.set_page_config(page_title="SD Model Pipeline", layout="wide")
     st.title("System Dynamics Model – Pipeline")
@@ -889,11 +1048,9 @@ def main() -> None:
     st.session_state["project"] = project
 
     # Tabs
-    dashboard_tab, stage2_tab, citation_tab, discovery_tab, theory_tab, rq_tab, stage3_tab = st.tabs([
+    dashboard_tab, stage2_tab, theory_tab, rq_tab, stage3_tab = st.tabs([
         "Connection Explorer",
         "Loop Explorer",
-        "Citation Verification",
-        "Paper Discovery",
         "Theory Development",
         "Research Questions",
         "Stage 3"
@@ -961,6 +1118,75 @@ def main() -> None:
                 type_pairs = tuple(var_types.items())
                 mermaid_code = _cached_mermaid_diagram(sel_var, edges, type_pairs)
                 _render_mermaid(mermaid_code, f"connection_{sel_var}")
+
+        # Connections Data Table
+        st.subheader("📊 Connections Data Explorer")
+        st.markdown("Interactive table with all connection metadata, descriptions, and verified citations.")
+
+        try:
+            artifacts_dir = Path(data["artifacts_dir"])
+            df_connections = _build_connections_dataframe(artifacts_dir)
+
+            if df_connections.empty:
+                st.info("No connections data available yet. Run the pipeline to generate data.")
+            else:
+                # Add filtering options
+                filter_col1, filter_col2 = st.columns(2)
+                with filter_col1:
+                    relationship_filter = st.multiselect(
+                        "Filter by Relationship",
+                        options=sorted(df_connections["Relationship"].unique()),
+                        default=sorted(df_connections["Relationship"].unique()),
+                        key=f"conn_rel_filter::{project}"
+                    )
+                with filter_col2:
+                    type_filter = st.multiselect(
+                        "Filter by Variable Type",
+                        options=sorted(set(df_connections["From Type"].unique()) | set(df_connections["To Type"].unique())),
+                        default=sorted(set(df_connections["From Type"].unique()) | set(df_connections["To Type"].unique())),
+                        key=f"conn_type_filter::{project}"
+                    )
+
+                # Apply filters
+                filtered_df = df_connections[
+                    (df_connections["Relationship"].isin(relationship_filter)) &
+                    ((df_connections["From Type"].isin(type_filter)) | (df_connections["To Type"].isin(type_filter)))
+                ]
+
+                # Display metrics
+                metric_col1, metric_col2, metric_col3 = st.columns(3)
+                with metric_col1:
+                    st.metric("Total Connections", len(filtered_df["Connection ID"].unique()))
+                with metric_col2:
+                    cited_conns = len(filtered_df[filtered_df["Citation"] != ""]["Connection ID"].unique())
+                    st.metric("Connections with Citations", cited_conns)
+                with metric_col3:
+                    st.metric("Total Citations", len(filtered_df[filtered_df["Citation"] != ""]))
+
+                # Display dataframe with clickable URLs
+                st.dataframe(
+                    filtered_df,
+                    column_config={
+                        "URL": st.column_config.LinkColumn("Semantic Scholar URL"),
+                        "Citations": st.column_config.NumberColumn("Citation Count", format="%d"),
+                        "Year": st.column_config.NumberColumn("Year", format="%d"),
+                    },
+                    use_container_width=True,
+                    height=400
+                )
+
+                # Export button
+                csv_data = filtered_df.to_csv(index=False).encode('utf-8')
+                st.download_button(
+                    label="📥 Download Filtered Data as CSV",
+                    data=csv_data,
+                    file_name=f"{project}_connections_filtered.csv",
+                    mime="text/csv",
+                    key=f"download_conn::{project}"
+                )
+        except Exception as e:
+            st.error(f"Error loading connections data: {e}")
+            st.info("Make sure the pipeline has completed successfully and all artifacts are generated.")
 
     with stage2_tab:
         # Load theory validation data for integration
@@ -1086,12 +1312,18 @@ def main() -> None:
                 loop_type = selected_loop.get("api_type", "").title()
                 st.caption(f"**Type:** {loop_type}")
 
-                # Show loop path under type
-                loop_path = selected_loop.get("loop", "")
-                if loop_path:
-                    st.text(loop_path)
-
             with diagram_col:
+                # Show loop path - try to get from loop field or construct from variables
+                loop_path = selected_loop.get("loop", "")
+                if not loop_path:
+                    # Fallback: construct from variables
+                    variables = selected_loop.get("variables", [])
+                    if variables:
+                        loop_path = " → ".join(variables)
+
+                if loop_path:
+                    st.info(f"**Loop Path:**\n\n{loop_path}")
+
                 # Show description above diagram
                 loop_desc = loop_desc_map.get(selected_loop_id)
                 if loop_desc:
@@ -1104,6 +1336,77 @@ def main() -> None:
                 }
                 mermaid_code = _loop_mermaid(selected_loop["edges"], name_to_type, theory_status)
                 _render_mermaid(mermaid_code, f"loop_{selected_loop_id}")
+
+        # Loops Data Table
+        st.subheader("📊 Loops Data Explorer")
+        st.markdown("Interactive table with all loop metadata, descriptions, and verified citations.")
+
+        try:
+            artifacts_dir = Path(data["artifacts_dir"])
+            df_loops = _build_loops_dataframe(artifacts_dir)
+
+            if df_loops.empty:
+                st.info("No loops data available yet. Run the pipeline to generate data.")
+            else:
+                # Add filtering options
+                filter_col1, filter_col2 = st.columns(2)
+                with filter_col1:
+                    type_filter = st.multiselect(
+                        "Filter by Loop Type",
+                        options=sorted(df_loops["Type"].unique()),
+                        default=sorted(df_loops["Type"].unique()),
+                        key=f"loop_type_filter::{project}"
+                    )
+                with filter_col2:
+                    # Filter by minimum citation count
+                    min_citations = st.number_input(
+                        "Minimum Citation Count",
+                        min_value=0,
+                        max_value=int(df_loops["Citations"].max()) if not df_loops.empty else 100,
+                        value=0,
+                        key=f"loop_min_cit::{project}"
+                    )
+
+                # Apply filters
+                filtered_df = df_loops[
+                    (df_loops["Type"].isin(type_filter)) &
+                    (df_loops["Citations"] >= min_citations)
+                ]
+
+                # Display metrics
+                metric_col1, metric_col2, metric_col3 = st.columns(3)
+                with metric_col1:
+                    st.metric("Total Loops", len(filtered_df["Loop ID"].unique()))
+                with metric_col2:
+                    cited_loops = len(filtered_df[filtered_df["Citation"] != ""]["Loop ID"].unique())
+                    st.metric("Loops with Citations", cited_loops)
+                with metric_col3:
+                    st.metric("Total Citations", len(filtered_df[filtered_df["Citation"] != ""]))
+
+                # Display dataframe with clickable URLs
+                st.dataframe(
+                    filtered_df,
+                    column_config={
+                        "URL": st.column_config.LinkColumn("Semantic Scholar URL"),
+                        "Citations": st.column_config.NumberColumn("Citation Count", format="%d"),
+                        "Year": st.column_config.NumberColumn("Year", format="%d"),
+                    },
+                    use_container_width=True,
+                    height=400
+                )
+
+                # Export button
+                csv_data = filtered_df.to_csv(index=False).encode('utf-8')
+                st.download_button(
+                    label="📥 Download Filtered Data as CSV",
+                    data=csv_data,
+                    file_name=f"{project}_loops_filtered.csv",
+                    mime="text/csv",
+                    key=f"download_loop::{project}"
+                )
+        except Exception as e:
+            st.error(f"Error loading loops data: {e}")
+            st.info("Make sure the pipeline has completed successfully and all artifacts are generated.")
 
     with citation_tab:
         st.markdown("### 📚 Citation Verification")
