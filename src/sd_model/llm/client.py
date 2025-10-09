@@ -101,3 +101,57 @@ class LLMClient:
             raise RuntimeError(f"LLM API call failed: {exc}")
 
         return "[LLM Fallback] Deterministic summary generated without external calls."
+
+    def chat(self, messages: list, temperature: float = 0.7, max_tokens: Optional[int] = None) -> str:
+        """Send a chat conversation to the LLM.
+
+        Args:
+            messages: List of message dicts with 'role' and 'content' keys
+                      e.g., [{"role": "system", "content": "..."}, {"role": "user", "content": "..."}]
+            temperature: Sampling temperature (0.0-1.0)
+            max_tokens: Maximum tokens to generate
+
+        Returns:
+            The assistant's response text
+        """
+        if not self._enabled or not self._provider:
+            return "Sorry, the LLM client is not enabled. Please configure your API keys in .env file."
+
+        try:
+            if self._provider == "openai" and self._openai:
+                # OpenAI chat completion
+                response = self._openai.chat.completions.create(
+                    model=self.model,
+                    messages=messages,
+                    temperature=temperature,
+                    max_tokens=max_tokens
+                )
+                return response.choices[0].message.content
+
+            if self._provider == "deepseek" and self._api_key:
+                # DeepSeek chat completion
+                payload = {
+                    "model": self.model,
+                    "messages": messages,
+                    "temperature": temperature,
+                    "stream": False,
+                }
+                if max_tokens:
+                    payload["max_tokens"] = max_tokens
+
+                response = requests.post(
+                    "https://api.deepseek.com/v1/chat/completions",
+                    headers={
+                        "Authorization": f"Bearer {self._api_key}",
+                        "Content-Type": "application/json",
+                    },
+                    json=payload,
+                    timeout=180,
+                )
+                response.raise_for_status()
+                data = response.json()
+                return data["choices"][0]["message"]["content"]
+        except Exception as exc:
+            raise RuntimeError(f"LLM chat call failed: {exc}")
+
+        return "Sorry, something went wrong with the LLM request."
