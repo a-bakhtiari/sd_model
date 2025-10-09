@@ -9,43 +9,84 @@ from ..llm.client import LLMClient
 
 
 VARIABLE_PROMPT = """
-You are a system dynamics model parser. Analyze the provided Vensim .mdl text and return a JSON object.
+You are an expert Vensim .mdl file parser. Analyze the provided model text and generate a JSON object containing all variables with their positions and types.
 
-Instructions for understanding variable types:
-How to Find the Variable Types
-The key is in the lines that start with 10,. These lines define the variables you see on the diagram. The format is 10, ID, Name, X, Y, Width, Height, ShapeCode, ....
+## 1. Variable Extraction
+Focus on lines starting with `10,` in the sketch section. These define variables.
+Format: `10, ID, Name, X, Y, Width, Height, ShapeCode, ...`
 
-The eighth field in these lines is a Shape Code that helps identify the variable's type.
+Extract:
+- **id**: 2nd field (integer)
+- **name**: 3rd field (exact string, keep quotes if present)
+- **x**: 4th field (integer position)
+- **y**: 5th field (integer position)
+- **type**: Determined by rules below
 
-Flows (Rates)
-This is the most straightforward type to identify.
-Flow variables have a Shape Code of 40.
+## 2. Variable Type Classification (apply in this order)
 
-Let's look at some of your flows from the file:
+### Flows (Rates)
+- **Rule**: Shape Code (8th field) equals `40`
+- Most straightforward to identify
+- Examples from typical models:
+  ```
+  10,11,Adoption Rate,...,46,26,40,3,0,0,...
+  10,16,User Churn Rate,...,46,26,40,3,0,0,...
+  10,76,Skill up,...,46,26,40,3,0,0,...
+  ```
 
-10,11,Adoption Rate,...,46,26,40,3,0,0,...
-10,16,User Churn Rate,...,46,26,40,3,0,0,...
-10,76,Skill up,...,46,26,40,3,0,0,...
-10,85,Joining Rate,...,46,26,40,3,0,0,...
+### Stocks (Levels)
+- **Rule**: Variable is the destination of a flow valve
+- Detection process:
+  1. Find all valve definitions (lines starting with `11,`)
+  2. Find arrows (lines starting with `1,` or `2,`) that connect FROM these valves
+  3. Any variable that receives an arrow from a valve is a Stock
+- Stocks are drawn as rectangles and accumulate flows
 
-Every variable that functions as a rate of change (a flow) has this unique 40 code.
+### Auxiliaries
+- **Rule**: Everything else
+- If not a Flow (ShapeCode ≠ 40) AND not a Stock, then it's an Auxiliary
+- Shape codes typically 3 or 8
 
-Stocks (Levels)
-This is more subtle. Stocks are variables drawn as rectangles that receive flow connections (valves). In the file, determine stocks by finding flow valves (lines starting with 11,) and their target objects from arrow records (lines starting with 1,). Any variable that is the destination of a valve-fed arrow is a Stock.
+## 3. Example
 
-Auxiliaries
-Any variable (10,) that is not a Flow (ShapeCode 40) and not identified as a Stock is an Auxiliary. Their ShapeCodes vary (e.g., 3 or 8).
+**Input sketch data:**
+```
+10,1,Population,1257,581,66,26,3,3,0,0
+10,2,Birth Rate,1100,600,46,26,40,3,0,0
+10,3,Birth Fraction,950,580,50,25,8,3,0,0
+11,4,0,1180,590,6,8,34,3,0,0
+1,5,4,1,100,0,0,22,0,192,0
+1,6,3,4,100,0,0,0,0,192,0
+```
 
-Return JSON ONLY with this schema:
+**Output JSON:**
+```json
 {
   "variables": [
-    {"id": <int>, "name": "<original name>", "type": "Stock" | "Flow" | "Auxiliary"}
+    {"id": 1, "name": "Population", "type": "Stock", "x": 1257, "y": 581},
+    {"id": 2, "name": "Birth Rate", "type": "Flow", "x": 1100, "y": 600},
+    {"id": 3, "name": "Birth Fraction", "type": "Auxiliary", "x": 950, "y": 580}
   ]
 }
+```
 
-Use the exact IDs and names from the sketch section. Do not invent additional keys.
+## 4. Output Requirements
+- Return ONLY valid JSON, no explanations or markdown code blocks
+- Use exact IDs and names from the sketch section
+- Schema:
+```json
+{
+  "variables": [
+    {"id": <int>, "name": "<string>", "type": "Stock" | "Flow" | "Auxiliary", "x": <int>, "y": <int>}
+  ]
+}
+```
 
-MODEL TEXT START\n```mdl\n{mdl_text}\n```\nMODEL TEXT END
+MODEL TEXT START
+```mdl
+{mdl_text}
+```
+MODEL TEXT END
 """
 
 
@@ -220,7 +261,10 @@ def infer_variable_types(mdl_path: Path, client: LLMClient) -> Dict:
             var_type = str(item.get("type", "Auxiliary")).capitalize()
             if var_type not in {"Stock", "Flow", "Auxiliary"}:
                 var_type = "Auxiliary"
-            cleaned.append({"id": var_id, "name": name, "type": var_type})
+            # Extract position coordinates (default to 0 if not provided)
+            x = int(item.get("x", 0))
+            y = int(item.get("y", 0))
+            cleaned.append({"id": var_id, "name": name, "type": var_type, "x": x, "y": y})
         except Exception:
             continue
     cleaned.sort(key=lambda v: v["id"])
