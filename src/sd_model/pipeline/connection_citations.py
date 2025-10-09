@@ -55,8 +55,8 @@ def find_connection_citations(
     prompt = _create_citation_prompt(connections_with_desc, max_citations)
 
     try:
-        # Use GPT-5 for citation generation (more accurate than DeepSeek)
-        citation_llm = LLMClient(provider="openai", model="gpt-5")
+        # Use DeepSeek for citation generation
+        citation_llm = LLMClient(provider="deepseek")
         response = citation_llm.complete(prompt, temperature=0.1)
         result = _parse_citation_response(response, connections_with_desc)
     except Exception as e:

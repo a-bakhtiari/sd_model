@@ -24,7 +24,7 @@ from .pipeline.rq_alignment import run_rq_alignment
 from .pipeline.rq_refinement import run_rq_refinement
 from .pipeline.theory_discovery import run_theory_discovery
 from .llm.client import LLMClient
-from .pipeline.llm_extraction import infer_variable_types, infer_connections
+from .pipeline.llm_extraction import infer_variable_types, infer_connections, extract_diagram_style
 from .provenance.store import log_event
 from .validation.schema import validate_json_schema
 from .external.semantic_scholar import SemanticScholarClient
@@ -62,8 +62,14 @@ def run_pipeline(
 
     variables_path = paths.artifacts_dir / "variables_llm.json"
     connections_llm_path = paths.artifacts_dir / "connections_llm.json"
+    diagram_style_path = paths.artifacts_dir / "diagram_style.json"
+
     variables_path.write_text(json.dumps(variables_data, indent=2), encoding="utf-8")
     connections_llm_path.write_text(json.dumps(connections_data, indent=2), encoding="utf-8")
+
+    # Extract and save diagram style configuration
+    style_data = extract_diagram_style(mdl_path)
+    diagram_style_path.write_text(json.dumps(style_data, indent=2), encoding="utf-8")
 
     # Build compatibility artifacts
     id_to_name = {int(v["id"]): v["name"] for v in variables_data.get("variables", [])}
