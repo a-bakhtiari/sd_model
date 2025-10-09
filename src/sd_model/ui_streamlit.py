@@ -1090,14 +1090,13 @@ def main() -> None:
     st.session_state["project"] = project
 
     # Tabs
-    dashboard_tab, stage2_tab, data_tables_tab, chat_tab, theory_tab, rq_tab, stage3_tab = st.tabs([
+    dashboard_tab, stage2_tab, data_tables_tab, theory_tab, rq_tab, chat_tab = st.tabs([
         "Connection Explorer",
         "Loop Explorer",
         "Data Tables",
-        "💬 Chat",
         "Theory Development",
         "Research Questions",
-        "Stage 3"
+        "Chat"
     ])
 
     with dashboard_tab:
@@ -1515,28 +1514,26 @@ def main() -> None:
             with st.chat_message("user"):
                 st.markdown(user_input)
 
-            # Get assistant response
+            # Get assistant response with streaming
             with st.chat_message("assistant"):
-                with st.spinner("Thinking..."):
-                    try:
-                        # Initialize LLM client
-                        llm_client = LLMClient(model=model, provider=provider)
+                try:
+                    # Initialize LLM client
+                    llm_client = LLMClient(model=model, provider=provider)
 
-                        # Build messages for API
-                        api_messages = [{"role": "system", "content": st.session_state[context_key]}]
-                        api_messages.extend(st.session_state[messages_key])
+                    # Build messages for API
+                    api_messages = [{"role": "system", "content": st.session_state[context_key]}]
+                    api_messages.extend(st.session_state[messages_key])
 
-                        # Get response
-                        response = llm_client.chat(api_messages, temperature=0.7)
+                    # Stream response
+                    response = st.write_stream(llm_client.chat_stream(api_messages, temperature=0.7))
 
-                        # Display and save response
-                        st.markdown(response)
-                        st.session_state[messages_key].append({"role": "assistant", "content": response})
+                    # Save response to history
+                    st.session_state[messages_key].append({"role": "assistant", "content": response})
 
-                    except Exception as e:
-                        error_msg = f"Sorry, I encountered an error: {str(e)}\n\nPlease check your API keys in the .env file."
-                        st.error(error_msg)
-                        st.session_state[messages_key].append({"role": "assistant", "content": error_msg})
+                except Exception as e:
+                    error_msg = f"Sorry, I encountered an error: {str(e)}\n\nPlease check your API keys in the .env file."
+                    st.error(error_msg)
+                    st.session_state[messages_key].append({"role": "assistant", "content": error_msg})
 
     with theory_tab:
         st.markdown("### 🔬 Theory Development")
@@ -1842,9 +1839,6 @@ def main() -> None:
                             st.markdown(f"**Originality:** {rq.get('originality', 'N/A')}")
                             st.markdown(f"**Rationale:** {rq.get('rationale', 'N/A')}")
 
-
-    with stage3_tab:
-        st.info("Placeholder for Step 3. We will flesh this out next.")
 
 
 if __name__ == "__main__":
