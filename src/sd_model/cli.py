@@ -21,6 +21,7 @@ def cmd_run(args: argparse.Namespace) -> None:
         apply_patch=args.apply_patch,
         verify_cit=args.verify_citations,
         discover_papers=args.discover_papers,
+        improve_model=args.improve_model,
     )
     print(json.dumps(result, indent=2))
 
@@ -83,6 +84,9 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_run.add_argument(
         "--discover-papers", action="store_true", help="Search for papers for unsupported connections"
+    )
+    p_run.add_argument(
+        "--improve-model", action="store_true", help="Run model improvement modules (theory enhancement, RQ alignment, etc.)"
     )
     p_run.set_defaults(func=cmd_run)
 

@@ -88,3 +88,17 @@ def load_feedback(feedback_path: Path) -> List[FeedbackItem]:
         except Exception as e:
             raise ValueError(f"Invalid feedback item in {feedback_path}: {e}")
     return items
+
+
+def load_research_questions(rq_path: Path) -> List[str]:
+    """Load research questions from RQ.txt file.
+
+    Each line is treated as a separate research question.
+    Empty lines and leading/trailing whitespace are ignored.
+
+    If the file does not exist, returns an empty list.
+    """
+    if not rq_path.exists():
+        return []
+    with open(rq_path, 'r', encoding='utf-8') as f:
+        return [line.strip() for line in f.readlines() if line.strip()]

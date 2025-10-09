@@ -4,18 +4,16 @@ import json
 import sqlite3
 from pathlib import Path
 from typing import Dict, List, Tuple
+import base64
 
 import pandas as pd
 import streamlit as st
 from streamlit.components.v1 import html
+import graphviz
 
 from .config import load_config
-from .paths import first_mdl_file, for_project
+from .paths import for_project
 from .llm.client import LLMClient
-from .pipeline.llm_extraction import infer_variable_types, infer_connections
-from .pipeline.loops import compute_loops
-from .pipeline.theory_validation import validate_against_theories
-from .pipeline.verify_citations import verify_citations
 from .pipeline.citation_verification import verify_all_citations, generate_connection_citation_table
 from .pipeline.gap_analysis import identify_gaps, suggest_search_queries_llm
 from .pipeline.paper_discovery import search_papers_for_connection
@@ -41,88 +39,40 @@ def list_projects() -> List[str]:
     return projects
 
 
-def _ensure_stage1(project: str) -> Dict[str, Path]:
+def _load_existing_artifacts(project: str) -> Dict[str, Path]:
+    """Load existing artifacts without running the pipeline."""
     cfg = load_config()
     paths = for_project(cfg, project)
-    paths.ensure()
-    mdl = first_mdl_file(paths)
-    if not mdl:
-        raise FileNotFoundError(f"No .mdl file found in {paths.mdl_dir}")
 
-    client = LLMClient()
-    variables_data = infer_variable_types(mdl, client)
-    connections_data = infer_connections(mdl, variables_data, client)
-
-    variables_path = paths.artifacts_dir / "variables_llm.json"
-    connections_llm_path = paths.artifacts_dir / "connections_llm.json"
-    variables_path.write_text(json.dumps(variables_data, indent=2), encoding="utf-8")
-    connections_llm_path.write_text(json.dumps(connections_data, indent=2), encoding="utf-8")
-
-    id_to_name = {int(v["id"]): v["name"] for v in variables_data.get("variables", [])}
-
-    parsed = {
-        "variables": [v["name"] for v in variables_data.get("variables", [])],
-        "equations": {},
-    }
-    paths.parsed_path.write_text(json.dumps(parsed, indent=2), encoding="utf-8")
-
-    connections_named = []
-    for edge in connections_data.get("connections", []):
-        from_name = id_to_name.get(int(edge.get("from", -1)))
-        to_name = id_to_name.get(int(edge.get("to", -1)))
-        if not from_name or not to_name:
-            continue
-        polarity = str(edge.get("polarity", "UNDECLARED")).upper()
-        if polarity == "POSITIVE":
-            relationship = "positive"
-        elif polarity == "NEGATIVE":
-            relationship = "negative"
-        else:
-            relationship = "positive"
-        connections_named.append(
-            {
-                "from_var": from_name,
-                "to_var": to_name,
-                "relationship": relationship,
-            }
-        )
-
-    paths.connections_path.write_text(json.dumps({"connections": connections_named}, indent=2), encoding="utf-8")
-
-    compute_loops(parsed, paths.loops_path, {"connections": connections_named})
-    validate_against_theories(
-        connections_path=paths.connections_path,
-        theories_dir=paths.theories_dir,
-        bib_path=paths.references_bib_path,
-        out_path=paths.theory_validation_path,
-    )
-    try:
-        verify_citations(
-            [paths.theory_validation_path, paths.model_improvements_path],
-            bib_path=paths.references_bib_path,
-        )
-    except Exception:
-        pass
-
+    # Return paths to existing artifacts
     return {
         "parsed": paths.parsed_path,
         "connections": paths.connections_path,
         "theory_validation": paths.theory_validation_path,
         "artifacts_dir": paths.artifacts_dir,
         "db_path": paths.db_dir / "provenance.sqlite",
-        "variables_llm": variables_path,
-        "connections_llm": connections_llm_path,
+        "variables_llm": paths.artifacts_dir / "variables_llm.json",
+        "connections_llm": paths.artifacts_dir / "connections_llm.json",
     }
 
 
 @st.cache_data(show_spinner=False)
 def load_stage1(project: str) -> Dict:
-    refs = _ensure_stage1(project)
-    parsed = json.loads(refs["parsed"].read_text(encoding="utf-8"))
-    cons = json.loads(refs["connections"].read_text(encoding="utf-8"))
-    tv = json.loads(refs["theory_validation"].read_text(encoding="utf-8"))
-    variables_llm = json.loads(refs["variables_llm"].read_text(encoding="utf-8"))
-    connections_llm = json.loads(refs["connections_llm"].read_text(encoding="utf-8"))
+    """Load existing artifacts from disk (does not run pipeline)."""
+    refs = _load_existing_artifacts(project)
+
+    # Load JSON files with error handling
+    def safe_load(path: Path, default=None):
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8"))
+        return default if default is not None else {}
+
+    parsed = safe_load(refs["parsed"])
+    cons = safe_load(refs["connections"])
+    tv = safe_load(refs["theory_validation"])
+    variables_llm = safe_load(refs["variables_llm"])
+    connections_llm = safe_load(refs["connections_llm"])
+
     return {
         "parsed": parsed,
         "connections": cons,
@@ -171,6 +121,111 @@ def _df_theories(tv: Dict) -> Tuple[pd.DataFrame, pd.DataFrame]:
 
 
 @st.cache_data(show_spinner=False)
+def _connection_graphviz(selected_var: str, connections: List[Dict], var_types: Dict[str, str]) -> graphviz.Digraph:
+    """Generate Graphviz diagram for connection explorer with SD conventions."""
+    # Check if selected is a Flow (can't be center node)
+    selected_type = var_types.get(selected_var, "Auxiliary").lower()
+    if selected_type == "flow":
+        # Return error diagram
+        dot = graphviz.Digraph()
+        dot.attr(bgcolor='#fdfaf3')
+        dot.node('error', 'Flow variables\nare shown on arrows,\nnot as nodes', shape='box', style='rounded,filled', fillcolor='#fee2e2', color='#dc2626')
+        return dot
+
+    dot = graphviz.Digraph(engine='dot')
+    dot.attr(bgcolor='#fdfaf3', rankdir='LR', overlap='false', splines='true')
+    dot.attr('node', fontname='Arial', fontsize='12', style='filled')
+    dot.attr('edge', fontname='Arial', fontsize='7', labelfloat='true')
+
+    # Find all edges involving selected variable
+    incoming = [c for c in connections if c.get("to_var") == selected_var]
+    outgoing = [c for c in connections if c.get("from_var") == selected_var]
+
+    # Cloud counter for flows
+    cloud_counter = 0
+
+    # Add center node
+    if selected_type == "stock":
+        dot.node(selected_var, selected_var, shape='box', fillcolor='#dbeafe', color='#3b82f6', penwidth='2.5')
+    elif selected_type == "parameter":
+        dot.node(selected_var, selected_var, shape='box', style='rounded,filled', fillcolor='#fef9c3', color='#f59e0b', penwidth='2.5')
+    else:  # auxiliary
+        dot.node(selected_var, selected_var, shape='ellipse', fillcolor='#ffffff', color='#6b7280', penwidth='2.5')
+
+    nodes_added = {selected_var}
+
+    # Process incoming edges
+    for c in incoming:
+        src = c.get("from_var")
+        rel = c.get("relationship", "unknown").lower()
+        src_type = var_types.get(src, "Auxiliary").lower()
+
+        if src_type == "flow":
+            # Flow as edge label with cloud node
+            cloud_counter += 1
+            cloud_id = f"cloud_{cloud_counter}"
+            dot.node(cloud_id, '', shape='circle', width='0.25', height='0.25', fillcolor='#eff6ff', color='#93c5fd', style='dashed,filled')
+
+            # Flow direction: if negative, stock drains to cloud; if positive, cloud feeds stock
+            polarity = "−" if rel == "negative" else "+"
+            if rel == "negative":
+                dot.edge(selected_var, cloud_id, label=f"{src} ({polarity})", color='#3b82f6', penwidth='1.5', arrowhead='odot')
+            else:
+                dot.edge(cloud_id, selected_var, label=f"{src} ({polarity})", color='#3b82f6', penwidth='1.5')
+        else:
+            # Regular node
+            if src not in nodes_added:
+                if src_type == "stock":
+                    dot.node(src, src, shape='box', fillcolor='#dbeafe', color='#3b82f6', penwidth='2')
+                elif src_type == "parameter":
+                    dot.node(src, src, shape='box', style='rounded,filled', fillcolor='#fef9c3', color='#f59e0b', penwidth='2')
+                else:
+                    dot.node(src, src, shape='ellipse', fillcolor='#ffffff', color='#6b7280', penwidth='2')
+                nodes_added.add(src)
+
+            polarity = "−" if rel == "negative" else "+"
+            if rel == "negative":
+                dot.edge(src, selected_var, label=polarity, color='#3b82f6', penwidth='1.5', arrowhead='odot')
+            else:
+                dot.edge(src, selected_var, label=polarity, color='#3b82f6', penwidth='1.5')
+
+    # Process outgoing edges
+    for c in outgoing:
+        dst = c.get("to_var")
+        rel = c.get("relationship", "unknown").lower()
+        dst_type = var_types.get(dst, "Auxiliary").lower()
+
+        if dst_type == "flow":
+            # Flow as edge label with cloud node
+            cloud_counter += 1
+            cloud_id = f"cloud_{cloud_counter}"
+            dot.node(cloud_id, '', shape='circle', width='0.25', height='0.25', fillcolor='#eff6ff', color='#93c5fd', style='dashed,filled')
+
+            # Flow direction
+            polarity = "−" if rel == "negative" else "+"
+            if rel == "negative":
+                dot.edge(cloud_id, selected_var, label=f"{dst} ({polarity})", color='#3b82f6', penwidth='1.5', arrowhead='odot')
+            else:
+                dot.edge(selected_var, cloud_id, label=f"{dst} ({polarity})", color='#3b82f6', penwidth='1.5')
+        else:
+            # Regular node
+            if dst not in nodes_added:
+                if dst_type == "stock":
+                    dot.node(dst, dst, shape='box', fillcolor='#dbeafe', color='#3b82f6', penwidth='2')
+                elif dst_type == "parameter":
+                    dot.node(dst, dst, shape='box', style='rounded,filled', fillcolor='#fef9c3', color='#f59e0b', penwidth='2')
+                else:
+                    dot.node(dst, dst, shape='ellipse', fillcolor='#ffffff', color='#6b7280', penwidth='2')
+                nodes_added.add(dst)
+
+            polarity = "−" if rel == "negative" else "+"
+            if rel == "negative":
+                dot.edge(selected_var, dst, label=polarity, color='#3b82f6', penwidth='1.5', arrowhead='odot')
+            else:
+                dot.edge(selected_var, dst, label=polarity, color='#3b82f6', penwidth='1.5')
+
+    return dot
+
 def _cached_mermaid_diagram(selected: str, edges: Tuple[Tuple[str, str, str], ...], type_pairs: Tuple[Tuple[str, str], ...]) -> str:
     cons = {
         "connections": [
@@ -182,6 +237,105 @@ def _cached_mermaid_diagram(selected: str, edges: Tuple[Tuple[str, str, str], ..
     return _mermaid_diagram(cons, selected, var_types)
 
 
+def _loop_graphviz(loop_edges: List[Dict[str, str]], var_types: Dict[str, str], theory_status: Dict | None = None) -> graphviz.Digraph:
+    """Generate Graphviz diagram for a feedback loop with SD conventions."""
+    dot = graphviz.Digraph(engine='circo')  # Circular layout for feedback loops
+    dot.attr(bgcolor='#fdfaf3', overlap='false', splines='true')
+    dot.attr('node', fontname='Arial', fontsize='12', style='filled')
+    dot.attr('edge', fontname='Arial', fontsize='7', labelfloat='true')
+
+    # Build theory lookup
+    edge_theory_map = {}
+    edge_novel_set = set()
+    if theory_status:
+        for edge, theory_name, _ in theory_status.get("theory_matched", []):
+            key = (edge.get("from_var"), edge.get("to_var"))
+            edge_theory_map[key] = theory_name
+        for edge in theory_status.get("novel", []):
+            key = (edge.get("from_var"), edge.get("to_var"))
+            edge_novel_set.add(key)
+
+    # Add nodes (skip flows - they'll be on edges)
+    nodes_added = set()
+    cloud_counter = 0
+    cloud_nodes = {}
+
+    for edge in loop_edges:
+        for var_name in [edge.get("from_var", ""), edge.get("to_var", "")]:
+            if not var_name or var_name in nodes_added:
+                continue
+
+            node_type = var_types.get(var_name, "Auxiliary").lower()
+
+            if node_type == "flow":
+                # Skip - flows become edge labels with clouds
+                continue
+            elif node_type == "stock":
+                dot.node(var_name, var_name, shape='box', fillcolor='#dbeafe', color='#3b82f6', penwidth='2')
+            elif node_type == "parameter":
+                dot.node(var_name, var_name, shape='box', style='rounded,filled', fillcolor='#fef9c3', color='#f59e0b', penwidth='2')
+            else:  # auxiliary
+                dot.node(var_name, var_name, shape='ellipse', fillcolor='#ffffff', color='#6b7280', penwidth='2')
+
+            nodes_added.add(var_name)
+
+    # Add edges (handle flows specially)
+    for edge in loop_edges:
+        src = edge.get("from_var", "")
+        dst = edge.get("to_var", "")
+        rel = edge.get("relationship", "unknown").lower()
+
+        if not src or not dst:
+            continue
+
+        src_type = var_types.get(src, "Auxiliary").lower()
+        dst_type = var_types.get(dst, "Auxiliary").lower()
+
+        # Handle flows in edges
+        if src_type == "flow" or dst_type == "flow":
+            # Create cloud node for flow
+            cloud_counter += 1
+            cloud_id = f"flow_cloud_{cloud_counter}"
+            dot.node(cloud_id, '', shape='circle', width='0.25', height='0.25', fillcolor='#eff6ff', color='#93c5fd', style='dashed,filled')
+
+            polarity = "−" if rel == "negative" else "+"
+
+            if src_type == "flow":
+                # Flow from cloud to dst
+                flow_name = src
+                actual_dst = dst
+                if rel == "negative":
+                    dot.edge(actual_dst, cloud_id, label=f"{flow_name} ({polarity})", color='#3b82f6', penwidth='1.5', arrowhead='odot')
+                else:
+                    dot.edge(cloud_id, actual_dst, label=f"{flow_name} ({polarity})", color='#3b82f6', penwidth='1.5')
+            else:  # dst_type == "flow"
+                # Flow from src to cloud
+                flow_name = dst
+                actual_src = src
+                if rel == "negative":
+                    dot.edge(cloud_id, actual_src, label=f"{flow_name} ({polarity})", color='#3b82f6', penwidth='1.5', arrowhead='odot')
+                else:
+                    dot.edge(actual_src, cloud_id, label=f"{flow_name} ({polarity})", color='#3b82f6', penwidth='1.5')
+        else:
+            # Regular edge between non-flow nodes
+            edge_key = (src, dst)
+
+            # Polarity label
+            polarity = "−" if rel == "negative" else "+"
+
+            # Edge styling - all blue with polarity
+            if rel == "negative":
+                edge_attrs = {'color': '#3b82f6', 'penwidth': '1.5', 'arrowhead': 'odot'}
+            else:
+                edge_attrs = {'color': '#3b82f6', 'penwidth': '1.5'}
+
+            # Build label with polarity
+            label = polarity
+
+            dot.edge(src, dst, label=label, **edge_attrs)
+
+    return dot
+
 def _loop_mermaid(loop_edges: List[Dict[str, str]], var_types: Dict[str, str], theory_status: Dict | None = None) -> str:
     """Generate Mermaid diagram for a feedback loop with optional theory indicators.
 
@@ -191,10 +345,10 @@ def _loop_mermaid(loop_edges: List[Dict[str, str]], var_types: Dict[str, str], t
         theory_status: Optional dict with 'theory_matched' and 'novel' edge lists
     """
     if not loop_edges:
-        return "flowchart LR\n  empty((Loop edges missing)):::muted"
+        return "flowchart TD\n  empty((Loop edges missing)):::muted"
 
     lines = [
-        "flowchart LR",
+        "flowchart TD",
         "  classDef muted fill:#f3f4f6,color:#6b7280,font-size:12px",
         "  classDef stock fill:#eef2ff,color:#1e1b4b,stroke:#4338ca,stroke-width:2px,font-size:14px",
         "  classDef aux fill:#ffffff,color:#1f2937,stroke:#111827,stroke-width:2px,font-size:14px",
@@ -556,7 +710,9 @@ def _node_markup(label: str, node_type: str) -> Tuple[str, str]:
         return f"(({safe}))", "aux"
     if node_type == "parameter":
         return f"([{safe}])", "parameter"
-    return "", "flow"
+    if node_type == "flow":
+        return f"(({safe}))", "aux"  # Render flows like auxiliary variables
+    return f"(({safe}))", "aux"  # Default fallback
 
 
 def _render_mermaid(diagram_code: str, container_key: str, *, height: int = 520) -> None:
@@ -567,10 +723,11 @@ def _render_mermaid(diagram_code: str, container_key: str, *, height: int = 520)
         background: #fdfaf3;
         border: 1px solid #e5e7eb;
         border-radius: 12px;
-        padding: 1.2rem;
+        padding: 1rem;
+        margin-bottom: 0.5rem;
       }}
     </style>
-    <div id='{container_id}' class='mermaid-wrapper'>
+    <div id='{container_id}' class='mermaid-wrapper' style='height: {height}px; overflow: auto;'>
       <div class='mermaid'>
       {diagram_code}
       </div>
@@ -581,7 +738,7 @@ def _render_mermaid(diagram_code: str, container_key: str, *, height: int = 520)
       mermaid.run({{ nodes: document.querySelectorAll('#{container_id} .mermaid') }});
     </script>
     """
-    html(diagram_html, height=height)
+    html(diagram_html, height=height + 10)
 
 
 def _mermaid_diagram(cons: Dict, selected: str, var_types: Dict[str, str]) -> str:
@@ -728,42 +885,20 @@ def main() -> None:
 
     # Tabs
     dashboard_tab, stage2_tab, citation_tab, discovery_tab, stage3_tab = st.tabs([
-        "Dashboard",
-        "Stage 2: Loops & Theories",
+        "Connection Explorer",
+        "Loop Explorer",
         "Citation Verification",
         "Paper Discovery",
         "Stage 3"
     ])
 
     with dashboard_tab:
-        # Auto-sync Stage 1 artifacts on first load per project
-        synced_key = f"stage1_synced::{project}"
-        autorun = st.session_state.get(synced_key) is None
-        if autorun:
-            with st.spinner("Syncing Stage 1 artifacts..."):
-                try:
-                    st.session_state[synced_key] = True
-                    st.cache_data.clear()
-                    _ = load_stage1(project)
-                except Exception as e:
-                    st.session_state[synced_key] = False
-                    st.error(f"Sync error: {e}")
-
-        col_sync, _ = st.columns([1, 3])
-        if col_sync.button("Sync Stage 1 Artifacts"):
-            with st.spinner("Syncing..."):
-                try:
-                    st.cache_data.clear()
-                    data = load_stage1(project)
-                    st.success("Synced.")
-                except Exception as e:
-                    st.error(f"Sync error: {e}")
-
-        # Load current data
+        # Load existing artifacts (no pipeline execution)
         try:
             data = load_stage1(project)
         except Exception as e:
-            st.error(str(e))
+            st.error(f"Failed to load artifacts: {e}")
+            st.info("💡 Make sure you've run the pipeline first to generate artifacts.")
             return
 
         parsed = data["parsed"]
@@ -773,7 +908,6 @@ def main() -> None:
         connections_llm = data.get("connections_llm", {"connections": []})
         id_to_name = {int(v["id"]): v["name"] for v in variables_llm.get("variables", [])}
         name_to_type = {v["name"]: v.get("type", "Auxiliary") for v in variables_llm.get("variables", [])}
-        _artifact_cards(parsed, cons, tv)
 
         st.subheader("Connections Explorer")
         df_conn = _df_connections(cons)
@@ -794,131 +928,30 @@ def main() -> None:
             if vkey not in st.session_state or st.session_state[vkey] not in variables:
                 st.session_state[vkey] = variables[0]
 
-            diagram_col, selector_col = st.columns([3, 1])
-            search_key = f"var_search::{project}"
-            radio_key = f"var_radio::{project}"
+            selector_col, diagram_col = st.columns([1, 3])
 
             with selector_col:
-                st.markdown(
-                    """
-                    <style>
-                      .variable-panel .stRadio div[role='radiogroup'] {
-                        max-height: 320px;
-                        overflow-y: auto;
-                        padding-right: 6px;
-                      }
-                      .variable-panel .stRadio label {
-                        display: block;
-                        border: 1px solid #e5e7eb;
-                        border-radius: 6px;
-                        padding: 6px 10px;
-                        margin-bottom: 6px;
-                        cursor: pointer;
-                      }
-                      .variable-panel .stRadio label:hover {
-                        background: #f3f4f6;
-                      }
-                      .variable-panel .stRadio input[type="radio"] {
-                        display: none;
-                      }
-                    </style>
-                    """,
-                    unsafe_allow_html=True,
-                )
-                st.markdown("<div class='variable-panel'>", unsafe_allow_html=True)
-                search_value = st.text_input(
-                    "Search variables",
-                    value=st.session_state.get(search_key, ""),
-                    key=search_key,
-                )
-                if search_value:
-                    filtered = [
-                        v for v in variables if search_value.lower() in v.lower()
-                    ]
-                else:
-                    filtered = variables
+                current_sel = st.session_state.get(vkey, variables[0])
+                if current_sel not in variables:
+                    current_sel = variables[0]
 
-                type_filter = st.selectbox(
-                    "Filter by type",
-                    ["All", "Stock", "Auxiliary", "Parameter"],
-                    key=f"type_filter::{project}"
-                )
-                if type_filter != "All":
-                    filtered = [
-                        v for v in filtered
-                        if var_types.get(v, "Auxiliary").lower() == type_filter.lower()
-                    ]
-                if not filtered:
-                    st.warning("No variables match the search.")
-                    filtered = variables
-
-                current_sel = st.session_state[vkey]
-                if current_sel not in filtered:
-                    current_sel = filtered[0]
-
-                default_selection = st.session_state.get(radio_key, current_sel)
-                if default_selection not in filtered:
-                    default_selection = current_sel
-
-                sel_var = st.radio(
-                    "Variables",
-                    filtered,
-                    index=filtered.index(default_selection),
-                    key=radio_key,
-                    label_visibility="collapsed",
+                sel_var = st.selectbox(
+                    "Select variable (type to search)",
+                    variables,
+                    index=variables.index(current_sel) if current_sel in variables else 0,
+                    key=f"var_select::{project}",
                     format_func=lambda v: var_labels.get(v, v),
                 )
                 st.session_state[vkey] = sel_var
 
                 sel_type = var_types.get(sel_var, "Auxiliary")
-                st.markdown(f"**Type:** {sel_type}")
-                st.markdown("</div>", unsafe_allow_html=True)
+                st.caption(f"**Type:** {sel_type}")
 
             with diagram_col:
-                edges_tuple = tuple(
-                    (
-                        row.get("from_var", ""),
-                        row.get("to_var", ""),
-                        row.get("relationship", "unknown"),
-                    )
-                    for row in cons.get("connections", [])
-                )
-                type_pairs = tuple(sorted(var_types.items()))
-                diagram_code = _cached_mermaid_diagram(sel_var, edges_tuple, type_pairs)
-                _render_mermaid(diagram_code, f"{project}_{sel_var}_diagram", height=520)
-
-        st.subheader("Theories & Expected Links (for selected variable)")
-        theory_count = tv.get("summary", {}).get("theory_count", 0)
-        if theory_count == 0:
-            st.info("No theories found. Add YAML files under knowledge/theories/ to enable coverage.")
-        else:
-            # Filter confirmed/missing by selected variable
-            if variables:
-                sel_var = st.session_state.get(f"selected_var::{project}", variables[0])
-                conf = [r for r in tv.get("confirmed", []) if r.get("from_var") == sel_var or r.get("to_var") == sel_var]
-                miss = [r for r in tv.get("missing", []) if r.get("from_var") == sel_var or r.get("to_var") == sel_var]
-                c1, c2 = st.columns(2)
-                with c1:
-                    st.metric("Confirmed links", len(conf))
-                with c2:
-                    st.metric("Missing links", len(miss))
-                if conf:
-                    st.markdown("**Confirmed links**")
-                    for r in conf:
-                        st.markdown(f"- {r.get('theory')}: {r.get('from_var')} → {r.get('to_var')} ({r.get('relationship')})")
-                else:
-                    st.markdown("*No confirmed links for this variable.*")
-
-                if miss:
-                    st.markdown("**Missing links**")
-                    for r in miss:
-                        st.markdown(f"- {r.get('theory')}: {r.get('from_var')} → {r.get('to_var')} ({r.get('relationship')})")
-                else:
-                    st.markdown("*No missing links for this variable.*")
-
-        st.subheader("Provenance – Last 5 Events")
-        prov_df = _last_provenance_events(Path(data["db_path"]))
-        st.dataframe(prov_df, use_container_width=True, hide_index=True)
+                # Render diagram with Graphviz
+                connections_list = cons.get("connections", [])
+                dot = _connection_graphviz(sel_var, connections_list, var_types)
+                st.graphviz_chart(dot, use_container_width=True)
 
     with stage2_tab:
         # Load theory validation data for integration
@@ -928,37 +961,19 @@ def main() -> None:
         else:
             tv_data = json.loads(Path(tv_value).read_text(encoding="utf-8"))
 
-        # Overview Dashboard
-        st.markdown("### 📊 Stage 2: Loop Analysis & Theory Validation")
-        summary = tv_data.get("summary", {})
-        total_confirmed = summary.get("confirmed_count", 0)
-        total_novel = summary.get("novel_count", 0)
-        theory_count = summary.get("theory_count", 0)
-        total_connections = summary.get("model_edge_count", 0)
-        coverage_pct = int((total_confirmed / total_connections * 100)) if total_connections > 0 else 0
-
-        # Overview metrics
-        overview_cols = st.columns(5)
-        with overview_cols[0]:
-            st.metric("Loops Detected", "Loading...")
-        with overview_cols[1]:
-            st.metric("Theories Applied", theory_count)
-        with overview_cols[2]:
-            st.metric("Theory-Confirmed", total_confirmed, f"{coverage_pct}%")
-        with overview_cols[3]:
-            st.metric("Novel Discoveries", total_novel)
-        with overview_cols[4]:
-            health_icon = "✅" if coverage_pct >= 30 else "⚠️" if coverage_pct >= 10 else "❌"
-            st.metric("Model Health", health_icon)
-
-        st.markdown("---")
-
-        # Feedback Loops Section
-        st.subheader("🔁 Feedback Loops Analysis")
+        st.subheader("Loop Explorer")
         loops_path = Path(data["artifacts_dir"]) / "loops.json"
         loops_raw = json.loads(loops_path.read_text(encoding="utf-8")) if loops_path.exists() else {}
         loops_data = _normalize_loops(loops_raw)
         loop_notes = loops_data.get("notes", [])
+
+        # Load loop descriptions
+        loop_descriptions_path = Path(data["artifacts_dir"]) / "loop_descriptions.json"
+        loop_desc_map = {}
+        if loop_descriptions_path.exists():
+            desc_data = json.loads(loop_descriptions_path.read_text(encoding="utf-8"))
+            for item in desc_data.get("descriptions", []):
+                loop_desc_map[item["id"]] = item["description"]
 
         variables_llm = data.get("variables_llm", {"variables": []})
         name_to_type = {
@@ -995,14 +1010,9 @@ def main() -> None:
                         for edge in edges_list
                     )
                 variables_tuple = tuple(loop.get("variables", []))
-                classification = _classify_loop_api(
-                    edges_tuple,
-                    variables_tuple,
-                    loop.get("description", ""),
-                )
-                api_type = classification.get("type") or "undetermined"
-                if api_type not in type_order:
-                    api_type = "undetermined"
+
+                # Use existing classification from loops.json (no LLM call)
+                api_type = bucket_key  # Already classified: reinforcing/balancing/undetermined
 
                 # Match loop edges to theories
                 theory_match = _match_loop_edges_to_theories(edges_list, tv_data)
@@ -1016,8 +1026,8 @@ def main() -> None:
                     "length": loop.get("length") or len(loop.get("variables") or []),
                     "negative_edges": loop.get("negative_edges"),
                     "api_type": api_type,
-                    "classification_reason": classification.get("reason", ""),
-                    "classification_source": classification.get("source", "api"),
+                    "classification_reason": loop.get("description", ""),  # Use existing description
+                    "classification_source": "loops_json",  # From pre-computed loops.json
                     "theory_coverage": theory_match.get("coverage_pct", 0),
                     "theory_matched": theory_match.get("theory_matched", []),
                     "novel_edges": theory_match.get("novel", []),
@@ -1025,52 +1035,9 @@ def main() -> None:
                 }
                 loop_entries.append(entry)
 
-        total_loops = len(loop_entries)
-        type_counts = {"reinforcing": 0, "balancing": 0, "undetermined": 0}
-        for entry in loop_entries:
-            key = entry["api_type"] if entry["api_type"] in type_counts else "undetermined"
-            type_counts[key] += 1
-
-        # Update overview with actual loop count
-        overview_cols[0].metric("Loops Detected", total_loops)
-
-        lc1, lc2, lc3, lc4 = st.columns(4)
-        with lc1:
-            st.metric("Reinforcing loops", type_counts.get("reinforcing", 0))
-        with lc2:
-            st.metric("Balancing loops", type_counts.get("balancing", 0))
-        with lc3:
-            st.metric("Undetermined loops", type_counts.get("undetermined", 0))
-        with lc4:
-            st.metric("Notes", len(loop_notes))
-
-        fallback_count = sum(1 for entry in loop_entries if entry["classification_source"] != "api")
-        if total_loops and fallback_count:
-            st.info(
-                f"{fallback_count} loop{'s' if fallback_count != 1 else ''} could not be classified by the API."
-            )
-
-        if total_loops == 0:
-            st.info("No feedback loops detected yet. Ensure `loops.json` exists and the classification API is configured.")
+        if not loop_entries:
+            st.info("No feedback loops detected yet.")
         else:
-            # Enhanced summary table with theory coverage
-            summary_rows = [
-                {
-                    "Loop ID": entry["id"],
-                    "Type": entry["api_type"].title(),
-                    "Length": entry["length"],
-                    "Theory Coverage": f"{entry['theory_coverage']}%",
-                    "Description": entry["description"][:60] + "..." if len(entry["description"]) > 60 else entry["description"],
-                }
-                for entry in loop_entries
-            ]
-            summary_df = pd.DataFrame(
-                summary_rows,
-                columns=["Loop ID", "Type", "Length", "Theory Coverage", "Description"],
-            )
-            st.dataframe(summary_df, use_container_width=True, hide_index=True)
-
-            st.markdown("**🔍 Loop Explorer**")
             loop_entries_sorted = sorted(
                 loop_entries,
                 key=lambda e: (type_order.get(e["api_type"], 3), e["id"]),
@@ -1080,218 +1047,50 @@ def main() -> None:
             if loop_key not in st.session_state or st.session_state[loop_key] not in loop_ids:
                 st.session_state[loop_key] = loop_ids[0]
 
-            diagram_col, selector_col = st.columns([3, 1])
-            search_key = f"loop_search::{project}"
-            radio_key = f"loop_radio::{project}"
+            selector_col, diagram_col = st.columns([1, 3])
 
             with selector_col:
-                st.markdown(
-                    """
-                    <style>
-                      .loop-panel .stRadio div[role='radiogroup'] {
-                        max-height: 320px;
-                        overflow-y: auto;
-                        padding-right: 6px;
-                      }
-                      .loop-panel .stRadio label {
-                        display: block;
-                        border: 1px solid #e5e7eb;
-                        border-radius: 6px;
-                        padding: 6px 10px;
-                        margin-bottom: 6px;
-                        cursor: pointer;
-                      }
-                      .loop-panel .stRadio label:hover {
-                        background: #f3f4f6;
-                      }
-                      .loop-panel .stRadio input[type="radio"] {
-                        display: none;
-                      }
-                    </style>
-                    """,
-                    unsafe_allow_html=True,
-                )
-                st.markdown("<div class='loop-panel'>", unsafe_allow_html=True)
-                search_value = st.text_input(
-                    "Search loops",
-                    value=st.session_state.get(search_key, ""),
-                    key=search_key,
-                )
-                if search_value:
-                    search_lower = search_value.lower()
-                    filtered_entries = [
-                        entry
-                        for entry in loop_entries_sorted
-                        if search_lower
-                        in " ".join(
-                            filter(
-                                None,
-                                [
-                                    entry["id"],
-                                    entry["api_type"],
-                                    entry["description"],
-                                    ", ".join(entry["variables"]),
-                                ],
-                            )
-                        ).lower()
-                    ]
-                else:
-                    filtered_entries = loop_entries_sorted
-
-                if not filtered_entries:
-                    st.warning("No loops match the search.")
-                    filtered_entries = loop_entries_sorted
-
-                options = [entry["id"] for entry in filtered_entries]
-                default_id = st.session_state[loop_key]
-                if default_id not in options:
-                    default_id = options[0]
-
+                # Build label map
                 label_map = {}
-                for entry in filtered_entries:
-                    desc = entry["description"] or ", ".join(entry["variables"]) or "Loop"
-                    label_map[entry["id"]] = f"{entry['id']} · {entry['api_type'].title()} · {desc}"
+                for entry in loop_entries_sorted:
+                    label_map[entry["id"]] = f"{entry['id']} · {entry['api_type'].title()}"
 
-                selected_loop_id = st.radio(
-                    "Loops",
-                    options,
-                    index=options.index(default_id),
-                    key=radio_key,
-                    label_visibility="collapsed",
+                current_loop = st.session_state.get(loop_key, loop_entries_sorted[0]["id"])
+                if current_loop not in loop_ids:
+                    current_loop = loop_entries_sorted[0]["id"]
+
+                selected_loop_id = st.selectbox(
+                    "Select loop (type to search)",
+                    loop_ids,
+                    index=loop_ids.index(current_loop) if current_loop in loop_ids else 0,
+                    key=f"loop_select::{project}",
                     format_func=lambda loop_id: label_map.get(loop_id, loop_id),
                 )
                 st.session_state[loop_key] = selected_loop_id
-                st.markdown("</div>", unsafe_allow_html=True)
 
-            selected_loop = next(
-                (entry for entry in loop_entries if entry["id"] == st.session_state[loop_key]),
-                loop_entries_sorted[0],
-            )
+                selected_loop = next(
+                    (entry for entry in loop_entries if entry["id"] == selected_loop_id),
+                    loop_entries_sorted[0],
+                )
+
+                loop_type = selected_loop.get("api_type", "").title()
+                st.caption(f"**Type:** {loop_type}")
 
             with diagram_col:
-                # Loop header with type badge
-                loop_type_color = "🟢" if selected_loop['api_type'] == "reinforcing" else "🔵" if selected_loop['api_type'] == "balancing" else "⚪"
-                st.markdown(f"### {loop_type_color} {selected_loop['id']}: {selected_loop['api_type'].title()} Loop")
-
-                # Theory coverage badge
-                cov_pct = selected_loop.get("theory_coverage", 0)
-                cov_color = "🟢" if cov_pct >= 70 else "🟡" if cov_pct >= 30 else "🔴"
-                st.markdown(f"**Theory Coverage:** {cov_color} {cov_pct}% ({len(selected_loop.get('theory_matched', []))}/{len(selected_loop['edges'])} edges)")
-
-                if selected_loop["variables"]:
-                    st.caption(f"Variables: {', '.join(selected_loop['variables'][:5])}{('...' if len(selected_loop['variables']) > 5 else '')}")
-
-                # Enhanced diagram with theory indicators
+                # Render loop diagram with Graphviz
                 theory_status = {
                     "theory_matched": selected_loop.get("theory_matched", []),
                     "novel": selected_loop.get("novel_edges", []),
                 }
-                diagram_code = _loop_mermaid(selected_loop["edges"], name_to_type, theory_status)
-                _render_mermaid(diagram_code, f"{project}_{selected_loop['id']}_diagram", height=460)
+                dot = _loop_graphviz(selected_loop["edges"], name_to_type, theory_status)
 
-                # AI Commentary Section
-                st.markdown("---")
-                st.markdown("#### 🤖 AI Analysis")
+                # Render as SVG
+                st.graphviz_chart(dot, use_container_width=True)
 
-                # Get enhanced analysis
-                theory_matches_tuple = tuple(
-                    (theory, citation)
-                    for _, theory, citation in selected_loop.get("theory_matched", [])
-                )
-                enhanced_analysis = _enhanced_loop_analysis_llm(
-                    selected_loop["edges_tuple"],
-                    tuple(selected_loop["variables"]),
-                    selected_loop["description"],
-                    theory_matches_tuple,
-                    len(selected_loop.get("novel_edges", [])),
-                    selected_loop["api_type"],
-                )
-
-                # Display behavioral explanation
-                st.markdown(f"**Behavioral Explanation:**")
-                st.write(enhanced_analysis.get("behavioral_explanation", "Analysis unavailable."))
-
-                # Display system impact
-                impact = enhanced_analysis.get("system_impact", "unknown")
-                impact_emoji = "✅" if impact == "positive" else "⚠️" if impact == "mixed" else "❌" if impact == "negative" else "❔"
-                st.markdown(f"**System Impact:** {impact_emoji} {impact.title()}")
-
-                # Display key insight
-                if enhanced_analysis.get("key_insight"):
-                    st.info(f"💡 **Key Insight:** {enhanced_analysis['key_insight']}")
-
-                # Display intervention suggestion if provided
-                if enhanced_analysis.get("intervention"):
-                    st.success(f"🎯 **Intervention Point:** {enhanced_analysis['intervention']}")
-
-                # Theory support details
-                if selected_loop.get("theories_applied"):
-                    st.markdown("**Theory Support:**")
-                    for theory in selected_loop["theories_applied"]:
-                        st.markdown(f"- ✅ {theory}")
-
-                # Novel connections notice
-                if selected_loop.get("novel_edges"):
-                    st.warning(f"⚠️ {len(selected_loop['novel_edges'])} novel connection(s) - not predicted by current theories")
-
-                st.markdown("---")
-
-                # Edge details table
-                st.markdown("**Loop Connections:**")
-                edge_df = pd.DataFrame(
-                    selected_loop["edges"],
-                    columns=["from_var", "to_var", "relationship"],
-                )
-                st.dataframe(edge_df, use_container_width=True, hide_index=True)
-
-        if loop_notes:
-            st.caption("📝 Loop Detection Notes")
-            for note in loop_notes:
-                st.markdown(f"- {note}")
-
-        # Theory Alignment Section
-        st.markdown("---")
-        st.markdown("---")
-        st.subheader("📚 Theory Alignment & Novel Discoveries")
-        st.caption("Comparing model connections against theoretical expectations from literature")
-
-        summary = tv_data.get("summary", {})
-        metrics = [
-            ("Confirmed", summary.get("confirmed_count", 0)),
-            ("Contradicted", summary.get("contradicted_count", 0)),
-            ("Missing", summary.get("missing_count", 0)),
-            ("Novel", summary.get("novel_count", 0)),
-            ("Theories", summary.get("theory_count", 0)),
-        ]
-        metric_cols = st.columns(len(metrics))
-        for col, (label, val) in zip(metric_cols, metrics):
-            with col:
-                st.metric(label, val)
-
-        st.markdown("**Missing links**")
-        missing_df = pd.DataFrame(tv_data.get("missing", []))
-        if missing_df.empty:
-            st.write("None.")
-        else:
-            fcol1, fcol2 = st.columns(2)
-            with fcol1:
-                var_filter = st.text_input("Filter by variable", key="missing_var")
-            with fcol2:
-                theory_filter = st.text_input("Filter by theory", key="missing_theory")
-            filt = missing_df
-            if var_filter:
-                mask = filt["from_var"].str.contains(var_filter, case=False, na=False) | filt["to_var"].str.contains(var_filter, case=False, na=False)
-                filt = filt[mask]
-            if theory_filter:
-                filt = filt[filt["theory"].str.contains(theory_filter, case=False, na=False)]
-            st.dataframe(filt, use_container_width=True, hide_index=True)
-
-        st.markdown("**Confirmed links**")
-        confirmed_df = pd.DataFrame(tv_data.get("confirmed", []))
-        if confirmed_df.empty:
-            st.write("None.")
-        else:
-            st.dataframe(confirmed_df, use_container_width=True, hide_index=True)
+                # Show description below diagram
+                loop_desc = loop_desc_map.get(selected_loop_id)
+                if loop_desc:
+                    st.markdown(f"**Description:** {loop_desc}")
 
     with citation_tab:
         st.markdown("### 📚 Citation Verification")

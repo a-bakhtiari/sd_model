@@ -1,0 +1,129 @@
+{
+  "high_relevance": [
+    {
+      "theory_name": "Social Network Theory",
+      "key_citation": "Granovetter 1973",
+      "description": "Examines how social structure and relationships create opportunities and constraints for individuals and organizations",
+      "relevance_to_rqs": "Directly addresses RQ1 by explaining how network position, tie strength, and structural holes affect progression from periphery to core",
+      "relevance_to_model": "Can model network metrics (centrality, density, clustering) as stocks/flows affecting knowledge access and promotion likelihood",
+      "adjacency_level": "direct",
+      "phd_contribution": "Quantifies social capital accumulation in OSS careers; reveals network bottlenecks in progression pathways",
+      "model_additions": [
+        "Network topology variables",
+        "Tie strength dynamics",
+        "Structural hole indicators"
+      ],
+      "risk": "low",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Self-Determination Theory",
+      "key_citation": "Deci & Ryan 1985",
+      "description": "Motivation theory focusing on innate psychological needs for autonomy, competence, and relatedness",
+      "relevance_to_rqs": "Explains motivational drivers for progression (RQ1) and provides framework for designing effective interventions (RQ2)",
+      "relevance_to_model": "Can model motivation as stock influenced by autonomy support, competence feedback, and relatedness events",
+      "adjacency_level": "direct",
+      "phd_contribution": "Links motivational dynamics to career progression; provides psychological foundation for intervention design",
+      "model_additions": [
+        "Motivation stocks",
+        "Psychological need satisfaction variables",
+        "Demotivation feedback loops"
+      ],
+      "risk": "medium",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Normal Accident Theory",
+      "key_citation": "Perrow 1984",
+      "description": "Argues that accidents are inevitable in complex, tightly-coupled systems due to interactive complexity",
+      "relevance_to_rqs": "Directly addresses RQ3 by explaining why vulnerabilities emerge in complex socio-technical systems like OSS",
+      "relevance_to_model": "Can model system complexity and coupling as variables affecting vulnerability introduction and detection rates",
+      "adjacency_level": "direct",
+      "phd_contribution": "Applies NAT to software security context; reveals systemic rather than individual causes of vulnerabilities",
+      "model_additions": [
+        "Interactive complexity metrics",
+        "Coupling variables",
+        "Accident pathway modeling"
+      ],
+      "risk": "medium",
+      "reward": "high"
+    }
+  ],
+  "adjacent_opportunities": [
+    {
+      "theory_name": "Organizational Learning",
+      "key_citation": "Argyris & Sch\u00f6n 1978",
+      "description": "Examines how organizations detect and correct errors through single-loop and double-loop learning",
+      "why_adjacent": "OSS communities are organizations but rarely studied as such; focuses on collective rather than individual learning",
+      "novel_angle": "Treats OSS communities as learning organizations with defensive routines and learning disabilities",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Explains why some communities fail to learn from security incidents; reveals organizational barriers to improvement",
+      "risk": "medium",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Actor-Network Theory",
+      "key_citation": "Latour 2005",
+      "description": "Treats both human and non-human actors as equally important in network formation and stability",
+      "why_adjacent": "Extends beyond human social networks to include technical artifacts in the progression pathway",
+      "novel_angle": "Reveals how tools, bots, documentation, and code artifacts enable or constrain career progression",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Shows how socio-technical networks shape career paths; explains role of non-human actors in vulnerability introduction",
+      "risk": "high",
+      "reward": "medium"
+    },
+    {
+      "theory_name": "Job Demands-Resources Model",
+      "key_citation": "Bakker & Demerouti 2007",
+      "description": "Work stress model where job demands require effort while job resources help achieve goals and reduce demands",
+      "why_adjacent": "Applies organizational psychology to volunteer contexts; focuses on burnout and engagement dynamics",
+      "novel_angle": "Explains attrition and burnout in OSS careers as function of demands/resources imbalance",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Predicts points of developer dropout; provides framework for sustainable community design",
+      "risk": "medium",
+      "reward": "medium"
+    }
+  ],
+  "cross_domain_inspiration": [
+    {
+      "theory": "Ecosystem Succession Theory",
+      "source_domain": "Ecology",
+      "parallel": "OSS communities as ecosystems with pioneer species, climax communities, and disturbance responses",
+      "transfer_potential": "Predicts community maturity stages and vulnerability to disruption during transitions",
+      "adjacency_level": "exploratory",
+      "risk": "high",
+      "reward": "high",
+      "rationale": "Provides powerful metaphors for community resilience and vulnerability patterns across lifecycle"
+    },
+    {
+      "theory": "Professional Socialization Theory",
+      "source_domain": "Medical Sociology",
+      "parallel": "Medical residency as intensive socialization from novice to expert with formal/informal learning",
+      "transfer_potential": "Reveals hidden curriculum and identity transformation aspects of OSS career progression",
+      "adjacency_level": "exploratory",
+      "risk": "high",
+      "reward": "medium",
+      "rationale": "Explains identity formation and professional values adoption missing from current learning theories"
+    },
+    {
+      "theory": "Swarm Intelligence",
+      "source_domain": "Complex Systems Biology",
+      "parallel": "Collective problem-solving in decentralized systems like ant colonies or bird flocks",
+      "transfer_potential": "Models how decentralized coordination emerges and fails in OSS communities",
+      "adjacency_level": "exploratory",
+      "risk": "high",
+      "reward": "medium",
+      "rationale": "Offers novel perspective on collective code quality assurance and vulnerability detection"
+    }
+  ],
+  "phd_strategy": {
+    "recommended_theories": [
+      "Social Network Theory",
+      "Self-Determination Theory",
+      "Normal Accident Theory"
+    ],
+    "rationale": "These three theories directly address the core gaps: SNT explains social dynamics of progression, SDT provides motivational foundation for interventions, and NAT offers systemic perspective on vulnerabilities. All are well-established with empirical support and can be effectively modeled in system dynamics.",
+    "integration_strategy": "Use SNT to extend Communities of Practice by quantifying social capital; apply SDT to enrich SECI model with motivational drivers; employ NAT to complement existing learning theories with systemic risk perspective. Create integrated SD model showing how social networks \u00d7 motivation \u00d7 system complexity affect career progression and security outcomes.",
+    "expected_impact": "Transforms the research from descriptive to explanatory; enables predictive modeling of career pathways and vulnerability risks; provides theoretically-grounded intervention design principles for OSS communities."
+  }
+}

@@ -19,14 +19,25 @@ from .pipeline.citation_verification import verify_all_citations, generate_conne
 from .pipeline.gap_analysis import identify_gaps
 from .pipeline.paper_discovery import suggest_papers_for_gaps
 from .pipeline.csv_export import generate_connections_csv, generate_loops_csv
+from .pipeline.theory_enhancement import run_theory_enhancement
+from .pipeline.rq_alignment import run_rq_alignment
+from .pipeline.rq_refinement import run_rq_refinement
+from .pipeline.theory_discovery import run_theory_discovery
 from .llm.client import LLMClient
 from .pipeline.llm_extraction import infer_variable_types, infer_connections
 from .provenance.store import log_event
 from .validation.schema import validate_json_schema
 from .external.semantic_scholar import SemanticScholarClient
+from .knowledge.loader import load_research_questions, load_theories
 
 
-def run_pipeline(project: str, apply_patch: bool = False, verify_cit: bool = False, discover_papers: bool = False) -> Dict:
+def run_pipeline(
+    project: str,
+    apply_patch: bool = False,
+    verify_cit: bool = False,
+    discover_papers: bool = False,
+    improve_model: bool = False
+) -> Dict:
     """Run the full analysis pipeline for a project.
 
     Args:
@@ -34,6 +45,7 @@ def run_pipeline(project: str, apply_patch: bool = False, verify_cit: bool = Fal
         apply_patch: Whether to apply model patches
         verify_cit: Whether to verify citations via Semantic Scholar
         discover_papers: Whether to run paper discovery for gaps
+        improve_model: Whether to run model improvement modules (Step 8)
     """
     cfg = load_config()
     paths = for_project(cfg, project)
@@ -295,6 +307,64 @@ def run_pipeline(project: str, apply_patch: bool = False, verify_cit: bool = Fal
     )
     log_event(paths.db_dir / "provenance.sqlite", "csv_export_loops", {"rows": loop_csv_rows})
 
+    # Step 8: Model Improvement & Development (optional)
+    if improve_model:
+        # Load research questions
+        rqs = load_research_questions(paths.rq_txt_path)
+
+        # Load theories (convert to dict list for compatibility)
+        theories_objs = load_theories(paths.theories_dir)
+        theories = [{"name": t.name, "description": t.description, "focus_area": t.focus_area} for t in theories_objs]
+
+        # Module 2: Theory Enhancement
+        theory_enh = run_theory_enhancement(
+            theories=theories,
+            variables=variables_data,
+            connections={"connections": connections_named},
+            loops=loops
+        )
+        paths.theory_enhancement_path.write_text(
+            json.dumps(theory_enh, indent=2), encoding="utf-8"
+        )
+        log_event(paths.db_dir / "provenance.sqlite", "theory_enhancement", {})
+
+        # Module 3: RQ Alignment
+        rq_align = run_rq_alignment(
+            rqs=rqs,
+            theories=theories,
+            variables=variables_data,
+            connections={"connections": connections_named},
+            loops=loops
+        )
+        paths.rq_alignment_path.write_text(
+            json.dumps(rq_align, indent=2), encoding="utf-8"
+        )
+        log_event(paths.db_dir / "provenance.sqlite", "rq_alignment", {})
+
+        # Module 4: RQ Refinement
+        rq_refine = run_rq_refinement(
+            rqs=rqs,
+            rq_alignment=rq_align,
+            variables=variables_data,
+            connections={"connections": connections_named},
+            loops=loops
+        )
+        paths.rq_refinement_path.write_text(
+            json.dumps(rq_refine, indent=2), encoding="utf-8"
+        )
+        log_event(paths.db_dir / "provenance.sqlite", "rq_refinement", {})
+
+        # Module 5: Theory Discovery
+        theory_disc = run_theory_discovery(
+            rqs=rqs,
+            current_theories=theories,
+            rq_alignment=rq_align
+        )
+        paths.theory_discovery_path.write_text(
+            json.dumps(theory_disc, indent=2), encoding="utf-8"
+        )
+        log_event(paths.db_dir / "provenance.sqlite", "theory_discovery", {})
+
     return {
         "parsed": str(paths.parsed_path),
         "loops": str(paths.loops_path),
@@ -314,4 +384,8 @@ def run_pipeline(project: str, apply_patch: bool = False, verify_cit: bool = Fal
         "patched": str(patched_file) if patched_file else None,
         "connections_csv": str(connections_csv_path),
         "loops_csv": str(loops_csv_path),
+        "theory_enhancement": str(paths.theory_enhancement_path) if improve_model else None,
+        "rq_alignment": str(paths.rq_alignment_path) if improve_model else None,
+        "rq_refinement": str(paths.rq_refinement_path) if improve_model else None,
+        "theory_discovery": str(paths.theory_discovery_path) if improve_model else None,
     }
