@@ -1020,9 +1020,10 @@ def main() -> None:
     st.session_state["project"] = project
 
     # Tabs
-    dashboard_tab, stage2_tab, theory_tab, rq_tab, stage3_tab = st.tabs([
+    dashboard_tab, stage2_tab, data_tables_tab, theory_tab, rq_tab, stage3_tab = st.tabs([
         "Connection Explorer",
         "Loop Explorer",
+        "Data Tables",
         "Theory Development",
         "Research Questions",
         "Stage 3"
@@ -1090,76 +1091,6 @@ def main() -> None:
                 type_pairs = tuple(var_types.items())
                 mermaid_code = _cached_mermaid_diagram(sel_var, edges, type_pairs)
                 _render_mermaid(mermaid_code, f"connection_{sel_var}")
-
-        # Connections Data Table
-        st.subheader("📊 Connections Data Explorer")
-        st.markdown("Interactive table with all connection metadata, descriptions, and verified citations.")
-
-        try:
-            artifacts_dir = Path(data["artifacts_dir"])
-            df_connections = _build_connections_dataframe(artifacts_dir)
-
-            if df_connections.empty:
-                st.info("No connections data available yet. Run the pipeline to generate data.")
-            else:
-                # Add filtering options
-                filter_col1, filter_col2 = st.columns(2)
-                with filter_col1:
-                    relationship_filter = st.multiselect(
-                        "Filter by Relationship",
-                        options=sorted(df_connections["Relationship"].unique()),
-                        default=sorted(df_connections["Relationship"].unique()),
-                        key=f"conn_rel_filter::{project}"
-                    )
-                with filter_col2:
-                    type_filter = st.multiselect(
-                        "Filter by Variable Type",
-                        options=sorted(set(df_connections["From Type"].unique()) | set(df_connections["To Type"].unique())),
-                        default=sorted(set(df_connections["From Type"].unique()) | set(df_connections["To Type"].unique())),
-                        key=f"conn_type_filter::{project}"
-                    )
-
-                # Apply filters
-                filtered_df = df_connections[
-                    (df_connections["Relationship"].isin(relationship_filter)) &
-                    ((df_connections["From Type"].isin(type_filter)) | (df_connections["To Type"].isin(type_filter)))
-                ]
-
-                # Display metrics
-                metric_col1, metric_col2, metric_col3 = st.columns(3)
-                with metric_col1:
-                    # Count unique connections by From+To combination
-                    unique_conns = filtered_df.groupby(['From', 'To']).ngroups
-                    st.metric("Total Connections", unique_conns)
-                with metric_col2:
-                    # Count connections that have at least one citation
-                    cited_conns = len(filtered_df[filtered_df["Citation"] != ""].groupby(['From', 'To']))
-                    st.metric("Connections with Citations", cited_conns)
-                with metric_col3:
-                    st.metric("Total Citations", len(filtered_df[filtered_df["Citation"] != ""]))
-
-                # Display dataframe with clickable URLs
-                st.dataframe(
-                    filtered_df,
-                    column_config={
-                        "URL": st.column_config.LinkColumn("Semantic Scholar URL"),
-                    },
-                    use_container_width=True,
-                    height=400
-                )
-
-                # Export button
-                csv_data = filtered_df.to_csv(index=False).encode('utf-8')
-                st.download_button(
-                    label="📥 Download Filtered Data as CSV",
-                    data=csv_data,
-                    file_name=f"{project}_connections_filtered.csv",
-                    mime="text/csv",
-                    key=f"download_conn::{project}"
-                )
-        except Exception as e:
-            st.error(f"Error loading connections data: {e}")
-            st.info("Make sure the pipeline has completed successfully and all artifacts are generated.")
 
     with stage2_tab:
         # Load theory validation data for integration
@@ -1310,12 +1241,93 @@ def main() -> None:
                 mermaid_code = _loop_mermaid(selected_loop["edges"], name_to_type, theory_status)
                 _render_mermaid(mermaid_code, f"loop_{selected_loop_id}")
 
-        # Loops Data Table
-        st.subheader("📊 Loops Data Explorer")
-        st.markdown("Interactive table with all loop metadata, descriptions, and verified citations.")
+    with data_tables_tab:
+        st.markdown("### 📊 Data Tables")
+        st.caption("Interactive tables with comprehensive connection and loop metadata")
 
+        # Load existing artifacts
         try:
             artifacts_dir = Path(data["artifacts_dir"])
+        except:
+            st.error("Failed to load artifacts directory")
+            st.info("💡 Make sure you've run the pipeline first to generate artifacts.")
+            st.stop()
+
+        # Connections Data Table
+        st.markdown("#### 🔗 Connections Table")
+        st.markdown("All connections with descriptions, variable types, and verified citations.")
+
+        try:
+            df_connections = _build_connections_dataframe(artifacts_dir)
+
+            if df_connections.empty:
+                st.info("No connections data available yet. Run the pipeline to generate data.")
+            else:
+                # Add filtering options
+                filter_col1, filter_col2 = st.columns(2)
+                with filter_col1:
+                    relationship_filter = st.multiselect(
+                        "Filter by Relationship",
+                        options=sorted(df_connections["Relationship"].unique()),
+                        default=sorted(df_connections["Relationship"].unique()),
+                        key=f"conn_rel_filter::{project}"
+                    )
+                with filter_col2:
+                    type_filter = st.multiselect(
+                        "Filter by Variable Type",
+                        options=sorted(set(df_connections["From Type"].unique()) | set(df_connections["To Type"].unique())),
+                        default=sorted(set(df_connections["From Type"].unique()) | set(df_connections["To Type"].unique())),
+                        key=f"conn_type_filter::{project}"
+                    )
+
+                # Apply filters
+                filtered_df = df_connections[
+                    (df_connections["Relationship"].isin(relationship_filter)) &
+                    ((df_connections["From Type"].isin(type_filter)) | (df_connections["To Type"].isin(type_filter)))
+                ]
+
+                # Display metrics
+                metric_col1, metric_col2, metric_col3 = st.columns(3)
+                with metric_col1:
+                    # Count unique connections by From+To combination
+                    unique_conns = filtered_df.groupby(['From', 'To']).ngroups
+                    st.metric("Total Connections", unique_conns)
+                with metric_col2:
+                    # Count connections that have at least one citation
+                    cited_conns = len(filtered_df[filtered_df["Citation"] != ""].groupby(['From', 'To']))
+                    st.metric("Connections with Citations", cited_conns)
+                with metric_col3:
+                    st.metric("Total Citations", len(filtered_df[filtered_df["Citation"] != ""]))
+
+                # Display dataframe with clickable URLs
+                st.dataframe(
+                    filtered_df,
+                    column_config={
+                        "URL": st.column_config.LinkColumn("Semantic Scholar URL"),
+                    },
+                    use_container_width=True,
+                    height=400
+                )
+
+                # Export button
+                csv_data = filtered_df.to_csv(index=False).encode('utf-8')
+                st.download_button(
+                    label="📥 Download Filtered Data as CSV",
+                    data=csv_data,
+                    file_name=f"{project}_connections_filtered.csv",
+                    mime="text/csv",
+                    key=f"download_conn::{project}"
+                )
+        except Exception as e:
+            st.error(f"Error loading connections data: {e}")
+            st.info("Make sure the pipeline has completed successfully and all artifacts are generated.")
+
+        # Loops Data Table
+        st.markdown("---")
+        st.markdown("#### 🔄 Loops Table")
+        st.markdown("All feedback loops with descriptions and verified citations.")
+
+        try:
             df_loops = _build_loops_dataframe(artifacts_dir)
 
             if df_loops.empty:
@@ -1367,208 +1379,6 @@ def main() -> None:
         except Exception as e:
             st.error(f"Error loading loops data: {e}")
             st.info("Make sure the pipeline has completed successfully and all artifacts are generated.")
-
-    with citation_tab:
-        st.markdown("### 📚 Citation Verification")
-        st.caption("Verify theory citations via Semantic Scholar API and map connections to supporting literature")
-
-        cfg = load_config()
-        paths = for_project(cfg, project)
-
-        citations_verified_path = paths.artifacts_dir / "citations_verified.json"
-        connection_citations_path = paths.artifacts_dir / "connection_citations.json"
-
-        # Check if verification has been run
-        if not citations_verified_path.exists():
-            st.info("Citation verification has not been run yet. Click the button below to verify all citations.")
-
-            if st.button("🔍 Verify All Citations", type="primary"):
-                with st.spinner("Verifying citations via Semantic Scholar API..."):
-                    try:
-                        s2_client = SemanticScholarClient()
-
-                        # Verify citations
-                        verified_cits = verify_all_citations(
-                            theories_dir=paths.theories_dir,
-                            bib_path=paths.references_bib_path,
-                            s2_client=s2_client,
-                            out_path=citations_verified_path,
-                        )
-
-                        # Generate connection-citation table
-                        loops_path = paths.artifacts_dir / "loops.json"
-                        connection_cits = generate_connection_citation_table(
-                            connections_path=paths.connections_path,
-                            theories_dir=paths.theories_dir,
-                            verified_citations_path=citations_verified_path,
-                            loops_path=loops_path,
-                            out_path=connection_citations_path,
-                        )
-
-                        st.success(f"✅ Verified {len(verified_cits)} citations successfully!")
-                        st.rerun()
-                    except Exception as e:
-                        st.error(f"Verification failed: {str(e)}")
-        else:
-            # Load verification results
-            verified_data = json.loads(citations_verified_path.read_text(encoding="utf-8"))
-            connection_cits_data = json.loads(connection_citations_path.read_text(encoding="utf-8"))
-
-            # Display summary metrics
-            st.markdown("#### Verification Status")
-            col1, col2, col3, col4 = st.columns(4)
-            with col1:
-                st.metric("Total Citations", verified_data.get("total_citations", 0))
-            with col2:
-                verified_count = verified_data.get("verified_count", 0)
-                st.metric("Verified", verified_count, delta=None)
-            with col3:
-                unverified_count = verified_data.get("unverified_count", 0)
-                st.metric("Unverified", unverified_count, delta=None if unverified_count == 0 else f"-{unverified_count}")
-            with col4:
-                verification_pct = int((verified_count / verified_data.get("total_citations", 1)) * 100)
-                st.metric("Verification %", f"{verification_pct}%")
-
-            # Connection citation summary
-            st.markdown("---")
-            st.markdown("#### Connection Citation Coverage")
-            summary = connection_cits_data.get("summary", {})
-            cc1, cc2, cc3, cc4 = st.columns(4)
-            with cc1:
-                st.metric("Total Connections", summary.get("total_connections", 0))
-            with cc2:
-                st.metric("Verified", summary.get("verified", 0), help="Connections with verified citations")
-            with cc3:
-                st.metric("Unverified", summary.get("unverified", 0), help="Connections with unverified citations")
-            with cc4:
-                st.metric("Unsupported", summary.get("unsupported", 0), help="Connections with no citations")
-
-            # Re-verify button
-            if st.button("🔄 Re-verify Citations"):
-                with st.spinner("Re-verifying..."):
-                    try:
-                        s2_client = SemanticScholarClient()
-                        verified_cits = verify_all_citations(
-                            theories_dir=paths.theories_dir,
-                            bib_path=paths.references_bib_path,
-                            s2_client=s2_client,
-                            out_path=citations_verified_path,
-                        )
-                        loops_path = paths.artifacts_dir / "loops.json"
-                        connection_cits = generate_connection_citation_table(
-                            connections_path=paths.connections_path,
-                            theories_dir=paths.theories_dir,
-                            verified_citations_path=citations_verified_path,
-                            loops_path=loops_path,
-                            out_path=connection_citations_path,
-                        )
-                        st.success("✅ Re-verification complete!")
-                        st.rerun()
-                    except Exception as e:
-                        st.error(f"Re-verification failed: {str(e)}")
-
-            # Citation details table
-            st.markdown("---")
-            st.markdown("#### Citation Details")
-
-            citations = verified_data.get("citations", {})
-            citation_rows = []
-            for key, cit in citations.items():
-                citation_rows.append({
-                    "Citation Key": key,
-                    "Status": "✅ Verified" if cit.get("verified") else "❌ Unverified",
-                    "Title": cit.get("title", "N/A")[:60] + ("..." if len(cit.get("title", "")) > 60 else ""),
-                    "Year": cit.get("year", "N/A"),
-                    "Citations": cit.get("citation_count", "N/A"),
-                    "Authors": ", ".join(cit.get("authors", [])[:2]) + ("..." if len(cit.get("authors", [])) > 2 else ""),
-                })
-
-            citation_df = pd.DataFrame(citation_rows)
-
-            # Filter options
-            filter_col1, filter_col2 = st.columns(2)
-            with filter_col1:
-                status_filter = st.selectbox(
-                    "Filter by status",
-                    ["All", "Verified", "Unverified"],
-                    key="citation_status_filter"
-                )
-            with filter_col2:
-                search_filter = st.text_input(
-                    "Search citations",
-                    key="citation_search"
-                )
-
-            # Apply filters
-            filtered_df = citation_df.copy()
-            if status_filter == "Verified":
-                filtered_df = filtered_df[filtered_df["Status"] == "✅ Verified"]
-            elif status_filter == "Unverified":
-                filtered_df = filtered_df[filtered_df["Status"] == "❌ Unverified"]
-
-            if search_filter:
-                mask = (
-                    filtered_df["Citation Key"].str.contains(search_filter, case=False, na=False) |
-                    filtered_df["Title"].str.contains(search_filter, case=False, na=False) |
-                    filtered_df["Authors"].str.contains(search_filter, case=False, na=False)
-                )
-                filtered_df = filtered_df[mask]
-
-            st.dataframe(filtered_df, use_container_width=True, hide_index=True)
-
-            # Connection-Citation mapping
-            st.markdown("---")
-            st.markdown("#### Connection-Citation Mapping")
-            st.caption("View which connections are supported by which papers")
-
-            connections = connection_cits_data.get("connections", [])
-            conn_rows = []
-            for conn in connections:
-                status_emoji = "✅" if conn.get("status") == "verified" else "⚠️" if conn.get("status") == "unverified" else "❌"
-                conn_rows.append({
-                    "Status": status_emoji,
-                    "From": conn.get("from_var", ""),
-                    "To": conn.get("to_var", ""),
-                    "Relationship": conn.get("relationship", ""),
-                    "Citations": ", ".join(conn.get("verified_citations", [])) or "None",
-                    "Theories": ", ".join(conn.get("theories", [])) or "None",
-                    "In Loops": ", ".join(conn.get("in_loops", [])) or "None",
-                })
-
-            conn_df = pd.DataFrame(conn_rows)
-
-            # Connection filters
-            cf1, cf2, cf3 = st.columns(3)
-            with cf1:
-                conn_status_filter = st.selectbox(
-                    "Filter by status",
-                    ["All", "Verified", "Unverified", "Unsupported"],
-                    key="conn_status_filter"
-                )
-            with cf2:
-                conn_search = st.text_input("Search connections", key="conn_search")
-            with cf3:
-                loop_filter = st.text_input("Filter by loop ID", key="loop_filter")
-
-            # Apply connection filters
-            filtered_conn_df = conn_df.copy()
-            if conn_status_filter != "All":
-                status_map = {"Verified": "✅", "Unverified": "⚠️", "Unsupported": "❌"}
-                filtered_conn_df = filtered_conn_df[filtered_conn_df["Status"] == status_map[conn_status_filter]]
-
-            if conn_search:
-                mask = (
-                    filtered_conn_df["From"].str.contains(conn_search, case=False, na=False) |
-                    filtered_conn_df["To"].str.contains(conn_search, case=False, na=False)
-                )
-                filtered_conn_df = filtered_conn_df[mask]
-
-            if loop_filter:
-                filtered_conn_df = filtered_conn_df[
-                    filtered_conn_df["In Loops"].str.contains(loop_filter, case=False, na=False)
-                ]
-
-            st.dataframe(filtered_conn_df, use_container_width=True, hide_index=True)
 
     with discovery_tab:
         st.markdown("### 🔍 Paper Discovery")
