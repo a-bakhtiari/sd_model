@@ -912,7 +912,6 @@ def _build_connections_dataframe(artifacts_dir: Path) -> pd.DataFrame:
             for paper in citation_info.get("papers", []):
                 s2_match = paper.get("semantic_scholar_match", {})
                 rows.append({
-                    "Connection ID": conn_id,
                     "From": from_var,
                     "To": to_var,
                     "Relationship": relationship,
@@ -920,18 +919,11 @@ def _build_connections_dataframe(artifacts_dir: Path) -> pd.DataFrame:
                     "To Type": to_type,
                     "Description": description,
                     "Citation": paper.get("title", ""),
-                    "Authors": paper.get("authors", ""),
-                    "Year": paper.get("year", ""),
-                    "Relevance": paper.get("relevance", ""),
-                    "Citations": s2_match.get("citation_count", 0) if s2_match.get("citation_count") else 0,
                     "URL": s2_match.get("url", ""),
-                    "Abstract": (s2_match.get("abstract", "")[:200] + "...") if s2_match.get("abstract") else "",
-                    "Venue": s2_match.get("venue", ""),
                 })
         else:
             # No citations - single row
             rows.append({
-                "Connection ID": conn_id,
                 "From": from_var,
                 "To": to_var,
                 "Relationship": relationship,
@@ -939,13 +931,7 @@ def _build_connections_dataframe(artifacts_dir: Path) -> pd.DataFrame:
                 "To Type": to_type,
                 "Description": description,
                 "Citation": "",
-                "Authors": "",
-                "Year": "",
-                "Relevance": "",
-                "Citations": 0,
                 "URL": "",
-                "Abstract": "",
-                "Venue": "",
             })
 
     return pd.DataFrame(rows)
@@ -997,34 +983,20 @@ def _build_loops_dataframe(artifacts_dir: Path) -> pd.DataFrame:
             for paper in citation_info.get("papers", []):
                 s2_match = paper.get("semantic_scholar_match", {})
                 rows.append({
-                    "Loop ID": loop_id,
                     "Type": loop_type.capitalize(),
                     "Path": loop_path,
                     "Description": description,
                     "Citation": paper.get("title", ""),
-                    "Authors": paper.get("authors", ""),
-                    "Year": paper.get("year", ""),
-                    "Relevance": paper.get("relevance", ""),
-                    "Citations": s2_match.get("citation_count", 0) if s2_match.get("citation_count") else 0,
                     "URL": s2_match.get("url", ""),
-                    "Abstract": (s2_match.get("abstract", "")[:200] + "...") if s2_match.get("abstract") else "",
-                    "Venue": s2_match.get("venue", ""),
                 })
         else:
             # No citations - single row
             rows.append({
-                "Loop ID": loop_id,
                 "Type": loop_type.capitalize(),
                 "Path": loop_path,
                 "Description": description,
                 "Citation": "",
-                "Authors": "",
-                "Year": "",
-                "Relevance": "",
-                "Citations": 0,
                 "URL": "",
-                "Abstract": "",
-                "Venue": "",
             })
 
     return pd.DataFrame(rows)
@@ -1156,9 +1128,12 @@ def main() -> None:
                 # Display metrics
                 metric_col1, metric_col2, metric_col3 = st.columns(3)
                 with metric_col1:
-                    st.metric("Total Connections", len(filtered_df["Connection ID"].unique()))
+                    # Count unique connections by From+To combination
+                    unique_conns = filtered_df.groupby(['From', 'To']).ngroups
+                    st.metric("Total Connections", unique_conns)
                 with metric_col2:
-                    cited_conns = len(filtered_df[filtered_df["Citation"] != ""]["Connection ID"].unique())
+                    # Count connections that have at least one citation
+                    cited_conns = len(filtered_df[filtered_df["Citation"] != ""].groupby(['From', 'To']))
                     st.metric("Connections with Citations", cited_conns)
                 with metric_col3:
                     st.metric("Total Citations", len(filtered_df[filtered_df["Citation"] != ""]))
@@ -1168,8 +1143,6 @@ def main() -> None:
                     filtered_df,
                     column_config={
                         "URL": st.column_config.LinkColumn("Semantic Scholar URL"),
-                        "Citations": st.column_config.NumberColumn("Citation Count", format="%d"),
-                        "Year": st.column_config.NumberColumn("Year", format="%d"),
                     },
                     use_container_width=True,
                     height=400
@@ -1349,36 +1322,25 @@ def main() -> None:
                 st.info("No loops data available yet. Run the pipeline to generate data.")
             else:
                 # Add filtering options
-                filter_col1, filter_col2 = st.columns(2)
-                with filter_col1:
-                    type_filter = st.multiselect(
-                        "Filter by Loop Type",
-                        options=sorted(df_loops["Type"].unique()),
-                        default=sorted(df_loops["Type"].unique()),
-                        key=f"loop_type_filter::{project}"
-                    )
-                with filter_col2:
-                    # Filter by minimum citation count
-                    min_citations = st.number_input(
-                        "Minimum Citation Count",
-                        min_value=0,
-                        max_value=int(df_loops["Citations"].max()) if not df_loops.empty else 100,
-                        value=0,
-                        key=f"loop_min_cit::{project}"
-                    )
+                type_filter = st.multiselect(
+                    "Filter by Loop Type",
+                    options=sorted(df_loops["Type"].unique()),
+                    default=sorted(df_loops["Type"].unique()),
+                    key=f"loop_type_filter::{project}"
+                )
 
                 # Apply filters
-                filtered_df = df_loops[
-                    (df_loops["Type"].isin(type_filter)) &
-                    (df_loops["Citations"] >= min_citations)
-                ]
+                filtered_df = df_loops[df_loops["Type"].isin(type_filter)]
 
                 # Display metrics
                 metric_col1, metric_col2, metric_col3 = st.columns(3)
                 with metric_col1:
-                    st.metric("Total Loops", len(filtered_df["Loop ID"].unique()))
+                    # Count unique loops by Path
+                    unique_loops = filtered_df.groupby('Path').ngroups
+                    st.metric("Total Loops", unique_loops)
                 with metric_col2:
-                    cited_loops = len(filtered_df[filtered_df["Citation"] != ""]["Loop ID"].unique())
+                    # Count loops that have at least one citation
+                    cited_loops = len(filtered_df[filtered_df["Citation"] != ""].groupby('Path'))
                     st.metric("Loops with Citations", cited_loops)
                 with metric_col3:
                     st.metric("Total Citations", len(filtered_df[filtered_df["Citation"] != ""]))
@@ -1388,8 +1350,6 @@ def main() -> None:
                     filtered_df,
                     column_config={
                         "URL": st.column_config.LinkColumn("Semantic Scholar URL"),
-                        "Citations": st.column_config.NumberColumn("Citation Count", format="%d"),
-                        "Year": st.column_config.NumberColumn("Year", format="%d"),
                     },
                     use_container_width=True,
                     height=400
