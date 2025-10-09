@@ -1002,6 +1002,76 @@ def _build_loops_dataframe(artifacts_dir: Path) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def _build_chat_context(artifacts_dir: Path) -> str:
+    """Build lightweight chat context with model structure.
+
+    Returns system prompt text with variables and connections.
+    """
+    def load_json_safe(path: Path) -> dict:
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8"))
+        return {}
+
+    # Load minimal data
+    variables_data = load_json_safe(artifacts_dir / "variables_llm.json")
+    connections_data = load_json_safe(artifacts_dir / "connections.json")
+    descriptions_data = load_json_safe(artifacts_dir / "connection_descriptions.json")
+
+    # Build context
+    variables = variables_data.get("variables", [])
+    connections = connections_data.get("connections", [])
+    descriptions = {d["id"]: d["description"] for d in descriptions_data.get("descriptions", [])}
+
+    # Group variables by type
+    stocks = [v["name"] for v in variables if v.get("type") == "Stock"]
+    flows = [v["name"] for v in variables if v.get("type") == "Flow"]
+    auxiliaries = [v["name"] for v in variables if v.get("type") == "Auxiliary"]
+
+    # Build system prompt
+    context = f"""You are an expert System Dynamics assistant helping a researcher understand and improve their SD model of open-source software communities.
+
+MODEL OVERVIEW:
+- Total Variables: {len(variables)}
+- Connections: {len(connections)}
+- Focus: OSS community dynamics, contributor development, knowledge management
+
+VARIABLES:
+Stocks ({len(stocks)}): {", ".join(stocks) if stocks else "None"}
+Flows ({len(flows)}): {", ".join(flows) if flows else "None"}
+Auxiliaries ({len(auxiliaries)}): {", ".join(auxiliaries) if auxiliaries else "None"}
+
+CONNECTIONS:
+"""
+
+    # Add connections with descriptions
+    for conn in connections[:50]:  # Limit to first 50
+        conn_id = conn.get("id", "")
+        from_var = conn.get("from_var", "")
+        to_var = conn.get("to_var", "")
+        rel = conn.get("relationship", "")
+        desc = descriptions.get(conn_id, "")
+
+        context += f"\n- {from_var} → {to_var} ({rel})"
+        if desc:
+            context += f"\n  {desc}"
+
+    if len(connections) > 50:
+        context += f"\n\n... and {len(connections) - 50} more connections"
+
+    context += """
+
+YOUR ROLE:
+- Answer questions about the model structure and variables
+- Suggest improvements or new connections
+- Discuss System Dynamics concepts in the context of OSS communities
+- Help the researcher understand their model better
+- Be conversational, helpful, and concise
+
+When suggesting new variables or connections, explain the SD rationale and how they fit the OSS community context."""
+
+    return context
+
+
 def main() -> None:
     st.set_page_config(page_title="SD Model Pipeline", layout="wide")
     st.title("System Dynamics Model – Pipeline")
@@ -1020,10 +1090,11 @@ def main() -> None:
     st.session_state["project"] = project
 
     # Tabs
-    dashboard_tab, stage2_tab, data_tables_tab, theory_tab, rq_tab, stage3_tab = st.tabs([
+    dashboard_tab, stage2_tab, data_tables_tab, chat_tab, theory_tab, rq_tab, stage3_tab = st.tabs([
         "Connection Explorer",
         "Loop Explorer",
         "Data Tables",
+        "💬 Chat",
         "Theory Development",
         "Research Questions",
         "Stage 3"
@@ -1380,132 +1451,92 @@ def main() -> None:
             st.error(f"Error loading loops data: {e}")
             st.info("Make sure the pipeline has completed successfully and all artifacts are generated.")
 
-    with discovery_tab:
-        st.markdown("### 🔍 Paper Discovery")
-        st.caption("Search Semantic Scholar for papers to support unsupported or weak connections")
+    with chat_tab:
+        st.markdown("### 💬 Model Chat Assistant")
+        st.caption("Ask questions about your SD model structure, variables, and connections")
 
-        cfg = load_config()
-        paths = for_project(cfg, project)
+        # Load artifacts
+        try:
+            artifacts_dir = Path(data["artifacts_dir"])
+        except:
+            st.error("Failed to load artifacts directory")
+            st.info("💡 Make sure you've run the pipeline first to generate artifacts.")
+            st.stop()
 
-        connection_citations_path = paths.artifacts_dir / "connection_citations.json"
-        gap_analysis_path = paths.artifacts_dir / "gap_analysis.json"
+        # Build context (cached)
+        context_key = f"chat_context::{project}"
+        if context_key not in st.session_state:
+            try:
+                st.session_state[context_key] = _build_chat_context(artifacts_dir)
+            except Exception as e:
+                st.error(f"Failed to build chat context: {e}")
+                st.stop()
 
-        # Check if citation verification has been run
-        if not connection_citations_path.exists():
-            st.warning("⚠️ Please run Citation Verification first before discovering papers.")
-        else:
-            # Run gap analysis if not already done
-            if not gap_analysis_path.exists():
-                with st.spinner("Analyzing gaps in citation coverage..."):
-                    try:
-                        gaps = identify_gaps(connection_citations_path, gap_analysis_path)
-                        st.success("Gap analysis complete!")
-                    except Exception as e:
-                        st.error(f"Gap analysis failed: {str(e)}")
-                        st.stop()
+        # Initialize chat history
+        messages_key = f"chat_messages::{project}"
+        if messages_key not in st.session_state:
+            st.session_state[messages_key] = []
 
-            # Load gap analysis
-            gaps_data = json.loads(gap_analysis_path.read_text(encoding="utf-8"))
-
-            # Display gap summary
-            st.markdown("#### Gap Analysis Summary")
-            summary = gaps_data.get("summary", {})
-            g1, g2, g3, g4 = st.columns(4)
-            with g1:
-                st.metric("Unsupported", summary.get("unsupported_connections", 0), help="No citations at all")
-            with g2:
-                st.metric("Unverified", summary.get("unverified_connections", 0), help="Citations not found in S2")
-            with g3:
-                st.metric("Weak", summary.get("weak_connections", 0), help="< 2 verified citations")
-            with g4:
-                st.metric("Weak Loops", summary.get("weak_loops", 0), help="< 50% citation coverage")
-
-            # Gap selection
-            st.markdown("---")
-            st.markdown("#### Search for Papers")
-
-            unsupported = gaps_data.get("unsupported_connections", [])
-            if not unsupported:
-                st.info("🎉 No unsupported connections found! All connections have at least one citation.")
+        # LLM provider selection
+        col1, col2, col3 = st.columns([2, 2, 1])
+        with col1:
+            provider = st.selectbox(
+                "LLM Provider",
+                ["deepseek", "openai"],
+                key=f"chat_provider::{project}",
+                help="Select which LLM provider to use for the chat"
+            )
+        with col2:
+            if provider == "deepseek":
+                model = st.text_input("Model", value="deepseek-chat", key=f"chat_model::{project}")
             else:
-                # Connection selector
-                gap_options = [
-                    f"{conn['from_var']} → {conn['to_var']} ({conn['relationship']})"
-                    for conn in unsupported[:50]  # Limit to first 50
-                ]
+                model = st.text_input("Model", value="gpt-4o", key=f"chat_model::{project}")
+        with col3:
+            if st.button("🗑️ Clear Chat", key=f"clear_chat::{project}"):
+                st.session_state[messages_key] = []
+                st.rerun()
 
-                selected_gap_str = st.selectbox(
-                    "Select unsupported connection to find papers for:",
-                    gap_options,
-                    key="gap_selector"
-                )
+        # Show what the assistant knows
+        with st.expander("📋 Model Context (what the assistant knows)", expanded=False):
+            st.markdown(st.session_state[context_key])
 
-                selected_idx = gap_options.index(selected_gap_str)
-                selected_conn = unsupported[selected_idx]
+        # Display chat messages
+        st.markdown("---")
+        for msg in st.session_state[messages_key]:
+            with st.chat_message(msg["role"]):
+                st.markdown(msg["content"])
 
-                # Generate search queries
-                st.markdown("##### Suggested Search Queries")
-                if st.button("💡 Generate Search Queries (LLM)"):
-                    with st.spinner("Generating search queries..."):
-                        try:
-                            client = LLMClient()
-                            queries = suggest_search_queries_llm(selected_conn, client)
-                            st.session_state[f"queries_{project}_{selected_idx}"] = queries
-                        except Exception as e:
-                            st.error(f"Query generation failed: {str(e)}")
+        # Chat input
+        if user_input := st.chat_input("Ask me anything about your SD model..."):
+            # Add user message to history
+            st.session_state[messages_key].append({"role": "user", "content": user_input})
 
-                # Display queries
-                queries_key = f"queries_{project}_{selected_idx}"
-                if queries_key in st.session_state:
-                    queries = st.session_state[queries_key]
-                    for i, query in enumerate(queries):
-                        st.code(query, language=None)
+            # Display user message
+            with st.chat_message("user"):
+                st.markdown(user_input)
 
-                # Search button
-                st.markdown("---")
-                if st.button("🔎 Search Semantic Scholar", type="primary"):
-                    with st.spinner("Searching for relevant papers..."):
-                        try:
-                            s2_client = SemanticScholarClient()
-                            client = LLMClient()
+            # Get assistant response
+            with st.chat_message("assistant"):
+                with st.spinner("Thinking..."):
+                    try:
+                        # Initialize LLM client
+                        llm_client = LLMClient(model=model, provider=provider)
 
-                            papers = search_papers_for_connection(
-                                connection=selected_conn,
-                                s2_client=s2_client,
-                                llm_client=client,
-                                limit=10
-                            )
+                        # Build messages for API
+                        api_messages = [{"role": "system", "content": st.session_state[context_key]}]
+                        api_messages.extend(st.session_state[messages_key])
 
-                            st.session_state[f"papers_{project}_{selected_idx}"] = papers
-                            st.success(f"Found {len(papers)} relevant papers!")
-                        except Exception as e:
-                            st.error(f"Search failed: {str(e)}")
+                        # Get response
+                        response = llm_client.chat(api_messages, temperature=0.7)
 
-                # Display results
-                papers_key = f"papers_{project}_{selected_idx}"
-                if papers_key in st.session_state:
-                    papers = st.session_state[papers_key]
+                        # Display and save response
+                        st.markdown(response)
+                        st.session_state[messages_key].append({"role": "assistant", "content": response})
 
-                    st.markdown("---")
-                    st.markdown("#### Search Results")
-
-                    for i, paper in enumerate(papers):
-                        with st.expander(f"📄 {paper.title} ({paper.year or 'N/A'})"):
-                            st.markdown(f"**Authors:** {', '.join(paper.authors[:3])}{('...' if len(paper.authors) > 3 else '')}")
-                            st.markdown(f"**Year:** {paper.year or 'N/A'}")
-                            st.markdown(f"**Citations:** {paper.citation_count}")
-                            st.markdown(f"**Relevance Score:** {paper.relevance_score:.2f}")
-
-                            if paper.abstract:
-                                st.markdown(f"**Abstract:** {paper.abstract[:300]}...")
-
-                            if paper.url:
-                                st.markdown(f"[View on Semantic Scholar]({paper.url})")
-
-                            # Add to theory button (placeholder for now)
-                            st.markdown("---")
-                            st.caption("💡 Future: Add button to create new theory from this paper or add to existing theory")
-
+                    except Exception as e:
+                        error_msg = f"Sorry, I encountered an error: {str(e)}\n\nPlease check your API keys in the .env file."
+                        st.error(error_msg)
+                        st.session_state[messages_key].append({"role": "assistant", "content": error_msg})
 
     with theory_tab:
         st.markdown("### 🔬 Theory Development")
