@@ -369,23 +369,42 @@ def run_pipeline(
             log_event(paths.db_dir / "provenance.sqlite", "theory_enhancement", {})
 
             # Apply theory enhancements to MDL
-            if "error" not in theory_enh and len(theory_enh.get('theories', [])) > 0:
+            if "error" not in theory_enh and len(theory_enh.get('missing_from_theories', [])) > 0:
                 logger.info("Applying theory enhancements to MDL...")
                 try:
                     from .mdl_text_patcher import apply_theory_enhancements
+                    from .mdl_enhancement_utils import save_enhancement
 
-                    enhanced_mdl_path = paths.artifacts_dir / f"{mdl_path.stem}_enhanced.mdl"
+                    # Generate enhanced MDL in memory first
+                    temp_mdl_path = paths.artifacts_dir / f"{mdl_path.stem}_temp.mdl"
 
                     mdl_summary = apply_theory_enhancements(
                         mdl_path,
                         theory_enh,
-                        enhanced_mdl_path,
+                        temp_mdl_path,
                         add_colors=True,
                         use_llm_layout=True,
                         llm_client=client
                     )
 
+                    # Read the generated MDL content
+                    enhanced_mdl_content = temp_mdl_path.read_text(encoding="utf-8")
+
+                    # Save with versioning and metadata
+                    enhanced_mdl_path = save_enhancement(
+                        mdl_dir=paths.mdl_dir,
+                        artifacts_dir=paths.artifacts_dir,
+                        theory_enh_data=theory_enh,
+                        mdl_summary=mdl_summary,
+                        enhanced_mdl_content=enhanced_mdl_content,
+                        original_mdl_name=mdl_path.name
+                    )
+
+                    # Clean up temp file
+                    temp_mdl_path.unlink()
+
                     logger.info(f"✓ MDL Enhancement complete: {mdl_summary['variables_added']} vars, {mdl_summary['connections_added']} conns")
+                    logger.info(f"✓ Enhanced MDL saved to: {enhanced_mdl_path}")
                     log_event(paths.db_dir / "provenance.sqlite", "mdl_enhancement", mdl_summary)
                 except Exception as e:
                     logger.error(f"✗ MDL Enhancement failed: {e}")
@@ -493,21 +512,21 @@ def run_pipeline(
         "parsed": str(paths.parsed_path),
         "loops": str(paths.loops_path),
         "connections": str(paths.connections_path),
-        "variables_llm": str(variables_path),
-        "connections_llm": str(connections_llm_path),
-        "connection_descriptions": str(connection_descriptions_path),
-        "connection_citations": str(connection_citations_path),
-        "connection_citations_verified": str(connection_citations_verified_path),
-        "loop_citations": str(loop_citations_path),
-        "loop_citations_verified": str(loop_citations_verified_path),
+        "variables_llm": str(paths.variables_llm_path),
+        "connections_llm": str(paths.connections_llm_path),
+        "connection_descriptions": str(paths.connection_descriptions_path),
+        "connection_citations": str(paths.connection_citations_path),
+        "connection_citations_verified": str(paths.connection_citations_verified_path),
+        "loop_citations": str(paths.loop_citations_path),
+        "loop_citations_verified": str(paths.loop_citations_verified_path),
         "theory_validation": str(paths.theory_validation_path),
         "improvements": str(paths.model_improvements_path),
         "citations_verified": str(citations_verified_path) if verify_cit else None,
-        "gap_analysis": str(gap_analysis_path) if verify_cit else None,
+        "gap_analysis": str(paths.gap_analysis_path) if verify_cit else None,
         "paper_suggestions": str(paper_suggestions_path) if (verify_cit and discover_papers) else None,
         "patched": str(patched_file) if patched_file else None,
-        "connections_csv": str(connections_csv_path),
-        "loops_csv": str(loops_csv_path),
+        "connections_csv": str(paths.connections_export_path),
+        "loops_csv": str(paths.loops_export_path),
         "theory_enhancement": str(paths.theory_enhancement_path) if improve_model else None,
         "enhanced_mdl": str(enhanced_mdl_path) if (improve_model and 'enhanced_mdl_path' in locals() and enhanced_mdl_path) else None,
         "rq_alignment": str(paths.rq_alignment_path) if improve_model else None,

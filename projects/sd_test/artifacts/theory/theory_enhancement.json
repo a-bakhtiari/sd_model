@@ -12,22 +12,27 @@
           {
             "name": "Community Boundary Spanning",
             "type": "Auxiliary",
-            "description": "Ability of community members to connect with external knowledge sources and other communities"
+            "description": "Ability to connect with other communities and bring in external knowledge"
           },
           {
             "name": "Shared Repertoire",
             "type": "Stock",
-            "description": "Accumulated shared resources, tools, stories, and concepts developed by the community over time"
+            "description": "Accumulated shared resources, tools, stories, and concepts developed by the community"
           },
           {
             "name": "Mutual Engagement",
             "type": "Auxiliary",
-            "description": "Level of interaction and collaboration among community members across different experience levels"
+            "description": "Level of interaction and relationship building among community members"
           },
           {
             "name": "Joint Enterprise",
             "type": "Auxiliary",
             "description": "Shared understanding and commitment to community goals and domain"
+          },
+          {
+            "name": "Peripheral Participation Rate",
+            "type": "Flow",
+            "description": "Flow of newcomers entering legitimate peripheral participation"
           }
         ],
         "connections": [
@@ -52,11 +57,6 @@
             "relationship": "positive"
           },
           {
-            "from": "Community Boundary Spanning",
-            "to": "Skill up",
-            "relationship": "positive"
-          },
-          {
             "from": "Core Developer",
             "to": "Shared Repertoire",
             "relationship": "positive"
@@ -64,6 +64,16 @@
           {
             "from": "Experienced Contributors",
             "to": "Mutual Engagement",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Boundary Spanning",
+            "to": "Shared Repertoire",
+            "relationship": "positive"
+          },
+          {
+            "from": "Peripheral Participation Rate",
+            "to": "New Contributors",
             "relationship": "positive"
           }
         ]
@@ -80,105 +90,90 @@
       "additions": {
         "variables": [
           {
-            "name": "Socialization Rate",
-            "type": "Flow",
-            "description": "Conversion of tacit knowledge through shared experiences and observation (Tacit to Tacit)"
+            "name": "Socialization",
+            "type": "Auxiliary",
+            "description": "Process of sharing tacit knowledge through shared experiences and observation"
           },
           {
-            "name": "Externalization Rate",
-            "type": "Flow",
-            "description": "Conversion of tacit knowledge to explicit knowledge through articulation and documentation"
+            "name": "Externalization",
+            "type": "Auxiliary",
+            "description": "Process of articulating tacit knowledge into explicit concepts"
           },
           {
-            "name": "Combination Rate",
-            "type": "Flow",
-            "description": "Conversion of explicit knowledge to more complex explicit knowledge through synthesis and systemization"
+            "name": "Combination",
+            "type": "Auxiliary",
+            "description": "Process of systemizing and applying explicit knowledge"
           },
           {
-            "name": "Internalization Rate",
-            "type": "Flow",
-            "description": "Conversion of explicit knowledge to tacit knowledge through learning and practice"
+            "name": "Internalization",
+            "type": "Auxiliary",
+            "description": "Process of embodying explicit knowledge into tacit knowledge"
           },
           {
             "name": "Ba (Shared Context)",
             "type": "Auxiliary",
-            "description": "Shared context in knowledge creation that facilitates interactions and knowledge sharing"
+            "description": "Shared context in motion for knowledge creation and sharing"
           },
           {
-            "name": "Tacit Knowledge Base",
+            "name": "Knowledge Assets",
             "type": "Stock",
-            "description": "Accumulated tacit knowledge held by community members"
-          },
-          {
-            "name": "Explicit Knowledge Base",
-            "type": "Stock",
-            "description": "Accumulated explicit knowledge in documented form"
+            "description": "Accumulated knowledge resources including code, documentation, and practices"
           }
         ],
         "connections": [
           {
-            "from": "Implicit Knowledge Transfer (Mentorship)",
-            "to": "Socialization Rate",
+            "from": "Socialization",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
             "relationship": "positive"
           },
           {
-            "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
-            "to": "Externalization Rate",
+            "from": "Externalization",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
             "relationship": "positive"
           },
           {
-            "from": "Socialization Rate",
-            "to": "Tacit Knowledge Base",
+            "from": "Combination",
+            "to": "Knowledge Assets",
             "relationship": "positive"
           },
           {
-            "from": "Externalization Rate",
-            "to": "Explicit Knowledge Base",
-            "relationship": "positive"
-          },
-          {
-            "from": "Combination Rate",
-            "to": "Explicit Knowledge Base",
-            "relationship": "positive"
-          },
-          {
-            "from": "Internalization Rate",
-            "to": "Tacit Knowledge Base",
-            "relationship": "positive"
-          },
-          {
-            "from": "Explicit Knowledge Base",
-            "to": "Combination Rate",
-            "relationship": "positive"
-          },
-          {
-            "from": "Explicit Knowledge Base",
-            "to": "Internalization Rate",
-            "relationship": "positive"
-          },
-          {
-            "from": "Tacit Knowledge Base",
-            "to": "Externalization Rate",
-            "relationship": "positive"
-          },
-          {
-            "from": "Ba (Shared Context)",
-            "to": "Socialization Rate",
-            "relationship": "positive"
-          },
-          {
-            "from": "Ba (Shared Context)",
-            "to": "Externalization Rate",
-            "relationship": "positive"
-          },
-          {
-            "from": "Tacit Knowledge Base",
+            "from": "Internalization",
             "to": "Skill up",
             "relationship": "positive"
           },
           {
-            "from": "Explicit Knowledge Base",
-            "to": "Skill up",
+            "from": "Knowledge Assets",
+            "to": "Combination",
+            "relationship": "positive"
+          },
+          {
+            "from": "Ba (Shared Context)",
+            "to": "Socialization",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Externalization",
+            "relationship": "positive"
+          },
+          {
+            "from": "Experienced Contributors",
+            "to": "Internalization",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Assets",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Socialization",
+            "to": "Internalization",
+            "relationship": "positive"
+          },
+          {
+            "from": "Externalization",
+            "to": "Combination",
             "relationship": "positive"
           }
         ]

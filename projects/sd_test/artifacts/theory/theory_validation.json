@@ -32,13 +32,13 @@
     {
       "from_var": "Implicit Knowledge Transfer (Mentorship)",
       "to_var": "Promotion Rate",
-      "relationship": "positive",
+      "relationship": "undeclared",
       "citation_key": null
     },
     {
       "from_var": "Implicit Knowledge Transfer (Mentorship)",
       "to_var": "Skill up",
-      "relationship": "positive",
+      "relationship": "undeclared",
       "citation_key": null
     },
     {

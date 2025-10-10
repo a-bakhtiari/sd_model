@@ -3,14 +3,14 @@
     {
       "theory_name": "Social Network Theory",
       "key_citation": "Granovetter 1973",
-      "description": "Examines relationships and information flows through network structures, including concepts like strong/weak ties and centrality",
-      "relevance_to_rqs": "Directly addresses RQ1 by explaining how network position and social capital accumulation affect progression from periphery to core",
-      "relevance_to_model": "Can model network metrics (centrality, density) as stocks influencing knowledge access and promotion likelihood",
+      "description": "Examines how social structure and network position influence outcomes, information flow, and opportunities",
+      "relevance_to_rqs": "Directly addresses RQ1 by explaining how network centrality, weak ties, and structural holes affect progression from periphery to core",
+      "relevance_to_model": "Can model network metrics (centrality, density, clustering) as stocks/flows affecting knowledge access and promotion opportunities",
       "adjacency_level": "direct",
-      "phd_contribution": "Quantifies social capital's role in OSS career progression; bridges social structures with learning pathways",
+      "phd_contribution": "Quantifies social capital effects on OSS career progression; reveals network bottlenecks in developer advancement",
       "model_additions": [
-        "Network centrality metrics",
-        "Tie strength variables",
+        "Network position variables",
+        "Tie strength dynamics",
         "Information flow rates"
       ],
       "risk": "low",
@@ -18,112 +18,112 @@
     },
     {
       "theory_name": "Self-Determination Theory",
-      "key_citation": "Deci & Ryan 1985",
-      "description": "Theory of human motivation focusing on autonomy, competence, and relatedness as key drivers of sustained engagement",
-      "relevance_to_rqs": "Addresses RQ1 motivational gaps and RQ2 intervention design by identifying what sustains participation through career stages",
-      "relevance_to_model": "Can model motivation as stock influenced by autonomy, competence, and relatedness feedback loops",
+      "key_citation": "Deci & Ryan 2000",
+      "description": "Human motivation framework focusing on autonomy, competence, and relatedness as basic psychological needs",
+      "relevance_to_rqs": "Addresses RQ1 motivational drivers and RQ2 intervention design by identifying what sustains developer engagement",
+      "relevance_to_model": "Model psychological need satisfaction as reinforcing loops affecting contribution quality and persistence",
       "adjacency_level": "direct",
-      "phd_contribution": "Explains motivational transitions across career stages; informs motivation-sensitive intervention design",
+      "phd_contribution": "Links motivational psychology to technical contribution patterns; explains why some developers persist while others drop out",
       "model_additions": [
-        "Motivation stock",
-        "Psychological need satisfaction variables",
-        "Demotivation pathways"
+        "Motivation stocks",
+        "Psychological need satisfaction feedback loops",
+        "Burnout dynamics"
       ],
-      "risk": "low",
+      "risk": "medium",
       "reward": "high"
     },
     {
-      "theory_name": "Technical Debt Framework",
-      "key_citation": "Cunningham 1992",
-      "description": "Conceptualizes trade-offs between short-term velocity and long-term quality as accumulating 'debt' that requires future payment",
-      "relevance_to_rqs": "Directly addresses RQ3 by explaining how quality erosion and vulnerabilities emerge from development process trade-offs",
-      "relevance_to_model": "Can model technical debt accumulation and interest payments as stocks and flows affecting system reliability",
+      "theory_name": "Socio-Technical Systems Theory",
+      "key_citation": "Trist & Bamforth 1951",
+      "description": "Examines the interdependence between social and technical systems and their joint optimization",
+      "relevance_to_rqs": "Directly addresses RQ3 by modeling how social coordination failures create technical vulnerabilities",
+      "relevance_to_model": "Model social-technical alignment as a critical variable affecting system reliability and security",
       "adjacency_level": "direct",
-      "phd_contribution": "Links developer progression patterns to systemic quality outcomes; explains vulnerability emergence pathways",
+      "phd_contribution": "Provides integrated framework for analyzing how social dynamics create technical debt and security risks",
       "model_additions": [
-        "Technical debt stock",
-        "Debt interest rate",
-        "Refactoring investment flows"
+        "Social-technical alignment metrics",
+        "Coordination failure detection",
+        "System resilience variables"
       ],
-      "risk": "medium",
+      "risk": "low",
       "reward": "high"
     }
   ],
   "adjacent_opportunities": [
     {
-      "theory_name": "Organizational Socialization Theory",
-      "key_citation": "Van Maanen & Schein 1979",
-      "description": "Explains how newcomers learn values, norms, and behaviors needed to assume organizational roles",
-      "why_adjacent": "While focused on formal organizations, provides structured framework for understanding OSS community entry processes",
-      "novel_angle": "Brings formal socialization tactics (collective vs individual, formal vs informal) to informal OSS contexts",
-      "adjacency_level": "adjacent",
-      "phd_contribution": "Systematizes the 'unwritten rules' of OSS participation; provides taxonomy of socialization mechanisms",
-      "risk": "medium",
-      "reward": "high"
-    },
-    {
       "theory_name": "Absorptive Capacity",
       "key_citation": "Cohen & Levinthal 1990",
       "description": "Organization's ability to recognize, assimilate, and apply new external knowledge",
-      "why_adjacent": "Shifts focus from individual learning to community-level knowledge processing capabilities",
-      "novel_angle": "Treats OSS communities as learning systems with varying capacity to absorb newcomer contributions",
+      "why_adjacent": "Focuses on organizational rather than individual learning, but individual absorptive capacity affects progression",
+      "novel_angle": "Views developer progression as dependent on both individual learning capacity and community knowledge-sharing structures",
       "adjacency_level": "adjacent",
-      "phd_contribution": "Explains why some communities better integrate newcomers while others reject contributions; community-level learning dynamics",
+      "phd_contribution": "Links individual learning trajectories to community knowledge infrastructure",
       "risk": "medium",
       "reward": "medium"
     },
     {
-      "theory_name": "Normal Accident Theory",
-      "key_citation": "Perrow 1984",
-      "description": "Argues that some complex, tightly-coupled systems are prone to inevitable 'normal accidents'",
-      "why_adjacent": "Originally for high-risk technologies, but provides lens for understanding inevitable vulnerabilities in complex OSS",
-      "novel_angle": "Frames OSS vulnerabilities as emergent properties of complex, interdependent systems rather than individual failures",
+      "theory_name": "Normalization Process Theory",
+      "key_citation": "May & Finch 2009",
+      "description": "Explains how complex interventions become routinely embedded in social contexts",
+      "why_adjacent": "Originally for healthcare interventions, but applicable to OSS process interventions",
+      "novel_angle": "Provides framework for understanding why some onboarding interventions succeed while others fail to normalize",
       "adjacency_level": "adjacent",
-      "phd_contribution": "Provides theoretical foundation for why certain OSS architectures may be inherently vulnerable despite good processes",
-      "risk": "high",
+      "phd_contribution": "Explains intervention sustainability and institutionalization in volunteer communities",
+      "risk": "medium",
+      "reward": "high"
+    },
+    {
+      "theory_name": "High Reliability Organization Theory",
+      "key_citation": "Weick & Sutcliffe 2007",
+      "description": "Explains how organizations operating in hazardous environments achieve exceptional safety records",
+      "why_adjacent": "Originally for nuclear/aviation, but OSS communities face similar reliability demands",
+      "novel_angle": "Views OSS communities as HROs that must maintain reliability despite volunteer turnover and distributed coordination",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Applies HRO principles to distributed volunteer communities; identifies reliability-enhancing social practices",
+      "risk": "medium",
       "reward": "high"
     }
   ],
   "cross_domain_inspiration": [
     {
-      "theory": "Ecosystem Succession Theory",
+      "theory": "Ecological Succession",
       "source_domain": "Ecology",
-      "parallel": "OSS communities as ecosystems undergoing succession from pioneer to climax states",
-      "transfer_potential": "Predictable patterns of community maturation, niche specialization, and stability/vulnerability trade-offs",
+      "parallel": "Community development through pioneer species to climax communities mirrors developer progression",
+      "transfer_potential": "Models community resilience to member turnover; identifies critical transition points in community development",
       "adjacency_level": "exploratory",
       "risk": "high",
       "reward": "medium",
-      "rationale": "Provides powerful metaphors for understanding long-term community evolution and resilience patterns"
+      "rationale": "Provides novel perspective on community lifecycle and resilience to developer churn"
     },
     {
-      "theory": "Guild Structure Theory",
-      "source_domain": "Medieval Economic History",
-      "parallel": "Apprentice-journeyman-master progression systems in craft guilds",
-      "transfer_potential": "Formalized skill transmission, quality control mechanisms, and reputation-based advancement",
+      "theory": "Immune System Theory",
+      "source_domain": "Biology/Immunology",
+      "parallel": "How biological systems detect and respond to threats while maintaining normal function",
+      "transfer_potential": "Metaphor for how OSS communities detect vulnerabilities while maintaining development velocity",
       "adjacency_level": "exploratory",
       "risk": "high",
       "reward": "medium",
-      "rationale": "Historical precedent for structured skill development in decentralized, reputation-based systems"
+      "rationale": "Offers fresh perspective on balancing innovation with security in distributed systems"
     },
     {
-      "theory": "High Reliability Organization Theory",
-      "source_domain": "Organizational Safety",
-      "parallel": "How organizations like air traffic control maintain safety in complex, high-risk environments",
-      "transfer_potential": "Principles of redundancy, deference to expertise, and sensitivity to operations for vulnerability prevention",
+      "theory": "Actor-Network Theory",
+      "source_domain": "Sociology of Science",
+      "parallel": "Examines how human and non-human actors form networks that produce scientific knowledge",
+      "transfer_potential": "Reveals how tools, bots, and infrastructure shape developer progression and community dynamics",
       "adjacency_level": "exploratory",
       "risk": "high",
       "reward": "high",
-      "rationale": "Despite different context, offers proven strategies for managing complexity and preventing catastrophic failures"
+      "rationale": "Radically reframes progression as co-constructed by human and technological actors"
     }
   ],
   "phd_strategy": {
     "recommended_theories": [
       "Social Network Theory",
       "Self-Determination Theory",
-      "Technical Debt Framework"
+      "Socio-Technical Systems Theory"
     ],
-    "rationale": "These three theories directly address the major gaps in each research question while being empirically grounded and modelable in system dynamics. They provide complementary perspectives at individual, social, and technical levels.",
-    "integration_strategy": "Use Social Network Theory to model relationship pathways in RQ1, Self-Determination Theory to inform motivation-sensitive interventions in RQ2, and Technical Debt Framework to connect development processes to quality outcomes in RQ3. All can be integrated with existing Communities of Practice framework.",
-    "expected_impact": "Creates a comprehensive multi-level theory explaining how individual motivations, social structures, and technical decisions interact across the OSS developer lifecycle, enabling more effective interventions and vulnerability prevention."
+    "rationale": "These three theories directly address the major gaps identified: motivation/orientation (SDT), social structure (SNT), and security/safety (STS). They complement existing CoP and SECI models while being empirically grounded and modelable in system dynamics.",
+    "integration_strategy": "Use SDT to explain motivational drivers within CoP participation; apply SNT to model social capital accumulation in SECI knowledge flows; employ STS to analyze how social-technical misalignments create vulnerabilities during developer transitions.",
+    "expected_impact": "Creates comprehensive multi-level framework connecting individual motivation, social structure, and technical outcomes; enables predictive modeling of intervention effects and vulnerability emergence."
   }
 }

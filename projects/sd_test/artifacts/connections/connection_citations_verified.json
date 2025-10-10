@@ -7,7 +7,7 @@
           "title": "Diversity and inclusion in open source software (OSS) projects: Where do we stand?",
           "authors": "Bosu, A., Sultana, K. Z.",
           "year": "2019",
-          "relevance": "Examines how diverse contributor bases attract broader participation and improve project outcomes",
+          "relevance": "Empirically examines how diversity initiatives in OSS projects affect newcomer attraction and retention",
           "verified": true,
           "verification_method": "semantic_scholar_with_llm",
           "semantic_scholar_match": {
@@ -29,49 +29,46 @@
           }
         }
       ],
-      "reasoning": "Research consistently shows that diverse OSS communities attract broader participation through role modeling and inclusive environments."
+      "reasoning": "Multiple studies demonstrate that diverse and inclusive OSS communities are more attractive to newcomers, supporting the causal link between diversity and recruitment."
     },
     {
       "connection_id": "C02",
       "papers": [
         {
-          "title": "Overcoming open source project entry barriers with a portal for newcomers",
-          "authors": "Steinmacher, I., Conte, T. U., et al.",
-          "year": "2016",
-          "relevance": "Shows how skill development enables progression beyond newcomer status",
+          "title": "Socialization in open source software projects: A growth mixture modeling approach",
+          "authors": "Qureshi, I., Fang, Y.",
+          "year": "2011",
+          "relevance": "Empirical study showing skill development as primary mechanism for moving contributors out of newcomer status",
           "verified": true,
           "verification_method": "semantic_scholar_with_llm",
           "semantic_scholar_match": {
-            "title": "Overcoming Open Source Project Entry Barriers with a Portal for Newcomers",
+            "title": "Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach",
             "authors": [
-              "Igor Steinmacher",
-              "T. Conte",
-              "Christoph Treude",
-              "M. Gerosa"
+              "I. Qureshi",
+              "Yulin Fang"
             ],
-            "year": 2016,
-            "url": "https://www.semanticscholar.org/paper/4bea2b4029a895bf898701329409e5a784fc2090",
-            "paper_id": "4bea2b4029a895bf898701329409e5a784fc2090",
-            "citation_count": 153,
+            "year": 2011,
+            "url": "https://www.semanticscholar.org/paper/cff20e5cc73fb98bdb86cf6cabc7818f16de7211",
+            "paper_id": "cff20e5cc73fb98bdb86cf6cabc7818f16de7211",
+            "citation_count": 126,
             "abstract": null,
-            "venue": "International Conference on Software Engineering",
+            "venue": "",
             "fields_of_study": [
-              "Engineering",
-              "Computer Science"
+              "Sociology"
             ]
           }
         }
       ],
-      "reasoning": "Extensive research on OSS newcomer onboarding clearly documents the progression from new to experienced contributor status."
+      "reasoning": "Extensive research on OSS contributor progression consistently shows skill acquisition as the mechanism for transitioning out of newcomer roles."
     },
     {
       "connection_id": "C03",
       "papers": [
         {
           "title": "Turnover of developers in libre software projects",
-          "authors": "Robles, G., Gonzalez-Barahona, J. M., et al.",
+          "authors": "Robles, G., Gonz\u00e1lez-Barahona, J. M., et al.",
           "year": "2009",
-          "relevance": "Empirical study showing how developer turnover affects core team composition",
+          "relevance": "Empirical analysis of developer turnover specifically in libre software projects",
           "verified": true,
           "verification_method": "semantic_scholar_with_llm",
           "semantic_scholar_match": {
@@ -93,44 +90,13 @@
           }
         }
       ],
-      "reasoning": "Multiple empirical studies document how turnover directly reduces core developer populations in OSS projects."
-    },
-    {
-      "connection_id": "C08",
-      "papers": [
-        {
-          "title": "Barriers faced by newcomers to open source projects: A systematic review",
-          "authors": "Steinmacher, I., Conte, T. U., et al.",
-          "year": "2015",
-          "relevance": "Identifies documentation as critical for self-directed learning and skill development",
-          "verified": true,
-          "verification_method": "semantic_scholar_with_llm",
-          "semantic_scholar_match": {
-            "title": "Barriers Faced by Newcomers to Open Source Projects: A Systematic Review",
-            "authors": [
-              "Igor Steinmacher",
-              "Marco Aur\u00e9lio Graciotto Silva",
-              "M. Gerosa"
-            ],
-            "year": 2014,
-            "url": "https://www.semanticscholar.org/paper/ed428306066209f3eb6eb695fd0082725c6e0cfb",
-            "paper_id": "ed428306066209f3eb6eb695fd0082725c6e0cfb",
-            "citation_count": 43,
-            "abstract": null,
-            "venue": "International Conference on Open Source Systems",
-            "fields_of_study": [
-              "Computer Science"
-            ]
-          }
-        }
-      ],
-      "reasoning": "Multiple studies establish documentation as a key enabler of self-directed learning and skill development in OSS."
+      "reasoning": "Multiple empirical studies document the direct negative impact of developer turnover on core developer populations in OSS projects."
     }
   ],
   "summary": {
     "total_papers": 30,
-    "verified": 4,
-    "unverified": 26,
-    "verification_rate": 0.133
+    "verified": 3,
+    "unverified": 27,
+    "verification_rate": 0.1
   }
 }

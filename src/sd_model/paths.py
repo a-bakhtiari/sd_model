@@ -16,6 +16,7 @@ class ProjectPaths:
     artifacts_dir: Path
     db_dir: Path
     mdl_dir: Path
+    enhanced_mdl_dir: Path
     knowledge_dir: Path
     theories_dir: Path
     references_bib_path: Path
@@ -103,6 +104,7 @@ def for_project(cfg: AppConfig, project: str) -> ProjectPaths:
         artifacts_dir=artifacts_dir,
         db_dir=base / "db",
         mdl_dir=base / "mdl",
+        enhanced_mdl_dir=base / "mdl" / "enhanced",
         knowledge_dir=knowledge_dir,
         theories_dir=knowledge_dir / "theories",
         references_bib_path=knowledge_dir / "references.bib",

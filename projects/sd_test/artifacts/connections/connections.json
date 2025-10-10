@@ -40,7 +40,7 @@
       "id": "C07",
       "from_var": "Implicit Knowledge Transfer (Mentorship)",
       "to_var": "Skill up",
-      "relationship": "positive"
+      "relationship": "undeclared"
     },
     {
       "id": "C08",
@@ -52,7 +52,7 @@
       "id": "C09",
       "from_var": "Implicit Knowledge Transfer (Mentorship)",
       "to_var": "Promotion Rate",
-      "relationship": "positive"
+      "relationship": "undeclared"
     },
     {
       "id": "C10",
