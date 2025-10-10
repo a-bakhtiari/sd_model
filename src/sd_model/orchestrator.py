@@ -12,13 +12,8 @@ from .pipeline.connection_descriptions import generate_connection_descriptions
 from .pipeline.connection_citations import find_connection_citations
 from .pipeline.loop_descriptions import generate_loop_descriptions
 from .pipeline.loop_citations import find_loop_citations
-from .pipeline.theory_validation import validate_against_theories
-from .pipeline.verify_citations import verify_citations
-from .pipeline.improve import propose_improvements
 from .pipeline.apply_patch import apply_model_patch
 from .pipeline.citation_verification import verify_all_citations, generate_connection_citation_table, verify_llm_generated_citations
-from .pipeline.gap_analysis import identify_gaps
-from .pipeline.paper_discovery import suggest_papers_for_gaps
 from .pipeline.csv_export import generate_connections_csv, generate_loops_csv
 from .pipeline.theory_enhancement import run_theory_enhancement as execute_theory_enhancement
 from .pipeline.rq_alignment import run_rq_alignment
@@ -41,13 +36,10 @@ def run_pipeline(
     run_loops: bool = False,
     run_citations: bool = False,
     verify_cit: bool = False,
-    run_theory_validation: bool = False,
     # Model improvement features
     run_theory_enhancement: bool = False,
     run_rq_analysis: bool = False,
     run_theory_discovery: bool = False,
-    run_gap_analysis: bool = False,
-    discover_papers: bool = False,
     # Other options
     apply_patch: bool = False,
     save_run: Optional[str] = None
@@ -65,14 +57,11 @@ def run_pipeline(
         run_loops: Find feedback loops and generate loop descriptions
         run_citations: Generate LLM-based citations for connections/loops
         verify_cit: Verify citations via Semantic Scholar (requires run_citations)
-        run_theory_validation: Validate model against existing theories
 
         # Model improvement features
         run_theory_enhancement: Suggest theory-based enhancements and generate enhanced MDL
         run_rq_analysis: Run research question alignment and refinement
         run_theory_discovery: Discover relevant theories for the model
-        run_gap_analysis: Identify unsupported connections (requires run_citations)
-        discover_papers: Find papers for unsupported connections (requires run_gap_analysis)
 
         # Other options
         apply_patch: Whether to apply model patches
@@ -255,136 +244,6 @@ def run_pipeline(
                 paths.db_dir / "provenance.sqlite",
                 "loop_citations_verified",
                 verified_loop_citations.get("summary", {})
-            )
-
-    # Optional: Theory validation
-    tv = None
-    if run_theory_validation:
-        logger.info("Validating model against theories...")
-        tv = validate_against_theories(
-            connections_path=paths.connections_path,
-            theories_dir=paths.theories_dir,
-            bib_path=paths.references_bib_path,
-            out_path=paths.theory_validation_path,
-        )
-        tv_summary = tv.get("summary", {})
-        logger.info(f"✓ Theory validation: {tv_summary.get('theory_count', 0)} theories, "
-                    f"{tv_summary.get('confirmed_count', 0)} confirmed, "
-                    f"{tv_summary.get('novel_count', 0)} novel connections")
-        # Validate JSON against schema when available
-        try:
-            validate_json_schema(tv, load_config().schemas_dir / "theory_validation.schema.json")
-        except Exception:
-            # Non-fatal; surface during CLI runs if needed
-            pass
-        log_event(paths.db_dir / "provenance.sqlite", "theory_validation", tv.get("summary", {}))
-
-    # Legacy improvement proposal - only run if theory validation was performed
-    improvements = None
-    if run_theory_validation:
-        try:
-            _ = verify_citations(
-                [paths.theory_validation_path],
-                bib_path=paths.references_bib_path,
-            )
-        except Exception:
-            pass
-
-        improvements = propose_improvements(
-            theory_validation_path=paths.theory_validation_path,
-            feedback_path=paths.feedback_json_path,
-            out_path=paths.model_improvements_path,
-        )
-        try:
-            validate_json_schema(
-                improvements, load_config().schemas_dir / "model_improvements.schema.json"
-            )
-        except Exception:
-            pass
-        log_event(paths.db_dir / "provenance.sqlite", "improve", {"count": len(improvements.get("improvements", []))})
-
-        try:
-            _ = verify_citations(
-                [paths.theory_validation_path, paths.model_improvements_path],
-                bib_path=paths.references_bib_path,
-            )
-        except Exception:
-            pass
-
-    # Citation verification (on-demand) - OLD SYSTEM, kept for compatibility
-    citations_verified_path = paths.improvements_dir / "citations_verified.json"
-    paper_suggestions_path = paths.improvements_dir / "paper_suggestions.json"
-
-    # Optional: Gap analysis (identify unsupported connections)
-    gaps = None
-    if run_gap_analysis:
-        # Gap analysis requires citations to be generated first
-        if not run_citations:
-            logger.warning("Gap analysis requires --citations flag, skipping...")
-        else:
-            # Legacy citation verification system (kept for compatibility)
-            from .external.semantic_scholar import SemanticScholarClient
-            if not verify_cit:
-                s2_client = SemanticScholarClient()
-
-            verified_cits = verify_all_citations(
-                theories_dir=paths.theories_dir,
-                bib_path=paths.references_bib_path,
-                s2_client=s2_client,
-                out_path=citations_verified_path,
-            )
-            # Note: connection_citations_path now generated by LLM-based citation finder above
-            connection_cits_legacy = generate_connection_citation_table(
-                connections_path=paths.connections_path,
-                theories_dir=paths.theories_dir,
-                verified_citations_path=citations_verified_path,
-                loops_path=paths.loops_path,
-                out_path=paths.connections_dir / "connection_citations_legacy.json",
-            )
-            log_event(
-                paths.db_dir / "provenance.sqlite",
-                "verify_citations",
-                {
-                    "total": len(verified_cits),
-                    "verified": sum(1 for v in verified_cits.values() if v.verified),
-                },
-            )
-
-            # Perform gap analysis
-            logger.info("Identifying unsupported connections...")
-            gaps = identify_gaps(paths.connection_citations_path, paths.gap_analysis_path)
-            logger.info(f"✓ Found {len(gaps.get('unsupported_connections', []))} unsupported connections")
-            log_event(
-                paths.db_dir / "provenance.sqlite",
-                "gap_analysis",
-                {"unsupported": len(gaps.get("unsupported_connections", []))},
-            )
-
-    # Optional: Paper discovery for unsupported connections
-    suggestions = None
-    if discover_papers:
-        if not run_gap_analysis:
-            logger.warning("Paper discovery requires --gap-analysis flag, skipping...")
-        elif gaps is None:
-            logger.warning("No gap analysis results available, skipping paper discovery...")
-        else:
-            from .external.semantic_scholar import SemanticScholarClient
-            if not verify_cit and not run_gap_analysis:
-                s2_client = SemanticScholarClient()
-
-            logger.info("Discovering papers for unsupported connections...")
-            suggestions = suggest_papers_for_gaps(
-                gaps_path=paths.gap_analysis_path,
-                s2_client=s2_client,
-                llm_client=client,
-                out_path=paper_suggestions_path,
-                limit_per_gap=5,
-            )
-            logger.info(f"✓ Found {len(suggestions.get('suggestions', []))} paper suggestions")
-            log_event(
-                paths.db_dir / "provenance.sqlite",
-                "paper_discovery",
-                {"suggestions": len(suggestions.get("suggestions", []))},
             )
 
     patched_file = None
@@ -628,11 +487,6 @@ def run_pipeline(
         "connection_citations_verified": str(paths.connection_citations_verified_path),
         "loop_citations": str(paths.loop_citations_path),
         "loop_citations_verified": str(paths.loop_citations_verified_path),
-        "theory_validation": str(paths.theory_validation_path) if run_theory_validation else None,
-        "improvements": str(paths.model_improvements_path) if run_theory_validation else None,
-        "citations_verified": str(citations_verified_path) if verify_cit else None,
-        "gap_analysis": str(paths.gap_analysis_path) if run_gap_analysis else None,
-        "paper_suggestions": str(paper_suggestions_path) if discover_papers else None,
         "patched": str(patched_file) if patched_file else None,
         "connections_csv": str(paths.connections_export_path),
         "loops_csv": str(paths.loops_export_path),
@@ -651,12 +505,9 @@ def run_pipeline(
             "run_loops": run_loops,
             "run_citations": run_citations,
             "verify_cit": verify_cit,
-            "run_theory_validation": run_theory_validation,
             "run_theory_enhancement": run_theory_enhancement,
             "run_rq_analysis": run_rq_analysis,
             "run_theory_discovery": run_theory_discovery,
-            "run_gap_analysis": run_gap_analysis,
-            "discover_papers": discover_papers,
             "apply_patch": apply_patch,
         }
 

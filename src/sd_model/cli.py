@@ -46,12 +46,9 @@ def cmd_run(args: argparse.Namespace) -> None:
         args.loops = True
         args.citations = True
         args.verify_citations = True
-        args.theory_validation = True
         args.theory_enhancement = True
         args.rq_analysis = True
         args.theory_discovery = True
-        args.gap_analysis = True
-        args.discover_papers = True
 
     if args.improve_model:
         args.theory_enhancement = True
@@ -65,12 +62,6 @@ def cmd_run(args: argparse.Namespace) -> None:
 
     if args.verify_citations and not args.citations:
         args.citations = True
-    if args.gap_analysis and not args.citations:
-        args.citations = True
-    if args.discover_papers and not args.gap_analysis:
-        args.gap_analysis = True
-        if not args.citations:
-            args.citations = True
 
     result = run_pipeline(
         project=args.project,
@@ -78,13 +69,10 @@ def cmd_run(args: argparse.Namespace) -> None:
         run_loops=args.loops,
         run_citations=args.citations,
         verify_cit=args.verify_citations,
-        run_theory_validation=args.theory_validation,
         # Model improvement features
         run_theory_enhancement=args.theory_enhancement,
         run_rq_analysis=args.rq_analysis,
         run_theory_discovery=args.theory_discovery,
-        run_gap_analysis=args.gap_analysis,
-        discover_papers=args.discover_papers,
         # Other options
         apply_patch=args.apply_patch,
         save_run=args.save_run,
@@ -152,14 +140,11 @@ def build_parser() -> argparse.ArgumentParser:
     p_run.add_argument("--loops", action="store_true", help="Find feedback loops and generate loop descriptions")
     p_run.add_argument("--citations", action="store_true", help="Generate LLM-based citations for connections/loops")
     p_run.add_argument("--verify-citations", action="store_true", help="Verify citations via Semantic Scholar")
-    p_run.add_argument("--theory-validation", action="store_true", help="Validate model against existing theories")
 
     # Model improvement features
     p_run.add_argument("--theory-enhancement", action="store_true", help="Suggest theory-based model enhancements and generate enhanced MDL file")
     p_run.add_argument("--rq-analysis", action="store_true", help="Run research question alignment and refinement")
     p_run.add_argument("--theory-discovery", action="store_true", help="Discover relevant theories for the model")
-    p_run.add_argument("--gap-analysis", action="store_true", help="Identify unsupported connections")
-    p_run.add_argument("--discover-papers", action="store_true", help="Find papers for unsupported connections")
 
     # Convenience flags
     p_run.add_argument("--all", action="store_true", help="Run all optional features")

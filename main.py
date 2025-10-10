@@ -56,11 +56,6 @@ def main() -> None:
         action="store_true",
         help="Verify citations via Semantic Scholar (requires --citations or enables it automatically)"
     )
-    parser.add_argument(
-        "--theory-validation",
-        action="store_true",
-        help="Validate model against existing theories"
-    )
 
     # Model improvement features
     parser.add_argument(
@@ -77,16 +72,6 @@ def main() -> None:
         "--theory-discovery",
         action="store_true",
         help="Discover relevant theories for the model"
-    )
-    parser.add_argument(
-        "--gap-analysis",
-        action="store_true",
-        help="Identify unsupported connections (requires --citations or enables it automatically)"
-    )
-    parser.add_argument(
-        "--discover-papers",
-        action="store_true",
-        help="Find papers for unsupported connections (requires --gap-analysis or enables it automatically)"
     )
 
     # Convenience flags
@@ -128,12 +113,9 @@ def main() -> None:
         args.loops = True
         args.citations = True
         args.verify_citations = True
-        args.theory_validation = True
         args.theory_enhancement = True
         args.rq_analysis = True
         args.theory_discovery = True
-        args.gap_analysis = True
-        args.discover_papers = True
 
     if args.improve_model:
         # Enable all model improvement features
@@ -149,14 +131,6 @@ def main() -> None:
     if args.verify_citations and not args.citations:
         args.citations = True
 
-    if args.gap_analysis and not args.citations:
-        args.citations = True
-
-    if args.discover_papers and not args.gap_analysis:
-        args.gap_analysis = True
-        if not args.citations:
-            args.citations = True
-
     setup_logging()
     logger = logging.getLogger(__name__)
 
@@ -169,13 +143,10 @@ def main() -> None:
             run_loops=args.loops,
             run_citations=args.citations,
             verify_cit=args.verify_citations,
-            run_theory_validation=args.theory_validation,
             # Model improvement features
             run_theory_enhancement=args.theory_enhancement,
             run_rq_analysis=args.rq_analysis,
             run_theory_discovery=args.theory_discovery,
-            run_gap_analysis=args.gap_analysis,
-            discover_papers=args.discover_papers,
             # Other options
             apply_patch=args.apply_patch,
             save_run=args.save_run,

@@ -7,7 +7,7 @@
           "title": "Turnover of developers in libre software projects",
           "authors": "Robles, G., Gonz\u00e1lez-Barahona, J. M., et al.",
           "year": "2009",
-          "relevance": "Empirically analyzes developer turnover in OSS projects and its impact on project sustainability, showing how turnover affects core developer retention",
+          "relevance": "Empirical study showing how developer turnover affects project sustainability and core team composition",
           "verified": true,
           "verification_method": "semantic_scholar_with_llm",
           "semantic_scholar_match": {
@@ -29,13 +29,43 @@
           }
         }
       ],
-      "reasoning": "These papers provide empirical evidence of how developer turnover directly impacts the core developer population in OSS projects, affecting project continuity and knowledge retention."
+      "reasoning": "These papers provide empirical evidence of how developer turnover directly reduces core developer capacity through knowledge loss and reduced project continuity."
+    },
+    {
+      "connection_id": "C08",
+      "papers": [
+        {
+          "title": "The social structure of free and open source software development",
+          "authors": "Crowston, K., Howison, J.",
+          "year": "2005",
+          "relevance": "Documents how core developer availability enables effective mentorship and knowledge sharing",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "The social structure of free and open source software development",
+            "authors": [
+              "Kevin Crowston",
+              "J. Howison"
+            ],
+            "year": 2005,
+            "url": "https://www.semanticscholar.org/paper/bae5575284776cabed101750ac41848c700af431",
+            "paper_id": "bae5575284776cabed101750ac41848c700af431",
+            "citation_count": 562,
+            "abstract": null,
+            "venue": "First Monday",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "These studies demonstrate that larger core developer populations increase mentorship capacity and facilitate implicit knowledge transfer through social structures and coordination mechanisms."
     }
   ],
   "summary": {
     "total_papers": 39,
-    "verified": 1,
-    "unverified": 38,
-    "verification_rate": 0.026
+    "verified": 2,
+    "unverified": 37,
+    "verification_rate": 0.051
   }
 }

@@ -2,49 +2,49 @@
   "theories": [
     {
       "name": "Communities of Practice (Wenger)",
-      "rationale": "The current model captures movement from periphery to core but lacks key CoP concepts like legitimate peripheral participation, boundary processes, and shared practice development. Adding these elements will better represent how newcomers become integrated into the community through meaningful participation and how the community's identity and practice evolve over time.",
+      "rationale": "The current model captures movement from periphery to core but lacks key community dynamics. Adding legitimate peripheral participation and boundary objects will better represent how newcomers become integrated into the community through gradual engagement and shared artifacts.",
       "additions": {
         "variables": [
           {
-            "name": "Legitimate Peripheral Participation Opportunities",
-            "type": "Auxiliary",
-            "description": "Availability of meaningful but low-risk tasks that allow newcomers to participate and learn"
-          },
-          {
-            "name": "Community Boundary Strength",
-            "type": "Auxiliary",
-            "description": "Degree to which the community maintains distinct identity and practices"
-          },
-          {
-            "name": "Shared Practice Development Rate",
+            "name": "Legitimate Peripheral Participation Rate",
             "type": "Flow",
-            "description": "Rate at which community practices, norms, and tools evolve through collective activity"
+            "description": "Rate at which newcomers engage in simple, low-risk community activities that provide learning opportunities"
+          },
+          {
+            "name": "Community Boundary Objects",
+            "type": "Stock",
+            "description": "Shared artifacts like code examples, templates, and standard practices that enable coordination between different participation levels"
+          },
+          {
+            "name": "Community Engagement Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness of community practices in facilitating newcomer integration and learning"
           }
         ],
         "connections": [
           {
-            "from": "Legitimate Peripheral Participation Opportunities",
+            "from": "Legitimate Peripheral Participation Rate",
             "to": "Skill up",
             "relationship": "positive"
           },
           {
-            "from": "Core Developer",
-            "to": "Legitimate Peripheral Participation Opportunities",
+            "from": "Community Boundary Objects",
+            "to": "Legitimate Peripheral Participation Rate",
             "relationship": "positive"
           },
           {
-            "from": "Community Boundary Strength",
-            "to": "Promotion Rate",
-            "relationship": "negative"
-          },
-          {
             "from": "Core Developer",
-            "to": "Community Boundary Strength",
+            "to": "Community Boundary Objects",
             "relationship": "positive"
           },
           {
-            "from": "Shared Practice Development Rate",
-            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "from": "Community Engagement Effectiveness",
+            "to": "Legitimate Peripheral Participation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "to": "Community Boundary Objects",
             "relationship": "positive"
           }
         ]
@@ -58,64 +58,54 @@
     },
     {
       "name": "Nonaka's SECI Model",
-      "rationale": "The current model has implicit and explicit knowledge transfer but doesn't capture the full knowledge spiral of socialization, externalization, combination, and internalization. Adding these processes will better represent how tacit knowledge becomes explicit and gets re-integrated, creating a dynamic knowledge creation cycle essential for organizational learning.",
+      "rationale": "The current model has implicit and explicit knowledge but misses the complete knowledge spiral. Adding socialization spaces and internalization processes will capture how tacit knowledge becomes explicit and gets re-absorbed, creating a continuous knowledge creation cycle essential for community sustainability.",
       "additions": {
         "variables": [
           {
-            "name": "Tacit Knowledge Base",
+            "name": "Socialization Spaces",
             "type": "Stock",
-            "description": "Accumulated experiential knowledge held by community members"
-          },
-          {
-            "name": "Knowledge Externalization Rate",
-            "type": "Flow",
-            "description": "Rate at which tacit knowledge is converted to explicit forms through articulation"
-          },
-          {
-            "name": "Knowledge Combination Rate",
-            "type": "Flow",
-            "description": "Rate at which explicit knowledge elements are combined and systematized"
+            "description": "Opportunities for tacit knowledge sharing through informal interactions, pair programming, and community events"
           },
           {
             "name": "Knowledge Internalization Rate",
             "type": "Flow",
-            "description": "Rate at which explicit knowledge is absorbed and becomes tacit understanding"
+            "description": "Rate at which explicit knowledge is absorbed and converted into individual tacit knowledge and skills"
+          },
+          {
+            "name": "Knowledge Externalization Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness of converting tacit knowledge into explicit, shareable forms"
           }
         ],
         "connections": [
           {
-            "from": "Tacit Knowledge Base",
+            "from": "Socialization Spaces",
             "to": "Implicit Knowledge Transfer (Mentorship)",
             "relationship": "positive"
           },
           {
             "from": "Core Developer",
-            "to": "Tacit Knowledge Base",
-            "relationship": "positive"
-          },
-          {
-            "from": "Knowledge Externalization Rate",
-            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
-            "relationship": "positive"
-          },
-          {
-            "from": "Knowledge Externalization Rate",
-            "to": "Tacit Knowledge Base",
-            "relationship": "negative"
-          },
-          {
-            "from": "Knowledge Combination Rate",
-            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "to": "Socialization Spaces",
             "relationship": "positive"
           },
           {
             "from": "Knowledge Internalization Rate",
-            "to": "Tacit Knowledge Base",
+            "to": "Skill up",
             "relationship": "positive"
           },
           {
             "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
             "to": "Knowledge Internalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Externalization Effectiveness",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Knowledge Externalization Effectiveness",
             "relationship": "positive"
           }
         ]

@@ -7,7 +7,7 @@
           "title": "Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach",
           "authors": "Qureshi, I., Fang, Y.",
           "year": "2011",
-          "relevance": "Examines how socialization processes including mentoring accelerate the integration of newcomers into core teams in OSS projects",
+          "relevance": "Examines how socialization processes in OSS projects lead to role transitions and team growth through mentorship",
           "verified": true,
           "verification_method": "semantic_scholar_with_llm",
           "semantic_scholar_match": {
@@ -28,43 +28,13 @@
           }
         }
       ],
-      "reasoning": "This reinforcing loop is strongly supported by literature on OSS socialization and onboarding processes, where mentorship directly accelerates core team growth."
-    },
-    {
-      "loop_id": "R02",
-      "papers": [
-        {
-          "title": "The Social Structure of Free and Open Source Software Development",
-          "authors": "Crowston, K., Howison, J.",
-          "year": "2005",
-          "relevance": "Analyzes how skill development through community participation creates qualified contributor pools for core team roles",
-          "verified": true,
-          "verification_method": "semantic_scholar_with_llm",
-          "semantic_scholar_match": {
-            "title": "The social structure of free and open source software development",
-            "authors": [
-              "Kevin Crowston",
-              "J. Howison"
-            ],
-            "year": 2005,
-            "url": "https://www.semanticscholar.org/paper/bae5575284776cabed101750ac41848c700af431",
-            "paper_id": "bae5575284776cabed101750ac41848c700af431",
-            "citation_count": 562,
-            "abstract": null,
-            "venue": "First Monday",
-            "fields_of_study": [
-              "Computer Science"
-            ]
-          }
-        }
-      ],
-      "reasoning": "This virtuous cycle is well-documented in studies of knowledge transfer, learning processes, and capability development in OSS communities."
+      "reasoning": "These papers provide empirical evidence for the reinforcing mechanism of team growth through mentorship and promotion in OSS communities."
     }
   ],
   "summary": {
-    "total_papers": 16,
-    "verified": 2,
+    "total_papers": 15,
+    "verified": 1,
     "unverified": 14,
-    "verification_rate": 0.125
+    "verification_rate": 0.067
   }
 }

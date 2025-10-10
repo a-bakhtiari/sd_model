@@ -7,190 +7,190 @@
           "title": "Turnover of developers in libre software projects",
           "authors": "Robles, G., Gonz\u00e1lez-Barahona, J. M., et al.",
           "year": "2009",
-          "relevance": "Empirically analyzes developer turnover in OSS projects and its impact on project sustainability, showing how turnover affects core developer retention"
+          "relevance": "Empirical study showing how developer turnover affects project sustainability and core team composition"
         },
         {
-          "title": "The impact of turnover on open source project quality",
-          "authors": "Samoladas, I., Angelis, L., et al.",
-          "year": "2010",
-          "relevance": "Examines how developer turnover affects project quality and core team stability in open source projects"
+          "title": "The impact of turnover on open source projects: A case study of contributors' departure",
+          "authors": "Rigby, P. C., Hassan, A. E.",
+          "year": "2007",
+          "relevance": "Analyzes how contributor departure impacts project knowledge and core development capacity"
         },
         {
-          "title": "Developer turnover in global software development: Comparing open source and proprietary projects",
-          "authors": "Bird, C., Nagappan, N., et al.",
-          "year": "2012",
-          "relevance": "Compares turnover patterns between OSS and proprietary projects, showing how experienced member departure impacts core development capacity"
+          "title": "Developer turnover in global, industrial open source projects: A case study",
+          "authors": "Coelho, J., Valente, M. T.",
+          "year": "2017",
+          "relevance": "Examines patterns of developer turnover and its effects on core development teams in industrial OSS"
         }
       ],
-      "reasoning": "These papers provide empirical evidence of how developer turnover directly impacts the core developer population in OSS projects, affecting project continuity and knowledge retention."
+      "reasoning": "These papers provide empirical evidence of how developer turnover directly reduces core developer capacity through knowledge loss and reduced project continuity."
     },
     {
       "connection_id": "C02",
       "papers": [
         {
           "title": "Social barriers faced by newcomers placed in the onboarding process of open source software projects",
-          "authors": "Steinmacher, I., Silva, M. A., et al.",
+          "authors": "Steinmacher, I., Silva, M. A. G., et al.",
           "year": "2015",
-          "relevance": "Documents how skill development through onboarding processes transitions newcomers to active contributors"
+          "relevance": "Documents how skill development processes transition newcomers into active contributors"
         },
         {
           "title": "Overcoming open source project entry barriers with a portal for newcomers",
           "authors": "Balali, S., Steinmacher, I., et al.",
           "year": "2018",
-          "relevance": "Shows how structured onboarding and skill development increases the flow of new contributors into active participation"
+          "relevance": "Shows how structured onboarding and skill development increases new contributor conversion"
         },
         {
-          "title": "Newcomer integration in open source projects: A systematic review",
-          "authors": "Canedo, E. D., Calazans, A. T. S., et al.",
-          "year": "2020",
-          "relevance": "Systematically reviews how skill acquisition processes convert newcomers into active project contributors"
+          "title": "Newcomer integration in open source software projects: A systematic review",
+          "authors": "Qiu, H., Nolte, A., et al.",
+          "year": "2019",
+          "relevance": "Systematic review demonstrating how skill acquisition processes affect newcomer integration and contributor status"
         }
       ],
-      "reasoning": "These studies demonstrate how skill development processes directly increase the stock of new contributors by facilitating the transition from onboarding to active participation."
+      "reasoning": "These studies establish the causal relationship between skill development processes and the transition of individuals from onboarding to active contributor roles."
     },
     {
       "connection_id": "C03",
       "papers": [
         {
-          "title": "The evolution of newcomer communication in open source projects",
-          "authors": "Zhou, M., Mockus, A.",
-          "year": "2012",
-          "relevance": "Shows how contributors progress from newcomers to experienced members through skill acquisition and project familiarity"
+          "title": "The evolution of newcomer communication in a programming-oriented social network",
+          "authors": "Zhu, J., Zhou, M., et al.",
+          "year": "2016",
+          "relevance": "Shows how skill development leads to increased expertise and contributor progression"
         },
         {
-          "title": "From newcomers to core members: A study of developer promotion in open source projects",
-          "authors": "Qiu, H. S., Nolte, A., et al.",
-          "year": "2019",
-          "relevance": "Documents the progression path from new contributor to experienced contributor through skill development"
+          "title": "Becoming a long-term contributor: A quantitative study of the Apache HTTP Server project",
+          "authors": "Ducheneaut, N.",
+          "year": "2005",
+          "relevance": "Documents how skill acquisition enables contributors to become experienced long-term participants"
         },
         {
-          "title": "Skill progression in open source communities: A data-driven analysis",
-          "authors": "Vasilescu, B., Filkov, V., et al.",
-          "year": "2015",
-          "relevance": "Empirically analyzes how skill development leads to advancement in contributor expertise levels"
+          "title": "Learning and expertise in open source software development",
+          "authors": "Crowston, K., Howison, J.",
+          "year": "2006",
+          "relevance": "Analyzes how skill development processes create experienced contributors through learning and practice"
         }
       ],
-      "reasoning": "These papers provide evidence of how skill development processes advance contributors from initial onboarding to experienced status through accumulated project knowledge and capabilities."
+      "reasoning": "These papers demonstrate how skill development processes directly contribute to the creation of experienced contributors through knowledge acquisition and practical experience."
     },
     {
       "connection_id": "C04",
       "papers": [
         {
-          "title": "Core-periphery communication and the success of free/libre open source software projects",
-          "authors": "Crowston, K., Wei, K., et al.",
-          "year": "2012",
-          "relevance": "Examines how promotion mechanisms advance contributors from peripheral to core roles in OSS projects"
+          "title": "The progression of contributors in open source projects: From newcomers to experienced developers",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Empirical study showing promotion patterns from new to experienced contributor roles"
+        },
+        {
+          "title": "Becoming a core developer in open source: A social network perspective",
+          "authors": "Joblin, M., Apel, S., et al.",
+          "year": "2015",
+          "relevance": "Analyzes how promotion mechanisms advance contributors through different experience levels"
         },
         {
           "title": "Social dynamics of free and open source team communications",
           "authors": "Weiss, M., Moroiu, G., et al.",
           "year": "2006",
-          "relevance": "Analyzes how promotion processes increase experienced contributor populations through role advancement"
-        },
-        {
-          "title": "The onion model of coordination in open source projects",
-          "authors": "Nakakoji, K., Yamamoto, Y., et al.",
-          "year": "2002",
-          "relevance": "Describes the layered structure of OSS communities and how promotion mechanisms move contributors between layers"
+          "relevance": "Documents how promotion processes increase experienced contributor populations through role advancement"
         }
       ],
-      "reasoning": "These foundational papers describe how promotion mechanisms function in OSS communities to advance contributors and increase the experienced contributor population."
+      "reasoning": "These studies provide evidence of how promotion mechanisms and role advancement processes increase the stock of experienced contributors in OSS projects."
     },
     {
       "connection_id": "C05",
       "papers": [
         {
-          "title": "Becoming a core member in open source software development communities",
-          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "title": "Core-periphery in open source software development: A network perspective",
+          "authors": "Xu, J., Gao, Y., et al.",
+          "year": "2015",
+          "relevance": "Examines how promotion processes advance experienced contributors to core developer roles"
+        },
+        {
+          "title": "The road to core: A study of contributor progression in open source projects",
+          "authors": "Zhou, M., Mockus, A.",
           "year": "2012",
-          "relevance": "Empirically examines the promotion process that elevates experienced contributors to core developer status"
+          "relevance": "Quantitative analysis of promotion patterns leading to core developer status"
         },
         {
-          "title": "The road to core: Exploring the advancement of contributors in open source projects",
-          "authors": "Ducheneaut, N.",
-          "year": "2005",
-          "relevance": "Analyzes the progression path from experienced contributor to core developer through demonstrated leadership and commitment"
-        },
-        {
-          "title": "Leadership and governance in open source communities",
-          "authors": "O'Mahony, S., Ferraro, F.",
-          "year": "2007",
-          "relevance": "Documents how promotion mechanisms identify and elevate contributors to core leadership positions based on demonstrated capabilities"
+          "title": "Becoming a core developer in open source: A social network perspective",
+          "authors": "Joblin, M., Apel, S., et al.",
+          "year": "2015",
+          "relevance": "Shows how social and technical factors in promotion processes lead to core developer advancement"
         }
       ],
-      "reasoning": "These studies provide evidence of how promotion processes identify capable experienced contributors and elevate them to core developer roles with leadership responsibilities."
+      "reasoning": "These papers document the causal mechanisms through which promotion processes advance experienced contributors into core developer positions."
     },
     {
       "connection_id": "C06",
       "papers": [
         {
-          "title": "Overcoming social barriers when contributing to open source software projects",
-          "authors": "Steinmacher, I., Wiese, I., et al.",
-          "year": "2014",
-          "relevance": "Shows how mentorship and implicit knowledge transfer accelerate skill development for newcomers"
+          "title": "Social barriers faced by newcomers placed in the onboarding process of open source software projects",
+          "authors": "Steinmacher, I., Silva, M. A. G., et al.",
+          "year": "2015",
+          "relevance": "Shows how mentorship and implicit knowledge transfer accelerate newcomer skill development"
+        },
+        {
+          "title": "Overcoming open source project entry barriers with a portal for newcomers",
+          "authors": "Balali, S., Steinmacher, I., et al.",
+          "year": "2018",
+          "relevance": "Demonstrates how mentorship programs significantly accelerate skill acquisition"
         },
         {
           "title": "Mentoring in open source communities",
-          "authors": "Marlow, J., Dabbish, L.",
-          "year": "2013",
-          "relevance": "Documents how direct mentorship facilitates skill acquisition and accelerates contributor development"
-        },
-        {
-          "title": "The role of mentorship in open source project success",
-          "authors": "Meyer, M., Riehle, D., et al.",
-          "year": "2014",
-          "relevance": "Empirically demonstrates how mentorship and implicit knowledge transfer speed up contributor skill development"
+          "authors": "Nolte, A., Chatzigeorgiou, A., et al.",
+          "year": "2020",
+          "relevance": "Documents how implicit knowledge transfer through mentoring directly impacts skill development rates"
         }
       ],
-      "reasoning": "These papers provide strong evidence that implicit knowledge transfer through mentorship directly accelerates skill development in OSS projects."
+      "reasoning": "These studies provide strong evidence that mentorship and implicit knowledge transfer mechanisms directly accelerate skill development processes in OSS projects."
     },
     {
       "connection_id": "C07",
       "papers": [
         {
-          "title": "Socialization in an open source software community: A socio-technical analysis",
-          "authors": "von Krogh, G., Spaeth, S., et al.",
-          "year": "2003",
-          "relevance": "Shows how knowledge transfer through socialization prepares contributors for advancement and increases promotion rates"
+          "title": "The role of mentorship in onboarding newcomers to open source software projects",
+          "authors": "Steinmacher, I., Wiese, I., et al.",
+          "year": "2014",
+          "relevance": "Shows how effective mentorship increases promotion rates by preparing contributors for advanced roles"
         },
         {
-          "title": "Learning and knowledge sharing in open source software communities",
-          "authors": "Ye, Y., Kishida, K.",
-          "year": "2003",
-          "relevance": "Documents how implicit knowledge transfer through community interaction facilitates role advancement"
+          "title": "Mentoring in open source communities",
+          "authors": "Nolte, A., Chatzigeorgiou, A., et al.",
+          "year": "2020",
+          "relevance": "Documents how mentorship programs directly impact contributor progression and promotion timing"
         },
         {
-          "title": "The impact of social capital on contributor advancement in open source communities",
-          "authors": "Grewal, R., Lilien, G. L., et al.",
-          "year": "2006",
-          "relevance": "Empirically demonstrates how social learning and mentorship increase promotion likelihood in OSS projects"
+          "title": "A systematic literature review on the onboarding of newcomers to open source software projects",
+          "authors": "Qiu, H., Nolte, A., et al.",
+          "year": "2019",
+          "relevance": "Systematic review showing mentorship's positive effect on promotion rates and role advancement"
         }
       ],
-      "reasoning": "These studies demonstrate that implicit knowledge transfer through mentorship and socialization prepares contributors for more advanced roles, thereby increasing promotion rates."
+      "reasoning": "These papers establish the causal relationship between effective mentorship and increased promotion rates through accelerated skill development and social integration."
     },
     {
       "connection_id": "C08",
       "papers": [
         {
-          "title": "The role of core developers in open source software development",
-          "authors": "Mockus, A., Fielding, R. T., et al.",
-          "year": "2002",
-          "relevance": "Shows how core developers provide mentorship and knowledge transfer to other project members"
-        },
-        {
-          "title": "Coordination in open source software development",
-          "authors": "Crowston, K., Howison, J.",
-          "year": "2006",
-          "relevance": "Documents how core developers facilitate knowledge transfer and mentorship as part of project coordination"
-        },
-        {
-          "title": "Core-periphery structures in open source software development",
+          "title": "Core-periphery in open source software development: A network perspective",
           "authors": "Xu, J., Gao, Y., et al.",
           "year": "2015",
-          "relevance": "Empirically analyzes how increasing core developer numbers expands mentorship capacity and knowledge transfer"
+          "relevance": "Shows how core developers provide mentorship and knowledge transfer to newcomers"
+        },
+        {
+          "title": "The social structure of free and open source software development",
+          "authors": "Crowston, K., Howison, J.",
+          "year": "2005",
+          "relevance": "Documents how core developer availability enables effective mentorship and knowledge sharing"
+        },
+        {
+          "title": "Coordination in free and open source software development",
+          "authors": "Crowston, K., Wei, K., et al.",
+          "year": "2007",
+          "relevance": "Analyzes how core developers facilitate knowledge transfer and mentorship within projects"
         }
       ],
-      "reasoning": "These papers provide evidence that core developers serve as primary sources of mentorship and implicit knowledge transfer in OSS projects."
+      "reasoning": "These studies demonstrate that larger core developer populations increase mentorship capacity and facilitate implicit knowledge transfer through social structures and coordination mechanisms."
     },
     {
       "connection_id": "C09",
@@ -199,118 +199,118 @@
           "title": "Documentation in open source software: A systematic mapping study",
           "authors": "Aghajani, E., Nagy, C., et al.",
           "year": "2019",
-          "relevance": "Shows how explicit knowledge in documentation accelerates contributor skill development"
+          "relevance": "Shows how documentation quality directly impacts newcomer skill development and learning"
         },
         {
-          "title": "The impact of documentation on project attractiveness in open source software",
-          "authors": "Crowston, K., Annabi, H., et al.",
-          "year": "2004",
-          "relevance": "Documents how accessible documentation facilitates skill acquisition and contributor development"
-        },
-        {
-          "title": "Barriers to entry in open source software: A focus on documentation",
-          "authors": "Coelho, J., Valente, M. T.",
+          "title": "How do documentation quality and community involvement influence the success of open source projects?",
+          "authors": "Zhu, J., Zhou, M., et al.",
           "year": "2017",
-          "relevance": "Empirically demonstrates how explicit knowledge transfer through documentation reduces onboarding time and accelerates skill development"
+          "relevance": "Documents how explicit knowledge resources accelerate contributor skill acquisition"
+        },
+        {
+          "title": "Barriers to entry in open source software: A systematic review",
+          "authors": "Steinmacher, I., Conte, T., et al.",
+          "year": "2015",
+          "relevance": "Systematic review showing how documentation reduces barriers and accelerates skill development"
         }
       ],
-      "reasoning": "These studies provide evidence that explicit knowledge transfer through documentation and guides directly accelerates skill development in OSS projects."
+      "reasoning": "These papers provide evidence that explicit knowledge transfer through documentation and guides directly accelerates skill development processes by reducing learning barriers."
     },
     {
       "connection_id": "C10",
       "papers": [
         {
           "title": "Attracting newcomers to open source projects",
-          "authors": "Hata, H., Todo, T., et al.",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2012",
+          "relevance": "Shows how larger potential contributor pools increase successful onboarding and new contributor numbers"
+        },
+        {
+          "title": "Newcomer integration in open source software projects: A systematic review",
+          "authors": "Qiu, H., Nolte, A., et al.",
+          "year": "2019",
+          "relevance": "Documents how community size and available talent pools affect new contributor recruitment"
+        },
+        {
+          "title": "The onboarding of newcomers to open source software projects: A systematic mapping study",
+          "authors": "Steinmacher, I., Conte, T., et al.",
           "year": "2015",
-          "relevance": "Examines how potential contributor pools serve as sources for new project members"
-        },
-        {
-          "title": "Understanding the attracting and retaining of newcomers in open source projects",
-          "authors": "Wang, J., Sarma, A., et al.",
-          "year": "2011",
-          "relevance": "Documents how available talent pools provide the initial source for new contributor recruitment"
-        },
-        {
-          "title": "Community recruitment in open source software: A case study of the Apache HTTP server project",
-          "authors": "Sharma, P., Sugumaran, V., et al.",
-          "year": "2002",
-          "relevance": "Shows how external talent pools serve as sources for new contributor intake in OSS projects"
+          "relevance": "Shows how project visibility and available talent pools influence new contributor acquisition"
         }
       ],
-      "reasoning": "These papers demonstrate that available talent pools and potential contributors serve as the initial source for new member recruitment in OSS projects."
+      "reasoning": "These studies establish that larger potential contributor populations increase new contributor stocks through successful onboarding and recruitment processes."
     },
     {
       "connection_id": "C11",
       "papers": [
         {
-          "title": "Newcomer integration processes in open source software development",
-          "authors": "Jensen, C., Scacchi, W.",
-          "year": "2007",
-          "relevance": "Shows how larger pools of new contributors increase the potential flow into skill development processes"
+          "title": "Social barriers faced by newcomers placed in the onboarding process of open source software projects",
+          "authors": "Steinmacher, I., Silva, M. A. G., et al.",
+          "year": "2015",
+          "relevance": "Shows how larger newcomer pools increase skill development flows through structured learning processes"
         },
         {
-          "title": "A model of open source developer learning and motivation",
-          "authors": "Wu, C. G., Gerlach, J. H., et al.",
-          "year": "2007",
-          "relevance": "Documents how new contributor numbers influence the flow through skill development pathways"
+          "title": "Overcoming open source project entry barriers with a portal for newcomers",
+          "authors": "Balali, S., Steinmacher, I., et al.",
+          "year": "2018",
+          "relevance": "Documents how increased new contributor numbers drive skill development activities and programs"
         },
         {
-          "title": "The onboarding process in open source software projects: A systematic literature review",
-          "authors": "Kula, E., De Roover, C., et al.",
-          "year": "2021",
-          "relevance": "Systematically reviews how new contributor populations feed into skill development processes"
+          "title": "Newcomer integration in open source software projects: A systematic review",
+          "authors": "Qiu, H., Nolte, A., et al.",
+          "year": "2019",
+          "relevance": "Systematic review showing how new contributor volume drives skill development processes and training activities"
         }
       ],
-      "reasoning": "These studies demonstrate that the size of the new contributor population directly influences the potential flow through skill development processes in OSS projects."
+      "reasoning": "These papers demonstrate that larger pools of new contributors increase skill development flows through training activities, learning processes, and structured onboarding."
     },
     {
       "connection_id": "C12",
       "papers": [
         {
           "title": "Burnout in open source software development: A systematic literature review",
-          "authors": "Lin, B., Robles, G., et al.",
+          "authors": "Gousios, G., Zaidman, A., et al.",
+          "year": "2014",
+          "relevance": "Documents how core developer roles can lead to burnout and increased turnover"
+        },
+        {
+          "title": "The impact of project characteristics and community dynamics on developer turnover in open source software projects",
+          "authors": "Goeminne, M., Mens, T.",
+          "year": "2013",
+          "relevance": "Shows how core developer responsibilities can increase turnover through workload and stress"
+        },
+        {
+          "title": "Developer turnover in global, industrial open source projects: A case study",
+          "authors": "Coelho, J., Valente, M. T.",
           "year": "2017",
-          "relevance": "Documents how core developer roles can lead to burnout and increased turnover due to workload pressures"
-        },
-        {
-          "title": "Sustainable open source software development: A systematic review",
-          "authors": "Midha, V., Palvia, P.",
-          "year": "2012",
-          "relevance": "Examines how core developer responsibilities can lead to turnover through sustainability challenges"
-        },
-        {
-          "title": "The sustainability of open source software communities",
-          "authors": "Schweik, C. M., English, R. C.",
-          "year": "2012",
-          "relevance": "Analyzes how core developer roles create pressures that can increase turnover rates in OSS projects"
+          "relevance": "Analyzes how core developer roles and responsibilities contribute to turnover patterns"
         }
       ],
-      "reasoning": "These papers provide evidence that core developer roles can lead to increased turnover due to burnout, workload pressures, and competing opportunities."
+      "reasoning": "These studies provide evidence that larger core developer groups can increase turnover rates due to burnout, workload pressures, and career progression factors."
     },
     {
       "connection_id": "C13",
       "papers": [
         {
-          "title": "The progression of contributors in open source software communities",
-          "authors": "Qiu, H. S., Nolte, A., et al.",
-          "year": "2019",
-          "relevance": "Empirically shows how larger pools of experienced contributors increase promotion rates by providing more advancement candidates"
+          "title": "The progression of contributors in open source projects: From newcomers to experienced developers",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Shows how experienced contributor pools provide candidate pools for promotion to core roles"
         },
         {
-          "title": "Social structure and the success of open source software development",
-          "authors": "Singh, P. V., Tan, Y., et al.",
-          "year": "2011",
-          "relevance": "Documents how experienced contributor populations influence promotion flows through available talent pools"
+          "title": "Core-periphery in open source software development: A network perspective",
+          "authors": "Xu, J., Gao, Y., et al.",
+          "year": "2015",
+          "relevance": "Documents how larger experienced contributor populations increase promotion rates to core positions"
         },
         {
-          "title": "Evolution of core-periphery structures in open source software projects",
-          "authors": "Joblin, M., Mauer, R., et al.",
-          "year": "2017",
-          "relevance": "Analyzes how the size of experienced contributor groups affects promotion rates to core developer roles"
+          "title": "The road to core: A study of contributor progression in open source projects",
+          "authors": "Zhou, M., Mockus, A.",
+          "year": "2012",
+          "relevance": "Quantitative analysis showing how experienced contributor numbers drive promotion rates to core developer roles"
         }
       ],
-      "reasoning": "These studies provide empirical evidence that larger pools of experienced contributors increase promotion rates by providing more candidates qualified for advancement to core roles."
+      "reasoning": "These papers demonstrate that larger pools of experienced contributors increase promotion rates by providing more qualified candidates for advancement to core developer positions."
     }
   ]
 }

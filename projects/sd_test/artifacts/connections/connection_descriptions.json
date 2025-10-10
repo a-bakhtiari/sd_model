@@ -6,51 +6,51 @@
     },
     {
       "id": "C02",
-      "description": "The skill up flow increases the new contributor stock by transitioning individuals from onboarding to active participation."
+      "description": "The skill up flow increases the new contributor stock by transitioning individuals from the onboarding pool."
     },
     {
       "id": "C03",
-      "description": "The skill up flow increases experienced contributors by advancing members who have mastered initial project skills."
+      "description": "The skill up flow increases experienced contributors by promoting members who have gained sufficient proficiency."
     },
     {
       "id": "C04",
-      "description": "The promotion rate flow increases experienced contributors by recognizing and advancing capable members."
+      "description": "The promotion rate flow increases experienced contributors by advancing capable new contributors into this role."
     },
     {
       "id": "C05",
-      "description": "The promotion rate flow increases core developers by elevating experienced contributors who demonstrate leadership."
+      "description": "The promotion rate flow increases core developers by promoting the most experienced and committed contributors."
     },
     {
       "id": "C06",
-      "description": "Implicit knowledge transfer accelerates skill development through direct mentorship and collaborative problem-solving."
+      "description": "Effective mentorship accelerates skill development by providing direct guidance and tacit knowledge to newcomers."
     },
     {
       "id": "C07",
-      "description": "Implicit knowledge transfer increases promotion rates by preparing contributors for more advanced project roles."
+      "description": "Effective mentorship increases the promotion rate by preparing contributors more quickly for advanced roles."
     },
     {
       "id": "C08",
-      "description": "More core developers increase mentorship capacity and implicit knowledge transfer opportunities."
+      "description": "More core developers increase mentorship capacity and implicit knowledge transfer within the community."
     },
     {
       "id": "C09",
-      "description": "Explicit knowledge transfer accelerates skill development by providing accessible documentation and guides."
+      "description": "Good documentation accelerates the skill up process by providing accessible learning resources for newcomers."
     },
     {
       "id": "C10",
-      "description": "An initial pool of potential contributors provides the source for new project members."
+      "description": "A larger pool of potential contributors increases the new contributor stock through successful onboarding."
     },
     {
       "id": "C11",
-      "description": "A larger pool of new contributors increases the potential flow of individuals developing skills."
+      "description": "A larger pool of new contributors increases the skill up flow as more individuals undergo training."
     },
     {
       "id": "C12",
-      "description": "A larger core developer group can increase turnover due to burnout or competing opportunities."
+      "description": "A larger core developer group can increase turnover due to burnout or career progression outside the project."
     },
     {
       "id": "C13",
-      "description": "More experienced contributors increase the promotion rate flow by providing a larger candidate pool for advancement."
+      "description": "More experienced contributors increase the promotion rate by providing a larger candidate pool for core roles."
     }
   ]
 }

@@ -147,7 +147,7 @@ def suggest_papers_for_gaps(
             })
 
     result = {
-        "generated_at": json.loads(gaps_data.get("summary", {})),
+        "generated_at": gaps_data.get("summary", {}),
         "total_suggestions": len(suggestions_list),
         "suggestions": suggestions_list,
     }
