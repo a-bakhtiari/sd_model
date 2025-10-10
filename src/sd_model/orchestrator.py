@@ -150,27 +150,31 @@ def run_pipeline(
 
     log_event(paths.db_dir / "provenance.sqlite", "parsed", {"variables": len(parsed["variables"])})
 
-    logger.info("Computing feedback loops...")
-    loops = compute_loops(
-        parsed,
-        paths.loops_path,
-        connections=connections_data,
-        variables_data=variables_data,
-        llm_client=client
-    )
-    logger.info(f"✓ Found {len(loops.get('loops', []))} feedback loops")
-    log_event(paths.db_dir / "provenance.sqlite", "loops", {})
+    # Optional: Feedback loops
+    loops = None
+    loop_descriptions = None
+    if run_loops:
+        logger.info("Computing feedback loops...")
+        loops = compute_loops(
+            parsed,
+            paths.loops_path,
+            connections=connections_data,
+            variables_data=variables_data,
+            llm_client=client
+        )
+        logger.info(f"✓ Found {len(loops.get('loops', []))} feedback loops")
+        log_event(paths.db_dir / "provenance.sqlite", "loops", {})
 
-    # Generate loop descriptions
-    logger.info("Generating loop descriptions...")
-    loop_descriptions = generate_loop_descriptions(
-        loops_data=loops,
-        llm_client=client,
-        out_path=paths.loop_descriptions_path,
-        domain_context="open source software development"
-    )
-    logger.info(f"✓ Generated {len(loop_descriptions.get('descriptions', []))} loop descriptions")
-    log_event(paths.db_dir / "provenance.sqlite", "loop_descriptions", {"count": len(loop_descriptions.get("descriptions", []))})
+        # Generate loop descriptions
+        logger.info("Generating loop descriptions...")
+        loop_descriptions = generate_loop_descriptions(
+            loops_data=loops,
+            llm_client=client,
+            out_path=paths.loop_descriptions_path,
+            domain_context="open source software development"
+        )
+        logger.info(f"✓ Generated {len(loop_descriptions.get('descriptions', []))} loop descriptions")
+        log_event(paths.db_dir / "provenance.sqlite", "loop_descriptions", {"count": len(loop_descriptions.get("descriptions", []))})
 
     # Generate connection descriptions
     logger.info("Generating connection descriptions...")
