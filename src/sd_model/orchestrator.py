@@ -39,7 +39,8 @@ def run_pipeline(
     apply_patch: bool = False,
     verify_cit: bool = False,
     discover_papers: bool = False,
-    improve_model: bool = False
+    improve_model: bool = False,
+    save_run: Optional[str] = None
 ) -> Dict:
     """Run the full analysis pipeline for a project.
 
@@ -49,10 +50,21 @@ def run_pipeline(
         verify_cit: Whether to verify citations via Semantic Scholar
         discover_papers: Whether to run paper discovery for gaps
         improve_model: Whether to run model improvement modules (Step 8)
+        save_run: Optional run name to save artifacts in timestamped folder.
+                  If None, artifacts are overwritten in standard location.
+                  If empty string or custom name, creates versioned run folder.
     """
     logger.info(f"Starting pipeline for project: {project}")
     cfg = load_config()
-    paths = for_project(cfg, project)
+
+    # Generate run ID if save_run is enabled
+    run_id = None
+    if save_run is not None:
+        from .run_metadata import generate_run_id
+        run_id = generate_run_id(save_run if save_run else None)
+        logger.info(f"Versioned run mode enabled: {run_id}")
+
+    paths = for_project(cfg, project, run_id=run_id)
     paths.ensure()
 
     logger.info(f"Looking for .mdl file in {paths.mdl_dir}")
@@ -508,7 +520,8 @@ def run_pipeline(
     logger.info("")
     logger.info("🎉 Pipeline completed successfully!")
     logger.info(f"Artifacts saved to: {paths.artifacts_dir}")
-    return {
+
+    result = {
         "parsed": str(paths.parsed_path),
         "loops": str(paths.loops_path),
         "connections": str(paths.connections_path),
@@ -533,3 +546,32 @@ def run_pipeline(
         "rq_refinement": str(paths.rq_refinement_path) if improve_model else None,
         "theory_discovery": str(paths.theory_discovery_path) if improve_model else None,
     }
+
+    # Save run metadata if versioning is enabled
+    if run_id:
+        from .run_metadata import create_run_metadata, save_run_metadata, update_latest_symlink
+
+        pipeline_args = {
+            "improve_model": improve_model,
+            "verify_cit": verify_cit,
+            "discover_papers": discover_papers,
+            "apply_patch": apply_patch,
+        }
+
+        metadata = create_run_metadata(
+            run_id=run_id,
+            project=project,
+            artifacts_dir=paths.artifacts_dir,
+            pipeline_args=pipeline_args,
+            pipeline_result=result
+        )
+
+        metadata_path = save_run_metadata(paths.artifacts_dir, metadata)
+        logger.info(f"Run metadata saved to: {metadata_path}")
+
+        # Update latest symlink
+        base_artifacts_dir = cfg.projects_dir / project / "artifacts"
+        update_latest_symlink(base_artifacts_dir, run_id)
+        logger.info(f"Updated 'latest' symlink to point to: {run_id}")
+
+    return result

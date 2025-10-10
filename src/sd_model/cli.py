@@ -47,6 +47,7 @@ def cmd_run(args: argparse.Namespace) -> None:
         verify_cit=args.verify_citations,
         discover_papers=args.discover_papers,
         improve_model=args.improve_model,
+        save_run=args.save_run,
     )
 
     logger.info("")
@@ -120,6 +121,10 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_run.add_argument(
         "--no-improve-model", dest="improve_model", action="store_false", help="Skip model improvement modules"
+    )
+    p_run.add_argument(
+        "--save-run", nargs="?", const="", metavar="NAME",
+        help="Save artifacts to timestamped folder (optionally with custom name)"
     )
     p_run.set_defaults(func=cmd_run)
 

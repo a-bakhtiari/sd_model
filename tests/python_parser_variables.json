@@ -1,0 +1,298 @@
+{
+  "variables": [
+    {
+      "id": 1,
+      "name": "New Contributors",
+      "type": "Auxiliary",
+      "x": 1257,
+      "y": 581,
+      "width": 66,
+      "height": 26,
+      "colors": {
+        "text": "0",
+        "border": "0",
+        "fill": "0"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Core Developer",
+      "type": "Auxiliary",
+      "x": 1684,
+      "y": 584,
+      "width": 46,
+      "height": 26,
+      "colors": {
+        "text": "0",
+        "border": "0",
+        "fill": "0"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Developer's Turnover",
+      "type": "Flow",
+      "x": 1790,
+      "y": 618,
+      "width": 56,
+      "height": 26,
+      "colors": {
+        "text": "0",
+        "border": "0",
+        "fill": "0"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Experienced Contributors",
+      "type": "Auxiliary",
+      "x": 1475,
+      "y": 584,
+      "width": 66,
+      "height": 26,
+      "colors": {
+        "text": "0",
+        "border": "0",
+        "fill": "0"
+      }
+    },
+    {
+      "id": 12,
+      "name": "Skill up",
+      "type": "Flow",
+      "x": 1368,
+      "y": 619,
+      "width": 46,
+      "height": 26,
+      "colors": {
+        "text": "0",
+        "border": "0",
+        "fill": "0"
+      }
+    },
+    {
+      "id": 16,
+      "name": "Promotion Rate",
+      "type": "Flow",
+      "x": 1591,
+      "y": 617,
+      "width": 46,
+      "height": 26,
+      "colors": {
+        "text": "0",
+        "border": "0",
+        "fill": "0"
+      }
+    },
+    {
+      "id": 17,
+      "name": "Implicit Knowledge Transfer (Mentorship)",
+      "type": "Auxiliary",
+      "x": 1535,
+      "y": 413,
+      "width": 57,
+      "height": 26,
+      "colors": {
+        "text": "0",
+        "border": "0",
+        "fill": "0"
+      }
+    },
+    {
+      "id": 21,
+      "name": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "type": "Auxiliary",
+      "x": 1274,
+      "y": 404,
+      "width": 91,
+      "height": 27,
+      "colors": {
+        "text": "0",
+        "border": "0",
+        "fill": "0"
+      }
+    },
+    {
+      "id": 23,
+      "name": "colored stock",
+      "type": "Auxiliary",
+      "x": 1067,
+      "y": 817,
+      "width": 46,
+      "height": 26,
+      "colors": {
+        "text": "252-102-255",
+        "border": "0-0-0",
+        "fill": "|||0-0-0"
+      }
+    },
+    {
+      "id": 24,
+      "name": "Legitimate Peripheral Participation",
+      "type": "Auxiliary",
+      "x": 1257,
+      "y": 400,
+      "width": 60,
+      "height": 26,
+      "colors": {
+        "text": "0-255-0",
+        "border": "0-0-0",
+        "fill": "|||0-0-0"
+      }
+    },
+    {
+      "id": 25,
+      "name": "Community Boundary Spanning",
+      "type": "Auxiliary",
+      "x": 1684,
+      "y": 400,
+      "width": 60,
+      "height": 26,
+      "colors": {
+        "text": "0-255-0",
+        "border": "0-0-0",
+        "fill": "|||0-0-0"
+      }
+    },
+    {
+      "id": 26,
+      "name": "Shared Repertoire",
+      "type": "Auxiliary",
+      "x": 1684,
+      "y": 784,
+      "width": 60,
+      "height": 26,
+      "colors": {
+        "text": "0-255-0",
+        "border": "0-0-0",
+        "fill": "|||0-0-0"
+      }
+    },
+    {
+      "id": 27,
+      "name": "Mutual Engagement",
+      "type": "Auxiliary",
+      "x": 1475,
+      "y": 400,
+      "width": 60,
+      "height": 26,
+      "colors": {
+        "text": "0-255-0",
+        "border": "0-0-0",
+        "fill": "|||0-0-0"
+      }
+    },
+    {
+      "id": 28,
+      "name": "Joint Enterprise",
+      "type": "Auxiliary",
+      "x": 1591,
+      "y": 400,
+      "width": 60,
+      "height": 26,
+      "colors": {
+        "text": "0-255-0",
+        "border": "0-0-0",
+        "fill": "|||0-0-0"
+      }
+    },
+    {
+      "id": 29,
+      "name": "Peripheral Participation Rate",
+      "type": "Flow",
+      "x": 1257,
+      "y": 781,
+      "width": 60,
+      "height": 26,
+      "colors": {
+        "text": "0-255-0",
+        "border": "0-0-0",
+        "fill": "|||0-0-0"
+      }
+    },
+    {
+      "id": 30,
+      "name": "Socialization",
+      "type": "Auxiliary",
+      "x": 1368,
+      "y": 200,
+      "width": 60,
+      "height": 26,
+      "colors": {
+        "text": "0-255-0",
+        "border": "0-0-0",
+        "fill": "|||0-0-0"
+      }
+    },
+    {
+      "id": 31,
+      "name": "Externalization",
+      "type": "Auxiliary",
+      "x": 1684,
+      "y": 200,
+      "width": 60,
+      "height": 26,
+      "colors": {
+        "text": "0-255-0",
+        "border": "0-0-0",
+        "fill": "|||0-0-0"
+      }
+    },
+    {
+      "id": 32,
+      "name": "Combination",
+      "type": "Auxiliary",
+      "x": 1475,
+      "y": 200,
+      "width": 60,
+      "height": 26,
+      "colors": {
+        "text": "0-255-0",
+        "border": "0-0-0",
+        "fill": "|||0-0-0"
+      }
+    },
+    {
+      "id": 33,
+      "name": "Internalization",
+      "type": "Auxiliary",
+      "x": 1368,
+      "y": 784,
+      "width": 60,
+      "height": 26,
+      "colors": {
+        "text": "0-255-0",
+        "border": "0-0-0",
+        "fill": "|||0-0-0"
+      }
+    },
+    {
+      "id": 34,
+      "name": "Ba (Shared Context)",
+      "type": "Auxiliary",
+      "x": 1257,
+      "y": 200,
+      "width": 60,
+      "height": 26,
+      "colors": {
+        "text": "0-255-0",
+        "border": "0-0-0",
+        "fill": "|||0-0-0"
+      }
+    },
+    {
+      "id": 35,
+      "name": "Knowledge Assets",
+      "type": "Auxiliary",
+      "x": 1475,
+      "y": 784,
+      "width": 60,
+      "height": 26,
+      "colors": {
+        "text": "0-255-0",
+        "border": "0-0-0",
+        "fill": "|||0-0-0"
+      }
+    }
+  ]
+}

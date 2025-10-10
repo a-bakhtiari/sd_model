@@ -1,0 +1,129 @@
+{
+  "connections": [
+    {
+      "from": 2,
+      "to": 17,
+      "polarity": "POSITIVE"
+    },
+    {
+      "from": 23,
+      "to": 1,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 24,
+      "to": 12,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 27,
+      "to": 17,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 28,
+      "to": 16,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 2,
+      "to": 26,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 8,
+      "to": 27,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 25,
+      "to": 26,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 29,
+      "to": 1,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 30,
+      "to": 17,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 32,
+      "to": 35,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 33,
+      "to": 12,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 35,
+      "to": 32,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 34,
+      "to": 30,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 2,
+      "to": 31,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 8,
+      "to": 33,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 30,
+      "to": 33,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 31,
+      "to": 32,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 12,
+      "to": 1,
+      "polarity": "NEGATIVE"
+    },
+    {
+      "from": 7,
+      "to": 2,
+      "polarity": "NEGATIVE"
+    },
+    {
+      "from": 16,
+      "to": 2,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 16,
+      "to": 8,
+      "polarity": "NEGATIVE"
+    },
+    {
+      "from": 12,
+      "to": 8,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 17,
+      "to": 12,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 17,
+      "to": 16,
+      "polarity": "UNDECLARED"
+    }
+  ]
+}

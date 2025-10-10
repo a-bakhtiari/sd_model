@@ -85,10 +85,27 @@ class ProjectPaths:
         self.theories_dir.mkdir(parents=True, exist_ok=True)
 
 
-def for_project(cfg: AppConfig, project: str) -> ProjectPaths:
+def for_project(cfg: AppConfig, project: str, run_id: Optional[str] = None) -> ProjectPaths:
+    """Create ProjectPaths for a given project.
+
+    Args:
+        cfg: Application configuration
+        project: Project name
+        run_id: Optional run ID for versioned artifacts (e.g., "20251010_113305_baseline")
+                If provided, artifacts go to artifacts/runs/{run_id}/
+                If None, artifacts go to artifacts/ (default, overwrite mode)
+
+    Returns:
+        ProjectPaths instance with all path configurations
+    """
     base = cfg.projects_dir / project
-    artifacts_dir = base / "artifacts"
     knowledge_dir = base / "knowledge"
+
+    # Determine artifacts directory based on run_id
+    if run_id:
+        artifacts_dir = base / "artifacts" / "runs" / run_id
+    else:
+        artifacts_dir = base / "artifacts"
 
     # Artifact subdirectories
     parsing_dir = artifacts_dir / "parsing"
