@@ -394,24 +394,24 @@ def run_pipeline(
         patched_file = apply_model_patch(mdl_path, paths.model_improvements_path, out_copy_path)
         log_event(paths.db_dir / "provenance.sqlite", "apply_patch", {"output": str(patched_file)})
 
-    # Generate CSV exports (only if relevant data exists)
+    # Generate CSV exports (only if citations are verified)
     conn_csv_rows = None
-    if run_citations:
+    if verify_cit and run_citations:
         conn_csv_rows = generate_connections_csv(
             connections_path=paths.connections_path,
             descriptions_path=paths.connection_descriptions_path,
             variables_path=paths.variables_llm_path,
-            citations_path=paths.connection_citations_verified_path if verify_cit else None,
+            citations_path=paths.connection_citations_verified_path,
             output_path=paths.connections_export_path,
         )
         log_event(paths.db_dir / "provenance.sqlite", "csv_export_connections", {"rows": conn_csv_rows})
 
     loop_csv_rows = None
-    if run_loops:
+    if verify_cit and run_loops and run_citations:
         loop_csv_rows = generate_loops_csv(
             loops_path=paths.loops_path,
             descriptions_path=paths.loop_descriptions_path,
-            citations_path=paths.loop_citations_verified_path if (verify_cit and run_citations) else None,
+            citations_path=paths.loop_citations_verified_path,
             output_path=paths.loops_export_path,
         )
         log_event(paths.db_dir / "provenance.sqlite", "csv_export_loops", {"rows": loop_csv_rows})
