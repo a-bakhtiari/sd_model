@@ -41,12 +41,52 @@ def cmd_run(args: argparse.Namespace) -> None:
     setup_logging()
     logger = logging.getLogger(__name__)
 
+    # Handle convenience flags
+    if args.all:
+        args.loops = True
+        args.citations = True
+        args.verify_citations = True
+        args.theory_validation = True
+        args.theory_enhancement = True
+        args.theory_enhancement_mdl = True
+        args.rq_analysis = True
+        args.theory_discovery = True
+        args.gap_analysis = True
+        args.discover_papers = True
+
+    if args.improve_model:
+        args.theory_enhancement = True
+        args.rq_analysis = True
+        args.theory_discovery = True
+
+    # Handle dependencies
+    if args.verify_citations and not args.citations:
+        args.citations = True
+    if args.gap_analysis and not args.citations:
+        args.citations = True
+    if args.discover_papers and not args.gap_analysis:
+        args.gap_analysis = True
+        if not args.citations:
+            args.citations = True
+    if args.theory_enhancement_mdl and not args.theory_enhancement:
+        args.theory_enhancement = True
+
     result = run_pipeline(
         project=args.project,
-        apply_patch=args.apply_patch,
+        # Core optional features
+        run_loops=args.loops,
+        run_citations=args.citations,
         verify_cit=args.verify_citations,
+        run_theory_validation=args.theory_validation,
+        # Model improvement features
+        run_theory_enhancement=args.theory_enhancement,
+        generate_enhanced_mdl=args.theory_enhancement_mdl,
+        run_rq_analysis=args.rq_analysis,
+        run_theory_discovery=args.theory_discovery,
+        run_gap_analysis=args.gap_analysis,
         discover_papers=args.discover_papers,
-        improve_model=args.improve_model,
+        # Other options
+        apply_patch=args.apply_patch,
         save_run=args.save_run,
     )
 
@@ -107,25 +147,30 @@ def build_parser() -> argparse.ArgumentParser:
     # sd run
     p_run = sub.add_parser("run", help="Run the analysis pipeline")
     p_run.add_argument("--project", required=True, help="Project name under projects/")
-    p_run.add_argument(
-        "--apply-patch", action="store_true", help="Automatically apply patch to .mdl"
-    )
-    p_run.add_argument(
-        "--verify-citations", action="store_true", help="Verify citations via Semantic Scholar"
-    )
-    p_run.add_argument(
-        "--discover-papers", action="store_true", help="Search for papers for unsupported connections"
-    )
-    p_run.add_argument(
-        "--improve-model", action="store_true", default=True, help="Run model improvement modules (theory enhancement, RQ alignment, etc.)"
-    )
-    p_run.add_argument(
-        "--no-improve-model", dest="improve_model", action="store_false", help="Skip model improvement modules"
-    )
-    p_run.add_argument(
-        "--save-run", nargs="?", const="", metavar="NAME",
-        help="Save artifacts to timestamped folder (optionally with custom name)"
-    )
+
+    # Core optional features
+    p_run.add_argument("--loops", action="store_true", help="Find feedback loops and generate loop descriptions")
+    p_run.add_argument("--citations", action="store_true", help="Generate LLM-based citations for connections/loops")
+    p_run.add_argument("--verify-citations", action="store_true", help="Verify citations via Semantic Scholar")
+    p_run.add_argument("--theory-validation", action="store_true", help="Validate model against existing theories")
+
+    # Model improvement features
+    p_run.add_argument("--theory-enhancement", action="store_true", help="Suggest theory-based model enhancements")
+    p_run.add_argument("--theory-enhancement-mdl", action="store_true", help="Generate enhanced MDL file")
+    p_run.add_argument("--rq-analysis", action="store_true", help="Run research question alignment and refinement")
+    p_run.add_argument("--theory-discovery", action="store_true", help="Discover relevant theories for the model")
+    p_run.add_argument("--gap-analysis", action="store_true", help="Identify unsupported connections")
+    p_run.add_argument("--discover-papers", action="store_true", help="Find papers for unsupported connections")
+
+    # Convenience flags
+    p_run.add_argument("--all", action="store_true", help="Run all optional features")
+    p_run.add_argument("--improve-model", action="store_true", help="Run all model improvement features")
+
+    # Other options
+    p_run.add_argument("--apply-patch", action="store_true", help="Automatically apply patch to .mdl")
+    p_run.add_argument("--save-run", nargs="?", const="", metavar="NAME",
+        help="Save artifacts to timestamped folder (optionally with custom name)")
+
     p_run.set_defaults(func=cmd_run)
 
     # sd knowledge validate

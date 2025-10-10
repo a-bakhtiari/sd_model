@@ -1,74 +1,39 @@
 {
   "citations": [
     {
-      "loop_id": "R01",
+      "loop_id": "B02",
       "papers": [
         {
-          "title": "Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach",
-          "authors": "Qureshi, I., Fang, Y.",
-          "year": "2011",
-          "relevance": "Examines how socialization processes including mentoring lead to contributor growth and retention in OSS projects",
+          "title": "Governance in Open Source Software Development: The Apache Web Server Project",
+          "authors": "Mockus, A., Fielding, R. T., et al.",
+          "year": "2002",
+          "relevance": "Documents the meritocratic promotion process where increased competition among experienced contributors naturally regulates advancement rates",
           "verified": true,
           "verification_method": "semantic_scholar_with_llm",
           "semantic_scholar_match": {
-            "title": "Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach",
+            "title": "Source Software Development : The Apache Server",
             "authors": [
-              "I. Qureshi",
-              "Yulin Fang"
+              "A. Mockus",
+              "R. Fielding",
+              "J. Herbsleb"
             ],
-            "year": 2011,
-            "url": "https://www.semanticscholar.org/paper/cff20e5cc73fb98bdb86cf6cabc7818f16de7211",
-            "paper_id": "cff20e5cc73fb98bdb86cf6cabc7818f16de7211",
-            "citation_count": 126,
+            "year": 2000,
+            "url": "https://www.semanticscholar.org/paper/2f40d0ee2ca5f6845f553b7b6e385a03ace36607",
+            "paper_id": "2f40d0ee2ca5f6845f553b7b6e385a03ace36607",
+            "citation_count": 671,
             "abstract": null,
             "venue": "",
-            "fields_of_study": [
-              "Sociology"
-            ]
+            "fields_of_study": []
           }
         }
       ],
-      "reasoning": "Multiple studies document how mentoring and socialization create reinforcing cycles of team growth in OSS communities."
-    },
-    {
-      "loop_id": "B03",
-      "papers": [
-        {
-          "title": "The Hard Life of Open Source Software Project Newcomers",
-          "authors": "Steinmacher, I., Wiese, I., et al.",
-          "year": "2014",
-          "relevance": "Provides empirical evidence of how onboarding challenges and skill development regulate contributor progression",
-          "verified": true,
-          "verification_method": "semantic_scholar_with_llm",
-          "semantic_scholar_match": {
-            "title": "The hard life of open source software project newcomers",
-            "authors": [
-              "Igor Steinmacher",
-              "I. Wiese",
-              "T. Conte",
-              "M. Gerosa",
-              "D. Redmiles"
-            ],
-            "year": 2014,
-            "url": "https://www.semanticscholar.org/paper/d3bac0c27eba91d3d3c5b17592a3f670af3ab699",
-            "paper_id": "d3bac0c27eba91d3d3c5b17592a3f670af3ab699",
-            "citation_count": 63,
-            "abstract": null,
-            "venue": "IEEE/ACM International Conference on Connected Health: Applications, Systems and Engineering Technologies",
-            "fields_of_study": [
-              "Computer Science",
-              "Engineering"
-            ]
-          }
-        }
-      ],
-      "reasoning": "Extensive research on OSS newcomer integration demonstrates how skill development creates balancing feedback in contributor progression."
+      "reasoning": "Research on OSS governance and quality control demonstrates natural regulatory mechanisms that slow promotion rates as experienced contributor pools expand, preventing unchecked growth."
     }
   ],
   "summary": {
-    "total_papers": 15,
-    "verified": 2,
-    "unverified": 13,
-    "verification_rate": 0.133
+    "total_papers": 20,
+    "verified": 1,
+    "unverified": 19,
+    "verification_rate": 0.05
   }
 }

@@ -6,19 +6,19 @@
     },
     {
       "id": "R02",
-      "description": "This reinforcing loop directly strengthens the core team by increasing the promotion rate through mentorship, creating a self-reinforcing cycle of leadership development."
+      "description": "This reinforcing loop speeds up contributor advancement by directly linking core developer mentorship to a higher promotion rate, which then increases the number of mentors."
     },
     {
       "id": "B01",
-      "description": "This balancing loop stabilizes the core developer count by counteracting growth with natural attrition, such as burnout or career changes, preventing unlimited expansion."
+      "description": "This balancing loop stabilizes the core team size by counteracting growth with developer turnover, which naturally limits the number of core developers."
     },
     {
       "id": "B02",
-      "description": "This balancing loop regulates the pool of experienced contributors by promoting them to the core team, which naturally limits its own growth and seeks a stable size."
+      "description": "This balancing loop regulates the pool of experienced contributors by slowing the promotion rate as their numbers increase, preventing unchecked growth."
     },
     {
       "id": "B03",
-      "description": "This balancing loop governs the onboarding process as new contributors who skill up graduate to experienced roles, preventing an indefinite accumulation of novices."
+      "description": "This balancing loop manages the influx of new contributors by reducing the skill-up rate as their numbers grow, creating a self-correcting mechanism for onboarding."
     }
   ]
 }

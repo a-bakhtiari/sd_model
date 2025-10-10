@@ -5,75 +5,70 @@
       "additions": {
         "variables": [
           {
-            "name": "Legitimate Peripheral Participation",
-            "type": "Auxiliary",
-            "description": "Degree to which newcomers can participate meaningfully in simple tasks while learning community practices"
-          },
-          {
-            "name": "Community Boundary Spanning",
-            "type": "Auxiliary",
-            "description": "Ability to connect with other communities and bring in external knowledge"
-          },
-          {
-            "name": "Shared Repertoire",
+            "name": "Peripheral Participants",
             "type": "Stock",
-            "description": "Accumulated shared resources, tools, stories, and concepts developed by the community"
+            "description": "Newcomers observing and learning through legitimate peripheral participation"
           },
           {
-            "name": "Mutual Engagement",
+            "name": "Community Engagement",
             "type": "Auxiliary",
-            "description": "Level of interaction and relationship building among community members"
+            "description": "Level of participation in community activities and interactions"
           },
           {
-            "name": "Joint Enterprise",
+            "name": "Boundary Crossing",
             "type": "Auxiliary",
-            "description": "Shared understanding and commitment to community goals and domain"
+            "description": "Movement between different communities of practice and knowledge sharing across boundaries"
           },
           {
-            "name": "Peripheral Participation Rate",
+            "name": "Identity Formation",
+            "type": "Auxiliary",
+            "description": "Development of shared identity and sense of belonging within the community"
+          },
+          {
+            "name": "Participation Rate",
             "type": "Flow",
-            "description": "Flow of newcomers entering legitimate peripheral participation"
+            "description": "Flow from peripheral to more engaged participation"
+          },
+          {
+            "name": "Community Cohesion",
+            "type": "Auxiliary",
+            "description": "Strength of social bonds and shared practices within the community"
           }
         ],
         "connections": [
           {
-            "from": "Legitimate Peripheral Participation",
-            "to": "Skill up",
+            "from": "Peripheral Participants",
+            "to": "Participation Rate",
             "relationship": "positive"
           },
           {
-            "from": "Mutual Engagement",
+            "from": "Community Engagement",
+            "to": "Participation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Identity Formation",
+            "to": "Community Engagement",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Cohesion",
+            "to": "Identity Formation",
+            "relationship": "positive"
+          },
+          {
+            "from": "Boundary Crossing",
             "to": "Implicit Knowledge Transfer (Mentorship)",
             "relationship": "positive"
           },
           {
-            "from": "Shared Repertoire",
-            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
-            "relationship": "positive"
-          },
-          {
-            "from": "Joint Enterprise",
-            "to": "Promotion Rate",
-            "relationship": "positive"
-          },
-          {
-            "from": "Core Developer",
-            "to": "Shared Repertoire",
-            "relationship": "positive"
-          },
-          {
-            "from": "Experienced Contributors",
-            "to": "Mutual Engagement",
-            "relationship": "positive"
-          },
-          {
-            "from": "Community Boundary Spanning",
-            "to": "Shared Repertoire",
-            "relationship": "positive"
-          },
-          {
-            "from": "Peripheral Participation Rate",
+            "from": "Participation Rate",
             "to": "New Contributors",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Engagement",
+            "to": "Skill up",
             "relationship": "positive"
           }
         ]
@@ -90,90 +85,115 @@
       "additions": {
         "variables": [
           {
-            "name": "Socialization",
-            "type": "Auxiliary",
-            "description": "Process of sharing tacit knowledge through shared experiences and observation"
+            "name": "Tacit Knowledge Base",
+            "type": "Stock",
+            "description": "Accumulated tacit knowledge through experience and practice"
           },
           {
-            "name": "Externalization",
-            "type": "Auxiliary",
-            "description": "Process of articulating tacit knowledge into explicit concepts"
+            "name": "Explicit Knowledge Base",
+            "type": "Stock",
+            "description": "Codified knowledge in documentation, guides, and artifacts"
           },
           {
-            "name": "Combination",
-            "type": "Auxiliary",
-            "description": "Process of systemizing and applying explicit knowledge"
+            "name": "Socialization Rate",
+            "type": "Flow",
+            "description": "Conversion of tacit knowledge to tacit knowledge through shared experiences"
           },
           {
-            "name": "Internalization",
-            "type": "Auxiliary",
-            "description": "Process of embodying explicit knowledge into tacit knowledge"
+            "name": "Externalization Rate",
+            "type": "Flow",
+            "description": "Conversion of tacit knowledge to explicit knowledge through articulation"
+          },
+          {
+            "name": "Combination Rate",
+            "type": "Flow",
+            "description": "Conversion of explicit knowledge to explicit knowledge through synthesis and systemization"
+          },
+          {
+            "name": "Internalization Rate",
+            "type": "Flow",
+            "description": "Conversion of explicit knowledge to tacit knowledge through learning and practice"
           },
           {
             "name": "Ba (Shared Context)",
             "type": "Auxiliary",
-            "description": "Shared context in motion for knowledge creation and sharing"
-          },
-          {
-            "name": "Knowledge Assets",
-            "type": "Stock",
-            "description": "Accumulated knowledge resources including code, documentation, and practices"
+            "description": "Shared context for knowledge creation and sharing"
           }
         ],
         "connections": [
           {
-            "from": "Socialization",
-            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "from": "Tacit Knowledge Base",
+            "to": "Socialization Rate",
             "relationship": "positive"
           },
           {
-            "from": "Externalization",
-            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "from": "Socialization Rate",
+            "to": "Tacit Knowledge Base",
             "relationship": "positive"
           },
           {
-            "from": "Combination",
-            "to": "Knowledge Assets",
+            "from": "Tacit Knowledge Base",
+            "to": "Externalization Rate",
             "relationship": "positive"
           },
           {
-            "from": "Internalization",
-            "to": "Skill up",
+            "from": "Externalization Rate",
+            "to": "Explicit Knowledge Base",
             "relationship": "positive"
           },
           {
-            "from": "Knowledge Assets",
-            "to": "Combination",
+            "from": "Explicit Knowledge Base",
+            "to": "Combination Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Combination Rate",
+            "to": "Explicit Knowledge Base",
+            "relationship": "positive"
+          },
+          {
+            "from": "Explicit Knowledge Base",
+            "to": "Internalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Internalization Rate",
+            "to": "Tacit Knowledge Base",
             "relationship": "positive"
           },
           {
             "from": "Ba (Shared Context)",
-            "to": "Socialization",
+            "to": "Socialization Rate",
             "relationship": "positive"
           },
           {
-            "from": "Core Developer",
-            "to": "Externalization",
+            "from": "Ba (Shared Context)",
+            "to": "Externalization Rate",
             "relationship": "positive"
           },
           {
-            "from": "Experienced Contributors",
-            "to": "Internalization",
+            "from": "Ba (Shared Context)",
+            "to": "Combination Rate",
             "relationship": "positive"
           },
           {
-            "from": "Knowledge Assets",
+            "from": "Ba (Shared Context)",
+            "to": "Internalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Socialization Rate",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Externalization Rate",
             "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
             "relationship": "positive"
           },
           {
-            "from": "Socialization",
-            "to": "Internalization",
-            "relationship": "positive"
-          },
-          {
-            "from": "Externalization",
-            "to": "Combination",
+            "from": "Internalization Rate",
+            "to": "Skill up",
             "relationship": "positive"
           }
         ]

@@ -2,43 +2,43 @@
   "descriptions": [
     {
       "id": "C01",
-      "description": "A more diverse contributor base attracts new participants by creating a more inclusive and welcoming project environment."
+      "description": "A more diverse contributor base attracts a wider pool of potential new contributors to the project."
     },
     {
       "id": "C02",
-      "description": "As contributors gain skills, they move out of the 'New Contributors' stock and into more experienced roles."
+      "description": "As contributors skill up, they graduate from the New Contributors stock, reducing its level."
     },
     {
       "id": "C03",
-      "description": "Developer turnover directly reduces the number of core developers as individuals leave the project."
+      "description": "Developer turnover directly drains the pool of Core Developers as they leave the project."
     },
     {
       "id": "C04",
-      "description": "The promotion rate increases the core developer stock by moving experienced contributors into core roles."
+      "description": "The promotion rate directly adds experienced contributors to the Core Developer stock."
     },
     {
       "id": "C05",
-      "description": "The promotion rate decreases the experienced contributor stock as individuals are promoted to core developer roles."
+      "description": "Promoting experienced contributors to the core team reduces the stock of Experienced Contributors."
     },
     {
       "id": "C06",
-      "description": "The skill-up flow increases the experienced contributor stock by transitioning new contributors into experienced roles."
+      "description": "The skill-up flow directly adds newly competent contributors to the Experienced Contributors stock."
     },
     {
       "id": "C07",
-      "description": "Effective mentorship accelerates skill development by providing direct guidance and tacit knowledge to new contributors."
+      "description": "Effective mentorship accelerates skill acquisition by providing direct guidance and tacit knowledge."
     },
     {
       "id": "C08",
-      "description": "Comprehensive documentation facilitates skill acquisition by providing accessible, self-paced learning resources."
+      "description": "Comprehensive documentation enables self-paced learning, thereby accelerating the skill-up process."
     },
     {
       "id": "C09",
-      "description": "Strong mentorship prepares experienced contributors for core roles, thereby increasing the promotion rate."
+      "description": "Mentorship helps experienced contributors demonstrate core-level competence, increasing their promotion rate."
     },
     {
       "id": "C10",
-      "description": "More core developers increase the project's capacity for providing direct mentorship and guidance."
+      "description": "More core developers provide more available mentors, thereby increasing implicit knowledge transfer capacity."
     }
   ]
 }

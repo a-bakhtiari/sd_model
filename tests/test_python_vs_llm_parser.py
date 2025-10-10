@@ -87,18 +87,21 @@ def extract_python_parser_data(mdl_path: Path):
         variables.append((sketch_id, var_data, shape_code))
 
     # Second pass: Identify stocks
-    # Parse valve lines (11,ValveID,...) and connections (1,ArrowID,From,To,...)
-    valve_ids = set()
-    valve_to_stock = {}  # Map valve ID to stock IDs it points to
+    # Must do TWO passes because connection lines may appear before valve definitions
 
+    # Pass 1: Collect all valve IDs
+    valve_ids = set()
     for line in parser.sketch_other:
         if line.startswith("11,"):
-            # Valve definition
             parts = line.split(",")
             if len(parts) >= 2:
                 valve_id = int(parts[1])
                 valve_ids.add(valve_id)
-        elif line.startswith("1,"):
+
+    # Pass 2: Find stocks (variables that receive from valves)
+    valve_to_stock = {}  # Map valve ID to stock IDs it points to
+    for line in parser.sketch_other:
+        if line.startswith("1,"):
             # Arrow/connection
             parts = line.split(",")
             if len(parts) >= 4:
@@ -112,9 +115,12 @@ def extract_python_parser_data(mdl_path: Path):
                     valve_to_stock[from_id].append(to_id)
 
     # Mark variables that receive from valves as Stocks
+    # But exclude valve-to-valve connections (valves can point to other valves)
     stock_ids = set()
-    for targets in valve_to_stock.values():
-        stock_ids.update(targets)
+    for from_valve_id, target_ids in valve_to_stock.items():
+        for target_id in target_ids:
+            if target_id not in valve_ids:  # Only variables, not valves
+                stock_ids.add(target_id)
 
     # Update variable types based on stock identification
     final_variables = []

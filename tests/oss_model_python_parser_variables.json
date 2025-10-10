@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "New Contributors",
-      "type": "Auxiliary",
+      "type": "Stock",
       "x": 862,
       "y": 298,
       "width": 66,
@@ -17,7 +17,7 @@
     {
       "id": 2,
       "name": "Core Developer",
-      "type": "Auxiliary",
+      "type": "Stock",
       "x": 1289,
       "y": 301,
       "width": 46,
@@ -45,7 +45,7 @@
     {
       "id": 4,
       "name": "Source Code",
-      "type": "Auxiliary",
+      "type": "Stock",
       "x": 1367,
       "y": 737,
       "width": 46,
@@ -59,7 +59,7 @@
     {
       "id": 5,
       "name": "User Base",
-      "type": "Auxiliary",
+      "type": "Stock",
       "x": 1845,
       "y": 712,
       "width": 46,
@@ -73,7 +73,7 @@
     {
       "id": 6,
       "name": "Project Reputation",
-      "type": "Auxiliary",
+      "type": "Stock",
       "x": 2161,
       "y": 708,
       "width": 50,
@@ -157,7 +157,7 @@
     {
       "id": 30,
       "name": "Community Health",
-      "type": "Auxiliary",
+      "type": "Stock",
       "x": 1997,
       "y": 403,
       "width": 50,
@@ -227,7 +227,7 @@
     {
       "id": 47,
       "name": "New Pull request",
-      "type": "Auxiliary",
+      "type": "Stock",
       "x": 839,
       "y": 731,
       "width": 46,
@@ -241,7 +241,7 @@
     {
       "id": 48,
       "name": "Open Issues",
-      "type": "Auxiliary",
+      "type": "Stock",
       "x": 383,
       "y": 569,
       "width": 46,
@@ -255,7 +255,7 @@
     {
       "id": 49,
       "name": "Project's Implicit Knowledge",
-      "type": "Auxiliary",
+      "type": "Stock",
       "x": 1137,
       "y": -45,
       "width": 51,
@@ -269,7 +269,7 @@
     {
       "id": 50,
       "name": "Projects's Explicit Knowledge",
-      "type": "Auxiliary",
+      "type": "Stock",
       "x": 865,
       "y": -47,
       "width": 50,
@@ -297,7 +297,7 @@
     {
       "id": 56,
       "name": "Pull Request Under review",
-      "type": "Auxiliary",
+      "type": "Stock",
       "x": 1084,
       "y": 741,
       "width": 51,
@@ -353,7 +353,7 @@
     {
       "id": 72,
       "name": "Experienced Contributors",
-      "type": "Auxiliary",
+      "type": "Stock",
       "x": 1080,
       "y": 301,
       "width": 66,
@@ -465,7 +465,7 @@
     {
       "id": 106,
       "name": "Searchable Knowledge Base",
-      "type": "Auxiliary",
+      "type": "Stock",
       "x": 345,
       "y": 263,
       "width": 60,
@@ -479,7 +479,7 @@
     {
       "id": 113,
       "name": "Closed Issues",
-      "type": "Auxiliary",
+      "type": "Stock",
       "x": 196,
       "y": 567,
       "width": 46,

@@ -39,28 +39,74 @@ def main() -> None:
         required=False,
         help="Project name under projects/ (can also use SD_PROJECT env var)"
     )
+
+    # Core optional features
     parser.add_argument(
-        "--improve-model",
+        "--loops",
         action="store_true",
-        default=True,
-        help="Run model improvement modules (theory enhancement, RQ alignment, etc.) [default: enabled]"
+        help="Find feedback loops and generate loop descriptions"
     )
     parser.add_argument(
-        "--no-improve-model",
-        dest="improve_model",
-        action="store_false",
-        help="Skip model improvement modules"
+        "--citations",
+        action="store_true",
+        help="Generate LLM-based citations for connections/loops"
     )
     parser.add_argument(
         "--verify-citations",
         action="store_true",
-        help="Verify citations via Semantic Scholar"
+        help="Verify citations via Semantic Scholar (requires --citations or enables it automatically)"
+    )
+    parser.add_argument(
+        "--theory-validation",
+        action="store_true",
+        help="Validate model against existing theories"
+    )
+
+    # Model improvement features
+    parser.add_argument(
+        "--theory-enhancement",
+        action="store_true",
+        help="Suggest theory-based model enhancements"
+    )
+    parser.add_argument(
+        "--theory-enhancement-mdl",
+        action="store_true",
+        help="Generate enhanced MDL file (requires --theory-enhancement or enables it automatically)"
+    )
+    parser.add_argument(
+        "--rq-analysis",
+        action="store_true",
+        help="Run research question alignment and refinement"
+    )
+    parser.add_argument(
+        "--theory-discovery",
+        action="store_true",
+        help="Discover relevant theories for the model"
+    )
+    parser.add_argument(
+        "--gap-analysis",
+        action="store_true",
+        help="Identify unsupported connections (requires --citations or enables it automatically)"
     )
     parser.add_argument(
         "--discover-papers",
         action="store_true",
-        help="Search for papers for unsupported connections"
+        help="Find papers for unsupported connections (requires --gap-analysis or enables it automatically)"
     )
+
+    # Convenience flags
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help="Run all optional features"
+    )
+    parser.add_argument(
+        "--improve-model",
+        action="store_true",
+        help="Run all model improvement features (theory-enhancement, rq-analysis, theory-discovery)"
+    )
+
+    # Other options
     parser.add_argument(
         "--apply-patch",
         action="store_true",
@@ -81,6 +127,41 @@ def main() -> None:
     if not project:
         parser.error("--project required (or set SD_PROJECT environment variable)")
 
+    # Handle convenience flags
+    if args.all:
+        # Enable all optional features
+        args.loops = True
+        args.citations = True
+        args.verify_citations = True
+        args.theory_validation = True
+        args.theory_enhancement = True
+        args.theory_enhancement_mdl = True
+        args.rq_analysis = True
+        args.theory_discovery = True
+        args.gap_analysis = True
+        args.discover_papers = True
+
+    if args.improve_model:
+        # Enable all model improvement features
+        args.theory_enhancement = True
+        args.rq_analysis = True
+        args.theory_discovery = True
+
+    # Handle dependencies - auto-enable required features
+    if args.verify_citations and not args.citations:
+        args.citations = True
+
+    if args.gap_analysis and not args.citations:
+        args.citations = True
+
+    if args.discover_papers and not args.gap_analysis:
+        args.gap_analysis = True
+        if not args.citations:
+            args.citations = True
+
+    if args.theory_enhancement_mdl and not args.theory_enhancement:
+        args.theory_enhancement = True
+
     setup_logging()
     logger = logging.getLogger(__name__)
 
@@ -89,10 +170,20 @@ def main() -> None:
     try:
         result = run_pipeline(
             project=project,
-            apply_patch=args.apply_patch,
+            # Core optional features
+            run_loops=args.loops,
+            run_citations=args.citations,
             verify_cit=args.verify_citations,
+            run_theory_validation=args.theory_validation,
+            # Model improvement features
+            run_theory_enhancement=args.theory_enhancement,
+            generate_enhanced_mdl=args.theory_enhancement_mdl,
+            run_rq_analysis=args.rq_analysis,
+            run_theory_discovery=args.theory_discovery,
+            run_gap_analysis=args.gap_analysis,
             discover_papers=args.discover_papers,
-            improve_model=args.improve_model,
+            # Other options
+            apply_patch=args.apply_patch,
             save_run=args.save_run,
         )
 

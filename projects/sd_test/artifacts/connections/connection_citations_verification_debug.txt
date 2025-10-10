@@ -2,35 +2,6 @@ LLM VALIDATION DEBUG LOG
 ================================================================================
 
 ================================================================================
-ORIGINAL: Diversity and inclusion in open source software (OSS) projects: Where do we stand?
-S2 MATCH: Diversity and Inclusion in Open Source Software (OSS) Projects: Where Do We Stand?
---------------------------------------------------------------------------------
-PROMPT:
-You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
-
-ORIGINAL CITATION:
-Title: Diversity and inclusion in open source software (OSS) projects: Where do we stand?
-Authors: Bosu, A., Sultana, K. Z.
-Year: 2019
-
-SEMANTIC SCHOLAR RESULT:
-Title: Diversity and Inclusion in Open Source Software (OSS) Projects: Where Do We Stand?
-Authors: Amiangshu Bosu, Kazi Zakia Sultana
-Year: 2019
-
-QUESTION: Do these refer to the same paper? Consider:
-- Title may have minor formatting differences (punctuation, capitalization)
-- Author names may be formatted differently (first name vs initial)
-- Year should match or be very close (±1 year acceptable)
-
-Answer with a single word: "yes" or "no"
-
-Your answer:
---------------------------------------------------------------------------------
-LLM RESPONSE: yes
-================================================================================
-
-================================================================================
 ORIGINAL: Gender and participation in open source software development
 S2 MATCH: Gender and Participation in Open Source Software Development
 --------------------------------------------------------------------------------
@@ -39,8 +10,8 @@ You are validating academic paper citations. Compare the original citation with 
 
 ORIGINAL CITATION:
 Title: Gender and participation in open source software development
-Authors: Nafus, D., Leach, J., et al.
-Year: 2006
+Authors: Ghosh, R. A., et al.
+Year: 2002
 
 SEMANTIC SCHOLAR RESULT:
 Title: Gender and Participation in Open Source Software Development
@@ -60,21 +31,21 @@ LLM RESPONSE: no
 ================================================================================
 
 ================================================================================
-ORIGINAL: Open source software and the 'private-collective' innovation model: Issues for organization science
-S2 MATCH: Open Source Software and the 'Private-Collective' Innovation Model: Issues for Organization Science
+ORIGINAL: Learning trajectories in open source software communities: A social learning perspective
+S2 MATCH: Open Source Software Onboarding as a University Course: An Experience Report
 --------------------------------------------------------------------------------
 PROMPT:
 You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
 
 ORIGINAL CITATION:
-Title: Open source software and the 'private-collective' innovation model: Issues for organization science
-Authors: von Hippel, E., von Krogh, G.
-Year: 2003
+Title: Learning trajectories in open source software communities: A social learning perspective
+Authors: Dahlander, L., et al.
+Year: 2008
 
 SEMANTIC SCHOLAR RESULT:
-Title: Open Source Software and the 'Private-Collective' Innovation Model: Issues for Organization Science
-Authors: E. von Hippel, G. von Krogh
-Year: 2009
+Title: Open Source Software Onboarding as a University Course: An Experience Report
+Authors: Hao He, Minghui Zhou, Qingye Wang, et al.
+Year: 2023
 
 QUESTION: Do these refer to the same paper? Consider:
 - Title may have minor formatting differences (punctuation, capitalization)
@@ -89,79 +60,21 @@ LLM RESPONSE: no
 ================================================================================
 
 ================================================================================
-ORIGINAL: The onboarding barrier in open source software projects: A case study
-S2 MATCH: An LLM Assistant for Software Project Onboarding
---------------------------------------------------------------------------------
-PROMPT:
-You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
-
-ORIGINAL CITATION:
-Title: The onboarding barrier in open source software projects: A case study
-Authors: Steinmacher, I., Conte, T. U., et al.
-Year: 2015
-
-SEMANTIC SCHOLAR RESULT:
-Title: An LLM Assistant for Software Project Onboarding
-Authors: Knud Ronau Larsen, Magnus Edvall, Truong Ho-Quang, et al.
-Year: 2025
-
-QUESTION: Do these refer to the same paper? Consider:
-- Title may have minor formatting differences (punctuation, capitalization)
-- Author names may be formatted differently (first name vs initial)
-- Year should match or be very close (±1 year acceptable)
-
-Answer with a single word: "yes" or "no"
-
-Your answer:
---------------------------------------------------------------------------------
-LLM RESPONSE: no
-================================================================================
-
-================================================================================
-ORIGINAL: Socialization in open source software projects: A growth mixture modeling approach
+ORIGINAL: Socialization in open source software communities: A growth mixture modeling approach
 S2 MATCH: Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach
 --------------------------------------------------------------------------------
 PROMPT:
 You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
 
 ORIGINAL CITATION:
-Title: Socialization in open source software projects: A growth mixture modeling approach
-Authors: Qureshi, I., Fang, Y.
-Year: 2011
+Title: Socialization in open source software communities: A growth mixture modeling approach
+Authors: Zhou, M., et al.
+Year: 2018
 
 SEMANTIC SCHOLAR RESULT:
 Title: Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach
 Authors: I. Qureshi, Yulin Fang
 Year: 2011
-
-QUESTION: Do these refer to the same paper? Consider:
-- Title may have minor formatting differences (punctuation, capitalization)
-- Author names may be formatted differently (first name vs initial)
-- Year should match or be very close (±1 year acceptable)
-
-Answer with a single word: "yes" or "no"
-
-Your answer:
---------------------------------------------------------------------------------
-LLM RESPONSE: yes
-================================================================================
-
-================================================================================
-ORIGINAL: Learning trajectories in open source software projects
-S2 MATCH: Patient-specific interactive software module for virtual preoperative planning and visualization of pedicle screw entry point and trajectories in spine surgery
---------------------------------------------------------------------------------
-PROMPT:
-You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
-
-ORIGINAL CITATION:
-Title: Learning trajectories in open source software projects
-Authors: von Krogh, G., Spaeth, S., et al.
-Year: 2003
-
-SEMANTIC SCHOLAR RESULT:
-Title: Patient-specific interactive software module for virtual preoperative planning and visualization of pedicle screw entry point and trajectories in spine surgery
-Authors: V. Muralidharan, Ganesh Swaminathan, D. Devadhas, et al.
-Year: 2018
 
 QUESTION: Do these refer to the same paper? Consider:
 - Title may have minor formatting differences (punctuation, capitalization)
@@ -184,8 +97,8 @@ You are validating academic paper citations. Compare the original citation with 
 
 ORIGINAL CITATION:
 Title: Turnover of developers in libre software projects
-Authors: Robles, G., González-Barahona, J. M., et al.
-Year: 2009
+Authors: Robles, G., et al.
+Year: 2014
 
 SEMANTIC SCHOLAR RESULT:
 Title: Contributor Turnover in Libre Software Projects
@@ -201,7 +114,7 @@ Answer with a single word: "yes" or "no"
 
 Your answer:
 --------------------------------------------------------------------------------
-LLM RESPONSE: yes
+LLM RESPONSE: no
 ================================================================================
 
 ================================================================================
@@ -213,8 +126,8 @@ You are validating academic paper citations. Compare the original citation with 
 
 ORIGINAL CITATION:
 Title: Why do developers leave open source software projects?
-Authors: Rigby, P. C., Hassan, A. E.
-Year: 2007
+Authors: Qureshi, I., et al.
+Year: 2017
 
 SEMANTIC SCHOLAR RESULT:
 Title: Why do developers take breaks from contributing to OSS projects? A preliminary analysis
@@ -234,165 +147,78 @@ LLM RESPONSE: no
 ================================================================================
 
 ================================================================================
-ORIGINAL: Attrition in open source software projects: A social network perspective
-S2 MATCH: Investigating Success of Open Source Software Projects: A Social Network Perspective
+ORIGINAL: Core-periphery structures in open source software development: A network analysis
+S2 MATCH: Exploring the impact of socio-technical core-periphery structures in open source software development
 --------------------------------------------------------------------------------
 PROMPT:
 You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
 
 ORIGINAL CITATION:
-Title: Attrition in open source software projects: A social network perspective
-Authors: Singh, P. V., Tan, Y., et al.
+Title: Core-periphery structures in open source software development: A network analysis
+Authors: Bird, C., et al.
+Year: 2007
+
+SEMANTIC SCHOLAR RESULT:
+Title: Exploring the impact of socio-technical core-periphery structures in open source software development
+Authors: C. Amrit, J. Hillegersberg
+Year: 2010
+
+QUESTION: Do these refer to the same paper? Consider:
+- Title may have minor formatting differences (punctuation, capitalization)
+- Author names may be formatted differently (first name vs initial)
+- Year should match or be very close (±1 year acceptable)
+
+Answer with a single word: "yes" or "no"
+
+Your answer:
+--------------------------------------------------------------------------------
+LLM RESPONSE: no
+================================================================================
+
+================================================================================
+ORIGINAL: Becoming a core developer in open source software: A social network perspective
+S2 MATCH: Software Introspection for Signaling Social-Cyber Operations
+--------------------------------------------------------------------------------
+PROMPT:
+You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
+
+ORIGINAL CITATION:
+Title: Becoming a core developer in open source software: A social network perspective
+Authors: Joblin, M., et al.
+Year: 2015
+
+SEMANTIC SCHOLAR RESULT:
+Title: Software Introspection for Signaling Social-Cyber Operations
+Authors: H. Sánchez, B. Hitaj
+Year: 2023
+
+QUESTION: Do these refer to the same paper? Consider:
+- Title may have minor formatting differences (punctuation, capitalization)
+- Author names may be formatted differently (first name vs initial)
+- Year should match or be very close (±1 year acceptable)
+
+Answer with a single word: "yes" or "no"
+
+Your answer:
+--------------------------------------------------------------------------------
+LLM RESPONSE: no
+================================================================================
+
+================================================================================
+ORIGINAL: Dynamics of contributor roles in open source software ecosystems
+S2 MATCH: OpenMent: A Dataset of Mentor-Mentee Interactions in Google Summer of Code
+--------------------------------------------------------------------------------
+PROMPT:
+You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
+
+ORIGINAL CITATION:
+Title: Dynamics of contributor roles in open source software ecosystems
+Authors: Jensen, C., et al.
 Year: 2011
 
 SEMANTIC SCHOLAR RESULT:
-Title: Investigating Success of Open Source Software Projects: A Social Network Perspective
-Authors: Jing Wu, K. Goh, Q. Tang
-Year: 2007
-
-QUESTION: Do these refer to the same paper? Consider:
-- Title may have minor formatting differences (punctuation, capitalization)
-- Author names may be formatted differently (first name vs initial)
-- Year should match or be very close (±1 year acceptable)
-
-Answer with a single word: "yes" or "no"
-
-Your answer:
---------------------------------------------------------------------------------
-LLM RESPONSE: no
-================================================================================
-
-================================================================================
-ORIGINAL: The social structure of free and open source software development
-S2 MATCH: The social structure of free and open source software development
---------------------------------------------------------------------------------
-PROMPT:
-You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
-
-ORIGINAL CITATION:
-Title: The social structure of free and open source software development
-Authors: Dahlander, L., Wallin, M. W.
-Year: 2006
-
-SEMANTIC SCHOLAR RESULT:
-Title: The social structure of free and open source software development
-Authors: Kevin Crowston, J. Howison
-Year: 2005
-
-QUESTION: Do these refer to the same paper? Consider:
-- Title may have minor formatting differences (punctuation, capitalization)
-- Author names may be formatted differently (first name vs initial)
-- Year should match or be very close (±1 year acceptable)
-
-Answer with a single word: "yes" or "no"
-
-Your answer:
---------------------------------------------------------------------------------
-LLM RESPONSE: no
-================================================================================
-
-================================================================================
-ORIGINAL: From the cathedral to the bazaar: An empirical study of the lifecycle of volunteer community projects
-S2 MATCH: From the Cathedral to the Bazaar: An Empirical Study of the Lifecycle of Volunteer Community Projects
---------------------------------------------------------------------------------
-PROMPT:
-You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
-
-ORIGINAL CITATION:
-Title: From the cathedral to the bazaar: An empirical study of the lifecycle of volunteer community projects
-Authors: Jensen, C., Scacchi, W.
-Year: 2010
-
-SEMANTIC SCHOLAR RESULT:
-Title: From the Cathedral to the Bazaar: An Empirical Study of the Lifecycle of Volunteer Community Projects
-Authors: A. Capiluppi, Martin Michlmayr
-Year: 2007
-
-QUESTION: Do these refer to the same paper? Consider:
-- Title may have minor formatting differences (punctuation, capitalization)
-- Author names may be formatted differently (first name vs initial)
-- Year should match or be very close (±1 year acceptable)
-
-Answer with a single word: "yes" or "no"
-
-Your answer:
---------------------------------------------------------------------------------
-LLM RESPONSE: no
-================================================================================
-
-================================================================================
-ORIGINAL: The onion model of open source software development
-S2 MATCH: CROSS: A Contributor-Project Interaction Lifecycle Model for Open Source Software
---------------------------------------------------------------------------------
-PROMPT:
-You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
-
-ORIGINAL CITATION:
-Title: The onion model of open source software development
-Authors: Ye, Y., Kishida, K.
-Year: 2003
-
-SEMANTIC SCHOLAR RESULT:
-Title: CROSS: A Contributor-Project Interaction Lifecycle Model for Open Source Software
-Authors: Tapajit Dey, Brian Fitzgerald, Sherae Daniel
-Year: 2024
-
-QUESTION: Do these refer to the same paper? Consider:
-- Title may have minor formatting differences (punctuation, capitalization)
-- Author names may be formatted differently (first name vs initial)
-- Year should match or be very close (±1 year acceptable)
-
-Answer with a single word: "yes" or "no"
-
-Your answer:
---------------------------------------------------------------------------------
-LLM RESPONSE: no
-================================================================================
-
-================================================================================
-ORIGINAL: Dynamics of open source movements
-S2 MATCH: Dynamics of Open Source Movements
---------------------------------------------------------------------------------
-PROMPT:
-You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
-
-ORIGINAL CITATION:
-Title: Dynamics of open source movements
-Authors: von Krogh, G., von Hippel, E.
-Year: 2006
-
-SEMANTIC SCHOLAR RESULT:
-Title: Dynamics of Open Source Movements
-Authors: S. Athey, Glenn Ellison
-Year: 2010
-
-QUESTION: Do these refer to the same paper? Consider:
-- Title may have minor formatting differences (punctuation, capitalization)
-- Author names may be formatted differently (first name vs initial)
-- Year should match or be very close (±1 year acceptable)
-
-Answer with a single word: "yes" or "no"
-
-Your answer:
---------------------------------------------------------------------------------
-LLM RESPONSE: no
-================================================================================
-
-================================================================================
-ORIGINAL: Learning in open source software development: A social network perspective
-S2 MATCH: The development of an improvising machine in ubiquitous music environments
---------------------------------------------------------------------------------
-PROMPT:
-You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
-
-ORIGINAL CITATION:
-Title: Learning in open source software development: A social network perspective
-Authors: Grewal, R., Lilien, G. L., et al.
-Year: 2006
-
-SEMANTIC SCHOLAR RESULT:
-Title: The development of an improvising machine in ubiquitous music environments
-Authors: Felippe Barros, Leandro Costalonga
+Title: OpenMent: A Dataset of Mentor-Mentee Interactions in Google Summer of Code
+Authors: Erfan Raoofian, F. H. Fard, I. Adaji, et al.
 Year: 2025
 
 QUESTION: Do these refer to the same paper? Consider:
@@ -408,21 +234,21 @@ LLM RESPONSE: no
 ================================================================================
 
 ================================================================================
-ORIGINAL: The process of joining a global scaling community
-S2 MATCH: Community-Based Approaches to Reducing Health Inequities and Fostering Environmental Justice through Global Youth-Engaged Citizen Science
+ORIGINAL: The evolution of organizational structures in open source projects
+S2 MATCH: The Large High Altitude Air Shower Observatory (LHAASO) Science White Paper
 --------------------------------------------------------------------------------
 PROMPT:
 You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
 
 ORIGINAL CITATION:
-Title: The process of joining a global scaling community
-Authors: Setia, P., Rajagopalan, B., et al.
+Title: The evolution of organizational structures in open source projects
+Authors: Crowston, K., et al.
 Year: 2012
 
 SEMANTIC SCHOLAR RESULT:
-Title: Community-Based Approaches to Reducing Health Inequities and Fostering Environmental Justice through Global Youth-Engaged Citizen Science
-Authors: A. King, Feyisayo A Odunitan-Wayas, M. Chaudhury, et al.
-Year: 2021
+Title: The Large High Altitude Air Shower Observatory (LHAASO) Science White Paper
+Authors: X. Bai, B. Bi, X. Bi, et al.
+Year: 2019
 
 QUESTION: Do these refer to the same paper? Consider:
 - Title may have minor formatting differences (punctuation, capitalization)
@@ -437,21 +263,21 @@ LLM RESPONSE: no
 ================================================================================
 
 ================================================================================
-ORIGINAL: Becoming a member of an open source community
-S2 MATCH: An experimental study of load balancing of OpenNebula open-source cloud computing platform
+ORIGINAL: Social structure and the success of open source software development
+S2 MATCH: THE DYNAMICS OF OPEN SOURCE SOFTWARE DEVELOPMENT AND CODER COMMUNITIES
 --------------------------------------------------------------------------------
 PROMPT:
 You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
 
 ORIGINAL CITATION:
-Title: Becoming a member of an open source community
-Authors: von Krogh, G., Spaeth, S., et al.
-Year: 2005
+Title: Social structure and the success of open source software development
+Authors: Grewal, R., et al.
+Year: 2006
 
 SEMANTIC SCHOLAR RESULT:
-Title: An experimental study of load balancing of OpenNebula open-source cloud computing platform
-Authors: S. I. A B M Moniruzzaman, Kawser Wazed, Nafi Syed, et al.
-Year: 2014
+Title: THE DYNAMICS OF OPEN SOURCE SOFTWARE DEVELOPMENT AND CODER COMMUNITIES
+Authors: Vinas Khalid Kadhim
+Year: 2024
 
 QUESTION: Do these refer to the same paper? Consider:
 - Title may have minor formatting differences (punctuation, capitalization)
@@ -466,16 +292,45 @@ LLM RESPONSE: no
 ================================================================================
 
 ================================================================================
-ORIGINAL: Overcoming social barriers in open source software contributing
+ORIGINAL: The socialization of newcomers in open source software projects: A growth mixture modeling approach
+S2 MATCH: Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach
+--------------------------------------------------------------------------------
+PROMPT:
+You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
+
+ORIGINAL CITATION:
+Title: The socialization of newcomers in open source software projects: A growth mixture modeling approach
+Authors: Zhou, M., et al.
+Year: 2016
+
+SEMANTIC SCHOLAR RESULT:
+Title: Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach
+Authors: I. Qureshi, Yulin Fang
+Year: 2011
+
+QUESTION: Do these refer to the same paper? Consider:
+- Title may have minor formatting differences (punctuation, capitalization)
+- Author names may be formatted differently (first name vs initial)
+- Year should match or be very close (±1 year acceptable)
+
+Answer with a single word: "yes" or "no"
+
+Your answer:
+--------------------------------------------------------------------------------
+LLM RESPONSE: no
+================================================================================
+
+================================================================================
+ORIGINAL: Overcoming barriers to onboarding in open source projects
 S2 MATCH: Overcoming Social Barriers When Contributing to Open Source Software Projects
 --------------------------------------------------------------------------------
 PROMPT:
 You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
 
 ORIGINAL CITATION:
-Title: Overcoming social barriers in open source software contributing
-Authors: Steinmacher, I., Wiese, I. S., et al.
-Year: 2014
+Title: Overcoming barriers to onboarding in open source projects
+Authors: Balali, S., et al.
+Year: 2018
 
 SEMANTIC SCHOLAR RESULT:
 Title: Overcoming Social Barriers When Contributing to Open Source Software Projects
@@ -495,21 +350,21 @@ LLM RESPONSE: no
 ================================================================================
 
 ================================================================================
-ORIGINAL: Socialization in open source software projects
-S2 MATCH: Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach
+ORIGINAL: Documentation and community contribution in open source software
+S2 MATCH: European Sociological Association PhD Summer School 2016 - draft article: “Talk is silver, code is gold? Contribution beyond source code in Free/Libre Open Source Software communities”
 --------------------------------------------------------------------------------
 PROMPT:
 You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
 
 ORIGINAL CITATION:
-Title: Socialization in open source software projects
-Authors: Fang, Y., Neufeld, D. J.
-Year: 2009
+Title: Documentation and community contribution in open source software
+Authors: Zhu, J., et al.
+Year: 2017
 
 SEMANTIC SCHOLAR RESULT:
-Title: Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach
-Authors: I. Qureshi, Yulin Fang
-Year: 2011
+Title: European Sociological Association PhD Summer School 2016 - draft article: “Talk is silver, code is gold? Contribution beyond source code in Free/Libre Open Source Software communities”
+Authors: David Rozas, Nigel Gilbert
+Year: 2016
 
 QUESTION: Do these refer to the same paper? Consider:
 - Title may have minor formatting differences (punctuation, capitalization)
@@ -532,42 +387,13 @@ You are validating academic paper citations. Compare the original citation with 
 
 ORIGINAL CITATION:
 Title: Barriers faced by newcomers to open source projects: A systematic review
-Authors: Steinmacher, I., Silva, M. A., et al.
+Authors: Steinmacher, I., et al.
 Year: 2018
 
 SEMANTIC SCHOLAR RESULT:
 Title: Barriers Faced by Newcomers to Open Source Projects: A Systematic Review
 Authors: Igor Steinmacher, Marco Aurélio Graciotto Silva, M. Gerosa
 Year: 2014
-
-QUESTION: Do these refer to the same paper? Consider:
-- Title may have minor formatting differences (punctuation, capitalization)
-- Author names may be formatted differently (first name vs initial)
-- Year should match or be very close (±1 year acceptable)
-
-Answer with a single word: "yes" or "no"
-
-Your answer:
---------------------------------------------------------------------------------
-LLM RESPONSE: no
-================================================================================
-
-================================================================================
-ORIGINAL: Documentation in open source software: A systematic mapping study
-S2 MATCH: Challenges and Solutions of Free and Open Source Software Documentation: A Systematic Mapping Study
---------------------------------------------------------------------------------
-PROMPT:
-You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
-
-ORIGINAL CITATION:
-Title: Documentation in open source software: A systematic mapping study
-Authors: Aghajani, E., Nagy, C., et al.
-Year: 2019
-
-SEMANTIC SCHOLAR RESULT:
-Title: Challenges and Solutions of Free and Open Source Software Documentation: A Systematic Mapping Study
-Authors: Giniele Pinho, Aguiar Jeová Caçula, Lucas Costa, et al.
-Year: 2024
 
 QUESTION: Do these refer to the same paper? Consider:
 - Title may have minor formatting differences (punctuation, capitalization)
@@ -590,8 +416,8 @@ You are validating academic paper citations. Compare the original citation with 
 
 ORIGINAL CITATION:
 Title: Mentoring in open source communities
-Authors: Marlow, J., Dabbish, L.
-Year: 2014
+Authors: Marlow, J., et al.
+Year: 2016
 
 SEMANTIC SCHOLAR RESULT:
 Title: Open Source Software Onboarding as a University Course: An Experience Report
@@ -611,21 +437,21 @@ LLM RESPONSE: no
 ================================================================================
 
 ================================================================================
-ORIGINAL: Social capital and individual motivations in open source software development
-S2 MATCH: Social capital as a factor of motivation for free/libre/open source software development
+ORIGINAL: The role of social capital in open source software communities
+S2 MATCH: The Role of Social Capital in Open Source Software Communities
 --------------------------------------------------------------------------------
 PROMPT:
 You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
 
 ORIGINAL CITATION:
-Title: Social capital and individual motivations in open source software development
-Authors: Hsu, M. H., Ju, T. L., et al.
-Year: 2007
+Title: The role of social capital in open source software communities
+Authors: Huang, J., et al.
+Year: 2019
 
 SEMANTIC SCHOLAR RESULT:
-Title: Social capital as a factor of motivation for free/libre/open source software development
-Authors: Josip Kolarec, M. Bajic, P. Jandrić
-Year: 2013
+Title: The Role of Social Capital in Open Source Software Communities
+Authors: Jijie Wang
+Year: 2005
 
 QUESTION: Do these refer to the same paper? Consider:
 - Title may have minor formatting differences (punctuation, capitalization)
@@ -640,21 +466,21 @@ LLM RESPONSE: no
 ================================================================================
 
 ================================================================================
-ORIGINAL: Core-periphery structures and knowledge transfer in open source software development
-S2 MATCH: Impacts of Social Network Structure on Knowledge Sharing in Open Source Software Development Teams
+ORIGINAL: Learning and progression in open source software communities
+S2 MATCH: Open source machine-learning algorithms for the prediction of optimal cancer drug therapies
 --------------------------------------------------------------------------------
 PROMPT:
 You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
 
 ORIGINAL CITATION:
-Title: Core-periphery structures and knowledge transfer in open source software development
-Authors: Dahlander, L., O'Mahony, S.
-Year: 2011
+Title: Learning and progression in open source software communities
+Authors: Dahlander, L., et al.
+Year: 2010
 
 SEMANTIC SCHOLAR RESULT:
-Title: Impacts of Social Network Structure on Knowledge Sharing in Open Source Software Development Teams
-Authors: Y. Long, K. Siau
-Year: 2008
+Title: Open source machine-learning algorithms for the prediction of optimal cancer drug therapies
+Authors: Cai Huang, R. Mezencev, J. McDonald, et al.
+Year: 2017
 
 QUESTION: Do these refer to the same paper? Consider:
 - Title may have minor formatting differences (punctuation, capitalization)
@@ -669,50 +495,21 @@ LLM RESPONSE: no
 ================================================================================
 
 ================================================================================
-ORIGINAL: The role of core developers in open source software development
-S2 MATCH: Understanding the Role of Core Developers in Open Source Software Development
+ORIGINAL: Sustainable open source software communities: The role of core developers
+S2 MATCH: Structural stability of the evolving developer collaboration network in the OSS community
 --------------------------------------------------------------------------------
 PROMPT:
 You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
 
 ORIGINAL CITATION:
-Title: The role of core developers in open source software development
-Authors: Mockus, A., Fielding, R. T., et al.
+Title: Sustainable open source software communities: The role of core developers
+Authors: Nakakoji, K., et al.
 Year: 2002
 
 SEMANTIC SCHOLAR RESULT:
-Title: Understanding the Role of Core Developers in Open Source Software Development
-Authors: Ju Long
-Year: 2006
-
-QUESTION: Do these refer to the same paper? Consider:
-- Title may have minor formatting differences (punctuation, capitalization)
-- Author names may be formatted differently (first name vs initial)
-- Year should match or be very close (±1 year acceptable)
-
-Answer with a single word: "yes" or "no"
-
-Your answer:
---------------------------------------------------------------------------------
-LLM RESPONSE: no
-================================================================================
-
-================================================================================
-ORIGINAL: Knowledge sharing in open source software communities
-S2 MATCH: How social Q&A sites are changing knowledge sharing in open source software communities
---------------------------------------------------------------------------------
-PROMPT:
-You are validating academic paper citations. Compare the original citation with the search result from Semantic Scholar.
-
-ORIGINAL CITATION:
-Title: Knowledge sharing in open source software communities
-Authors: Lee, G. K., Cole, R. E.
-Year: 2003
-
-SEMANTIC SCHOLAR RESULT:
-Title: How social Q&A sites are changing knowledge sharing in open source software communities
-Authors: Bogdan Vasilescu, Alexander Serebrenik, Premkumar T. Devanbu, et al.
-Year: 2014
+Title: Structural stability of the evolving developer collaboration network in the OSS community
+Authors: Liu Peng, Jianan Ma, Wenjun Li
+Year: 2022
 
 QUESTION: Do these refer to the same paper? Consider:
 - Title may have minor formatting differences (punctuation, capitalization)

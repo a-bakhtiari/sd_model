@@ -36,23 +36,48 @@ logger = logging.getLogger(__name__)
 
 def run_pipeline(
     project: str,
-    apply_patch: bool = False,
+    # Core optional features
+    run_loops: bool = False,
+    run_citations: bool = False,
     verify_cit: bool = False,
+    run_theory_validation: bool = False,
+    # Model improvement features
+    run_theory_enhancement: bool = False,
+    generate_enhanced_mdl: bool = False,
+    run_rq_analysis: bool = False,
+    run_theory_discovery: bool = False,
+    run_gap_analysis: bool = False,
     discover_papers: bool = False,
-    improve_model: bool = False,
+    # Other options
+    apply_patch: bool = False,
     save_run: Optional[str] = None
 ) -> Dict:
-    """Run the full analysis pipeline for a project.
+    """Run the analysis pipeline for a project with granular feature control.
+
+    Foundation (always runs):
+        - Parse MDL → extract variables & connections
+        - Generate connection descriptions
 
     Args:
         project: Project name
+
+        # Core optional features
+        run_loops: Find feedback loops and generate loop descriptions
+        run_citations: Generate LLM-based citations for connections/loops
+        verify_cit: Verify citations via Semantic Scholar (requires run_citations)
+        run_theory_validation: Validate model against existing theories
+
+        # Model improvement features
+        run_theory_enhancement: Suggest theory-based model enhancements
+        generate_enhanced_mdl: Generate enhanced MDL file (requires run_theory_enhancement)
+        run_rq_analysis: Run research question alignment and refinement
+        run_theory_discovery: Discover relevant theories for the model
+        run_gap_analysis: Identify unsupported connections (requires run_citations)
+        discover_papers: Find papers for unsupported connections (requires run_gap_analysis)
+
+        # Other options
         apply_patch: Whether to apply model patches
-        verify_cit: Whether to verify citations via Semantic Scholar
-        discover_papers: Whether to run paper discovery for gaps
-        improve_model: Whether to run model improvement modules (Step 8)
-        save_run: Optional run name to save artifacts in timestamped folder.
-                  If None, artifacts are overwritten in standard location.
-                  If empty string or custom name, creates versioned run folder.
+        save_run: Optional run name to save artifacts in timestamped folder
     """
     logger.info(f"Starting pipeline for project: {project}")
     cfg = load_config()
