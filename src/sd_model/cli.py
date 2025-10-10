@@ -47,11 +47,13 @@ def cmd_run(args: argparse.Namespace) -> None:
         args.citations = True
         args.verify_citations = True
         args.theory_enhancement = True
+        args.archetype_detection = True
         args.rq_analysis = True
         args.theory_discovery = True
 
     if args.improve_model:
         args.theory_enhancement = True
+        args.archetype_detection = True
         args.rq_analysis = True
         args.theory_discovery = True
 
@@ -71,6 +73,7 @@ def cmd_run(args: argparse.Namespace) -> None:
         verify_cit=args.verify_citations,
         # Model improvement features
         run_theory_enhancement=args.theory_enhancement,
+        run_archetype_detection=args.archetype_detection,
         run_rq_analysis=args.rq_analysis,
         run_theory_discovery=args.theory_discovery,
         # Other options
@@ -143,6 +146,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     # Model improvement features
     p_run.add_argument("--theory-enhancement", action="store_true", help="Suggest theory-based model enhancements and generate enhanced MDL file")
+    p_run.add_argument("--archetype-detection", action="store_true", help="Detect system archetypes and suggest missing loops/variables")
     p_run.add_argument("--rq-analysis", action="store_true", help="Run research question alignment and refinement")
     p_run.add_argument("--theory-discovery", action="store_true", help="Discover relevant theories for the model")
 

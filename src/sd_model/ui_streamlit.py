@@ -51,8 +51,7 @@ def _load_existing_artifacts(project: str) -> Dict[str, Path]:
         "theory_validation": paths.theory_validation_path,
         "artifacts_dir": paths.artifacts_dir,
         "db_path": paths.db_dir / "provenance.sqlite",
-        "variables_llm": paths.variables_llm_path,
-        "connections_llm": paths.connections_llm_path,
+        "variables": paths.parsed_variables_path,
     }
 
 
@@ -70,15 +69,15 @@ def load_stage1(project: str) -> Dict:
     parsed = safe_load(refs["parsed"])
     cons = safe_load(refs["connections"])
     tv = safe_load(refs["theory_validation"])
-    variables_llm = safe_load(refs["variables_llm"])
-    connections_llm = safe_load(refs["connections_llm"])
+    variables = safe_load(refs["variables"])
+    connections = safe_load(refs["connections"])
 
     return {
         "parsed": parsed,
         "connections": cons,
         "theory_validation": tv,
-        "variables_llm": variables_llm,
-        "connections_llm": connections_llm,
+        "variables": variables,
+        "connections": connections,
         "artifacts_dir": str(refs["artifacts_dir"]),
         "db_path": str(refs["db_path"]),
     }
@@ -885,7 +884,7 @@ def _build_connections_dataframe(artifacts_dir: Path) -> pd.DataFrame:
     # Load all data sources
     connections_data = load_json_safe(artifacts_dir / "connections" / "connections.json")
     descriptions_data = load_json_safe(artifacts_dir / "connections" / "connection_descriptions.json")
-    variables_data = load_json_safe(artifacts_dir / "parsing" / "variables_llm.json")
+    variables_data = load_json_safe(artifacts_dir / "parsing" / "variables.json")
     citations_data = load_json_safe(artifacts_dir / "connections" / "connection_citations_verified.json")
 
     # Build lookup dictionaries
@@ -1013,7 +1012,7 @@ def _build_chat_context(artifacts_dir: Path) -> str:
         return {}
 
     # Load minimal data
-    variables_data = load_json_safe(artifacts_dir / "parsing" / "variables_llm.json")
+    variables_data = load_json_safe(artifacts_dir / "parsing" / "variables.json")
     connections_data = load_json_safe(artifacts_dir / "connections" / "connections.json")
     descriptions_data = load_json_safe(artifacts_dir / "connections" / "connection_descriptions.json")
 
@@ -1090,13 +1089,13 @@ def main() -> None:
     st.session_state["project"] = project
 
     # Tabs
-    dashboard_tab, stage2_tab, data_tables_tab, theory_tab, rq_tab, chat_tab = st.tabs([
-        "Connection Explorer",
-        "Loop Explorer",
-        "Data Tables",
-        "Theory Development",
+    model_dev_tab, rq_tab, data_tables_tab, chat_tab, dashboard_tab, stage2_tab = st.tabs([
+        "Model Development",
         "Research Questions",
-        "Chat"
+        "Data Tables",
+        "Chat",
+        "Connection Explorer",
+        "Loop Explorer"
     ])
 
     with dashboard_tab:
@@ -1111,10 +1110,10 @@ def main() -> None:
         parsed = data["parsed"]
         cons = data["connections"]
         tv = data["theory_validation"]
-        variables_llm = data.get("variables_llm", {"variables": []})
-        connections_llm = data.get("connections_llm", {"connections": []})
-        id_to_name = {int(v["id"]): v["name"] for v in variables_llm.get("variables", [])}
-        name_to_type = {v["name"]: v.get("type", "Auxiliary") for v in variables_llm.get("variables", [])}
+        variables = data.get("variables", {"variables": []})
+        connections = data.get("connections", {"connections": []})
+        id_to_name = {int(v["id"]): v["name"] for v in variables.get("variables", [])}
+        name_to_type = {v["name"]: v.get("type", "Auxiliary") for v in variables.get("variables", [])}
 
         st.subheader("Connections Explorer")
         df_conn = _df_connections(cons)
@@ -1184,10 +1183,10 @@ def main() -> None:
             for item in desc_data.get("descriptions", []):
                 loop_desc_map[item["id"]] = item["description"]
 
-        variables_llm = data.get("variables_llm", {"variables": []})
+        variables = data.get("variables", {"variables": []})
         name_to_type = {
             v.get("name"): v.get("type", "Auxiliary")
-            for v in variables_llm.get("variables", [])
+            for v in variables.get("variables", [])
             if isinstance(v, dict) and v.get("name")
         }
 
@@ -1535,125 +1534,227 @@ def main() -> None:
                     st.error(error_msg)
                     st.session_state[messages_key].append({"role": "assistant", "content": error_msg})
 
-    with theory_tab:
-        st.markdown("### 🔬 Theory Development")
-        st.caption("Enhance existing theories and discover new theoretical perspectives")
+    with model_dev_tab:
+        st.markdown("### 🔬 Model Development")
+        st.caption("Enhance your model with theory-based additions and system archetypes")
 
         cfg = load_config()
         paths = for_project(cfg, project)
 
-        # Load theory enhancement results
+        # Load artifacts
         theory_enh_path = paths.theory_enhancement_path
         theory_disc_path = paths.theory_discovery_path
+        archetype_enh_path = paths.archetype_enhancement_path
 
-        if not theory_enh_path.exists() and not theory_disc_path.exists():
-            st.warning("⚠️ No theory development results found. Run the pipeline with `--improve-model` flag.")
+        if not theory_enh_path.exists() and not theory_disc_path.exists() and not archetype_enh_path.exists():
+            st.warning("⚠️ No model development results found. Run the pipeline with `--improve-model` flag.")
             st.code("python -m sd_model.cli run --project " + project + " --improve-model", language="bash")
         else:
-            # Theory Enhancement Section
-            if theory_enh_path.exists():
-                theory_enh = json.loads(theory_enh_path.read_text(encoding="utf-8"))
+            # Create nested sub-tabs
+            archetype_tab, theory_enh_tab, theory_disc_tab = st.tabs([
+                "🔄 Archetype Detection",
+                "📊 Theory Enhancement",
+                "🌟 Theory Discovery"
+            ])
 
-                st.markdown("#### 📊 Theory Enhancement Suggestions")
-                st.caption("Missing elements from your current theories and implementation suggestions")
+            with archetype_tab:
+                # Archetype Detection Section
+                if archetype_enh_path.exists():
+                    archetype_enh = json.loads(archetype_enh_path.read_text(encoding="utf-8"))
 
-                missing_elements = theory_enh.get("missing_from_theories", [])
-                if missing_elements:
-                    for i, element in enumerate(missing_elements):
-                        with st.expander(f"🔸 {element.get('theory_name', 'Unknown')}: {element.get('missing_element', 'N/A')}", expanded=(i == 0)):
-                            st.markdown(f"**Why Important:** {element.get('why_important', 'N/A')}")
-                            st.markdown(f"**How to Add:** {element.get('how_to_add', 'N/A')}")
+                    st.markdown("#### 🔄 System Archetype Detection")
+                    st.caption("Classic system dynamics patterns identified in your model")
 
-                            # SD Implementation details
-                            sd_impl = element.get("sd_implementation", {})
-                            new_vars = sd_impl.get("new_variables", [])
-                            new_conns = sd_impl.get("new_connections", [])
+                    # Color mapping for archetypes (using distinct colors from theories)
+                    archetype_colors = ["🟣", "🔴", "🩵", "🟤", "🔵"]
+                    archetype_color_names = ["Purple", "Crimson", "Teal", "Brown", "Navy"]
 
-                            if new_vars:
-                                st.markdown("**New Variables:**")
-                                for var in new_vars:
-                                    st.markdown(f"- **{var.get('name')}** ({var.get('type')}): {var.get('description')}")
+                    archetypes = archetype_enh.get("archetypes", [])
+                    if archetypes:
+                        for idx, archetype in enumerate(archetypes):
+                            archetype_name = archetype.get("name", "Unknown Archetype")
+                            rationale = archetype.get("rationale", "No rationale provided")
+                            color_emoji = archetype_colors[idx % len(archetype_colors)]
+                            color_name = archetype_color_names[idx % len(archetype_color_names)]
 
-                            if new_conns:
-                                st.markdown("**New Connections:**")
-                                for conn in new_conns:
-                                    st.markdown(f"- {conn.get('from')} → {conn.get('to')} ({conn.get('relationship')}): {conn.get('rationale')}")
+                            # Archetype expander with color indicator
+                            with st.expander(f"{color_emoji} **{archetype_name}** ({color_name} in diagram)", expanded=(idx == 0)):
+                                # Rationale
+                                st.markdown("##### 💡 Analysis")
+                                st.markdown(f'<div style="color: #e8e8e8; line-height: 1.8; font-size: 0.95em; padding-left: 8px; border-left: 3px solid #444; margin-bottom: 12px;">{rationale}</div>', unsafe_allow_html=True)
+                                st.markdown("")  # Add spacing
 
-                            st.info(f"💡 **Expected Impact:** {element.get('expected_impact', 'N/A')}")
+                                # Additions (suggested to complete archetype pattern)
+                                additions = archetype.get("additions", {})
+                                new_vars = additions.get("variables", [])
+                                new_conns = additions.get("connections", [])
 
-                # General improvements
-                improvements = theory_enh.get("general_improvements", [])
-                if improvements:
-                    st.markdown("#### 🔧 General Model Improvements")
-                    for imp in improvements:
-                        impact = imp.get("impact", "unknown")
-                        emoji = "🔴" if impact == "high" else "🟡" if impact == "medium" else "🟢"
-                        with st.expander(f"{emoji} {imp.get('description', 'N/A')}", expanded=False):
-                            st.markdown(f"**Type:** {imp.get('improvement_type', 'N/A')}")
-                            st.markdown(f"**Implementation:** {imp.get('implementation', 'N/A')}")
-                            st.markdown(f"**Impact:** {impact.upper()}")
+                                if new_vars or new_conns:
+                                    st.markdown("---")
+                                    st.markdown("##### ✅ Suggested Additions to Complete Pattern")
 
-            st.markdown("---")
+                                    col1, col2 = st.columns(2)
 
-            # Theory Discovery Section
-            if theory_disc_path.exists():
-                theory_disc = json.loads(theory_disc_path.read_text(encoding="utf-8"))
+                                    with col1:
+                                        if new_vars:
+                                            st.markdown(f"**🔹 Variables** ({len(new_vars)})")
+                                            for var in new_vars:
+                                                st.markdown(f"**{var.get('name')}**")
+                                                st.caption(f"Type: {var.get('type')}")
+                                                st.caption(f"{var.get('description', 'No description')}")
+                                                if var.get('rationale'):
+                                                    st.caption(f"💡 {var.get('rationale')}")
+                                                st.markdown("")  # Spacing between items
 
-                st.markdown("#### 🌟 New Theory Recommendations")
-                st.caption("Theories to consider adding to your research framework")
+                                    with col2:
+                                        if new_conns:
+                                            st.markdown(f"**🔗 Connections** ({len(new_conns)})")
+                                            for conn in new_conns:
+                                                rel = conn.get('relationship', 'unknown')
+                                                rel_symbol = "➕" if rel == "positive" else "➖" if rel == "negative" else "❓"
+                                                st.markdown(f"{rel_symbol} **{conn.get('from')}**")
+                                                st.caption(f"→ {conn.get('to')}")
+                                                if conn.get('rationale'):
+                                                    st.caption(f"💡 {conn.get('rationale')}")
+                                                st.markdown("")  # Spacing between items
+                    else:
+                        st.warning("No system archetypes detected.")
+                else:
+                    st.info("⚠️ No archetype detection results found. Run with `--archetype-detection` flag.")
 
-                # High relevance theories
-                high_rel = theory_disc.get("high_relevance", [])
-                if high_rel:
-                    st.markdown("**🎯 High Relevance (Direct)**")
-                    for theory in high_rel:
-                        risk = theory.get("risk", "unknown")
-                        reward = theory.get("reward", "unknown")
-                        risk_emoji = "🟢" if risk == "low" else "🟡" if risk == "medium" else "🔴"
-                        reward_emoji = "🔴" if reward == "high" else "🟡" if reward == "medium" else "🟢"
+            with theory_enh_tab:
+                # Theory Enhancement Section
+                if theory_enh_path.exists():
+                    theory_enh = json.loads(theory_enh_path.read_text(encoding="utf-8"))
 
-                        with st.expander(f"{theory.get('theory_name', 'Unknown')} ({theory.get('key_citation', 'N/A')})"):
-                            st.markdown(f"**Description:** {theory.get('description', 'N/A')}")
-                            st.markdown(f"**Relevance to RQs:** {theory.get('relevance_to_rqs', 'N/A')}")
-                            st.markdown(f"**Relevance to Model:** {theory.get('relevance_to_model', 'N/A')}")
-                            st.markdown(f"**PhD Contribution:** {theory.get('phd_contribution', 'N/A')}")
+                    st.markdown("#### 📊 Theory Enhancement Suggestions")
+                    st.caption("Theory-based additions to strengthen your model")
 
-                            col1, col2 = st.columns(2)
-                            with col1:
-                                st.metric("Risk", risk.upper(), help=f"{risk_emoji} Assessment")
-                            with col2:
-                                st.metric("Reward", reward.upper(), help=f"{reward_emoji} Potential")
+                    # Color mapping for theories
+                    theory_colors = ["🟢", "🔵", "🟠", "🟣", "🔴"]
+                    theory_color_names = ["Green", "Blue", "Orange", "Purple", "Red"]
 
-                # Adjacent opportunities
-                adjacent = theory_disc.get("adjacent_opportunities", [])
-                if adjacent:
-                    st.markdown("**🔄 Adjacent Opportunities**")
-                    for theory in adjacent:
-                        with st.expander(f"{theory.get('theory_name', 'Unknown')}"):
-                            st.markdown(f"**Why Adjacent:** {theory.get('why_adjacent', 'N/A')}")
-                            st.markdown(f"**Novel Angle:** {theory.get('novel_angle', 'N/A')}")
-                            st.markdown(f"**Contribution:** {theory.get('phd_contribution', 'N/A')}")
+                    theories = theory_enh.get("theories", [])
+                    if theories:
+                        for idx, theory in enumerate(theories):
+                            theory_name = theory.get("name", "Unknown Theory")
+                            rationale = theory.get("rationale", "No rationale provided")
+                            color_emoji = theory_colors[idx % len(theory_colors)]
+                            color_name = theory_color_names[idx % len(theory_color_names)]
 
-                # Cross-domain inspiration
-                cross_domain = theory_disc.get("cross_domain_inspiration", [])
-                if cross_domain:
-                    st.markdown("**🌐 Cross-Domain Inspiration**")
-                    st.caption("Provocative ideas from other fields - higher risk but potentially high impact")
-                    for theory in cross_domain:
-                        with st.expander(f"{theory.get('theory', 'Unknown')} (from {theory.get('source_domain', 'N/A')})"):
-                            st.markdown(f"**Parallel:** {theory.get('parallel', 'N/A')}")
-                            st.markdown(f"**Transfer Potential:** {theory.get('transfer_potential', 'N/A')}")
-                            st.markdown(f"**Rationale:** {theory.get('rationale', 'N/A')}")
+                            # Theory expander with color indicator
+                            with st.expander(f"{color_emoji} **{theory_name}** ({color_name} in diagram)", expanded=(idx == 0)):
+                                # Rationale
+                                st.markdown("##### 💡 Rationale")
+                                st.markdown(f'<div style="color: #e8e8e8; line-height: 1.8; font-size: 0.95em; padding-left: 8px; border-left: 3px solid #444; margin-bottom: 12px;">{rationale}</div>', unsafe_allow_html=True)
+                                st.markdown("")  # Add spacing
 
-                # PhD Strategy
-                strategy = theory_disc.get("phd_strategy", {})
-                if strategy:
-                    st.markdown("#### 🎓 PhD Strategy")
-                    recommended = strategy.get("recommended_theories", [])
-                    if recommended:
-                        st.success(f"**Top Recommendations:** {', '.join(recommended)}")
-                    st.info(f"**Rationale:** {strategy.get('rationale', 'N/A')}")
-                    st.markdown(f"**Integration Strategy:** {strategy.get('integration_strategy', 'N/A')}")
+                                # Additions
+                                additions = theory.get("additions", {})
+                                new_vars = additions.get("variables", [])
+                                new_conns = additions.get("connections", [])
+
+                                if new_vars or new_conns:
+                                    st.markdown("---")
+                                    st.markdown("##### ✅ Additions")
+
+                                    col1, col2 = st.columns(2)
+
+                                    with col1:
+                                        if new_vars:
+                                            st.markdown(f"**🔹 Variables** ({len(new_vars)})")
+                                            for var in new_vars:
+                                                st.markdown(f"**{var.get('name')}**")
+                                                st.caption(f"Type: {var.get('type')}")
+                                                st.caption(f"{var.get('description', 'No description')}")
+                                                st.markdown("")  # Spacing between items
+
+                                    with col2:
+                                        if new_conns:
+                                            st.markdown(f"**🔗 Connections** ({len(new_conns)})")
+                                            for conn in new_conns:
+                                                rel = conn.get('relationship', 'unknown')
+                                                rel_symbol = "➕" if rel == "positive" else "➖" if rel == "negative" else "❓"
+                                                st.markdown(f"{rel_symbol} **{conn.get('from')}**")
+                                                st.caption(f"→ {conn.get('to')}")
+                                                st.markdown("")  # Spacing between items
+
+                                # Modifications (if any)
+                                modifications = theory.get("modifications", {})
+                                mod_vars = modifications.get("variables", [])
+                                if mod_vars:
+                                    st.markdown("---")
+                                    st.markdown("##### 🔄 Modifications")
+                                    for mod in mod_vars:
+                                        st.markdown(f"**{mod.get('name')}**")
+                                        st.caption(mod.get('change', 'No details'))
+
+                                # Removals (if any)
+                                removals = theory.get("removals", {})
+                                rem_vars = removals.get("variables", [])
+                                if rem_vars:
+                                    st.markdown("---")
+                                    st.markdown("##### ❌ Removals")
+                                    for rem in rem_vars:
+                                        st.markdown(f"**{rem.get('name')}**")
+                                        st.caption(rem.get('reason', 'No reason'))
+                    else:
+                        st.warning("No theory enhancement suggestions found.")
+                else:
+                    st.info("⚠️ No theory enhancement results found. Run with `--theory-enhancement` flag.")
+
+            with theory_disc_tab:
+                # Theory Discovery Section
+                if theory_disc_path.exists():
+                    theory_disc = json.loads(theory_disc_path.read_text(encoding="utf-8"))
+
+                    st.markdown("#### 🌟 New Theory Recommendations")
+                    st.caption("Theories to consider adding to your research framework")
+
+                    # High relevance theories
+                    high_rel = theory_disc.get("high_relevance", [])
+                    if high_rel:
+                        st.markdown("**🎯 High Relevance (Direct)**")
+                        for theory in high_rel:
+                            risk = theory.get("risk", "unknown")
+                            reward = theory.get("reward", "unknown")
+                            risk_emoji = "🟢" if risk == "low" else "🟡" if risk == "medium" else "🔴"
+                            reward_emoji = "🔴" if reward == "high" else "🟡" if reward == "medium" else "🟢"
+
+                            with st.expander(f"{theory.get('theory_name', 'Unknown')} ({theory.get('key_citation', 'N/A')})"):
+                                st.markdown(f"**Description:** {theory.get('description', 'N/A')}")
+                                st.markdown(f"**Relevance to RQs:** {theory.get('relevance_to_rqs', 'N/A')}")
+                                st.markdown(f"**Relevance to Model:** {theory.get('relevance_to_model', 'N/A')}")
+                                st.markdown(f"**PhD Contribution:** {theory.get('phd_contribution', 'N/A')}")
+
+                                col1, col2 = st.columns(2)
+                                with col1:
+                                    st.metric("Risk", risk.upper(), help=f"{risk_emoji} Assessment")
+                                with col2:
+                                    st.metric("Reward", reward.upper(), help=f"{reward_emoji} Potential")
+
+                    # Adjacent opportunities
+                    adjacent = theory_disc.get("adjacent_opportunities", [])
+                    if adjacent:
+                        st.markdown("**🔄 Adjacent Opportunities**")
+                        for theory in adjacent:
+                            with st.expander(f"{theory.get('theory_name', 'Unknown')}"):
+                                st.markdown(f"**Why Adjacent:** {theory.get('why_adjacent', 'N/A')}")
+                                st.markdown(f"**Novel Angle:** {theory.get('novel_angle', 'N/A')}")
+                                st.markdown(f"**Contribution:** {theory.get('phd_contribution', 'N/A')}")
+
+                    # Cross-domain inspiration
+                    cross_domain = theory_disc.get("cross_domain_inspiration", [])
+                    if cross_domain:
+                        st.markdown("**🌐 Cross-Domain Inspiration**")
+                        st.caption("Provocative ideas from other fields - higher risk but potentially high impact")
+                        for theory in cross_domain:
+                            with st.expander(f"{theory.get('theory', 'Unknown')} (from {theory.get('source_domain', 'N/A')})"):
+                                st.markdown(f"**Parallel:** {theory.get('parallel', 'N/A')}")
+                                st.markdown(f"**Transfer Potential:** {theory.get('transfer_potential', 'N/A')}")
+                                st.markdown(f"**Rationale:** {theory.get('rationale', 'N/A')}")
+                else:
+                    st.info("⚠️ No theory discovery results found. Run with `--theory-discovery` flag.")
 
     with rq_tab:
         st.markdown("### 📋 Research Questions Development")

@@ -92,7 +92,8 @@ class MDLTextPatcher:
         new_connections: List[Dict],
         add_colors: bool = True,
         use_llm_layout: bool = False,
-        llm_client: Optional[LLMClient] = None
+        llm_client: Optional[LLMClient] = None,
+        color_scheme: str = "theory"
     ) -> str:
         """
         Add new variables and connections to the MDL.
@@ -163,11 +164,17 @@ class MDLTextPatcher:
 
             # Build variable line
             if add_colors:
-                # Extended format with green border
+                # Select color based on scheme
+                if color_scheme == "archetype":
+                    border_color = "128-0-128"  # Purple for archetypes
+                else:
+                    border_color = "0-255-0"  # Green for theory enhancements
+
+                # Extended format with colored border
                 line = (
                     f"10,{self.max_var_id},{var_name},"
                     f"{x},{y},{width},{height},"
-                    f"{type_code},3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0"
+                    f"{type_code},3,0,1,-1,1,0,0,{border_color},0-0-0,|||0-0-0,0,0,0,0,0,0"
                 )
             else:
                 # Standard format
@@ -203,8 +210,17 @@ class MDLTextPatcher:
 
             self.max_conn_id += 1
 
+            # Select color based on scheme
+            if add_colors:
+                if color_scheme == "archetype":
+                    conn_color = "128,0,128"  # Purple for archetypes
+                else:
+                    conn_color = "0,192,0"  # Green for theory enhancements
+            else:
+                conn_color = "0,0,0"  # Black for no colors
+
             # Standard influence connection
-            line = f"1,{self.max_conn_id},{from_id},{to_id},0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|"
+            line = f"1,{self.max_conn_id},{from_id},{to_id},0,0,0,22,{conn_color},-1--1--1,,1|(0,0)|"
             sketch_conn_lines.append(line)
 
         if sketch_conn_lines and self.sketch_conn_insert_line:
@@ -340,7 +356,8 @@ def apply_theory_enhancements(
     output_path: Path,
     add_colors: bool = True,
     use_llm_layout: bool = False,
-    llm_client: Optional[LLMClient] = None
+    llm_client: Optional[LLMClient] = None,
+    color_scheme: str = "theory"
 ) -> Dict[str, int]:
     """
     Apply theory-based enhancements to MDL from new format.
@@ -387,7 +404,8 @@ def apply_theory_enhancements(
         all_new_connections,
         add_colors,
         use_llm_layout,
-        llm_client
+        llm_client,
+        color_scheme
     )
 
     output_path.write_text(enhanced_content, encoding='utf-8')

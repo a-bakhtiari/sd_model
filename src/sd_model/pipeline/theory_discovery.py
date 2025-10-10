@@ -113,13 +113,7 @@ Return JSON in this structure:
       "reward": "low|medium|high",
       "rationale": "why this is worth considering despite risk"
     }}
-  ],
-  "phd_strategy": {{
-    "recommended_theories": ["list of 2-3 top recommendations"],
-    "rationale": "why these specific theories",
-    "integration_strategy": "how to integrate them with existing theories",
-    "expected_impact": "what this enables for the PhD"
-  }}
+  ]
 }}
 
 Focus on theories that:
