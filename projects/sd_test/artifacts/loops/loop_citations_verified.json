@@ -1,0 +1,70 @@
+{
+  "citations": [
+    {
+      "loop_id": "R01",
+      "papers": [
+        {
+          "title": "Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach",
+          "authors": "Qureshi, I., Fang, Y.",
+          "year": "2011",
+          "relevance": "Examines how socialization processes including mentoring accelerate the integration of newcomers into core teams in OSS projects",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach",
+            "authors": [
+              "I. Qureshi",
+              "Yulin Fang"
+            ],
+            "year": 2011,
+            "url": "https://www.semanticscholar.org/paper/cff20e5cc73fb98bdb86cf6cabc7818f16de7211",
+            "paper_id": "cff20e5cc73fb98bdb86cf6cabc7818f16de7211",
+            "citation_count": 126,
+            "abstract": null,
+            "venue": "",
+            "fields_of_study": [
+              "Sociology"
+            ]
+          }
+        }
+      ],
+      "reasoning": "This reinforcing loop is strongly supported by literature on OSS socialization and onboarding processes, where mentorship directly accelerates core team growth."
+    },
+    {
+      "loop_id": "R02",
+      "papers": [
+        {
+          "title": "The Social Structure of Free and Open Source Software Development",
+          "authors": "Crowston, K., Howison, J.",
+          "year": "2005",
+          "relevance": "Analyzes how skill development through community participation creates qualified contributor pools for core team roles",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "The social structure of free and open source software development",
+            "authors": [
+              "Kevin Crowston",
+              "J. Howison"
+            ],
+            "year": 2005,
+            "url": "https://www.semanticscholar.org/paper/bae5575284776cabed101750ac41848c700af431",
+            "paper_id": "bae5575284776cabed101750ac41848c700af431",
+            "citation_count": 562,
+            "abstract": null,
+            "venue": "First Monday",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "This virtuous cycle is well-documented in studies of knowledge transfer, learning processes, and capability development in OSS communities."
+    }
+  ],
+  "summary": {
+    "total_papers": 16,
+    "verified": 2,
+    "unverified": 14,
+    "verification_rate": 0.125
+  }
+}

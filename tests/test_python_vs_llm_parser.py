@@ -141,6 +141,20 @@ def extract_connections_from_sketch(parser: MDLSurgicalParser):
             if var_id in valve_ids:
                 valve_to_flow[var_id] = var_id
 
+    # Get valve positions for proximity matching
+    valve_positions = {}
+    for line in parser.sketch_other:
+        if line.startswith("11,"):
+            parts = line.split(",")
+            if len(parts) >= 5:
+                try:
+                    valve_id = int(parts[1])
+                    x = int(parts[3])
+                    y = int(parts[4])
+                    valve_positions[valve_id] = (x, y)
+                except ValueError:
+                    continue
+
     # Method 2: Find valves that feed stocks, match to flows in stock equations
     # Build: valve → stock mapping
     valve_to_stock = {}
@@ -194,12 +208,37 @@ def extract_connections_from_sketch(parser: MDLSurgicalParser):
             for stock_flows in flows_per_stock[1:]:
                 common_flows = common_flows & stock_flows
 
-            if common_flows:
-                # Use the first common flow
-                valve_to_flow[valve_id] = min(common_flows)  # Pick lowest ID
-            elif flows_per_stock:
-                # No common flow, use first flow from first stock
-                valve_to_flow[valve_id] = min(flows_per_stock[0])
+            candidate_flows = common_flows if common_flows else flows_per_stock[0]
+
+            if candidate_flows:
+                # Match valve to flow by proximity (same/close x,y position)
+                if valve_id in valve_positions:
+                    valve_x, valve_y = valve_positions[valve_id]
+                    best_flow = None
+                    min_distance = float('inf')
+
+                    for flow_id in candidate_flows:
+                        flow_var = parser.sketch_vars.get(flow_id)
+                        if flow_var:
+                            parts = flow_var.full_line.split(",")
+                            if len(parts) >= 5:
+                                flow_x = int(parts[3])
+                                flow_y = int(parts[4])
+                                # Calculate distance - handles both horizontal and vertical valves
+                                # by prioritizing whichever axis is better aligned
+                                dx = abs(valve_x - flow_x)
+                                dy = abs(valve_y - flow_y)
+                                # Weight the worse-aligned axis more heavily
+                                distance = min(dx, dy) + max(dx, dy) * 2
+                                if distance < min_distance:
+                                    min_distance = distance
+                                    best_flow = flow_id
+
+                    if best_flow:
+                        valve_to_flow[valve_id] = best_flow
+                else:
+                    # No position info, fall back to lowest ID
+                    valve_to_flow[valve_id] = min(candidate_flows)
 
     # Process arrows and resolve valve endpoints
     for line in parser.sketch_other:
@@ -259,12 +298,22 @@ def extract_stock_flow_connections(parser: MDLSurgicalParser):
     connections = []
 
     # Build mapping of variable names to IDs and types
+    # Handle duplicates: prioritize Flow (40) > Stock (3) > Auxiliary (8, 27)
     var_info = {}
     for var_id, var in parser.sketch_vars.items():
         parts = var.full_line.split(",")
         shape_code = parts[7] if len(parts) > 7 else "0"
         var_type = {"3": "Stock", "40": "Flow", "8": "Auxiliary", "27": "Auxiliary"}.get(shape_code, "Auxiliary")
-        var_info[var.name] = {"id": var_id, "type": var_type}
+
+        name = var.name
+        if name not in var_info:
+            var_info[name] = {"id": var_id, "type": var_type}
+        else:
+            # Handle duplicates: prefer Flow > Stock > Auxiliary
+            priority_current = {"Flow": 3, "Stock": 2, "Auxiliary": 1}.get(var_type, 1)
+            priority_existing = {"Flow": 3, "Stock": 2, "Auxiliary": 1}.get(var_info[name]["type"], 1)
+            if priority_current > priority_existing:
+                var_info[name] = {"id": var_id, "type": var_type}
 
     # Process stock equations
     for var_name in parser.equation_order:

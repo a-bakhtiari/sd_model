@@ -2,1347 +2,663 @@
   "citations": [
     {
       "connection_id": "C01",
-      "papers": [
-        {
-          "title": "Two Case Studies of Open Source Software Development: Apache and Mozilla",
-          "authors": "Mockus, A., Fielding, R. T., et al.",
-          "year": "2002",
-          "relevance": "Shows that available developer/maintainer effort strongly affects defect fixing and issue handling throughput."
-        },
-        {
-          "title": "Pull-based development in open source projects: A study of pull requests",
-          "authors": "Gousios, G., Pinzger, M., et al.",
-          "year": "2014",
-          "relevance": "Demonstrates how reviewer/maintainer attention and effort are key resources governing processing rates of contributions and issues."
-        },
-        {
-          "title": "Work Practices and Challenges in Pull-Based Development: The Contributor\u2019s Perspective",
-          "authors": "Gousios, G., Zaidman, A., et al.",
-          "year": "2015",
-          "relevance": "Reports maintainers\u2019 time constraints as a bottleneck on reviewing/fixing, implying more maintainer time increases resolution rates."
-        }
-      ],
-      "reasoning": "Empirical OSS studies show maintainer capacity is a primary determinant of issue processing speed."
+      "from_var": "Adoption Rate",
+      "to_var": "User Base",
+      "relationship": "undeclared",
+      "description": "New users adopting the software increase the total user base.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C02",
-      "papers": [
-        {
-          "title": "Two Case Studies of Open Source Software Development: Apache and Mozilla",
-          "authors": "Mockus, A., Fielding, R. T., et al.",
-          "year": "2002",
-          "relevance": "Models and measures defect/issue lifecycles; higher resolution rates accumulate as closed defects/issues."
-        },
-        {
-          "title": "What Makes a Good Bug Report?",
-          "authors": "Bettenburg, N., Premraj, R., et al.",
-          "year": "2008",
-          "relevance": "Analyzes bug handling workflow where resolved bugs transition to closed states; resolution rate increases closed count."
-        },
-        {
-          "title": "Who Should Fix This Bug?",
-          "authors": "Anvik, J., Hiew, L., et al.",
-          "year": "2006",
-          "relevance": "Triage/assignment efficiency increases resolution throughput, directly increasing closed issues."
-        }
-      ],
-      "reasoning": "Issue lifecycle research directly links resolution flow to growth in closed issues."
+      "from_var": "User Churn Rate",
+      "to_var": "User Base",
+      "relationship": "undeclared",
+      "description": "Users leaving the project decrease the total user base.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C03",
-      "papers": [
-        {
-          "title": "A Dynamic Theory of Organizational Knowledge Creation",
-          "authors": "Nonaka, I.",
-          "year": "1994",
-          "relevance": "SECI model posits that a larger base of explicit knowledge facilitates externalization and combination, enabling more effective documentation transfer."
-        },
-        {
-          "title": "The Knowledge-Creating Company",
-          "authors": "Nonaka, I., Takeuchi, H.",
-          "year": "1995",
-          "relevance": "Foundational theory: explicit knowledge stocks enable scalable knowledge transfer via documents and guides."
-        },
-        {
-          "title": "Communication, Collaboration, and Knowledge Sharing in GitHub",
-          "authors": "Zagalsky, A., Feliciano, J., et al.",
-          "year": "2015",
-          "relevance": "Shows how accumulated project knowledge is codified and shared via GitHub docs/wiki, supporting effective transfer."
-        }
-      ],
-      "reasoning": "Knowledge management theory and empirical OSS work connect explicit knowledge stocks with better documentation-based transfer."
+      "from_var": "Reputation Building",
+      "to_var": "Project Reputation",
+      "relationship": "undeclared",
+      "description": "Positive project activities and outcomes build up the project's reputation.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C04",
-      "papers": [
-        {
-          "title": "Barriers Faced by Newcomers to Open Source Projects: A Systematic Review",
-          "authors": "Steinmacher, I., Conte, T., et al.",
-          "year": "2015",
-          "relevance": "Identifies poor documentation as a major entry barrier; better docs increase newcomer joining."
-        },
-        {
-          "title": "Social Coding in GitHub: Transparency and Collaboration in an OSS Ecosystem",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "Finds that visible docs and contribution guidelines lower friction and attract participation."
-        },
-        {
-          "title": "More Common Than You Think: An In-Depth Study of Casual Contributors",
-          "authors": "Pinto, G., Wiese, I., et al.",
-          "year": "2016",
-          "relevance": "Shows documentation and contribution guides enable casual contributors to join and submit changes."
-        }
-      ],
-      "reasoning": "Newcomer research and social coding studies consistently report documentation as a determinant of joining."
+      "from_var": "Reputation Decline",
+      "to_var": "Project Reputation",
+      "relationship": "undeclared",
+      "description": "Negative events or stagnation cause the project's reputation to decline.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C05",
-      "papers": [
-        {
-          "title": "Barriers Faced by Newcomers to Open Source Projects: A Systematic Review",
-          "authors": "Steinmacher, I., Conte, T., et al.",
-          "year": "2015",
-          "relevance": "Newcomers learn faster and progress when projects offer clear documentation and tutorials."
-        },
-        {
-          "title": "Communication, Collaboration, and Knowledge Sharing in GitHub",
-          "authors": "Zagalsky, A., Feliciano, J., et al.",
-          "year": "2015",
-          "relevance": "Documentation and wikis serve as knowledge scaffolding that accelerates contributor learning."
-        },
-        {
-          "title": "The Knowledge-Creating Company",
-          "authors": "Nonaka, I., Takeuchi, H.",
-          "year": "1995",
-          "relevance": "Explicit knowledge resources increase individuals\u2019 learning rates through combination and internalization."
-        }
-      ],
-      "reasoning": "Both OSS-specific and general KM literature connects high-quality documentation to faster skill acquisition."
+      "from_var": "Software Quality and Features",
+      "to_var": "Project Reputation",
+      "relationship": "positive",
+      "description": "Higher software quality and more features enhance the project's reputation.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C06",
-      "papers": [
-        {
-          "title": "Social Coding in GitHub: Transparency and Collaboration in an OSS Ecosystem",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "Shows how reputation signals on GitHub attract attention and contributions."
-        },
-        {
-          "title": "Community, Joining, and Specialization in Open Source Software Innovation",
-          "authors": "von Krogh, G., Spaeth, S., et al.",
-          "year": "2003",
-          "relevance": "Finds reputation and legitimacy draw newcomers into OSS communities."
-        },
-        {
-          "title": "Let\u2019s Talk About Pull Requests",
-          "authors": "Tsay, J., Dabbish, L., et al.",
-          "year": "2014",
-          "relevance": "Highlights the influence of project and contributor reputation on engagement and acceptance, implying higher joining rates."
-        }
-      ],
-      "reasoning": "Reputation acts as a magnet for contributors in social coding platforms."
+      "from_var": "User Base",
+      "to_var": "Project Reputation",
+      "relationship": "undeclared",
+      "description": "A larger user base provides more feedback and visibility, influencing reputation.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C07",
-      "papers": [
-        {
-          "title": "Community, Joining, and Specialization in Open Source Software Innovation",
-          "authors": "von Krogh, G., Spaeth, S., et al.",
-          "year": "2003",
-          "relevance": "Describes how esteemed projects attract new participants through reputation mechanisms."
-        },
-        {
-          "title": "Why Hackers Do What They Do: Understanding Motivation and Effort in Free/Open Source Software Projects",
-          "authors": "Lakhani, K. R., Wolf, R. G.",
-          "year": "2005",
-          "relevance": "Shows reputational benefits as a key motivation for participation, implying high-reputation projects draw more joiners."
-        },
-        {
-          "title": "Social Coding in GitHub: Transparency and Collaboration in an OSS Ecosystem",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "Reputation and visibility cues influence developer decisions to join and contribute."
-        }
-      ],
-      "reasoning": "Motivation and social signaling research link project reputation to increased joining."
+      "from_var": "Trust Building",
+      "to_var": "Community Health",
+      "relationship": "undeclared",
+      "description": "Positive interactions and collaboration build a healthier community.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C08",
-      "papers": [
-        {
-          "title": "What Makes a Good Bug Report?",
-          "authors": "Bettenburg, N., Premraj, R., et al.",
-          "year": "2008",
-          "relevance": "User/developer feedback via bug reports enlarges the set of identified issues."
-        },
-        {
-          "title": "An Exploratory Study of Bug Report Categorization",
-          "authors": "Weiss, C., Premraj, R., et al.",
-          "year": "2007",
-          "relevance": "Feedback mechanisms shape the inflow and characterization of issues."
-        },
-        {
-          "title": "Bug Report Networks: Varieties, Strategies, and Impacts",
-          "authors": "Crowston, K., Howison, J.",
-          "year": "2006",
-          "relevance": "Community feedback processes produce and filter new issues in OSS."
-        }
-      ],
-      "reasoning": "Bug reporting literature shows feedback generates issue creation."
+      "from_var": "Culture Erosion",
+      "to_var": "Community Health",
+      "relationship": "undeclared",
+      "description": "Conflict and burnout erode the health and cohesion of the community.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C09",
-      "papers": [
-        {
-          "title": "Two Case Studies of Open Source Software Development: Apache and Mozilla",
-          "authors": "Mockus, A., Fielding, R. T., et al.",
-          "year": "2002",
-          "relevance": "More open issues lead to increased communication and feedback cycles to diagnose and resolve."
-        },
-        {
-          "title": "Social Coding in GitHub: Transparency and Collaboration in an OSS Ecosystem",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "Issue trackers stimulate feedback discussions among users and contributors."
-        },
-        {
-          "title": "What Makes a Good Bug Report?",
-          "authors": "Bettenburg, N., Premraj, R., et al.",
-          "year": "2008",
-          "relevance": "The presence of open issues prompts clarifying feedback to improve report quality and facilitate fixing."
-        }
-      ],
-      "reasoning": "Empirical studies document active discussions growing with issue backlogs."
+      "from_var": "Developer's Turnover",
+      "to_var": "Core Developer",
+      "relationship": "undeclared",
+      "description": "Developers leaving the project reduce the number of core developers.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C10",
-      "papers": [
-        {
-          "title": "Pull-based development in open source projects: A study of pull requests",
-          "authors": "Gousios, G., Pinzger, M., et al.",
-          "year": "2014",
-          "relevance": "Open issues act as units of work that drive the creation of corresponding pull requests."
-        },
-        {
-          "title": "Work Practices and Challenges in Pull-Based Development: The Contributor\u2019s Perspective",
-          "authors": "Gousios, G., Zaidman, A., et al.",
-          "year": "2015",
-          "relevance": "Contributors often target open issues when preparing PRs, linking issues to PR creation."
-        },
-        {
-          "title": "More Common Than You Think: An In-Depth Study of Casual Contributors",
-          "authors": "Pinto, G., Wiese, I., et al.",
-          "year": "2016",
-          "relevance": "Casual contributors frequently use open issues as entry points, increasing PR submissions."
-        }
-      ],
-      "reasoning": "Pull-based development research shows issues seed PR work."
+      "from_var": "New Pr rate",
+      "to_var": "New Pull request",
+      "relationship": "undeclared",
+      "description": "New pull requests being submitted increase the stock of new pull requests.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C11",
-      "papers": [
-        {
-          "title": "The Promises and Perils of Mining GitHub",
-          "authors": "Kalliamvakou, E., Gousios, G., et al.",
-          "year": "2014",
-          "relevance": "Defines PR flow metrics; higher PR arrival rates increase the PR backlog stock."
-        },
-        {
-          "title": "A Dataset and an Empirical Study of Pull Requests",
-          "authors": "Gousios, G., Zaidman, A., et al.",
-          "year": "2014",
-          "relevance": "Characterizes PR creation rates and queue lengths; inflow raises pending PRs."
-        },
-        {
-          "title": "Let\u2019s Talk About Pull Requests",
-          "authors": "Tsay, J., Dabbish, L., et al.",
-          "year": "2014",
-          "relevance": "Empirically examines PR pipelines where new PRs accumulate awaiting action."
-        }
-      ],
-      "reasoning": "Empirical analyses formalize the stock\u2013flow relation between PR rate and PR queue."
+      "from_var": "Review Rate",
+      "to_var": "New Pull request",
+      "relationship": "undeclared",
+      "description": "Initiating a review moves a pull request from 'new' to 'under review'.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C12",
-      "papers": [
-        {
-          "title": "Expectations, Outcomes, and Challenges of Modern Code Review",
-          "authors": "Bacchelli, A., Bird, C.",
-          "year": "2013",
-          "relevance": "Describes how newly submitted changes enter review queues as they begin review."
-        },
-        {
-          "title": "Modern Code Review: A Case Study at Google",
-          "authors": "Sadowski, C., S\u00f6derberg, E., et al.",
-          "year": "2018",
-          "relevance": "Documents the workflow where submitted changes transition to 'under review'."
-        },
-        {
-          "title": "Pull-based development in open source projects: A study of pull requests",
-          "authors": "Gousios, G., Pinzger, M., et al.",
-          "year": "2014",
-          "relevance": "Describes PR lifecycle states including entering the review process."
-        }
-      ],
-      "reasoning": "Code review literature formalizes the state transition from newly submitted PRs to under review."
+      "from_var": "Review Rate",
+      "to_var": "Pull Request Under review",
+      "relationship": "undeclared",
+      "description": "Starting a review increases the number of pull requests under review.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C13",
-      "papers": [
-        {
-          "title": "On Effort and Quality of Code Review",
-          "authors": "Kononenko, O., Baysal, O., et al.",
-          "year": "2015",
-          "relevance": "Faster review processing reduces the queue of pending new PRs awaiting initial attention."
-        },
-        {
-          "title": "Expectations, Outcomes, and Challenges of Modern Code Review",
-          "authors": "Bacchelli, A., Bird, C.",
-          "year": "2013",
-          "relevance": "Higher review throughput decreases the backlog of unreviewed changes."
-        },
-        {
-          "title": "Work Practices and Challenges in Pull-Based Development",
-          "authors": "Gousios, G., Zaidman, A., et al.",
-          "year": "2015",
-          "relevance": "Reports that quicker reviews reduce waiting PRs."
-        }
-      ],
-      "reasoning": "Queueing effects in review processes link increased review rate to smaller 'new PR' backlog."
+      "from_var": "Merge/Commit",
+      "to_var": "Pull Request Under review",
+      "relationship": "undeclared",
+      "description": "Merging or committing code removes a pull request from the review queue.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C14",
-      "papers": [
-        {
-          "title": "Two Case Studies of Open Source Software Development: Apache and Mozilla",
-          "authors": "Mockus, A., Fielding, R. T., et al.",
-          "year": "2002",
-          "relevance": "Reviewed contributions contain potential improvements that, once merged, enhance source code."
-        },
-        {
-          "title": "Let\u2019s Talk About Pull Requests",
-          "authors": "Tsay, J., Dabbish, L., et al.",
-          "year": "2014",
-          "relevance": "Shows that PRs under review encode code changes aimed at improving functionality and quality."
-        },
-        {
-          "title": "A Dataset and an Empirical Study of Pull Requests",
-          "authors": "Gousios, G., Zaidman, A., et al.",
-          "year": "2014",
-          "relevance": "Analyzes PR content as proposed code modifications impacting the codebase."
-        }
-      ],
-      "reasoning": "PRs under review represent candidate code that can improve the source upon acceptance."
+      "from_var": "Merge/Commit",
+      "to_var": "Source Code",
+      "relationship": "undeclared",
+      "description": "Merging pull requests adds new code and features to the source code.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C15",
-      "papers": [
-        {
-          "title": "A Dataset and an Empirical Study of Pull Requests",
-          "authors": "Gousios, G., Zaidman, A., et al.",
-          "year": "2014",
-          "relevance": "Merging PRs transitions them out of the 'under review' queue."
-        },
-        {
-          "title": "Expectations, Outcomes, and Challenges of Modern Code Review",
-          "authors": "Bacchelli, A., Bird, C.",
-          "year": "2013",
-          "relevance": "Accepted changes exit review upon merge, decreasing reviews-in-progress."
-        },
-        {
-          "title": "Work Practices and Challenges in Pull-Based Development",
-          "authors": "Gousios, G., Zaidman, A., et al.",
-          "year": "2015",
-          "relevance": "Describes removal of PRs from review when merged."
-        }
-      ],
-      "reasoning": "State transition out of 'under review' upon merge is a standard part of PR workflow."
+      "from_var": "Rejection Rate",
+      "to_var": "Pull Request Under review",
+      "relationship": "undeclared",
+      "description": "Rejecting a pull request removes it from the 'under review' stock.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C16",
-      "papers": [
-        {
-          "title": "Let\u2019s Talk About Pull Requests",
-          "authors": "Tsay, J., Dabbish, L., et al.",
-          "year": "2014",
-          "relevance": "Rejected PRs are closed without merging, removing them from the under-review queue."
-        },
-        {
-          "title": "A Dataset and an Empirical Study of Pull Requests",
-          "authors": "Gousios, G., Zaidman, A., et al.",
-          "year": "2014",
-          "relevance": "Quantifies PR outcomes; rejection removes PRs from the review state."
-        },
-        {
-          "title": "The Promises and Perils of Mining GitHub",
-          "authors": "Kalliamvakou, E., Gousios, G., et al.",
-          "year": "2014",
-          "relevance": "Defines PR state transitions; closure without merge reduces the under-review population."
-        }
-      ],
-      "reasoning": "Empirical GitHub studies capture rejection as an outflow from the review stock."
+      "from_var": "Core Developer",
+      "to_var": "PR Review Delay",
+      "relationship": "undeclared",
+      "description": "Fewer core developers increases the average delay for reviewing pull requests.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C17",
-      "papers": [
-        {
-          "title": "Expectations, Outcomes, and Challenges of Modern Code Review",
-          "authors": "Bacchelli, A., Bird, C.",
-          "year": "2013",
-          "relevance": "Code review feedback is the core activity occurring on PRs under review."
-        },
-        {
-          "title": "On Effort and Quality of Code Review",
-          "authors": "Kononenko, O., Baysal, O., et al.",
-          "year": "2015",
-          "relevance": "Analyzes feedback volume/quality during review of proposed changes."
-        },
-        {
-          "title": "Let\u2019s Talk About Pull Requests",
-          "authors": "Tsay, J., Dabbish, L., et al.",
-          "year": "2014",
-          "relevance": "Documents discussions and comments as integral parts of PR review."
-        }
-      ],
-      "reasoning": "Code review literature consistently characterizes PR feedback as the main review activity."
+      "from_var": "PR Review Delay",
+      "to_var": "PR Feedback",
+      "relationship": "undeclared",
+      "description": "Longer review delays slow down the provision of feedback to contributors.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C18",
-      "papers": [
-        {
-          "title": "A Dataset and an Empirical Study of Pull Requests",
-          "authors": "Gousios, G., Zaidman, A., et al.",
-          "year": "2014",
-          "relevance": "Backlogs correlate with stricter scrutiny and higher rejection in some projects."
-        },
-        {
-          "title": "Work Practices and Challenges in Pull-Based Development",
-          "authors": "Gousios, G., Zaidman, A., et al.",
-          "year": "2015",
-          "relevance": "Contributor interviews note backlog pressure can lead to more conservative acceptance (more rejections)."
-        },
-        {
-          "title": "The Promises and Perils of Mining GitHub",
-          "authors": "Kalliamvakou, E., Gousios, G., et al.",
-          "year": "2014",
-          "relevance": "Shows relationships between queue size, processing behavior, and PR outcomes."
-        }
-      ],
-      "reasoning": "Empirical observations suggest larger review backlogs can tighten acceptance criteria, increasing rejection rates."
+      "from_var": "Skill up",
+      "to_var": "New Contributors",
+      "relationship": "undeclared",
+      "description": "As new contributors gain skills, they move out of the 'new' stock.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C19",
-      "papers": [
-        {
-          "title": "Don\u2019t Touch My Code! Examining the Effects of Ownership on Software Quality",
-          "authors": "Bird, C., Nagappan, N., et al.",
-          "year": "2011",
-          "relevance": "Larger reviewer/owner pools reduce bottlenecks; more core devs can reduce review delays."
-        },
-        {
-          "title": "Modern Code Review: A Case Study at Google",
-          "authors": "Sadowski, C., S\u00f6derberg, E., et al.",
-          "year": "2018",
-          "relevance": "Review capacity affects latency; more qualified reviewers lower delays."
-        },
-        {
-          "title": "On Effort and Quality of Code Review",
-          "authors": "Kononenko, O., Baysal, O., et al.",
-          "year": "2015",
-          "relevance": "Human capacity and reviewer availability are key determinants of review timeliness."
-        }
-      ],
-      "reasoning": "Review capacity literature ties reviewer/core developer availability to reduced review delay."
+      "from_var": "Skill up",
+      "to_var": "Experienced Contributors",
+      "relationship": "undeclared",
+      "description": "New contributors gaining skills increases the pool of experienced contributors.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C20",
-      "papers": [
-        {
-          "title": "Expectations, Outcomes, and Challenges of Modern Code Review",
-          "authors": "Bacchelli, A., Bird, C.",
-          "year": "2013",
-          "relevance": "Quicker review cycles enable more timely feedback exchanges."
-        },
-        {
-          "title": "Modern Code Review: A Case Study at Google",
-          "authors": "Sadowski, C., S\u00f6derberg, E., et al.",
-          "year": "2018",
-          "relevance": "Shorter delays yield more iterative, frequent feedback on changes."
-        },
-        {
-          "title": "Let\u2019s Talk About Pull Requests",
-          "authors": "Tsay, J., Dabbish, L., et al.",
-          "year": "2014",
-          "relevance": "Finds that prompt responses in PRs increase feedback volume and engagement."
-        }
-      ],
-      "reasoning": "Faster reviews correlate with more timely and abundant feedback."
+      "from_var": "Promotion Rate",
+      "to_var": "Experienced Contributors",
+      "relationship": "undeclared",
+      "description": "Promoting experienced contributors reduces their number in that stock.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C21",
-      "papers": [
-        {
-          "title": "Community, Joining, and Specialization in Open Source Software Innovation",
-          "authors": "von Krogh, G., Spaeth, S., et al.",
-          "year": "2003",
-          "relevance": "Describes newcomer trajectories into experienced roles via learning and participation."
-        },
-        {
-          "title": "Barriers Faced by Newcomers to Open Source Projects: A Systematic Review",
-          "authors": "Steinmacher, I., Conte, T., et al.",
-          "year": "2015",
-          "relevance": "Newcomers progress to experienced contributors as they overcome barriers and gain knowledge."
-        },
-        {
-          "title": "Socio-Technical Congruence: A Framework for Understanding Software Development",
-          "authors": "Cataldo, M., Herbsleb, J. D., et al.",
-          "year": "2008",
-          "relevance": "Learning and increasing congruence over time support movement from novice to experienced roles."
-        }
-      ],
-      "reasoning": "OSS participation studies describe progression from newcomer to experienced contributor."
+      "from_var": "Promotion Rate",
+      "to_var": "Core Developer",
+      "relationship": "undeclared",
+      "description": "Promoting experienced contributors increases the number of core developers.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C22",
-      "papers": [
-        {
-          "title": "Barriers Faced by Newcomers to Open Source Projects: A Systematic Review",
-          "authors": "Steinmacher, I., Conte, T., et al.",
-          "year": "2015",
-          "relevance": "Skill acquisition enables transitions out of newcomer status."
-        },
-        {
-          "title": "Social Coding in GitHub",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "Transparent activity and feedback foster learning that moves contributors beyond newcomer roles."
-        },
-        {
-          "title": "The Knowledge-Creating Company",
-          "authors": "Nonaka, I., Takeuchi, H.",
-          "year": "1995",
-          "relevance": "Internalization of explicit knowledge increases competence, reducing time in novice states."
-        }
-      ],
-      "reasoning": "Learning mechanisms reduce the size of the newcomer stock as members upskill."
+      "from_var": "Joining Rate",
+      "to_var": "New Contributors",
+      "relationship": "undeclared",
+      "description": "A higher joining rate increases the number of new contributors.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C23",
-      "papers": [
-        {
-          "title": "Role Migration and Advancement Processes in Open Source Projects: A Case Study of the Apache Community",
-          "authors": "Jensen, C., Scacchi, W.",
-          "year": "2007",
-          "relevance": "Documents advancement from experienced contributor to core roles through meritocratic processes."
-        },
-        {
-          "title": "Community, Joining, and Specialization in Open Source Software Innovation",
-          "authors": "von Krogh, G., Spaeth, S., et al.",
-          "year": "2003",
-          "relevance": "Describes competence-based role progression in OSS projects."
-        },
-        {
-          "title": "The Governance of Open Source Initiatives: What Does It Mean to be Community Managed?",
-          "authors": "O\u2019Mahony, S., Ferraro, F.",
-          "year": "2007",
-          "relevance": "Explains governance and promotion mechanisms elevating experienced contributors to core."
-        }
-      ],
-      "reasoning": "OSS governance research describes promotion from experienced contributor to core developer."
+      "from_var": "Pull Request Under review",
+      "to_var": "PR Feedback",
+      "relationship": "undeclared",
+      "description": "More pull requests under review increase the demand for providing feedback.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C24",
-      "papers": [
-        {
-          "title": "Role Migration and Advancement Processes in Open Source Projects",
-          "authors": "Jensen, C., Scacchi, W.",
-          "year": "2007",
-          "relevance": "Promotion removes individuals from the experienced contributor pool into core roles."
-        },
-        {
-          "title": "Community, Joining, and Specialization in OSS Innovation",
-          "authors": "von Krogh, G., Spaeth, S., et al.",
-          "year": "2003",
-          "relevance": "Discusses pipelines where movement upward reduces counts in the previous role."
-        },
-        {
-          "title": "The Governance of Open Source Initiatives",
-          "authors": "O\u2019Mahony, S., Ferraro, F.",
-          "year": "2007",
-          "relevance": "Meritocratic promotions shift contributors out of non-core categories."
-        }
-      ],
-      "reasoning": "Advancement processes reduce the stock of experienced non-core contributors."
+      "from_var": "Depreciation/Loss of Knowledge",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "undeclared",
+      "description": "Knowledge loss, such as from documentation rot, depletes implicit knowledge.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C25",
-      "papers": [
-        {
-          "title": "Expectations, Outcomes, and Challenges of Modern Code Review",
-          "authors": "Bacchelli, A., Bird, C.",
-          "year": "2013",
-          "relevance": "Constructive feedback in code review improves developer competence and shared understanding."
-        },
-        {
-          "title": "On Effort and Quality of Code Review",
-          "authors": "Kononenko, O., Baysal, O., et al.",
-          "year": "2015",
-          "relevance": "Shows feedback depth correlates with learning and code improvements for experienced developers."
-        },
-        {
-          "title": "Social Coding in GitHub",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "Public feedback loops foster knowledge diffusion among experienced contributors."
-        }
-      ],
-      "reasoning": "Review feedback supports continued skill refinement among experienced contributors."
+      "from_var": "Developer's Turnover",
+      "to_var": "Depreciation/Loss of Knowledge",
+      "relationship": "positive",
+      "description": "Developer turnover directly causes a loss of their unique, implicit knowledge.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C26",
-      "papers": [
-        {
-          "title": "Barriers Faced by Newcomers to Open Source Projects: A Systematic Review",
-          "authors": "Steinmacher, I., Conte, T., et al.",
-          "year": "2015",
-          "relevance": "Identifies PR review feedback as a primary learning channel for newcomers."
-        },
-        {
-          "title": "Let\u2019s Talk About Pull Requests",
-          "authors": "Tsay, J., Dabbish, L., et al.",
-          "year": "2014",
-          "relevance": "PR discussions provide guidance that helps newcomers learn project norms."
-        },
-        {
-          "title": "Communication, Collaboration, and Knowledge Sharing in GitHub",
-          "authors": "Zagalsky, A., Feliciano, J., et al.",
-          "year": "2015",
-          "relevance": "Collaborative feedback mechanisms are central to learning for new contributors."
-        }
-      ],
-      "reasoning": "Feedback-rich review processes are documented as key for newcomer learning."
+      "from_var": "Project's Implicit Knowledge",
+      "to_var": "Implicit Knowledge Transfer (Mentorship)",
+      "relationship": "undeclared",
+      "description": "A larger stock of implicit knowledge increases the potential for mentorship.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C27",
-      "papers": [
-        {
-          "title": "Expectations, Outcomes, and Challenges of Modern Code Review",
-          "authors": "Bacchelli, A., Bird, C.",
-          "year": "2013",
-          "relevance": "Review feedback aligns core developers on standards and design decisions."
-        },
-        {
-          "title": "Modern Code Review: A Case Study at Google",
-          "authors": "Sadowski, C., S\u00f6derberg, E., et al.",
-          "year": "2018",
-          "relevance": "Highlights feedback as a mechanism for maintaining architectural and coding alignment among core engineers."
-        },
-        {
-          "title": "On Effort and Quality of Code Review",
-          "authors": "Kononenko, O., Baysal, O., et al.",
-          "year": "2015",
-          "relevance": "Analyzes how feedback supports shared standards among reviewers and core maintainers."
-        }
-      ],
-      "reasoning": "Code review feedback keeps core developers synchronized on project norms."
+      "from_var": "Implicit Knowledge Transfer (Mentorship)",
+      "to_var": "Skill up",
+      "relationship": "undeclared",
+      "description": "Effective mentorship accelerates the skill development of contributors.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C28",
-      "papers": [
-        {
-          "title": "Two Case Studies of Open Source Software Development",
-          "authors": "Mockus, A., Fielding, R. T., et al.",
-          "year": "2002",
-          "relevance": "Experienced contributors take central roles in communication and review, generating feedback."
-        },
-        {
-          "title": "Let\u2019s Talk About Pull Requests",
-          "authors": "Tsay, J., Dabbish, L., et al.",
-          "year": "2014",
-          "relevance": "Shows experienced members are more active in reviewing and giving feedback."
-        },
-        {
-          "title": "Expectations, Outcomes, and Challenges of Modern Code Review",
-          "authors": "Bacchelli, A., Bird, C.",
-          "year": "2013",
-          "relevance": "Experienced developers contribute higher-quality feedback in reviews."
-        }
-      ],
-      "reasoning": "Empirical studies find experienced contributors are key providers of PR feedback."
+      "from_var": "Implicit Knowledge Transfer (Mentorship)",
+      "to_var": "Promotion Rate",
+      "relationship": "positive",
+      "description": "Effective mentorship prepares and qualifies contributors for promotion.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C29",
-      "papers": [
-        {
-          "title": "Barriers Faced by Newcomers to Open Source Projects",
-          "authors": "Steinmacher, I., Conte, T., et al.",
-          "year": "2015",
-          "relevance": "Newcomers ask questions and request clarification, eliciting feedback."
-        },
-        {
-          "title": "Social Coding in GitHub",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "Newcomer activity triggers discussions and feedback in public PR threads."
-        },
-        {
-          "title": "More Common Than You Think: Casual Contributors",
-          "authors": "Pinto, G., Wiese, I., et al.",
-          "year": "2016",
-          "relevance": "Casual/new contributors tend to generate discussion that results in feedback."
-        }
-      ],
-      "reasoning": "Newcomers generate interactions that increase PR feedback volume."
+      "from_var": "Core Developer",
+      "to_var": "Implicit Knowledge Transfer (Mentorship)",
+      "relationship": "positive",
+      "description": "More core developers provide more capacity for mentorship and knowledge transfer.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C30",
-      "papers": [
-        {
-          "title": "The Emergence of GitHub as a Collaborative Platform for Knowledge Sharing",
-          "authors": "Zagalsky, A., Feliciano, J., et al.",
-          "year": "2015",
-          "relevance": "PR feedback threads are archived and searchable, forming a knowledge base."
-        },
-        {
-          "title": "Social Coding in GitHub",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "Documents and discussions in PRs contribute to shared, searchable knowledge."
-        },
-        {
-          "title": "Expectations, Outcomes, and Challenges of Modern Code Review",
-          "authors": "Bacchelli, A., Bird, C.",
-          "year": "2013",
-          "relevance": "Review artifacts serve as persistent documentation for future reference."
-        }
-      ],
-      "reasoning": "Multiple studies note PR discussions become part of the project\u2019s searchable history."
+      "from_var": "Knowledge Conversion Rate",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "undeclared",
+      "description": "Converting implicit knowledge into documentation adds to the implicit knowledge stock.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C31",
-      "papers": [
-        {
-          "title": "A Dynamic Theory of Organizational Knowledge Creation",
-          "authors": "Nonaka, I.",
-          "year": "1994",
-          "relevance": "Tacit (implicit) knowledge is prone to loss without externalization; larger stocks subject to greater potential depreciation."
-        },
-        {
-          "title": "Organizational Volatility and Developer Productivity",
-          "authors": "Mockus, A., Weiss, D.",
-          "year": "2005",
-          "relevance": "Organizational change affects retention of undocumented knowledge, increasing losses."
-        },
-        {
-          "title": "A Novel Approach for Estimating Truck Factors",
-          "authors": "Avelino, G., Passos, L., et al.",
-          "year": "2016",
-          "relevance": "Concentrated tacit knowledge increases risk of loss; larger tacit stock at risk when key people leave."
-        }
-      ],
-      "reasoning": "KM and OSS risk studies show larger tacit knowledge is more vulnerable to depreciation."
+      "from_var": "Knowledge Conversion Rate",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "undeclared",
+      "description": "Converting implicit knowledge into documentation adds to the explicit knowledge stock.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C32",
-      "papers": [
-        {
-          "title": "Organizational Volatility and Developer Productivity",
-          "authors": "Mockus, A., Weiss, D.",
-          "year": "2005",
-          "relevance": "Higher turnover associated with loss of organizational memory and knowledge."
-        },
-        {
-          "title": "A Novel Approach for Estimating Truck Factors",
-          "authors": "Avelino, G., Passos, L., et al.",
-          "year": "2016",
-          "relevance": "Shows risk of knowledge loss due to departure of key developers (turnover)."
-        },
-        {
-          "title": "Socio-Technical Congruence: A Framework for Understanding Software Development",
-          "authors": "Cataldo, M., Herbsleb, J. D., et al.",
-          "year": "2008",
-          "relevance": "Turnover disrupts congruence and tacit knowledge flows, accelerating loss."
-        }
-      ],
-      "reasoning": "Empirical and theoretical work link developer turnover to loss of tacit project knowledge."
+      "from_var": "Explicit to Implicit Conversion",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "undeclared",
+      "description": "Learning from documentation internalizes explicit knowledge, reducing its stock.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C33",
-      "papers": [
-        {
-          "title": "A Dynamic Theory of Organizational Knowledge Creation",
-          "authors": "Nonaka, I.",
-          "year": "1994",
-          "relevance": "SECI model: tacit-to-explicit conversion (externalization) increases explicit knowledge."
-        },
-        {
-          "title": "The Knowledge-Creating Company",
-          "authors": "Nonaka, I., Takeuchi, H.",
-          "year": "1995",
-          "relevance": "Describes processes where tacit knowledge is articulated into documents and manuals."
-        },
-        {
-          "title": "Knowledge Transfer in Software Organizations: A Systematic Review",
-          "authors": "Rus, I., Lindvall, M.",
-          "year": "2002",
-          "relevance": "Outlines mechanisms (e.g., documentation) that convert practitioners\u2019 tacit knowledge into explicit assets."
-        }
-      ],
-      "reasoning": "Knowledge management literature supports tacit to explicit conversion."
+      "from_var": "Explicit to Implicit Conversion",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "undeclared",
+      "description": "Learning from documentation internalizes knowledge, increasing implicit knowledge.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C34",
-      "papers": [
-        {
-          "title": "A Dynamic Theory of Organizational Knowledge Creation",
-          "authors": "Nonaka, I.",
-          "year": "1994",
-          "relevance": "Externalization (tacit\u2192explicit) increases explicit knowledge stock."
-        },
-        {
-          "title": "The Knowledge-Creating Company",
-          "authors": "Nonaka, I., Takeuchi, H.",
-          "year": "1995",
-          "relevance": "Formalization processes expand explicit knowledge repositories."
-        },
-        {
-          "title": "Communication, Collaboration, and Knowledge Sharing in GitHub",
-          "authors": "Zagalsky, A., Feliciano, J., et al.",
-          "year": "2015",
-          "relevance": "Shows tacit insights captured via PR/issue discussions and docs increase explicit knowledge."
-        }
-      ],
-      "reasoning": "Tacit-to-explicit conversion directly augments explicit knowledge stock."
+      "from_var": "PR Feedback",
+      "to_var": "New Contributors",
+      "relationship": "undeclared",
+      "description": "Timely feedback encourages new contributors to remain and stay engaged.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C35",
-      "papers": [
-        {
-          "title": "A Dynamic Theory of Organizational Knowledge Creation",
-          "authors": "Nonaka, I.",
-          "year": "1994",
-          "relevance": "Explicit knowledge enables combination and internalization, supporting further tacit knowledge creation."
-        },
-        {
-          "title": "The Knowledge-Creating Company",
-          "authors": "Nonaka, I., Takeuchi, H.",
-          "year": "1995",
-          "relevance": "Existing explicit assets facilitate ongoing knowledge conversion cycles."
-        },
-        {
-          "title": "Knowledge Transfer in Software Organizations",
-          "authors": "Rus, I., Lindvall, M.",
-          "year": "2002",
-          "relevance": "Documentation and repositories support learning that creates new tacit understanding."
-        }
-      ],
-      "reasoning": "SECI cycles: explicit knowledge forms a base for generating and converting tacit knowledge."
+      "from_var": "PR Feedback",
+      "to_var": "Experienced Contributors",
+      "relationship": "undeclared",
+      "description": "Constructive feedback helps experienced contributors improve and feel valued.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C36",
-      "papers": [
-        {
-          "title": "Overcoming the Challenges Faced by Newcomers in OSS Projects: A Mentoring-Based Approach",
-          "authors": "Steinmacher, I., Graciotto Silva, M. A., et al.",
-          "year": "2016",
-          "relevance": "Mentorship leverages experienced members' tacit (implicit) knowledge."
-        },
-        {
-          "title": "Role Migration and Advancement Processes in Open Source Projects",
-          "authors": "Jensen, C., Scacchi, W.",
-          "year": "2007",
-          "relevance": "Core members pass on tacit know-how through socialization and mentorship."
-        },
-        {
-          "title": "Socio-Technical Congruence",
-          "authors": "Cataldo, M., Herbsleb, J. D., et al.",
-          "year": "2008",
-          "relevance": "Embedded tacit knowledge within core members enables effective knowledge transfer via social interactions."
-        }
-      ],
-      "reasoning": "Mentorship effectiveness depends on rich tacit knowledge among mentors."
+      "from_var": "PR Feedback",
+      "to_var": "Core Developer",
+      "relationship": "undeclared",
+      "description": "Positive feedback reinforces core developers' decisions and engagement.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C37",
-      "papers": [
-        {
-          "title": "Overcoming the Challenges Faced by Newcomers in OSS Projects",
-          "authors": "Steinmacher, I., Graciotto Silva, M. A., et al.",
-          "year": "2016",
-          "relevance": "Mentoring interventions accelerate newcomer learning and skill development."
-        },
-        {
-          "title": "Community, Joining, and Specialization in OSS Innovation",
-          "authors": "von Krogh, G., Spaeth, S., et al.",
-          "year": "2003",
-          "relevance": "Socialization and mentorship support faster movement up the learning curve."
-        },
-        {
-          "title": "Knowledge Transfer in Software Organizations",
-          "authors": "Rus, I., Lindvall, M.",
-          "year": "2002",
-          "relevance": "Mentorship is an effective mechanism for tacit knowledge transfer, accelerating skill acquisition."
-        }
-      ],
-      "reasoning": "Mentorship is widely recognized to speed up contributor skill growth."
+      "from_var": "New Contributors",
+      "to_var": "PR Feedback",
+      "relationship": "undeclared",
+      "description": "More new contributors submitting PRs increases the demand for feedback.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C38",
-      "papers": [
-        {
-          "title": "Role Migration and Advancement Processes in Open Source Projects",
-          "authors": "Jensen, C., Scacchi, W.",
-          "year": "2007",
-          "relevance": "Mentoring and increased competence lead to advancement/promotion."
-        },
-        {
-          "title": "Overcoming the Challenges Faced by Newcomers in OSS Projects",
-          "authors": "Steinmacher, I., Graciotto Silva, M. A., et al.",
-          "year": "2016",
-          "relevance": "Mentorship programs increased readiness for promotion."
-        },
-        {
-          "title": "Community, Joining, and Specialization in OSS Innovation",
-          "authors": "von Krogh, G., Spaeth, S., et al.",
-          "year": "2003",
-          "relevance": "Competence-building through social learning supports role elevation."
-        }
-      ],
-      "reasoning": "Empirical and conceptual works connect mentorship to higher promotion rates."
+      "from_var": "Experienced Contributors",
+      "to_var": "PR Feedback",
+      "relationship": "undeclared",
+      "description": "More experienced contributors submitting PRs increases the demand for feedback.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C39",
-      "papers": [
-        {
-          "title": "Two Case Studies of Open Source Software Development",
-          "authors": "Mockus, A., Fielding, R. T., et al.",
-          "year": "2002",
-          "relevance": "Core developers serve as reviewers and mentors; more core capacity increases mentorship."
-        },
-        {
-          "title": "Role Migration and Advancement Processes in OSS Projects",
-          "authors": "Jensen, C., Scacchi, W.",
-          "year": "2007",
-          "relevance": "Core members provide guidance and mentorship to contributors."
-        },
-        {
-          "title": "Overcoming the Challenges Faced by Newcomers in OSS Projects",
-          "authors": "Steinmacher, I., Graciotto Silva, M. A., et al.",
-          "year": "2016",
-          "relevance": "Mentor availability and participation scale with core developer presence."
-        }
-      ],
-      "reasoning": "Core developer headcount increases the project's mentoring capacity."
+      "from_var": "PR Feedback",
+      "to_var": "Pull Request Under review",
+      "relationship": "undeclared",
+      "description": "Providing feedback is a necessary step before a PR can be merged or rejected.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C40",
-      "papers": [
-        {
-          "title": "The Emergence of GitHub as a Collaborative Platform for Knowledge Sharing",
-          "authors": "Zagalsky, A., Feliciano, J., et al.",
-          "year": "2015",
-          "relevance": "Searchable artifacts (issues/PRs/wiki) form explicit knowledge resources."
-        },
-        {
-          "title": "Social Coding in GitHub",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "Shared repositories of discussions/documentation directly add to explicit knowledge."
-        },
-        {
-          "title": "Knowledge Transfer in Software Organizations",
-          "authors": "Rus, I., Lindvall, M.",
-          "year": "2002",
-          "relevance": "Codified knowledge bases are explicit knowledge assets."
-        }
-      ],
-      "reasoning": "Searchable knowledge bases are explicit knowledge repositories."
+      "from_var": "Projects's Explicit Knowledge",
+      "to_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "relationship": "undeclared",
+      "description": "Better documentation and guides make explicit knowledge more accessible for transfer.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C41",
-      "papers": [
-        {
-          "title": "What Makes a Good Bug Report?",
-          "authors": "Bettenburg, N., Premraj, R., et al.",
-          "year": "2008",
-          "relevance": "Resolved issues and their solutions become documented references."
-        },
-        {
-          "title": "Two Case Studies of Open Source Software Development",
-          "authors": "Mockus, A., Fielding, R. T., et al.",
-          "year": "2002",
-          "relevance": "Bug fixes and resolutions are recorded, enriching project archives."
-        },
-        {
-          "title": "Social Coding in GitHub",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "Closed issues with discussion histories contribute to the searchable knowledge base."
-        }
-      ],
-      "reasoning": "Closed issues generate durable, searchable knowledge artifacts."
+      "from_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "to_var": "Joining Rate",
+      "relationship": "undeclared",
+      "description": "Good documentation lowers the barrier to entry, increasing the joining rate.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C42",
-      "papers": [
-        {
-          "title": "The Emergence of GitHub as a Collaborative Platform for Knowledge Sharing",
-          "authors": "Zagalsky, A., Feliciano, J., et al.",
-          "year": "2015",
-          "relevance": "Community discussions are captured in issues and PRs forming knowledge resources."
-        },
-        {
-          "title": "Social Coding in GitHub",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "Shows that discussions in social coding environments become part of shared knowledge."
-        },
-        {
-          "title": "Expectations, Outcomes, and Challenges of Modern Code Review",
-          "authors": "Bacchelli, A., Bird, C.",
-          "year": "2013",
-          "relevance": "Review and design discussions become searchable artifacts."
-        }
-      ],
-      "reasoning": "Recorded community discussions enrich the knowledge base."
+      "from_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "to_var": "Skill up",
+      "relationship": "undeclared",
+      "description": "Accessible documentation helps contributors learn and skill up faster.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C43",
-      "papers": [
-        {
-          "title": "Expectations, Outcomes, and Challenges of Modern Code Review",
-          "authors": "Bacchelli, A., Bird, C.",
-          "year": "2013",
-          "relevance": "PR feedback is documented and reused, contributing to knowledge repositories."
-        },
-        {
-          "title": "On Effort and Quality of Code Review",
-          "authors": "Kononenko, O., Baysal, O., et al.",
-          "year": "2015",
-          "relevance": "Shows review comments as rich technical knowledge artifacts."
-        },
-        {
-          "title": "The Emergence of GitHub as a Collaborative Platform for Knowledge Sharing",
-          "authors": "Zagalsky, A., Feliciano, J., et al.",
-          "year": "2015",
-          "relevance": "PR threads are searchable and used for knowledge sharing."
-        }
-      ],
-      "reasoning": "PR feedback forms part of the searchable knowledge base."
+      "from_var": "Issue Creation Rate",
+      "to_var": "Open Issues",
+      "relationship": "undeclared",
+      "description": "Users and developers reporting bugs or features increase open issues.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C44",
-      "papers": [
-        {
-          "title": "What Makes a Good Bug Report?",
-          "authors": "Bettenburg, N., Premraj, R., et al.",
-          "year": "2008",
-          "relevance": "Higher reporting activity increases the number of open issues."
-        },
-        {
-          "title": "Who Should Fix This Bug?",
-          "authors": "Anvik, J., Hiew, L., et al.",
-          "year": "2006",
-          "relevance": "Inflow of new reports increases the open issue queue that needs triage."
-        },
-        {
-          "title": "Bug Report Networks",
-          "authors": "Crowston, K., Howison, J.",
-          "year": "2006",
-          "relevance": "Discusses issue creation flows that increase open issue stocks."
-        }
-      ],
-      "reasoning": "Issue tracking research treats creation as the inflow to open issues."
+      "from_var": "Issue Resolution Rate",
+      "to_var": "Open Issues",
+      "relationship": "undeclared",
+      "description": "Fixing issues reduces the number of open issues.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C45",
-      "papers": [
-        {
-          "title": "Two Case Studies of Open Source Software Development",
-          "authors": "Mockus, A., Fielding, R. T., et al.",
-          "year": "2002",
-          "relevance": "Larger and evolving codebases generate more defects and feature requests."
-        },
-        {
-          "title": "Don\u2019t Touch My Code! Examining the Effects of Ownership on Software Quality",
-          "authors": "Bird, C., Nagappan, N., et al.",
-          "year": "2011",
-          "relevance": "Code growth and dispersion relate to defect proneness, increasing issue creation."
-        },
-        {
-          "title": "The Promises and Perils of Mining GitHub",
-          "authors": "Kalliamvakou, E., Gousios, G., et al.",
-          "year": "2014",
-          "relevance": "Shows larger repositories often have higher issue traffic due to surface area."
-        }
-      ],
-      "reasoning": "Empirical software engineering links code size/complexity to defect and issue inflow."
+      "from_var": "Issue Resolution Rate",
+      "to_var": "Closed Issues",
+      "relationship": "undeclared",
+      "description": "Fixing issues increases the number of closed issues.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C46",
-      "papers": [
-        {
-          "title": "Two Case Studies of Open Source Software Development",
-          "authors": "Mockus, A., Fielding, R. T., et al.",
-          "year": "2002",
-          "relevance": "Issue resolution moves issues out of the open state."
-        },
-        {
-          "title": "Who Should Fix This Bug?",
-          "authors": "Anvik, J., Hiew, L., et al.",
-          "year": "2006",
-          "relevance": "Fixing/closing removes items from the open issue queue."
-        },
-        {
-          "title": "What Makes a Good Bug Report?",
-          "authors": "Bettenburg, N., Premraj, R., et al.",
-          "year": "2008",
-          "relevance": "Resolution leads to closure, decreasing open issues."
-        }
-      ],
-      "reasoning": "Issue lifecycle research defines resolution as an outflow from open issues."
+      "from_var": "Open Issues",
+      "to_var": "New Pr rate",
+      "relationship": "positive",
+      "description": "More open issues represent more work, stimulating the creation of pull requests.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C47",
-      "papers": [
-        {
-          "title": "Determinants of Open Source Software Project Success: A Longitudinal Study",
-          "authors": "Subramaniam, C., Sen, R., et al.",
-          "year": "2009",
-          "relevance": "Adoption rate correlates with growth in user base (downloads, usage)."
-        },
-        {
-          "title": "Free/Libre Open Source Software: What We Know and What We Do Not Know",
-          "authors": "Crowston, K., Howison, J.",
-          "year": "2005",
-          "relevance": "Discusses adoption metrics as inflows to user communities."
-        },
-        {
-          "title": "The Evolutionary Dynamics of Open Source Software Projects: Investigating the Role of Project Attractiveness",
-          "authors": "Midha, V., Bhattacherjee, A.",
-          "year": "2012",
-          "relevance": "Higher adoption drives expansion of the active user base."
-        }
-      ],
-      "reasoning": "OSS success literature treats adoption as the inflow to the user base."
+      "from_var": "Community engagement",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "undeclared",
+      "description": "Community discussions and Q&A add valuable content to the knowledge base.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C48",
-      "papers": [
-        {
-          "title": "Determinants of Open Source Software Project Success",
-          "authors": "Subramaniam, C., Sen, R., et al.",
-          "year": "2009",
-          "relevance": "User churn reduces the size of the active user base."
-        },
-        {
-          "title": "Sustainability of Open Source Software Communities: A Systematic Literature Review",
-          "authors": "Serebrenik, A., Mens, T.",
-          "year": "2015",
-          "relevance": "Community sustainability research notes user/participant attrition as an outflow."
-        },
-        {
-          "title": "Free/Libre Open Source Software: What We Know and What We Do Not Know",
-          "authors": "Crowston, K., Howison, J.",
-          "year": "2005",
-          "relevance": "Describes churn dynamics reducing community/user sizes."
-        }
-      ],
-      "reasoning": "OSS ecosystem studies model churn as an outflow from user stocks."
+      "from_var": "PR Feedback",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "undeclared",
+      "description": "Feedback and discussions in PRs become searchable knowledge for future reference.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C49",
-      "papers": [
-        {
-          "title": "Determinants of Open Source Software Project Success",
-          "authors": "Subramaniam, C., Sen, R., et al.",
-          "year": "2009",
-          "relevance": "Large user bases enhance visibility and perceived reputation."
-        },
-        {
-          "title": "Social Coding in GitHub",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "Crowd signals (stars/watchers/users) serve as reputation cues."
-        },
-        {
-          "title": "Predicting the Popularity of GitHub Repositories",
-          "authors": "Borges, H., Hora, A., et al.",
-          "year": "2016",
-          "relevance": "User-facing popularity metrics are proxies for reputation."
-        }
-      ],
-      "reasoning": "User base size serves as a visible signal contributing to reputation."
+      "from_var": "Closed Issues",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "undeclared",
+      "description": "Resolved issues and their solutions are archived in the searchable knowledge base.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C50",
-      "papers": [
-        {
-          "title": "The Governance of Open Source Initiatives",
-          "authors": "O\u2019Mahony, S., Ferraro, F.",
-          "year": "2007",
-          "relevance": "Positive governance actions and community outcomes build reputation over time."
-        },
-        {
-          "title": "Social Coding in GitHub",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "Positive activities (accepted PRs, responsiveness) enhance reputation via visible signals."
-        },
-        {
-          "title": "Determinants of Open Source Software Project Success",
-          "authors": "Subramaniam, C., Sen, R., et al.",
-          "year": "2009",
-          "relevance": "Identifies drivers of perceived project success/reputation."
-        }
-      ],
-      "reasoning": "Reputation builds through sustained positive project actions and outcomes."
+      "from_var": "Searchable Knowledge Base",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "positive",
+      "description": "A growing knowledge base is a primary source for the project's explicit knowledge.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C51",
-      "papers": [
-        {
-          "title": "Sustainability of Open Source Software Communities",
-          "authors": "Serebrenik, A., Mens, T.",
-          "year": "2015",
-          "relevance": "Community decline, inactivity, and failures reduce reputation."
-        },
-        {
-          "title": "The Promises and Perils of Mining GitHub",
-          "authors": "Kalliamvakou, E., Gousios, G., et al.",
-          "year": "2014",
-          "relevance": "Negative project health signals (e.g., long delays, many rejections) can harm reputation."
-        },
-        {
-          "title": "Community, Joining, and Specialization in OSS Innovation",
-          "authors": "von Krogh, G., Spaeth, S., et al.",
-          "year": "2003",
-          "relevance": "Discusses reputational decline following negative events or poor governance."
-        }
-      ],
-      "reasoning": "OSS literature connects poor health or negative events with reputation loss."
+      "from_var": "Discussions",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "undeclared",
+      "description": "Forum discussions and chats contribute problem-solving insights to the knowledge base.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C52",
-      "papers": [
-        {
-          "title": "Two Case Studies of Open Source Software Development",
-          "authors": "Mockus, A., Fielding, R. T., et al.",
-          "year": "2002",
-          "relevance": "Quality and feature delivery bolster project standing."
-        },
-        {
-          "title": "Determinants of Open Source Software Project Success",
-          "authors": "Subramaniam, C., Sen, R., et al.",
-          "year": "2009",
-          "relevance": "Product quality and functionality correlate with success and reputation."
-        },
-        {
-          "title": "An Empirical Study of the Effects of Continuous Integration on Software Development",
-          "authors": "Vasilescu, B., Yu, Y., et al.",
-          "year": "2015",
-          "relevance": "Better engineering practices improve quality signals, aiding reputation."
-        }
-      ],
-      "reasoning": "High quality and strong feature sets enhance perceived reputation."
+      "from_var": "Project Reputation",
+      "to_var": "Joining Rate",
+      "relationship": "positive",
+      "description": "A strong project reputation attracts more potential contributors, increasing the joining rate.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C53",
-      "papers": [
-        {
-          "title": "Predicting the Popularity of GitHub Repositories",
-          "authors": "Borges, H., Hora, A., et al.",
-          "year": "2016",
-          "relevance": "Large user communities drive popularity/reputation metrics."
-        },
-        {
-          "title": "Social Coding in GitHub",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "User counts and engagement act as reputation signals."
-        },
-        {
-          "title": "Determinants of OSS Project Success",
-          "authors": "Subramaniam, C., Sen, R., et al.",
-          "year": "2009",
-          "relevance": "Adoption (user base) is a major factor in perceived project success/reputation."
-        }
-      ],
-      "reasoning": "User base size signals popularity and utility, boosting reputation."
+      "from_var": "Project Reputation",
+      "to_var": "User Base",
+      "relationship": "undeclared",
+      "description": "A good reputation makes the software more attractive, potentially increasing the user base.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C54",
-      "papers": [
-        {
-          "title": "Sustainability of Open Source Software Communities: A Systematic Literature Review",
-          "authors": "Serebrenik, A., Mens, T.",
-          "year": "2015",
-          "relevance": "Healthy communities are associated with project attractiveness and reputation."
-        },
-        {
-          "title": "Role Migration and Advancement Processes in OSS Projects",
-          "authors": "Jensen, C., Scacchi, W.",
-          "year": "2007",
-          "relevance": "Well-functioning community structures improve reputation."
-        },
-        {
-          "title": "Social Coding in GitHub",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "Collaborative norms and responsiveness positively reflect on reputation."
-        }
-      ],
-      "reasoning": "Community health is a positive reputational signal."
+      "from_var": "Open Issues",
+      "to_var": "Feedback",
+      "relationship": "undeclared",
+      "description": "Open issues represent user needs and problems, generating feedback for the project.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C55",
-      "papers": [
-        {
-          "title": "Role Migration and Advancement Processes in OSS Projects",
-          "authors": "Jensen, C., Scacchi, W.",
-          "year": "2007",
-          "relevance": "Trust built through reliable interactions strengthens community functioning."
-        },
-        {
-          "title": "Social Coding in GitHub",
-          "authors": "Dabbish, L., Stuart, C., et al.",
-          "year": "2012",
-          "relevance": "Trust and transparency mechanisms improve collaborative health."
-        },
-        {
-          "title": "Sustainability of Open Source Software Communities",
-          "authors": "Serebrenik, A., Mens, T.",
-          "year": "2015",
-          "relevance": "Trust-building practices are associated with community health and sustainability."
-        }
-      ],
-      "reasoning": "Trust is foundational for community health in OSS."
+      "from_var": "Feedback",
+      "to_var": "Open Issues",
+      "relationship": "undeclared",
+      "description": "User feedback often highlights new problems or features, creating more open issues.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     },
     {
       "connection_id": "C56",
-      "papers": [
-        {
-          "title": "Sustainability of Open Source Software Communities",
-          "authors": "Serebrenik, A., Mens, T.",
-          "year": "2015",
-          "relevance": "Community toxicity and burnout erode collaboration norms and health."
-        },
-        {
-          "title": "Gender Differences and Bias in Open Source: Pull Request Acceptance of Women Versus Men",
-          "authors": "Terrell, J., Kofink, A., et al.",
-          "year": "2017",
-          "relevance": "Evidence of bias and negative interactions indicate culture issues that harm community well-being."
-        },
-        {
-          "title": "The Unhappy Dev: Analysing Emotions in Pull Requests",
-          "authors": "Wessel, M., Steinmacher, I., et al.",
-          "year": "2020",
-          "relevance": "Negative affect and toxic communication correlate with poorer community outcomes."
-        }
-      ],
-      "reasoning": "Empirical studies suggest toxic interactions and cultural problems damage community health."
+      "from_var": "Source Code",
+      "to_var": "Issue Creation Rate",
+      "relationship": "undeclared",
+      "description": "More source code has a larger surface area for bugs, increasing issue creation.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C57",
+      "from_var": "Community Health",
+      "to_var": "Project Reputation",
+      "relationship": "positive",
+      "description": "A healthy, collaborative community is a positive signal that enhances project reputation.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C58",
+      "from_var": "Project Reputation",
+      "to_var": "Joining Rate",
+      "relationship": "undeclared",
+      "description": "A good reputation makes the project more attractive for new contributors to join.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C59",
+      "from_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "to_var": "Joining Rate",
+      "relationship": "undeclared",
+      "description": "Clear contributor guides make it easier for newcomers to join the project.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C60",
+      "from_var": "Maintainer time",
+      "to_var": "Issue Resolution Rate",
+      "relationship": "undeclared",
+      "description": "More maintainer time dedicated to issues increases the rate at which they are resolved.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C61",
+      "from_var": "Open Issues",
+      "to_var": "Issue Resolution Rate",
+      "relationship": "undeclared",
+      "description": "A larger backlog of open issues can motivate or pressure the team to resolve them faster.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C62",
+      "from_var": "Project Reputation",
+      "to_var": "Reputation Decline",
+      "relationship": "undeclared",
+      "description": "A high reputation sets high expectations; failing to meet them accelerates reputation decline.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C63",
+      "from_var": "Projects's Explicit Knowledge",
+      "to_var": "Explicit to Implicit Conversion",
+      "relationship": "undeclared",
+      "description": "A rich base of documentation provides the material for contributors to learn and internalize.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C64",
+      "from_var": "User Base",
+      "to_var": "User Churn Rate",
+      "relationship": "undeclared",
+      "description": "A larger user base means a larger pool from which users can churn due to dissatisfaction.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C65",
+      "from_var": "Pull Request Under review",
+      "to_var": "Merge/Commit",
+      "relationship": "undeclared",
+      "description": "Pull requests that are successfully reviewed and approved are ready to be merged.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C66",
+      "from_var": "Pull Request Under review",
+      "to_var": "Rejection Rate",
+      "relationship": "undeclared",
+      "description": "Pull requests that fail review or do not meet standards are rejected.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C67",
+      "from_var": "New Pull request",
+      "to_var": "Review Rate",
+      "relationship": "undeclared",
+      "description": "An accumulation of new pull requests creates a queue that needs to be reviewed.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C68",
+      "from_var": "Core Developer",
+      "to_var": "Developer's Turnover",
+      "relationship": "undeclared",
+      "description": "Core developers may experience burnout, leading to their turnover.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C69",
+      "from_var": "Experienced Contributors",
+      "to_var": "Promotion Rate",
+      "relationship": "undeclared",
+      "description": "Experienced contributors who demonstrate skill become candidates for promotion.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C70",
+      "from_var": "New Contributors",
+      "to_var": "Skill up",
+      "relationship": "undeclared",
+      "description": "New contributors actively learning and participating increase their skill level.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C71",
+      "from_var": "Project's Implicit Knowledge",
+      "to_var": "Depreciation/Loss of Knowledge",
+      "relationship": "undeclared",
+      "description": "A larger body of implicit knowledge is more susceptible to being lost over time.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C72",
+      "from_var": "Project's Implicit Knowledge",
+      "to_var": "Knowledge Conversion Rate",
+      "relationship": "undeclared",
+      "description": "A rich base of implicit knowledge provides more material to be documented and converted.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C73",
+      "from_var": "Community Health",
+      "to_var": "Culture Erosion",
+      "relationship": "undeclared",
+      "description": "An unhealthy community is more prone to conflict and attrition, accelerating culture erosion.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
     }
+  ],
+  "notes": [
+    "Failed to parse LLM response: {\n  \"citations\": [\n    {\n      \"connection_id\": \"C01\",\n      \"papers\": [\n        {\n          \"title\": \"Understanding the adoption of open source software: The role of user communities\",\n          \"aut..."
   ]
 }

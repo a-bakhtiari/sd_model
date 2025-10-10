@@ -1,0 +1,56 @@
+{
+  "descriptions": [
+    {
+      "id": "C01",
+      "description": "Developer turnover reduces the core developer stock as experienced members leave the project."
+    },
+    {
+      "id": "C02",
+      "description": "The skill up flow increases the new contributor stock by transitioning individuals from onboarding to active participation."
+    },
+    {
+      "id": "C03",
+      "description": "The skill up flow increases experienced contributors by advancing members who have mastered initial project skills."
+    },
+    {
+      "id": "C04",
+      "description": "The promotion rate flow increases experienced contributors by recognizing and advancing capable members."
+    },
+    {
+      "id": "C05",
+      "description": "The promotion rate flow increases core developers by elevating experienced contributors who demonstrate leadership."
+    },
+    {
+      "id": "C06",
+      "description": "Implicit knowledge transfer accelerates skill development through direct mentorship and collaborative problem-solving."
+    },
+    {
+      "id": "C07",
+      "description": "Implicit knowledge transfer increases promotion rates by preparing contributors for more advanced project roles."
+    },
+    {
+      "id": "C08",
+      "description": "More core developers increase mentorship capacity and implicit knowledge transfer opportunities."
+    },
+    {
+      "id": "C09",
+      "description": "Explicit knowledge transfer accelerates skill development by providing accessible documentation and guides."
+    },
+    {
+      "id": "C10",
+      "description": "An initial pool of potential contributors provides the source for new project members."
+    },
+    {
+      "id": "C11",
+      "description": "A larger pool of new contributors increases the potential flow of individuals developing skills."
+    },
+    {
+      "id": "C12",
+      "description": "A larger core developer group can increase turnover due to burnout or competing opportunities."
+    },
+    {
+      "id": "C13",
+      "description": "More experienced contributors increase the promotion rate flow by providing a larger candidate pool for advancement."
+    }
+  ]
+}

@@ -20,23 +20,18 @@ def create_enhancement_prompt(
 ) -> str:
     """Create prompt for theory enhancement suggestions."""
 
-    # Calculate basic stats
-    var_count = len(variables.get("variables", []))
-    conn_count = len(connections.get("connections", []))
-    loop_count = len(loops.get("reinforcing", [])) + len(loops.get("balancing", [])) + len(loops.get("undetermined", []))
-
-    # Get sample variables
-    sample_vars = variables.get("variables", [])[:8]
+    # Get all variables
+    all_vars = variables.get("variables", [])
     vars_text = "\n".join([
         f"- {v['name']} ({v.get('type', 'Unknown')})"
-        for v in sample_vars
+        for v in all_vars
     ])
 
-    # Get sample connections
-    sample_conns = connections.get("connections", [])[:8]
+    # Get all connections
+    all_conns = connections.get("connections", [])
     conns_text = "\n".join([
         f"- {c['from_var']} → {c['to_var']} ({c.get('relationship', 'unknown')})"
-        for c in sample_conns
+        for c in all_conns
     ])
 
     # Format theories
@@ -45,19 +40,14 @@ def create_enhancement_prompt(
         for t in theories
     ])
 
-    prompt = f"""You are a system dynamics modeling expert specializing in Communities of Practice and Knowledge Management theories for open-source software development.
+    prompt = f"""You are a system dynamics modeling expert.
 
 # Current System Dynamics Model
 
-## Model Summary
-- Variables: {var_count}
-- Connections: {conn_count}
-- Feedback Loops: {loop_count}
-
-## Sample Variables
+## Current Variables
 {vars_text}
 
-## Sample Connections
+## Current Connections
 {conns_text}
 
 # Theories Being Used
@@ -65,13 +55,66 @@ def create_enhancement_prompt(
 
 # Your Task
 
-Analyze the model and identify what needs to be added, modified, or removed based on each theory.
+For each theory, follow this structured process:
 
-For each theory, provide specific model operations:
+1. **Map theory to model**: Identify which core concepts from the theory are already modeled
+2. **Identify gaps**: Find theory concepts that are missing or underutilized
+3. **Design SD implementation**: Specify variables and connections to add
+4. **Provide operations**: Additions, modifications, or removals
 
-1. **Additions** - New variables and connections to add
-2. **Modifications** - Existing variables to update (optional, leave empty if none)
-3. **Removals** - Variables to deprecate or remove (optional, leave empty if none)
+---
+
+## SD Variable Type Guidelines
+
+When designing new variables, use these decision rules:
+
+- **Stock**: Accumulations that persist over time (people, knowledge, reputation, technical debt)
+- **Flow**: Rates of change that modify stocks (hiring rate, learning rate, knowledge decay rate)
+- **Auxiliary**: Calculated values, multipliers, ratios, effectiveness measures
+
+---
+
+## Variable Naming Conventions
+
+✅ **Good**: Specific and descriptive
+- "Project's Explicit Knowledge"
+- "Core Developer Mentoring Capacity"
+- "Newcomer Onboarding Rate"
+
+❌ **Avoid**: Vague or generic
+- "Knowledge" (knowledge of what?)
+- "Capacity" (capacity for what?)
+- "Rate" (rate of what?)
+
+Be specific and use domain-appropriate language.
+
+---
+
+## Connection Design Rules
+
+For each connection, specify:
+- **from**: Source variable (can be existing OR newly added)
+- **to**: Target variable (can be existing OR newly added)
+- **relationship**:
+  - "positive": Increase in FROM → Increase in TO
+  - "negative": Increase in FROM → Decrease in TO
+
+---
+
+## Quality Criteria
+
+Your suggestions must be:
+✓ Implementable in Vensim system dynamics software
+✓ Connected to existing model elements (not isolated additions)
+✓ Grounded in the specific theories provided
+✓ Using specific, descriptive variable names
+
+---
+
+## Output Format
+
+For each theory, include:
+- **rationale**: A short paragraph (2-4 sentences) explaining the logic for why these suggestions are good or necessary for this specific theory
 
 Return JSON in this structure:
 
@@ -79,6 +122,7 @@ Return JSON in this structure:
   "theories": [
     {{
       "name": "Theory Name",
+      "rationale": "Short paragraph (2-4 sentences) explaining why these suggestions are necessary and how they strengthen the model's alignment with this theory.",
       "additions": {{
         "variables": [
           {{
@@ -106,10 +150,9 @@ Return JSON in this structure:
 }}
 
 IMPORTANT:
+- Only include additions/modifications/removals if truly needed (all are optional)
 - Focus on practical, implementable operations
 - Be specific about variable names and types
-- Only include modifications/removals if truly needed
-- For additions.connections, you can reference both existing variables and newly added variables
 
 Return ONLY the JSON structure, no additional text.
 """
@@ -126,7 +169,7 @@ def run_theory_enhancement(
 
     Args:
         theories: List of theory dictionaries from theories.csv
-        variables: Variables data from variables_llm.json
+        variables: Variables data from variables.json
         connections: Connections data from connections.json
         loops: Loops data from loops.json
 

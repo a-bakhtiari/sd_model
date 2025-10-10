@@ -132,7 +132,7 @@ def run_rq_refinement(
     Args:
         rqs: List of research questions from RQ.txt
         rq_alignment: Alignment results from Module 3
-        variables: Variables data from variables_llm.json
+        variables: Variables data from variables.json
         connections: Connections data from connections.json
         loops: Loops data from loops.json
 

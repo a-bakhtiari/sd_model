@@ -1,353 +1,217 @@
 {
-  "missing_from_theories": [
+  "theories": [
     {
-      "theory_name": "Communities of Practice (Wenger)",
-      "missing_element": "Legitimate Peripheral Participation",
-      "why_important": "This describes how newcomers gradually move from the periphery to core participation through legitimate but limited involvement. The current model lacks the gradual progression mechanism.",
-      "how_to_add": "Create a multi-stage progression system with different participation levels and transition rates between them",
-      "sd_implementation": {
-        "new_variables": [
+      "name": "Communities of Practice (Wenger)",
+      "rationale": "The current model captures some aspects of legitimate peripheral participation through contributor progression, but misses key concepts like boundary objects, mutual engagement, and shared repertoire that are essential to Communities of Practice theory. Adding these elements will better represent how newcomers become integrated into the community through participation in shared practices and artifacts.",
+      "additions": {
+        "variables": [
           {
-            "name": "Peripheral Participants",
+            "name": "Community Shared Repertoire",
             "type": "Stock",
-            "description": "Newcomers observing and doing simple tasks"
+            "description": "Accumulated shared resources, routines, vocabulary, and tools that the community develops together"
           },
           {
-            "name": "Active Participants",
-            "type": "Stock",
-            "description": "Regular contributors not yet core members"
-          },
-          {
-            "name": "Progression Rate Peripheral to Active",
-            "type": "Flow",
-            "description": "Flow from peripheral to active participation"
-          },
-          {
-            "name": "Progression Rate Active to Core",
-            "type": "Flow",
-            "description": "Flow from active to core developer status"
-          },
-          {
-            "name": "Legitimacy of Peripheral Tasks",
+            "name": "Mutual Engagement Level",
             "type": "Auxiliary",
-            "description": "Availability of appropriate tasks for newcomers"
-          }
-        ],
-        "new_connections": [
-          {
-            "from": "Legitimacy of Peripheral Tasks",
-            "to": "Progression Rate Peripheral to Active",
-            "relationship": "positive",
-            "rationale": "Better peripheral tasks accelerate learning and progression"
+            "description": "Degree of collaborative interaction and relationship building among community members"
           },
           {
-            "from": "Mentoring Effectiveness",
-            "to": "Progression Rate Active to Core",
-            "relationship": "positive",
-            "rationale": "Effective mentoring speeds up core member development"
-          },
-          {
-            "from": "Project's Explicit Knowledge",
-            "to": "Legitimacy of Peripheral Tasks",
-            "relationship": "positive",
-            "rationale": "Good documentation enables better peripheral task design"
-          }
-        ],
-        "expected_loops": [
-          {
-            "type": "reinforcing",
-            "description": "More core developers \u2192 Better mentoring \u2192 Faster progression \u2192 More core developers"
-          },
-          {
-            "type": "balancing",
-            "description": "Limited mentoring capacity constrains progression rates"
-          }
-        ]
-      },
-      "expected_impact": "Will capture the gradual learning and progression dynamics, showing how community structure affects newcomer retention and core developer pipeline"
-    },
-    {
-      "theory_name": "Communities of Practice (Wenger)",
-      "missing_element": "Mutual Engagement and Shared Repertoire",
-      "why_important": "The social fabric and shared resources that bind the community together, affecting knowledge sharing and collaboration effectiveness",
-      "how_to_add": "Model social capital and shared resources as stocks that affect collaboration and knowledge transfer",
-      "sd_implementation": {
-        "new_variables": [
-          {
-            "name": "Community Social Capital",
-            "type": "Stock",
-            "description": "Trust, relationships, and shared understanding"
-          },
-          {
-            "name": "Shared Repertoire",
-            "type": "Stock",
-            "description": "Shared tools, stories, ways of doing things"
-          },
-          {
-            "name": "Social Capital Depreciation",
-            "type": "Flow",
-            "description": "Natural decay of social connections"
-          },
-          {
-            "name": "Collaboration Effectiveness",
+            "name": "Boundary Objects Effectiveness",
             "type": "Auxiliary",
-            "description": "How effectively community members work together"
-          }
-        ],
-        "new_connections": [
-          {
-            "from": "Community Social Capital",
-            "to": "Collaboration Effectiveness",
-            "relationship": "positive",
-            "rationale": "Higher social capital improves collaboration"
+            "description": "Effectiveness of artifacts that enable coordination between different participant groups"
           },
           {
-            "from": "Shared Repertoire",
-            "to": "Explicit Knowledge Transfer",
-            "relationship": "positive",
-            "rationale": "Better shared repertoire enables better knowledge documentation"
+            "name": "Legitimate Peripheral Participation Rate",
+            "type": "Flow",
+            "description": "Rate at which newcomers engage in authentic but low-risk community activities"
+          },
+          {
+            "name": "Shared Practice Development",
+            "type": "Flow",
+            "description": "Rate at which community develops new shared practices and routines"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Community Shared Repertoire",
+            "to": "Legitimate Peripheral Participation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mutual Engagement Level",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Boundary Objects Effectiveness",
+            "to": "Joining Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Discussions",
+            "to": "Mutual Engagement Level",
+            "relationship": "positive"
           },
           {
             "from": "Core Developer",
-            "to": "Community Social Capital",
-            "relationship": "positive",
-            "rationale": "Core developers build and maintain social capital"
+            "to": "Mutual Engagement Level",
+            "relationship": "positive"
           },
           {
-            "from": "Collaboration Effectiveness",
-            "to": "PR Feedback",
-            "relationship": "positive",
-            "rationale": "Better collaboration improves feedback quality"
-          }
-        ],
-        "expected_loops": [
-          {
-            "type": "reinforcing",
-            "description": "More collaboration \u2192 Better social capital \u2192 Better collaboration"
+            "from": "Experienced Contributors",
+            "to": "Mutual Engagement Level",
+            "relationship": "positive"
           },
           {
-            "type": "balancing",
-            "description": "Community growth dilutes social capital if not maintained"
+            "from": "Searchable Knowledge Base",
+            "to": "Boundary Objects Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Source Code",
+            "to": "Boundary Objects Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Legitimate Peripheral Participation Rate",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Shared Practice Development",
+            "to": "Community Shared Repertoire",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mutual Engagement Level",
+            "to": "Shared Practice Development",
+            "relationship": "positive"
           }
         ]
       },
-      "expected_impact": "Will capture how social dynamics and shared resources affect knowledge sharing efficiency and community cohesion"
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
     },
     {
-      "theory_name": "Nonaka's SECI Model",
-      "missing_element": "Knowledge Internalization",
-      "why_important": "The process where explicit knowledge becomes tacit through learning and practice, crucial for skill development and expertise building",
-      "how_to_add": "Add internalization as a flow from explicit to tacit knowledge, influenced by practice opportunities",
-      "sd_implementation": {
-        "new_variables": [
+      "name": "Nonaka's SECI Model",
+      "rationale": "While the model has implicit and explicit knowledge stocks, it doesn't fully capture the four knowledge conversion processes (Socialization, Externalization, Combination, Internalization) that drive the knowledge spiral. Adding these specific conversion mechanisms will better represent how knowledge is created and transformed within the open source community context.",
+      "additions": {
+        "variables": [
           {
-            "name": "Community Tacit Knowledge",
-            "type": "Stock",
-            "description": "Unexpressed knowledge, skills, and intuition"
+            "name": "Socialization Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness of sharing tacit knowledge through shared experiences and observation"
           },
           {
-            "name": "Knowledge Internalization Rate",
+            "name": "Externalization Rate",
             "type": "Flow",
-            "description": "Conversion of explicit to tacit knowledge through practice"
+            "description": "Rate at which tacit knowledge is articulated into explicit concepts"
           },
           {
-            "name": "Practice Opportunities",
+            "name": "Combination Effectiveness",
             "type": "Auxiliary",
-            "description": "Availability of tasks for applying learned knowledge"
+            "description": "Effectiveness of systemizing and applying explicit knowledge"
           },
           {
-            "name": "Individual Skill Level",
-            "type": "Auxiliary",
-            "description": "Average skill level of contributors"
-          }
-        ],
-        "new_connections": [
-          {
-            "from": "Project's Explicit Knowledge",
-            "to": "Knowledge Internalization Rate",
-            "relationship": "positive",
-            "rationale": "More explicit knowledge enables more internalization"
-          },
-          {
-            "from": "Practice Opportunities",
-            "to": "Knowledge Internalization Rate",
-            "relationship": "positive",
-            "rationale": "More practice accelerates internalization"
-          },
-          {
-            "from": "Community Tacit Knowledge",
-            "to": "Individual Skill Level",
-            "relationship": "positive",
-            "rationale": "Tacit knowledge represents advanced skills"
-          },
-          {
-            "from": "Individual Skill Level",
-            "to": "Issue Resolution Rate",
-            "relationship": "positive",
-            "rationale": "Higher skills improve problem-solving efficiency"
-          }
-        ],
-        "expected_loops": [
-          {
-            "type": "reinforcing",
-            "description": "More explicit knowledge \u2192 More internalization \u2192 Higher skills \u2192 Better knowledge creation \u2192 More explicit knowledge"
-          }
-        ]
-      },
-      "expected_impact": "Will capture how learning and skill development occur through practice, affecting problem-solving capacity and innovation"
-    },
-    {
-      "theory_name": "Nonaka's SECI Model",
-      "missing_element": "Ba (Knowledge Creation Context)",
-      "why_important": "The physical, virtual, and mental spaces that enable knowledge creation. In OSS, this includes communication platforms, norms, and psychological safety",
-      "how_to_add": "Model the enabling environment for knowledge creation as a mediating variable",
-      "sd_implementation": {
-        "new_variables": [
-          {
-            "name": "Knowledge Creation Context Quality",
-            "type": "Auxiliary",
-            "description": "Quality of platforms, norms, and environment for knowledge sharing"
-          },
-          {
-            "name": "Psychological Safety",
-            "type": "Auxiliary",
-            "description": "Perceived safety to ask questions and share ideas"
-          },
-          {
-            "name": "Communication Platform Effectiveness",
-            "type": "Auxiliary",
-            "description": "Quality of tools for collaboration"
-          }
-        ],
-        "new_connections": [
-          {
-            "from": "Knowledge Creation Context Quality",
-            "to": "Explicit Knowledge Transfer",
-            "relationship": "positive",
-            "rationale": "Better context enables better knowledge sharing"
-          },
-          {
-            "from": "Knowledge Creation Context Quality",
-            "to": "Knowledge Internalization Rate",
-            "relationship": "positive",
-            "rationale": "Good context supports learning and practice"
-          },
-          {
-            "from": "Community Social Capital",
-            "to": "Psychological Safety",
-            "relationship": "positive",
-            "rationale": "Strong relationships create psychological safety"
-          },
-          {
-            "from": "Psychological Safety",
-            "to": "Knowledge Creation Context Quality",
-            "relationship": "positive",
-            "rationale": "Safety enables open knowledge sharing"
-          }
-        ],
-        "expected_loops": [
-          {
-            "type": "reinforcing",
-            "description": "Better context \u2192 More knowledge sharing \u2192 Stronger community \u2192 Better context"
-          }
-        ]
-      },
-      "expected_impact": "Will capture how the enabling environment affects all knowledge processes, showing infrastructure and cultural impacts on community effectiveness"
-    },
-    {
-      "theory_name": "Communities of Practice (Wenger)",
-      "missing_element": "Boundary Processes and Brokering",
-      "why_important": "How knowledge flows across community boundaries and how brokers connect different communities, crucial for innovation and avoiding insularity",
-      "how_to_add": "Add variables for cross-community interactions and knowledge brokering",
-      "sd_implementation": {
-        "new_variables": [
-          {
-            "name": "External Knowledge Inflow",
+            "name": "Internalization Rate",
             "type": "Flow",
-            "description": "Knowledge entering from other communities"
+            "description": "Rate at which explicit knowledge is absorbed and becomes tacit understanding"
           },
           {
-            "name": "Boundary Spanning Activity",
+            "name": "Ba Quality",
             "type": "Auxiliary",
-            "description": "Level of interaction with external communities"
-          },
-          {
-            "name": "Knowledge Brokers",
-            "type": "Stock",
-            "description": "Members who connect multiple communities"
-          },
-          {
-            "name": "Innovation Rate",
-            "type": "Auxiliary",
-            "description": "Rate of novel solutions and approaches"
+            "description": "Quality of the shared context for knowledge creation and sharing"
           }
         ],
-        "new_connections": [
+        "connections": [
           {
-            "from": "Boundary Spanning Activity",
-            "to": "External Knowledge Inflow",
-            "relationship": "positive",
-            "rationale": "More boundary activity brings more external knowledge"
+            "from": "Socialization Effectiveness",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
           },
           {
-            "from": "External Knowledge Inflow",
-            "to": "Project's Explicit Knowledge",
-            "relationship": "positive",
-            "rationale": "External knowledge enriches project knowledge base"
+            "from": "Externalization Rate",
+            "to": "Knowledge Conversion Rate",
+            "relationship": "positive"
           },
           {
-            "from": "Knowledge Brokers",
-            "to": "Boundary Spanning Activity",
-            "relationship": "positive",
-            "rationale": "Brokers enable boundary spanning"
+            "from": "Combination Effectiveness",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "relationship": "positive"
           },
           {
-            "from": "External Knowledge Inflow",
-            "to": "Innovation Rate",
-            "relationship": "positive",
-            "rationale": "Cross-pollination drives innovation"
-          }
-        ],
-        "expected_loops": [
+            "from": "Internalization Rate",
+            "to": "Explicit to Implicit Conversion",
+            "relationship": "positive"
+          },
           {
-            "type": "reinforcing",
-            "description": "More boundary activity \u2192 More innovation \u2192 Project attractiveness \u2192 More boundary activity"
+            "from": "Ba Quality",
+            "to": "Socialization Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Ba Quality",
+            "to": "Externalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Ba Quality",
+            "to": "Combination Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Ba Quality",
+            "to": "Internalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Health",
+            "to": "Ba Quality",
+            "relationship": "positive"
+          },
+          {
+            "from": "Discussions",
+            "to": "Ba Quality",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mutual Engagement Level",
+            "to": "Ba Quality",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project's Implicit Knowledge",
+            "to": "Externalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Projects's Explicit Knowledge",
+            "to": "Internalization Rate",
+            "relationship": "positive"
           }
         ]
       },
-      "expected_impact": "Will capture how cross-community interactions drive innovation and prevent knowledge stagnation"
-    }
-  ],
-  "general_improvements": [
-    {
-      "improvement_type": "add_mechanism",
-      "description": "Add knowledge depreciation/obsolescence mechanism",
-      "implementation": "Add knowledge depreciation flows for both explicit and tacit knowledge, influenced by technology change rate",
-      "impact": "medium"
-    },
-    {
-      "improvement_type": "refine_structure",
-      "description": "Differentiate between different types of knowledge (technical, social, process)",
-      "implementation": "Split knowledge stocks into technical knowledge, social knowledge, and process knowledge with different dynamics",
-      "impact": "high"
-    },
-    {
-      "improvement_type": "add_feedback",
-      "description": "Add feedback between community size and coordination overhead",
-      "implementation": "Add coordination complexity variable that increases with community size, negatively affecting collaboration effectiveness",
-      "impact": "high"
-    },
-    {
-      "improvement_type": "add_mechanism",
-      "description": "Add seasonal/cyclical patterns in contribution",
-      "implementation": "Add auxiliary variables for academic calendars, conference seasons, or holiday periods affecting contribution rates",
-      "impact": "low"
-    },
-    {
-      "improvement_type": "refine_structure",
-      "description": "Distinguish between different types of issues (bugs, features, documentation)",
-      "implementation": "Split issues into categories with different resolution dynamics and skill requirements",
-      "impact": "medium"
+      "modifications": {
+        "variables": [
+          {
+            "name": "Knowledge Conversion Rate",
+            "type": "Flow",
+            "description": "Renamed to better represent Externalization process (tacit to explicit knowledge conversion)"
+          },
+          {
+            "name": "Explicit to Implicit Conversion",
+            "type": "Flow",
+            "description": "Renamed to better represent Internalization process (explicit to tacit knowledge conversion)"
+          }
+        ]
+      },
+      "removals": {
+        "variables": []
+      }
     }
   ]
 }

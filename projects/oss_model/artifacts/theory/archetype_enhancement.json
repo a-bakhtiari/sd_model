@@ -1,0 +1,204 @@
+{
+  "archetypes": [
+    {
+      "name": "Limits to Success",
+      "confidence": 0.8,
+      "rationale": "The model shows growth in user base and adoption driven by project reputation and software quality, but faces constraints from maintainer time, PR review delays, and developer turnover that limit further growth.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Growth Pressure",
+            "type": "Auxiliary",
+            "description": "Pressure to continue growing despite constraints",
+            "rationale": "Needed to complete the balancing loop structure"
+          },
+          {
+            "name": "Constraint Awareness",
+            "type": "Auxiliary",
+            "description": "Recognition of capacity limitations",
+            "rationale": "Missing feedback mechanism to detect constraints"
+          }
+        ],
+        "connections": [
+          {
+            "from": "User Base",
+            "to": "Growth Pressure",
+            "relationship": "positive",
+            "rationale": "Larger user base creates more growth pressure"
+          },
+          {
+            "from": "PR Review Delay",
+            "to": "Constraint Awareness",
+            "relationship": "positive",
+            "rationale": "Delays signal capacity constraints"
+          },
+          {
+            "from": "Constraint Awareness",
+            "to": "Growth Pressure",
+            "relationship": "negative",
+            "rationale": "Constraint awareness reduces growth pressure"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Tragedy of the Commons",
+      "confidence": 0.7,
+      "rationale": "Maintainer time and community capacity appear as shared resources that can be depleted by excessive pull requests, issues, and demands from growing user base without coordination mechanisms.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Resource Depletion Rate",
+            "type": "Flow",
+            "description": "Rate at which shared resources are consumed",
+            "rationale": "Missing explicit tracking of resource consumption"
+          },
+          {
+            "name": "Coordination Mechanism",
+            "type": "Auxiliary",
+            "description": "Processes for managing shared resource usage",
+            "rationale": "Missing balancing mechanism to prevent overuse"
+          }
+        ],
+        "connections": [
+          {
+            "from": "New Pull request",
+            "to": "Resource Depletion Rate",
+            "relationship": "positive",
+            "rationale": "More PRs consume more maintainer time"
+          },
+          {
+            "from": "Open Issues",
+            "to": "Resource Depletion Rate",
+            "relationship": "positive",
+            "rationale": "More issues consume community capacity"
+          },
+          {
+            "from": "Resource Depletion Rate",
+            "to": "Coordination Mechanism",
+            "relationship": "positive",
+            "rationale": "Depletion triggers coordination needs"
+          },
+          {
+            "from": "Coordination Mechanism",
+            "to": "New Pull request",
+            "relationship": "negative",
+            "rationale": "Coordination regulates incoming work"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Shifting the Burden",
+      "confidence": 0.6,
+      "rationale": "The model suggests potential for quick fixes (like rapid PR merging) that undermine long-term community health and knowledge transfer, but lacks explicit symptom and fundamental solution variables.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Symptomatic Solution",
+            "type": "Auxiliary",
+            "description": "Quick fixes that address immediate symptoms",
+            "rationale": "Missing explicit representation of short-term solutions"
+          },
+          {
+            "name": "Fundamental Solution",
+            "type": "Auxiliary",
+            "description": "Long-term investments in community capacity",
+            "rationale": "Missing representation of sustainable solutions"
+          }
+        ],
+        "connections": [
+          {
+            "from": "PR Review Delay",
+            "to": "Symptomatic Solution",
+            "relationship": "positive",
+            "rationale": "Delays create pressure for quick fixes"
+          },
+          {
+            "from": "Symptomatic Solution",
+            "to": "Fundamental Solution",
+            "relationship": "negative",
+            "rationale": "Quick fixes undermine long-term solutions"
+          },
+          {
+            "from": "Fundamental Solution",
+            "to": "Community Health",
+            "relationship": "positive",
+            "rationale": "Long-term solutions build sustainable capacity"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Growth and Underinvestment",
+      "confidence": 0.7,
+      "rationale": "The model shows growth dynamics but lacks explicit investment variables in community capacity, knowledge management, and infrastructure that could lead to performance degradation as demand increases.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Capacity Investment",
+            "type": "Flow",
+            "description": "Investment in community capacity and infrastructure",
+            "rationale": "Missing explicit investment mechanism"
+          },
+          {
+            "name": "Performance Gap",
+            "type": "Auxiliary",
+            "description": "Difference between desired and actual performance",
+            "rationale": "Missing feedback signal for investment needs"
+          }
+        ],
+        "connections": [
+          {
+            "from": "User Base",
+            "to": "Performance Gap",
+            "relationship": "positive",
+            "rationale": "Growth creates performance pressure"
+          },
+          {
+            "from": "Performance Gap",
+            "to": "Capacity Investment",
+            "relationship": "positive",
+            "rationale": "Performance gap drives investment needs"
+          },
+          {
+            "from": "Capacity Investment",
+            "to": "Community Health",
+            "relationship": "positive",
+            "rationale": "Investment improves capacity and performance"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    }
+  ],
+  "summary": {
+    "archetypes_detected": 4,
+    "high_confidence": 1,
+    "total_variables_suggested": 8,
+    "total_connections_suggested": 13
+  }
+}

@@ -1,3 +1,1 @@
-1- what is the career path of software developers in opensource software from novice periphery to core developer and what dynamics affect this path?
-2- What are some interventions to make this process smooth?
-3- What are some ways to prevent system failure and vulnerabilities that may arise from this procedure?
+1- how is the career path of software developers in opensource software from novice periphery to core developer as a result of the rise of AI in programming?

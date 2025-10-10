@@ -1,0 +1,151 @@
+{
+  "archetypes": [
+    {
+      "name": "Limits to Success",
+      "confidence": 0.7,
+      "rationale": "The model shows growth in Core Developers through promotion from New Contributors, but Developer Turnover creates a balancing constraint that limits this growth, though the explicit limiting factor isn't clearly defined.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Workload Pressure",
+            "type": "Auxiliary",
+            "description": "Pressure on existing developers due to high workload",
+            "rationale": "To represent the constraint that causes turnover and limits growth"
+          },
+          {
+            "name": "Sustainable Capacity",
+            "type": "Stock",
+            "description": "Maximum number of developers the system can sustainably support",
+            "rationale": "To represent the limiting factor that creates the balancing loop"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Core Developer",
+            "to": "Workload Pressure",
+            "relationship": "positive",
+            "rationale": "More developers reduce individual workload pressure"
+          },
+          {
+            "from": "Workload Pressure",
+            "to": "Developer's Turnover",
+            "relationship": "positive",
+            "rationale": "High workload pressure increases turnover"
+          },
+          {
+            "from": "Sustainable Capacity",
+            "to": "Workload Pressure",
+            "relationship": "negative",
+            "rationale": "Higher capacity reduces workload pressure"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Growth and Underinvestment",
+      "confidence": 0.6,
+      "rationale": "The model shows knowledge transfer mechanisms (mentorship and documentation) that could represent capacity investment, but lacks clear connection between developer growth and investment in these capacity-building systems.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Investment in Knowledge Systems",
+            "type": "Flow",
+            "description": "Resources allocated to improving knowledge transfer systems",
+            "rationale": "To represent the investment decision that affects capacity"
+          },
+          {
+            "name": "Perceived Performance Gap",
+            "type": "Auxiliary",
+            "description": "Difference between desired and actual performance",
+            "rationale": "To drive investment decisions when performance declines"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Developer's Turnover",
+            "to": "Perceived Performance Gap",
+            "relationship": "positive",
+            "rationale": "High turnover indicates performance problems"
+          },
+          {
+            "from": "Perceived Performance Gap",
+            "to": "Investment in Knowledge Systems",
+            "relationship": "positive",
+            "rationale": "Performance gaps should drive investment"
+          },
+          {
+            "from": "Investment in Knowledge Systems",
+            "to": "Explicit Knowledge Transfer",
+            "relationship": "positive",
+            "rationale": "Investment improves knowledge systems"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Shifting the Burden",
+      "confidence": 0.5,
+      "rationale": "The model shows both implicit (mentorship) and explicit (documentation) knowledge transfer, suggesting potential symptom vs fundamental solution dynamics, but lacks clear distinction between quick fixes and fundamental solutions.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Fundamental Solution Investment",
+            "type": "Flow",
+            "description": "Investment in long-term sustainable solutions",
+            "rationale": "To represent the fundamental solution side of the archetype"
+          },
+          {
+            "name": "Quick Fix Pressure",
+            "type": "Auxiliary",
+            "description": "Pressure to implement immediate solutions",
+            "rationale": "To represent the symptom-relief side of the archetype"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Developer's Turnover",
+            "to": "Quick Fix Pressure",
+            "relationship": "positive",
+            "rationale": "High turnover creates pressure for quick fixes"
+          },
+          {
+            "from": "Quick Fix Pressure",
+            "to": "Explicit Knowledge Transfer",
+            "relationship": "positive",
+            "rationale": "Pressure drives investment in documentation as quick fix"
+          },
+          {
+            "from": "Quick Fix Pressure",
+            "to": "Fundamental Solution Investment",
+            "relationship": "negative",
+            "rationale": "Quick fix pressure reduces focus on fundamental solutions"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    }
+  ],
+  "summary": {
+    "archetypes_detected": 3,
+    "high_confidence": 0,
+    "total_variables_suggested": 6,
+    "total_connections_suggested": 9
+  }
+}

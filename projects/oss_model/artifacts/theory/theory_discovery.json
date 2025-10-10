@@ -1,49 +1,49 @@
 {
   "high_relevance": [
     {
-      "theory_name": "Social Network Theory",
-      "key_citation": "Granovetter 1973",
-      "description": "Examines how social structure and relationships create opportunities and constraints for individuals and organizations",
-      "relevance_to_rqs": "Directly addresses RQ1 by explaining how network position, tie strength, and structural holes affect progression from periphery to core",
-      "relevance_to_model": "Can model network metrics (centrality, density, clustering) as stocks/flows affecting knowledge access and promotion likelihood",
+      "theory_name": "Legitimate Peripheral Participation",
+      "key_citation": "Lave & Wenger 1991",
+      "description": "Learning occurs through increasing participation in communities of practice, moving from peripheral to full participation",
+      "relevance_to_rqs": "Directly addresses the novice-to-core developer transition pathway in OSS communities",
+      "relevance_to_model": "Model AI's impact on legitimate participation pathways - does AI create new peripheral activities or bypass traditional ones?",
       "adjacency_level": "direct",
-      "phd_contribution": "Quantifies social capital accumulation in OSS careers; reveals network bottlenecks in progression pathways",
+      "phd_contribution": "Theorizing how AI transforms legitimate participation pathways in OSS communities of practice",
       "model_additions": [
-        "Network topology variables",
-        "Tie strength dynamics",
-        "Structural hole indicators"
+        "AI-assisted contribution types",
+        "Pathway legitimacy threshold",
+        "AI-mediated participation quality"
       ],
       "risk": "low",
       "reward": "high"
     },
     {
-      "theory_name": "Self-Determination Theory",
-      "key_citation": "Deci & Ryan 1985",
-      "description": "Motivation theory focusing on innate psychological needs for autonomy, competence, and relatedness",
-      "relevance_to_rqs": "Explains motivational drivers for progression (RQ1) and provides framework for designing effective interventions (RQ2)",
-      "relevance_to_model": "Can model motivation as stock influenced by autonomy support, competence feedback, and relatedness events",
+      "theory_name": "Absorptive Capacity",
+      "key_citation": "Cohen & Levinthal 1990",
+      "description": "Organization's ability to recognize, assimilate, and apply new external knowledge",
+      "relevance_to_rqs": "Explains how developers and projects absorb AI-generated code and knowledge",
+      "relevance_to_model": "Model project/developer capacity to evaluate, integrate, and build upon AI contributions",
       "adjacency_level": "direct",
-      "phd_contribution": "Links motivational dynamics to career progression; provides psychological foundation for intervention design",
+      "phd_contribution": "Extending absorptive capacity theory to AI-human collaboration in OSS",
       "model_additions": [
-        "Motivation stocks",
-        "Psychological need satisfaction variables",
-        "Demotivation feedback loops"
+        "AI knowledge absorption rate",
+        "Prior knowledge stocks for AI evaluation",
+        "Assimilation capacity constraints"
       ],
-      "risk": "medium",
+      "risk": "low",
       "reward": "high"
     },
     {
-      "theory_name": "Normal Accident Theory",
-      "key_citation": "Perrow 1984",
-      "description": "Argues that accidents are inevitable in complex, tightly-coupled systems due to interactive complexity",
-      "relevance_to_rqs": "Directly addresses RQ3 by explaining why vulnerabilities emerge in complex socio-technical systems like OSS",
-      "relevance_to_model": "Can model system complexity and coupling as variables affecting vulnerability introduction and detection rates",
+      "theory_name": "Competence Motivation Theory",
+      "key_citation": "Harter 1978",
+      "description": "Individuals are motivated by developing competence and receiving positive feedback",
+      "relevance_to_rqs": "Explains how AI affects developer motivation and skill development pathways",
+      "relevance_to_model": "Model how AI-assisted contributions affect perceived competence and motivation feedback loops",
       "adjacency_level": "direct",
-      "phd_contribution": "Applies NAT to software security context; reveals systemic rather than individual causes of vulnerabilities",
+      "phd_contribution": "Understanding AI's impact on competence development and motivation in OSS careers",
       "model_additions": [
-        "Interactive complexity metrics",
-        "Coupling variables",
-        "Accident pathway modeling"
+        "Perceived competence",
+        "Motivation feedback",
+        "Skill demonstration opportunities"
       ],
       "risk": "medium",
       "reward": "high"
@@ -51,79 +51,79 @@
   ],
   "adjacent_opportunities": [
     {
-      "theory_name": "Organizational Learning",
-      "key_citation": "Argyris & Sch\u00f6n 1978",
-      "description": "Examines how organizations detect and correct errors through single-loop and double-loop learning",
-      "why_adjacent": "OSS communities are organizations but rarely studied as such; focuses on collective rather than individual learning",
-      "novel_angle": "Treats OSS communities as learning organizations with defensive routines and learning disabilities",
+      "theory_name": "Boundary Objects",
+      "key_citation": "Star & Griesemer 1989",
+      "description": "Artifacts that enable coordination between different social worlds while maintaining their individual meanings",
+      "why_adjacent": "Focuses on artifacts rather than people, but highly relevant to collaboration",
+      "novel_angle": "AI-generated code as boundary objects between human developers and AI systems",
       "adjacency_level": "adjacent",
-      "phd_contribution": "Explains why some communities fail to learn from security incidents; reveals organizational barriers to improvement",
+      "phd_contribution": "Theorizing AI outputs as boundary objects in OSS development",
       "risk": "medium",
       "reward": "high"
     },
     {
-      "theory_name": "Actor-Network Theory",
-      "key_citation": "Latour 2005",
-      "description": "Treats both human and non-human actors as equally important in network formation and stability",
-      "why_adjacent": "Extends beyond human social networks to include technical artifacts in the progression pathway",
-      "novel_angle": "Reveals how tools, bots, documentation, and code artifacts enable or constrain career progression",
+      "theory_name": "Distributed Cognition",
+      "key_citation": "Hutchins 1995",
+      "description": "Cognitive processes are distributed across individuals, artifacts, and environments",
+      "why_adjacent": "Shifts focus from individual learning to system-level cognition",
+      "novel_angle": "Modeling OSS communities as distributed cognitive systems now including AI agents",
       "adjacency_level": "adjacent",
-      "phd_contribution": "Shows how socio-technical networks shape career paths; explains role of non-human actors in vulnerability introduction",
-      "risk": "high",
+      "phd_contribution": "Understanding how AI redistributes cognitive labor in OSS development",
+      "risk": "medium",
       "reward": "medium"
     },
     {
-      "theory_name": "Job Demands-Resources Model",
-      "key_citation": "Bakker & Demerouti 2007",
-      "description": "Work stress model where job demands require effort while job resources help achieve goals and reduce demands",
-      "why_adjacent": "Applies organizational psychology to volunteer contexts; focuses on burnout and engagement dynamics",
-      "novel_angle": "Explains attrition and burnout in OSS careers as function of demands/resources imbalance",
+      "theory_name": "Institutional Work",
+      "key_citation": "Lawrence & Suddaby 2006",
+      "description": "The purposive action of individuals and organizations aimed at creating, maintaining, and disrupting institutions",
+      "why_adjacent": "Focuses on institutional level rather than individual career paths",
+      "novel_angle": "How core developers engage in institutional work to adapt OSS norms and practices to AI era",
       "adjacency_level": "adjacent",
-      "phd_contribution": "Predicts points of developer dropout; provides framework for sustainable community design",
-      "risk": "medium",
-      "reward": "medium"
+      "phd_contribution": "Understanding institutional maintenance work in OSS facing technological disruption",
+      "risk": "high",
+      "reward": "high"
     }
   ],
   "cross_domain_inspiration": [
     {
-      "theory": "Ecosystem Succession Theory",
+      "theory": "Ecological Succession",
       "source_domain": "Ecology",
-      "parallel": "OSS communities as ecosystems with pioneer species, climax communities, and disturbance responses",
-      "transfer_potential": "Predicts community maturity stages and vulnerability to disruption during transitions",
+      "parallel": "Community structure changes over time as species replace one another",
+      "transfer_potential": "Model OSS community succession patterns as AI changes skill requirements and role definitions",
+      "adjacency_level": "exploratory",
+      "risk": "high",
+      "reward": "medium",
+      "rationale": "Provides dynamic framework for understanding long-term community transformation"
+    },
+    {
+      "theory": "Actor-Network Theory",
+      "source_domain": "Sociology of Science & Technology",
+      "parallel": "Human and non-human actors form networks that shape social outcomes",
+      "transfer_potential": "Treat AI systems as actors in OSS development networks with agency and influence",
       "adjacency_level": "exploratory",
       "risk": "high",
       "reward": "high",
-      "rationale": "Provides powerful metaphors for community resilience and vulnerability patterns across lifecycle"
+      "rationale": "Radically reframes AI as active participant rather than passive tool"
     },
     {
-      "theory": "Professional Socialization Theory",
-      "source_domain": "Medical Sociology",
-      "parallel": "Medical residency as intensive socialization from novice to expert with formal/informal learning",
-      "transfer_potential": "Reveals hidden curriculum and identity transformation aspects of OSS career progression",
+      "theory": "Competence-Destroying vs Competence-Enhancing Innovations",
+      "source_domain": "Technology Management",
+      "parallel": "Innovations that render existing skills obsolete vs those that build on them",
+      "transfer_potential": "Characterize AI programming tools as competence-destroying or enhancing for developer careers",
       "adjacency_level": "exploratory",
-      "risk": "high",
-      "reward": "medium",
-      "rationale": "Explains identity formation and professional values adoption missing from current learning theories"
-    },
-    {
-      "theory": "Swarm Intelligence",
-      "source_domain": "Complex Systems Biology",
-      "parallel": "Collective problem-solving in decentralized systems like ant colonies or bird flocks",
-      "transfer_potential": "Models how decentralized coordination emerges and fails in OSS communities",
-      "adjacency_level": "exploratory",
-      "risk": "high",
-      "reward": "medium",
-      "rationale": "Offers novel perspective on collective code quality assurance and vulnerability detection"
+      "risk": "medium",
+      "reward": "high",
+      "rationale": "Provides strategic framework for understanding AI's disruptive potential"
     }
   ],
   "phd_strategy": {
     "recommended_theories": [
-      "Social Network Theory",
-      "Self-Determination Theory",
-      "Normal Accident Theory"
+      "Legitimate Peripheral Participation",
+      "Absorptive Capacity",
+      "Competence Motivation Theory"
     ],
-    "rationale": "These three theories directly address the core gaps: SNT explains social dynamics of progression, SDT provides motivational foundation for interventions, and NAT offers systemic perspective on vulnerabilities. All are well-established with empirical support and can be effectively modeled in system dynamics.",
-    "integration_strategy": "Use SNT to extend Communities of Practice by quantifying social capital; apply SDT to enrich SECI model with motivational drivers; employ NAT to complement existing learning theories with systemic risk perspective. Create integrated SD model showing how social networks \u00d7 motivation \u00d7 system complexity affect career progression and security outcomes.",
-    "expected_impact": "Transforms the research from descriptive to explanatory; enables predictive modeling of career pathways and vulnerability risks; provides theoretically-grounded intervention design principles for OSS communities."
+    "rationale": "These theories directly address the core research question while providing complementary perspectives: learning pathways, knowledge integration, and motivation dynamics",
+    "integration_strategy": "Use LPP as primary framework for career pathways, augmented by absorptive capacity for knowledge integration and competence motivation for individual development drivers",
+    "expected_impact": "Creates comprehensive theoretical framework explaining how AI transforms OSS career paths through learning, knowledge, and motivation mechanisms"
   }
 }

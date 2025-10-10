@@ -66,12 +66,7 @@ def main() -> None:
     parser.add_argument(
         "--theory-enhancement",
         action="store_true",
-        help="Suggest theory-based model enhancements"
-    )
-    parser.add_argument(
-        "--theory-enhancement-mdl",
-        action="store_true",
-        help="Generate enhanced MDL file (requires --theory-enhancement or enables it automatically)"
+        help="Suggest theory-based model enhancements and generate enhanced MDL file"
     )
     parser.add_argument(
         "--rq-analysis",
@@ -135,7 +130,6 @@ def main() -> None:
         args.verify_citations = True
         args.theory_validation = True
         args.theory_enhancement = True
-        args.theory_enhancement_mdl = True
         args.rq_analysis = True
         args.theory_discovery = True
         args.gap_analysis = True
@@ -163,9 +157,6 @@ def main() -> None:
         if not args.citations:
             args.citations = True
 
-    if args.theory_enhancement_mdl and not args.theory_enhancement:
-        args.theory_enhancement = True
-
     setup_logging()
     logger = logging.getLogger(__name__)
 
@@ -181,7 +172,6 @@ def main() -> None:
             run_theory_validation=args.theory_validation,
             # Model improvement features
             run_theory_enhancement=args.theory_enhancement,
-            generate_enhanced_mdl=args.theory_enhancement_mdl,
             run_rq_analysis=args.rq_analysis,
             run_theory_discovery=args.theory_discovery,
             run_gap_analysis=args.gap_analysis,

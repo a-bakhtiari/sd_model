@@ -20,12 +20,13 @@ from .pipeline.citation_verification import verify_all_citations, generate_conne
 from .pipeline.gap_analysis import identify_gaps
 from .pipeline.paper_discovery import suggest_papers_for_gaps
 from .pipeline.csv_export import generate_connections_csv, generate_loops_csv
-from .pipeline.theory_enhancement import run_theory_enhancement
+from .pipeline.theory_enhancement import run_theory_enhancement as execute_theory_enhancement
 from .pipeline.rq_alignment import run_rq_alignment
 from .pipeline.rq_refinement import run_rq_refinement
 from .pipeline.theory_discovery import run_theory_discovery
 from .llm.client import LLMClient
-from .pipeline.llm_extraction import infer_variable_types, infer_connections, extract_diagram_style
+from .parsers import extract_variables, extract_connections
+from .pipeline.llm_extraction import extract_diagram_style
 from .provenance.store import log_event
 from .validation.schema import validate_json_schema
 from .external.semantic_scholar import SemanticScholarClient
@@ -43,7 +44,6 @@ def run_pipeline(
     run_theory_validation: bool = False,
     # Model improvement features
     run_theory_enhancement: bool = False,
-    generate_enhanced_mdl: bool = False,
     run_rq_analysis: bool = False,
     run_theory_discovery: bool = False,
     run_gap_analysis: bool = False,
@@ -68,8 +68,7 @@ def run_pipeline(
         run_theory_validation: Validate model against existing theories
 
         # Model improvement features
-        run_theory_enhancement: Suggest theory-based model enhancements
-        generate_enhanced_mdl: Generate enhanced MDL file (requires run_theory_enhancement)
+        run_theory_enhancement: Suggest theory-based enhancements and generate enhanced MDL
         run_rq_analysis: Run research question alignment and refinement
         run_theory_discovery: Discover relevant theories for the model
         run_gap_analysis: Identify unsupported connections (requires run_citations)
@@ -98,16 +97,16 @@ def run_pipeline(
         raise FileNotFoundError(f"No .mdl file found in {paths.mdl_dir}")
     logger.info(f"Found MDL file: {mdl_path.name}")
 
-    logger.info("Initializing LLM client")
-    client = LLMClient()
-
-    logger.info("Extracting variables from MDL file...")
-    variables_data = infer_variable_types(mdl_path, client)
+    logger.info("Extracting variables from MDL file (Python parser)...")
+    variables_data = extract_variables(mdl_path)
     logger.info(f"✓ Found {len(variables_data.get('variables', []))} variables")
 
-    logger.info("Extracting connections from MDL file...")
-    connections_data = infer_connections(mdl_path, variables_data, client)
+    logger.info("Extracting connections from MDL file (Python parser)...")
+    connections_data = extract_connections(mdl_path, variables_data)
     logger.info(f"✓ Found {len(connections_data.get('connections', []))} connections")
+
+    logger.info("Initializing LLM client for downstream tasks...")
+    client = LLMClient()
 
     paths.variables_llm_path.write_text(json.dumps(variables_data, indent=2), encoding="utf-8")
     paths.connections_llm_path.write_text(json.dumps(connections_data, indent=2), encoding="utf-8")
@@ -449,7 +448,7 @@ def run_pipeline(
         if run_theory_enhancement:
             logger.info("Running Theory Enhancement module...")
             try:
-                theory_enh = run_theory_enhancement(
+                theory_enh = execute_theory_enhancement(
                     theories=theories,
                     variables=variables_data,
                     connections={"connections": connections_named},
@@ -467,8 +466,18 @@ def run_pipeline(
                 logger.info(f"✓ Theory Enhancement complete: {theory_count} theories, {total_vars} variables, {total_conns} connections")
                 log_event(paths.db_dir / "provenance.sqlite", "theory_enhancement", {})
 
-                # Optional: Generate enhanced MDL file
-                if generate_enhanced_mdl and "error" not in theory_enh and len(theory_enh.get('missing_from_theories', [])) > 0:
+                # Always generate enhanced MDL file when theory enhancement runs
+                # Check if any theories have additions, modifications, or removals
+                has_changes = any(
+                    len(t.get('additions', {}).get('variables', [])) > 0 or
+                    len(t.get('additions', {}).get('connections', [])) > 0 or
+                    len(t.get('modifications', {}).get('variables', [])) > 0 or
+                    len(t.get('modifications', {}).get('connections', [])) > 0 or
+                    len(t.get('removals', {}).get('variables', [])) > 0 or
+                    len(t.get('removals', {}).get('connections', [])) > 0
+                    for t in theory_enh.get('theories', [])
+                )
+                if "error" not in theory_enh and has_changes:
                     logger.info("Applying theory enhancements to MDL...")
                     try:
                         from .mdl_text_patcher import apply_theory_enhancements
@@ -628,7 +637,7 @@ def run_pipeline(
         "connections_csv": str(paths.connections_export_path),
         "loops_csv": str(paths.loops_export_path),
         "theory_enhancement": str(paths.theory_enhancement_path) if run_theory_enhancement else None,
-        "enhanced_mdl": str(enhanced_mdl_path) if (generate_enhanced_mdl and enhanced_mdl_path) else None,
+        "enhanced_mdl": str(enhanced_mdl_path) if (run_theory_enhancement and enhanced_mdl_path) else None,
         "rq_alignment": str(paths.rq_alignment_path) if run_rq_analysis else None,
         "rq_refinement": str(paths.rq_refinement_path) if run_rq_analysis else None,
         "theory_discovery": str(paths.theory_discovery_path) if run_theory_discovery else None,
@@ -644,7 +653,6 @@ def run_pipeline(
             "verify_cit": verify_cit,
             "run_theory_validation": run_theory_validation,
             "run_theory_enhancement": run_theory_enhancement,
-            "generate_enhanced_mdl": generate_enhanced_mdl,
             "run_rq_analysis": run_rq_analysis,
             "run_theory_discovery": run_theory_discovery,
             "run_gap_analysis": run_gap_analysis,

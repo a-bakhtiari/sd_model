@@ -1,0 +1,115 @@
+{
+  "archetypes": [
+    {
+      "name": "Limits to Success",
+      "detected": true,
+      "confidence": 0.7,
+      "evidence": {
+        "reinforcing_growth_loop": [
+          "New Contributors",
+          "Experienced Contributors",
+          "Core Developer"
+        ],
+        "limiting_factor": [
+          "Developer's Turnover"
+        ],
+        "balancing_loop": [
+          "Developer's Turnover",
+          "Core Developer"
+        ]
+      },
+      "missing_components": {
+        "variables": [
+          {
+            "name": "Project Attractiveness",
+            "type": "Auxiliary",
+            "rationale": "To represent the factor that drives initial contributor growth and eventually becomes constrained"
+          },
+          {
+            "name": "Workload Pressure",
+            "type": "Auxiliary",
+            "rationale": "To represent the increasing burden on core developers that leads to turnover"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Core Developer",
+            "to": "Workload Pressure",
+            "relationship": "positive",
+            "rationale": "More core developers create coordination complexity and workload"
+          },
+          {
+            "from": "Workload Pressure",
+            "to": "Developer's Turnover",
+            "relationship": "positive",
+            "rationale": "High workload pressure increases turnover rate"
+          },
+          {
+            "from": "Workload Pressure",
+            "to": "Project Attractiveness",
+            "relationship": "negative",
+            "rationale": "High workload makes the project less attractive to new contributors"
+          }
+        ]
+      },
+      "rationale": "The model shows a reinforcing growth loop of contributors progressing to core developers, but this growth is limited by developer turnover, creating a classic limits to success pattern where growth eventually hits constraints."
+    },
+    {
+      "name": "Shifting the Burden",
+      "detected": true,
+      "confidence": 0.6,
+      "evidence": {
+        "symptom": [
+          "Developer's Turnover"
+        ],
+        "symptomatic_solution": [
+          "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"
+        ],
+        "fundamental_solution": [
+          "Implicit Knowledge Transfer (Mentorship)"
+        ]
+      },
+      "missing_components": {
+        "variables": [
+          {
+            "name": "Knowledge Retention",
+            "type": "Stock",
+            "rationale": "To represent the accumulated organizational knowledge that affects project sustainability"
+          },
+          {
+            "name": "Quick Fix Pressure",
+            "type": "Auxiliary",
+            "rationale": "To represent the urgency driving preference for quick documentation over mentorship"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Implicit Knowledge Transfer (Mentorship)",
+            "to": "Knowledge Retention",
+            "relationship": "positive",
+            "rationale": "Mentorship builds deep, sustainable knowledge"
+          },
+          {
+            "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "to": "Knowledge Retention",
+            "relationship": "positive",
+            "rationale": "Documentation provides quick but superficial knowledge transfer"
+          },
+          {
+            "from": "Developer's Turnover",
+            "to": "Quick Fix Pressure",
+            "relationship": "positive",
+            "rationale": "High turnover creates pressure for quick solutions"
+          }
+        ]
+      },
+      "rationale": "The model suggests potential reliance on explicit documentation as a quick fix for knowledge loss, while the more fundamental solution of mentorship may be underutilized, representing a shifting the burden pattern."
+    }
+  ],
+  "summary": {
+    "archetypes_detected": 2,
+    "high_confidence": 0,
+    "total_variables_suggested": 4,
+    "total_connections_suggested": 6
+  }
+}

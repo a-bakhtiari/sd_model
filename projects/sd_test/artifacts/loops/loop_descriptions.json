@@ -1,0 +1,20 @@
+{
+  "descriptions": [
+    {
+      "id": "R01",
+      "description": "This reinforcing loop accelerates team growth as more core developers provide mentorship, directly increasing the promotion rate of new members into the core team."
+    },
+    {
+      "id": "R02",
+      "description": "This virtuous cycle amplifies team capability as mentorship builds contributor skills and experience, creating a larger, more qualified pipeline for core developer promotion."
+    },
+    {
+      "id": "B01",
+      "description": "This balancing loop stabilizes team size by limiting growth; as the core team expands, turnover increases, naturally counteracting further expansion."
+    },
+    {
+      "id": "B02",
+      "description": "This balancing loop creates a delayed constraint on growth; while mentorship builds skills, it initially increases the contributor pool, creating a longer, more competitive path to core developer status."
+    }
+  ]
+}

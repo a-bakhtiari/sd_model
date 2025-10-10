@@ -4,3 +4,7 @@
 2- add a prompt instcutions for when it needs to write prompts
 
 3- keep it's responses to you consice and to the point
+
+4- don't just start md files and documenation updating everytime,
+
+5- you only git checkpoint when I tell you to do so the key word is checkpoint

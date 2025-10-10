@@ -1,187 +1,102 @@
 {
   "overall_assessment": {
-    "model_rq_fit": "moderate",
+    "model_rq_fit": "poor",
     "theory_rq_fit": "moderate",
     "coherence": "poor",
-    "phd_viability": "moderate",
-    "summary": "The research questions show moderate alignment with theories but poor coherence as a set. The model captures community dynamics but lacks explicit representation of knowledge transfer processes and security mechanisms. Significant theoretical and modeling gaps exist for RQ2 and RQ3."
+    "phd_viability": "poor",
+    "summary": "The research question focuses on AI's impact on developer career paths, but the model lacks explicit AI-related variables and mechanisms. While the theories provide a foundation for understanding learning trajectories, they don't address technological disruption. The current configuration cannot adequately answer the research question without significant modifications."
   },
   "rq_1": {
-    "alignment_score": 6,
-    "theory_fit": {
-      "score": 8,
-      "assessment": "Communities of Practice provides strong theoretical foundation for understanding peripheral-to-core transitions. SECI model complements by explaining knowledge conversion processes during this journey.",
-      "gaps": [
-        "Lack of motivational theories explaining why developers progress",
-        "No social network theories for relationship building"
-      ]
-    },
-    "model_fit": {
-      "score": 5,
-      "assessment": "Model captures basic progression through stocks but lacks explicit representation of learning processes, mentorship, or skill development pathways.",
-      "gaps": [
-        "No explicit skill/knowledge stocks",
-        "Missing mentorship/guidance variables",
-        "No representation of social integration processes"
-      ]
-    },
-    "critical_issues": [
-      {
-        "issue": "Model treats developer progression as automatic rather than skill/knowledge-dependent",
-        "severity": "high"
-      },
-      {
-        "issue": "No representation of barriers or drop-out factors in career progression",
-        "severity": "medium"
-      }
-    ],
-    "recommendations": {
-      "theories_to_add": [
-        {
-          "theory": "Situated Learning Theory",
-          "why": "Provides deeper understanding of learning in authentic contexts"
-        },
-        {
-          "theory": "Social Network Theory",
-          "why": "Explains relationship building and social capital accumulation"
-        }
-      ],
-      "theories_to_remove": [],
-      "model_additions": [
-        "Developer skill/knowledge stocks",
-        "Mentorship effectiveness variable",
-        "Social integration metrics",
-        "Barriers to progression (complexity, gatekeeping)"
-      ],
-      "priority": "high"
-    }
-  },
-  "rq_2": {
     "alignment_score": 3,
     "theory_fit": {
-      "score": 4,
-      "assessment": "Current theories describe natural processes but lack prescriptive power for designing interventions. Limited guidance on how to actively smooth the transition process.",
+      "score": 6,
+      "assessment": "Communities of Practice and SECI model provide a reasonable foundation for understanding the traditional novice-to-core transition through knowledge transfer and participation. However, neither theory addresses technological disruption or automation effects on learning pathways.",
       "gaps": [
-        "No intervention design theories",
-        "Missing organizational change theories",
-        "Lack of motivational design frameworks"
+        "No theory addressing technological disruption of learning processes",
+        "No framework for understanding AI-mediated knowledge transfer",
+        "Missing theory on how automation affects skill acquisition trajectories"
       ]
     },
     "model_fit": {
       "score": 2,
-      "assessment": "Model structure is descriptive rather than prescriptive. No variables represent potential interventions or their effects on the system.",
+      "assessment": "The model contains relevant stocks for tracking developer progression (New Contributors, Core Developers) but completely lacks any AI-related variables or mechanisms. The connections focus on traditional community dynamics without modeling how AI tools might alter learning, contribution, or promotion processes.",
       "gaps": [
-        "No intervention levers",
-        "Missing policy/testing variables",
-        "No representation of onboarding program effectiveness"
+        "No AI-related variables (e.g., AI code generation, AI review tools)",
+        "No mechanisms showing how AI affects skill acquisition",
+        "Missing variables for AI-mediated contribution pathways",
+        "No representation of changing skill requirements due to AI"
       ]
     },
     "critical_issues": [
       {
-        "issue": "Model cannot simulate intervention effects",
+        "issue": "Complete absence of AI-related variables and mechanisms in the model",
         "severity": "critical"
       },
       {
-        "issue": "Theories don't provide intervention design principles",
+        "issue": "Theories don't address technological disruption of learning pathways",
+        "severity": "high"
+      },
+      {
+        "issue": "Model tracks developer progression but doesn't explain what drives it in AI context",
         "severity": "high"
       }
     ],
     "recommendations": {
       "theories_to_add": [
         {
-          "theory": "Intervention Design/Implementation Science",
-          "why": "Provides frameworks for designing and testing interventions"
+          "theory": "Technology Acceptance Model (TAM) or Unified Theory of Acceptance and Use of Technology (UTAUT)",
+          "why": "To understand how developers adopt and integrate AI tools into their workflow"
         },
         {
-          "theory": "Organizational Learning",
-          "why": "Explains how communities can systematically improve processes"
+          "theory": "Activity Theory",
+          "why": "To analyze how AI tools transform the activity system of software development and learning"
+        },
+        {
+          "theory": "Human-AI collaboration frameworks",
+          "why": "To model how developers interact with AI systems in knowledge work"
         }
       ],
       "theories_to_remove": [],
       "model_additions": [
-        "Onboarding program effectiveness",
-        "Mentorship capacity",
-        "Documentation quality metrics",
-        "Policy testing parameters"
-      ],
-      "priority": "high"
-    }
-  },
-  "rq_3": {
-    "alignment_score": 2,
-    "theory_fit": {
-      "score": 1,
-      "assessment": "Current theories focus on knowledge and community, not security or system failure. Complete theoretical gap for vulnerability prevention.",
-      "gaps": [
-        "No software security theories",
-        "Missing reliability engineering frameworks",
-        "Lack of risk management theories"
-      ]
-    },
-    "model_fit": {
-      "score": 3,
-      "assessment": "Model includes some relevant variables (source code, user base) but lacks explicit security mechanisms, vulnerability introduction, or quality control processes.",
-      "gaps": [
-        "No vulnerability/defect stocks",
-        "Missing code review effectiveness",
-        "No security culture variables",
-        "Lack of quality assurance processes"
-      ]
-    },
-    "critical_issues": [
-      {
-        "issue": "Complete theoretical mismatch - current theories don't address security",
-        "severity": "critical"
-      },
-      {
-        "issue": "Model cannot represent vulnerability introduction or prevention",
-        "severity": "high"
-      }
-    ],
-    "recommendations": {
-      "theories_to_add": [
-        {
-          "theory": "Software Reliability/Security Engineering",
-          "why": "Provides frameworks for understanding and preventing vulnerabilities"
-        },
-        {
-          "theory": "High-Reliability Organizations",
-          "why": "Explains how organizations maintain safety in complex systems"
-        }
-      ],
-      "theories_to_remove": [],
-      "model_additions": [
-        "Vulnerability introduction rate",
-        "Code review effectiveness",
-        "Security culture metrics",
-        "Testing coverage impact",
-        "Technical debt accumulation"
+        "AI tool adoption rate variable",
+        "AI-generated code contribution flow",
+        "AI-mediated learning acceleration factor",
+        "Changing skill requirement stocks",
+        "AI review assistance variable",
+        "Human-AI collaboration efficiency",
+        "Traditional vs AI-assisted contribution pathways"
       ],
       "priority": "high"
     }
   },
   "actionable_steps": [
     {
-      "step": "Reframe RQ3 or split into separate research project",
-      "rationale": "Security focus requires completely different theoretical foundation",
+      "step": "Add explicit AI-related variables to the model",
+      "rationale": "The research question specifically addresses AI impact, which is completely missing from current model",
       "impact": "high",
       "effort": "medium"
     },
     {
-      "step": "Add explicit skill/knowledge stocks and learning pathways to model",
-      "rationale": "Enables modeling of actual progression mechanisms rather than simple flows",
+      "step": "Integrate technology adoption theories with learning theories",
+      "rationale": "Current theories explain learning but not how technology transforms learning processes",
       "impact": "high",
       "effort": "medium"
     },
     {
-      "step": "Integrate intervention testing parameters into model structure",
-      "rationale": "Allows simulation of different onboarding and support strategies",
+      "step": "Define mechanisms for how AI affects each stage of developer progression",
+      "rationale": "Need causal pathways showing AI's impact on novice learning, contribution quality, and core promotion",
+      "impact": "high",
+      "effort": "high"
+    },
+    {
+      "step": "Conduct preliminary interviews with developers using AI tools",
+      "rationale": "Grounded theory approach needed to understand real-world AI impacts before modeling",
       "impact": "medium",
       "effort": "medium"
     },
     {
-      "step": "Clarify relationship between theories - are they complementary or competing?",
-      "rationale": "Improves theoretical coherence and analytical power",
+      "step": "Simplify model by removing variables not directly relevant to career progression",
+      "rationale": "Current model has many variables (44) that may dilute focus from core research question",
       "impact": "medium",
       "effort": "low"
     }

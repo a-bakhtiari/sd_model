@@ -1,0 +1,131 @@
+{
+  "theories": [
+    {
+      "name": "Communities of Practice (Wenger)",
+      "rationale": "The current model captures movement from periphery to core but lacks key CoP concepts like legitimate peripheral participation, boundary processes, and shared practice development. Adding these elements will better represent how newcomers become integrated into the community through meaningful participation and how the community's identity and practice evolve over time.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Legitimate Peripheral Participation Opportunities",
+            "type": "Auxiliary",
+            "description": "Availability of meaningful but low-risk tasks that allow newcomers to participate and learn"
+          },
+          {
+            "name": "Community Boundary Strength",
+            "type": "Auxiliary",
+            "description": "Degree to which the community maintains distinct identity and practices"
+          },
+          {
+            "name": "Shared Practice Development Rate",
+            "type": "Flow",
+            "description": "Rate at which community practices, norms, and tools evolve through collective activity"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Legitimate Peripheral Participation Opportunities",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Legitimate Peripheral Participation Opportunities",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Boundary Strength",
+            "to": "Promotion Rate",
+            "relationship": "negative"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Community Boundary Strength",
+            "relationship": "positive"
+          },
+          {
+            "from": "Shared Practice Development Rate",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Nonaka's SECI Model",
+      "rationale": "The current model has implicit and explicit knowledge transfer but doesn't capture the full knowledge spiral of socialization, externalization, combination, and internalization. Adding these processes will better represent how tacit knowledge becomes explicit and gets re-integrated, creating a dynamic knowledge creation cycle essential for organizational learning.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Tacit Knowledge Base",
+            "type": "Stock",
+            "description": "Accumulated experiential knowledge held by community members"
+          },
+          {
+            "name": "Knowledge Externalization Rate",
+            "type": "Flow",
+            "description": "Rate at which tacit knowledge is converted to explicit forms through articulation"
+          },
+          {
+            "name": "Knowledge Combination Rate",
+            "type": "Flow",
+            "description": "Rate at which explicit knowledge elements are combined and systematized"
+          },
+          {
+            "name": "Knowledge Internalization Rate",
+            "type": "Flow",
+            "description": "Rate at which explicit knowledge is absorbed and becomes tacit understanding"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Tacit Knowledge Base",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Tacit Knowledge Base",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Externalization Rate",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Externalization Rate",
+            "to": "Tacit Knowledge Base",
+            "relationship": "negative"
+          },
+          {
+            "from": "Knowledge Combination Rate",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Internalization Rate",
+            "to": "Tacit Knowledge Base",
+            "relationship": "positive"
+          },
+          {
+            "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "to": "Knowledge Internalization Rate",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "citations": [
+    {
+      "connection_id": "C01",
+      "papers": [
+        {
+          "title": "Turnover of developers in libre software projects",
+          "authors": "Robles, G., Gonz\u00e1lez-Barahona, J. M., et al.",
+          "year": "2009",
+          "relevance": "Empirically analyzes developer turnover in OSS projects and its impact on project sustainability, showing how turnover affects core developer retention",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Contributor Turnover in Libre Software Projects",
+            "authors": [
+              "G. Robles",
+              "Jesus M. Gonzalez-Barahona"
+            ],
+            "year": 2006,
+            "url": "https://www.semanticscholar.org/paper/805937789c2a540c33f36a876b8991fdcd34f1ce",
+            "paper_id": "805937789c2a540c33f36a876b8991fdcd34f1ce",
+            "citation_count": 116,
+            "abstract": null,
+            "venue": "International Conference on Open Source Systems",
+            "fields_of_study": [
+              "Computer Science",
+              "Engineering"
+            ]
+          }
+        }
+      ],
+      "reasoning": "These papers provide empirical evidence of how developer turnover directly impacts the core developer population in OSS projects, affecting project continuity and knowledge retention."
+    }
+  ],
+  "summary": {
+    "total_papers": 39,
+    "verified": 1,
+    "unverified": 38,
+    "verification_rate": 0.026
+  }
+}

@@ -14,7 +14,8 @@ from ..llm.client import LLMClient
 def create_discovery_prompt(
     rqs: List[str],
     current_theories: List[Dict],
-    rq_alignment: Dict
+    variables: Dict,
+    connections: Dict
 ) -> str:
     """Create prompt for theory discovery."""
 
@@ -27,42 +28,35 @@ def create_discovery_prompt(
     # Format RQs
     rqs_text = "\n".join([f"{i+1}. {rq}" for i, rq in enumerate(rqs)])
 
-    # Extract alignment issues and recommendations
-    gaps_and_recommendations = ""
-    for i in range(1, 4):
-        rq_data = rq_alignment.get(f"rq_{i}", {})
-        score = rq_data.get("alignment_score", 0)
+    # Get all variables
+    all_vars = variables.get("variables", [])
+    vars_text = "\n".join([
+        f"- {v['name']} ({v.get('type', 'Unknown')})"
+        for v in all_vars
+    ])
 
-        # Get gaps from model_fit and theory_fit
-        model_gaps = rq_data.get("model_fit", {}).get("gaps", [])
-        theory_gaps = rq_data.get("theory_fit", {}).get("gaps", [])
+    # Get all connections
+    all_conns = connections.get("connections", [])
+    conns_text = "\n".join([
+        f"- {c['from_var']} → {c['to_var']} ({c.get('relationship', 'unknown')})"
+        for c in all_conns
+    ])
 
-        # Get theory recommendations
-        recs = rq_data.get("recommendations", {}).get("theories_to_add", [])
-
-        if model_gaps or theory_gaps or recs:
-            gaps_and_recommendations += f"\nRQ{i} (Alignment: {score}/10):\n"
-
-            if theory_gaps:
-                gaps_and_recommendations += "  Theory gaps:\n"
-                for gap in theory_gaps:
-                    gaps_and_recommendations += f"    - {gap}\n"
-
-            if recs:
-                gaps_and_recommendations += "  Suggested theories:\n"
-                for rec in recs:
-                    gaps_and_recommendations += f"    - {rec.get('theory', 'Unknown')}: {rec.get('why', '')}\n"
-
-    prompt = f"""You are an expert in organizational theory, knowledge management, software engineering, and system dynamics. Recommend new theories that could strengthen this PhD research project.
+    prompt = f"""You are an expert in theory development and research methodology. Recommend new theories that could strengthen this research project.
 
 # Research Questions
 {rqs_text}
 
+# Current System Dynamics Model
+
+## Current Variables
+{vars_text}
+
+## Current Connections
+{conns_text}
+
 # Current Theories
 {theories_text}
-
-# Gaps and Recommendations from Alignment Analysis
-{gaps_and_recommendations}
 
 # Your Task
 
@@ -144,21 +138,23 @@ Return ONLY the JSON structure, no additional text.
 def run_theory_discovery(
     rqs: List[str],
     current_theories: List[Dict],
-    rq_alignment: Dict
+    variables: Dict,
+    connections: Dict
 ) -> Dict:
     """Discover new theories to strengthen research.
 
     Args:
         rqs: List of research questions from RQ.txt
         current_theories: List of theory dictionaries from theories.csv
-        rq_alignment: Alignment results from Module 3
+        variables: Variables data from variables.json
+        connections: Connections data from connections.json
 
     Returns:
         Dictionary with theory discovery recommendations
     """
 
     # Create prompt
-    prompt = create_discovery_prompt(rqs, current_theories, rq_alignment)
+    prompt = create_discovery_prompt(rqs, current_theories, variables, connections)
 
     # Call LLM
     client = LLMClient(provider="deepseek")

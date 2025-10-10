@@ -48,7 +48,6 @@ def cmd_run(args: argparse.Namespace) -> None:
         args.verify_citations = True
         args.theory_validation = True
         args.theory_enhancement = True
-        args.theory_enhancement_mdl = True
         args.rq_analysis = True
         args.theory_discovery = True
         args.gap_analysis = True
@@ -72,8 +71,6 @@ def cmd_run(args: argparse.Namespace) -> None:
         args.gap_analysis = True
         if not args.citations:
             args.citations = True
-    if args.theory_enhancement_mdl and not args.theory_enhancement:
-        args.theory_enhancement = True
 
     result = run_pipeline(
         project=args.project,
@@ -84,7 +81,6 @@ def cmd_run(args: argparse.Namespace) -> None:
         run_theory_validation=args.theory_validation,
         # Model improvement features
         run_theory_enhancement=args.theory_enhancement,
-        generate_enhanced_mdl=args.theory_enhancement_mdl,
         run_rq_analysis=args.rq_analysis,
         run_theory_discovery=args.theory_discovery,
         run_gap_analysis=args.gap_analysis,
@@ -159,8 +155,7 @@ def build_parser() -> argparse.ArgumentParser:
     p_run.add_argument("--theory-validation", action="store_true", help="Validate model against existing theories")
 
     # Model improvement features
-    p_run.add_argument("--theory-enhancement", action="store_true", help="Suggest theory-based model enhancements")
-    p_run.add_argument("--theory-enhancement-mdl", action="store_true", help="Generate enhanced MDL file")
+    p_run.add_argument("--theory-enhancement", action="store_true", help="Suggest theory-based model enhancements and generate enhanced MDL file")
     p_run.add_argument("--rq-analysis", action="store_true", help="Run research question alignment and refinement")
     p_run.add_argument("--theory-discovery", action="store_true", help="Discover relevant theories for the model")
     p_run.add_argument("--gap-analysis", action="store_true", help="Identify unsupported connections")

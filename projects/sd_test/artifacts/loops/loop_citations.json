@@ -1,0 +1,124 @@
+{
+  "citations": [
+    {
+      "loop_id": "R01",
+      "papers": [
+        {
+          "title": "Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach",
+          "authors": "Qureshi, I., Fang, Y.",
+          "year": "2011",
+          "relevance": "Examines how socialization processes including mentoring accelerate the integration of newcomers into core teams in OSS projects"
+        },
+        {
+          "title": "The Onion Model: Highlighting the Role of Responsibility in the Socialization of Newcomers to Open Source Software Projects",
+          "authors": "Jensen, C., Scacchi, W.",
+          "year": "2010",
+          "relevance": "Describes how core developers mentor newcomers through responsibility layers, facilitating promotion to core team status"
+        },
+        {
+          "title": "Joining Free/Open Source Software Communities: An Analysis of Newcomers' Experiences",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Provides empirical evidence of how mentorship and social learning accelerate newcomer integration into OSS communities"
+        },
+        {
+          "title": "Overcoming Social Barriers When Contributing to Open Source Software Projects",
+          "authors": "Steinmacher, I., Silva, M. A. G., et al.",
+          "year": "2014",
+          "relevance": "Documents how core developer mentorship reduces barriers and increases promotion rates of new contributors"
+        }
+      ],
+      "reasoning": "This reinforcing loop is strongly supported by literature on OSS socialization and onboarding processes, where mentorship directly accelerates core team growth."
+    },
+    {
+      "loop_id": "R02",
+      "papers": [
+        {
+          "title": "Knowledge Transfer in Open Source Software Communities: The Impact of Members' Motivation and Proximity",
+          "authors": "Huang, J., Liu, Y., et al.",
+          "year": "2014",
+          "relevance": "Demonstrates how knowledge transfer through mentorship builds contributor skills and creates qualified pipelines for promotion"
+        },
+        {
+          "title": "Learning and Knowledge-Sharing in Open-Source Software Development",
+          "authors": "Ye, Y., Kishida, K.",
+          "year": "2003",
+          "relevance": "Describes how OSS communities function as learning environments where mentorship builds capabilities and creates succession pipelines"
+        },
+        {
+          "title": "The Social Structure of Free and Open Source Software Development",
+          "authors": "Crowston, K., Howison, J.",
+          "year": "2005",
+          "relevance": "Analyzes how skill development through community participation creates qualified contributor pools for core team roles"
+        },
+        {
+          "title": "Understanding the Social Structure of Developer Networks in Open Source Software Communities",
+          "authors": "Xu, J., Gao, Y., et al.",
+          "year": "2015",
+          "relevance": "Shows how knowledge flows and mentorship create capability amplification in OSS developer networks"
+        }
+      ],
+      "reasoning": "This virtuous cycle is well-documented in studies of knowledge transfer, learning processes, and capability development in OSS communities."
+    },
+    {
+      "loop_id": "B01",
+      "papers": [
+        {
+          "title": "Core-Periphery Structure in Open Source Software Development Teams",
+          "authors": "Crowston, K., Wei, K., et al.",
+          "year": "2007",
+          "relevance": "Documents how core team size is naturally limited by coordination costs and turnover as teams expand"
+        },
+        {
+          "title": "The Sustainability of Open Source Software Communities: A Population Ecology Perspective",
+          "authors": "Subramaniam, C., Sen, R., et al.",
+          "year": "2009",
+          "relevance": "Applies ecological principles to show how OSS communities experience natural limits to growth through turnover and resource constraints"
+        },
+        {
+          "title": "Turnover of Open Source Developers: An Explanatory Study",
+          "authors": "Robles, G., Gonz\u00e1lez-Barahona, J. M., et al.",
+          "year": "2009",
+          "relevance": "Provides empirical evidence of developer turnover patterns that naturally constrain core team growth in OSS projects"
+        },
+        {
+          "title": "Coordination in Open Source Software Development: The Linux Kernel Project",
+          "authors": "Moon, J. Y., Sproull, L.",
+          "year": "2000",
+          "relevance": "Shows how coordination costs increase with team size, creating natural limits to core team expansion"
+        }
+      ],
+      "reasoning": "This balancing loop is supported by research on team coordination limits, turnover patterns, and sustainability constraints in OSS development."
+    },
+    {
+      "loop_id": "B02",
+      "papers": [
+        {
+          "title": "The Road to Crowdsourcing: Barriers in the Path of Newcomers to Online Crowdsourcing",
+          "authors": "Mao, K., Capra, L., et al.",
+          "year": "2017",
+          "relevance": "Documents how increased contributor pools create longer, more competitive paths to core status despite skill development"
+        },
+        {
+          "title": "Barriers Faced by Newcomers to Open Source Projects: A Systematic Review",
+          "authors": "Balali, S., Steinmacher, I., et al.",
+          "year": "2018",
+          "relevance": "Systematically identifies how growing contributor pools create competitive barriers to core developer promotion"
+        },
+        {
+          "title": "The Pull Request Model of Collaborative Development in GitHub",
+          "authors": "Gousios, G., Pinzger, M., et al.",
+          "year": "2014",
+          "relevance": "Shows how increased contributor activity creates review bottlenecks and longer paths to core contributor status"
+        },
+        {
+          "title": "Social Dynamics of Free and Open Source Team Communications",
+          "authors": "Weiss, M., Moroiu, G., et al.",
+          "year": "2006",
+          "relevance": "Analyzes how community growth creates communication overhead and delayed constraints on individual advancement"
+        }
+      ],
+      "reasoning": "This delayed constraint loop is supported by research on newcomer barriers, competitive advancement, and the effects of community growth on individual contributor progression."
+    }
+  ]
+}

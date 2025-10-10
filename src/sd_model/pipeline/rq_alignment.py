@@ -161,7 +161,7 @@ def run_rq_alignment(
     Args:
         rqs: List of research questions from RQ.txt
         theories: List of theory dictionaries from theories.csv
-        variables: Variables data from variables_llm.json
+        variables: Variables data from variables.json
         connections: Connections data from connections.json
         loops: Loops data from loops.json
 
