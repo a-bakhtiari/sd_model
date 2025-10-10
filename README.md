@@ -35,19 +35,33 @@ cp .env.example .env
 #   - SEMANTIC_SCHOLAR_API_KEY (for citation verification)
 ```
 
-### 2. Run Pipeline with Citation Verification
-```bash
-# Run full pipeline with citation verification
-python3 -m src.sd_model.cli run --project oss_model --verify-citations
+### 2. Run Pipeline
 
-# Run with paper discovery too
-python3 -m src.sd_model.cli run --project oss_model --verify-citations --discover-papers
+**Simple usage:**
+```bash
+# Basic run (enables model improvement by default)
+python main.py --project oss_model
+
+# Save this run for later comparison
+python main.py --project oss_model --save-run "baseline-model"
+
+# With citation verification
+python main.py --project oss_model --verify-citations
+
+# Full features: verification + paper discovery + versioned run
+python main.py --project oss_model --verify-citations --discover-papers --save-run "v1-complete"
+```
+
+**Advanced CLI (alternative):**
+```bash
+# Same functionality via CLI module
+python -m sd_model.cli run --project oss_model --save-run baseline
 ```
 
 ### 3. Launch Interactive UI
 ```bash
 # Launch Streamlit UI
-python3 -m src.sd_model.cli ui --framework streamlit
+python -m sd_model.cli ui --framework streamlit
 
 # Then open browser and explore:
 #   - Dashboard: Overview of model

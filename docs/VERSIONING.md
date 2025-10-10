@@ -7,7 +7,7 @@ The pipeline supports two modes for managing artifacts:
 By default, running the pipeline overwrites artifacts in the standard location:
 
 ```bash
-python -m sd_model.cli run --project sd_test
+python main.py --project sd_test
 ```
 
 **Result:**
@@ -34,11 +34,11 @@ Add the `--save-run` flag to save artifacts to a timestamped folder:
 
 ```bash
 # Auto-generate timestamp name
-python -m sd_model.cli run --project sd_test --save-run
+python main.py --project sd_test --save-run
 
 # Custom run name
-python -m sd_model.cli run --project sd_test --save-run "baseline-model"
-python -m sd_model.cli run --project sd_test --save-run "after-theory-enhancement"
+python main.py --project sd_test --save-run "baseline-model"
+python main.py --project sd_test --save-run "after-theory-enhancement"
 ```
 
 **Result:**
@@ -141,10 +141,10 @@ This ensures you never lose manual edits to enhanced MDL files, regardless of wh
 
 ### Naming Conventions:
 ```bash
---save-run "baseline"                    # Before any changes
---save-run "CoP-enhancement"             # After adding Communities of Practice
---save-run "v1-submitted"                # Version submitted for review
---save-run "experiment-SECI-only"        # Testing specific theories
+python main.py --project sd_test --save-run "baseline"                    # Before any changes
+python main.py --project sd_test --save-run "CoP-enhancement"             # After adding Communities of Practice
+python main.py --project sd_test --save-run "v1-submitted"                # Version submitted for review
+python main.py --project sd_test --save-run "experiment-SECI-only"        # Testing specific theories
 ```
 
 ---
