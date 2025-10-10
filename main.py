@@ -195,6 +195,8 @@ def main() -> None:
 
     except Exception as e:
         logger.error(f"Pipeline failed: {e}")
+        import traceback
+        traceback.print_exc()
         sys.exit(1)
 
 

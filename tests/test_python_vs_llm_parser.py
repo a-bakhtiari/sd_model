@@ -90,13 +90,15 @@ def extract_python_parser_data(mdl_path: Path):
     # Variables are complete - type is determined solely by shape code
     final_variables = variables
 
-    # Extract connections from both sketch arrows and equations
-    # Sketch arrows show visual connections, equations show logical dependencies
+    # Extract connections from visual diagram only:
+    # 1. Direct variable-to-variable arrows from sketch
+    # 2. Stock-flow relationships (valve-mediated flows)
+    # NOTE: NOT extracting equation dependencies - only visual elements
     sketch_connections = extract_connections_from_sketch(parser)
-    equation_connections = extract_connections_from_equations(parser)
+    stock_flow_connections = extract_stock_flow_connections(parser)
 
-    # Merge connections, prioritizing equation polarity over sketch polarity
-    connections = merge_connections(sketch_connections, equation_connections)
+    # Merge visual sources
+    connections = merge_connections(sketch_connections, stock_flow_connections)
 
     return final_variables, connections
 
@@ -104,14 +106,39 @@ def extract_python_parser_data(mdl_path: Path):
 def extract_connections_from_sketch(parser: MDLSurgicalParser):
     """Extract connections from sketch arrows (visual connections).
 
-    Only includes arrows where both endpoints are actual variables,
-    not intermediate objects like valves or clouds.
+    Resolves valve-mediated connections to flow variables.
+    In SD diagrams: Stock → Valve → Stock becomes Stock → Flow → Stock
+    where the valve ID often corresponds to a flow variable ID.
     """
     connections = []
 
     # Get set of actual variable IDs (defined with 10, lines)
     var_ids = set(parser.sketch_vars.keys())
 
+    # Get set of valve IDs (defined with 11, lines)
+    valve_ids = set()
+    for line in parser.sketch_other:
+        if line.startswith("11,"):
+            parts = line.split(",")
+            if len(parts) >= 2:
+                try:
+                    valve_ids.add(int(parts[1]))
+                except ValueError:
+                    continue
+
+    # Build valve → flow variable mapping
+    # Often valve ID and flow variable ID are the same
+    # Flow variables have shape code 40
+    valve_to_flow = {}
+    for var_id, var in parser.sketch_vars.items():
+        parts = var.full_line.split(",")
+        shape_code = parts[7] if len(parts) > 7 else "0"
+        if shape_code == "40":  # Flow variable
+            # If there's a valve with same ID, map it
+            if var_id in valve_ids:
+                valve_to_flow[var_id] = var_id
+
+    # Process arrows and resolve valve endpoints
     for line in parser.sketch_other:
         # Format: 1,ArrowID,FromID,ToID,?,?,Field6,...
         # Field6=43 indicates POSITIVE polarity
@@ -122,9 +149,22 @@ def extract_connections_from_sketch(parser: MDLSurgicalParser):
                     from_id = int(parts[2])
                     to_id = int(parts[3])
 
-                    # Only include connections between actual variables
-                    # Skip arrows to/from valves, clouds, and other intermediate objects
-                    if from_id not in var_ids or to_id not in var_ids:
+                    # Resolve valve IDs to flow variable IDs
+                    resolved_from = valve_to_flow.get(from_id, from_id)
+                    resolved_to = valve_to_flow.get(to_id, to_id)
+
+                    # Only include if at least one endpoint is a variable
+                    # This captures Stock→Valve→Stock patterns
+                    from_is_var = resolved_from in var_ids
+                    to_is_var = resolved_to in var_ids
+
+                    if not (from_is_var or to_is_var):
+                        # Both are non-variables (clouds, etc.), skip
+                        continue
+
+                    # If one endpoint is still not a variable, skip this arrow
+                    # (we only want variable-to-variable connections)
+                    if not (from_is_var and to_is_var):
                         continue
 
                     field6 = parts[6]
@@ -133,8 +173,8 @@ def extract_connections_from_sketch(parser: MDLSurgicalParser):
                     polarity = "POSITIVE" if field6 == "43" else "UNDECLARED"
 
                     connections.append({
-                        "from": from_id,
-                        "to": to_id,
+                        "from": resolved_from,
+                        "to": resolved_to,
                         "polarity": polarity
                     })
                 except (ValueError, IndexError):
@@ -143,33 +183,127 @@ def extract_connections_from_sketch(parser: MDLSurgicalParser):
     return connections
 
 
-def merge_connections(sketch_conns, equation_conns):
-    """Merge sketch and equation connections, prioritizing equation polarity."""
+def extract_stock_flow_connections(parser: MDLSurgicalParser):
+    """Extract stock-flow relationships from stock equations.
+
+    In SD models, stocks accumulate flows. Direction depends on sign:
+    - Negative flow (-Flow): Stock → Flow (outflow)
+    - Positive flow (Flow): Flow → Stock (inflow)
+
+    Example: "PR = f(-Merge, ...)" creates: PR → Merge (Stock → Flow, outflow)
+    Example: "Source = f(Merge)" creates: Merge → Source (Flow → Stock, inflow)
+    """
+    connections = []
+
+    # Build mapping of variable names to IDs and types
+    var_info = {}
+    for var_id, var in parser.sketch_vars.items():
+        parts = var.full_line.split(",")
+        shape_code = parts[7] if len(parts) > 7 else "0"
+        var_type = {"3": "Stock", "40": "Flow", "8": "Auxiliary", "27": "Auxiliary"}.get(shape_code, "Auxiliary")
+        var_info[var.name] = {"id": var_id, "type": var_type}
+
+    # Process stock equations
+    for var_name in parser.equation_order:
+        if var_name not in parser.equations or var_name not in var_info:
+            continue
+
+        # Only process stocks
+        if var_info[var_name]["type"] != "Stock":
+            continue
+
+        stock_id = var_info[var_name]["id"]
+        equation = parser.equations[var_name]
+        equation_line = equation.equation_line
+
+        # Parse "A FUNCTION OF(...)" to find flows and their signs
+        if "A FUNCTION OF" in equation_line:
+            start = equation_line.find("(")
+            end = equation_line.rfind(")")
+            if start != -1 and end != -1:
+                deps_str = equation_line[start+1:end]
+
+                # Clean up continuation lines
+                deps_str = deps_str.replace("\\\n", " ").replace("\\n", " ").replace("\n", " ")
+                deps_str = deps_str.replace("\t", " ").strip()
+
+                # Parse dependencies respecting quotes
+                dep_parts = []
+                current = ""
+                in_quotes = False
+
+                for char in deps_str:
+                    if char == '"':
+                        in_quotes = not in_quotes
+                    elif char == ',' and not in_quotes:
+                        if current.strip():
+                            dep_parts.append(current.strip())
+                        current = ""
+                        continue
+                    current += char
+
+                if current.strip():
+                    dep_parts.append(current.strip())
+
+                # Check each dependency
+                for dep in dep_parts:
+                    if not dep:
+                        continue
+
+                    # Check for negative sign
+                    is_negative = dep.startswith("-")
+                    dep_name = dep.lstrip("-").strip().strip('"')
+
+                    # Check if this is a flow variable
+                    if dep_name in var_info and var_info[dep_name]["type"] == "Flow":
+                        flow_id = var_info[dep_name]["id"]
+
+                        if is_negative:
+                            # Outflow: Stock → Flow
+                            connections.append({
+                                "from": stock_id,
+                                "to": flow_id,
+                                "polarity": "UNDECLARED"
+                            })
+                        else:
+                            # Inflow: Flow → Stock
+                            connections.append({
+                                "from": flow_id,
+                                "to": stock_id,
+                                "polarity": "UNDECLARED"
+                            })
+
+    return connections
+
+
+def merge_connections(sketch_conns, stock_flow_conns):
+    """Merge sketch and stock-flow connections (visual elements only).
+
+    Deduplicates connections that appear in both sources.
+    """
     # Create a dict indexed by (from, to) pair
     conn_dict = {}
 
-    # First add sketch connections
+    # Add sketch connections first
     for conn in sketch_conns:
         key = (conn["from"], conn["to"])
-        conn_dict[key] = conn
+        conn_dict[key] = conn.copy()
 
-    # Then overlay equation connections (they override sketch polarity)
-    for conn in equation_conns:
+    # Add stock-flow connections (may overlap with sketch)
+    for conn in stock_flow_conns:
         key = (conn["from"], conn["to"])
-        if key in conn_dict:
-            # Connection exists in both - use equation polarity if more specific
-            if conn["polarity"] != "UNDECLARED":
-                conn_dict[key]["polarity"] = conn["polarity"]
-        else:
-            # New connection from equations only
-            conn_dict[key] = conn
+        if key not in conn_dict:
+            conn_dict[key] = conn.copy()
 
-    # Convert back to list
     return list(conn_dict.values())
 
 
 def extract_connections_from_equations(parser: MDLSurgicalParser):
-    """Extract logical connections from equation dependencies."""
+    """Extract logical connections from equation dependencies.
+
+    Extracts all dependencies from equations. Stock-flow connections may overlap
+    with stock_flow extractor, but merge will deduplicate them.
+    """
     connections = []
 
     # Build an improved name_to_id mapping that handles duplicates
@@ -414,7 +548,7 @@ def main():
 
     # Configure paths for each project
     if project_name == "sd_test":
-        mdl_path = project_root / "projects/sd_test/artifacts/test_enhanced.mdl"
+        mdl_path = project_root / "projects/sd_test/mdl/test.mdl"
     elif project_name == "oss_model":
         mdl_path = project_root / "projects/oss_model/mdl/untitled.mdl"
     else:

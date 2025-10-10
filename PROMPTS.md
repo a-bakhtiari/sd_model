@@ -7,54 +7,101 @@ This document contains the actual prompt text for all LLM API calls in the SD Mo
 ## 1. Model Extraction & Parsing
 
 ### VARIABLE_PROMPT
-**Location:** `src/sd_model/pipeline/llm_extraction.py:11-49`
+**Location:** `src/sd_model/pipeline/llm_extraction.py:11-105`
 
 ```text
-You are a system dynamics model parser. Analyze the provided Vensim .mdl text and return a JSON object.
+You are an expert Vensim .mdl file parser. Analyze the provided model text and generate a JSON object containing all variables with their positions and types.
 
-Instructions for understanding variable types:
-How to Find the Variable Types
-The key is in the lines that start with 10,. These lines define the variables you see on the diagram. The format is 10, ID, Name, X, Y, Width, Height, ShapeCode, ....
+## 1. Variable Extraction
+Focus on lines starting with `10,` in the sketch section. These define variables.
+Format: `10, ID, Name, X, Y, Width, Height, ShapeCode, Field9, Field10, ..., ColorFields`
 
-The eighth field in these lines is a Shape Code that helps identify the variable's type.
+Extract:
+- **id**: 2nd field (integer)
+- **name**: 3rd field (exact string, keep quotes if present)
+- **x**: 4th field (integer position)
+- **y**: 5th field (integer position)
+- **width**: 6th field (integer, variable box width)
+- **height**: 7th field (integer, variable box height)
+- **type**: Determined by rules below
+- **colors**: Fields 16-18 if present (RGB format like `0-0-0`), otherwise omit
 
-Flows (Rates)
-This is the most straightforward type to identify.
-Flow variables have a Shape Code of 40.
+## 2. Variable Type Classification (apply in this order)
 
-Let's look at some of your flows from the file:
+### Flows (Rates)
+- **Rule**: Shape Code (8th field) equals `40`
+- Most straightforward to identify
+- Examples from typical models:
+  ```
+  10,11,Adoption Rate,...,46,26,40,3,0,0,...
+  10,16,User Churn Rate,...,46,26,40,3,0,0,...
+  10,76,Skill up,...,46,26,40,3,0,0,...
+  ```
 
-10,11,Adoption Rate,...,46,26,40,3,0,0,...
-10,16,User Churn Rate,...,46,26,40,3,0,0,...
-10,76,Skill up,...,46,26,40,3,0,0,...
-10,85,Joining Rate,...,46,26,40,3,0,0,...
+### Stocks (Levels)
+- **Rule**: Variable is the destination of a flow valve
+- Detection process:
+  1. Find all valve definitions (lines starting with `11,`)
+  2. Find arrows (lines starting with `1,` or `2,`) that connect FROM these valves
+  3. Any variable that receives an arrow from a valve is a Stock
+- Stocks are drawn as rectangles and accumulate flows
 
-Every variable that functions as a rate of change (a flow) has this unique 40 code.
+### Auxiliaries
+- **Rule**: Everything else
+- If not a Flow (ShapeCode ≠ 40) AND not a Stock, then it's an Auxiliary
+- Shape codes typically 3 or 8
 
-Stocks (Levels)
-This is more subtle. Stocks are variables drawn as rectangles that receive flow connections (valves). In the file, determine stocks by finding flow valves (lines starting with 11,) and their target objects from arrow records (lines starting with 1,). Any variable that is the destination of a valve-fed arrow is a Stock.
+## 3. Example
 
-Auxiliaries
-Any variable (10,) that is not a Flow (ShapeCode 40) and not identified as a Stock is an Auxiliary. Their ShapeCodes vary (e.g., 3 or 8).
-
-Return JSON ONLY with this schema:
+**Input sketch data:**
+```
+10,1,Population,1257,581,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Birth Rate,1100,600,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,Birth Fraction,950,580,50,25,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,Custom Var,800,400,60,30,3,3,0,2,-1,1,0,0,0-0-0,0-0-255,|||192-192-192,0,0,0,0,0,0
+11,5,0,1180,590,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+1,6,5,1,100,0,0,22,0,192,0,-1--1--1,,1|(1257,581)|
 ```
 
-**Expected JSON Output:**
+**Output JSON:**
 ```json
 {
   "variables": [
-    {"id": 1, "name": "Variable Name", "type": "Stock" | "Flow" | "Auxiliary"}
+    {"id": 1, "name": "Population", "type": "Stock", "x": 1257, "y": 581, "width": 66, "height": 26},
+    {"id": 2, "name": "Birth Rate", "type": "Flow", "x": 1100, "y": 600, "width": 46, "height": 26},
+    {"id": 3, "name": "Birth Fraction", "type": "Auxiliary", "x": 950, "y": 580, "width": 50, "height": 25},
+    {"id": 4, "name": "Custom Var", "type": "Auxiliary", "x": 800, "y": 400, "width": 60, "height": 30, "colors": {"text": "0-0-0", "border": "0-0-255", "fill": "192-192-192"}}
   ]
 }
 ```
 
-**Prompt continues:**
-```text
-Use the exact IDs and names from the sketch section. Do not invent additional keys.
+## 4. Output Requirements
+- Return ONLY valid JSON, no explanations or markdown code blocks
+- Use exact IDs and names from the sketch section
+- Include width and height for all variables
+- Include colors object ONLY if custom colors are present (fields 16-18 have RGB values)
+- Schema:
+```json
+{
+  "variables": [
+    {
+      "id": <int>,
+      "name": "<string>",
+      "type": "Stock" | "Flow" | "Auxiliary",
+      "x": <int>,
+      "y": <int>,
+      "width": <int>,
+      "height": <int>,
+      "colors": {"text": "<rgb>", "border": "<rgb>", "fill": "<rgb>"}  // optional
+    }
+  ]
+}
+```
 
 MODEL TEXT START
-(Vensim .mdl file content here: {mdl_text})
+```mdl
+{mdl_text}
+```
 MODEL TEXT END
 ```
 
@@ -450,7 +497,7 @@ Your response (JSON only):
 ## 5. Theory Development Modules
 
 ### Theory Enhancement Prompt
-**Location:** `src/sd_model/pipeline/theory_enhancement.py:15-128`
+**Location:** `src/sd_model/pipeline/theory_enhancement.py:48-115`
 
 ```text
 You are a system dynamics modeling expert specializing in Communities of Practice and Knowledge Management theories for open-source software development.
@@ -473,64 +520,51 @@ You are a system dynamics modeling expert specializing in Communities of Practic
 
 # Your Task
 
-Analyze the model and theories to identify:
-1. **Missing theory elements** - Key concepts from the theories not yet modeled
-2. **Underutilized aspects** - Parts of theories only partially implemented
-3. **SD implementation suggestions** - Specific variables, connections, and loops to add
+Analyze the model and identify what needs to be added, modified, or removed based on each theory.
 
-For each missing theory element, provide:
+For each theory, provide specific model operations:
 
-1. **What to add** (variables, connections)
-2. **Why it's important** (theoretical justification)
-3. **How to implement** (step-by-step SD modeling)
-4. **Expected impact** (what dynamics this will capture)
+1. **Additions** - New variables and connections to add
+2. **Modifications** - Existing variables to update (optional, leave empty if none)
+3. **Removals** - Variables to deprecate or remove (optional, leave empty if none)
 
 Return JSON in this structure:
 
 {
-  "missing_from_theories": [
+  "theories": [
     {
-      "theory_name": "theory name",
-      "missing_element": "specific element from theory",
-      "why_important": "why this matters for the model",
-      "how_to_add": "high-level implementation guidance",
-      "sd_implementation": {
-        "new_variables": [
+      "name": "Theory Name",
+      "additions": {
+        "variables": [
           {
             "name": "Variable Name",
             "type": "Stock|Flow|Auxiliary",
             "description": "what it represents"
           }
         ],
-        "new_connections": [
+        "connections": [
           {
             "from": "Variable A",
             "to": "Variable B",
-            "relationship": "positive|negative",
-            "rationale": "why this connection exists"
-          }
-        ],
-        "expected_loops": [
-          {
-            "type": "reinforcing|balancing",
-            "description": "what loop this will create or strengthen"
+            "relationship": "positive|negative"
           }
         ]
       },
-      "expected_impact": "what dynamics this will enable"
-    }
-  ],
-  "general_improvements": [
-    {
-      "improvement_type": "add_mechanism|refine_structure|add_feedback",
-      "description": "what to improve",
-      "implementation": "how to do it",
-      "impact": "high|medium|low"
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
     }
   ]
 }
 
-Focus on practical, implementable suggestions. Be specific about variable names and types.
+IMPORTANT:
+- Focus on practical, implementable operations
+- Be specific about variable names and types
+- Only include modifications/removals if truly needed
+- For additions.connections, you can reference both existing variables and newly added variables
 
 Return ONLY the JSON structure, no additional text.
 ```

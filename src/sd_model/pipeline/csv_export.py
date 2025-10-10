@@ -7,9 +7,9 @@ from pathlib import Path
 from typing import Dict
 
 
-def load_json(path: Path) -> dict:
-    """Load JSON file, return empty dict if not found."""
-    if not path.exists():
+def load_json(path: Path | None) -> dict:
+    """Load JSON file, return empty dict if not found or None."""
+    if path is None or not path.exists():
         return {}
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
