@@ -280,34 +280,37 @@ def run_pipeline(
             pass
         log_event(paths.db_dir / "provenance.sqlite", "theory_validation", tv.get("summary", {}))
 
-    try:
-        _ = verify_citations(
-            [paths.theory_validation_path, paths.model_improvements_path],
-            bib_path=paths.references_bib_path,
-        )
-    except Exception:
-        pass
+    # Legacy improvement proposal - only run if theory validation was performed
+    improvements = None
+    if run_theory_validation:
+        try:
+            _ = verify_citations(
+                [paths.theory_validation_path],
+                bib_path=paths.references_bib_path,
+            )
+        except Exception:
+            pass
 
-    improvements = propose_improvements(
-        theory_validation_path=paths.theory_validation_path,
-        feedback_path=paths.feedback_json_path,
-        out_path=paths.model_improvements_path,
-    )
-    try:
-        validate_json_schema(
-            improvements, load_config().schemas_dir / "model_improvements.schema.json"
+        improvements = propose_improvements(
+            theory_validation_path=paths.theory_validation_path,
+            feedback_path=paths.feedback_json_path,
+            out_path=paths.model_improvements_path,
         )
-    except Exception:
-        pass
-    log_event(paths.db_dir / "provenance.sqlite", "improve", {"count": len(improvements.get("improvements", []))})
+        try:
+            validate_json_schema(
+                improvements, load_config().schemas_dir / "model_improvements.schema.json"
+            )
+        except Exception:
+            pass
+        log_event(paths.db_dir / "provenance.sqlite", "improve", {"count": len(improvements.get("improvements", []))})
 
-    try:
-        _ = verify_citations(
-            [paths.theory_validation_path, paths.model_improvements_path],
-            bib_path=paths.references_bib_path,
-        )
-    except Exception:
-        pass
+        try:
+            _ = verify_citations(
+                [paths.theory_validation_path, paths.model_improvements_path],
+                bib_path=paths.references_bib_path,
+            )
+        except Exception:
+            pass
 
     # Citation verification (on-demand) - OLD SYSTEM, kept for compatibility
     citations_verified_path = paths.improvements_dir / "citations_verified.json"
@@ -616,8 +619,8 @@ def run_pipeline(
         "connection_citations_verified": str(paths.connection_citations_verified_path),
         "loop_citations": str(paths.loop_citations_path),
         "loop_citations_verified": str(paths.loop_citations_verified_path),
-        "theory_validation": str(paths.theory_validation_path),
-        "improvements": str(paths.model_improvements_path),
+        "theory_validation": str(paths.theory_validation_path) if run_theory_validation else None,
+        "improvements": str(paths.model_improvements_path) if run_theory_validation else None,
         "citations_verified": str(citations_verified_path) if verify_cit else None,
         "gap_analysis": str(paths.gap_analysis_path) if run_gap_analysis else None,
         "paper_suggestions": str(paper_suggestions_path) if discover_papers else None,

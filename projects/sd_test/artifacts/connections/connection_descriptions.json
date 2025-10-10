@@ -6,23 +6,23 @@
     },
     {
       "id": "C02",
-      "description": "As contributors skill up, they move out of the New Contributors stock, reducing its level."
+      "description": "As contributors skill up, they graduate from the New Contributors stock, reducing its level."
     },
     {
       "id": "C03",
-      "description": "Developer turnover directly drains the Core Developer stock by removing experienced members."
+      "description": "Developer turnover directly drains the stock of Core Developers as they leave the project."
     },
     {
       "id": "C04",
-      "description": "The promotion rate increases the Core Developer stock by moving experienced contributors into it."
+      "description": "The promotion rate increases the Core Developer stock by moving experienced contributors into this role."
     },
     {
       "id": "C05",
-      "description": "The promotion rate decreases the Experienced Contributors stock by moving its members into the core group."
+      "description": "The promotion rate decreases the Experienced Contributors stock as they are moved into core roles."
     },
     {
       "id": "C06",
-      "description": "The skill-up flow increases the Experienced Contributors stock by moving new contributors into it."
+      "description": "The skill-up flow increases the Experienced Contributors stock by transitioning new contributors into it."
     },
     {
       "id": "C07",
@@ -34,11 +34,11 @@
     },
     {
       "id": "C09",
-      "description": "Effective mentorship increases the promotion rate by preparing experienced contributors for core team responsibilities."
+      "description": "Mentorship increases the promotion rate by preparing experienced contributors for core developer responsibilities."
     },
     {
       "id": "C10",
-      "description": "More core developers increase the project's capacity for providing mentorship and implicit knowledge transfer."
+      "description": "More core developers increase the project's capacity for providing direct mentorship to others."
     }
   ]
 }
