@@ -72,16 +72,12 @@ def run_pipeline(
     connections_data = infer_connections(mdl_path, variables_data, client)
     logger.info(f"✓ Found {len(connections_data.get('connections', []))} connections")
 
-    variables_path = paths.artifacts_dir / "variables_llm.json"
-    connections_llm_path = paths.artifacts_dir / "connections_llm.json"
-    diagram_style_path = paths.artifacts_dir / "diagram_style.json"
-
-    variables_path.write_text(json.dumps(variables_data, indent=2), encoding="utf-8")
-    connections_llm_path.write_text(json.dumps(connections_data, indent=2), encoding="utf-8")
+    paths.variables_llm_path.write_text(json.dumps(variables_data, indent=2), encoding="utf-8")
+    paths.connections_llm_path.write_text(json.dumps(connections_data, indent=2), encoding="utf-8")
 
     # Extract and save diagram style configuration
     style_data = extract_diagram_style(mdl_path)
-    diagram_style_path.write_text(json.dumps(style_data, indent=2), encoding="utf-8")
+    paths.diagram_style_path.write_text(json.dumps(style_data, indent=2), encoding="utf-8")
 
     # Build compatibility artifacts
     id_to_name = {int(v["id"]): v["name"] for v in variables_data.get("variables", [])}
@@ -130,11 +126,10 @@ def run_pipeline(
 
     # Generate loop descriptions
     logger.info("Generating loop descriptions...")
-    loop_descriptions_path = paths.artifacts_dir / "loop_descriptions.json"
     loop_descriptions = generate_loop_descriptions(
         loops_data=loops,
         llm_client=client,
-        out_path=loop_descriptions_path,
+        out_path=paths.loop_descriptions_path,
         domain_context="open source software development"
     )
     logger.info(f"✓ Generated {len(loop_descriptions.get('descriptions', []))} loop descriptions")
@@ -142,36 +137,33 @@ def run_pipeline(
 
     # Generate connection descriptions
     logger.info("Generating connection descriptions...")
-    connection_descriptions_path = paths.artifacts_dir / "connection_descriptions.json"
     descriptions = generate_connection_descriptions(
         connections_data={"connections": connections_named},
         variables_data=variables_data,
         llm_client=client,
-        out_path=connection_descriptions_path
+        out_path=paths.connection_descriptions_path
     )
     logger.info(f"✓ Generated {len(descriptions.get('descriptions', []))} connection descriptions")
     log_event(paths.db_dir / "provenance.sqlite", "connection_descriptions", {"count": len(descriptions.get("descriptions", []))})
 
     # Find citations for connections
     logger.info("Finding citations for connections...")
-    connection_citations_path = paths.artifacts_dir / "connection_citations.json"
     conn_citations = find_connection_citations(
         connections_data={"connections": connections_named},
         descriptions_data=descriptions,
         llm_client=client,
-        out_path=connection_citations_path
+        out_path=paths.connection_citations_path
     )
     logger.info(f"✓ Found {len(conn_citations.get('citations', []))} connection citations")
     log_event(paths.db_dir / "provenance.sqlite", "connection_citations", {"count": len(conn_citations.get("citations", []))})
 
     # Find citations for loops
     logger.info("Finding citations for loops...")
-    loop_citations_path = paths.artifacts_dir / "loop_citations.json"
     loop_cites = find_loop_citations(
         loops_data=loops,
         descriptions_data=loop_descriptions,
         llm_client=client,
-        out_path=loop_citations_path
+        out_path=paths.loop_citations_path
     )
     logger.info(f"✓ Found {len(loop_cites.get('citations', []))} loop citations")
     log_event(paths.db_dir / "provenance.sqlite", "loop_citations", {"count": len(loop_cites.get("citations", []))})
@@ -180,14 +172,12 @@ def run_pipeline(
     logger.info("Verifying connection citations via Semantic Scholar...")
     from .external.semantic_scholar import SemanticScholarClient
     s2_client = SemanticScholarClient()
-    connection_citations_verified_path = paths.artifacts_dir / "connection_citations_verified.json"
-    connection_citations_debug_path = paths.artifacts_dir / "connection_citations_verification_debug.txt"
     verified_conn_citations = verify_llm_generated_citations(
-        citations_path=connection_citations_path,
-        output_path=connection_citations_verified_path,
+        citations_path=paths.connection_citations_path,
+        output_path=paths.connection_citations_verified_path,
         s2_client=s2_client,
         llm_client=client,
-        debug_path=connection_citations_debug_path,
+        debug_path=paths.connection_citations_verification_debug_path,
         verbose=False  # Don't print to console during pipeline run
     )
     summary = verified_conn_citations.get("summary", {})
@@ -200,14 +190,12 @@ def run_pipeline(
 
     # Verify LLM-generated loop citations
     logger.info("Verifying loop citations via Semantic Scholar...")
-    loop_citations_verified_path = paths.artifacts_dir / "loop_citations_verified.json"
-    loop_citations_debug_path = paths.artifacts_dir / "loop_citations_verification_debug.txt"
     verified_loop_citations = verify_llm_generated_citations(
-        citations_path=loop_citations_path,
-        output_path=loop_citations_verified_path,
+        citations_path=paths.loop_citations_path,
+        output_path=paths.loop_citations_verified_path,
         s2_client=s2_client,
         llm_client=client,
-        debug_path=loop_citations_debug_path,
+        debug_path=paths.loop_citations_verification_debug_path,
         verbose=False  # Don't print to console during pipeline run
     )
     loop_summary = verified_loop_citations.get("summary", {})
@@ -267,9 +255,8 @@ def run_pipeline(
         pass
 
     # Citation verification (on-demand) - OLD SYSTEM, kept for compatibility
-    citations_verified_path = paths.artifacts_dir / "citations_verified.json"
-    gap_analysis_path = paths.artifacts_dir / "gap_analysis.json"
-    paper_suggestions_path = paths.artifacts_dir / "paper_suggestions.json"
+    citations_verified_path = paths.improvements_dir / "citations_verified.json"
+    paper_suggestions_path = paths.improvements_dir / "paper_suggestions.json"
 
     if verify_cit:
         # s2_client already initialized above for LLM citation verification
@@ -285,7 +272,7 @@ def run_pipeline(
             theories_dir=paths.theories_dir,
             verified_citations_path=citations_verified_path,
             loops_path=paths.loops_path,
-            out_path=paths.artifacts_dir / "connection_citations_legacy.json",
+            out_path=paths.connections_dir / "connection_citations_legacy.json",
         )
         log_event(
             paths.db_dir / "provenance.sqlite",
@@ -297,7 +284,7 @@ def run_pipeline(
         )
 
         # Gap analysis (using new connection citations)
-        gaps = identify_gaps(connection_citations_path, gap_analysis_path)
+        gaps = identify_gaps(paths.connection_citations_path, paths.gap_analysis_path)
         log_event(
             paths.db_dir / "provenance.sqlite",
             "gap_analysis",
@@ -326,23 +313,20 @@ def run_pipeline(
         log_event(paths.db_dir / "provenance.sqlite", "apply_patch", {"output": str(patched_file)})
 
     # Generate CSV exports
-    connections_csv_path = paths.artifacts_dir / "connections_export.csv"
-    loops_csv_path = paths.artifacts_dir / "loops_export.csv"
-
     conn_csv_rows = generate_connections_csv(
         connections_path=paths.connections_path,
-        descriptions_path=connection_descriptions_path,
-        variables_path=variables_path,
-        citations_path=connection_citations_verified_path,
-        output_path=connections_csv_path,
+        descriptions_path=paths.connection_descriptions_path,
+        variables_path=paths.variables_llm_path,
+        citations_path=paths.connection_citations_verified_path,
+        output_path=paths.connections_export_path,
     )
     log_event(paths.db_dir / "provenance.sqlite", "csv_export_connections", {"rows": conn_csv_rows})
 
     loop_csv_rows = generate_loops_csv(
         loops_path=paths.loops_path,
-        descriptions_path=loop_descriptions_path,
-        citations_path=loop_citations_verified_path,
-        output_path=loops_csv_path,
+        descriptions_path=paths.loop_descriptions_path,
+        citations_path=paths.loop_citations_verified_path,
+        output_path=paths.loops_export_path,
     )
     log_event(paths.db_dir / "provenance.sqlite", "csv_export_loops", {"rows": loop_csv_rows})
 

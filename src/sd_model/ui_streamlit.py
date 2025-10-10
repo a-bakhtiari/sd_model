@@ -51,8 +51,8 @@ def _load_existing_artifacts(project: str) -> Dict[str, Path]:
         "theory_validation": paths.theory_validation_path,
         "artifacts_dir": paths.artifacts_dir,
         "db_path": paths.db_dir / "provenance.sqlite",
-        "variables_llm": paths.artifacts_dir / "variables_llm.json",
-        "connections_llm": paths.artifacts_dir / "connections_llm.json",
+        "variables_llm": paths.variables_llm_path,
+        "connections_llm": paths.connections_llm_path,
     }
 
 
@@ -883,10 +883,10 @@ def _build_connections_dataframe(artifacts_dir: Path) -> pd.DataFrame:
         return {}
 
     # Load all data sources
-    connections_data = load_json_safe(artifacts_dir / "connections.json")
-    descriptions_data = load_json_safe(artifacts_dir / "connection_descriptions.json")
-    variables_data = load_json_safe(artifacts_dir / "variables_llm.json")
-    citations_data = load_json_safe(artifacts_dir / "connection_citations_verified.json")
+    connections_data = load_json_safe(artifacts_dir / "connections" / "connections.json")
+    descriptions_data = load_json_safe(artifacts_dir / "connections" / "connection_descriptions.json")
+    variables_data = load_json_safe(artifacts_dir / "parsing" / "variables_llm.json")
+    citations_data = load_json_safe(artifacts_dir / "connections" / "connection_citations_verified.json")
 
     # Build lookup dictionaries
     descriptions = {d["id"]: d["description"] for d in descriptions_data.get("descriptions", [])}
@@ -949,9 +949,9 @@ def _build_loops_dataframe(artifacts_dir: Path) -> pd.DataFrame:
         return {}
 
     # Load all data sources
-    loops_data = load_json_safe(artifacts_dir / "loops.json")
-    descriptions_data = load_json_safe(artifacts_dir / "loop_descriptions.json")
-    citations_data = load_json_safe(artifacts_dir / "loop_citations_verified.json")
+    loops_data = load_json_safe(artifacts_dir / "loops" / "loops.json")
+    descriptions_data = load_json_safe(artifacts_dir / "loops" / "loop_descriptions.json")
+    citations_data = load_json_safe(artifacts_dir / "loops" / "loop_citations_verified.json")
 
     # Collect all loops
     all_loops = []
@@ -1013,9 +1013,9 @@ def _build_chat_context(artifacts_dir: Path) -> str:
         return {}
 
     # Load minimal data
-    variables_data = load_json_safe(artifacts_dir / "variables_llm.json")
-    connections_data = load_json_safe(artifacts_dir / "connections.json")
-    descriptions_data = load_json_safe(artifacts_dir / "connection_descriptions.json")
+    variables_data = load_json_safe(artifacts_dir / "parsing" / "variables_llm.json")
+    connections_data = load_json_safe(artifacts_dir / "connections" / "connections.json")
+    descriptions_data = load_json_safe(artifacts_dir / "connections" / "connection_descriptions.json")
 
     # Build context
     variables = variables_data.get("variables", [])
@@ -1543,8 +1543,8 @@ def main() -> None:
         paths = for_project(cfg, project)
 
         # Load theory enhancement results
-        theory_enh_path = paths.artifacts_dir / "theory_enhancement.json"
-        theory_disc_path = paths.artifacts_dir / "theory_discovery.json"
+        theory_enh_path = paths.theory_enhancement_path
+        theory_disc_path = paths.theory_discovery_path
 
         if not theory_enh_path.exists() and not theory_disc_path.exists():
             st.warning("⚠️ No theory development results found. Run the pipeline with `--improve-model` flag.")
@@ -1663,8 +1663,8 @@ def main() -> None:
         paths = for_project(cfg, project)
 
         # Load RQ results
-        rq_align_path = paths.artifacts_dir / "rq_alignment.json"
-        rq_refine_path = paths.artifacts_dir / "rq_refinement.json"
+        rq_align_path = paths.rq_alignment_path
+        rq_refine_path = paths.rq_refinement_path
 
         if not rq_align_path.exists() and not rq_refine_path.exists():
             st.warning("⚠️ No RQ development results found. Run the pipeline with `--improve-model` flag.")
