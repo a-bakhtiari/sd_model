@@ -60,6 +60,10 @@ def cmd_run(args: argparse.Namespace) -> None:
         args.theory_discovery = True
 
     # Handle dependencies
+    # Citations always auto-enable verification (no point in unverified citations)
+    if args.citations:
+        args.verify_citations = True
+
     if args.verify_citations and not args.citations:
         args.citations = True
     if args.gap_analysis and not args.citations:

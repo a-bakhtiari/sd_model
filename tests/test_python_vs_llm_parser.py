@@ -108,7 +108,11 @@ def extract_connections_from_sketch(parser: MDLSurgicalParser):
 
     Resolves valve-mediated connections to flow variables.
     In SD diagrams: Stock → Valve → Stock becomes Stock → Flow → Stock
-    where the valve ID often corresponds to a flow variable ID.
+
+    Valve resolution:
+    - If valve ID = flow variable ID: direct mapping
+    - If valve ID ≠ flow variable ID: find which stock valve feeds,
+      check stock's equation to identify the flow
     """
     connections = []
 
@@ -127,8 +131,7 @@ def extract_connections_from_sketch(parser: MDLSurgicalParser):
                     continue
 
     # Build valve → flow variable mapping
-    # Often valve ID and flow variable ID are the same
-    # Flow variables have shape code 40
+    # Method 1: Direct mapping (valve ID = flow variable ID)
     valve_to_flow = {}
     for var_id, var in parser.sketch_vars.items():
         parts = var.full_line.split(",")
@@ -137,6 +140,66 @@ def extract_connections_from_sketch(parser: MDLSurgicalParser):
             # If there's a valve with same ID, map it
             if var_id in valve_ids:
                 valve_to_flow[var_id] = var_id
+
+    # Method 2: Find valves that feed stocks, match to flows in stock equations
+    # Build: valve → stock mapping
+    valve_to_stock = {}
+    for line in parser.sketch_other:
+        if line.startswith("1,"):
+            parts = line.split(",")
+            if len(parts) >= 4:
+                try:
+                    from_id = int(parts[2])
+                    to_id = int(parts[3])
+                    # Valve → Stock
+                    if from_id in valve_ids and to_id in var_ids:
+                        if from_id not in valve_to_stock:
+                            valve_to_stock[from_id] = []
+                        valve_to_stock[from_id].append(to_id)
+                except (ValueError, IndexError):
+                    continue
+
+    # For each valve that feeds stocks, find the flow from stock equations
+    # Strategy: Find the flow that appears in ALL stocks (common flow)
+    for valve_id, stock_ids in valve_to_stock.items():
+        if valve_id in valve_to_flow:  # Already mapped
+            continue
+
+        # Find flows mentioned in each stock's equation
+        flows_per_stock = []
+        for stock_id in stock_ids:
+            stock_var = parser.sketch_vars.get(stock_id)
+            if not stock_var or stock_var.name not in parser.equations:
+                continue
+
+            equation = parser.equations[stock_var.name]
+            equation_line = equation.equation_line
+
+            # Find all flow variables in this stock's equation
+            stock_flows = []
+            for flow_id, flow_var in parser.sketch_vars.items():
+                parts = flow_var.full_line.split(",")
+                shape_code = parts[7] if len(parts) > 7 else "0"
+                if shape_code == "40":  # Flow variable
+                    flow_name = flow_var.name
+                    if flow_name in equation_line or f'"{flow_name}"' in equation_line:
+                        stock_flows.append(flow_id)
+
+            if stock_flows:
+                flows_per_stock.append(set(stock_flows))
+
+        # Find common flow across all stocks
+        if flows_per_stock:
+            common_flows = flows_per_stock[0]
+            for stock_flows in flows_per_stock[1:]:
+                common_flows = common_flows & stock_flows
+
+            if common_flows:
+                # Use the first common flow
+                valve_to_flow[valve_id] = min(common_flows)  # Pick lowest ID
+            elif flows_per_stock:
+                # No common flow, use first flow from first stock
+                valve_to_flow[valve_id] = min(flows_per_stock[0])
 
     # Process arrows and resolve valve endpoints
     for line in parser.sketch_other:

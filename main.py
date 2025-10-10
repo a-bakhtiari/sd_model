@@ -148,6 +148,10 @@ def main() -> None:
         args.theory_discovery = True
 
     # Handle dependencies - auto-enable required features
+    # Citations always auto-enable verification (no point in unverified citations)
+    if args.citations:
+        args.verify_citations = True
+
     if args.verify_citations and not args.citations:
         args.citations = True
 

@@ -500,19 +500,14 @@ Your response (JSON only):
 **Location:** `src/sd_model/pipeline/theory_enhancement.py:48-115`
 
 ```text
-You are a system dynamics modeling expert specializing in Communities of Practice and Knowledge Management theories for open-source software development.
+You are a system dynamics modeling expert.
 
 # Current System Dynamics Model
 
-## Model Summary
-- Variables: {var_count}
-- Connections: {conn_count}
-- Feedback Loops: {loop_count}
-
-## Sample Variables
+## Current Variables
 {vars_text}
 
-## Sample Connections
+## Current Connections
 {conns_text}
 
 # Theories Being Used
@@ -524,7 +519,7 @@ Analyze the model and identify what needs to be added, modified, or removed base
 
 For each theory, provide specific model operations:
 
-1. **Additions** - New variables and connections to add
+1. **Additions** - New variables and connections to add (optional, leave empty if none)
 2. **Modifications** - Existing variables to update (optional, leave empty if none)
 3. **Removals** - Variables to deprecate or remove (optional, leave empty if none)
 
@@ -563,16 +558,15 @@ Return JSON in this structure:
 IMPORTANT:
 - Focus on practical, implementable operations
 - Be specific about variable names and types
-- Only include modifications/removals if truly needed
+- Only include additions/modifications/removals if truly needed
 - For additions.connections, you can reference both existing variables and newly added variables
 
 Return ONLY the JSON structure, no additional text.
 ```
 
 **Template Variables:**
-- `{var_count}`, `{conn_count}`, `{loop_count}` - Model statistics
-- `{vars_text}` - Sample variables (first 8)
-- `{conns_text}` - Sample connections (first 8)
+- `{vars_text}` - All current variables (format: "- Name (Type)")
+- `{conns_text}` - All current connections (format: "- From → To (relationship)")
 - `{theories_text}` - Formatted list of theories with descriptions
 
 **Temperature:** 0.2
