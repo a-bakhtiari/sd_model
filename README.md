@@ -37,25 +37,75 @@ cp .env.example .env
 
 ### 2. Run Pipeline
 
-**Simple usage:**
+The pipeline has **granular feature control** - run only the features you need!
+
+**Foundation (always runs):**
+- Parse MDL → extract variables & connections
+- Generate connection descriptions
+
+**Optional Features:**
+
 ```bash
-# Basic run (enables model improvement by default)
+# 1. Foundation only (fastest - just parsing and descriptions)
 python main.py --project oss_model
 
-# Save this run for later comparison
-python main.py --project oss_model --save-run "baseline-model"
+# 2. With feedback loops
+python main.py --project oss_model --loops
 
-# With citation verification
-python main.py --project oss_model --verify-citations
+# 3. With citations (for connections)
+python main.py --project oss_model --citations
 
-# Full features: verification + paper discovery + versioned run
-python main.py --project oss_model --verify-citations --discover-papers --save-run "v1-complete"
+# 4. Citations + verification via Semantic Scholar
+python main.py --project oss_model --citations --verify-citations
+
+# 5. Theory-based model enhancement
+python main.py --project oss_model --theory-enhancement
+
+# 6. Theory enhancement + generate enhanced MDL file
+python main.py --project oss_model --theory-enhancement --theory-enhancement-mdl
+
+# 7. Research question analysis
+python main.py --project oss_model --rq-analysis
+
+# 8. Discover new relevant theories
+python main.py --project oss_model --theory-discovery
+
+# 9. Gap analysis (find unsupported connections)
+python main.py --project oss_model --citations --gap-analysis
+
+# 10. Paper discovery for gaps
+python main.py --project oss_model --citations --gap-analysis --discover-papers
+
+# 11. Run ALL optional features
+python main.py --project oss_model --all
+
+# 12. Run all model improvement features
+python main.py --project oss_model --improve-model
+
+# 13. Save versioned run for later comparison
+python main.py --project oss_model --all --save-run "baseline-v1"
+```
+
+**Common Workflows:**
+
+```bash
+# Quick analysis: loops + citations
+python main.py --project oss_model --loops --citations
+
+# Full verification: citations + verification + gap analysis + papers
+python main.py --project oss_model --citations --verify-citations --gap-analysis --discover-papers
+
+# Model improvement: enhancement + RQ analysis + theory discovery
+python main.py --project oss_model --theory-enhancement --theory-enhancement-mdl --rq-analysis --theory-discovery
+
+# Complete analysis (everything)
+python main.py --project oss_model --all --save-run "complete-analysis"
 ```
 
 **Advanced CLI (alternative):**
 ```bash
-# Same functionality via CLI module
-python -m sd_model.cli run --project oss_model --save-run baseline
+# Same flags work with CLI module
+python -m sd_model.cli run --project oss_model --loops --citations --save-run baseline
 ```
 
 ### 3. Launch Interactive UI
