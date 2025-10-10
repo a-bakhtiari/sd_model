@@ -161,6 +161,11 @@
       "polarity": "NEGATIVE"
     },
     {
+      "from": 114,
+      "to": 85,
+      "polarity": "UNDECLARED"
+    },
+    {
       "from": 105,
       "to": 50,
       "polarity": "NEGATIVE"
@@ -198,6 +203,11 @@
     {
       "from": 64,
       "to": 4,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 114,
+      "to": 76,
       "polarity": "UNDECLARED"
     },
     {
@@ -256,7 +266,7 @@
       "polarity": "UNDECLARED"
     },
     {
-      "from": 138,
+      "from": 85,
       "to": 1,
       "polarity": "UNDECLARED"
     },

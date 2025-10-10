@@ -42,18 +42,19 @@ def extract_python_parser_data(mdl_path: Path):
 
         # Map shape codes to variable types
         # Format: 10,ID,Name,X,Y,Width,Height,ShapeCode,...
+        # Based on Vensim MDL format:
+        # - Shape 3 = Stock (rectangle)
+        # - Shape 40 = Flow (valve)
+        # - Shape 8, 27 = Auxiliary (cloud/circle)
         var_type_map = {
-            "3": "Auxiliary",  # Standard shape code for auxiliaries
-            "8": "Auxiliary",  # Another auxiliary code
-            "40": "Flow",      # Flow/valve shape code
+            "3": "Stock",      # Stock variables
+            "40": "Flow",      # Flow/rate variables
+            "8": "Auxiliary",  # Auxiliary variables
+            "27": "Auxiliary", # Another auxiliary shape
         }
 
         shape_code = parts[7] if len(parts) > 7 else "3"
         var_type = var_type_map.get(shape_code, "Auxiliary")
-
-        # Check if this is a Stock by looking at connections
-        # Stocks receive arrows from valves (Flow elements)
-        # We'll do this in a second pass after identifying flows
 
         var_data = {
             "id": sketch_id,
@@ -84,103 +85,116 @@ def extract_python_parser_data(mdl_path: Path):
                 if colors:
                     var_data["colors"] = colors
 
-        variables.append((sketch_id, var_data, shape_code))
+        variables.append(var_data)
 
-    # Second pass: Identify stocks
-    # Must do TWO passes because connection lines may appear before valve definitions
+    # Variables are complete - type is determined solely by shape code
+    final_variables = variables
 
-    # Pass 1: Collect all valve IDs
-    valve_ids = set()
-    for line in parser.sketch_other:
-        if line.startswith("11,"):
-            parts = line.split(",")
-            if len(parts) >= 2:
-                valve_id = int(parts[1])
-                valve_ids.add(valve_id)
-
-    # Pass 2: Find stocks (variables that receive from valves)
-    valve_to_stock = {}  # Map valve ID to stock IDs it points to
-    for line in parser.sketch_other:
-        if line.startswith("1,"):
-            # Arrow/connection
-            parts = line.split(",")
-            if len(parts) >= 4:
-                from_id = int(parts[2])
-                to_id = int(parts[3])
-
-                # If arrow comes from a valve, the destination is likely a stock
-                if from_id in valve_ids:
-                    if from_id not in valve_to_stock:
-                        valve_to_stock[from_id] = []
-                    valve_to_stock[from_id].append(to_id)
-
-    # Mark variables that receive from valves as Stocks
-    # But exclude valve-to-valve connections (valves can point to other valves)
-    stock_ids = set()
-    for from_valve_id, target_ids in valve_to_stock.items():
-        for target_id in target_ids:
-            if target_id not in valve_ids:  # Only variables, not valves
-                stock_ids.add(target_id)
-
-    # Update variable types based on stock identification
-    final_variables = []
-    for sketch_id, var_data, shape_code in variables:
-        if sketch_id in stock_ids and var_data["type"] != "Flow":
-            var_data["type"] = "Stock"
-        final_variables.append(var_data)
-
-    # Extract connections
-    connections = []
-    for line in parser.sketch_other:
-        if line.startswith("1,"):
-            # Connection line: 1,ArrowID,FromID,ToID,Field4,Field5,Field6,...
-            parts = line.split(",")
-            if len(parts) >= 7:
-                from_id = int(parts[2])
-                to_id = int(parts[3])
-                field6 = parts[6]  # Polarity indicator
-
-                # Skip valve-to-variable connections (these are visual only)
-                # We only want logical variable-to-variable connections
-                if from_id in valve_ids or to_id in valve_ids:
-                    continue
-
-                # Determine polarity based on field[6]
-                polarity_map = {
-                    "43": "POSITIVE",  # Explicit positive marker
-                    "0": "UNDECLARED",  # No marker
-                    "-1": "NEGATIVE",   # Negative (rare in sketch)
-                }
-
-                polarity = polarity_map.get(field6, "UNDECLARED")
-
-                conn_data = {
-                    "from": from_id,
-                    "to": to_id,
-                    "polarity": polarity
-                }
-                connections.append(conn_data)
-
-    # Also need to extract connections from equations (for logical dependencies)
-    # Parse equations to find "A FUNCTION OF(...)" dependencies
+    # Extract connections from both sketch arrows and equations
+    # Sketch arrows show visual connections, equations show logical dependencies
+    sketch_connections = extract_connections_from_sketch(parser)
     equation_connections = extract_connections_from_equations(parser)
 
-    # Merge equation-based connections with sketch-based polarity
-    # For each equation connection, check if we have polarity info from sketch
-    sketch_conn_map = {(c["from"], c["to"]): c["polarity"] for c in connections}
-
-    for eq_conn in equation_connections:
-        key = (eq_conn["from"], eq_conn["to"])
-        if key not in sketch_conn_map:
-            # Add connection not found in sketch arrows
-            connections.append(eq_conn)
+    # Merge connections, prioritizing equation polarity over sketch polarity
+    connections = merge_connections(sketch_connections, equation_connections)
 
     return final_variables, connections
+
+
+def extract_connections_from_sketch(parser: MDLSurgicalParser):
+    """Extract connections from sketch arrows (visual connections).
+
+    Only includes arrows where both endpoints are actual variables,
+    not intermediate objects like valves or clouds.
+    """
+    connections = []
+
+    # Get set of actual variable IDs (defined with 10, lines)
+    var_ids = set(parser.sketch_vars.keys())
+
+    for line in parser.sketch_other:
+        # Format: 1,ArrowID,FromID,ToID,?,?,Field6,...
+        # Field6=43 indicates POSITIVE polarity
+        if line.startswith("1,"):
+            parts = line.split(",")
+            if len(parts) >= 7:
+                try:
+                    from_id = int(parts[2])
+                    to_id = int(parts[3])
+
+                    # Only include connections between actual variables
+                    # Skip arrows to/from valves, clouds, and other intermediate objects
+                    if from_id not in var_ids or to_id not in var_ids:
+                        continue
+
+                    field6 = parts[6]
+
+                    # Determine polarity from field6
+                    polarity = "POSITIVE" if field6 == "43" else "UNDECLARED"
+
+                    connections.append({
+                        "from": from_id,
+                        "to": to_id,
+                        "polarity": polarity
+                    })
+                except (ValueError, IndexError):
+                    continue
+
+    return connections
+
+
+def merge_connections(sketch_conns, equation_conns):
+    """Merge sketch and equation connections, prioritizing equation polarity."""
+    # Create a dict indexed by (from, to) pair
+    conn_dict = {}
+
+    # First add sketch connections
+    for conn in sketch_conns:
+        key = (conn["from"], conn["to"])
+        conn_dict[key] = conn
+
+    # Then overlay equation connections (they override sketch polarity)
+    for conn in equation_conns:
+        key = (conn["from"], conn["to"])
+        if key in conn_dict:
+            # Connection exists in both - use equation polarity if more specific
+            if conn["polarity"] != "UNDECLARED":
+                conn_dict[key]["polarity"] = conn["polarity"]
+        else:
+            # New connection from equations only
+            conn_dict[key] = conn
+
+    # Convert back to list
+    return list(conn_dict.values())
 
 
 def extract_connections_from_equations(parser: MDLSurgicalParser):
     """Extract logical connections from equation dependencies."""
     connections = []
+
+    # Build an improved name_to_id mapping that handles duplicates
+    # When there are duplicate names, prioritize: Flow (40) > Stock (3) > Auxiliary (8, 27)
+    name_to_id_improved = {}
+
+    for sketch_id, var in parser.sketch_vars.items():
+        name = var.name
+        parts = var.full_line.split(',')
+        shape_code = parts[7] if len(parts) > 7 else "0"
+
+        # Type priority: 40 (Flow) = 3, 3 (Stock) = 2, others (Auxiliary) = 1
+        priority_map = {"40": 3, "3": 2}
+        priority = priority_map.get(shape_code, 1)
+
+        if name not in name_to_id_improved:
+            name_to_id_improved[name] = (sketch_id, priority)
+        else:
+            existing_id, existing_priority = name_to_id_improved[name]
+            if priority > existing_priority:
+                # Higher priority wins
+                name_to_id_improved[name] = (sketch_id, priority)
+
+    # Convert to simple dict
+    name_to_id_final = {name: id_priority[0] for name, id_priority in name_to_id_improved.items()}
 
     for var_name in parser.equation_order:
         if var_name not in parser.equations:
@@ -189,8 +203,8 @@ def extract_connections_from_equations(parser: MDLSurgicalParser):
         equation = parser.equations[var_name]
         equation_line = equation.equation_line
 
-        # Find variable ID for this target
-        target_id = parser.name_to_id.get(var_name)
+        # Find variable ID for this target (use improved mapping)
+        target_id = name_to_id_final.get(var_name)
         if not target_id:
             continue
 
@@ -203,9 +217,28 @@ def extract_connections_from_equations(parser: MDLSurgicalParser):
             if start != -1 and end != -1:
                 deps_str = equation_line[start+1:end]
 
-                # Split by comma and handle continuation lines
-                deps_str = deps_str.replace("\\\n", " ").replace("\n", " ")
-                dep_parts = [d.strip() for d in deps_str.split(",")]
+                # Handle continuation lines first
+                deps_str = deps_str.replace("\\\n", " ").replace("\\n", " ").replace("\n", " ")
+                deps_str = deps_str.replace("\t", " ").strip()
+
+                # Parse dependencies respecting quoted strings (CSV-style)
+                dep_parts = []
+                current = ""
+                in_quotes = False
+
+                for char in deps_str:
+                    if char == '"':
+                        in_quotes = not in_quotes
+                    elif char == ',' and not in_quotes:
+                        if current.strip():
+                            dep_parts.append(current.strip())
+                        current = ""
+                        continue
+                    current += char
+
+                # Add last part
+                if current.strip():
+                    dep_parts.append(current.strip())
 
                 for dep in dep_parts:
                     if not dep:
@@ -215,8 +248,8 @@ def extract_connections_from_equations(parser: MDLSurgicalParser):
                     is_negative = dep.startswith("-")
                     source_name = dep.lstrip("-").strip().strip('"')
 
-                    # Find source ID
-                    source_id = parser.name_to_id.get(source_name)
+                    # Find source ID (use improved mapping that handles duplicates)
+                    source_id = name_to_id_final.get(source_name)
                     if source_id:
                         polarity = "NEGATIVE" if is_negative else "UNDECLARED"
                         connections.append({

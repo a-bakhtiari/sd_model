@@ -187,84 +187,98 @@ def run_pipeline(
     logger.info(f"✓ Generated {len(descriptions.get('descriptions', []))} connection descriptions")
     log_event(paths.db_dir / "provenance.sqlite", "connection_descriptions", {"count": len(descriptions.get("descriptions", []))})
 
-    # Find citations for connections
-    logger.info("Finding citations for connections...")
-    conn_citations = find_connection_citations(
-        connections_data={"connections": connections_named},
-        descriptions_data=descriptions,
-        llm_client=client,
-        out_path=paths.connection_citations_path
-    )
-    logger.info(f"✓ Found {len(conn_citations.get('citations', []))} connection citations")
-    log_event(paths.db_dir / "provenance.sqlite", "connection_citations", {"count": len(conn_citations.get("citations", []))})
+    # Optional: Find citations for connections
+    conn_citations = None
+    if run_citations:
+        logger.info("Finding citations for connections...")
+        conn_citations = find_connection_citations(
+            connections_data={"connections": connections_named},
+            descriptions_data=descriptions,
+            llm_client=client,
+            out_path=paths.connection_citations_path
+        )
+        logger.info(f"✓ Found {len(conn_citations.get('citations', []))} connection citations")
+        log_event(paths.db_dir / "provenance.sqlite", "connection_citations", {"count": len(conn_citations.get("citations", []))})
 
-    # Find citations for loops
-    logger.info("Finding citations for loops...")
-    loop_cites = find_loop_citations(
-        loops_data=loops,
-        descriptions_data=loop_descriptions,
-        llm_client=client,
-        out_path=paths.loop_citations_path
-    )
-    logger.info(f"✓ Found {len(loop_cites.get('citations', []))} loop citations")
-    log_event(paths.db_dir / "provenance.sqlite", "loop_citations", {"count": len(loop_cites.get("citations", []))})
+    # Optional: Find citations for loops (requires both run_citations and run_loops)
+    loop_cites = None
+    if run_citations and run_loops:
+        logger.info("Finding citations for loops...")
+        loop_cites = find_loop_citations(
+            loops_data=loops,
+            descriptions_data=loop_descriptions,
+            llm_client=client,
+            out_path=paths.loop_citations_path
+        )
+        logger.info(f"✓ Found {len(loop_cites.get('citations', []))} loop citations")
+        log_event(paths.db_dir / "provenance.sqlite", "loop_citations", {"count": len(loop_cites.get("citations", []))})
 
-    # Verify LLM-generated connection citations
-    logger.info("Verifying connection citations via Semantic Scholar...")
-    from .external.semantic_scholar import SemanticScholarClient
-    s2_client = SemanticScholarClient()
-    verified_conn_citations = verify_llm_generated_citations(
-        citations_path=paths.connection_citations_path,
-        output_path=paths.connection_citations_verified_path,
-        s2_client=s2_client,
-        llm_client=client,
-        debug_path=paths.connection_citations_verification_debug_path,
-        verbose=False  # Don't print to console during pipeline run
-    )
-    summary = verified_conn_citations.get("summary", {})
-    logger.info(f"✓ Verified {summary.get('verified', 0)}/{summary.get('total', 0)} connection citations")
-    log_event(
-        paths.db_dir / "provenance.sqlite",
-        "connection_citations_verified",
-        verified_conn_citations.get("summary", {})
-    )
+    # Optional: Verify LLM-generated citations via Semantic Scholar
+    verified_conn_citations = None
+    verified_loop_citations = None
+    if verify_cit:
+        from .external.semantic_scholar import SemanticScholarClient
+        s2_client = SemanticScholarClient()
 
-    # Verify LLM-generated loop citations
-    logger.info("Verifying loop citations via Semantic Scholar...")
-    verified_loop_citations = verify_llm_generated_citations(
-        citations_path=paths.loop_citations_path,
-        output_path=paths.loop_citations_verified_path,
-        s2_client=s2_client,
-        llm_client=client,
-        debug_path=paths.loop_citations_verification_debug_path,
-        verbose=False  # Don't print to console during pipeline run
-    )
-    loop_summary = verified_loop_citations.get("summary", {})
-    logger.info(f"✓ Verified {loop_summary.get('verified', 0)}/{loop_summary.get('total', 0)} loop citations")
-    log_event(
-        paths.db_dir / "provenance.sqlite",
-        "loop_citations_verified",
-        verified_loop_citations.get("summary", {})
-    )
+        # Verify connection citations (if they exist)
+        if run_citations:
+            logger.info("Verifying connection citations via Semantic Scholar...")
+            verified_conn_citations = verify_llm_generated_citations(
+                citations_path=paths.connection_citations_path,
+                output_path=paths.connection_citations_verified_path,
+                s2_client=s2_client,
+                llm_client=client,
+                debug_path=paths.connection_citations_verification_debug_path,
+                verbose=False  # Don't print to console during pipeline run
+            )
+            summary = verified_conn_citations.get("summary", {})
+            logger.info(f"✓ Verified {summary.get('verified', 0)}/{summary.get('total', 0)} connection citations")
+            log_event(
+                paths.db_dir / "provenance.sqlite",
+                "connection_citations_verified",
+                verified_conn_citations.get("summary", {})
+            )
 
-    logger.info("Validating model against theories...")
-    tv = validate_against_theories(
-        connections_path=paths.connections_path,
-        theories_dir=paths.theories_dir,
-        bib_path=paths.references_bib_path,
-        out_path=paths.theory_validation_path,
-    )
-    tv_summary = tv.get("summary", {})
-    logger.info(f"✓ Theory validation: {tv_summary.get('theory_count', 0)} theories, "
-                f"{tv_summary.get('confirmed_count', 0)} confirmed, "
-                f"{tv_summary.get('novel_count', 0)} novel connections")
-    # Validate JSON against schema when available
-    try:
-        validate_json_schema(tv, load_config().schemas_dir / "theory_validation.schema.json")
-    except Exception:
-        # Non-fatal; surface during CLI runs if needed
-        pass
-    log_event(paths.db_dir / "provenance.sqlite", "theory_validation", tv.get("summary", {}))
+        # Verify loop citations (if they exist)
+        if run_citations and run_loops:
+            logger.info("Verifying loop citations via Semantic Scholar...")
+            verified_loop_citations = verify_llm_generated_citations(
+                citations_path=paths.loop_citations_path,
+                output_path=paths.loop_citations_verified_path,
+                s2_client=s2_client,
+                llm_client=client,
+                debug_path=paths.loop_citations_verification_debug_path,
+                verbose=False  # Don't print to console during pipeline run
+            )
+            loop_summary = verified_loop_citations.get("summary", {})
+            logger.info(f"✓ Verified {loop_summary.get('verified', 0)}/{loop_summary.get('total', 0)} loop citations")
+            log_event(
+                paths.db_dir / "provenance.sqlite",
+                "loop_citations_verified",
+                verified_loop_citations.get("summary", {})
+            )
+
+    # Optional: Theory validation
+    tv = None
+    if run_theory_validation:
+        logger.info("Validating model against theories...")
+        tv = validate_against_theories(
+            connections_path=paths.connections_path,
+            theories_dir=paths.theories_dir,
+            bib_path=paths.references_bib_path,
+            out_path=paths.theory_validation_path,
+        )
+        tv_summary = tv.get("summary", {})
+        logger.info(f"✓ Theory validation: {tv_summary.get('theory_count', 0)} theories, "
+                    f"{tv_summary.get('confirmed_count', 0)} confirmed, "
+                    f"{tv_summary.get('novel_count', 0)} novel connections")
+        # Validate JSON against schema when available
+        try:
+            validate_json_schema(tv, load_config().schemas_dir / "theory_validation.schema.json")
+        except Exception:
+            # Non-fatal; surface during CLI runs if needed
+            pass
+        log_event(paths.db_dir / "provenance.sqlite", "theory_validation", tv.get("summary", {}))
 
     try:
         _ = verify_citations(
@@ -299,48 +313,72 @@ def run_pipeline(
     citations_verified_path = paths.improvements_dir / "citations_verified.json"
     paper_suggestions_path = paths.improvements_dir / "paper_suggestions.json"
 
-    if verify_cit:
-        # s2_client already initialized above for LLM citation verification
-        verified_cits = verify_all_citations(
-            theories_dir=paths.theories_dir,
-            bib_path=paths.references_bib_path,
-            s2_client=s2_client,
-            out_path=citations_verified_path,
-        )
-        # Note: connection_citations_path now generated by LLM-based citation finder above
-        connection_cits_legacy = generate_connection_citation_table(
-            connections_path=paths.connections_path,
-            theories_dir=paths.theories_dir,
-            verified_citations_path=citations_verified_path,
-            loops_path=paths.loops_path,
-            out_path=paths.connections_dir / "connection_citations_legacy.json",
-        )
-        log_event(
-            paths.db_dir / "provenance.sqlite",
-            "verify_citations",
-            {
-                "total": len(verified_cits),
-                "verified": sum(1 for v in verified_cits.values() if v.verified),
-            },
-        )
+    # Optional: Gap analysis (identify unsupported connections)
+    gaps = None
+    if run_gap_analysis:
+        # Gap analysis requires citations to be generated first
+        if not run_citations:
+            logger.warning("Gap analysis requires --citations flag, skipping...")
+        else:
+            # Legacy citation verification system (kept for compatibility)
+            from .external.semantic_scholar import SemanticScholarClient
+            if not verify_cit:
+                s2_client = SemanticScholarClient()
 
-        # Gap analysis (using new connection citations)
-        gaps = identify_gaps(paths.connection_citations_path, paths.gap_analysis_path)
-        log_event(
-            paths.db_dir / "provenance.sqlite",
-            "gap_analysis",
-            {"unsupported": len(gaps.get("unsupported_connections", []))},
-        )
+            verified_cits = verify_all_citations(
+                theories_dir=paths.theories_dir,
+                bib_path=paths.references_bib_path,
+                s2_client=s2_client,
+                out_path=citations_verified_path,
+            )
+            # Note: connection_citations_path now generated by LLM-based citation finder above
+            connection_cits_legacy = generate_connection_citation_table(
+                connections_path=paths.connections_path,
+                theories_dir=paths.theories_dir,
+                verified_citations_path=citations_verified_path,
+                loops_path=paths.loops_path,
+                out_path=paths.connections_dir / "connection_citations_legacy.json",
+            )
+            log_event(
+                paths.db_dir / "provenance.sqlite",
+                "verify_citations",
+                {
+                    "total": len(verified_cits),
+                    "verified": sum(1 for v in verified_cits.values() if v.verified),
+                },
+            )
 
-        # Paper discovery (optional, enabled by separate flag)
-        if discover_papers:
+            # Perform gap analysis
+            logger.info("Identifying unsupported connections...")
+            gaps = identify_gaps(paths.connection_citations_path, paths.gap_analysis_path)
+            logger.info(f"✓ Found {len(gaps.get('unsupported_connections', []))} unsupported connections")
+            log_event(
+                paths.db_dir / "provenance.sqlite",
+                "gap_analysis",
+                {"unsupported": len(gaps.get("unsupported_connections", []))},
+            )
+
+    # Optional: Paper discovery for unsupported connections
+    suggestions = None
+    if discover_papers:
+        if not run_gap_analysis:
+            logger.warning("Paper discovery requires --gap-analysis flag, skipping...")
+        elif gaps is None:
+            logger.warning("No gap analysis results available, skipping paper discovery...")
+        else:
+            from .external.semantic_scholar import SemanticScholarClient
+            if not verify_cit and not run_gap_analysis:
+                s2_client = SemanticScholarClient()
+
+            logger.info("Discovering papers for unsupported connections...")
             suggestions = suggest_papers_for_gaps(
-                gaps_path=gap_analysis_path,
+                gaps_path=paths.gap_analysis_path,
                 s2_client=s2_client,
                 llm_client=client,
                 out_path=paper_suggestions_path,
                 limit_per_gap=5,
             )
+            logger.info(f"✓ Found {len(suggestions.get('suggestions', []))} paper suggestions")
             log_event(
                 paths.db_dir / "provenance.sqlite",
                 "paper_discovery",
@@ -353,194 +391,211 @@ def run_pipeline(
         patched_file = apply_model_patch(mdl_path, paths.model_improvements_path, out_copy_path)
         log_event(paths.db_dir / "provenance.sqlite", "apply_patch", {"output": str(patched_file)})
 
-    # Generate CSV exports
-    conn_csv_rows = generate_connections_csv(
-        connections_path=paths.connections_path,
-        descriptions_path=paths.connection_descriptions_path,
-        variables_path=paths.variables_llm_path,
-        citations_path=paths.connection_citations_verified_path,
-        output_path=paths.connections_export_path,
-    )
-    log_event(paths.db_dir / "provenance.sqlite", "csv_export_connections", {"rows": conn_csv_rows})
+    # Generate CSV exports (only if relevant data exists)
+    conn_csv_rows = None
+    if run_citations:
+        conn_csv_rows = generate_connections_csv(
+            connections_path=paths.connections_path,
+            descriptions_path=paths.connection_descriptions_path,
+            variables_path=paths.variables_llm_path,
+            citations_path=paths.connection_citations_verified_path if verify_cit else None,
+            output_path=paths.connections_export_path,
+        )
+        log_event(paths.db_dir / "provenance.sqlite", "csv_export_connections", {"rows": conn_csv_rows})
 
-    loop_csv_rows = generate_loops_csv(
-        loops_path=paths.loops_path,
-        descriptions_path=paths.loop_descriptions_path,
-        citations_path=paths.loop_citations_verified_path,
-        output_path=paths.loops_export_path,
-    )
-    log_event(paths.db_dir / "provenance.sqlite", "csv_export_loops", {"rows": loop_csv_rows})
+    loop_csv_rows = None
+    if run_loops:
+        loop_csv_rows = generate_loops_csv(
+            loops_path=paths.loops_path,
+            descriptions_path=paths.loop_descriptions_path,
+            citations_path=paths.loop_citations_verified_path if (verify_cit and run_citations) else None,
+            output_path=paths.loops_export_path,
+        )
+        log_event(paths.db_dir / "provenance.sqlite", "csv_export_loops", {"rows": loop_csv_rows})
 
     # Step 8: Model Improvement & Development (optional)
-    if improve_model:
+    # Initialize result variables
+    theory_enh = None
+    enhanced_mdl_path = None
+    rq_align = None
+    rq_refine = None
+    theory_disc = None
+
+    # Run model improvement modules if any are requested
+    if run_theory_enhancement or run_rq_analysis or run_theory_discovery:
         logger.info("=" * 60)
         logger.info("Starting Model Improvement & Development modules...")
         logger.info("=" * 60)
 
-        # Load research questions
-        logger.info("Loading research questions...")
-        rqs = load_research_questions(paths.rq_txt_path)
-        logger.info(f"✓ Loaded {len(rqs)} research questions")
+        # Load research questions if needed
+        rqs = None
+        if run_rq_analysis or run_theory_discovery:
+            logger.info("Loading research questions...")
+            rqs = load_research_questions(paths.rq_txt_path)
+            logger.info(f"✓ Loaded {len(rqs)} research questions")
 
-        # Load theories (convert to dict list for compatibility)
-        logger.info("Loading theories...")
-        theories_objs = load_theories(paths.theories_dir)
-        theories = [{"name": t.theory_name, "description": t.description, "focus_area": t.focus_area} for t in theories_objs]
-        logger.info(f"✓ Loaded {len(theories)} theories")
+        # Load theories if needed
+        theories = None
+        if run_theory_enhancement or run_rq_analysis or run_theory_discovery:
+            logger.info("Loading theories...")
+            theories_objs = load_theories(paths.theories_dir)
+            theories = [{"name": t.theory_name, "description": t.description, "focus_area": t.focus_area} for t in theories_objs]
+            logger.info(f"✓ Loaded {len(theories)} theories")
 
-        # Module 2: Theory Enhancement
-        logger.info("Running Theory Enhancement module...")
-        try:
-            theory_enh = run_theory_enhancement(
-                theories=theories,
-                variables=variables_data,
-                connections={"connections": connections_named},
-                loops=loops
-            )
-            if "error" in theory_enh:
-                logger.warning(f"Theory Enhancement returned error: {theory_enh.get('error')}")
-            paths.theory_enhancement_path.write_text(
-                json.dumps(theory_enh, indent=2), encoding="utf-8"
-            )
-            # Count from new format
-            theory_count = len(theory_enh.get('theories', []))
-            total_vars = sum(len(t.get('additions', {}).get('variables', [])) for t in theory_enh.get('theories', []))
-            total_conns = sum(len(t.get('additions', {}).get('connections', [])) for t in theory_enh.get('theories', []))
-            logger.info(f"✓ Theory Enhancement complete: {theory_count} theories, {total_vars} variables, {total_conns} connections")
-            log_event(paths.db_dir / "provenance.sqlite", "theory_enhancement", {})
+        # Module 2: Theory Enhancement (optional)
+        if run_theory_enhancement:
+            logger.info("Running Theory Enhancement module...")
+            try:
+                theory_enh = run_theory_enhancement(
+                    theories=theories,
+                    variables=variables_data,
+                    connections={"connections": connections_named},
+                    loops=loops
+                )
+                if "error" in theory_enh:
+                    logger.warning(f"Theory Enhancement returned error: {theory_enh.get('error')}")
+                paths.theory_enhancement_path.write_text(
+                    json.dumps(theory_enh, indent=2), encoding="utf-8"
+                )
+                # Count from new format
+                theory_count = len(theory_enh.get('theories', []))
+                total_vars = sum(len(t.get('additions', {}).get('variables', [])) for t in theory_enh.get('theories', []))
+                total_conns = sum(len(t.get('additions', {}).get('connections', [])) for t in theory_enh.get('theories', []))
+                logger.info(f"✓ Theory Enhancement complete: {theory_count} theories, {total_vars} variables, {total_conns} connections")
+                log_event(paths.db_dir / "provenance.sqlite", "theory_enhancement", {})
 
-            # Apply theory enhancements to MDL
-            if "error" not in theory_enh and len(theory_enh.get('missing_from_theories', [])) > 0:
-                logger.info("Applying theory enhancements to MDL...")
-                try:
-                    from .mdl_text_patcher import apply_theory_enhancements
-                    from .mdl_enhancement_utils import save_enhancement
+                # Optional: Generate enhanced MDL file
+                if generate_enhanced_mdl and "error" not in theory_enh and len(theory_enh.get('missing_from_theories', [])) > 0:
+                    logger.info("Applying theory enhancements to MDL...")
+                    try:
+                        from .mdl_text_patcher import apply_theory_enhancements
+                        from .mdl_enhancement_utils import save_enhancement
 
-                    # Generate enhanced MDL in memory first
-                    temp_mdl_path = paths.artifacts_dir / f"{mdl_path.stem}_temp.mdl"
+                        # Generate enhanced MDL in memory first
+                        temp_mdl_path = paths.artifacts_dir / f"{mdl_path.stem}_temp.mdl"
 
-                    mdl_summary = apply_theory_enhancements(
-                        mdl_path,
-                        theory_enh,
-                        temp_mdl_path,
-                        add_colors=True,
-                        use_llm_layout=True,
-                        llm_client=client
-                    )
+                        mdl_summary = apply_theory_enhancements(
+                            mdl_path,
+                            theory_enh,
+                            temp_mdl_path,
+                            add_colors=True,
+                            use_llm_layout=True,
+                            llm_client=client
+                        )
 
-                    # Read the generated MDL content
-                    enhanced_mdl_content = temp_mdl_path.read_text(encoding="utf-8")
+                        # Read the generated MDL content
+                        enhanced_mdl_content = temp_mdl_path.read_text(encoding="utf-8")
 
-                    # Save with versioning and metadata
-                    enhanced_mdl_path = save_enhancement(
-                        mdl_dir=paths.mdl_dir,
-                        artifacts_dir=paths.artifacts_dir,
-                        theory_enh_data=theory_enh,
-                        mdl_summary=mdl_summary,
-                        enhanced_mdl_content=enhanced_mdl_content,
-                        original_mdl_name=mdl_path.name
-                    )
+                        # Save with versioning and metadata
+                        enhanced_mdl_path = save_enhancement(
+                            mdl_dir=paths.mdl_dir,
+                            artifacts_dir=paths.artifacts_dir,
+                            theory_enh_data=theory_enh,
+                            mdl_summary=mdl_summary,
+                            enhanced_mdl_content=enhanced_mdl_content,
+                            original_mdl_name=mdl_path.name
+                        )
 
-                    # Clean up temp file
-                    temp_mdl_path.unlink()
+                        # Clean up temp file
+                        temp_mdl_path.unlink()
 
-                    logger.info(f"✓ MDL Enhancement complete: {mdl_summary['variables_added']} vars, {mdl_summary['connections_added']} conns")
-                    logger.info(f"✓ Enhanced MDL saved to: {enhanced_mdl_path}")
-                    log_event(paths.db_dir / "provenance.sqlite", "mdl_enhancement", mdl_summary)
-                except Exception as e:
-                    logger.error(f"✗ MDL Enhancement failed: {e}")
-                    logger.exception("Full traceback:")
-                    enhanced_mdl_path = None
-            else:
-                enhanced_mdl_path = None
+                        logger.info(f"✓ MDL Enhancement complete: {mdl_summary['variables_added']} vars, {mdl_summary['connections_added']} conns")
+                        logger.info(f"✓ Enhanced MDL saved to: {enhanced_mdl_path}")
+                        log_event(paths.db_dir / "provenance.sqlite", "mdl_enhancement", mdl_summary)
+                    except Exception as e:
+                        logger.error(f"✗ MDL Enhancement failed: {e}")
+                        logger.exception("Full traceback:")
+                        enhanced_mdl_path = None
 
-        except Exception as e:
-            logger.error(f"✗ Theory Enhancement failed: {e}")
-            logger.exception("Full traceback:")
-            # Write empty result so file exists
-            paths.theory_enhancement_path.write_text(
-                json.dumps({"error": str(e), "theories": []}, indent=2), encoding="utf-8"
-            )
-            enhanced_mdl_path = None
+            except Exception as e:
+                logger.error(f"✗ Theory Enhancement failed: {e}")
+                logger.exception("Full traceback:")
+                # Write empty result so file exists
+                paths.theory_enhancement_path.write_text(
+                    json.dumps({"error": str(e), "theories": []}, indent=2), encoding="utf-8"
+                )
 
-        # Module 3: RQ Alignment
-        logger.info("Running RQ Alignment module...")
-        try:
-            rq_align = run_rq_alignment(
-                rqs=rqs,
-                theories=theories,
-                variables=variables_data,
-                connections={"connections": connections_named},
-                loops=loops
-            )
-            if "error" in rq_align:
-                logger.warning(f"RQ Alignment returned error: {rq_align.get('error')}")
-            paths.rq_alignment_path.write_text(
-                json.dumps(rq_align, indent=2), encoding="utf-8"
-            )
-            # Count RQ keys (rq_1, rq_2, etc.)
-            rq_count = sum(1 for k in rq_align.keys() if k.startswith('rq_'))
-            logger.info(f"✓ RQ Alignment complete: analyzed {rq_count} research questions")
-            log_event(paths.db_dir / "provenance.sqlite", "rq_alignment", {})
-        except Exception as e:
-            logger.error(f"✗ RQ Alignment failed: {e}")
-            logger.exception("Full traceback:")
-            rq_align = {"error": str(e), "overall_assessment": {}, "actionable_steps": []}
-            paths.rq_alignment_path.write_text(
-                json.dumps(rq_align, indent=2), encoding="utf-8"
-            )
+        # Module 3 & 4: RQ Alignment and Refinement (optional)
+        if run_rq_analysis:
+            # Module 3: RQ Alignment
+            logger.info("Running RQ Alignment module...")
+            try:
+                rq_align = run_rq_alignment(
+                    rqs=rqs,
+                    theories=theories,
+                    variables=variables_data,
+                    connections={"connections": connections_named},
+                    loops=loops
+                )
+                if "error" in rq_align:
+                    logger.warning(f"RQ Alignment returned error: {rq_align.get('error')}")
+                paths.rq_alignment_path.write_text(
+                    json.dumps(rq_align, indent=2), encoding="utf-8"
+                )
+                # Count RQ keys (rq_1, rq_2, etc.)
+                rq_count = sum(1 for k in rq_align.keys() if k.startswith('rq_'))
+                logger.info(f"✓ RQ Alignment complete: analyzed {rq_count} research questions")
+                log_event(paths.db_dir / "provenance.sqlite", "rq_alignment", {})
+            except Exception as e:
+                logger.error(f"✗ RQ Alignment failed: {e}")
+                logger.exception("Full traceback:")
+                rq_align = {"error": str(e), "overall_assessment": {}, "actionable_steps": []}
+                paths.rq_alignment_path.write_text(
+                    json.dumps(rq_align, indent=2), encoding="utf-8"
+                )
 
-        # Module 4: RQ Refinement
-        logger.info("Running RQ Refinement module...")
-        try:
-            rq_refine = run_rq_refinement(
-                rqs=rqs,
-                rq_alignment=rq_align,
-                variables=variables_data,
-                connections={"connections": connections_named},
-                loops=loops
-            )
-            if "error" in rq_refine:
-                logger.warning(f"RQ Refinement returned error: {rq_refine.get('error')}")
-            paths.rq_refinement_path.write_text(
-                json.dumps(rq_refine, indent=2), encoding="utf-8"
-            )
-            refinement_count = len(rq_refine.get('refinement_suggestions', []))
-            new_rq_count = len(rq_refine.get('new_rq_suggestions', []))
-            logger.info(f"✓ RQ Refinement complete: {refinement_count} refinements, {new_rq_count} new RQ suggestions")
-            log_event(paths.db_dir / "provenance.sqlite", "rq_refinement", {})
-        except Exception as e:
-            logger.error(f"✗ RQ Refinement failed: {e}")
-            logger.exception("Full traceback:")
-            paths.rq_refinement_path.write_text(
-                json.dumps({"error": str(e), "refinement_suggestions": [], "new_rq_suggestions": []}, indent=2), encoding="utf-8"
-            )
+            # Module 4: RQ Refinement
+            logger.info("Running RQ Refinement module...")
+            try:
+                rq_refine = run_rq_refinement(
+                    rqs=rqs,
+                    rq_alignment=rq_align,
+                    variables=variables_data,
+                    connections={"connections": connections_named},
+                    loops=loops
+                )
+                if "error" in rq_refine:
+                    logger.warning(f"RQ Refinement returned error: {rq_refine.get('error')}")
+                paths.rq_refinement_path.write_text(
+                    json.dumps(rq_refine, indent=2), encoding="utf-8"
+                )
+                refinement_count = len(rq_refine.get('refinement_suggestions', []))
+                new_rq_count = len(rq_refine.get('new_rq_suggestions', []))
+                logger.info(f"✓ RQ Refinement complete: {refinement_count} refinements, {new_rq_count} new RQ suggestions")
+                log_event(paths.db_dir / "provenance.sqlite", "rq_refinement", {})
+            except Exception as e:
+                logger.error(f"✗ RQ Refinement failed: {e}")
+                logger.exception("Full traceback:")
+                paths.rq_refinement_path.write_text(
+                    json.dumps({"error": str(e), "refinement_suggestions": [], "new_rq_suggestions": []}, indent=2), encoding="utf-8"
+                )
 
-        # Module 5: Theory Discovery
-        logger.info("Running Theory Discovery module...")
-        try:
-            theory_disc = run_theory_discovery(
-                rqs=rqs,
-                current_theories=theories,
-                rq_alignment=rq_align
-            )
-            if "error" in theory_disc:
-                logger.warning(f"Theory Discovery returned error: {theory_disc.get('error')}")
-            paths.theory_discovery_path.write_text(
-                json.dumps(theory_disc, indent=2), encoding="utf-8"
-            )
-            high_rel_count = len(theory_disc.get('high_relevance', []))
-            adjacent_count = len(theory_disc.get('adjacent_opportunities', []))
-            cross_domain_count = len(theory_disc.get('cross_domain_inspiration', []))
-            total_theories = high_rel_count + adjacent_count + cross_domain_count
-            logger.info(f"✓ Theory Discovery complete: {total_theories} theories ({high_rel_count} high-relevance, {adjacent_count} adjacent, {cross_domain_count} cross-domain)")
-            log_event(paths.db_dir / "provenance.sqlite", "theory_discovery", {})
-        except Exception as e:
-            logger.error(f"✗ Theory Discovery failed: {e}")
-            logger.exception("Full traceback:")
-            paths.theory_discovery_path.write_text(
-                json.dumps({"error": str(e), "high_relevance": [], "adjacent_opportunities": [], "cross_domain_inspiration": []}, indent=2), encoding="utf-8"
-            )
+        # Module 5: Theory Discovery (optional)
+        if run_theory_discovery:
+            logger.info("Running Theory Discovery module...")
+            try:
+                theory_disc = run_theory_discovery(
+                    rqs=rqs,
+                    current_theories=theories,
+                    rq_alignment=rq_align if run_rq_analysis else None
+                )
+                if "error" in theory_disc:
+                    logger.warning(f"Theory Discovery returned error: {theory_disc.get('error')}")
+                paths.theory_discovery_path.write_text(
+                    json.dumps(theory_disc, indent=2), encoding="utf-8"
+                )
+                high_rel_count = len(theory_disc.get('high_relevance', []))
+                adjacent_count = len(theory_disc.get('adjacent_opportunities', []))
+                cross_domain_count = len(theory_disc.get('cross_domain_inspiration', []))
+                total_theories = high_rel_count + adjacent_count + cross_domain_count
+                logger.info(f"✓ Theory Discovery complete: {total_theories} theories ({high_rel_count} high-relevance, {adjacent_count} adjacent, {cross_domain_count} cross-domain)")
+                log_event(paths.db_dir / "provenance.sqlite", "theory_discovery", {})
+            except Exception as e:
+                logger.error(f"✗ Theory Discovery failed: {e}")
+                logger.exception("Full traceback:")
+                paths.theory_discovery_path.write_text(
+                    json.dumps({"error": str(e), "high_relevance": [], "adjacent_opportunities": [], "cross_domain_inspiration": []}, indent=2), encoding="utf-8"
+                )
 
         logger.info("=" * 60)
         logger.info("Model Improvement & Development modules completed!")
@@ -564,16 +619,16 @@ def run_pipeline(
         "theory_validation": str(paths.theory_validation_path),
         "improvements": str(paths.model_improvements_path),
         "citations_verified": str(citations_verified_path) if verify_cit else None,
-        "gap_analysis": str(paths.gap_analysis_path) if verify_cit else None,
-        "paper_suggestions": str(paper_suggestions_path) if (verify_cit and discover_papers) else None,
+        "gap_analysis": str(paths.gap_analysis_path) if run_gap_analysis else None,
+        "paper_suggestions": str(paper_suggestions_path) if discover_papers else None,
         "patched": str(patched_file) if patched_file else None,
         "connections_csv": str(paths.connections_export_path),
         "loops_csv": str(paths.loops_export_path),
-        "theory_enhancement": str(paths.theory_enhancement_path) if improve_model else None,
-        "enhanced_mdl": str(enhanced_mdl_path) if (improve_model and 'enhanced_mdl_path' in locals() and enhanced_mdl_path) else None,
-        "rq_alignment": str(paths.rq_alignment_path) if improve_model else None,
-        "rq_refinement": str(paths.rq_refinement_path) if improve_model else None,
-        "theory_discovery": str(paths.theory_discovery_path) if improve_model else None,
+        "theory_enhancement": str(paths.theory_enhancement_path) if run_theory_enhancement else None,
+        "enhanced_mdl": str(enhanced_mdl_path) if (generate_enhanced_mdl and enhanced_mdl_path) else None,
+        "rq_alignment": str(paths.rq_alignment_path) if run_rq_analysis else None,
+        "rq_refinement": str(paths.rq_refinement_path) if run_rq_analysis else None,
+        "theory_discovery": str(paths.theory_discovery_path) if run_theory_discovery else None,
     }
 
     # Save run metadata if versioning is enabled
@@ -581,8 +636,15 @@ def run_pipeline(
         from .run_metadata import create_run_metadata, save_run_metadata, update_latest_symlink
 
         pipeline_args = {
-            "improve_model": improve_model,
+            "run_loops": run_loops,
+            "run_citations": run_citations,
             "verify_cit": verify_cit,
+            "run_theory_validation": run_theory_validation,
+            "run_theory_enhancement": run_theory_enhancement,
+            "generate_enhanced_mdl": generate_enhanced_mdl,
+            "run_rq_analysis": run_rq_analysis,
+            "run_theory_discovery": run_theory_discovery,
+            "run_gap_analysis": run_gap_analysis,
             "discover_papers": discover_papers,
             "apply_patch": apply_patch,
         }

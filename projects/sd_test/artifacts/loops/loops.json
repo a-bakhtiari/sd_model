@@ -5,6 +5,35 @@
       "variables": [
         "Core Developer",
         "Implicit Knowledge Transfer (Mentorship)",
+        "Promotion Rate",
+        "Core Developer"
+      ],
+      "edges": [
+        {
+          "from_var": "Core Developer",
+          "to_var": "Implicit Knowledge Transfer (Mentorship)",
+          "relationship": "positive"
+        },
+        {
+          "from_var": "Implicit Knowledge Transfer (Mentorship)",
+          "to_var": "Promotion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from_var": "Promotion Rate",
+          "to_var": "Core Developer",
+          "relationship": "positive"
+        }
+      ],
+      "length": 4,
+      "loop": "Core Developer \u2192 Implicit Knowledge Transfer (Mentorship) \u2192 Promotion Rate \u2192 Core Developer",
+      "confidence": 0.9
+    },
+    {
+      "id": "R02",
+      "variables": [
+        "Core Developer",
+        "Implicit Knowledge Transfer (Mentorship)",
         "Skill up",
         "Experienced Contributors",
         "Promotion Rate",
@@ -29,7 +58,7 @@
         {
           "from_var": "Experienced Contributors",
           "to_var": "Promotion Rate",
-          "relationship": "positive"
+          "relationship": "negative"
         },
         {
           "from_var": "Promotion Rate",
@@ -39,64 +68,12 @@
       ],
       "length": 6,
       "loop": "Core Developer \u2192 Implicit Knowledge Transfer (Mentorship) \u2192 Skill up \u2192 Experienced Contributors \u2192 Promotion Rate \u2192 Core Developer",
-      "confidence": 0.8
-    },
-    {
-      "id": "R02",
-      "variables": [
-        "Core Developer",
-        "Implicit Knowledge Transfer (Mentorship)",
-        "Promotion Rate",
-        "Core Developer"
-      ],
-      "edges": [
-        {
-          "from_var": "Core Developer",
-          "to_var": "Implicit Knowledge Transfer (Mentorship)",
-          "relationship": "positive"
-        },
-        {
-          "from_var": "Implicit Knowledge Transfer (Mentorship)",
-          "to_var": "Promotion Rate",
-          "relationship": "unknown"
-        },
-        {
-          "from_var": "Promotion Rate",
-          "to_var": "Core Developer",
-          "relationship": "positive"
-        }
-      ],
-      "length": 4,
-      "loop": "Core Developer \u2192 Implicit Knowledge Transfer (Mentorship) \u2192 Promotion Rate \u2192 Core Developer",
-      "confidence": 0.75
+      "confidence": 0.7
     }
   ],
   "balancing": [
     {
       "id": "B01",
-      "variables": [
-        "Core Developer",
-        "Developer's Turnover",
-        "Core Developer"
-      ],
-      "edges": [
-        {
-          "from_var": "Core Developer",
-          "to_var": "Developer's Turnover",
-          "relationship": "positive"
-        },
-        {
-          "from_var": "Developer's Turnover",
-          "to_var": "Core Developer",
-          "relationship": "negative"
-        }
-      ],
-      "length": 3,
-      "loop": "Core Developer \u2192 Developer's Turnover \u2192 Core Developer",
-      "confidence": 0.9
-    },
-    {
-      "id": "B02",
       "variables": [
         "Experienced Contributors",
         "Promotion Rate",
@@ -106,7 +83,7 @@
         {
           "from_var": "Experienced Contributors",
           "to_var": "Promotion Rate",
-          "relationship": "positive"
+          "relationship": "negative"
         },
         {
           "from_var": "Promotion Rate",
@@ -116,10 +93,10 @@
       ],
       "length": 3,
       "loop": "Experienced Contributors \u2192 Promotion Rate \u2192 Experienced Contributors",
-      "confidence": 0.85
+      "confidence": 0.95
     },
     {
-      "id": "B03",
+      "id": "B02",
       "variables": [
         "New Contributors",
         "Skill up",
@@ -129,7 +106,7 @@
         {
           "from_var": "New Contributors",
           "to_var": "Skill up",
-          "relationship": "positive"
+          "relationship": "unknown"
         },
         {
           "from_var": "Skill up",

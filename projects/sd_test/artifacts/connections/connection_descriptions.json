@@ -6,39 +6,39 @@
     },
     {
       "id": "C02",
-      "description": "As contributors skill up, they graduate from the New Contributors stock, reducing its level."
+      "description": "As contributors skill up, they move out of the New Contributors stock, reducing its level."
     },
     {
       "id": "C03",
-      "description": "Developer turnover directly drains the pool of Core Developers as they leave the project."
+      "description": "Developer turnover directly drains the Core Developer stock by removing experienced members."
     },
     {
       "id": "C04",
-      "description": "The promotion rate directly adds experienced contributors to the Core Developer stock."
+      "description": "The promotion rate increases the Core Developer stock by moving experienced contributors into it."
     },
     {
       "id": "C05",
-      "description": "Promoting experienced contributors to the core team reduces the stock of Experienced Contributors."
+      "description": "The promotion rate decreases the Experienced Contributors stock by moving its members into the core group."
     },
     {
       "id": "C06",
-      "description": "The skill-up flow directly adds newly competent contributors to the Experienced Contributors stock."
+      "description": "The skill-up flow increases the Experienced Contributors stock by moving new contributors into it."
     },
     {
       "id": "C07",
-      "description": "Effective mentorship accelerates skill acquisition by providing direct guidance and tacit knowledge."
+      "description": "Effective mentorship accelerates skill development by providing direct guidance and tacit knowledge."
     },
     {
       "id": "C08",
-      "description": "Comprehensive documentation enables self-paced learning, thereby accelerating the skill-up process."
+      "description": "Clear documentation and guides accelerate skill acquisition by providing accessible, structured knowledge."
     },
     {
       "id": "C09",
-      "description": "Mentorship helps experienced contributors demonstrate core-level competence, increasing their promotion rate."
+      "description": "Effective mentorship increases the promotion rate by preparing experienced contributors for core team responsibilities."
     },
     {
       "id": "C10",
-      "description": "More core developers provide more available mentors, thereby increasing implicit knowledge transfer capacity."
+      "description": "More core developers increase the project's capacity for providing mentorship and implicit knowledge transfer."
     }
   ]
 }
