@@ -1,0 +1,194 @@
+{
+  "theories": [
+    {
+      "name": "Communities of Practice (Wenger)",
+      "additions": {
+        "variables": [
+          {
+            "name": "Legitimate Peripheral Participation",
+            "type": "Auxiliary",
+            "description": "Degree to which newcomers can participate meaningfully in simple tasks while learning community practices"
+          },
+          {
+            "name": "Community Boundary Spanning",
+            "type": "Auxiliary",
+            "description": "Ability of community members to connect with external knowledge sources and other communities"
+          },
+          {
+            "name": "Shared Repertoire",
+            "type": "Stock",
+            "description": "Accumulated shared resources, tools, stories, and concepts developed by the community over time"
+          },
+          {
+            "name": "Mutual Engagement",
+            "type": "Auxiliary",
+            "description": "Level of interaction and collaboration among community members across different experience levels"
+          },
+          {
+            "name": "Joint Enterprise",
+            "type": "Auxiliary",
+            "description": "Shared understanding and commitment to community goals and domain"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Legitimate Peripheral Participation",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mutual Engagement",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Shared Repertoire",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Joint Enterprise",
+            "to": "Promotion Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Boundary Spanning",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Shared Repertoire",
+            "relationship": "positive"
+          },
+          {
+            "from": "Experienced Contributors",
+            "to": "Mutual Engagement",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Nonaka's SECI Model",
+      "additions": {
+        "variables": [
+          {
+            "name": "Socialization Rate",
+            "type": "Flow",
+            "description": "Conversion of tacit knowledge through shared experiences and observation (Tacit to Tacit)"
+          },
+          {
+            "name": "Externalization Rate",
+            "type": "Flow",
+            "description": "Conversion of tacit knowledge to explicit knowledge through articulation and documentation"
+          },
+          {
+            "name": "Combination Rate",
+            "type": "Flow",
+            "description": "Conversion of explicit knowledge to more complex explicit knowledge through synthesis and systemization"
+          },
+          {
+            "name": "Internalization Rate",
+            "type": "Flow",
+            "description": "Conversion of explicit knowledge to tacit knowledge through learning and practice"
+          },
+          {
+            "name": "Ba (Shared Context)",
+            "type": "Auxiliary",
+            "description": "Shared context in knowledge creation that facilitates interactions and knowledge sharing"
+          },
+          {
+            "name": "Tacit Knowledge Base",
+            "type": "Stock",
+            "description": "Accumulated tacit knowledge held by community members"
+          },
+          {
+            "name": "Explicit Knowledge Base",
+            "type": "Stock",
+            "description": "Accumulated explicit knowledge in documented form"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Implicit Knowledge Transfer (Mentorship)",
+            "to": "Socialization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "to": "Externalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Socialization Rate",
+            "to": "Tacit Knowledge Base",
+            "relationship": "positive"
+          },
+          {
+            "from": "Externalization Rate",
+            "to": "Explicit Knowledge Base",
+            "relationship": "positive"
+          },
+          {
+            "from": "Combination Rate",
+            "to": "Explicit Knowledge Base",
+            "relationship": "positive"
+          },
+          {
+            "from": "Internalization Rate",
+            "to": "Tacit Knowledge Base",
+            "relationship": "positive"
+          },
+          {
+            "from": "Explicit Knowledge Base",
+            "to": "Combination Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Explicit Knowledge Base",
+            "to": "Internalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Tacit Knowledge Base",
+            "to": "Externalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Ba (Shared Context)",
+            "to": "Socialization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Ba (Shared Context)",
+            "to": "Externalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Tacit Knowledge Base",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Explicit Knowledge Base",
+            "to": "Skill up",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "citations": [
+    {
+      "connection_id": "C01",
+      "papers": [
+        {
+          "title": "Diversity and inclusion in open source software (OSS) projects: Where do we stand?",
+          "authors": "Bosu, A., Sultana, K. Z.",
+          "year": "2019",
+          "relevance": "Examines how diverse contributor bases attract broader participation and improve project outcomes",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Diversity and Inclusion in Open Source Software (OSS) Projects: Where Do We Stand?",
+            "authors": [
+              "Amiangshu Bosu",
+              "Kazi Zakia Sultana"
+            ],
+            "year": 2019,
+            "url": "https://www.semanticscholar.org/paper/29bf302983b5a4bd8c1b75c8af02afca78dc45ed",
+            "paper_id": "29bf302983b5a4bd8c1b75c8af02afca78dc45ed",
+            "citation_count": 78,
+            "abstract": "Background: As the area of computing has thrived over the years, the participation of women in computing declined. Currently women represent less than 24% of the computing workforce and that number is declining. On the other hand, the ratios of women in Open Source Software (OSS) projects are even lower.Aims: The primary objective of this study is to determine the level of gender diversity among popular OSS projects and identify the presence of gender biases that may discourage females\u2019 participation.Method: On this goal, we mined the code review repositories of ten popular OSS projects. We used a semi-automated approach followed by a manual validation to identify the genders of the active contributors.Results: Our results suggest that lack of gender diversity remains an ongoing issue among all the ten projects as each of the projects had less than 10% female developers. However, many of the projects also suffer from lack of inclusion of females to leadership positions. Although none of the projects suggest significant differences between male and female developers in terms of productivity based on three different measures, data from three out of the ten projects indicate technical biases against female developers with lower code acceptance rates as well as delayed feedback during code reviews. However, biases against females are not universal as majority of the projects do not discriminate against females. The two projects with the least ratios of female contributors as core developers showed the most biases against females.Conclusion: Based on our findings, we conclude that promoting and mentoring females to leadership positions may be an effective solution to foster gender diversity.",
+            "venue": "International Symposium on Empirical Software Engineering and Measurement",
+            "fields_of_study": [
+              "Psychology",
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Research consistently shows that diverse OSS communities attract broader participation through role modeling and inclusive environments."
+    },
+    {
+      "connection_id": "C02",
+      "papers": [
+        {
+          "title": "Overcoming open source project entry barriers with a portal for newcomers",
+          "authors": "Steinmacher, I., Conte, T. U., et al.",
+          "year": "2016",
+          "relevance": "Shows how skill development enables progression beyond newcomer status",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Overcoming Open Source Project Entry Barriers with a Portal for Newcomers",
+            "authors": [
+              "Igor Steinmacher",
+              "T. Conte",
+              "Christoph Treude",
+              "M. Gerosa"
+            ],
+            "year": 2016,
+            "url": "https://www.semanticscholar.org/paper/4bea2b4029a895bf898701329409e5a784fc2090",
+            "paper_id": "4bea2b4029a895bf898701329409e5a784fc2090",
+            "citation_count": 153,
+            "abstract": null,
+            "venue": "International Conference on Software Engineering",
+            "fields_of_study": [
+              "Engineering",
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Extensive research on OSS newcomer onboarding clearly documents the progression from new to experienced contributor status."
+    },
+    {
+      "connection_id": "C03",
+      "papers": [
+        {
+          "title": "Turnover of developers in libre software projects",
+          "authors": "Robles, G., Gonzalez-Barahona, J. M., et al.",
+          "year": "2009",
+          "relevance": "Empirical study showing how developer turnover affects core team composition",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Contributor Turnover in Libre Software Projects",
+            "authors": [
+              "G. Robles",
+              "Jesus M. Gonzalez-Barahona"
+            ],
+            "year": 2006,
+            "url": "https://www.semanticscholar.org/paper/805937789c2a540c33f36a876b8991fdcd34f1ce",
+            "paper_id": "805937789c2a540c33f36a876b8991fdcd34f1ce",
+            "citation_count": 116,
+            "abstract": null,
+            "venue": "International Conference on Open Source Systems",
+            "fields_of_study": [
+              "Computer Science",
+              "Engineering"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Multiple empirical studies document how turnover directly reduces core developer populations in OSS projects."
+    },
+    {
+      "connection_id": "C08",
+      "papers": [
+        {
+          "title": "Barriers faced by newcomers to open source projects: A systematic review",
+          "authors": "Steinmacher, I., Conte, T. U., et al.",
+          "year": "2015",
+          "relevance": "Identifies documentation as critical for self-directed learning and skill development",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Barriers Faced by Newcomers to Open Source Projects: A Systematic Review",
+            "authors": [
+              "Igor Steinmacher",
+              "Marco Aur\u00e9lio Graciotto Silva",
+              "M. Gerosa"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/ed428306066209f3eb6eb695fd0082725c6e0cfb",
+            "paper_id": "ed428306066209f3eb6eb695fd0082725c6e0cfb",
+            "citation_count": 43,
+            "abstract": null,
+            "venue": "International Conference on Open Source Systems",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Multiple studies establish documentation as a key enabler of self-directed learning and skill development in OSS."
+    }
+  ],
+  "summary": {
+    "total_papers": 30,
+    "verified": 4,
+    "unverified": 26,
+    "verification_rate": 0.133
+  }
+}

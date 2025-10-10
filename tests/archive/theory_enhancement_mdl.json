@@ -1,0 +1,188 @@
+{
+  "model_changes": [
+    {
+      "operation": "add_variable",
+      "variable": {
+        "name": "Peripheral Participants",
+        "type": "Stock",
+        "description": "Newcomers observing and doing simple tasks",
+        "position": {
+          "x": 950,
+          "y": 350,
+          "reasoning": "Between New Contributors and Core Developer for CoP progression flow"
+        },
+        "size": {
+          "width": 70,
+          "height": 26
+        },
+        "color": {
+          "border": "0-255-0"
+        },
+        "initial_value": "0",
+        "units": "people"
+      },
+      "mdl_comment": "Added: CoP theory - peripheral participation (Wenger 1998)"
+    },
+    {
+      "operation": "add_variable",
+      "variable": {
+        "name": "Knowledge Internalization",
+        "type": "Auxiliary",
+        "description": "Conversion of explicit to tacit knowledge",
+        "position": {
+          "x": 800,
+          "y": 450,
+          "reasoning": "Near Explicit Knowledge Transfer for SECI model completion"
+        },
+        "size": {
+          "width": 60,
+          "height": 26
+        },
+        "color": {
+          "border": "0-255-0"
+        },
+        "initial_value": "0",
+        "units": "knowledge units"
+      },
+      "mdl_comment": "Added: SECI model - internalization phase (Nonaka 1995)"
+    },
+    {
+      "operation": "add_variable",
+      "variable": {
+        "name": "Legitimate Peripheral Participation",
+        "type": "Auxiliary",
+        "description": "Access to community practice for newcomers",
+        "position": {
+          "x": 1050,
+          "y": 300,
+          "reasoning": "Between Peripheral Participants and Core Developer for progression"
+        },
+        "size": {
+          "width": 60,
+          "height": 26
+        },
+        "color": {
+          "border": "0-255-0"
+        },
+        "initial_value": "0",
+        "units": "participation rate"
+      },
+      "mdl_comment": "Added: CoP theory - legitimate participation (Wenger 1998)"
+    },
+    {
+      "operation": "add_connection",
+      "connection": {
+        "from": "Peripheral Participants",
+        "to": "Core Developer",
+        "relationship": "positive",
+        "color": "0-255-0"
+      },
+      "mdl_comment": "Added: CoP progression from periphery to core (Wenger 1998)"
+    },
+    {
+      "operation": "add_connection",
+      "connection": {
+        "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+        "to": "Knowledge Internalization",
+        "relationship": "positive",
+        "color": "0-255-0"
+      },
+      "mdl_comment": "Added: SECI model - explicit to tacit conversion (Nonaka 1995)"
+    },
+    {
+      "operation": "add_connection",
+      "connection": {
+        "from": "Legitimate Peripheral Participation",
+        "to": "Peripheral Participants",
+        "relationship": "positive",
+        "color": "0-255-0"
+      },
+      "mdl_comment": "Added: CoP theory - access enables participation (Wenger 1998)"
+    },
+    {
+      "operation": "remove_variable",
+      "variable": {
+        "name": "PR Feedback"
+      },
+      "mdl_comment": "Removed: Redundant with general Feedback mechanisms"
+    },
+    {
+      "operation": "remove_connection",
+      "connection": {
+        "from": "Project Reputation",
+        "to": "Joining Rate"
+      },
+      "mdl_comment": "Removed: Duplicate connection already exists"
+    },
+    {
+      "operation": "modify_connection",
+      "connection": {
+        "from": "Open Issues",
+        "to": "Feedback",
+        "old_relationship": "undeclared",
+        "new_relationship": "positive",
+        "color": "255-165-0"
+      },
+      "mdl_comment": "Modified: Positive relationship supported empirically"
+    },
+    {
+      "operation": "modify_connection",
+      "connection": {
+        "from": "Feedback",
+        "to": "Open Issues",
+        "old_relationship": "undeclared",
+        "new_relationship": "positive",
+        "color": "255-165-0"
+      },
+      "mdl_comment": "Modified: Feedback generates more issues (empirical)"
+    },
+    {
+      "operation": "add_connection",
+      "connection": {
+        "from": "Knowledge Internalization",
+        "to": "Core Developer",
+        "relationship": "positive",
+        "color": "0-255-0"
+      },
+      "mdl_comment": "Added: Internalized knowledge builds core expertise"
+    },
+    {
+      "operation": "add_variable",
+      "variable": {
+        "name": "Community Boundary Spanning",
+        "type": "Auxiliary",
+        "description": "Knowledge flow across community boundaries",
+        "position": {
+          "x": 900,
+          "y": 550,
+          "reasoning": "Near knowledge transfer variables for boundary processes"
+        },
+        "size": {
+          "width": 60,
+          "height": 26
+        },
+        "color": {
+          "border": "0-255-0"
+        },
+        "initial_value": "0",
+        "units": "boundary interactions"
+      },
+      "mdl_comment": "Added: CoP theory - boundary spanning (Wenger 1998)"
+    }
+  ],
+  "summary": {
+    "additions": {
+      "variables": 4,
+      "connections": 5
+    },
+    "removals": {
+      "variables": 1,
+      "connections": 1
+    },
+    "modifications": {
+      "variables": 0,
+      "connections": 2
+    },
+    "net_change": "Model enhanced with CoP progression and SECI completion"
+  }
+}

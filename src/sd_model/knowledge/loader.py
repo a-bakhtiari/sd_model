@@ -8,14 +8,46 @@ from .types import FeedbackItem, Theory
 
 
 def load_theories(theories_dir: Path) -> List[Theory]:
-    """Scan a directory for `.yml` files, parse them, and validate as `Theory`.
+    """Scan a directory for theory files (`.yml` or `theories.csv`).
 
-    Each YAML file may contain a single theory object.
+    Supports both YAML files (one theory per file) and CSV format.
+    CSV can be in theories_dir or its parent (knowledge/) directory.
     """
     items: List[Theory] = []
     if not theories_dir.exists():
         return items
 
+    # Check for theories.csv - first in parent (knowledge/), then in theories_dir
+    csv_path = theories_dir.parent / "theories.csv"
+    if not csv_path.exists():
+        csv_path = theories_dir / "theories.csv"
+
+    if csv_path.exists():
+        try:
+            import csv
+        except Exception as e:  # pragma: no cover
+            raise RuntimeError("csv module required but not found.") from e
+
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if not row.get('name'):
+                    continue
+                # CSV format: name, description, focus_area, citations
+                data = {
+                    'theory_name': row.get('name', ''),
+                    'citation_key': row.get('citations', '').split(';')[0].strip() if row.get('citations') else '',
+                    'expected_connections': [],
+                    'description': row.get('description', ''),
+                    'focus_area': row.get('focus_area', '')
+                }
+                try:
+                    items.append(Theory(**data))
+                except Exception as e:
+                    raise ValueError(f"Invalid theory in CSV: {row}: {e}")
+        return items
+
+    # Fall back to YAML files
     try:
         import yaml  # type: ignore
     except Exception as e:  # pragma: no cover

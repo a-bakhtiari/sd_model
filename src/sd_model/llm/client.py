@@ -63,7 +63,7 @@ class LLMClient:
     def enabled(self) -> bool:
         return self._enabled
 
-    def complete(self, prompt: str, temperature: float = 0.0, max_tokens: Optional[int] = None) -> str:
+    def complete(self, prompt: str, temperature: float = 0.0, max_tokens: Optional[int] = None, timeout: int = 180) -> str:
         if not self._enabled or not self._provider:
             return "[LLM Fallback] Deterministic summary generated without external calls."
 
@@ -93,7 +93,7 @@ class LLMClient:
                         "Content-Type": "application/json",
                     },
                     json=payload,
-                    timeout=180,  # Increased to 3 minutes for large prompts
+                    timeout=timeout,  # Configurable timeout, default 3 minutes
                 )
                 response.raise_for_status()
                 data = response.json()

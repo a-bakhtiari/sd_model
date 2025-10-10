@@ -33,6 +33,8 @@ class Theory(BaseModel):
     expected_connections: List[ExpectedConnection] = Field(
         default_factory=list, description="List of expected causal links"
     )
+    description: Optional[str] = Field(default="", description="Theory description")
+    focus_area: Optional[str] = Field(default="", description="Theory focus area")
 
 
 class VerifiedCitation(BaseModel):

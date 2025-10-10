@@ -1,0 +1,64 @@
+{
+  "connections": [
+    {
+      "id": "C01",
+      "from_var": "colored stock",
+      "to_var": "New Contributors",
+      "relationship": "undeclared"
+    },
+    {
+      "id": "C02",
+      "from_var": "Skill up",
+      "to_var": "New Contributors",
+      "relationship": "negative"
+    },
+    {
+      "id": "C03",
+      "from_var": "Developer's Turnover",
+      "to_var": "Core Developer",
+      "relationship": "negative"
+    },
+    {
+      "id": "C04",
+      "from_var": "Promotion Rate",
+      "to_var": "Core Developer",
+      "relationship": "positive"
+    },
+    {
+      "id": "C05",
+      "from_var": "Promotion Rate",
+      "to_var": "Experienced Contributors",
+      "relationship": "negative"
+    },
+    {
+      "id": "C06",
+      "from_var": "Skill up",
+      "to_var": "Experienced Contributors",
+      "relationship": "positive"
+    },
+    {
+      "id": "C07",
+      "from_var": "Implicit Knowledge Transfer (Mentorship)",
+      "to_var": "Skill up",
+      "relationship": "positive"
+    },
+    {
+      "id": "C08",
+      "from_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "to_var": "Skill up",
+      "relationship": "undeclared"
+    },
+    {
+      "id": "C09",
+      "from_var": "Implicit Knowledge Transfer (Mentorship)",
+      "to_var": "Promotion Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C10",
+      "from_var": "Core Developer",
+      "to_var": "Implicit Knowledge Transfer (Mentorship)",
+      "relationship": "positive"
+    }
+  ]
+}

@@ -1,4 +1,6 @@
-don't write fall in the dvelopment and testing back we need to see the error to fix it, fall back if only in the implenetaitonafter we know that it owrks
+1- don't write fall in the dvelopment and testing back we need to see the error to fix it, fall back if only in the implenetaitonafter we know that it owrks
 
 
-add a prompt instcutions for when it needs to write prompts
+2- add a prompt instcutions for when it needs to write prompts
+
+3- keep it's responses to you consice and to the point

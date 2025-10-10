@@ -1,0 +1,197 @@
+{
+  "valves": [
+    {
+      "id": 6,
+      "var_name": "valve_6",
+      "x": 1790,
+      "y": 584,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 11,
+      "var_name": "valve_11",
+      "x": 1368,
+      "y": 585,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 15,
+      "var_name": "valve_15",
+      "x": 1591,
+      "y": 583,
+      "w": 6,
+      "h": 8
+    }
+  ],
+  "clouds": [
+    {
+      "id": 3,
+      "code": 48,
+      "x": 1861,
+      "y": 584,
+      "w": 10,
+      "h": 8
+    }
+  ],
+  "flows": [
+    {
+      "valve_id": 6,
+      "from": {
+        "kind": "stock",
+        "ref": "Core Developer"
+      },
+      "to": {
+        "kind": "cloud",
+        "ref": 3
+      }
+    }
+  ],
+  "flow_connections": [
+    {
+      "from_id": 6,
+      "to_id": 2,
+      "params": {
+        "field3": "100",
+        "field4": "0",
+        "field5": "0",
+        "field6": "22"
+      },
+      "points": [
+        [
+          1757,
+          584
+        ]
+      ]
+    },
+    {
+      "from_id": 6,
+      "to_id": 3,
+      "params": {
+        "field3": "4",
+        "field4": "0",
+        "field5": "0",
+        "field6": "22"
+      },
+      "points": [
+        [
+          1823,
+          584
+        ]
+      ]
+    },
+    {
+      "from_id": 11,
+      "to_id": 1,
+      "params": {
+        "field3": "100",
+        "field4": "0",
+        "field5": "0",
+        "field6": "22"
+      },
+      "points": [
+        [
+          1342,
+          585
+        ]
+      ]
+    },
+    {
+      "from_id": 11,
+      "to_id": 8,
+      "params": {
+        "field3": "4",
+        "field4": "0",
+        "field5": "0",
+        "field6": "22"
+      },
+      "points": [
+        [
+          1391,
+          585
+        ]
+      ]
+    },
+    {
+      "from_id": 15,
+      "to_id": 8,
+      "params": {
+        "field3": "100",
+        "field4": "0",
+        "field5": "0",
+        "field6": "22"
+      },
+      "points": [
+        [
+          1563,
+          583
+        ]
+      ]
+    },
+    {
+      "from_id": 15,
+      "to_id": 2,
+      "params": {
+        "field3": "4",
+        "field4": "0",
+        "field5": "0",
+        "field6": "22"
+      },
+      "points": [
+        [
+          1617,
+          583
+        ]
+      ]
+    },
+    {
+      "from_id": 17,
+      "to_id": 11,
+      "params": {
+        "field3": "0",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "from_id": 17,
+      "to_id": 15,
+      "params": {
+        "field3": "0",
+        "field4": "0",
+        "field5": "43",
+        "field6": "0"
+      },
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "from_id": 21,
+      "to_id": 11,
+      "params": {
+        "field3": "0",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
+    }
+  ]
+}

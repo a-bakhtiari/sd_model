@@ -1,9 +1,0 @@
-theory_name: Test Theory
-citation_key: ajzen1991
-expected_connections:
-  - from_var: Potential Adopters
-    to_var: New Adopters
-    relationship: positive
-  - from_var: Market Saturation
-    to_var: New Adopters
-    relationship: negative

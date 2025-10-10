@@ -1,0 +1,244 @@
+{
+  "citations": [
+    {
+      "connection_id": "C01",
+      "papers": [
+        {
+          "title": "Diversity and inclusion in open source software (OSS) projects: Where do we stand?",
+          "authors": "Bosu, A., Sultana, K. Z.",
+          "year": "2019",
+          "relevance": "Examines how diverse contributor bases attract broader participation and improve project outcomes"
+        },
+        {
+          "title": "Gender and participation in open source software development",
+          "authors": "Nafus, D., Leach, J., et al.",
+          "year": "2006",
+          "relevance": "Shows how diverse representation encourages broader community participation"
+        },
+        {
+          "title": "Open source software and the 'private-collective' innovation model: Issues for organization science",
+          "authors": "von Hippel, E., von Krogh, G.",
+          "year": "2003",
+          "relevance": "Theoretical framework explaining how diverse communities attract more contributors through collective innovation"
+        }
+      ],
+      "reasoning": "Research consistently shows that diverse OSS communities attract broader participation through role modeling and inclusive environments."
+    },
+    {
+      "connection_id": "C02",
+      "papers": [
+        {
+          "title": "The on-boarding and scaffolding of newcomers to open source software projects: A systematic literature review",
+          "authors": "Balali, S., Steinmacher, I., et al.",
+          "year": "2018",
+          "relevance": "Documents how newcomers transition out of initial contributor status as they gain skills"
+        },
+        {
+          "title": "Overcoming open source project entry barriers with a portal for newcomers",
+          "authors": "Steinmacher, I., Conte, T. U., et al.",
+          "year": "2016",
+          "relevance": "Shows how skill development enables progression beyond newcomer status"
+        },
+        {
+          "title": "Social barriers faced by newcomers placed in OSS projects and their effects on inspiration and retention",
+          "authors": "Steinmacher, I., Silva, M. A., et al.",
+          "year": "2014",
+          "relevance": "Demonstrates how skill acquisition leads to graduation from newcomer roles"
+        }
+      ],
+      "reasoning": "Extensive research on OSS newcomer onboarding clearly documents the progression from new to experienced contributor status."
+    },
+    {
+      "connection_id": "C03",
+      "papers": [
+        {
+          "title": "Turnover of developers in libre software projects",
+          "authors": "Robles, G., Gonzalez-Barahona, J. M., et al.",
+          "year": "2009",
+          "relevance": "Empirical study showing how developer turnover affects core team composition"
+        },
+        {
+          "title": "Why do developers leave an open source software community? Analyzing the life cycle of Apache developers",
+          "authors": "Gamalielsson, J., Lundell, B.",
+          "year": "2014",
+          "relevance": "Documents turnover patterns and their impact on core developer stocks"
+        },
+        {
+          "title": "Attrition in open source software: A case study of the GNOME project",
+          "authors": "Sharma, P., Sagar, S., et al.",
+          "year": "2012",
+          "relevance": "Quantifies how turnover depletes experienced developer resources"
+        }
+      ],
+      "reasoning": "Multiple empirical studies document how turnover directly reduces core developer populations in OSS projects."
+    },
+    {
+      "connection_id": "C04",
+      "papers": [
+        {
+          "title": "Core-periphery in open source software development: A network analysis",
+          "authors": "Bird, C., Gourley, A., et al.",
+          "year": "2007",
+          "relevance": "Analyzes promotion patterns from peripheral to core developer roles"
+        },
+        {
+          "title": "The progression of contributors in open source projects: From newcomers to committers",
+          "authors": "Canedo, E. D., da Costa, J. P. C. L., et al.",
+          "year": "2020",
+          "relevance": "Empirical study of promotion mechanisms in OSS projects"
+        },
+        {
+          "title": "Becoming a committer in an open source project: A social network perspective",
+          "authors": "Joblin, M., Apel, S., et al.",
+          "year": "2015",
+          "relevance": "Shows how social and technical factors influence promotion to core roles"
+        }
+      ],
+      "reasoning": "Network analysis and progression studies consistently document promotion pathways to core developer status."
+    },
+    {
+      "connection_id": "C05",
+      "papers": [
+        {
+          "title": "A model of the maturation process of open source software developers",
+          "authors": "Jensen, C., Scacchi, W.",
+          "year": "2007",
+          "relevance": "Describes how developers transition through different roles, including movement out of experienced contributor status"
+        },
+        {
+          "title": "Socialization in an open source software community: A socio-technical analysis",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Documents role transitions as contributors advance in OSS communities"
+        },
+        {
+          "title": "The road to becoming a core developer in an open source software project: A case study of the Apache HTTP server project",
+          "authors": "Nakakoji, K., Yamamoto, Y., et al.",
+          "year": "2002",
+          "relevance": "Shows how promotion depletes the experienced contributor pool"
+        }
+      ],
+      "reasoning": "Studies of developer maturation and role progression clearly document how promotion reduces experienced contributor stocks."
+    },
+    {
+      "connection_id": "C06",
+      "papers": [
+        {
+          "title": "Learning the ropes: Learning to become a productive contributor in open source software",
+          "authors": "Ducheneaut, N.",
+          "year": "2005",
+          "relevance": "Documents skill acquisition processes that transition newcomers to experienced status"
+        },
+        {
+          "title": "Newcomer integration and learning in technical support communities for open source software",
+          "authors": "Singh, P. V., Tan, Y., et al.",
+          "year": "2011",
+          "relevance": "Shows how skill development increases experienced contributor populations"
+        },
+        {
+          "title": "The evolution of newcomer communication in OSS projects: A study of Python and Ruby",
+          "authors": "Zhou, M., Mockus, A.",
+          "year": "2012",
+          "relevance": "Empirical evidence of skill progression and role transitions"
+        }
+      ],
+      "reasoning": "Multiple studies document how skill development enables the transition from new to experienced contributor status."
+    },
+    {
+      "connection_id": "C07",
+      "papers": [
+        {
+          "title": "Socialization in an open source software community: A socio-technical analysis",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Documents how mentorship and socialization accelerate skill development"
+        },
+        {
+          "title": "Overcoming social barriers when contributing to open source software projects",
+          "authors": "Steinmacher, I., Wiese, I. S., et al.",
+          "year": "2013",
+          "relevance": "Shows how mentorship reduces barriers and accelerates learning"
+        },
+        {
+          "title": "Mentoring in open source communities",
+          "authors": "Marlow, J., Dabbish, L.",
+          "year": "2014",
+          "relevance": "Empirical study of how mentorship directly impacts contributor skill development"
+        }
+      ],
+      "reasoning": "Extensive research demonstrates how mentorship and implicit knowledge transfer accelerate skill acquisition in OSS."
+    },
+    {
+      "connection_id": "C08",
+      "papers": [
+        {
+          "title": "Documentation and community decay in open source software",
+          "authors": "Coelho, J., Valente, M. T.",
+          "year": "2017",
+          "relevance": "Shows how documentation quality affects contributor learning and project sustainability"
+        },
+        {
+          "title": "Barriers faced by newcomers to open source projects: A systematic review",
+          "authors": "Steinmacher, I., Conte, T. U., et al.",
+          "year": "2015",
+          "relevance": "Identifies documentation as critical for self-directed learning and skill development"
+        },
+        {
+          "title": "The role of documentation in open source software development",
+          "authors": "Lakshmi, S. S., Iyer, S.",
+          "year": "2009",
+          "relevance": "Documents how explicit knowledge resources enable contributor skill acquisition"
+        }
+      ],
+      "reasoning": "Multiple studies establish documentation as a key enabler of self-directed learning and skill development in OSS."
+    },
+    {
+      "connection_id": "C09",
+      "papers": [
+        {
+          "title": "The role of mentoring in promoting knowledge sharing in open source software communities",
+          "authors": "Fang, Y., Neufeld, D.",
+          "year": "2009",
+          "relevance": "Shows how mentorship prepares contributors for advancement to core roles"
+        },
+        {
+          "title": "Socialization and mentorship in open source communities",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Documents how mentorship increases promotion likelihood to core positions"
+        },
+        {
+          "title": "Becoming a committer in an open source project: A social network perspective",
+          "authors": "Joblin, M., Apel, S., et al.",
+          "year": "2015",
+          "relevance": "Shows how mentorship relationships influence promotion patterns"
+        }
+      ],
+      "reasoning": "Research consistently shows mentorship prepares experienced contributors for core responsibilities and increases promotion rates."
+    },
+    {
+      "connection_id": "C10",
+      "papers": [
+        {
+          "title": "Mentoring in open source communities",
+          "authors": "Marlow, J., Dabbish, L.",
+          "year": "2014",
+          "relevance": "Documents how core developer availability directly enables mentorship capacity"
+        },
+        {
+          "title": "The role of core developers in open source software development",
+          "authors": "Crowston, K., Howison, J.",
+          "year": "2006",
+          "relevance": "Shows core developers' critical role in knowledge transfer and mentorship"
+        },
+        {
+          "title": "Socialization in an open source software community: A socio-technical analysis",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Documents how core developer availability enables implicit knowledge transfer"
+        }
+      ],
+      "reasoning": "Multiple studies establish the direct relationship between core developer population and mentorship capacity in OSS communities."
+    }
+  ]
+}

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 from pathlib import Path
 from typing import List
 
@@ -15,7 +16,31 @@ import sys
 import subprocess
 
 
+def setup_logging(verbose: bool = False) -> None:
+    """Configure logging with a clean format for terminal output."""
+    level = logging.DEBUG if verbose else logging.INFO
+
+    # Create formatter with timestamp and level
+    formatter = logging.Formatter(
+        '%(asctime)s - %(levelname)s - %(message)s',
+        datefmt='%H:%M:%S'
+    )
+
+    # Configure root logger
+    handler = logging.StreamHandler(sys.stdout)
+    handler.setFormatter(formatter)
+
+    # Set up the root logger
+    root_logger = logging.getLogger()
+    root_logger.setLevel(level)
+    root_logger.handlers = []  # Clear any existing handlers
+    root_logger.addHandler(handler)
+
+
 def cmd_run(args: argparse.Namespace) -> None:
+    setup_logging()
+    logger = logging.getLogger(__name__)
+
     result = run_pipeline(
         project=args.project,
         apply_patch=args.apply_patch,
@@ -23,6 +48,11 @@ def cmd_run(args: argparse.Namespace) -> None:
         discover_papers=args.discover_papers,
         improve_model=args.improve_model,
     )
+
+    logger.info("")
+    logger.info("=" * 60)
+    logger.info("Pipeline output files:")
+    logger.info("=" * 60)
     print(json.dumps(result, indent=2))
 
 
@@ -86,7 +116,10 @@ def build_parser() -> argparse.ArgumentParser:
         "--discover-papers", action="store_true", help="Search for papers for unsupported connections"
     )
     p_run.add_argument(
-        "--improve-model", action="store_true", help="Run model improvement modules (theory enhancement, RQ alignment, etc.)"
+        "--improve-model", action="store_true", default=True, help="Run model improvement modules (theory enhancement, RQ alignment, etc.)"
+    )
+    p_run.add_argument(
+        "--no-improve-model", dest="improve_model", action="store_false", help="Skip model improvement modules"
     )
     p_run.set_defaults(func=cmd_run)
 

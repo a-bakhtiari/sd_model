@@ -1,0 +1,90 @@
+{
+  "connections": [
+    {
+      "id": "20",
+      "from_var": "Core Developer",
+      "to_var": "Implicit Knowledge Transfer (Mentorship)",
+      "relationship": "positive",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "43",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1653,
+          468
+        ]
+      ],
+      "color": {
+        "line": "255-0-0"
+      }
+    },
+    {
+      "id": "120",
+      "from_var": "Developer's Turnover",
+      "to_var": "Core Developer",
+      "relationship": "negative",
+      "source": "equation",
+      "color": {
+        "line": "0-255-0"
+      }
+    },
+    {
+      "id": "121",
+      "from_var": "Promotion Rate",
+      "to_var": "Core Developer",
+      "relationship": "positive",
+      "source": "equation"
+    },
+    {
+      "id": "122",
+      "from_var": "Skill up",
+      "to_var": "New Contributors",
+      "relationship": "negative",
+      "source": "equation",
+      "color": {
+        "line": "0-0-255"
+      }
+    },
+    {
+      "id": "123",
+      "from_var": "Promotion Rate",
+      "to_var": "Experienced Contributors",
+      "relationship": "negative",
+      "source": "equation"
+    },
+    {
+      "id": "124",
+      "from_var": "Skill up",
+      "to_var": "Experienced Contributors",
+      "relationship": "positive",
+      "source": "equation"
+    },
+    {
+      "id": "126",
+      "from_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "to_var": "Skill up",
+      "relationship": "positive",
+      "source": "equation",
+      "color": {
+        "line": "255-165-0"
+      }
+    },
+    {
+      "id": "127",
+      "from_var": "Implicit Knowledge Transfer (Mentorship)",
+      "to_var": "Skill up",
+      "relationship": "positive",
+      "source": "equation"
+    },
+    {
+      "id": "128",
+      "from_var": "Implicit Knowledge Transfer (Mentorship)",
+      "to_var": "Promotion Rate",
+      "relationship": "positive",
+      "source": "equation"
+    }
+  ]
+}

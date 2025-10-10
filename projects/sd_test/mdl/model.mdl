@@ -1,5 +1,0 @@
-Potential Adopters = 1000 - Adopters ~ ppl ~| potential pool
-New Adopters = Adoption Rate * Potential Adopters ~ ppl/month ~| flow
-Adopters = INTEG(New Adopters - Attrition, 0) ~ ppl ~| stock
-Adoption Rate = 0.05 ~ 1/month ~| parameter
-Attrition = 0.0 ~ ppl/month ~| parameter

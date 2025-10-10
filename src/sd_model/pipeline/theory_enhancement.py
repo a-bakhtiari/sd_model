@@ -65,64 +65,51 @@ def create_enhancement_prompt(
 
 # Your Task
 
-Analyze the model and theories to identify:
-1. **Missing theory elements** - Key concepts from the theories not yet modeled
-2. **Underutilized aspects** - Parts of theories only partially implemented
-3. **SD implementation suggestions** - Specific variables, connections, and loops to add
+Analyze the model and identify what needs to be added, modified, or removed based on each theory.
 
-For each missing theory element, provide:
+For each theory, provide specific model operations:
 
-1. **What to add** (variables, connections)
-2. **Why it's important** (theoretical justification)
-3. **How to implement** (step-by-step SD modeling)
-4. **Expected impact** (what dynamics this will capture)
+1. **Additions** - New variables and connections to add
+2. **Modifications** - Existing variables to update (optional, leave empty if none)
+3. **Removals** - Variables to deprecate or remove (optional, leave empty if none)
 
 Return JSON in this structure:
 
 {{
-  "missing_from_theories": [
+  "theories": [
     {{
-      "theory_name": "theory name",
-      "missing_element": "specific element from theory",
-      "why_important": "why this matters for the model",
-      "how_to_add": "high-level implementation guidance",
-      "sd_implementation": {{
-        "new_variables": [
+      "name": "Theory Name",
+      "additions": {{
+        "variables": [
           {{
             "name": "Variable Name",
             "type": "Stock|Flow|Auxiliary",
             "description": "what it represents"
           }}
         ],
-        "new_connections": [
+        "connections": [
           {{
             "from": "Variable A",
             "to": "Variable B",
-            "relationship": "positive|negative",
-            "rationale": "why this connection exists"
-          }}
-        ],
-        "expected_loops": [
-          {{
-            "type": "reinforcing|balancing",
-            "description": "what loop this will create or strengthen"
+            "relationship": "positive|negative"
           }}
         ]
       }},
-      "expected_impact": "what dynamics this will enable"
-    }}
-  ],
-  "general_improvements": [
-    {{
-      "improvement_type": "add_mechanism|refine_structure|add_feedback",
-      "description": "what to improve",
-      "implementation": "how to do it",
-      "impact": "high|medium|low"
+      "modifications": {{
+        "variables": []
+      }},
+      "removals": {{
+        "variables": []
+      }}
     }}
   ]
 }}
 
-Focus on practical, implementable suggestions. Be specific about variable names and types.
+IMPORTANT:
+- Focus on practical, implementable operations
+- Be specific about variable names and types
+- Only include modifications/removals if truly needed
+- For additions.connections, you can reference both existing variables and newly added variables
 
 Return ONLY the JSON structure, no additional text.
 """

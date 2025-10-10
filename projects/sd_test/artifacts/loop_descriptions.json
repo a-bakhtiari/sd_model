@@ -1,0 +1,24 @@
+{
+  "descriptions": [
+    {
+      "id": "R01",
+      "description": "More core developers increase mentorship, accelerating the promotion of new core developers. This reinforcing loop creates exponential growth in the core team's size and capacity."
+    },
+    {
+      "id": "R02",
+      "description": "Core developers mentor others, increasing the skilled contributor pool and accelerating promotions. This reinforcing loop amplifies the project's overall experience and development velocity over time."
+    },
+    {
+      "id": "B01",
+      "description": "A higher promotion rate depletes the pool of experienced contributors, which in turn slows the promotion rate. This balancing loop seeks equilibrium in the contributor hierarchy."
+    },
+    {
+      "id": "B02",
+      "description": "As new contributors gain skills, they leave the 'new' pool, slowing the overall skill-up rate. This balancing loop regulates the growth of inexperienced contributors."
+    },
+    {
+      "id": "B03",
+      "description": "An increase in core developers leads to higher turnover, which then reduces the number of core developers. This balancing loop stabilizes the core team size against attrition."
+    }
+  ]
+}

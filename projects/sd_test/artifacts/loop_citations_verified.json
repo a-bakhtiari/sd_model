@@ -1,0 +1,102 @@
+{
+  "citations": [
+    {
+      "loop_id": "R01",
+      "papers": [
+        {
+          "title": "Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach",
+          "authors": "Qureshi, I., Fang, Y.",
+          "year": "2011",
+          "relevance": "Examines how socialization processes including mentorship lead to core developer status in OSS projects",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach",
+            "authors": [
+              "I. Qureshi",
+              "Yulin Fang"
+            ],
+            "year": 2011,
+            "url": "https://www.semanticscholar.org/paper/cff20e5cc73fb98bdb86cf6cabc7818f16de7211",
+            "paper_id": "cff20e5cc73fb98bdb86cf6cabc7818f16de7211",
+            "citation_count": 126,
+            "abstract": null,
+            "venue": "",
+            "fields_of_study": [
+              "Sociology"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Multiple studies document how mentorship from core developers accelerates newcomer integration and promotion in OSS communities, supporting the reinforcing growth mechanism."
+    },
+    {
+      "loop_id": "R02",
+      "papers": [
+        {
+          "title": "Knowledge Collaboration in Online Communities",
+          "authors": "Faraj, S., Jarvenpaa, S. L., et al.",
+          "year": "2011",
+          "relevance": "Documents how knowledge transfer through mentoring increases collective capability and project velocity",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Knowledge Collaboration in Online Communities",
+            "authors": [
+              "Samer Faraj",
+              "S. Jarvenpaa",
+              "A. Majchrzak"
+            ],
+            "year": 2011,
+            "url": "https://www.semanticscholar.org/paper/bc7e13b992329bcfaea9142695d5bb06de596703",
+            "paper_id": "bc7e13b992329bcfaea9142695d5bb06de596703",
+            "citation_count": 989,
+            "abstract": null,
+            "venue": "Organ. Sci.",
+            "fields_of_study": [
+              "Computer Science",
+              "Sociology"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Research consistently shows that knowledge transfer and skill development in OSS communities create virtuous cycles that amplify collective experience and development capacity."
+    },
+    {
+      "loop_id": "B01",
+      "papers": [
+        {
+          "title": "The Cathedral and the Bazaar",
+          "authors": "Raymond, E. S.",
+          "year": "1999",
+          "relevance": "Describes the natural hierarchy and promotion dynamics in OSS projects where core developers emerge from contributors",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "The cathedral and the bazaar",
+            "authors": [
+              "E. Raymond"
+            ],
+            "year": 1998,
+            "url": "https://www.semanticscholar.org/paper/5eaf9f92564b1ba8060c5d1021f8cfd70ae6b36b",
+            "paper_id": "5eaf9f92564b1ba8060c5d1021f8cfd70ae6b36b",
+            "citation_count": 3574,
+            "abstract": null,
+            "venue": "First Monday",
+            "fields_of_study": [
+              "Computer Science",
+              "Engineering"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Multiple studies document the balancing effects of promotion systems in OSS, where advancement depletes the experienced contributor pool and creates natural equilibrium points."
+    }
+  ],
+  "summary": {
+    "total_papers": 20,
+    "verified": 3,
+    "unverified": 17,
+    "verification_rate": 0.15
+  }
+}
