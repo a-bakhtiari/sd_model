@@ -180,8 +180,10 @@ def run_theory_enhancement(
     # Create prompt
     prompt = create_enhancement_prompt(theories, variables, connections, loops)
 
-    # Call LLM
-    client = LLMClient(provider="deepseek")
+    # Call LLM (use config to determine provider/model)
+    from ..config import should_use_gpt
+    provider, model = should_use_gpt("theory_enhancement")
+    client = LLMClient(provider=provider, model=model)
     response = client.complete(prompt, temperature=0.2, max_tokens=4000)
 
     # Parse response

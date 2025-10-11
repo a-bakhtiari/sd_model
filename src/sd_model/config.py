@@ -53,3 +53,30 @@ def load_config() -> AppConfig:
         env=env,
     )
 
+
+def should_use_gpt(feature_name: str) -> tuple[str, str]:
+    """Check if feature should use GPT based on config.
+
+    Args:
+        feature_name: Name of the feature (e.g., "theory_enhancement")
+
+    Returns:
+        Tuple of (provider, model) to use for this feature
+    """
+    # Ensure .env is loaded
+    root = detect_repo_root()
+    load_dotenv(root / ".env")
+
+    use_gpt = os.getenv("USE_GPT_FOR_ADVANCED", "false").lower() in {"true", "1"}
+    advanced_features = os.getenv("ADVANCED_LLM_FEATURES", "").split(",")
+    advanced_features = [f.strip() for f in advanced_features]
+
+    if use_gpt and feature_name in advanced_features:
+        provider = "openai"
+        model = os.getenv("OPENAI_MODEL", "gpt-5")
+    else:
+        provider = "deepseek"
+        model = os.getenv("DEEPSEEK_MODEL", "deepseek-chat")
+
+    return provider, model
+

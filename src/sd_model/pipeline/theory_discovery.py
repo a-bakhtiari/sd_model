@@ -150,8 +150,10 @@ def run_theory_discovery(
     # Create prompt
     prompt = create_discovery_prompt(rqs, current_theories, variables, connections)
 
-    # Call LLM
-    client = LLMClient(provider="deepseek")
+    # Call LLM (use config to determine provider/model)
+    from ..config import should_use_gpt
+    provider, model = should_use_gpt("theory_discovery")
+    client = LLMClient(provider=provider, model=model)
     response = client.complete(prompt, temperature=0.4, max_tokens=4000)
 
     # Parse response

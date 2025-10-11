@@ -178,15 +178,13 @@ Return ONLY the JSON structure, no additional text.
 
 def detect_archetypes(
     variables: Dict,
-    connections: Dict,
-    client: LLMClient
+    connections: Dict
 ) -> Dict:
     """Detect system archetypes in the model.
 
     Args:
         variables: Variables data from variables.json
         connections: Connections data from connections.json
-        client: LLM client instance
 
     Returns:
         Dictionary with archetype detection results
@@ -195,7 +193,12 @@ def detect_archetypes(
     # Create prompt
     prompt = create_archetype_prompt(variables, connections)
 
-    # Call LLM
+    # Call LLM (use config to determine provider/model)
+    from ..config import should_use_gpt
+    from ..llm.client import LLMClient
+
+    provider, model = should_use_gpt("archetype_detection")
+    client = LLMClient(provider=provider, model=model)
     response = client.complete(prompt, temperature=0.2, max_tokens=4000)
 
     # Parse response

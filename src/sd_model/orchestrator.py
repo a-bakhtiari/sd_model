@@ -480,7 +480,7 @@ def run_pipeline(
                 current_conns = extract_connections(current_mdl_path, current_vars)
 
                 # Detect archetypes
-                archetype_enh = detect_archetypes(current_vars, current_conns, client)
+                archetype_enh = detect_archetypes(current_vars, current_conns)
 
                 if "error" in archetype_enh:
                     logger.warning(f"Archetype Detection returned error: {archetype_enh.get('error')}")

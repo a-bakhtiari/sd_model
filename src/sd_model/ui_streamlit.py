@@ -39,10 +39,35 @@ def list_projects() -> List[str]:
     return projects
 
 
-def _load_existing_artifacts(project: str) -> Dict[str, Path]:
-    """Load existing artifacts without running the pipeline."""
+def list_runs(project: str) -> List[str]:
+    """List available saved runs for a project.
+
+    Returns list of run IDs, with "Latest (default)" as first option.
+    """
     cfg = load_config()
-    paths = for_project(cfg, project)
+    runs_dir = cfg.projects_dir / project / "artifacts" / "runs"
+
+    runs = ["Latest (default)"]  # Default option uses root artifacts/
+
+    if runs_dir.exists():
+        # Get all run directories, sorted by name (which includes timestamp)
+        for p in sorted(runs_dir.iterdir(), reverse=True):
+            if p.is_dir():
+                runs.append(p.name)
+
+    return runs
+
+
+def _load_existing_artifacts(project: str, run_id: str = None) -> Dict[str, Path]:
+    """Load existing artifacts without running the pipeline.
+
+    Args:
+        project: Project name
+        run_id: Optional run ID to load from artifacts/runs/{run_id}/
+                If None, loads from root artifacts/ (latest)
+    """
+    cfg = load_config()
+    paths = for_project(cfg, project, run_id=run_id)
 
     # Return paths to existing artifacts
     return {
@@ -56,9 +81,14 @@ def _load_existing_artifacts(project: str) -> Dict[str, Path]:
 
 
 @st.cache_data(show_spinner=False)
-def load_stage1(project: str) -> Dict:
-    """Load existing artifacts from disk (does not run pipeline)."""
-    refs = _load_existing_artifacts(project)
+def load_stage1(project: str, run_id: str = None) -> Dict:
+    """Load existing artifacts from disk (does not run pipeline).
+
+    Args:
+        project: Project name
+        run_id: Optional run ID to load specific saved run
+    """
+    refs = _load_existing_artifacts(project, run_id=run_id)
 
     # Load JSON files with error handling
     def safe_load(path: Path, default=None):
@@ -1088,6 +1118,22 @@ def main() -> None:
     project = st.selectbox("Project", projects, index=projects.index(st.session_state["project"]))
     st.session_state["project"] = project
 
+    # Run selector
+    runs = list_runs(project)
+    if "selected_run" not in st.session_state:
+        st.session_state["selected_run"] = runs[0]  # Default to "Latest (default)"
+
+    selected_run = st.selectbox(
+        "Run Version",
+        runs,
+        index=runs.index(st.session_state["selected_run"]) if st.session_state["selected_run"] in runs else 0,
+        help="Select a saved run to view, or use 'Latest (default)' for the most recent artifacts"
+    )
+    st.session_state["selected_run"] = selected_run
+
+    # Convert selection to run_id (None for default, otherwise the folder name)
+    run_id = None if selected_run == "Latest (default)" else selected_run
+
     # Tabs
     model_dev_tab, rq_tab, data_tables_tab, chat_tab, dashboard_tab, stage2_tab = st.tabs([
         "Model Development",
@@ -1101,7 +1147,7 @@ def main() -> None:
     with dashboard_tab:
         # Load existing artifacts (no pipeline execution)
         try:
-            data = load_stage1(project)
+            data = load_stage1(project, run_id=run_id)
         except Exception as e:
             st.error(f"Failed to load artifacts: {e}")
             st.info("💡 Make sure you've run the pipeline first to generate artifacts.")
@@ -1539,7 +1585,7 @@ def main() -> None:
         st.caption("Enhance your model with theory-based additions and system archetypes")
 
         cfg = load_config()
-        paths = for_project(cfg, project)
+        paths = for_project(cfg, project, run_id=run_id)
 
         # Load artifacts
         theory_enh_path = paths.theory_enhancement_path
@@ -1761,7 +1807,7 @@ def main() -> None:
         st.caption("Evaluate and refine your research questions")
 
         cfg = load_config()
-        paths = for_project(cfg, project)
+        paths = for_project(cfg, project, run_id=run_id)
 
         # Load RQ results
         rq_align_path = paths.rq_alignment_path
