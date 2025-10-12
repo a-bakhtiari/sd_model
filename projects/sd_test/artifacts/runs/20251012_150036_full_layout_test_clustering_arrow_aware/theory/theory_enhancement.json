@@ -1,0 +1,351 @@
+{
+  "clustering_scheme": {
+    "rationale": "The system is best understood as three tightly-coupled modules: a contributor pipeline (people stocks/flows), a knowledge spiral (SECI processes and artifacts), and a mentoring/capacity module (CoP participation support). This arrangement localizes dense internal linkages while keeping only a few clear bridging links among clusters.",
+    "clusters": [
+      {
+        "name": "Contributor Development Pipeline",
+        "theme": "Movement of people through newcomer \u2192 experienced \u2192 core, including entry, progression, and exits.",
+        "variables": [
+          "Contributor Prospect Pool",
+          "Newcomer Onboarding Rate",
+          "New Contributors",
+          "Newcomer Dropout Rate",
+          "Skill Up Rate",
+          "Experienced Contributors",
+          "Experienced Contributor Turnover",
+          "Core Promotion Rate",
+          "Core Developer",
+          "Core Developer Turnover Rate"
+        ],
+        "connections_to_other_clusters": {
+          "Knowledge Spiral & Artifacts (SECI)": 10,
+          "Mentoring & Community Capacity (CoP)": 5
+        }
+      },
+      {
+        "name": "Knowledge Spiral & Artifacts (SECI)",
+        "theme": "Creation, decay, and use of tacit and explicit knowledge via socialization, externalization, combination, and internalization.",
+        "variables": [
+          "Community Tacit Knowledge",
+          "Tacit Knowledge Accumulation Rate",
+          "Tacit Knowledge Erosion Rate",
+          "Project Explicit Knowledge",
+          "Documentation Creation & Update Rate",
+          "Documentation Obsolescence Rate",
+          "Implicit Knowledge Transfer (Mentorship)",
+          "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+          "Externalization Effectiveness",
+          "Internalization Effectiveness",
+          "Technology Change Rate"
+        ],
+        "connections_to_other_clusters": {
+          "Contributor Development Pipeline": 10,
+          "Mentoring & Community Capacity (CoP)": 1
+        }
+      },
+      {
+        "name": "Mentoring & Community Capacity (CoP)",
+        "theme": "Mentoring supply vs. demand and its coverage, shaping social learning, onboarding outcomes, and advancement.",
+        "variables": [
+          "Core Developer Mentoring Capacity",
+          "Mentoring Demand",
+          "Mentoring Coverage"
+        ],
+        "connections_to_other_clusters": {
+          "Contributor Development Pipeline": 5,
+          "Knowledge Spiral & Artifacts (SECI)": 1
+        }
+      }
+    ],
+    "layout_hints": [
+      "Place Contributor Development Pipeline at the center; it has the most inter-cluster links.",
+      "Position Knowledge Spiral & Artifacts to the left of the Pipeline and Mentoring & Community Capacity to the right.",
+      "Route Mentoring Coverage links above the Pipeline to reduce crossings with SECI links that run below.",
+      "Keep knowledge stocks (explicit/tacit) visually aligned to simplify inflow/outflow depiction."
+    ]
+  },
+  "theories": [
+    {
+      "name": "Communities of Practice (Wenger)",
+      "rationale": "The current model captures participation trajectories (new \u2192 experienced \u2192 core) and mentorship, but lacks capacity constraints and dropout dynamics central to legitimate peripheral participation. Adding mentoring supply/demand and onboarding/exit flows operationalizes how participation is socially supported or fails, creating reinforcing/balancing loops that shape community growth and role progression. These changes increase behavioral realism and make mentoring an explicit design lever.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Contributor Prospect Pool",
+            "type": "Stock",
+            "description": "Potential contributors aware of or interested in the project and available to onboard."
+          },
+          {
+            "name": "Newcomer Onboarding Rate",
+            "type": "Flow",
+            "description": "Rate at which prospects become active new contributors."
+          },
+          {
+            "name": "Newcomer Dropout Rate",
+            "type": "Flow",
+            "description": "Rate at which new contributors disengage before becoming experienced."
+          },
+          {
+            "name": "Experienced Contributor Turnover",
+            "type": "Flow",
+            "description": "Rate at which experienced contributors exit the community."
+          },
+          {
+            "name": "Core Developer Mentoring Capacity",
+            "type": "Auxiliary",
+            "description": "Effective mentoring hours or slots provided by core developers per unit time."
+          },
+          {
+            "name": "Mentoring Demand",
+            "type": "Auxiliary",
+            "description": "Aggregate mentoring need from new contributors (e.g., estimated hours/requests)."
+          },
+          {
+            "name": "Mentoring Coverage",
+            "type": "Auxiliary",
+            "description": "Ratio of available mentoring capacity to mentoring demand (0..1+, where >1 indicates surplus)."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Contributor Prospect Pool",
+            "to": "Newcomer Onboarding Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Newcomer Onboarding Rate",
+            "to": "New Contributors",
+            "relationship": "positive"
+          },
+          {
+            "from": "Newcomer Dropout Rate",
+            "to": "New Contributors",
+            "relationship": "negative"
+          },
+          {
+            "from": "Experienced Contributor Turnover",
+            "to": "Experienced Contributors",
+            "relationship": "negative"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Core Developer Mentoring Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "New Contributors",
+            "to": "Mentoring Demand",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer Mentoring Capacity",
+            "to": "Mentoring Coverage",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mentoring Demand",
+            "to": "Mentoring Coverage",
+            "relationship": "negative"
+          },
+          {
+            "from": "Mentoring Coverage",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mentoring Coverage",
+            "to": "Skill Up Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mentoring Coverage",
+            "to": "Core Promotion Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mentoring Coverage",
+            "to": "Newcomer Dropout Rate",
+            "relationship": "negative"
+          },
+          {
+            "from": "Experienced Contributors",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": [
+          {
+            "name": "colored stock",
+            "change": "rename",
+            "new_name": "Contributor Prospect Pool",
+            "rationale": "Specificity and alignment with onboarding dynamics."
+          },
+          {
+            "name": "Developer's Turnover",
+            "change": "rename",
+            "new_name": "Core Developer Turnover Rate",
+            "rationale": "Clarifies which role the turnover flow applies to."
+          },
+          {
+            "name": "Skill up",
+            "change": "rename",
+            "new_name": "Skill Up Rate",
+            "rationale": "Clarifies as a flow from New Contributors to Experienced Contributors."
+          },
+          {
+            "name": "Promotion Rate",
+            "change": "rename",
+            "new_name": "Core Promotion Rate",
+            "rationale": "Clarifies flow from Experienced Contributors to Core Developer."
+          }
+        ]
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Nonaka's SECI Model",
+      "rationale": "The model distinguishes implicit/explicit transfer but lacks knowledge stocks and the SECI subprocesses. Adding tacit and explicit knowledge stocks with creation, update, and decay flows enables socialization (mentoring), externalization (capture), combination (updates), and internalization (learning) to interact. This structure captures knowledge accumulation/erosion and its impact on onboarding and advancement.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Community Tacit Knowledge",
+            "type": "Stock",
+            "description": "Effective tacit know-how embedded in people and shared practices across the community."
+          },
+          {
+            "name": "Tacit Knowledge Accumulation Rate",
+            "type": "Flow",
+            "description": "Rate at which tacit knowledge grows via socialization and learning-by-doing."
+          },
+          {
+            "name": "Tacit Knowledge Erosion Rate",
+            "type": "Flow",
+            "description": "Loss of tacit knowledge due to turnover and technological change."
+          },
+          {
+            "name": "Project Explicit Knowledge",
+            "type": "Stock",
+            "description": "Effective explicit knowledge base (documentation, guides) adjusted for quality and relevance."
+          },
+          {
+            "name": "Documentation Creation & Update Rate",
+            "type": "Flow",
+            "description": "Rate of authoring and refactoring docs (externalization/combination)."
+          },
+          {
+            "name": "Documentation Obsolescence Rate",
+            "type": "Flow",
+            "description": "Rate at which explicit knowledge becomes outdated or inaccurate."
+          },
+          {
+            "name": "Externalization Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness of converting tacit knowledge into high-quality, reusable documentation."
+          },
+          {
+            "name": "Internalization Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness with which contributors learn from explicit knowledge."
+          },
+          {
+            "name": "Technology Change Rate",
+            "type": "Auxiliary",
+            "description": "Pace of technology or requirements change that drives knowledge obsolescence."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Implicit Knowledge Transfer (Mentorship)",
+            "to": "Tacit Knowledge Accumulation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Skill Up Rate",
+            "to": "Tacit Knowledge Accumulation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Tacit Knowledge Accumulation Rate",
+            "to": "Community Tacit Knowledge",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer Turnover Rate",
+            "to": "Tacit Knowledge Erosion Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Experienced Contributor Turnover",
+            "to": "Tacit Knowledge Erosion Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Technology Change Rate",
+            "to": "Tacit Knowledge Erosion Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Tacit Knowledge Erosion Rate",
+            "to": "Community Tacit Knowledge",
+            "relationship": "negative"
+          },
+          {
+            "from": "Community Tacit Knowledge",
+            "to": "Documentation Creation & Update Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Externalization Effectiveness",
+            "to": "Documentation Creation & Update Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Documentation Creation & Update Rate",
+            "to": "Project Explicit Knowledge",
+            "relationship": "positive"
+          },
+          {
+            "from": "Technology Change Rate",
+            "to": "Documentation Obsolescence Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Documentation Obsolescence Rate",
+            "to": "Project Explicit Knowledge",
+            "relationship": "negative"
+          },
+          {
+            "from": "Project Explicit Knowledge",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "to": "Internalization Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Internalization Effectiveness",
+            "to": "Skill Up Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Explicit Knowledge",
+            "to": "Newcomer Onboarding Rate",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    }
+  ]
+}

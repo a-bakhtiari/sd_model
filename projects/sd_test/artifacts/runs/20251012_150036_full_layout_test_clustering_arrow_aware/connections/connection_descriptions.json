@@ -1,0 +1,56 @@
+{
+  "descriptions": [
+    {
+      "id": "C01",
+      "description": "Developer turnover reduces the core developer stock as experienced members leave the project."
+    },
+    {
+      "id": "C02",
+      "description": "The skill up flow increases the new contributor stock by transitioning individuals from the onboarding pool."
+    },
+    {
+      "id": "C03",
+      "description": "The skill up flow increases the experienced contributor stock by advancing proficient new contributors."
+    },
+    {
+      "id": "C04",
+      "description": "The promotion rate flow increases the experienced contributor stock by recognizing and advancing active members."
+    },
+    {
+      "id": "C05",
+      "description": "The promotion rate flow increases the core developer stock by elevating qualified experienced contributors."
+    },
+    {
+      "id": "C06",
+      "description": "Implicit knowledge transfer accelerates the skill up flow by providing direct mentorship and guidance."
+    },
+    {
+      "id": "C07",
+      "description": "Increased implicit knowledge transfer accelerates the promotion rate by preparing contributors for advanced roles."
+    },
+    {
+      "id": "C08",
+      "description": "More core developers increase the capacity for implicit knowledge transfer through mentorship and code review."
+    },
+    {
+      "id": "C09",
+      "description": "Explicit knowledge transfer facilitates the skill up flow by providing accessible learning resources and documentation."
+    },
+    {
+      "id": "C10",
+      "description": "The colored stock represents the pool of potential contributors who can join as new contributors."
+    },
+    {
+      "id": "C11",
+      "description": "A larger stock of new contributors increases the potential inflow for the skill up flow."
+    },
+    {
+      "id": "C12",
+      "description": "A larger core developer stock can increase turnover due to burnout or new career opportunities."
+    },
+    {
+      "id": "C13",
+      "description": "A larger stock of experienced contributors provides more candidates eligible for the promotion rate flow."
+    }
+  ]
+}

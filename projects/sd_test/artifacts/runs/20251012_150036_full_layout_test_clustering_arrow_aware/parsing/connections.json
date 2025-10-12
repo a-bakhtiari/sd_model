@@ -1,0 +1,69 @@
+{
+  "connections": [
+    {
+      "from": 7,
+      "to": 2,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 12,
+      "to": 1,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 12,
+      "to": 8,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 16,
+      "to": 8,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 16,
+      "to": 2,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 17,
+      "to": 12,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 17,
+      "to": 16,
+      "polarity": "POSITIVE"
+    },
+    {
+      "from": 2,
+      "to": 17,
+      "polarity": "POSITIVE"
+    },
+    {
+      "from": 21,
+      "to": 12,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 23,
+      "to": 1,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 1,
+      "to": 12,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 2,
+      "to": 7,
+      "polarity": "UNDECLARED"
+    },
+    {
+      "from": 8,
+      "to": 16,
+      "polarity": "UNDECLARED"
+    }
+  ]
+}

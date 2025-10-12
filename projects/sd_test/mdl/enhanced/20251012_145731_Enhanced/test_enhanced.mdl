@@ -1,0 +1,250 @@
+{UTF-8}
+colored stock  = A FUNCTION OF( )
+	~	
+	~		|
+
+New Contributors  = A FUNCTION OF( colored stock,-Skill up)
+	~	
+	~		|
+
+Core Developer  = A FUNCTION OF( -Developer's Turnover,Promotion Rate)
+	~	
+	~		|
+
+Experienced Contributors  = A FUNCTION OF( -Promotion Rate,Skill up)
+	~	
+	~		|
+
+"Explicit Knowledge Transfer (Documentation, Contributor's Guides)"  = A FUNCTION OF(\
+		 )
+	~	
+	~		|
+
+"Implicit Knowledge Transfer (Mentorship)"  = A FUNCTION OF( Core Developer)
+	~	
+	~		|
+
+Skill up  = A FUNCTION OF( "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"\
+		,"Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Promotion Rate  = A FUNCTION OF( "Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Developer's Turnover  = A FUNCTION OF( )
+	~	
+	~		|
+
+Newcomer Join Rate  = A FUNCTION OF( Project Attractiveness to Newcomers)
+	~	
+	~		|
+
+Newcomer Dropout Rate  = A FUNCTION OF( -Participation Intensity,-Community Cohesion,\
+		-Project Explicit Knowledge)
+	~	
+	~		|
+
+Experienced Attrition Rate  = A FUNCTION OF( -Community Cohesion)
+	~	
+	~		|
+
+Mentors  = A FUNCTION OF( Core Developer,Experienced Contributors)
+	~	
+	~		|
+
+Mentoring Time Share  = A FUNCTION OF( )
+	~	
+	~		|
+
+Mentoring Capacity  = A FUNCTION OF( Mentors,Mentoring Time Share)
+	~	
+	~		|
+
+Participation Intensity  = A FUNCTION OF( Mentoring Effectiveness,"Explicit Knowledge Transfer (Documentation, Contributor's Guides)"\
+		)
+	~	
+	~		|
+
+Community Cohesion  = A FUNCTION OF( )
+	~	
+	~		|
+
+Project Attractiveness to Newcomers  = A FUNCTION OF( Project Explicit Knowledge)
+	~	
+	~		|
+
+Project Explicit Knowledge  = A FUNCTION OF( Externalization Rate,Combination Rate,-Explicit Knowledge Decay Rate\
+		)
+	~	
+	~		|
+
+Externalization Rate  = A FUNCTION OF( "Shared Context for Knowledge Creation (Ba)",Tacit Knowledge in Community\
+		)
+	~	
+	~		|
+
+Combination Rate  = A FUNCTION OF( "Shared Context for Knowledge Creation (Ba)")
+	~	
+	~		|
+
+Explicit Knowledge Decay Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Tacit Knowledge in Community  = A FUNCTION OF( Socialization Rate,Internalization Rate\
+		,-Tacit Knowledge Decay Rate)
+	~	
+	~		|
+
+Socialization Rate  = A FUNCTION OF( Mentoring Capacity,"Shared Context for Knowledge Creation (Ba)"\
+		,"Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Internalization Rate  = A FUNCTION OF( "Shared Context for Knowledge Creation (Ba)",Participation Intensity\
+		)
+	~	
+	~		|
+
+Tacit Knowledge Decay Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Shared Context for Knowledge Creation (Ba)"  = A FUNCTION OF( Community Cohesion)
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,67,2
+10,1,New Contributors,800,517,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Core Developer,1600,687,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,3,48,1861,701,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,6,2,100,0,0,22,0,192,0,-1--1--1,,1|(1720,667)|
+1,5,6,3,4,0,0,22,0,192,0,-1--1--1,,1|(1800,701)|
+11,6,0,1800,667,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,7,Developer's Turnover,1800,517,56,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,8,Experienced Contributors,1400,517,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,11,1,100,0,0,22,0,192,0,-1--1--1,,1|(959,519)|
+1,10,11,8,4,0,0,22,0,192,0,-1--1--1,,1|(1199,519)|
+11,11,0,1058,519,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,12,Skill up,1058,553,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,13,15,8,100,0,0,22,0,192,0,-1--1--1,,1|(1400,582)|
+1,14,15,2,4,0,0,22,0,192,0,-1--1--1,,1|(1600,582)|
+11,15,0,1496,582,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,16,Promotion Rate,1496,616,46,26,40,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,17,"Implicit Knowledge Transfer (Mentorship)",1600,1067,57,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,18,17,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,19,17,15,0,0,43,0,0,192,0,-1--1--1,,1|(0,0)|
+1,20,2,17,0,0,43,0,0,192,0,-1--1--1,,1|(0,0)|
+10,21,"Explicit Knowledge Transfer (Documentation, Contributor's Guides)",1126,448,91,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,22,21,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,23,colored stock,600,517,46,26,3,3,0,1,-1,1,0,0,252-102-255,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,24,Newcomer Join Rate,800,727,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,25,Newcomer Dropout Rate,920,921,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,26,Experienced Attrition Rate,1861,1115,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,27,Mentors,1303,649,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,28,Mentoring Time Share,1957,911,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,29,Mentoring Capacity,2060,554,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,30,Mentoring Effectiveness,2200,817,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,31,Participation Intensity,2400,817,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,32,Community Cohesion,1800,1017,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,33,Project Attractiveness to Newcomers,2000,1017,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,34,Project Explicit Knowledge,400,477,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,35,Externalization Rate,600,267,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,36,Combination Rate,736,356,43,64,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,37,Explicit Knowledge Decay Rate,1600,267,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,38,Tacit Knowledge in Community,1332,98,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,39,Socialization Rate,1200,267,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,40,Internalization Rate,1000,267,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,41,Tacit Knowledge Decay Rate,1400,267,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,42,"Shared Context for Knowledge Creation (Ba)",400,267,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+1,43,35,34,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,44,36,34,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,45,37,34,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,46,39,38,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,47,40,38,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,48,41,38,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,49,29,39,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,50,42,39,1,0,0,22,0,192,0,-1--1--1,,1|(758,309)|
+1,51,42,35,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,52,42,36,1,0,0,22,0,192,0,-1--1--1,,1|(555,318)|
+1,53,42,40,1,0,0,22,0,192,0,-1--1--1,,1|(683,231)|
+1,54,31,40,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,55,34,25,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,56,38,35,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,57,34,33,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,58,17,39,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,59,32,42,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,60,23,1,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,61,33,24,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,62,32,25,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,63,31,25,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,64,32,26,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,65,2,27,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,66,8,27,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,67,28,29,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,68,27,29,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,69,21,31,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,70,30,31,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+///---\\\
+:L<%^E!@
+5:Mentoring Capacity
+19:67,0
+24:0
+25:0
+26:0
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Vensim Sans|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

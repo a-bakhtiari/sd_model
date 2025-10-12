@@ -1,0 +1,447 @@
+{
+  "clustering_scheme": {
+    "rationale": "Organized into four tightly-coupled modules reflecting contributor progression, social learning (CoP), knowledge conversion (SECI), and community boundary processes to minimize cross-lines and support modular reasoning.",
+    "clusters": [
+      {
+        "name": "Contributor Progression Pipeline",
+        "theme": "Stocks and flows governing movement from newcomer to core and exits.",
+        "variables": [
+          "New Contributors",
+          "Experienced Contributors",
+          "Core Developer",
+          "Skill up",
+          "Promotion Rate",
+          "Core Developer Turnover Rate",
+          "New Contributor Dropout Rate",
+          "Experienced Contributor Turnover Rate",
+          "Lapsed Contributors"
+        ],
+        "connections_to_other_clusters": {
+          "Community Dynamics & Mentoring": 10,
+          "Knowledge Creation & Management (SECI)": 8,
+          "Onboarding & Boundary Processes": 2
+        }
+      },
+      {
+        "name": "Community Dynamics & Mentoring",
+        "theme": "Social processes that enable legitimate peripheral participation, mentoring, and belonging.",
+        "variables": [
+          "Implicit Knowledge Transfer (Mentorship)",
+          "Core Developer Mentoring Capacity",
+          "Mentor-to-Newcomer Ratio",
+          "Legitimate Peripheral Task Availability",
+          "Sense of Belonging",
+          "Contribution Barriers"
+        ],
+        "connections_to_other_clusters": {
+          "Contributor Progression Pipeline": 10,
+          "Knowledge Creation & Management (SECI)": 3,
+          "Onboarding & Boundary Processes": 3
+        }
+      },
+      {
+        "name": "Knowledge Creation & Management (SECI)",
+        "theme": "Tacit/explicit knowledge stocks and conversion dynamics affecting learning and onboarding.",
+        "variables": [
+          "Project Tacit Knowledge",
+          "Project Explicit Knowledge",
+          "Externalization Rate",
+          "Tacit Knowledge Decay Rate",
+          "Documentation Obsolescence Rate",
+          "Shared Context for Knowledge Creation (Ba)",
+          "Documentation Quality",
+          "Internalization Effectiveness",
+          "Documentation Accessibility",
+          "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"
+        ],
+        "connections_to_other_clusters": {
+          "Contributor Progression Pipeline": 8,
+          "Community Dynamics & Mentoring": 3,
+          "Onboarding & Boundary Processes": 2
+        }
+      },
+      {
+        "name": "Onboarding & Boundary Processes",
+        "theme": "Community boundary inflow and its determinants.",
+        "variables": [
+          "Potential Contributors (Observers/Users)",
+          "Onboarding Rate",
+          "Onboarding Experience Quality"
+        ],
+        "connections_to_other_clusters": {
+          "Contributor Progression Pipeline": 2,
+          "Knowledge Creation & Management (SECI)": 2,
+          "Community Dynamics & Mentoring": 3
+        }
+      }
+    ],
+    "layout_hints": [
+      "Place Contributor Progression Pipeline centrally since it connects most heavily to all clusters.",
+      "Position Community Dynamics & Mentoring to the right of the Pipeline to shorten mentoring-related links.",
+      "Place Knowledge Creation & Management to the left of the Pipeline; it connects to both Pipeline and Onboarding.",
+      "Put Onboarding & Boundary Processes below the Pipeline to minimize crossings from both Knowledge and Community clusters into Onboarding."
+    ]
+  },
+  "theories": [
+    {
+      "name": "Communities of Practice (Wenger)",
+      "rationale": "The model already captures movement from periphery to core and mentoring. CoP adds boundary processes (onboarding), capacity constraints (mentor availability), and identity/belonging that affect retention and progression. These additions operationalize legitimate peripheral participation and social support, improving fidelity of transitions and dropout dynamics.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Potential Contributors (Observers/Users)",
+            "type": "Stock",
+            "description": "People aware of or adjacent to the project who have not yet contributed."
+          },
+          {
+            "name": "Onboarding Rate",
+            "type": "Flow",
+            "description": "Rate at which potential contributors become New Contributors."
+          },
+          {
+            "name": "Onboarding Experience Quality",
+            "type": "Auxiliary",
+            "description": "Perceived quality of first-contact experience; composite of mentorship, documentation, task clarity, and barriers."
+          },
+          {
+            "name": "Core Developer Mentoring Capacity",
+            "type": "Auxiliary",
+            "description": "Effective mentoring bandwidth of core developers given workload and time."
+          },
+          {
+            "name": "Mentor-to-Newcomer Ratio",
+            "type": "Auxiliary",
+            "description": "Ratio indicating sufficiency of mentors relative to newcomers; higher is better."
+          },
+          {
+            "name": "Legitimate Peripheral Task Availability",
+            "type": "Auxiliary",
+            "description": "Availability and clarity of low-risk, beginner-friendly tasks (LPP)."
+          },
+          {
+            "name": "Sense of Belonging",
+            "type": "Auxiliary",
+            "description": "Degree to which contributors feel recognized and part of the community."
+          },
+          {
+            "name": "Contribution Barriers",
+            "type": "Auxiliary",
+            "description": "Friction from tooling, governance, processes, or norms that hinder entry."
+          },
+          {
+            "name": "Lapsed Contributors",
+            "type": "Stock",
+            "description": "Contributors who have exited (from any level) into inactivity."
+          },
+          {
+            "name": "New Contributor Dropout Rate",
+            "type": "Flow",
+            "description": "Outflow of New Contributors into Lapsed Contributors."
+          },
+          {
+            "name": "Experienced Contributor Turnover Rate",
+            "type": "Flow",
+            "description": "Outflow of Experienced Contributors into Lapsed Contributors."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Potential Contributors (Observers/Users)",
+            "to": "Onboarding Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Onboarding Rate",
+            "to": "New Contributors",
+            "relationship": "positive"
+          },
+          {
+            "from": "Implicit Knowledge Transfer (Mentorship)",
+            "to": "Onboarding Experience Quality",
+            "relationship": "positive"
+          },
+          {
+            "from": "Documentation Quality",
+            "to": "Onboarding Experience Quality",
+            "relationship": "positive"
+          },
+          {
+            "from": "Legitimate Peripheral Task Availability",
+            "to": "Onboarding Experience Quality",
+            "relationship": "positive"
+          },
+          {
+            "from": "Contribution Barriers",
+            "to": "Onboarding Experience Quality",
+            "relationship": "negative"
+          },
+          {
+            "from": "Onboarding Experience Quality",
+            "to": "Onboarding Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "New Contributors",
+            "to": "Mentor-to-Newcomer Ratio",
+            "relationship": "negative"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Mentor-to-Newcomer Ratio",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mentor-to-Newcomer Ratio",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Core Developer Mentoring Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer Mentoring Capacity",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Implicit Knowledge Transfer (Mentorship)",
+            "to": "Sense of Belonging",
+            "relationship": "positive"
+          },
+          {
+            "from": "Legitimate Peripheral Task Availability",
+            "to": "Sense of Belonging",
+            "relationship": "positive"
+          },
+          {
+            "from": "Sense of Belonging",
+            "to": "New Contributor Dropout Rate",
+            "relationship": "negative"
+          },
+          {
+            "from": "Sense of Belonging",
+            "to": "Experienced Contributor Turnover Rate",
+            "relationship": "negative"
+          },
+          {
+            "from": "Experienced Contributors",
+            "to": "Experienced Contributor Turnover Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "New Contributors",
+            "to": "New Contributor Dropout Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "New Contributor Dropout Rate",
+            "to": "Lapsed Contributors",
+            "relationship": "positive"
+          },
+          {
+            "from": "Experienced Contributor Turnover Rate",
+            "to": "Lapsed Contributors",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Legitimate Peripheral Task Availability",
+            "relationship": "positive"
+          },
+          {
+            "from": "Experienced Contributors",
+            "to": "Legitimate Peripheral Task Availability",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": [
+          {
+            "old_name": "colored stock",
+            "new_name": "Potential Contributors (Observers/Users)",
+            "type": "Stock",
+            "description": "Renamed for clarity; represents people at the community boundary who may become contributors."
+          },
+          {
+            "old_name": "Developer's Turnover",
+            "new_name": "Core Developer Turnover Rate",
+            "type": "Flow",
+            "description": "Clarifies that this flow drains the Core Developer stock."
+          }
+        ]
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Nonaka's SECI Model",
+      "rationale": "Current variables nod to implicit and explicit transfer but lack knowledge stocks and conversion loops. Adding tacit/explicit stocks, conversion and decay rates, and enabling context (Ba) creates a SECI spiral that influences learning, onboarding, and retention. This tightens causal pathways from documentation and mentoring to progression rates.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Project Tacit Knowledge",
+            "type": "Stock",
+            "description": "Collective know-how embedded in practices and people."
+          },
+          {
+            "name": "Project Explicit Knowledge",
+            "type": "Stock",
+            "description": "Project documentation, guides, and knowledge bases."
+          },
+          {
+            "name": "Externalization Rate",
+            "type": "Flow",
+            "description": "Conversion of tacit knowledge into explicit artifacts."
+          },
+          {
+            "name": "Tacit Knowledge Decay Rate",
+            "type": "Flow",
+            "description": "Loss of tacit know-how due to forgetting, change, or turnover."
+          },
+          {
+            "name": "Documentation Obsolescence Rate",
+            "type": "Flow",
+            "description": "Rate at which explicit knowledge becomes outdated."
+          },
+          {
+            "name": "Shared Context for Knowledge Creation (Ba)",
+            "type": "Auxiliary",
+            "description": "Quality of the shared space enabling socialization and externalization."
+          },
+          {
+            "name": "Documentation Quality",
+            "type": "Auxiliary",
+            "description": "Accuracy, completeness, clarity, and findability of explicit knowledge."
+          },
+          {
+            "name": "Internalization Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness with which explicit knowledge is absorbed into practice."
+          },
+          {
+            "name": "Documentation Accessibility",
+            "type": "Auxiliary",
+            "description": "Ease of discovering and navigating documentation."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Project Tacit Knowledge",
+            "to": "Externalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Externalization Rate",
+            "to": "Project Explicit Knowledge",
+            "relationship": "positive"
+          },
+          {
+            "from": "Experienced Contributors",
+            "to": "Externalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Externalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Shared Context for Knowledge Creation (Ba)",
+            "to": "Externalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Shared Context for Knowledge Creation (Ba)",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Shared Context for Knowledge Creation (Ba)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer Mentoring Capacity",
+            "to": "Shared Context for Knowledge Creation (Ba)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Explicit Knowledge",
+            "to": "Documentation Quality",
+            "relationship": "positive"
+          },
+          {
+            "from": "Documentation Obsolescence Rate",
+            "to": "Documentation Quality",
+            "relationship": "negative"
+          },
+          {
+            "from": "Documentation Quality",
+            "to": "Documentation Accessibility",
+            "relationship": "positive"
+          },
+          {
+            "from": "Documentation Accessibility",
+            "to": "Onboarding Experience Quality",
+            "relationship": "positive"
+          },
+          {
+            "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "to": "Internalization Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Internalization Effectiveness",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Documentation Accessibility",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Explicit Knowledge",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Tacit Knowledge",
+            "to": "Tacit Knowledge Decay Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Explicit Knowledge",
+            "to": "Documentation Obsolescence Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Implicit Knowledge Transfer (Mentorship)",
+            "to": "Project Tacit Knowledge",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Tacit Knowledge",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer Turnover Rate",
+            "to": "Tacit Knowledge Decay Rate",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    }
+  ]
+}

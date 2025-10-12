@@ -1,0 +1,275 @@
+{UTF-8}
+colored stock  = A FUNCTION OF( )
+	~	
+	~		|
+
+New Contributors  = A FUNCTION OF( colored stock,-Skill up)
+	~	
+	~		|
+
+Core Developer  = A FUNCTION OF( -Developer's Turnover,Promotion Rate)
+	~	
+	~		|
+
+Experienced Contributors  = A FUNCTION OF( -Promotion Rate,Skill up)
+	~	
+	~		|
+
+"Explicit Knowledge Transfer (Documentation, Contributor's Guides)"  = A FUNCTION OF(\
+		 )
+	~	
+	~		|
+
+"Implicit Knowledge Transfer (Mentorship)"  = A FUNCTION OF( Core Developer)
+	~	
+	~		|
+
+Skill up  = A FUNCTION OF( "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"\
+		,"Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Promotion Rate  = A FUNCTION OF( "Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Developer's Turnover  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Potential Contributors (Observers/Users)"  = A FUNCTION OF( )
+	~	
+	~		|
+
+Onboarding Rate  = A FUNCTION OF( "Potential Contributors (Observers/Users)",Onboarding Experience Quality)
+	~	
+	~		|
+
+Onboarding Experience Quality  = A FUNCTION OF( "Implicit Knowledge Transfer (Mentorship)",Documentation Quality,Legitimate Peripheral Task Availability,-Contribution Barriers,Documentation Accessibility)
+	~	
+	~		|
+
+Core Developer Mentoring Capacity  = A FUNCTION OF( Core Developer)
+	~	
+	~		|
+
+Mentor-to-Newcomer Ratio  = A FUNCTION OF( -New Contributors,Core Developer)
+	~	
+	~		|
+
+Legitimate Peripheral Task Availability  = A FUNCTION OF( Core Developer,Experienced Contributors)
+	~	
+	~		|
+
+Sense of Belonging  = A FUNCTION OF( "Implicit Knowledge Transfer (Mentorship)",Legitimate Peripheral Task Availability)
+	~	
+	~		|
+
+Contribution Barriers  = A FUNCTION OF( )
+	~	
+	~		|
+
+Lapsed Contributors  = A FUNCTION OF( New Contributor Dropout Rate,Experienced Contributor Turnover Rate)
+	~	
+	~		|
+
+New Contributor Dropout Rate  = A FUNCTION OF( -Sense of Belonging,New Contributors)
+	~	
+	~		|
+
+Experienced Contributor Turnover Rate  = A FUNCTION OF( -Sense of Belonging,Experienced Contributors)
+	~	
+	~		|
+
+Project Tacit Knowledge  = A FUNCTION OF( "Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Project Explicit Knowledge  = A FUNCTION OF( Externalization Rate)
+	~	
+	~		|
+
+Externalization Rate  = A FUNCTION OF( Project Tacit Knowledge,Experienced Contributors,Core Developer,"Shared Context for Knowledge Creation (Ba)")
+	~	
+	~		|
+
+Tacit Knowledge Decay Rate  = A FUNCTION OF( Project Tacit Knowledge,Core Developer Turnover Rate)
+	~	
+	~		|
+
+Documentation Obsolescence Rate  = A FUNCTION OF( Project Explicit Knowledge)
+	~	
+	~		|
+
+"Shared Context for Knowledge Creation (Ba)"  = A FUNCTION OF( Core Developer,Core Developer Mentoring Capacity)
+	~	
+	~		|
+
+Documentation Quality  = A FUNCTION OF( Project Explicit Knowledge,-Documentation Obsolescence Rate)
+	~	
+	~		|
+
+Internalization Effectiveness  = A FUNCTION OF( "Explicit Knowledge Transfer (Documentation, Contributor's Guides)")
+	~	
+	~		|
+
+Documentation Accessibility  = A FUNCTION OF( Documentation Quality)
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,67,2
+10,1,New Contributors,800,500,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Core Developer,1200,500,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,3,48,1861,584,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,6,2,100,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,5,6,3,4,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+11,6,0,1790,584,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,7,Developer's Turnover,1400,600,56,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,8,Experienced Contributors,1000,500,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,11,1,100,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,10,11,8,4,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+11,11,0,1300,550,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,12,Skill up,930,698,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,13,15,8,100,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,14,15,2,4,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+11,15,0,1500,550,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,16,Promotion Rate,1140,698,46,26,40,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,17,"Implicit Knowledge Transfer (Mentorship)",1041,883,57,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,18,17,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,19,17,15,0,0,43,0,0,192,0,-1--1--1,,1|(0,0)|
+1,20,2,17,1,0,43,0,0,192,0,-1--1--1,,1|(0,0)|
+10,21,"Explicit Knowledge Transfer (Documentation, Contributor's Guides)",1274,404,91,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,22,21,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,23,colored stock,600,500,46,26,3,3,0,1,-1,1,0,0,252-102-255,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,24,"Potential Contributors (Observers/Users)",1000,1100,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,25,Onboarding Rate,1200,1100,60,26,40,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,26,Onboarding Experience Quality,1400,1100,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,27,Core Developer Mentoring Capacity,1246,879,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,28,Mentor-to-Newcomer Ratio,1436,806,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,29,Legitimate Peripheral Task Availability,764,827,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,30,Sense of Belonging,881,950,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,31,Contribution Barriers,1580,950,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,32,Lapsed Contributors,1600,500,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,33,New Contributor Dropout Rate,598,709,60,26,40,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,34,Experienced Contributor Turnover Rate,1370,950,60,26,40,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,35,Project Tacit Knowledge,400,200,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,36,Project Explicit Knowledge,600,200,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,37,Externalization Rate,418,409,60,26,40,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,38,Tacit Knowledge Decay Rate,208,427,60,26,40,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,39,Documentation Obsolescence Rate,786,296,60,26,40,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,40,"Shared Context for Knowledge Creation (Ba)",832,91,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,41,Documentation Quality,1020,201,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,42,Internalization Effectiveness,490,50,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,43,Documentation Accessibility,700,50,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+1,24,23,1,0,0,0,0,1,192,0,251-2-128,|||0-0-0,1|(0,0)|
+1,25,24,25,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,26,25,1,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,27,17,26,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,28,41,26,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,29,29,26,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,30,31,26,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,31,26,25,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,32,1,28,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,33,2,28,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,34,28,17,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,35,2,27,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,36,27,17,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,37,17,30,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,38,29,30,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,39,30,33,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,40,30,34,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,41,8,34,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,42,1,33,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,43,33,32,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,44,34,32,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,45,2,29,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,46,8,29,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,47,35,37,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,48,37,36,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,49,8,37,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,50,2,37,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,51,40,37,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,52,40,17,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,53,2,40,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,54,27,40,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,55,36,41,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,56,39,41,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,57,41,43,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,58,43,26,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,59,42,12,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,60,43,12,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,61,35,38,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,62,36,39,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,63,17,35,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,64,35,12,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+12,25,0,2204,386,80,40,3,7,0,1,-1,1,0,0,251-2-7,0-0-0,|||0-0-0,0,0,0,0,0,0
+This is a test comment written in red just to help you see how to make a comment.
+12,26,0,2209,537,80,40,3,7,0,1,-1,1,0,0,255-255-10,0-0-0,|||0-0-0,0,0,0,0,0,0
+Here is another comment with yellow outline
+12,27,0,2188,708,80,40,3,7,0,1,-1,1,0,0,33-255-6,0-0-0,|||0-0-0,0,0,0,0,0,0
+Here is yet another comment with green outline
+12,28,0,1928,826,80,40,8,7,0,0,-1,1,0,0,0,0,0,0,0,0
+Comment
+12,29,0,1461,301,80,40,8,7,0,0,-1,1,0,0,0,0,0,0,0,0
+Comment
+///---\\\
+:L<%^E!@
+5:New Contributors
+19:67,0
+24:0
+25:0
+26:0
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Vensim Sans|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

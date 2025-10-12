@@ -15,6 +15,56 @@ $<view-params>
 ///---\                      ; end of sketch
 ```
 
+**Header Line Details:**
+
+- **`\\\---///` line:** Marks the beginning of sketch information. This line is repeated for each view in the model. Only the beginning `\\\---///` is significant; the rest can be any text (typically "Sketch information - do not modify anything except names").
+
+- **`V<ver>` line:** Version code for format compatibility. Vensim versions 3, 4, and 5 all use `V300`. Vensim checks this to ensure the sketch information is in the expected format. Only the version code itself (e.g., `V300`) is significant.
+
+- **`*View <name>` line:** Names the view. You can use any name you want, subject to a **30-character limit**.
+
+- **`$<view-params>` line:** Defines view default settings (fonts, colors, zoom). See detailed format below.
+
+## View Default Settings (`$` line)
+
+The `$` line defines default font and color settings for the view. When font and color are not set for a specific object, these defaults are used.
+
+**Format:**
+```
+$iniarrow,n2,face|size|attributes|color|shape|arrow|fill|background|ppix,ppiy,zoom,tf
+```
+
+**Field Descriptions:**
+
+- **`iniarrow`:** Color of initial arrows in R-G-B format (e.g., `192-192-192`) or `0` for default
+- **`n2`:** Reserved number (16-bit integer); must be `0`
+- **`face`:** Font face name (e.g., `Times New Roman`)
+- **`size`:** Font size in points (e.g., `12`)
+- **`attributes`:** Font attributes, one or more of:
+  - `B` = Bold
+  - `U` = Underline
+  - `S` = Strike-through
+  - `I` = Italic
+  - (leave empty for no attributes)
+- **`color`:** Font color in R-G-B format (e.g., `0-0-0` for black)
+- **`shape`:** Border color for shapes in R-G-B format
+- **`arrow`:** Arrow color in R-G-B format (e.g., `0-0-255` for blue)
+- **`fill`:** Fill color for shapes in R-G-B format; `-1--1--1` means no fill
+- **`background`:** Background color for the sketch in R-G-B format; `-1--1--1` means use normal window background
+- **`ppix`:** Pixels per inch in X direction on the display where model was last edited
+- **`ppiy`:** Pixels per inch in Y direction on the display where model was last edited
+- **`zoom`:** Zoom percentage for displaying the view (e.g., `100` for 100%; `5` means fit to screen)
+- **`tf`:** Template flag
+  - `0` = normal view
+  - `1` = don't use template
+  - `3` = is the template view
+
+**Example:**
+```
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,100,0
+```
+This defines: gray initial arrows, Times New Roman 12pt font, black text, black shapes, blue arrows, no fill, default background, 96 DPI, 100% zoom, normal view.
+
 ## Equation Blocks
 
 **Structure (exact 4-line unit):**
@@ -102,16 +152,27 @@ A FUNCTION OF( Var1, -Var2, Var3 )
 
 ## Colors
 
-**Format:** `<r>-<g>-<b>` where each is 0-255
+**Format:** `<r>-<g>-<b>` where each component (R, G, B) ranges from 0 to 255
 
-**Default:** `-1--1--1`
+**Default/Special Value:** `-1--1--1`
+- In `$` line: Indicates "use default color" (system default)
+- For `fill` in `$` line: Means no fill (transparent)
+- For `background` in `$` line: Means use normal window background
+
+**Usage Locations:**
+- In the `$` view settings line (initial arrows, font, shape, arrow, fill, background colors)
+- In individual sketch records (e.g., `10,` variable nodes can specify custom colors)
 
 **Common colors:**
-- Green border (additions): `0-255-0`
-- Orange border (modifications): `255-165-0`
-- Red border: `255-0-0`
+- Black: `0-0-0`
+- White: `255-255-255`
+- Red: `255-0-0`
+- Green (additions): `0-255-0`
+- Blue: `0-0-255`
+- Orange (modifications): `255-165-0`
+- Gray: `192-192-192`
 
-**In sketch lines:** Change only the RGB token; do not alter field counts
+**Important:** When editing sketch lines, change only the RGB token; do not alter field counts or positions
 
 ## Parsing Workflow
 

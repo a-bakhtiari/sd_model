@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-10-12T16:11:41.132274",
+  "original_mdl": "test.mdl",
+  "theories_applied": [],
+  "summary": {
+    "total_variables_added": 20,
+    "total_connections_added": 43,
+    "total_theories": 0
+  },
+  "source_artifacts": {
+    "theory_enhancement": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/runs/20251012_160051_full_layout_test_clustering_arrow_aware/theory/theory_enhancement.json",
+    "theory_enhancement_mdl": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/runs/20251012_160051_full_layout_test_clustering_arrow_aware/theory/theory_enhancement_mdl.json"
+  },
+  "mdl_generation_details": {
+    "variables_added": 20,
+    "connections_added": 43,
+    "theories_processed": 2
+  }
+}

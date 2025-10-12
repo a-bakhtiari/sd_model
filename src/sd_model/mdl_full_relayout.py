@@ -515,15 +515,11 @@ def _update_arrow_waypoints(lines: List[str], waypoint_map: Dict[str, List[Tuple
                         # Keep everything before waypoints
                         parts = parts[:waypoint_start_idx]
 
-                        # Add calculated waypoints
-                        if waypoints:
-                            # Format: 1|(x1,y1)|1|(x2,y2)|...
-                            waypoint_str = '1|(' + ')|1|('.join([f"{int(x)},{int(y)}" for x, y in waypoints]) + ')|'
-                            parts.append(waypoint_str)
-                            arrows_updated += 1
-                        else:
-                            # No waypoints needed (straight line is clear)
-                            parts.append('1|(0,0)|')
+                        # Arrow curving disabled - keep all arrows straight
+                        # Just reset waypoints to (0,0)
+                        if len(parts) > 9:
+                            parts[9] = '192'  # Field 10: straight line
+                        parts.append('1|(0,0)|')
 
                         line = ','.join(parts)
 
