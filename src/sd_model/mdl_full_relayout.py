@@ -8,13 +8,19 @@ clustered layout that makes conceptual sense.
 """
 
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 import json
 import re
+import math
 from .llm.client import LLMClient
 
 
 FULL_RELAYOUT_PROMPT = """You are a System Dynamics expert creating a professional, publication-quality diagram layout.
+
+## CRITICAL: YOU ARE ONLY REPOSITIONING VARIABLES
+- You are ONLY changing the X,Y coordinates of variables
+- ALL other properties (name, type, equations, connections) remain UNCHANGED
+- This is purely a visual layout optimization task
 
 ## TASK
 Reposition ALL {total_vars} variables (existing + new) into a clean, clustered layout that tells a clear story.
@@ -32,7 +38,7 @@ Instead of placing things close because they connect, create DISTINCT THEMATIC Z
 
 1. **Identify 3-5 major conceptual clusters** (e.g., "Knowledge Management", "Community Dynamics", "Contributor Pipeline")
 2. **Assign each variable to ONE cluster** based on its semantic meaning
-3. **Place each cluster in a distinct canvas region** (300-600px apart from other clusters)
+3. **Place each cluster in a distinct canvas region** (400-800px apart from other clusters)
 4. **Within each cluster**: arrange variables logically, with ~200px spacing
 
 ### SPATIAL LAYOUT STRATEGY
@@ -53,12 +59,18 @@ Instead of placing things close because they connect, create DISTINCT THEMATIC Z
 - **Variables in same cluster**: 200-300px apart
 - **Maintain vertical layering**: Auxiliaries on top (y=100-200), Stocks middle (y=300-600), Auxiliaries bottom (y=700-900)
 
-### CRITICAL SPATIAL RULES
+### CRITICAL SPATIAL RULES - FOLLOW STRICTLY
 
-1. **NO OVERLAPS**: Minimum 200px between ANY two variable centers
+1. **MANDATORY SPACING**: Minimum 200px between ANY two variable centers (formula: distance = sqrt((x2-x1)² + (y2-y1)²) ≥ 200)
+   - Variable widths are ~60-90px, heights ~26px
+   - Check EVERY variable against ALL other variables
+   - This is NON-NEGOTIABLE - positions will be validated programmatically
+
 2. **CROSS-CLUSTER CONNECTIONS ARE OK**: Long lines between clusters are acceptable - they show relationships
-3. **AVOID OVERLAPS WITHIN CLUSTERS**: Variables in same cluster should have clean spacing
-4. **CANVAS BOUNDS**: x: 0-2500, y: 0-1000
+
+3. **WITHIN-CLUSTER SPACING**: Variables in same cluster should be 200-300px apart for readability
+
+4. **CANVAS BOUNDS**: x: 100-2400, y: 50-950 (stay within bounds with margin)
 
 ### STEP-BY-STEP PROCESS
 
@@ -69,16 +81,19 @@ Group variables into 3-5 thematic clusters based on meaning (NOT just connection
 Choose distinct canvas regions for each cluster (400-800px apart).
 
 **Step 3: Position Variables Within Clusters**
-For each variable:
+For EACH variable (process ONE AT A TIME):
 - Place it in its cluster region
 - Maintain type-based vertical layering
+- Check distance to ALL previously positioned variables (must be ≥200px)
+- If too close to any variable, adjust position and recheck
 - Keep 200-300px from other variables in same cluster
-- Check it's 200+ px from ALL other variables
 
-**Step 4: Verify**
-- All clusters are visually separated
-- No overlaps anywhere
+**Step 4: Final Verification**
+Before outputting, verify:
+- All clusters are visually separated (400-800px between cluster centers)
+- NO overlaps anywhere (all variables ≥200px apart)
 - Variables are clearly grouped by theme
+- All positions are within canvas bounds
 
 ## OUTPUT FORMAT
 Return ONLY valid JSON (no markdown):
@@ -112,6 +127,78 @@ IMPORTANT:
 - Variables within cluster should be cohesive
 
 Now create the clustered layout:"""
+
+
+def _validate_and_fix_overlaps(
+    position_map: Dict[str, Tuple[int, int]],
+    min_spacing: int = 200,
+    canvas_bounds: Tuple[int, int, int, int] = (100, 2400, 50, 950)
+) -> Dict[str, Tuple[int, int]]:
+    """
+    Validate positions and fix any overlaps.
+
+    Args:
+        position_map: Dict mapping variable names to (x, y) tuples
+        min_spacing: Minimum distance between variable centers
+        canvas_bounds: (min_x, max_x, min_y, max_y)
+
+    Returns:
+        Updated position_map with overlaps fixed
+    """
+    min_x, max_x, min_y, max_y = canvas_bounds
+    var_names = list(position_map.keys())
+    fixed_positions = position_map.copy()
+
+    max_iterations = 100
+    iteration = 0
+
+    while iteration < max_iterations:
+        has_overlap = False
+
+        # Check each pair of variables
+        for i, var1 in enumerate(var_names):
+            x1, y1 = fixed_positions[var1]
+
+            for var2 in var_names[i+1:]:
+                x2, y2 = fixed_positions[var2]
+
+                # Calculate distance
+                distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+
+                if distance < min_spacing:
+                    has_overlap = True
+
+                    # Move var2 away from var1
+                    # Calculate direction vector
+                    if distance > 0:
+                        dx = (x2 - x1) / distance
+                        dy = (y2 - y1) / distance
+                    else:
+                        # Variables at exact same position, move right
+                        dx, dy = 1, 0
+
+                    # Push var2 to minimum spacing distance
+                    needed_distance = min_spacing - distance + 10  # +10 for safety margin
+                    new_x2 = x2 + dx * needed_distance
+                    new_y2 = y2 + dy * needed_distance
+
+                    # Keep within bounds
+                    new_x2 = max(min_x, min(max_x, new_x2))
+                    new_y2 = max(min_y, min(max_y, new_y2))
+
+                    fixed_positions[var2] = (int(new_x2), int(new_y2))
+
+        if not has_overlap:
+            break
+
+        iteration += 1
+
+    if iteration >= max_iterations:
+        print(f"Warning: Could not fully resolve all overlaps after {max_iterations} iterations")
+    else:
+        print(f"Overlap validation complete: fixed overlaps in {iteration} iterations")
+
+    return fixed_positions
 
 
 def reposition_entire_diagram(
@@ -248,6 +335,10 @@ def reposition_entire_diagram(
         for pos in layout_data.get('positions', []):
             position_map[pos['name']] = (pos['x'], pos['y'])
             print(f"  {pos['name']}: ({pos['x']}, {pos['y']}) in {pos.get('cluster', '?')}")
+
+        # Validate and fix overlaps
+        print("\nValidating positions and fixing any overlaps...")
+        position_map = _validate_and_fix_overlaps(position_map)
 
         # Now rewrite the MDL with new positions
         new_lines = []

@@ -40,6 +40,7 @@ def run_pipeline(
     run_citations: bool = False,
     # Model improvement features
     run_theory_enhancement: bool = False,
+    use_full_relayout: bool = False,
     run_archetype_detection: bool = False,
     run_rq_analysis: bool = False,
     run_theory_discovery: bool = False,
@@ -47,7 +48,9 @@ def run_pipeline(
     discover_papers: bool = False,
     # Other options
     apply_patch: bool = False,
-    save_run: Optional[str] = None
+    save_run: Optional[str] = None,
+    # Citation verification
+    verify_cit: bool = False
 ) -> Dict:
     """Run the analysis pipeline for a project with granular feature control.
 
@@ -383,6 +386,16 @@ def run_pipeline(
             theories = [{"name": t.theory_name, "description": t.description, "focus_area": t.focus_area} for t in theories_objs]
             logger.info(f"✓ Loaded {len(theories)} theories")
 
+        # Determine full relayout strategy
+        # If BOTH theory and archetype run, only do full relayout on the FINAL pass (archetype)
+        # This prevents repositioning variables twice
+        both_enhancements_running = run_theory_enhancement and run_archetype_detection
+        theory_should_relayout = use_full_relayout and not both_enhancements_running
+        archetype_should_relayout = use_full_relayout  # Always apply on final pass
+
+        if both_enhancements_running and use_full_relayout:
+            logger.info("Note: Full relayout will be deferred until after archetype enhancement (final pass)")
+
         # Module 2: Theory Enhancement (optional)
         if run_theory_enhancement:
             logger.info("Running Theory Enhancement module...")
@@ -430,7 +443,8 @@ def run_pipeline(
                             theory_enh,
                             temp_mdl_path,
                             add_colors=True,
-                            use_llm_layout=True,
+                            use_llm_layout=not theory_should_relayout,  # Use incremental only if not using full relayout
+                            use_full_relayout=theory_should_relayout,
                             llm_client=client
                         )
 
@@ -521,8 +535,10 @@ def run_pipeline(
                             archetype_for_patcher,
                             temp_archetype_path,
                             add_colors=True,
-                            use_llm_layout=True,
-                            llm_client=client
+                            use_llm_layout=not archetype_should_relayout,  # Use incremental only if not using full relayout
+                            use_full_relayout=archetype_should_relayout,
+                            llm_client=client,
+                            color_scheme="archetype"
                         )
 
                         # Read the generated MDL content

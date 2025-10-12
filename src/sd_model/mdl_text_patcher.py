@@ -92,6 +92,7 @@ class MDLTextPatcher:
         new_connections: List[Dict],
         add_colors: bool = True,
         use_llm_layout: bool = False,
+        use_full_relayout: bool = False,
         llm_client: Optional[LLMClient] = None,
         color_scheme: str = "theory"
     ) -> str:
@@ -102,7 +103,8 @@ class MDLTextPatcher:
             new_variables: List of variable specs with name, type, x, y
             new_connections: List of connection specs with from_var, to_var, relationship
             add_colors: Whether to add green color to new variables
-            use_llm_layout: Whether to use LLM for intelligent positioning
+            use_llm_layout: Whether to use LLM for intelligent positioning (incremental)
+            use_full_relayout: Whether to use full relayout (reposition ALL variables)
             llm_client: Optional LLM client for layout optimization
 
         Returns:
@@ -113,8 +115,11 @@ class MDLTextPatcher:
         # Build name→ID mapping from existing variables
         name_to_id = self._build_name_to_id_map()
 
-        # Optimize layout if requested
-        if use_llm_layout:
+        # Defer layout decision - will apply full relayout at the end if requested
+        full_relayout_flag = use_full_relayout
+
+        # For incremental layout only, optimize positions before adding
+        if not use_full_relayout and use_llm_layout:
             existing_vars = self._extract_existing_variables()
             optimizer = MDLLayoutOptimizer(llm_client)
             new_variables = optimizer.optimize_positions(
@@ -225,6 +230,43 @@ class MDLTextPatcher:
 
         if sketch_conn_lines and self.sketch_conn_insert_line:
             lines[self.sketch_conn_insert_line:self.sketch_conn_insert_line] = sketch_conn_lines
+
+        # Apply full relayout if requested (repositions ALL variables including new ones)
+        if full_relayout_flag:
+            from .mdl_full_relayout import reposition_entire_diagram
+            from pathlib import Path
+            import tempfile
+
+            # Create temp file with current MDL (including new variables)
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.mdl', delete=False, encoding='utf-8') as tmp:
+                tmp.write('\n'.join(lines))
+                temp_mdl_path = Path(tmp.name)
+
+            # Create temp output path
+            temp_output = Path(tempfile.mktemp(suffix='.mdl'))
+
+            try:
+                # Apply full relayout (repositions all variables)
+                # Pass empty lists since variables/connections are already in the MDL
+                result = reposition_entire_diagram(
+                    temp_mdl_path,
+                    [],  # new_variables already added
+                    [],  # new_connections already added
+                    temp_output,
+                    llm_client
+                )
+
+                # Read the relayouted MDL
+                lines = temp_output.read_text(encoding='utf-8').split('\n')
+
+                print(f"✓ Full relayout complete: repositioned {result.get('variables_repositioned', 0)} variables")
+
+            finally:
+                # Clean up temp files
+                if temp_mdl_path.exists():
+                    temp_mdl_path.unlink()
+                if temp_output.exists():
+                    temp_output.unlink()
 
         return '\n'.join(lines)
 
@@ -356,6 +398,7 @@ def apply_theory_enhancements(
     output_path: Path,
     add_colors: bool = True,
     use_llm_layout: bool = False,
+    use_full_relayout: bool = False,
     llm_client: Optional[LLMClient] = None,
     color_scheme: str = "theory"
 ) -> Dict[str, int]:
@@ -368,7 +411,8 @@ def apply_theory_enhancements(
             {"theories": [{"name": ..., "additions": {...}, "modifications": {...}, "removals": {...}}]}
         output_path: Where to save enhanced MDL
         add_colors: Whether to add color highlights
-        use_llm_layout: Whether to use LLM for intelligent positioning
+        use_llm_layout: Whether to use LLM for intelligent positioning (incremental)
+        use_full_relayout: Whether to use full relayout (reposition ALL variables)
         llm_client: Optional LLM client for layout
 
     Returns:
@@ -404,6 +448,7 @@ def apply_theory_enhancements(
         all_new_connections,
         add_colors,
         use_llm_layout,
+        use_full_relayout,
         llm_client,
         color_scheme
     )
