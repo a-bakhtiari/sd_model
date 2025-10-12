@@ -59,6 +59,11 @@ def main() -> None:
         help="Suggest theory-based model enhancements and generate enhanced MDL file"
     )
     parser.add_argument(
+        "--full-relayout",
+        action="store_true",
+        help="Use full relayout (reposition ALL variables) instead of incremental placement"
+    )
+    parser.add_argument(
         "--archetype-detection",
         action="store_true",
         help="Detect system archetypes and suggest missing loops/variables"
@@ -156,8 +161,10 @@ def main() -> None:
             # Core optional features
             run_loops=args.loops,
             run_citations=args.citations,
+            verify_cit=args.citations,  # In main.py, --citations does both generation and verification
             # Model improvement features
             run_theory_enhancement=args.theory_enhancement,
+            use_full_relayout=args.full_relayout,
             run_archetype_detection=args.archetype_detection,
             run_rq_analysis=args.rq_analysis,
             run_theory_discovery=args.theory_discovery,
