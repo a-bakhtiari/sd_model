@@ -1,0 +1,56 @@
+{
+  "descriptions": [
+    {
+      "id": "C01",
+      "description": "Developer turnover reduces the core developer stock as experienced members leave the project."
+    },
+    {
+      "id": "C02",
+      "description": "The skill up flow increases the new contributor stock by transitioning individuals from the onboarding pool."
+    },
+    {
+      "id": "C03",
+      "description": "The skill up flow increases experienced contributors by promoting newly competent members."
+    },
+    {
+      "id": "C04",
+      "description": "The promotion rate flow increases experienced contributors by recognizing and advancing capable members."
+    },
+    {
+      "id": "C05",
+      "description": "The promotion rate flow increases core developers by elevating proven, experienced contributors."
+    },
+    {
+      "id": "C06",
+      "description": "Implicit knowledge transfer accelerates skill development through direct mentorship and collaboration."
+    },
+    {
+      "id": "C07",
+      "description": "Implicit knowledge transfer increases promotion rates by preparing contributors for more advanced roles."
+    },
+    {
+      "id": "C08",
+      "description": "More core developers increase the capacity for mentorship and implicit knowledge sharing."
+    },
+    {
+      "id": "C09",
+      "description": "Explicit knowledge transfer accelerates skill development by providing accessible documentation and guides."
+    },
+    {
+      "id": "C10",
+      "description": "An increase in the colored stock (e.g., potential contributors) provides more candidates to become new contributors."
+    },
+    {
+      "id": "C11",
+      "description": "A larger pool of new contributors increases the potential flow of individuals developing their skills."
+    },
+    {
+      "id": "C12",
+      "description": "A larger core developer group can lead to higher absolute turnover as more individuals are at risk of leaving."
+    },
+    {
+      "id": "C13",
+      "description": "A larger pool of experienced contributors provides more candidates eligible for promotion to core developer."
+    }
+  ]
+}

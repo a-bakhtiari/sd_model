@@ -13,6 +13,7 @@ import json
 import re
 import math
 from .llm.client import LLMClient
+from .edge_routing import route_all_connections
 
 
 FULL_RELAYOUT_PROMPT = """You are a System Dynamics expert creating a professional, publication-quality diagram layout.
@@ -401,16 +402,16 @@ def _reposition_valves(
     return new_lines, valves_updated
 
 
-def _strip_arrow_waypoints(lines: List[str]) -> Tuple[List[str], int]:
+def _update_arrow_waypoints(lines: List[str], waypoint_map: Dict[str, List[Tuple[int, int]]]) -> Tuple[List[str], int]:
     """
-    Strip waypoints from arrow lines (Type 1).
+    Update arrow lines with calculated waypoints for obstacle avoidance.
 
-    Arrows can have waypoints for routing: 1|(x1,y1)|,(x2,y2)|...
-    When variables move, these become obsolete. Strip them to let
-    Vensim auto-route with straight lines.
+    Arrows can have waypoints for routing: 1|(x1,y1)|1|(x2,y2)|...
+    We calculate optimal waypoints to route around variables using edge routing.
 
     Args:
         lines: MDL file lines
+        waypoint_map: Dict mapping "from_id_to_id" to list of waypoints
 
     Returns:
         (updated_lines, arrows_updated_count)
@@ -420,26 +421,45 @@ def _strip_arrow_waypoints(lines: List[str]) -> Tuple[List[str], int]:
 
     for line in lines:
         if line.startswith('1,'):  # Arrow line
-            # Check if it has waypoints (contains pattern like "1|(x,y)|")
-            if '|(' in line:
-                # Find the waypoint section (after last comma before waypoints)
-                # Format: ...,color,-1--1--1,,1|(x1,y1)|,(x2,y2)|
-                parts = line.split(',')
+            parts = line.split(',')
 
-                # Find where waypoints start (look for the ",1|(" pattern)
-                waypoint_start_idx = None
-                for i, part in enumerate(parts):
-                    if '1|(' in part:
-                        waypoint_start_idx = i
-                        break
+            # Extract from_id and to_id
+            if len(parts) > 3:
+                try:
+                    arrow_id = int(parts[1])
+                    from_id = int(parts[2])
+                    to_id = int(parts[3])
 
-                if waypoint_start_idx is not None:
-                    # Keep everything before waypoints, add simple waypoint
-                    parts = parts[:waypoint_start_idx]
-                    # Add simple waypoint
-                    parts.append('1|(0,0)|')
-                    line = ','.join(parts)
-                    arrows_updated += 1
+                    # Look up waypoints
+                    conn_key = f"{from_id}_{to_id}"
+                    waypoints = waypoint_map.get(conn_key, [])
+
+                    # Find where waypoints start (look for the ",1|(" pattern)
+                    waypoint_start_idx = None
+                    for i, part in enumerate(parts):
+                        if '1|(' in part:
+                            waypoint_start_idx = i
+                            break
+
+                    if waypoint_start_idx is not None:
+                        # Keep everything before waypoints
+                        parts = parts[:waypoint_start_idx]
+
+                        # Add calculated waypoints
+                        if waypoints:
+                            # Format: 1|(x1,y1)|1|(x2,y2)|...
+                            waypoint_str = '1|(' + ')|1|('.join([f"{int(x)},{int(y)}" for x, y in waypoints]) + ')|'
+                            parts.append(waypoint_str)
+                            arrows_updated += 1
+                        else:
+                            # No waypoints needed (straight line is clear)
+                            parts.append('1|(0,0)|')
+
+                        line = ','.join(parts)
+
+                except (ValueError, IndexError):
+                    # If parsing fails, keep original line
+                    pass
 
         new_lines.append(line)
 
@@ -508,7 +528,7 @@ def reposition_entire_diagram(
     # Extract all existing connections
     existing_conns = []
     for line in lines:
-        if line.startswith('1,') and ',0,0,0,22,0,192,' in line:  # Influence arrows
+        if line.startswith('1,'):  # All arrow types (Type 1 = arrows/connections)
             parts = line.split(',')
             if len(parts) > 3:
                 try:
@@ -668,11 +688,59 @@ def reposition_entire_diagram(
         if valves_updated > 0:
             print(f"✓ Repositioned {valves_updated} flow valves")
 
-        # Step 3: Strip arrow waypoints (Type 1)
-        print("\nSimplifying arrow routing...")
-        new_lines, arrows_updated = _strip_arrow_waypoints(new_lines)
+        # Step 3: Calculate smart waypoints for arrows (Type 1)
+        print("\nCalculating smart arrow routes to avoid overlaps...")
+
+        # Build list of variables with IDs and updated positions
+        vars_with_positions = []
+        for line in new_lines:
+            if line.startswith('10,'):
+                parts = line.split(',')
+                if len(parts) > 7:
+                    try:
+                        var_id = int(parts[1])
+                        var_name = parts[2].strip()
+                        if var_name.startswith('"') and var_name.endswith('"'):
+                            var_name = var_name[1:-1].replace('""', '"')
+                        x = int(parts[3])
+                        y = int(parts[4])
+                        width = int(parts[5])
+                        height = int(parts[6])
+
+                        vars_with_positions.append({
+                            'id': var_id,
+                            'name': var_name,
+                            'x': x,
+                            'y': y,
+                            'width': width,
+                            'height': height
+                        })
+                    except (ValueError, IndexError):
+                        pass
+
+        # Build list of connections with IDs
+        connections_with_ids = []
+        for line in new_lines:
+            if line.startswith('1,'):  # All arrow types (Type 1 = arrows/connections)
+                parts = line.split(',')
+                if len(parts) > 3:
+                    try:
+                        from_id = int(parts[2])
+                        to_id = int(parts[3])
+                        connections_with_ids.append({
+                            'from_id': from_id,
+                            'to_id': to_id
+                        })
+                    except (ValueError, IndexError):
+                        pass
+
+        # Calculate waypoints using edge routing
+        waypoint_map = route_all_connections(vars_with_positions, connections_with_ids)
+
+        # Update arrows with calculated waypoints
+        new_lines, arrows_updated = _update_arrow_waypoints(new_lines, waypoint_map)
         if arrows_updated > 0:
-            print(f"✓ Simplified {arrows_updated} arrow routes (stripped waypoints)")
+            print(f"✓ Routed {arrows_updated} arrows with smart waypoints to avoid overlaps")
 
         # Write relayouted MDL
         output_path.write_text('\n'.join(new_lines), encoding='utf-8')
@@ -681,7 +749,7 @@ def reposition_entire_diagram(
             'variables_repositioned': len(position_map),
             'clusters': len(layout_data.get('clusters', [])),
             'valves_repositioned': valves_updated,
-            'arrows_simplified': arrows_updated
+            'arrows_routed': arrows_updated
         }
 
     except Exception as e:
