@@ -1,0 +1,32 @@
+{
+  "verified_at": "2025-10-11T00:00:55.785283Z",
+  "total_citations": 2,
+  "verified_count": 0,
+  "unverified_count": 2,
+  "citations": {
+    "Nonaka & Takeuchi 1995": {
+      "citation_key": "Nonaka & Takeuchi 1995",
+      "verified": false,
+      "paper_id": null,
+      "title": null,
+      "authors": [],
+      "year": null,
+      "citation_count": null,
+      "url": null,
+      "abstract": null,
+      "verified_at": "2025-10-11T00:00:55.785283Z"
+    },
+    "Wenger 1998": {
+      "citation_key": "Wenger 1998",
+      "verified": false,
+      "paper_id": null,
+      "title": null,
+      "authors": [],
+      "year": null,
+      "citation_count": null,
+      "url": null,
+      "abstract": null,
+      "verified_at": "2025-10-11T00:00:55.785283Z"
+    }
+  }
+}

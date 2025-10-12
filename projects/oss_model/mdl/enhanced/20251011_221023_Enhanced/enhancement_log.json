@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-10-11T22:10:23.341436",
+  "original_mdl": "untitled.mdl",
+  "theories_applied": [],
+  "summary": {
+    "total_variables_added": 39,
+    "total_connections_added": 142,
+    "total_theories": 0
+  },
+  "source_artifacts": {
+    "theory_enhancement": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251011_220108_first_comprehensive_improvement/theory/theory_enhancement.json",
+    "theory_enhancement_mdl": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251011_220108_first_comprehensive_improvement/theory/theory_enhancement_mdl.json"
+  },
+  "mdl_generation_details": {
+    "variables_added": 39,
+    "connections_added": 142,
+    "theories_processed": 13
+  }
+}

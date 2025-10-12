@@ -2,39 +2,35 @@
   "descriptions": [
     {
       "id": "R01",
-      "description": "This reinforcing loop creates a virtuous cycle where a strong reputation attracts contributors who improve the software, which in turn further enhances the project's reputation."
+      "description": "This reinforcing loop creates a virtuous cycle where a good reputation attracts contributors whose work improves the software, which in turn further enhances the project's reputation."
     },
     {
       "id": "R02",
-      "description": "This reinforcing loop amplifies project growth as a larger user base increases visibility and adoption, which further strengthens the project's overall reputation."
+      "description": "This reinforcing loop amplifies growth as a larger user base increases a project's visibility and adoption, which directly strengthens its overall reputation."
     },
     {
       "id": "R03",
-      "description": "This reinforcing loop builds core team capacity as experienced developers mentor newcomers, increasing the promotion rate and growing the core developer group."
+      "description": "This reinforcing loop grows the core team as experienced developers mentor others, creating a pipeline that promotes new members into core roles."
     },
     {
       "id": "R04",
-      "description": "This reinforcing loop accelerates contributor onboarding as good documentation lowers the barrier to entry, attracting more developers who enhance the project."
+      "description": "This reinforcing loop can create a feature treadmill where more issues lead to more development activity, which in turn generates even more issues and pull requests."
     },
     {
       "id": "B01",
-      "description": "This balancing loop regulates issue backlog by creating review pressure; as open issues accumulate, it drives resolution efforts to restore equilibrium."
+      "description": "This balancing loop stabilizes the issue backlog by increasing resolution efforts as the number of open issues grows, seeking equilibrium."
     },
     {
       "id": "B02",
-      "description": "This balancing loop counteracts knowledge loss from developer turnover by creating mentorship pressure to rebuild the core team and preserve implicit knowledge."
+      "description": "This balancing loop regulates the review queue by increasing review activity when more pull requests are waiting, preventing infinite backlog growth."
     },
     {
       "id": "B03",
-      "description": "This balancing loop stabilizes the user base by naturally limiting growth; as users churn, it reduces the pool from which further churn can occur."
+      "description": "This balancing loop limits core team growth by creating a bottleneck; review delays from a busy core team slow the development of new contributors who could be promoted."
     },
     {
       "id": "B04",
-      "description": "This balancing loop maintains community standards by creating cultural resistance; as health declines, erosion slows, allowing recovery toward a stable cultural state."
-    },
-    {
-      "id": "B05",
-      "description": "This balancing loop self-regulates review workload by creating feedback pressure; as review delays grow, they discourage new PRs, reducing the incoming load."
+      "description": "This balancing loop stabilizes the user base by causing user churn to increase as the base grows, counteracting unlimited expansion."
     }
   ]
 }

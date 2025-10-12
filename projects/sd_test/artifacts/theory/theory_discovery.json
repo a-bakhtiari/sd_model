@@ -1,0 +1,132 @@
+{
+  "high_relevance": [
+    {
+      "theory_name": "Legitimate Peripheral Participation",
+      "key_citation": "Lave & Wenger 1991",
+      "description": "Learning theory focusing on how newcomers become integrated into communities of practice through gradually increasing participation",
+      "relevance_to_rqs": "Directly addresses RQ1 by explaining the trajectory from novice to core participation and identifies barriers to this progression",
+      "relevance_to_model": "Could model different participation levels (peripheral, inbound, insider) and transitions between them; adds nuance to 'Skill up' and 'Promotion Rate' flows",
+      "adjacency_level": "direct",
+      "phd_contribution": "Operationalizes LPP in OSS context with quantitative SD modeling, identifying specific thresholds and barriers in the participation trajectory",
+      "model_additions": [
+        "Participation levels (stocks)",
+        "Legitimacy factors (auxiliary)",
+        "Access to practice (auxiliary)",
+        "Identity transformation (auxiliary)"
+      ],
+      "risk": "low",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Organizational Socialization Theory",
+      "key_citation": "Van Maanen & Schein 1979",
+      "description": "Explains how newcomers learn the values, abilities, and behaviors needed to assume organizational roles",
+      "relevance_to_rqs": "Addresses RQ1 (socialization process) and RQ2 (interventions to smooth the process)",
+      "relevance_to_model": "Could model socialization tactics (collective vs individual, formal vs informal) and their impact on skill acquisition and promotion rates",
+      "adjacency_level": "direct",
+      "phd_contribution": "Applies organizational socialization to distributed, voluntary OSS communities, identifying unique socialization mechanisms",
+      "model_additions": [
+        "Socialization tactics (auxiliary)",
+        "Role clarity (auxiliary)",
+        "Social integration (auxiliary)",
+        "Socialization outcomes (stock)"
+      ],
+      "risk": "low",
+      "reward": "medium"
+    },
+    {
+      "theory_name": "Absorptive Capacity",
+      "key_citation": "Cohen & Levinthal 1990",
+      "description": "Organization's ability to recognize, assimilate, and apply new knowledge",
+      "relevance_to_rqs": "Addresses RQ2 (interventions for knowledge transfer) and RQ3 (preventing failures from knowledge gaps)",
+      "relevance_to_model": "Could model how prior knowledge and learning mechanisms affect the community's ability to absorb and retain expertise",
+      "adjacency_level": "direct",
+      "phd_contribution": "Extends absorptive capacity to OSS communities as knowledge-intensive systems, modeling knowledge retention dynamics",
+      "model_additions": [
+        "Prior knowledge base (stock)",
+        "Knowledge recognition (flow)",
+        "Knowledge assimilation (flow)",
+        "Knowledge application (flow)"
+      ],
+      "risk": "medium",
+      "reward": "high"
+    }
+  ],
+  "adjacent_opportunities": [
+    {
+      "theory_name": "Boundary Spanning Theory",
+      "key_citation": "Tushman & Scanlan 1981",
+      "description": "Focuses on individuals who connect their organization to external environments and transfer information across boundaries",
+      "why_adjacent": "Shifts focus from linear progression to network positions and information brokerage",
+      "novel_angle": "Views core developers as boundary spanners between community and external knowledge, explaining their critical role in knowledge transfer",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Identifies boundary-spanning roles in OSS and their impact on community resilience and knowledge flow",
+      "risk": "medium",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Competence Motivation Theory",
+      "key_citation": "Harter 1978",
+      "description": "Psychological theory linking perceived competence to motivation and sustained engagement",
+      "why_adjacent": "Brings individual psychological factors into a primarily social-structural model",
+      "novel_angle": "Explains turnover and promotion dynamics through individual motivation and self-efficacy rather than just social factors",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Integrates psychological motivation with community participation models in OSS contexts",
+      "risk": "medium",
+      "reward": "medium"
+    },
+    {
+      "theory_name": "Institutional Theory",
+      "key_citation": "DiMaggio & Powell 1983",
+      "description": "Examines how organizations become similar through coercive, mimetic, and normative isomorphism",
+      "why_adjacent": "Focuses on macro-level institutional pressures rather than micro-level learning processes",
+      "novel_angle": "Explains how OSS communities develop similar career paths and practices through institutional pressures",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Applies institutional theory to voluntary technical communities, identifying isomorphic pressures in OSS",
+      "risk": "high",
+      "reward": "medium"
+    }
+  ],
+  "cross_domain_inspiration": [
+    {
+      "theory": "Ecosystem Succession Theory",
+      "source_domain": "Ecology",
+      "parallel": "OSS communities as ecosystems with pioneer species, climax communities, and succession patterns",
+      "transfer_potential": "Models community maturation, species (role) replacement, and resilience to disturbances",
+      "adjacency_level": "exploratory",
+      "risk": "high",
+      "reward": "high",
+      "rationale": "Provides powerful metaphors for understanding community evolution and vulnerability patterns"
+    },
+    {
+      "theory": "Crew Resource Management",
+      "source_domain": "Aviation/Human Factors",
+      "parallel": "High-reliability organizations managing distributed expertise and preventing system failures",
+      "transfer_potential": "Error prevention strategies, communication protocols, and distributed decision-making in high-stakes environments",
+      "adjacency_level": "exploratory",
+      "risk": "high",
+      "reward": "medium",
+      "rationale": "Offers proven interventions for preventing system failures in knowledge-intensive distributed teams"
+    },
+    {
+      "theory": "Apprenticeship Models",
+      "source_domain": "Traditional Crafts/Education",
+      "parallel": "Structured progression from novice to master through guided practice and gradual responsibility increase",
+      "transfer_potential": "Formalized mentorship structures, competency benchmarks, and gradual responsibility transfer",
+      "adjacency_level": "exploratory",
+      "risk": "medium",
+      "reward": "medium",
+      "rationale": "Provides historical perspective on expertise development that could inform modern OSS mentorship"
+    }
+  ],
+  "phd_strategy": {
+    "recommended_theories": [
+      "Legitimate Peripheral Participation",
+      "Absorptive Capacity",
+      "Boundary Spanning Theory"
+    ],
+    "rationale": "LPP provides the core theoretical foundation for the career progression; Absorptive Capacity addresses knowledge transfer and system vulnerability concerns; Boundary Spanning adds network perspective to complement the linear progression model",
+    "integration_strategy": "Use LPP as primary framework for RQ1, integrate Absorptive Capacity to address RQ2 and RQ3 knowledge aspects, and employ Boundary Spanning to explain network positions and information flow patterns",
+    "expected_impact": "Creates a multi-level theoretical framework explaining individual progression (LPP), community knowledge dynamics (Absorptive Capacity), and network structure effects (Boundary Spanning) on OSS sustainability"
+  }
+}

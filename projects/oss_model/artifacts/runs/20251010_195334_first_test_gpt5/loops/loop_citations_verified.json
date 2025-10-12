@@ -1,0 +1,105 @@
+{
+  "citations": [
+    {
+      "loop_id": "R01",
+      "papers": [
+        {
+          "title": "Understanding the motivations, participation, and performance of open source software developers: A longitudinal study of the Apache projects",
+          "authors": "Hann, I. H., Roberts, J., et al.",
+          "year": "2004",
+          "relevance": "Demonstrates how project reputation and success attract developers who contribute to further project improvement",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Understanding the Motivations, Participation, and Performance of Open Source Software Developers: A Longitudinal Study of the Apache Projects",
+            "authors": [
+              "Jeffrey A. Roberts",
+              "I. Hann",
+              "S. Slaughter"
+            ],
+            "year": 2006,
+            "url": "https://www.semanticscholar.org/paper/bbe089fedff2d9579c9c624539a7afbf505988b2",
+            "paper_id": "bbe089fedff2d9579c9c624539a7afbf505988b2",
+            "citation_count": 1103,
+            "abstract": null,
+            "venue": "Management Sciences",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Multiple studies confirm that reputation serves as both attractor and outcome in OSS project dynamics."
+    },
+    {
+      "loop_id": "R04",
+      "papers": [
+        {
+          "title": "Barriers faced by newcomers to open source projects: A systematic review",
+          "authors": "Steinmacher, I., Conte, T., et al.",
+          "year": "2015",
+          "relevance": "Shows how documentation quality affects contributor onboarding success",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Barriers Faced by Newcomers to Open Source Projects: A Systematic Review",
+            "authors": [
+              "Igor Steinmacher",
+              "Marco Aur\u00e9lio Graciotto Silva",
+              "M. Gerosa"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/ed428306066209f3eb6eb695fd0082725c6e0cfb",
+            "paper_id": "ed428306066209f3eb6eb695fd0082725c6e0cfb",
+            "citation_count": 43,
+            "abstract": null,
+            "venue": "International Conference on Open Source Systems",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Research consistently shows documentation quality as a critical factor in contributor onboarding."
+    },
+    {
+      "loop_id": "B04",
+      "papers": [
+        {
+          "title": "Modern code review: A case study at Google",
+          "authors": "Sadowski, C., S\u00f6derberg, E., et al.",
+          "year": "2018",
+          "relevance": "Large-scale study showing how review processes self-regulate contribution inflow",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Modern Code Review: A Case Study at Google",
+            "authors": [
+              "Caitlin Sadowski",
+              "Emma S\u00f6derberg",
+              "Luke Church",
+              "Michael A. Sipko",
+              "Alberto Bacchelli"
+            ],
+            "year": 2017,
+            "url": "https://www.semanticscholar.org/paper/263568d744ae3d6e1284a1d10af6798fb76a398e",
+            "paper_id": "263568d744ae3d6e1284a1d10af6798fb76a398e",
+            "citation_count": 307,
+            "abstract": "Employing lightweight, tool-based code review of code changes (aka modern code review) has become the norm for a wide variety of open-source and industrial systems. In this paper, we make an exploratory investigation of modern code review at Google. Google introduced code review early on and evolved it over the years; our study sheds light on why Google introduced this practice and analyzes its current status, after the process has been refined through decades of code changes and millions of code reviews. By means of 12 interviews, a survey with 44 respondents, and the analysis of review logs for 9 million reviewed changes, we investigate motivations behind code review at Google, current practices, and developers' satisfaction and challenges.",
+            "venue": "2018 IEEE/ACM 40th International Conference on Software Engineering: Software Engineering in Practice Track (ICSE-SEIP)",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Research on code review processes consistently shows self-regulating effects on contributions."
+    }
+  ],
+  "summary": {
+    "total_papers": 24,
+    "verified": 3,
+    "unverified": 21,
+    "verification_rate": 0.125
+  }
+}

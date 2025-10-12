@@ -1,0 +1,166 @@
+{
+  "archetypes": [
+    {
+      "name": "Limits to Growth (Limits to Success)",
+      "rationale": "The model shows a growth engine where New Contributors can become Experienced Contributors and then Core Developers through skill development and promotion. However, Core Developers leaving through turnover creates a balancing feedback that limits growth. The implicit knowledge transfer from Core Developers creates a reinforcing loop for growth, but this same resource is being depleted through turnover.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Burnout Pressure",
+            "type": "Auxiliary",
+            "description": "Pressure on Core Developers from mentoring and knowledge transfer activities",
+            "rationale": "Represents the constraint that limits the growth engine - as Core Developers spend more time mentoring, they experience increased pressure that can lead to turnover"
+          },
+          {
+            "name": "Mentoring Workload",
+            "type": "Auxiliary",
+            "description": "The amount of mentoring required based on the ratio of New Contributors to Core Developers",
+            "rationale": "Quantifies the demand on Core Developers' time for knowledge transfer activities"
+          }
+        ],
+        "connections": [
+          {
+            "from": "New Contributors",
+            "to": "Mentoring Workload",
+            "relationship": "positive",
+            "rationale": "More New Contributors increases the mentoring demand on Core Developers"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Mentoring Workload",
+            "relationship": "negative",
+            "rationale": "More Core Developers reduces the per-developer mentoring workload"
+          },
+          {
+            "from": "Mentoring Workload",
+            "to": "Burnout Pressure",
+            "relationship": "positive",
+            "rationale": "Higher mentoring workload increases burnout pressure on Core Developers"
+          },
+          {
+            "from": "Burnout Pressure",
+            "to": "Developer's Turnover",
+            "relationship": "positive",
+            "rationale": "Increased burnout pressure leads to higher turnover of Core Developers, completing the balancing loop"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Shifting the Burden",
+      "rationale": "The model shows two knowledge transfer mechanisms: Implicit Knowledge Transfer (mentorship) and Explicit Knowledge Transfer (documentation). This suggests a potential pattern where the organization might rely more on the quick-fix of mentorship (symptomatic solution) rather than investing in the fundamental solution of better documentation. Mentorship provides immediate benefits but may not scale as well as documentation.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Documentation Investment",
+            "type": "Flow",
+            "description": "Rate of investment in creating and maintaining documentation",
+            "rationale": "Represents the fundamental solution that could reduce dependency on mentorship"
+          },
+          {
+            "name": "Documentation Quality",
+            "type": "Stock",
+            "description": "The quality and completeness of documentation available to contributors",
+            "rationale": "Accumulates the effects of documentation investment over time"
+          },
+          {
+            "name": "Mentorship Dependency",
+            "type": "Auxiliary",
+            "description": "Degree to which the organization relies on mentorship versus documentation",
+            "rationale": "Represents the shifting burden pattern where quick fixes reduce motivation for fundamental solutions"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Documentation Quality",
+            "to": "Explicit Knowledge Transfer",
+            "relationship": "positive",
+            "rationale": "Better documentation quality improves explicit knowledge transfer effectiveness"
+          },
+          {
+            "from": "Implicit Knowledge Transfer",
+            "to": "Mentorship Dependency",
+            "relationship": "positive",
+            "rationale": "Successful mentorship reinforces dependency on this approach"
+          },
+          {
+            "from": "Mentorship Dependency",
+            "to": "Documentation Investment",
+            "relationship": "negative",
+            "rationale": "Higher dependency on mentorship reduces motivation to invest in documentation (the fundamental solution)"
+          },
+          {
+            "from": "Burnout Pressure",
+            "to": "Documentation Investment",
+            "relationship": "positive",
+            "rationale": "Increasing burnout pressure creates awareness of the need for fundamental solutions like documentation"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Success to the Successful",
+      "rationale": "The model shows Core Developers driving Implicit Knowledge Transfer, which then improves Skill up and Promotion Rate. This creates a reinforcing loop where successful Core Developers (those who remain) get to shape more new contributors, potentially creating a pattern where certain developers or approaches become dominant while others are excluded. The existing structure suggests that Core Developers have disproportionate influence over who succeeds.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Contributor Diversity",
+            "type": "Stock",
+            "description": "Diversity of backgrounds, approaches, and perspectives among contributors",
+            "rationale": "Represents the variety that could be reduced by success-to-the-successful dynamics"
+          },
+          {
+            "name": "Approach Homogenization",
+            "type": "Auxiliary",
+            "description": "Degree to which contributor approaches become standardized around Core Developer preferences",
+            "rationale": "Measures the reduction in diversity as successful approaches dominate"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Core Developer",
+            "to": "Approach Homogenization",
+            "relationship": "positive",
+            "rationale": "More Core Developers with established approaches increases homogenization pressure"
+          },
+          {
+            "from": "Approach Homogenization",
+            "to": "Contributor Diversity",
+            "relationship": "negative",
+            "rationale": "Increased homogenization reduces contributor diversity over time"
+          },
+          {
+            "from": "Contributor Diversity",
+            "to": "Innovation Potential",
+            "relationship": "positive",
+            "rationale": "Higher diversity enables more innovation and adaptation to new challenges"
+          },
+          {
+            "from": "Innovation Potential",
+            "to": "Project Sustainability",
+            "relationship": "positive",
+            "rationale": "Innovation potential contributes to long-term project sustainability"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    }
+  ]
+}

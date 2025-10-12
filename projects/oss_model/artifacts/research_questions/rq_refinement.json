@@ -7,72 +7,73 @@
       "rq_number": 1,
       "original": "how is the career path of software developers in opensource software from novice periphery to core developer as a result of the rise of AI in programming?",
       "issues": [
-        "complete absence of AI-related variables in current model",
-        "too broad - doesn't specify which aspects of career path",
-        "not measurable - lacks specific mechanisms or outcomes",
-        "theoretical framework doesn't address AI disruption"
+        "too broad and vague - 'rise of AI' is not specific",
+        "not measurable - no clear metrics or comparison points",
+        "model lacks AI mechanisms (critical misalignment)",
+        "no theoretical framework for human-AI collaborative learning",
+        "cannot distinguish pre/post-AI patterns with current model"
       ],
       "refined_versions": [
         {
-          "version": "How does AI-assisted code generation affect the time required for novice developers to transition from peripheral to core contributors in open-source projects?",
-          "rationale": "Focuses on a measurable outcome (transition time) and leverages existing model variables for developer progression while adding AI as an intervention",
+          "version": "How do AI-assisted programming tools affect the rate and quality of knowledge acquisition for novice developers transitioning to core contributors in open-source communities?",
+          "rationale": "Focuses on measurable knowledge acquisition rates and quality, aligns with learning theories and model's knowledge stock variables",
           "sd_modelability": "good",
-          "theoretical_grounding": "moderate",
+          "theoretical_grounding": "good",
           "phd_worthiness": 7,
           "feasibility": "medium",
-          "contribution": "Quantifies AI's impact on learning curves and skill acquisition in OSS communities"
+          "contribution": "Understanding how AI tools accelerate or alter learning pathways in OSS communities"
         },
         {
-          "version": "To what extent does AI tool adoption alter the feedback mechanisms between code quality, community recognition, and developer progression in open-source ecosystems?",
-          "rationale": "Leverages existing feedback loops in the model while introducing AI as a moderating variable",
+          "version": "What feedback mechanisms govern the relationship between AI tool adoption and social capital accumulation in open-source developer career progression?",
+          "rationale": "Leverages model's feedback loops and social capital variables while introducing AI as an external factor",
           "sd_modelability": "excellent",
           "theoretical_grounding": "good",
           "phd_worthiness": 8,
           "feasibility": "high",
-          "contribution": "Reveals how AI transforms social learning and reputation systems in developer communities"
+          "contribution": "Identifies systemic interactions between technological adoption and social dynamics in career advancement"
         },
         {
-          "version": "How do AI coding tools influence the balance between knowledge accumulation through mentorship versus autonomous learning in open-source developer career progression?",
-          "rationale": "Builds on existing knowledge/skill variables while introducing AI as a knowledge transfer mechanism",
+          "version": "How does AI-mediated code generation influence the balance between technical contribution quality and community integration in peripheral-to-core transitions?",
+          "rationale": "Focuses on specific AI mechanism (code generation) and measurable outcomes (contribution quality vs integration)",
           "sd_modelability": "moderate",
-          "theoretical_grounding": "good",
+          "theoretical_grounding": "moderate",
           "phd_worthiness": 6,
           "feasibility": "medium",
-          "contribution": "Examines AI's role in reshaping traditional mentorship and knowledge transmission pathways"
+          "contribution": "Examines trade-offs between technical efficiency and social integration in AI-augmented OSS participation"
         }
       ],
-      "recommendation": "Version 2 - it best leverages existing model feedback loops while addressing AI's transformative role, has high feasibility and strong theoretical grounding"
+      "recommendation": "Version 2 is recommended because it best leverages existing model capabilities (feedback loops, social capital variables) while introducing AI as a manageable external influence, has high feasibility, and strong theoretical grounding in social capital and systems theories."
     }
   ],
   "new_rq_suggestions": [
     {
-      "suggested_rq": "How do AI-generated contributions affect the quality control feedback loops and code review bottlenecks in open-source project sustainability?",
-      "based_on_model": "Existing feedback loops around code quality, review capacity, and project health",
-      "theoretical_basis": "Complexity theory, socio-technical systems, quality assurance frameworks",
+      "suggested_rq": "How do reinforcing feedback loops between reputation accumulation and contribution frequency accelerate or decelerate developer progression under different mentoring availability scenarios?",
+      "based_on_model": "Model has 8 feedback loops and reputation/contribution frequency variables that could be analyzed for acceleration effects",
+      "theoretical_basis": "Social capital theory, complex adaptive systems, organizational learning",
       "phd_worthiness": 9,
       "originality": "high",
-      "rationale": "Addresses a critical emerging challenge in OSS where AI may overwhelm human review capacity, creating new sustainability threats"
+      "rationale": "Directly leverages model strengths while investigating fundamental dynamics of OSS career progression without requiring AI mechanisms"
     },
     {
-      "suggested_rq": "What is the optimal balance between AI-assisted productivity gains and knowledge retention in open-source developer communities facing technological disruption?",
-      "based_on_model": "Knowledge accumulation, skill development, and community health variables",
-      "theoretical_basis": "Organizational learning, technological adaptation, capability maturity models",
+      "suggested_rq": "What system archetypes dominate developer progression pathways, and how do balancing loops maintain community stability during periods of rapid contributor growth?",
+      "based_on_model": "Model's 8 feedback loops and 73 connections suggest identifiable system archetypes and balancing mechanisms",
+      "theoretical_basis": "System dynamics archetypes, community resilience theory, complex systems",
       "phd_worthiness": 8,
-      "originality": "high",
-      "rationale": "Explores the tension between short-term productivity and long-term community knowledge preservation in AI-transformed environments"
+      "originality": "moderate-high",
+      "rationale": "Builds directly on model capabilities to identify fundamental patterns in OSS community dynamics"
     },
     {
-      "suggested_rq": "How do AI tools reshape the social dynamics and power structures between novice and core developers in open-source governance models?",
-      "based_on_model": "Social capital, contribution patterns, and community recognition variables",
-      "theoretical_basis": "Social network theory, community of practice, power dynamics in OSS",
+      "suggested_rq": "How do knowledge stock accumulation rates and knowledge depreciation affect the sustainability of core developer retention in mature open-source projects?",
+      "based_on_model": "Model has knowledge-related variables and could simulate accumulation/depreciation effects",
+      "theoretical_basis": "Knowledge management theory, organizational memory, human capital theory",
       "phd_worthiness": 7,
       "originality": "moderate",
-      "rationale": "Investigates how AI may democratize contribution or reinforce existing hierarchies in OSS communities"
+      "rationale": "Addresses critical sustainability issue in OSS using existing model variables with clear theoretical foundation"
     }
   ],
   "overall_strategy": {
     "recommended_approach": "pivot",
-    "reasoning": "The current model lacks AI-specific variables and mechanisms, making the original RQ unresearchable without significant model modification. A pivot to focus on how AI affects existing model dynamics (feedback loops, progression mechanisms) is more feasible and leverages current model strengths",
-    "trade_offs": "Gain: Research feasibility and alignment with existing model capabilities. Lose: Direct focus on AI as primary driver rather than contextual factor. May need to add limited AI-specific variables while maintaining core model structure."
+    "reasoning": "The current RQ requires AI mechanisms that don't exist in the model, creating critical misalignment. Better to leverage existing model strengths (feedback loops, social dynamics, knowledge variables) to investigate fundamental OSS career progression dynamics, then potentially extend to AI implications in future work.",
+    "trade_offs": "Gain: Strong alignment with model capabilities, theoretical coherence, higher feasibility. Lose: Direct AI focus, but can position AI as future research direction rather than core PhD focus."
   }
 }

@@ -69,53 +69,6 @@
       "length": 6,
       "loop": "Core Developer \u2192 Implicit Knowledge Transfer (Mentorship) \u2192 Skill up \u2192 Experienced Contributors \u2192 Promotion Rate \u2192 Core Developer",
       "confidence": 0.85
-    },
-    {
-      "id": "R03",
-      "variables": [
-        "New Contributors",
-        "Skill up",
-        "Experienced Contributors",
-        "Promotion Rate",
-        "Core Developer",
-        "Implicit Knowledge Transfer (Mentorship)",
-        "Skill up"
-      ],
-      "edges": [
-        {
-          "from_var": "New Contributors",
-          "to_var": "Skill up",
-          "relationship": "positive"
-        },
-        {
-          "from_var": "Skill up",
-          "to_var": "Experienced Contributors",
-          "relationship": "positive"
-        },
-        {
-          "from_var": "Experienced Contributors",
-          "to_var": "Promotion Rate",
-          "relationship": "positive"
-        },
-        {
-          "from_var": "Promotion Rate",
-          "to_var": "Core Developer",
-          "relationship": "positive"
-        },
-        {
-          "from_var": "Core Developer",
-          "to_var": "Implicit Knowledge Transfer (Mentorship)",
-          "relationship": "positive"
-        },
-        {
-          "from_var": "Implicit Knowledge Transfer (Mentorship)",
-          "to_var": "Skill up",
-          "relationship": "positive"
-        }
-      ],
-      "length": 7,
-      "loop": "New Contributors \u2192 Skill up \u2192 Experienced Contributors \u2192 Promotion Rate \u2192 Core Developer \u2192 Implicit Knowledge Transfer (Mentorship) \u2192 Skill up",
-      "confidence": 0.8
     }
   ],
   "balancing": [
@@ -140,13 +93,15 @@
       ],
       "length": 3,
       "loop": "Core Developer \u2192 Developer's Turnover \u2192 Core Developer",
-      "confidence": 0.95
+      "confidence": 0.8
     },
     {
       "id": "B02",
       "variables": [
         "Core Developer",
         "Implicit Knowledge Transfer (Mentorship)",
+        "Skill up",
+        "New Contributors",
         "Skill up",
         "Experienced Contributors",
         "Promotion Rate",
@@ -160,6 +115,16 @@
         },
         {
           "from_var": "Implicit Knowledge Transfer (Mentorship)",
+          "to_var": "Skill up",
+          "relationship": "positive"
+        },
+        {
+          "from_var": "Skill up",
+          "to_var": "New Contributors",
+          "relationship": "negative"
+        },
+        {
+          "from_var": "New Contributors",
           "to_var": "Skill up",
           "relationship": "positive"
         },
@@ -179,9 +144,9 @@
           "relationship": "positive"
         }
       ],
-      "length": 6,
-      "loop": "Core Developer \u2192 Implicit Knowledge Transfer (Mentorship) \u2192 Skill up \u2192 Experienced Contributors \u2192 Promotion Rate \u2192 Core Developer",
-      "confidence": 0.7
+      "length": 8,
+      "loop": "Core Developer \u2192 Implicit Knowledge Transfer (Mentorship) \u2192 Skill up \u2192 New Contributors \u2192 Skill up \u2192 Experienced Contributors \u2192 Promotion Rate \u2192 Core Developer",
+      "confidence": 0.75
     }
   ],
   "notes": []

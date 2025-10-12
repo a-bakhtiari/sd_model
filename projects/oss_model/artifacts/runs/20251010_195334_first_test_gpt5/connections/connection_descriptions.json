@@ -1,0 +1,296 @@
+{
+  "descriptions": [
+    {
+      "id": "C01",
+      "description": "New users adopting the software increase the total user base."
+    },
+    {
+      "id": "C02",
+      "description": "Users leaving the project decrease the total user base."
+    },
+    {
+      "id": "C03",
+      "description": "Positive project activities and outcomes build up the project's reputation over time."
+    },
+    {
+      "id": "C04",
+      "description": "Negative events or stagnation cause the project's reputation to decline."
+    },
+    {
+      "id": "C05",
+      "description": "Higher software quality and more features directly enhance the project's reputation."
+    },
+    {
+      "id": "C06",
+      "description": "A larger user base provides more visibility and social proof, boosting reputation."
+    },
+    {
+      "id": "C07",
+      "description": "Positive interactions and trust-building activities strengthen the community's health."
+    },
+    {
+      "id": "C08",
+      "description": "Conflict and negative interactions erode the sense of community and its health."
+    },
+    {
+      "id": "C09",
+      "description": "Developers leaving the project reduce the number of core developers."
+    },
+    {
+      "id": "C10",
+      "description": "The creation of new pull requests increases the stock of new pull requests."
+    },
+    {
+      "id": "C11",
+      "description": "Initiating a review moves a pull request from 'new' to 'under review'."
+    },
+    {
+      "id": "C12",
+      "description": "Starting a review increases the number of pull requests currently under review."
+    },
+    {
+      "id": "C13",
+      "description": "Merging or committing code removes a pull request from the 'under review' state."
+    },
+    {
+      "id": "C14",
+      "description": "Merging approved pull requests adds new code to the source code base."
+    },
+    {
+      "id": "C15",
+      "description": "Rejecting a pull request removes it from the 'under review' state."
+    },
+    {
+      "id": "C16",
+      "description": "Fewer core developers increases the average delay before a pull request is reviewed."
+    },
+    {
+      "id": "C17",
+      "description": "Longer review delays slow down the provision of feedback to contributors."
+    },
+    {
+      "id": "C18",
+      "description": "As new contributors gain skills, they move out of the 'new contributors' stock."
+    },
+    {
+      "id": "C19",
+      "description": "New contributors who gain skills join the stock of experienced contributors."
+    },
+    {
+      "id": "C20",
+      "description": "Promoting experienced contributors reduces their number in that stock."
+    },
+    {
+      "id": "C21",
+      "description": "Promoting experienced contributors increases the number of core developers."
+    },
+    {
+      "id": "C22",
+      "description": "A higher joining rate increases the influx of new contributors to the project."
+    },
+    {
+      "id": "C23",
+      "description": "A larger backlog of pull requests under review increases the demand for providing feedback."
+    },
+    {
+      "id": "C24",
+      "description": "Knowledge loss, such as through forgetting, depletes the project's implicit knowledge."
+    },
+    {
+      "id": "C25",
+      "description": "Developer turnover directly causes a loss of their unique, implicit knowledge."
+    },
+    {
+      "id": "C26",
+      "description": "A rich base of implicit knowledge enables more effective mentorship and knowledge sharing."
+    },
+    {
+      "id": "C27",
+      "description": "Effective mentorship accelerates the skill development of new and experienced contributors."
+    },
+    {
+      "id": "C28",
+      "description": "Good mentorship prepares experienced contributors for promotion to core developer roles."
+    },
+    {
+      "id": "C29",
+      "description": "More core developers provide more capacity for mentoring and transferring implicit knowledge."
+    },
+    {
+      "id": "C30",
+      "description": "Converting implicit knowledge into documentation adds to the project's implicit and explicit knowledge stocks."
+    },
+    {
+      "id": "C31",
+      "description": "The knowledge conversion process codifies implicit know-how into explicit documentation."
+    },
+    {
+      "id": "C32",
+      "description": "Applying documented knowledge in practice converts it back into personal, implicit understanding."
+    },
+    {
+      "id": "C33",
+      "description": "Internalizing explicit knowledge through use increases an individual's implicit knowledge."
+    },
+    {
+      "id": "C34",
+      "description": "Timely and constructive feedback encourages new contributors to stay and remain active."
+    },
+    {
+      "id": "C35",
+      "description": "Quality feedback helps experienced contributors refine their skills and remain engaged."
+    },
+    {
+      "id": "C36",
+      "description": "Effective feedback helps core developers solve complex problems and maintain their role."
+    },
+    {
+      "id": "C37",
+      "description": "New contributors create a need for feedback as they submit their first contributions."
+    },
+    {
+      "id": "C38",
+      "description": "Experienced contributors submit more complex work, requiring detailed and specialized feedback."
+    },
+    {
+      "id": "C39",
+      "description": "Providing feedback often requires re-engagement, keeping the pull request in the review state longer."
+    },
+    {
+      "id": "C40",
+      "description": "Well-documented explicit knowledge facilitates learning through guides and documentation."
+    },
+    {
+      "id": "C41",
+      "description": "Good documentation lowers the barrier to entry, increasing the project's joining rate."
+    },
+    {
+      "id": "C42",
+      "description": "Clear documentation and guides help contributors learn and skill up more quickly."
+    },
+    {
+      "id": "C43",
+      "description": "Users and developers reporting problems increase the number of open issues."
+    },
+    {
+      "id": "C44",
+      "description": "Resolving issues decreases the number of open issues."
+    },
+    {
+      "id": "C45",
+      "description": "Resolving an issue moves it from the open state to the closed state."
+    },
+    {
+      "id": "C46",
+      "description": "More open issues represent more work to be done, stimulating the creation of pull requests."
+    },
+    {
+      "id": "C47",
+      "description": "Community discussions and Q&A add valuable content to the searchable knowledge base."
+    },
+    {
+      "id": "C48",
+      "description": "Feedback and discussions in pull requests become a searchable record for future reference."
+    },
+    {
+      "id": "C49",
+      "description": "Resolved issues and their solutions are archived, enriching the searchable knowledge base."
+    },
+    {
+      "id": "C50",
+      "description": "A comprehensive knowledge base is a primary source for the project's explicit knowledge."
+    },
+    {
+      "id": "C51",
+      "description": "Community discussions generate insights and solutions that are added to the knowledge base."
+    },
+    {
+      "id": "C52",
+      "description": "A strong project reputation attracts more potential contributors, increasing the joining rate."
+    },
+    {
+      "id": "C53",
+      "description": "A good reputation makes the software more appealing, leading to a larger user base."
+    },
+    {
+      "id": "C54",
+      "description": "Open issues represent user needs and problems, generating feedback for the project."
+    },
+    {
+      "id": "C55",
+      "description": "User and developer feedback often reveals new problems, leading to the creation of new issues."
+    },
+    {
+      "id": "C56",
+      "description": "A larger and more complex codebase has more potential points of failure, leading to more issues."
+    },
+    {
+      "id": "C57",
+      "description": "A healthy, collaborative community is a positive signal that enhances project reputation."
+    },
+    {
+      "id": "C58",
+      "description": "A good project reputation makes it more attractive for new developers to join."
+    },
+    {
+      "id": "C59",
+      "description": "Clear contributor guides make it easier for newcomers to join, increasing the joining rate."
+    },
+    {
+      "id": "C60",
+      "description": "More maintainer time available directly increases the capacity to resolve issues."
+    },
+    {
+      "id": "C61",
+      "description": "A larger backlog of open issues increases the potential workload for issue resolution."
+    },
+    {
+      "id": "C62",
+      "description": "A high reputation can be harder to maintain, and any misstep can accelerate its decline."
+    },
+    {
+      "id": "C63",
+      "description": "A larger body of explicit documentation provides more material for contributors to internalize."
+    },
+    {
+      "id": "C64",
+      "description": "A larger user base means a larger absolute number of users who may eventually leave."
+    },
+    {
+      "id": "C65",
+      "description": "Pull requests that are successfully reviewed and approved are ready to be merged."
+    },
+    {
+      "id": "C66",
+      "description": "Pull requests under review that do not meet standards are candidates for rejection."
+    },
+    {
+      "id": "C67",
+      "description": "An accumulation of new pull requests creates pressure to start the review process."
+    },
+    {
+      "id": "C68",
+      "description": "Factors like burnout or conflict within the core team can lead to their turnover."
+    },
+    {
+      "id": "C69",
+      "description": "Experienced contributors who demonstrate capability become candidates for promotion."
+    },
+    {
+      "id": "C70",
+      "description": "New contributors must gain skills through activity and learning to advance."
+    },
+    {
+      "id": "C71",
+      "description": "A larger stock of implicit knowledge is more susceptible to loss if not shared or documented."
+    },
+    {
+      "id": "C72",
+      "description": "A rich base of implicit knowledge provides more material to be converted into explicit documentation."
+    },
+    {
+      "id": "C73",
+      "description": "An unhealthy community is more prone to conflict and attrition, accelerating cultural erosion."
+    }
+  ]
+}

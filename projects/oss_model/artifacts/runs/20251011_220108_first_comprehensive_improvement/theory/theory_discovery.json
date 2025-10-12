@@ -1,0 +1,275 @@
+{
+  "high_relevance": [
+    {
+      "theory_name": "Social Cognitive Career Theory (SCCT)",
+      "key_citation": "Lent, Brown & Hackett 1994; 2000",
+      "description": "Career interests, choice, and persistence are shaped by self-efficacy, outcome expectations, goals, and contextual supports/barriers.",
+      "relevance_to_rqs": "Explains how AI assistance reshapes novices\u2019 self-efficacy and outcome expectations, influencing persistence from periphery to core; clarifies how feedback, mentorship, and barriers (e.g., AI policies) affect promotion.",
+      "relevance_to_model": "Maps to joining, skill-up, promotion, and turnover flows via self-efficacy feedback loops influenced by PR feedback and AI success/failures.",
+      "adjacency_level": "direct",
+      "phd_contribution": "Integrate SCCT with OSS traces to model AI-induced efficacy shocks; estimate how AI-driven feedback quality and mentorship support change hazard rates for promotion and attrition.",
+      "model_additions": [
+        "Contributor Self-Efficacy (Stock)",
+        "Outcome Expectations (Auxiliary)",
+        "Perceived Barriers (AI Policies, Review Norms) (Auxiliary)",
+        "Mentorship Availability (Auxiliary)",
+        "AI Assistance Efficacy (Auxiliary)",
+        "Goal Setting/Persistence (Auxiliary)"
+      ],
+      "risk": "low",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Diffusion of Innovations",
+      "key_citation": "Rogers 2003",
+      "description": "Adoption spreads based on perceived relative advantage, compatibility, complexity, trialability, and observability, mediated by social influence.",
+      "relevance_to_rqs": "Explains how AI coding assistants diffuse across OSS roles and how adoption by core developers shapes novices\u2019 practices and career mobility.",
+      "relevance_to_model": "Adds stock\u2013flow structure for AI tool adoption and its feedback on PR rates, review delays, and learning; allows modeling of opinion leader and network effects.",
+      "adjacency_level": "direct",
+      "phd_contribution": "Quantify AI adoption trajectories within projects; identify tipping points where AI use shifts review norms and contributor pipelines.",
+      "model_additions": [
+        "AI Tool Adoption (Stock)",
+        "AI Tool Adoption Rate (Flow)",
+        "Relative Advantage (Auxiliary)",
+        "Compatibility (Auxiliary)",
+        "Complexity (Auxiliary)",
+        "Trialability (Auxiliary)",
+        "Observability (Auxiliary)",
+        "Core Devs Using AI (%) (Auxiliary)",
+        "Peer Influence on Adoption (Auxiliary)"
+      ],
+      "risk": "low",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Task\u2013Technology Fit (TTF)",
+      "key_citation": "Goodhue & Thompson 1995",
+      "description": "Technology improves performance when its capabilities fit task requirements and user abilities.",
+      "relevance_to_rqs": "Explains when AI augments or hinders novices\u2019 and maintainers\u2019 tasks (code generation, testing, review), affecting progression to core.",
+      "relevance_to_model": "TTF modulates the impact of AI on PR creation, review delay, software quality, and skill-up rates.",
+      "adjacency_level": "direct",
+      "phd_contribution": "Develop a TTF index for generative AI across code tasks; link telemetry and repository traces to performance and promotion outcomes.",
+      "model_additions": [
+        "Task Portfolio Mix (Auxiliary)",
+        "AI Capability Profile (Auxiliary)",
+        "Task\u2013Technology Fit Index (Auxiliary)",
+        "Performance Impact of AI (Auxiliary)",
+        "Mismatch Friction (Auxiliary)"
+      ],
+      "risk": "low",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Skill-Biased Technical Change (and Routine-Biased Automation)",
+      "key_citation": "Autor, Levy & Murnane 2003; Acemoglu & Autor 2011",
+      "description": "Technological change complements high-skill non-routine tasks while substituting routine tasks, altering career ladders and wage structures.",
+      "relevance_to_rqs": "Predicts how AI may automate entry-level routine tasks (on-ramp erosion) while complementing complex, core tasks\u2014reshaping the novice-to-core pathway.",
+      "relevance_to_model": "Provides levers for task substitution/complementarity affecting onboarding task availability, skill-up, and promotion rates.",
+      "adjacency_level": "direct",
+      "phd_contribution": "Identify \u2018ladder compression\u2019 in OSS: quantify how AI reallocates task mix, reduces entry tasks, and amplifies screening at higher rungs.",
+      "model_additions": [
+        "Routine Task Share (Auxiliary)",
+        "AI Automation Level (Auxiliary)",
+        "Complementarity Index (Auxiliary)",
+        "Onboarding Task Pool (Stock)",
+        "Task Substitution Rate (Flow)",
+        "Screening Value of Tasks (Auxiliary)"
+      ],
+      "risk": "medium",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Signaling Theory",
+      "key_citation": "Spence 1973",
+      "description": "Actors signal unobservable quality; receivers update beliefs considering signal cost, reliability, and verification costs.",
+      "relevance_to_rqs": "PRs and reviews signal competence; AI may inflate or distort signals, changing trust, gatekeeping, and promotion to core.",
+      "relevance_to_model": "Enables modeling of signal reliability, provenance transparency, and verification costs influencing acceptance, rejection, and promotion flows.",
+      "adjacency_level": "direct",
+      "phd_contribution": "Define and measure \u2018signal inflation\u2019 from AI assistance; test whether provenance metadata restores trust and fair promotion.",
+      "model_additions": [
+        "Signal Reliability of PRs (Auxiliary)",
+        "Provenance Transparency (Auxiliary)",
+        "Verification Cost (Auxiliary)",
+        "Reviewer Trust (Stock)",
+        "Gatekeeping Strictness (Auxiliary)"
+      ],
+      "risk": "low",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Social Capital and Structural Holes",
+      "key_citation": "Coleman 1988; Burt 1992",
+      "description": "Network ties provide access to resources; bridging ties across structural holes yield brokerage advantages.",
+      "relevance_to_rqs": "Explains how mentorship and cross-module review ties accelerate progression; AI may reduce interactional ties (soloing), affecting advancement.",
+      "relevance_to_model": "Adds network-mediated feedback from review interactions to skill-up and promotion; ties affect trust building and community health.",
+      "adjacency_level": "direct",
+      "phd_contribution": "Model how AI-mediated work changes tie formation in review networks; quantify bridging\u2019s effect on promotion speed.",
+      "model_additions": [
+        "Bridging Ties (Stock)",
+        "Bonding Ties (Stock)",
+        "Mentorship Network Density (Auxiliary)",
+        "Review Interaction Rate (Flow)",
+        "Brokerage Advantage (Auxiliary)"
+      ],
+      "risk": "medium",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Job Demands\u2013Resources (JD\u2013R) Model",
+      "key_citation": "Bakker & Demerouti 2007",
+      "description": "Work engagement/burnout arises from balance between job demands and job resources.",
+      "relevance_to_rqs": "AI adds resources (efficiency) but also demands (oversight of AI-generated code); affects maintainer burnout and turnover, altering openings for advancement.",
+      "relevance_to_model": "Operationalizes burnout and engagement dynamics that modulate review rate, turnover, and community health.",
+      "adjacency_level": "direct",
+      "phd_contribution": "Identify an \u2018automation oversight penalty\u2019 on maintainers; estimate net JD\u2013R balance under AI and its spillovers on contributor pipelines.",
+      "model_additions": [
+        "Cognitive Review Load (Auxiliary)",
+        "AI Oversight Demands (Auxiliary)",
+        "Job Resources from AI (Auxiliary)",
+        "Burnout Level (Stock)",
+        "Engagement Level (Stock)",
+        "Turnover Intention (Auxiliary)"
+      ],
+      "risk": "low",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Modularity Theory (Design Rules)",
+      "key_citation": "Baldwin & Clark 2000",
+      "description": "Modular architectures partition complexity and govern coordination costs, enabling parallel development and option value.",
+      "relevance_to_rqs": "Determines accessible entry points for novices and review load; AI may alter coupling and propagation of changes, reshaping advancement opportunities.",
+      "relevance_to_model": "Connects architectural modularity to PR review delay, open issues, and promotion probabilities via option value and propagation costs.",
+      "adjacency_level": "direct",
+      "phd_contribution": "Show how AI-assisted changes affect propagation cost and module coupling, changing the onboarding surface for novices.",
+      "model_additions": [
+        "Architectural Modularity (Auxiliary)",
+        "Coupling/Propagation Cost (Auxiliary)",
+        "Contributable Unit Size (Auxiliary)",
+        "Novice Entry Points (Auxiliary)",
+        "Module Ownership Concentration (Auxiliary)"
+      ],
+      "risk": "medium",
+      "reward": "high"
+    }
+  ],
+  "adjacent_opportunities": [
+    {
+      "theory_name": "Psychological Safety",
+      "key_citation": "Edmondson 1999",
+      "description": "A shared belief that the environment is safe for interpersonal risk taking, enabling learning and voice.",
+      "why_adjacent": "Micro-team construct applied to distributed OSS; not always modeled at community scale.",
+      "novel_angle": "Test whether AI-related errors/reverts reduce novices\u2019 safety and persistence; model moderation of PR feedback effects on skill-up.",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Infer psychological safety from review tone and discussion traces; link to retention under AI code assistance.",
+      "risk": "medium",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Boundary Objects and Knowledge Boundaries",
+      "key_citation": "Star & Griesemer 1989; Carlile 2004",
+      "description": "Artifacts that enable coordination across communities with different knowledge domains.",
+      "why_adjacent": "Focuses on artifact-mediated coordination rather than career per se.",
+      "novel_angle": "Treat AI-generated docs, tests, and PR templates as boundary objects that scaffold cross-boundary learning for novices.",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Measure how AI-authored boundary objects affect joining rate and issue resolution for newcomers.",
+      "risk": "medium",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Exit, Voice, and Loyalty",
+      "key_citation": "Hirschman 1970",
+      "description": "Stakeholders respond to decline via exit, voice, or loyalty depending on perceived efficacy and costs.",
+      "why_adjacent": "Classic organizational response lens, not specific to software.",
+      "novel_angle": "Model forks and policy debates as responses to AI governance; predict turnover and community health under AI shocks.",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Identify thresholds where AI policy shifts induce exit versus voice; link to reputation and trust trajectories.",
+      "risk": "medium",
+      "reward": "medium"
+    },
+    {
+      "theory_name": "Information Foraging Theory",
+      "key_citation": "Pirolli & Card 1999",
+      "description": "People seek information by following scent cues to maximize value per unit cost.",
+      "why_adjacent": "Originates in HCI/IR; applied here to developer knowledge search.",
+      "novel_angle": "AI search/summarization increases information scent, lowering search costs for newcomers and accelerating skill-up.",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Quantify how AI-enhanced knowledge bases change discovery of good-first-issues and reduce time-to-first-PR.",
+      "risk": "medium",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Complex Contagion",
+      "key_citation": "Centola & Macy 2007",
+      "description": "Behaviors requiring social reinforcement spread via multiple exposures, not simple contagion.",
+      "why_adjacent": "Focus on network diffusion mechanics rather than career development directly.",
+      "novel_angle": "Model AI tool normalization as requiring multiple reinforcing signals (e.g., maintainer endorsements), affecting adoption thresholds.",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Estimate reinforcement thresholds for AI adoption in OSS networks and their downstream effects on PR quality and review delay.",
+      "risk": "medium",
+      "reward": "medium"
+    },
+    {
+      "theory_name": "Status Characteristics and Expectation States",
+      "key_citation": "Ridgeway 1991; Berger et al. 1977",
+      "description": "Status cues shape performance expectations and evaluations in groups.",
+      "why_adjacent": "Not specific to OSS or AI, but addresses evaluation biases.",
+      "novel_angle": "Test whether AI assistance alters evaluative bias (e.g., discounting AI-aided PRs) and status dynamics in promotion decisions.",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Identify how visibility of AI use and contributor identity signals jointly affect acceptance and promotion rates.",
+      "risk": "medium",
+      "reward": "medium"
+    }
+  ],
+  "cross_domain_inspiration": [
+    {
+      "theory": "Queueing Theory and Little\u2019s Law",
+      "source_domain": "Operations Research",
+      "parallel": "PRs are arrivals; reviews are service; AI changes both arrival and service rates, creating potential instability in backlogs.",
+      "transfer_potential": "Calibrate thresholds where AI-induced PR surges overwhelm review capacity; design policies (batching, prioritization) to stabilize review delays.",
+      "adjacency_level": "exploratory",
+      "risk": "high",
+      "reward": "high",
+      "rationale": "Offers rigorous levers for review bottlenecks; requires careful parameterization but yields actionable governance insights."
+    },
+    {
+      "theory": "Signal Detection Theory",
+      "source_domain": "Psychophysics/Decision Science",
+      "parallel": "Maintainers decide accept/reject PRs under uncertainty; AI increases both hits and false alarms, shifting optimal decision thresholds.",
+      "transfer_potential": "Model acceptance criteria, reviewer thresholds, and costs of false accept/reject; evaluate benefits of provenance metadata and automated tests.",
+      "adjacency_level": "exploratory",
+      "risk": "high",
+      "reward": "high",
+      "rationale": "Directly informs gatekeeping under AI noise; requires mapping psychometric constructs to repository outcomes."
+    },
+    {
+      "theory": "Preferential Attachment",
+      "source_domain": "Network Science",
+      "parallel": "Attention and mentorship accrue to already prominent contributors; AI may amplify or dampen rich-get-richer dynamics.",
+      "transfer_potential": "Explain heavy-tailed contribution and review distributions; test interventions that redirect attention to novices.",
+      "adjacency_level": "exploratory",
+      "risk": "high",
+      "reward": "medium",
+      "rationale": "Helps explain persistent inequality in advancement; needs careful causal identification."
+    },
+    {
+      "theory": "Goodhart\u2019s Law / Campbell\u2019s Law",
+      "source_domain": "Economics / Social Measurement",
+      "parallel": "When PR count becomes a target, AI-generated \u2018cheap\u2019 PRs degrade the metric\u2019s validity as a signal of competence.",
+      "transfer_potential": "Design robust promotion criteria (e.g., complexity-adjusted contributions, review quality) resilient to AI gaming.",
+      "adjacency_level": "exploratory",
+      "risk": "high",
+      "reward": "high",
+      "rationale": "Directly addresses metric gaming under AI; challenging to operationalize but high governance value."
+    },
+    {
+      "theory": "Ecological Succession and Disturbance Regimes",
+      "source_domain": "Ecology",
+      "parallel": "AI acts as a disturbance reshaping community composition; early stages may favor rapid colonizers (novice PRs) before stabilization.",
+      "transfer_potential": "Model transient and long-run community states post-AI shock; plan interventions to maintain diversity and resilience.",
+      "adjacency_level": "exploratory",
+      "risk": "high",
+      "reward": "medium",
+      "rationale": "Complements panarchy with succession pathways; metaphor requires careful translation to organizational dynamics."
+    }
+  ]
+}

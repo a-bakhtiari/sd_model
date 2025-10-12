@@ -1,95 +1,47 @@
 {
   "archetypes": [
     {
-      "name": "Limits to Success",
-      "confidence": 0.8,
-      "rationale": "The model shows growth in user base and adoption driven by project reputation and software quality, but faces constraints from maintainer time, PR review delays, and developer turnover that limit further growth.",
+      "name": "Limits to Growth (Limits to Success)",
+      "rationale": "The model shows a reinforcing loop where Project Reputation drives Joining Rate, which increases Core Developers and improves PR Feedback, further enhancing reputation. However, this growth is limited by balancing loops: Core Developer turnover and capacity constraints create PR Review Delay, which negatively affects PR Feedback and Community Health, ultimately constraining further growth. This matches the classic Limits to Growth archetype where accelerating growth encounters limiting factors.",
       "additions": {
         "variables": [
           {
             "name": "Growth Pressure",
             "type": "Auxiliary",
-            "description": "Pressure to continue growing despite constraints",
-            "rationale": "Needed to complete the balancing loop structure"
+            "description": "The pressure to maintain growth momentum as reputation and user base increase",
+            "rationale": "Needed to represent the driving force that exacerbates the limiting factors"
           },
           {
-            "name": "Constraint Awareness",
+            "name": "Capacity Constraint",
             "type": "Auxiliary",
-            "description": "Recognition of capacity limitations",
-            "rationale": "Missing feedback mechanism to detect constraints"
+            "description": "The maximum sustainable workload that core developers can handle effectively",
+            "rationale": "Needed to explicitly represent the limiting factor that creates the balancing loop"
           }
         ],
         "connections": [
           {
-            "from": "User Base",
+            "from": "Project Reputation",
             "to": "Growth Pressure",
             "relationship": "positive",
-            "rationale": "Larger user base creates more growth pressure"
+            "rationale": "Higher reputation creates more pressure to maintain growth and performance"
           },
           {
-            "from": "PR Review Delay",
-            "to": "Constraint Awareness",
+            "from": "Growth Pressure",
+            "to": "PR Review Delay",
             "relationship": "positive",
-            "rationale": "Delays signal capacity constraints"
+            "rationale": "Growth pressure increases workload on core developers, worsening review delays"
           },
           {
-            "from": "Constraint Awareness",
-            "to": "Growth Pressure",
+            "from": "Core Developer",
+            "to": "Capacity Constraint",
+            "relationship": "positive",
+            "rationale": "More core developers increase the team's capacity to handle workload"
+          },
+          {
+            "from": "Capacity Constraint",
+            "to": "PR Review Delay",
             "relationship": "negative",
-            "rationale": "Constraint awareness reduces growth pressure"
-          }
-        ]
-      },
-      "modifications": {
-        "variables": []
-      },
-      "removals": {
-        "variables": []
-      }
-    },
-    {
-      "name": "Tragedy of the Commons",
-      "confidence": 0.7,
-      "rationale": "Maintainer time and community capacity appear as shared resources that can be depleted by excessive pull requests, issues, and demands from growing user base without coordination mechanisms.",
-      "additions": {
-        "variables": [
-          {
-            "name": "Resource Depletion Rate",
-            "type": "Flow",
-            "description": "Rate at which shared resources are consumed",
-            "rationale": "Missing explicit tracking of resource consumption"
-          },
-          {
-            "name": "Coordination Mechanism",
-            "type": "Auxiliary",
-            "description": "Processes for managing shared resource usage",
-            "rationale": "Missing balancing mechanism to prevent overuse"
-          }
-        ],
-        "connections": [
-          {
-            "from": "New Pull request",
-            "to": "Resource Depletion Rate",
-            "relationship": "positive",
-            "rationale": "More PRs consume more maintainer time"
-          },
-          {
-            "from": "Open Issues",
-            "to": "Resource Depletion Rate",
-            "relationship": "positive",
-            "rationale": "More issues consume community capacity"
-          },
-          {
-            "from": "Resource Depletion Rate",
-            "to": "Coordination Mechanism",
-            "relationship": "positive",
-            "rationale": "Depletion triggers coordination needs"
-          },
-          {
-            "from": "Coordination Mechanism",
-            "to": "New Pull request",
-            "relationship": "negative",
-            "rationale": "Coordination regulates incoming work"
+            "rationale": "Higher capacity reduces review delays, completing the balancing loop"
           }
         ]
       },
@@ -102,41 +54,46 @@
     },
     {
       "name": "Shifting the Burden",
-      "confidence": 0.6,
-      "rationale": "The model suggests potential for quick fixes (like rapid PR merging) that undermine long-term community health and knowledge transfer, but lacks explicit symptom and fundamental solution variables.",
+      "rationale": "The model shows potential for shifting burden from long-term capacity building to short-term fixes. Core developers may focus on immediate PR reviews (short-term solution) rather than mentoring and knowledge transfer (fundamental solution). This is evidenced by the tension between PR Review Delay driving immediate action versus Implicit Knowledge Transfer building long-term capacity. The archetype fits because short-term fixes can undermine long-term capability development.",
       "additions": {
         "variables": [
           {
-            "name": "Symptomatic Solution",
+            "name": "Short Term Fix Pressure",
             "type": "Auxiliary",
-            "description": "Quick fixes that address immediate symptoms",
-            "rationale": "Missing explicit representation of short-term solutions"
+            "description": "Pressure to address immediate problems like PR backlog rather than long-term capacity building",
+            "rationale": "Needed to represent the driving force for shifting to symptomatic solutions"
           },
           {
-            "name": "Fundamental Solution",
-            "type": "Auxiliary",
-            "description": "Long-term investments in community capacity",
-            "rationale": "Missing representation of sustainable solutions"
+            "name": "Long Term Capacity Building",
+            "type": "Flow",
+            "description": "Investment in mentoring, documentation, and knowledge transfer activities",
+            "rationale": "Needed to explicitly represent the fundamental solution that gets neglected"
           }
         ],
         "connections": [
           {
             "from": "PR Review Delay",
-            "to": "Symptomatic Solution",
+            "to": "Short Term Fix Pressure",
             "relationship": "positive",
-            "rationale": "Delays create pressure for quick fixes"
+            "rationale": "Long review delays create pressure for immediate action"
           },
           {
-            "from": "Symptomatic Solution",
-            "to": "Fundamental Solution",
+            "from": "Short Term Fix Pressure",
+            "to": "Long Term Capacity Building",
             "relationship": "negative",
-            "rationale": "Quick fixes undermine long-term solutions"
+            "rationale": "Pressure for short-term fixes reduces investment in long-term capacity building"
           },
           {
-            "from": "Fundamental Solution",
-            "to": "Community Health",
+            "from": "Long Term Capacity Building",
+            "to": "Core Developer",
             "relationship": "positive",
-            "rationale": "Long-term solutions build sustainable capacity"
+            "rationale": "Capacity building increases the number of effective core developers over time"
+          },
+          {
+            "from": "Long Term Capacity Building",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive",
+            "rationale": "Capacity building activities enhance knowledge transfer effectiveness"
           }
         ]
       },
@@ -148,42 +105,59 @@
       }
     },
     {
-      "name": "Growth and Underinvestment",
-      "confidence": 0.7,
-      "rationale": "The model shows growth dynamics but lacks explicit investment variables in community capacity, knowledge management, and infrastructure that could lead to performance degradation as demand increases.",
+      "name": "Tragedy of the Commons",
+      "rationale": "The model shows multiple user groups (New Contributors, Experienced Contributors, Core Developers) all drawing on the shared resource of Core Developer time for PR reviews and mentoring. As more contributors join and create pull requests, they collectively overload the limited Core Developer capacity, leading to PR Review Delay that negatively affects everyone. This matches the Tragedy of the Commons pattern where individual benefits conflict with collective resource depletion.",
       "additions": {
         "variables": [
           {
-            "name": "Capacity Investment",
-            "type": "Flow",
-            "description": "Investment in community capacity and infrastructure",
-            "rationale": "Missing explicit investment mechanism"
+            "name": "Shared Resource Depletion",
+            "type": "Auxiliary",
+            "description": "The degree to which core developer time and attention is being overutilized",
+            "rationale": "Needed to represent the depletion of the shared resource that affects all participants"
           },
           {
-            "name": "Performance Gap",
+            "name": "Individual Benefit Perception",
             "type": "Auxiliary",
-            "description": "Difference between desired and actual performance",
-            "rationale": "Missing feedback signal for investment needs"
+            "description": "Perceived benefit to individual contributors from submitting more PRs or issues",
+            "rationale": "Needed to represent the driving force for individual actions that deplete shared resources"
           }
         ],
         "connections": [
           {
-            "from": "User Base",
-            "to": "Performance Gap",
+            "from": "New Contributors",
+            "to": "Shared Resource Depletion",
             "relationship": "positive",
-            "rationale": "Growth creates performance pressure"
+            "rationale": "More contributors increase demand on the shared core developer resource"
           },
           {
-            "from": "Performance Gap",
-            "to": "Capacity Investment",
+            "from": "Experienced Contributors",
+            "to": "Shared Resource Depletion",
             "relationship": "positive",
-            "rationale": "Performance gap drives investment needs"
+            "rationale": "Experienced contributors also consume core developer time for complex reviews"
           },
           {
-            "from": "Capacity Investment",
-            "to": "Community Health",
+            "from": "New Pull request",
+            "to": "Shared Resource Depletion",
             "relationship": "positive",
-            "rationale": "Investment improves capacity and performance"
+            "rationale": "More pull requests increase the workload on the shared resource"
+          },
+          {
+            "from": "Shared Resource Depletion",
+            "to": "PR Review Delay",
+            "relationship": "positive",
+            "rationale": "Resource depletion directly causes longer review delays for everyone"
+          },
+          {
+            "from": "Project Reputation",
+            "to": "Individual Benefit Perception",
+            "relationship": "positive",
+            "rationale": "Higher reputation increases perceived benefits of participation"
+          },
+          {
+            "from": "Individual Benefit Perception",
+            "to": "New Pr rate",
+            "relationship": "positive",
+            "rationale": "Higher perceived benefits drive more individual contribution activity"
           }
         ]
       },
@@ -194,11 +168,5 @@
         "variables": []
       }
     }
-  ],
-  "summary": {
-    "archetypes_detected": 4,
-    "high_confidence": 1,
-    "total_variables_suggested": 8,
-    "total_connections_suggested": 13
-  }
+  ]
 }

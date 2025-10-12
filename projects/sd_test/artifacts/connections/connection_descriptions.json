@@ -10,47 +10,47 @@
     },
     {
       "id": "C03",
-      "description": "The skill up flow increases experienced contributors by promoting members who have gained sufficient proficiency."
+      "description": "The skill up flow increases the experienced contributor stock by advancing new contributors' capabilities."
     },
     {
       "id": "C04",
-      "description": "The promotion rate flow increases experienced contributors by advancing capable new contributors into this role."
+      "description": "The promotion rate flow increases the experienced contributor stock by recognizing contributors' growing expertise."
     },
     {
       "id": "C05",
-      "description": "The promotion rate flow increases core developers by promoting the most experienced and committed contributors."
+      "description": "The promotion rate flow increases the core developer stock by elevating experienced contributors to leadership roles."
     },
     {
       "id": "C06",
-      "description": "Effective mentorship accelerates skill development by providing direct guidance and tacit knowledge to newcomers."
+      "description": "Implicit knowledge transfer accelerates the skill up flow by providing direct mentorship and guidance."
     },
     {
       "id": "C07",
-      "description": "Effective mentorship increases the promotion rate by preparing contributors more quickly for advanced roles."
+      "description": "Implicit knowledge transfer increases the promotion rate by preparing contributors for more advanced roles."
     },
     {
       "id": "C08",
-      "description": "More core developers increase mentorship capacity and implicit knowledge transfer within the community."
+      "description": "More core developers increase implicit knowledge transfer capacity through greater mentorship availability."
     },
     {
       "id": "C09",
-      "description": "Good documentation accelerates the skill up process by providing accessible learning resources for newcomers."
+      "description": "Explicit knowledge transfer accelerates the skill up flow by providing accessible learning resources."
     },
     {
       "id": "C10",
-      "description": "A larger pool of potential contributors increases the new contributor stock through successful onboarding."
+      "description": "The colored stock (potential contributor pool) increases new contributors by providing a source of incoming talent."
     },
     {
       "id": "C11",
-      "description": "A larger pool of new contributors increases the skill up flow as more individuals undergo training."
+      "description": "A larger new contributor stock increases the skill up flow as more individuals are actively learning."
     },
     {
       "id": "C12",
-      "description": "A larger core developer group can increase turnover due to burnout or career progression outside the project."
+      "description": "A larger core developer stock can increase turnover due to burnout or career progression."
     },
     {
       "id": "C13",
-      "description": "More experienced contributors increase the promotion rate by providing a larger candidate pool for core roles."
+      "description": "A larger experienced contributor stock increases the promotion rate by providing a larger candidate pool."
     }
   ]
 }

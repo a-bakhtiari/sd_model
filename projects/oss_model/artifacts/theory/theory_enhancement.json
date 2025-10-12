@@ -2,18 +2,18 @@
   "theories": [
     {
       "name": "Communities of Practice (Wenger)",
-      "rationale": "The current model captures some aspects of legitimate peripheral participation through contributor progression, but misses key concepts like boundary objects, mutual engagement, and shared repertoire that are essential to Communities of Practice theory. Adding these elements will better represent how newcomers become integrated into the community through participation in shared practices and artifacts.",
+      "rationale": "The current model captures movement from periphery to core but lacks key CoP concepts like legitimate peripheral participation, boundary objects, and shared repertoire. Adding these elements will better represent how newcomers become legitimate participants and how community practices evolve through participation and reification.",
       "additions": {
         "variables": [
           {
-            "name": "Community Shared Repertoire",
-            "type": "Stock",
-            "description": "Accumulated shared resources, routines, vocabulary, and tools that the community develops together"
+            "name": "Legitimate Peripheral Participation",
+            "type": "Auxiliary",
+            "description": "Effectiveness of newcomers engaging in meaningful but low-risk community activities"
           },
           {
-            "name": "Mutual Engagement Level",
-            "type": "Auxiliary",
-            "description": "Degree of collaborative interaction and relationship building among community members"
+            "name": "Community Shared Repertoire",
+            "type": "Stock",
+            "description": "Accumulated shared resources, routines, artifacts, and vocabulary of the community"
           },
           {
             "name": "Boundary Objects Effectiveness",
@@ -21,70 +21,55 @@
             "description": "Effectiveness of artifacts that enable coordination between different participant groups"
           },
           {
-            "name": "Legitimate Peripheral Participation Rate",
+            "name": "Mutual Engagement Building",
             "type": "Flow",
-            "description": "Rate at which newcomers engage in authentic but low-risk community activities"
+            "description": "Rate at which community members develop shared practices through interaction"
           },
           {
-            "name": "Shared Practice Development",
+            "name": "Reification Process",
             "type": "Flow",
-            "description": "Rate at which community develops new shared practices and routines"
+            "description": "Rate at which community practices become formalized into artifacts and documentation"
           }
         ],
         "connections": [
           {
-            "from": "Community Shared Repertoire",
-            "to": "Legitimate Peripheral Participation Rate",
+            "from": "Legitimate Peripheral Participation",
+            "to": "Skill up",
             "relationship": "positive"
           },
           {
-            "from": "Mutual Engagement Level",
-            "to": "Skill up",
+            "from": "Community Shared Repertoire",
+            "to": "Legitimate Peripheral Participation",
             "relationship": "positive"
           },
           {
             "from": "Boundary Objects Effectiveness",
-            "to": "Joining Rate",
+            "to": "Legitimate Peripheral Participation",
             "relationship": "positive"
           },
           {
-            "from": "Discussions",
-            "to": "Mutual Engagement Level",
-            "relationship": "positive"
-          },
-          {
-            "from": "Core Developer",
-            "to": "Mutual Engagement Level",
-            "relationship": "positive"
-          },
-          {
-            "from": "Experienced Contributors",
-            "to": "Mutual Engagement Level",
-            "relationship": "positive"
-          },
-          {
-            "from": "Searchable Knowledge Base",
+            "from": "Projects's Explicit Knowledge",
             "to": "Boundary Objects Effectiveness",
             "relationship": "positive"
           },
           {
-            "from": "Source Code",
-            "to": "Boundary Objects Effectiveness",
-            "relationship": "positive"
-          },
-          {
-            "from": "Legitimate Peripheral Participation Rate",
-            "to": "Skill up",
-            "relationship": "positive"
-          },
-          {
-            "from": "Shared Practice Development",
+            "from": "Mutual Engagement Building",
             "to": "Community Shared Repertoire",
             "relationship": "positive"
           },
           {
-            "from": "Mutual Engagement Level",
-            "to": "Shared Practice Development",
+            "from": "Community Health",
+            "to": "Mutual Engagement Building",
+            "relationship": "positive"
+          },
+          {
+            "from": "Reification Process",
+            "to": "Projects's Explicit Knowledge",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Shared Repertoire",
+            "to": "Reification Process",
             "relationship": "positive"
           }
         ]
@@ -98,33 +83,33 @@
     },
     {
       "name": "Nonaka's SECI Model",
-      "rationale": "While the model has implicit and explicit knowledge stocks, it doesn't fully capture the four knowledge conversion processes (Socialization, Externalization, Combination, Internalization) that drive the knowledge spiral. Adding these specific conversion mechanisms will better represent how knowledge is created and transformed within the open source community context.",
+      "rationale": "The current model has knowledge conversion flows but lacks explicit representation of the four SECI modes and their enabling conditions. Adding socialization, externalization, combination, and internalization as distinct processes with their own enablers will create a more accurate representation of the knowledge creation spiral.",
       "additions": {
         "variables": [
           {
             "name": "Socialization Effectiveness",
             "type": "Auxiliary",
-            "description": "Effectiveness of sharing tacit knowledge through shared experiences and observation"
+            "description": "Effectiveness of tacit-to-tacit knowledge transfer through shared experiences"
           },
           {
-            "name": "Externalization Rate",
-            "type": "Flow",
-            "description": "Rate at which tacit knowledge is articulated into explicit concepts"
+            "name": "Externalization Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness of converting tacit knowledge to explicit knowledge"
           },
           {
             "name": "Combination Effectiveness",
             "type": "Auxiliary",
-            "description": "Effectiveness of systemizing and applying explicit knowledge"
+            "description": "Effectiveness of combining and systemizing explicit knowledge"
           },
           {
-            "name": "Internalization Rate",
-            "type": "Flow",
-            "description": "Rate at which explicit knowledge is absorbed and becomes tacit understanding"
-          },
-          {
-            "name": "Ba Quality",
+            "name": "Internalization Effectiveness",
             "type": "Auxiliary",
-            "description": "Quality of the shared context for knowledge creation and sharing"
+            "description": "Effectiveness of converting explicit knowledge back to tacit knowledge"
+          },
+          {
+            "name": "Ba (Shared Context)",
+            "type": "Stock",
+            "description": "Shared physical, virtual, or mental space that enables knowledge creation"
           }
         ],
         "connections": [
@@ -134,7 +119,17 @@
             "relationship": "positive"
           },
           {
-            "from": "Externalization Rate",
+            "from": "Ba (Shared Context)",
+            "to": "Socialization Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Health",
+            "to": "Ba (Shared Context)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Externalization Effectiveness",
             "to": "Knowledge Conversion Rate",
             "relationship": "positive"
           },
@@ -144,53 +139,18 @@
             "relationship": "positive"
           },
           {
-            "from": "Internalization Rate",
+            "from": "Internalization Effectiveness",
             "to": "Explicit to Implicit Conversion",
             "relationship": "positive"
           },
           {
-            "from": "Ba Quality",
-            "to": "Socialization Effectiveness",
-            "relationship": "positive"
-          },
-          {
-            "from": "Ba Quality",
-            "to": "Externalization Rate",
-            "relationship": "positive"
-          },
-          {
-            "from": "Ba Quality",
-            "to": "Combination Effectiveness",
-            "relationship": "positive"
-          },
-          {
-            "from": "Ba Quality",
-            "to": "Internalization Rate",
-            "relationship": "positive"
-          },
-          {
-            "from": "Community Health",
-            "to": "Ba Quality",
-            "relationship": "positive"
-          },
-          {
             "from": "Discussions",
-            "to": "Ba Quality",
+            "to": "Ba (Shared Context)",
             "relationship": "positive"
           },
           {
-            "from": "Mutual Engagement Level",
-            "to": "Ba Quality",
-            "relationship": "positive"
-          },
-          {
-            "from": "Project's Implicit Knowledge",
-            "to": "Externalization Rate",
-            "relationship": "positive"
-          },
-          {
-            "from": "Projects's Explicit Knowledge",
-            "to": "Internalization Rate",
+            "from": "Community engagement",
+            "to": "Ba (Shared Context)",
             "relationship": "positive"
           }
         ]
@@ -198,14 +158,14 @@
       "modifications": {
         "variables": [
           {
-            "name": "Knowledge Conversion Rate",
-            "type": "Flow",
-            "description": "Renamed to better represent Externalization process (tacit to explicit knowledge conversion)"
+            "old_name": "Knowledge Conversion Rate",
+            "new_name": "Tacit to Explicit Conversion",
+            "description": "Rate at which implicit knowledge is converted to explicit knowledge (Externalization)"
           },
           {
-            "name": "Explicit to Implicit Conversion",
-            "type": "Flow",
-            "description": "Renamed to better represent Internalization process (explicit to tacit knowledge conversion)"
+            "old_name": "Explicit to Implicit Conversion",
+            "new_name": "Explicit to Tacit Conversion",
+            "description": "Rate at which explicit knowledge is converted to implicit knowledge (Internalization)"
           }
         ]
       },

@@ -1,0 +1,298 @@
+{
+  "archetypes": [
+    {
+      "name": "Limits to Growth (Limits to Success)",
+      "rationale": "Reinforcing growth loops exist (Project Reputation \u2192 Joining Rate \u2192 New Contributors \u2192 PR Feedback \u2192 Software Quality and Features \u2192 Project Reputation; plus Searchable Knowledge Base reinforcing explicit knowledge). Growth is implicitly constrained by limited review/mentoring capacity, documentation backlog, and maintainer time, which raise PR Review Delay, Onboarding Friction, and Newcomer Dropout Rate. Making the capacity constraint and WIP pressure explicit clarifies the balancing loop that arrests growth.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Review Capacity",
+            "type": "Auxiliary",
+            "description": "Effective pull request review throughput given available people and mentoring capacity",
+            "rationale": "Makes the implicit capacity constraint explicit to complete the balancing loop"
+          },
+          {
+            "name": "PR WIP Pressure",
+            "type": "Auxiliary",
+            "description": "Overload signal from pull requests relative to review capacity",
+            "rationale": "Links accumulated PRs to rising delays and lowering contributor experience"
+          },
+          {
+            "name": "Maintainer Workload",
+            "type": "Auxiliary",
+            "description": "Aggregate workload from open issues and PRs awaiting action",
+            "rationale": "Translates growing WIP into reduced available time and higher turnover"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Core Developer",
+            "to": "Review Capacity",
+            "relationship": "positive",
+            "rationale": "More core developers increase potential review throughput"
+          },
+          {
+            "from": "Experienced Contributors",
+            "to": "Review Capacity",
+            "relationship": "positive",
+            "rationale": "Experienced contributors contribute to reviews"
+          },
+          {
+            "from": "Mentoring Capacity",
+            "to": "Review Capacity",
+            "relationship": "positive",
+            "rationale": "Greater mentoring capacity supports higher effective review throughput"
+          },
+          {
+            "from": "Maintainer time",
+            "to": "Review Capacity",
+            "relationship": "positive",
+            "rationale": "More available time enables higher throughput"
+          },
+          {
+            "from": "Pull Request Under review",
+            "to": "PR WIP Pressure",
+            "relationship": "positive",
+            "rationale": "More PRs in the system raise overload pressure"
+          },
+          {
+            "from": "Review Capacity",
+            "to": "PR WIP Pressure",
+            "relationship": "negative",
+            "rationale": "Higher capacity reduces overload for a given PR volume"
+          },
+          {
+            "from": "PR WIP Pressure",
+            "to": "PR Review Delay",
+            "relationship": "positive",
+            "rationale": "Overload lengthens review wait times"
+          },
+          {
+            "from": "Open Issues",
+            "to": "Maintainer Workload",
+            "relationship": "positive",
+            "rationale": "More issues increase workload"
+          },
+          {
+            "from": "Pull Request Under review",
+            "to": "Maintainer Workload",
+            "relationship": "positive",
+            "rationale": "More PRs increase workload"
+          },
+          {
+            "from": "Maintainer Workload",
+            "to": "Maintainer time",
+            "relationship": "negative",
+            "rationale": "Higher workload reduces discretionary available time per person"
+          },
+          {
+            "from": "Maintainer Workload",
+            "to": "Developer's Turnover",
+            "relationship": "positive",
+            "rationale": "Sustained overload increases burnout and turnover"
+          },
+          {
+            "from": "PR Review Delay",
+            "to": "Psychological Safety",
+            "relationship": "negative",
+            "rationale": "Long delays erode perceived safety"
+          },
+          {
+            "from": "Psychological Safety",
+            "to": "Newcomer Dropout Rate",
+            "relationship": "negative",
+            "rationale": "Lower safety increases dropout"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Growth and Underinvestment",
+      "rationale": "As the project grows, performance demands on onboarding and documentation rise (Documentation Backlog, Onboarding Friction). If investment in documentation/curation capacity lags, performance deteriorates, slowing growth, which then further suppresses investment\u2014locking in underinvestment. Making capacity, investment, and decision delay explicit completes this archetype.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Documentation and Onboarding Capacity",
+            "type": "Stock",
+            "description": "Sustained capability to produce and curate high-quality, discoverable knowledge artifacts",
+            "rationale": "Endogenizes the capability that drives documentation throughput and quality"
+          },
+          {
+            "name": "Capacity Investment Rate",
+            "type": "Flow",
+            "description": "Rate of investing in processes, tooling, and roles that increase documentation/curation capacity",
+            "rationale": "Captures the decision to invest (or underinvest) as demand grows"
+          },
+          {
+            "name": "Capacity Depreciation Rate",
+            "type": "Flow",
+            "description": "Loss of documentation/curation capability due to staff turnover, tool obsolescence, and process decay",
+            "rationale": "Completes the stock dynamics"
+          },
+          {
+            "name": "Onboarding Performance Gap",
+            "type": "Auxiliary",
+            "description": "Gap between Target Onboarding Friction and actual Onboarding Friction",
+            "rationale": "Drives investment decisions in capacity"
+          },
+          {
+            "name": "Target Onboarding Friction",
+            "type": "Auxiliary",
+            "description": "Desired level of friction for newcomers based on strategy",
+            "rationale": "Reference level needed to define the performance gap"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Documentation and Onboarding Capacity",
+            "to": "Documentation Production Rate",
+            "relationship": "positive",
+            "rationale": "Higher capacity increases throughput given the same time and tooling"
+          },
+          {
+            "from": "Documentation and Onboarding Capacity",
+            "to": "Combination/Curation Rate",
+            "relationship": "positive",
+            "rationale": "Better capacity supports more curation"
+          },
+          {
+            "from": "Documentation and Onboarding Capacity",
+            "to": "Knowledge Artifact Quality",
+            "relationship": "positive",
+            "rationale": "Capacity enables higher-quality artifacts"
+          },
+          {
+            "from": "Documentation Backlog",
+            "to": "Onboarding Friction",
+            "relationship": "positive",
+            "rationale": "A larger backlog worsens onboarding experience"
+          },
+          {
+            "from": "Onboarding Friction",
+            "to": "Onboarding Performance Gap",
+            "relationship": "positive",
+            "rationale": "Higher actual friction increases the gap"
+          },
+          {
+            "from": "Target Onboarding Friction",
+            "to": "Onboarding Performance Gap",
+            "relationship": "negative",
+            "rationale": "A lower target increases the measured gap for the same actual friction"
+          },
+          {
+            "from": "Onboarding Performance Gap",
+            "to": "Capacity Investment Rate",
+            "relationship": "positive",
+            "rationale": "A larger gap triggers more investment (unless underinvestment behavior dominates)"
+          },
+          {
+            "from": "Maintainer time",
+            "to": "Capacity Investment Rate",
+            "relationship": "positive",
+            "rationale": "Available time enables making investments (planning, tooling setup)"
+          },
+          {
+            "from": "Maintainer Workload",
+            "to": "Capacity Investment Rate",
+            "relationship": "negative",
+            "rationale": "Overload crowds out investment activities"
+          },
+          {
+            "from": "Capacity Depreciation Rate",
+            "to": "Documentation and Onboarding Capacity",
+            "relationship": "negative",
+            "rationale": "Depreciation erodes capacity"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Shifting the Burden",
+      "rationale": "Short-term relief comes from maintainers directly pushing reviews and mentoring (symptomatic fix), reducing PR Review Delay and helping newcomers. The fundamental solution is to strengthen self-service and community capability (explicit knowledge, practices, documentation capacity) to lower Onboarding Friction. Reliance on the symptomatic path increases Maintainer Workload and Developer's Turnover, undermining mentoring and community practices, thus weakening the fundamental solution.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Symptomatic Reliance on Maintainers",
+            "type": "Auxiliary",
+            "description": "Degree to which the project leans on direct maintainer effort to move PRs and onboard newcomers",
+            "rationale": "Makes the symptomatic pathway explicit"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Maintainer time",
+            "to": "Review Rate",
+            "relationship": "positive",
+            "rationale": "More maintainer effort directly increases review throughput (symptomatic relief)"
+          },
+          {
+            "from": "Symptomatic Reliance on Maintainers",
+            "to": "Maintainer time",
+            "relationship": "positive",
+            "rationale": "Greater reliance drives higher time allocation to hands-on review/mentoring"
+          },
+          {
+            "from": "Symptomatic Reliance on Maintainers",
+            "to": "Community Practices and Rituals",
+            "relationship": "negative",
+            "rationale": "Overreliance diverts effort from building shared practices (fundamental solution)"
+          },
+          {
+            "from": "Projects's Explicit Knowledge",
+            "to": "Onboarding Friction",
+            "relationship": "negative",
+            "rationale": "Better explicit knowledge reduces friction (fundamental solution)"
+          },
+          {
+            "from": "Community Practices and Rituals",
+            "to": "Onboarding Friction",
+            "relationship": "negative",
+            "rationale": "Strong practices reduce friction via norms and predictable processes"
+          },
+          {
+            "from": "Maintainer Workload",
+            "to": "Symptomatic Reliance on Maintainers",
+            "relationship": "positive",
+            "rationale": "Backlogs pressure the team to double down on direct effort"
+          },
+          {
+            "from": "Maintainer Workload",
+            "to": "Developer's Turnover",
+            "relationship": "positive",
+            "rationale": "Overwork increases burnout and exit, weakening the fundamental path"
+          },
+          {
+            "from": "Developer's Turnover",
+            "to": "Mentoring Capacity",
+            "relationship": "negative",
+            "rationale": "Turnover reduces available mentors, undermining long-term capability"
+          },
+          {
+            "from": "Mentoring Capacity",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive",
+            "rationale": "Higher capacity supports the capability-building path"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    }
+  ]
+}

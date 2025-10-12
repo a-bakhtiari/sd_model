@@ -1,0 +1,296 @@
+{
+  "descriptions": [
+    {
+      "id": "C01",
+      "description": "New users adopting the software increase the total user base."
+    },
+    {
+      "id": "C02",
+      "description": "Users leaving the project decrease the total user base."
+    },
+    {
+      "id": "C03",
+      "description": "Positive project developments and recognition increase the project's reputation."
+    },
+    {
+      "id": "C04",
+      "description": "Negative events or lack of progress decrease the project's reputation."
+    },
+    {
+      "id": "C05",
+      "description": "Higher software quality and more features enhance the project's reputation."
+    },
+    {
+      "id": "C06",
+      "description": "A larger user base provides more feedback and visibility, influencing reputation."
+    },
+    {
+      "id": "C07",
+      "description": "Positive interactions and collaboration build a healthier community."
+    },
+    {
+      "id": "C08",
+      "description": "Conflict and negative behavior erode the health of the community."
+    },
+    {
+      "id": "C09",
+      "description": "Developers leaving the project reduce the number of core developers."
+    },
+    {
+      "id": "C10",
+      "description": "New pull requests being submitted increase the stock of new pull requests."
+    },
+    {
+      "id": "C11",
+      "description": "Starting the review process moves pull requests from 'new' to 'under review'."
+    },
+    {
+      "id": "C12",
+      "description": "Starting the review process increases the number of pull requests under review."
+    },
+    {
+      "id": "C13",
+      "description": "Merging or committing code removes pull requests from the 'under review' state."
+    },
+    {
+      "id": "C14",
+      "description": "Merging pull requests adds new code to the project's source code."
+    },
+    {
+      "id": "C15",
+      "description": "Rejecting pull requests removes them from the 'under review' state."
+    },
+    {
+      "id": "C16",
+      "description": "Fewer core developers increase the average delay for reviewing pull requests."
+    },
+    {
+      "id": "C17",
+      "description": "Longer review delays slow down the provision of feedback on pull requests."
+    },
+    {
+      "id": "C18",
+      "description": "As new contributors gain skills, they move out of the 'new' category."
+    },
+    {
+      "id": "C19",
+      "description": "New contributors gaining skills increases the pool of experienced contributors."
+    },
+    {
+      "id": "C20",
+      "description": "Promoting experienced contributors reduces their number in that pool."
+    },
+    {
+      "id": "C21",
+      "description": "Promoting experienced contributors increases the number of core developers."
+    },
+    {
+      "id": "C22",
+      "description": "A higher joining rate increases the number of new contributors."
+    },
+    {
+      "id": "C23",
+      "description": "A larger backlog of pull requests under review increases the demand for feedback."
+    },
+    {
+      "id": "C24",
+      "description": "Knowledge loss, such as from documentation decay, reduces implicit knowledge."
+    },
+    {
+      "id": "C25",
+      "description": "Developer turnover directly causes a loss of their unique, implicit knowledge."
+    },
+    {
+      "id": "C26",
+      "description": "A larger base of implicit knowledge increases the potential for mentorship."
+    },
+    {
+      "id": "C27",
+      "description": "Effective mentorship accelerates the skill development of contributors."
+    },
+    {
+      "id": "C28",
+      "description": "Effective mentorship prepares contributors for promotion more quickly."
+    },
+    {
+      "id": "C29",
+      "description": "More core developers provide more capacity for mentorship and knowledge transfer."
+    },
+    {
+      "id": "C30",
+      "description": "Converting implicit knowledge into documentation adds to both knowledge stocks."
+    },
+    {
+      "id": "C31",
+      "description": "The knowledge conversion process adds documented knowledge to explicit knowledge."
+    },
+    {
+      "id": "C32",
+      "description": "Learning from documentation internalizes explicit knowledge, changing its form."
+    },
+    {
+      "id": "C33",
+      "description": "Learning from documentation converts explicit knowledge into personal implicit knowledge."
+    },
+    {
+      "id": "C34",
+      "description": "Timely, constructive feedback encourages new contributors to remain and learn."
+    },
+    {
+      "id": "C35",
+      "description": "Good feedback helps experienced contributors refine their skills and stay engaged."
+    },
+    {
+      "id": "C36",
+      "description": "Effective feedback helps core developers solve problems and maintain productivity."
+    },
+    {
+      "id": "C37",
+      "description": "New contributors create a need for more basic and onboarding-focused feedback."
+    },
+    {
+      "id": "C38",
+      "description": "Experienced contributors provide higher-quality, more technical feedback to others."
+    },
+    {
+      "id": "C39",
+      "description": "Providing feedback is part of the review process that moves pull requests forward."
+    },
+    {
+      "id": "C40",
+      "description": "Well-documented explicit knowledge facilitates easier knowledge transfer to newcomers."
+    },
+    {
+      "id": "C41",
+      "description": "Good documentation lowers the barrier to entry, increasing the joining rate."
+    },
+    {
+      "id": "C42",
+      "description": "Documentation and guides help contributors learn and upskill more efficiently."
+    },
+    {
+      "id": "C43",
+      "description": "Users and developers reporting problems increase the number of open issues."
+    },
+    {
+      "id": "C44",
+      "description": "Resolving issues decreases the number of open issues."
+    },
+    {
+      "id": "C45",
+      "description": "Resolving issues increases the count of closed issues."
+    },
+    {
+      "id": "C46",
+      "description": "More open issues represent more work, stimulating the creation of pull requests to fix them."
+    },
+    {
+      "id": "C47",
+      "description": "Community discussions and answers add valuable content to the searchable knowledge base."
+    },
+    {
+      "id": "C48",
+      "description": "Feedback and discussions in pull requests become part of the project's knowledge base."
+    },
+    {
+      "id": "C49",
+      "description": "Resolved issues and their solutions are archived in the searchable knowledge base."
+    },
+    {
+      "id": "C50",
+      "description": "A rich knowledge base is a primary source of structured, explicit knowledge."
+    },
+    {
+      "id": "C51",
+      "description": "Community discussions generate insights and solutions for the knowledge base."
+    },
+    {
+      "id": "C52",
+      "description": "A strong project reputation attracts more potential contributors, increasing the joining rate."
+    },
+    {
+      "id": "C53",
+      "description": "A good reputation makes the software more attractive, potentially growing the user base."
+    },
+    {
+      "id": "C54",
+      "description": "Open issues represent user needs and problems, generating feedback for the project."
+    },
+    {
+      "id": "C55",
+      "description": "User feedback often highlights problems, leading to the creation of new issues."
+    },
+    {
+      "id": "C56",
+      "description": "A larger codebase has more surface area for bugs and feature requests, generating issues."
+    },
+    {
+      "id": "C57",
+      "description": "A healthy, collaborative community is a positive signal that enhances project reputation."
+    },
+    {
+      "id": "C58",
+      "description": "A good reputation makes the project more appealing for new contributors to join."
+    },
+    {
+      "id": "C59",
+      "description": "Clear documentation makes it easier for newcomers to start, increasing the joining rate."
+    },
+    {
+      "id": "C60",
+      "description": "More maintainer time dedicated to issues increases the rate at which they are resolved."
+    },
+    {
+      "id": "C61",
+      "description": "A larger backlog of open issues creates more work, potentially slowing the resolution rate per issue."
+    },
+    {
+      "id": "C62",
+      "description": "A high reputation sets high expectations; failing to meet them can accelerate reputation decline."
+    },
+    {
+      "id": "C63",
+      "description": "A rich base of explicit knowledge provides more material for contributors to learn and internalize."
+    },
+    {
+      "id": "C64",
+      "description": "A larger user base means more people who might eventually stop using the software."
+    },
+    {
+      "id": "C65",
+      "description": "Pull requests that are under review are the pool from which merges are completed."
+    },
+    {
+      "id": "C66",
+      "description": "The pool of pull requests under review is where rejection decisions are made."
+    },
+    {
+      "id": "C67",
+      "description": "New pull requests enter the system and become available for the review process to start."
+    },
+    {
+      "id": "C68",
+      "description": "Core developers are the group from which turnover occurs when they leave."
+    },
+    {
+      "id": "C69",
+      "description": "Experienced contributors are the pool from which individuals are promoted."
+    },
+    {
+      "id": "C70",
+      "description": "New contributors are the group that undergoes the skill development process."
+    },
+    {
+      "id": "C71",
+      "description": "The existing stock of implicit knowledge is what is subject to depreciation and loss."
+    },
+    {
+      "id": "C72",
+      "description": "The stock of implicit knowledge is the source material for conversion into explicit forms."
+    },
+    {
+      "id": "C73",
+      "description": "The current level of community health influences its resilience to negative, erosive forces."
+    }
+  ]
+}

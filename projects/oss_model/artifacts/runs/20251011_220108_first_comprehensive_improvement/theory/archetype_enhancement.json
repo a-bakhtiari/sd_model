@@ -1,0 +1,148 @@
+{
+  "archetypes": [
+    {
+      "name": "Limits to Growth (Limits to Success)",
+      "rationale": "Reputation and onboarding create reinforcing growth: Project Reputation \u2192 Joining Rate \u2192 New Contributors \u2192 New Pr rate. Growth pushes workload into Pull Request Under review, but review capacity is bounded by Core Developer, Tooling Maturity, Contribution Process Maturity, etc., which increases PR Review Delay. Delay then raises Newcomer Dropout Rate and triggers Crisis Intensity \u2192 Reputation Decline, reducing Joining Rate and limiting further growth.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Capacity Utilization",
+            "type": "Auxiliary",
+            "description": "Ratio of PR work-in-process to effective review throughput (e.g., WIP/capacity) capturing saturation effects.",
+            "rationale": "Makes the constraining mechanism explicit by translating backlog pressure into delay via a utilization signal."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Pull Request Under review",
+            "to": "PR Review Delay",
+            "relationship": "positive",
+            "rationale": "Higher PR WIP increases queueing time for a given capacity, lengthening delays."
+          },
+          {
+            "from": "Pull Request Under review",
+            "to": "Capacity Utilization",
+            "relationship": "positive",
+            "rationale": "More WIP increases utilization of finite review capacity."
+          },
+          {
+            "from": "Review Rate",
+            "to": "Capacity Utilization",
+            "relationship": "negative",
+            "rationale": "Greater throughput lowers utilization pressure for a given WIP."
+          },
+          {
+            "from": "Capacity Utilization",
+            "to": "PR Review Delay",
+            "relationship": "positive",
+            "rationale": "As utilization approaches capacity limits, cycle times rise nonlinearly."
+          },
+          {
+            "from": "PR Review Delay",
+            "to": "Joining Rate",
+            "relationship": "negative",
+            "rationale": "Long review waits deter applicants, directly throttling onboarding growth."
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Shifting the Burden",
+      "rationale": "When PR Review Delay and Crisis Intensity rise, the system can apply a quick symptomatic fix (core maintainers work overtime to push reviews) instead of strengthening fundamental capacity (mentoring, explicit knowledge, process/tooling maturity). The quick fix temporarily improves Review Rate but raises Developer's Turnover and crowds out Core Developer Mentoring Capacity, undermining the long-term solution and perpetuating reliance on the symptomatic fix.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Maintainer Overtime Level",
+            "type": "Auxiliary",
+            "description": "Degree to which maintainers shift extra hours to reviewing to quickly reduce backlog.",
+            "rationale": "Represents the symptomatic solution that relieves the problem symptom without building capacity."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Crisis Intensity",
+            "to": "Maintainer Overtime Level",
+            "relationship": "positive",
+            "rationale": "Higher perceived crisis triggers firefighting behavior."
+          },
+          {
+            "from": "Maintainer Overtime Level",
+            "to": "Review Rate",
+            "relationship": "positive",
+            "rationale": "Overtime temporarily increases review throughput."
+          },
+          {
+            "from": "Maintainer Overtime Level",
+            "to": "Developer's Turnover",
+            "relationship": "positive",
+            "rationale": "Sustained overtime accelerates burnout and exits."
+          },
+          {
+            "from": "Maintainer Overtime Level",
+            "to": "Core Developer Mentoring Capacity",
+            "relationship": "negative",
+            "rationale": "Firefighting diverts time away from mentoring, weakening the fundamental solution (skill building)."
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Fixes that Fail (Fixes that Backfire)",
+      "rationale": "To counter falling reputation and backlog stress, pushing more and faster releases appears to help (Major Release Rate \u2192 Project Reputation). However the rush increases Merge/Commit volume and lowers quality, accumulating Technical Debt and raising Issue Creation Rate, which then feeds back into Open Issues and PR Review Delay, reviving Crisis Intensity. The initial fix thus backfires by worsening the underlying workload and quality problem.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Expedite Release Policy",
+            "type": "Auxiliary",
+            "description": "Management stance to accelerate feature releases to quickly improve external perception.",
+            "rationale": "Explicitly represents the symptomatic fix that boosts releases under stress."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Crisis Intensity",
+            "to": "Expedite Release Policy",
+            "relationship": "positive",
+            "rationale": "Greater crisis pressure increases willingness to expedite releases."
+          },
+          {
+            "from": "Expedite Release Policy",
+            "to": "Major Release Rate",
+            "relationship": "positive",
+            "rationale": "Expedite stance raises the cadence of major releases."
+          },
+          {
+            "from": "Expedite Release Policy",
+            "to": "Merge/Commit",
+            "relationship": "positive",
+            "rationale": "Faster release schedules drive more (and more rushed) merges/commits."
+          },
+          {
+            "from": "Expedite Release Policy",
+            "to": "Debt Accumulation Rate",
+            "relationship": "positive",
+            "rationale": "Rushed changes reduce quality per change, directly increasing technical debt beyond the effect of volume alone."
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    }
+  ]
+}

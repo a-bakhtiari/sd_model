@@ -4,196 +4,213 @@
     "theory_rq_fit": "moderate",
     "coherence": "moderate",
     "phd_viability": "moderate",
-    "summary": "The research questions show moderate alignment with theories and model. RQ1 has the strongest foundation, while RQ2 and RQ3 suffer from significant theoretical and modeling gaps. The current framework lacks security-focused theories and intervention mechanisms needed to fully address all research questions."
+    "summary": "The research questions show good theoretical grounding but the current model structure is insufficient to fully address the complexity of the phenomena. RQ1 has moderate alignment, RQ2 has poor alignment, and RQ3 has very poor alignment. Significant model expansion and additional theoretical frameworks are needed for PhD-level contribution."
   },
   "rq_1": {
-    "alignment_score": 7,
+    "alignment_score": 6,
     "theory_fit": {
       "score": 8,
-      "assessment": "Communities of Practice provides strong theoretical foundation for understanding movement from periphery to core. SECI model complements by explaining knowledge conversion processes that enable this transition.",
+      "assessment": "Communities of Practice provides strong theoretical foundation for understanding peripheral-to-core transitions. SECI model complements by explaining knowledge conversion mechanisms. Together they cover learning and knowledge transfer aspects well.",
       "gaps": [
         "Missing theories on motivation and retention",
-        "Lack of social identity theories for community integration"
+        "No theoretical framework for skill acquisition progression",
+        "Limited coverage of social and organizational barriers"
       ]
     },
     "model_fit": {
-      "score": 6,
-      "assessment": "Model captures basic progression through stocks (New Contributors \u2192 Experienced Contributors \u2192 Core Developer) and includes knowledge transfer mechanisms, but lacks motivational and social factors.",
+      "score": 5,
+      "assessment": "Basic structure captures progression through states but lacks granularity. Missing critical variables like motivation, social integration, project complexity, and individual capability differences.",
       "gaps": [
-        "No variables for motivation/burnout",
+        "No representation of motivation or engagement",
         "Missing social integration mechanisms",
-        "No representation of project complexity or skill requirements"
+        "No skill differentiation between roles",
+        "Oversimplified progression logic"
       ]
     },
     "critical_issues": [
       {
-        "issue": "Model lacks representation of why developers leave or stay (motivation, satisfaction, burnout)",
+        "issue": "Model lacks mechanisms for individual differences in capability and motivation",
         "severity": "high"
       },
       {
-        "issue": "No distinction between different types of contributions or skill domains",
+        "issue": "No representation of social and organizational barriers to progression",
+        "severity": "high"
+      },
+      {
+        "issue": "Oversimplified linear progression ignores complex career paths",
         "severity": "medium"
       }
     ],
     "recommendations": {
       "theories_to_add": [
         {
-          "theory": "Self-Determination Theory",
-          "why": "Explains intrinsic motivation factors affecting developer retention and progression"
+          "theory": "Self-Determination Theory (Deci & Ryan)",
+          "why": "Explains motivational factors affecting progression and retention"
         },
         {
-          "theory": "Social Identity Theory",
-          "why": "Helps understand community belonging and identity formation in OSS"
+          "theory": "Social Network Theory",
+          "why": "Captures social integration and relationship dynamics in OSS communities"
         }
       ],
       "theories_to_remove": [],
       "model_additions": [
-        "Motivation/engagement stock",
-        "Burnout rate flow",
-        "Social integration variable",
-        "Contribution quality/diversity variables"
+        "Motivation/engagement stock variables",
+        "Social integration metrics",
+        "Skill differentiation variables",
+        "Barrier mechanisms",
+        "Multiple progression pathways"
       ],
       "priority": "high"
     }
   },
   "rq_2": {
-    "alignment_score": 4,
+    "alignment_score": 3,
     "theory_fit": {
-      "score": 5,
-      "assessment": "Current theories describe natural progression but lack prescriptive elements for designing interventions. SECI model suggests knowledge conversion points but doesn't specify intervention mechanisms.",
+      "score": 4,
+      "assessment": "Current theories provide limited direct support for intervention design. Communities of Practice suggests mentorship and participation structures, but lacks systematic intervention frameworks.",
       "gaps": [
-        "No intervention design theories",
-        "Missing organizational change theories",
-        "Lack of socio-technical systems design frameworks"
+        "No theory of change or intervention design",
+        "Missing organizational learning theories",
+        "Limited coverage of onboarding optimization"
       ]
     },
     "model_fit": {
-      "score": 3,
-      "assessment": "Model structure doesn't include intervention points or policy testing capabilities. Current variables are descriptive rather than prescriptive.",
+      "score": 2,
+      "assessment": "Model cannot test interventions as it lacks policy levers and intervention mechanisms. Current structure is descriptive rather than prescriptive.",
       "gaps": [
-        "No intervention levers",
-        "Missing policy testing structure",
-        "No representation of intervention costs/effects"
+        "No intervention variables",
+        "Cannot simulate policy changes",
+        "Missing cost/benefit structures",
+        "No way to measure intervention effectiveness"
       ]
     },
     "critical_issues": [
       {
-        "issue": "Model cannot test interventions - it's descriptive rather than prescriptive",
+        "issue": "Model cannot simulate interventions or policy changes",
         "severity": "critical"
       },
       {
-        "issue": "No connection between interventions and outcomes in current structure",
+        "issue": "No theoretical basis for intervention design",
+        "severity": "high"
+      },
+      {
+        "issue": "Missing metrics to evaluate intervention success",
         "severity": "high"
       }
     ],
     "recommendations": {
       "theories_to_add": [
         {
-          "theory": "Intervention Design/Implementation Science",
-          "why": "Provides frameworks for designing and testing community interventions"
+          "theory": "Organizational Learning Theory (Argyris & Sch\u00f6n)",
+          "why": "Provides framework for designing learning interventions and organizational change"
         },
         {
-          "theory": "Socio-Technical Systems Theory",
-          "why": "Helps design interventions that balance social and technical aspects"
+          "theory": "Implementation Science frameworks",
+          "why": "Offers systematic approaches to intervention design and evaluation"
         }
       ],
       "theories_to_remove": [],
       "model_additions": [
-        "Intervention testing parameters",
-        "Onboarding program effectiveness",
-        "Mentorship program variables",
-        "Documentation quality metrics"
+        "Intervention policy variables",
+        "Onboarding effectiveness metrics",
+        "Mentorship capacity constraints",
+        "Resource allocation for interventions",
+        "Cost-benefit analysis structures"
       ],
       "priority": "high"
     }
   },
   "rq_3": {
-    "alignment_score": 2,
+    "alignment_score": 1,
     "theory_fit": {
-      "score": 1,
-      "assessment": "Current theories have no connection to security, vulnerabilities, or system failure. Communities of Practice and SECI focus on learning and knowledge, not security outcomes.",
+      "score": 2,
+      "assessment": "Current theories have almost no connection to system failure or vulnerability prevention. SECI model touches on knowledge preservation but doesn't address security or system reliability.",
       "gaps": [
-        "No security-focused theories",
-        "Missing software quality frameworks",
-        "Lack of socio-technical security theories"
+        "No software engineering quality theories",
+        "Missing security and reliability frameworks",
+        "No organizational resilience theories"
       ]
     },
     "model_fit": {
       "score": 1,
-      "assessment": "Model completely lacks security-related variables, vulnerability mechanisms, or quality control processes. Cannot address system failure or vulnerabilities.",
+      "assessment": "Model completely lacks variables related to code quality, security vulnerabilities, or system failure. Cannot address RQ3 with current structure.",
       "gaps": [
-        "No security/vulnerability stocks",
+        "No quality or vulnerability metrics",
         "Missing code review processes",
-        "No quality assurance mechanisms",
-        "No representation of technical debt"
+        "No technical debt accumulation",
+        "No error propagation mechanisms"
       ]
     },
     "critical_issues": [
       {
-        "issue": "Complete theoretical mismatch - current theories don't address security or system failure",
+        "issue": "Complete misalignment between model and research question",
         "severity": "critical"
       },
       {
-        "issue": "Model has zero representation of security or quality concerns",
+        "issue": "No theoretical foundation for security/vulnerability analysis",
+        "severity": "critical"
+      },
+      {
+        "issue": "Model cannot represent software quality or failure mechanisms",
         "severity": "critical"
       }
     ],
     "recommendations": {
       "theories_to_add": [
         {
-          "theory": "Socio-Technical Systems Security",
-          "why": "Bridges social processes with security outcomes in software development"
+          "theory": "Software Quality Models (ISO 25010)",
+          "why": "Provides framework for measuring and modeling software quality attributes"
         },
         {
-          "theory": "Normal Accident Theory/High-Reliability Organizations",
-          "why": "Explains how complex systems fail and how to prevent failures"
+          "theory": "Normal Accident Theory (Perrow) or High Reliability Organization theory",
+          "why": "Explains system failure mechanisms in complex systems"
         },
         {
-          "theory": "Software Quality Models",
-          "why": "Provides frameworks for understanding and measuring software quality and vulnerabilities"
+          "theory": "Technical Debt concept",
+          "why": "Captures accumulation of quality issues over time"
         }
       ],
       "theories_to_remove": [],
       "model_additions": [
-        "Vulnerability introduction rate",
-        "Code review effectiveness",
+        "Code quality metrics",
+        "Vulnerability introduction and detection rates",
         "Technical debt accumulation",
-        "Security incident stocks",
-        "Quality assurance processes"
+        "Code review effectiveness",
+        "Error propagation mechanisms"
       ],
-      "priority": "high"
+      "priority": "medium"
     }
   },
   "actionable_steps": [
     {
-      "step": "Add motivation and social integration variables to model",
-      "rationale": "Essential for understanding developer progression and retention dynamics",
+      "step": "Refine RQ3 to align with current theoretical foundation or significantly expand theoretical scope",
+      "rationale": "Current RQ3 requires completely different theories and model structure than RQ1-2",
       "impact": "high",
       "effort": "medium"
     },
     {
-      "step": "Integrate security-focused theories and add vulnerability mechanisms to model",
-      "rationale": "Critical for addressing RQ3 which currently has no theoretical or modeling support",
+      "step": "Expand model with motivational and social integration variables for RQ1",
+      "rationale": "Essential for capturing dynamics of peripheral-to-core transition",
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "step": "Add intervention policy levers and evaluation metrics to model",
+      "rationale": "Required to address RQ2 about interventions",
       "impact": "high",
       "effort": "high"
     },
     {
-      "step": "Add intervention testing capabilities to model structure",
-      "rationale": "Enables answering RQ2 by allowing simulation of different intervention scenarios",
+      "step": "Conduct literature review on OSS quality and security dynamics",
+      "rationale": "Build theoretical foundation for RQ3 or reformulate the question",
       "impact": "high",
       "effort": "medium"
     },
     {
-      "step": "Consider splitting research questions or focusing scope",
-      "rationale": "Current scope spans learning, intervention design, and security - may be too broad for coherent PhD",
+      "step": "Validate model structure with empirical data from OSS projects",
+      "rationale": "Ensure model represents real-world progression patterns",
       "impact": "medium",
-      "effort": "low"
-    },
-    {
-      "step": "Add quality assurance and code review processes to model",
-      "rationale": "Bridges developer progression with security outcomes",
-      "impact": "medium",
-      "effort": "medium"
+      "effort": "high"
     }
   ]
 }

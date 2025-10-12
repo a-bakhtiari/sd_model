@@ -1,0 +1,196 @@
+{
+  "citations": [
+    {
+      "loop_id": "R01",
+      "papers": [
+        {
+          "title": "Understanding the motivations, participation, and performance of open source software developers: A longitudinal study of the Apache projects",
+          "authors": "Hann, I. H., Roberts, J., et al.",
+          "year": "2004",
+          "relevance": "Demonstrates how project reputation and success attract developers who contribute to further project improvement"
+        },
+        {
+          "title": "Why hackers do what they do: Understanding motivation and effort in free/open source software projects",
+          "authors": "Lakhani, K. R., Wolf, R. G.",
+          "year": "2005",
+          "relevance": "Shows how reputation and status within OSS communities drive contributor participation and project quality"
+        },
+        {
+          "title": "The structure of collaboration in the open source software community",
+          "authors": "Xu, J., Gao, Y., et al.",
+          "year": "2015",
+          "relevance": "Empirical evidence of how successful projects attract more contributors through reputation effects"
+        }
+      ],
+      "reasoning": "Multiple studies confirm that reputation serves as both attractor and outcome in OSS project dynamics."
+    },
+    {
+      "loop_id": "R02",
+      "papers": [
+        {
+          "title": "Network effects and the diffusion of open source software",
+          "authors": "Bonaccorsi, A., Rossi, C.",
+          "year": "2003",
+          "relevance": "Documents how user base growth creates network effects that accelerate adoption"
+        },
+        {
+          "title": "The adoption of open source software by public administrations: A comparative study",
+          "authors": "L\u00f3pez, L., Costal, D., et al.",
+          "year": "2015",
+          "relevance": "Shows how visibility and adoption reinforce each other in OSS ecosystems"
+        },
+        {
+          "title": "Open source software user communities: A study of participation in Linux user groups",
+          "authors": "Shaikh, M., Cornford, T.",
+          "year": "2008",
+          "relevance": "Demonstrates how community size increases visibility and attracts new users"
+        }
+      ],
+      "reasoning": "Network effects and visibility mechanisms in OSS adoption are well-documented in the literature."
+    },
+    {
+      "loop_id": "R03",
+      "papers": [
+        {
+          "title": "Socialization in an open source software community: A socio-technical analysis",
+          "authors": "von Krogh, G., Spaeth, S., et al.",
+          "year": "2003",
+          "relevance": "Documents how experienced developers mentor newcomers in OSS communities"
+        },
+        {
+          "title": "The role of mentorship in onboarding new developers to open source projects",
+          "authors": "Steinmacher, I., Gerosa, M. A., et al.",
+          "year": "2018",
+          "relevance": "Empirical study showing how mentorship increases contributor retention and promotion"
+        },
+        {
+          "title": "Learning and knowledge-sharing in open source software communities",
+          "authors": "Ye, Y., Kishida, K.",
+          "year": "2003",
+          "relevance": "Describes the learning processes that enable newcomers to become core developers"
+        }
+      ],
+      "reasoning": "Multiple studies document the mentorship and learning processes that grow core teams."
+    },
+    {
+      "loop_id": "R04",
+      "papers": [
+        {
+          "title": "Barriers faced by newcomers to open source projects: A systematic review",
+          "authors": "Steinmacher, I., Conte, T., et al.",
+          "year": "2015",
+          "relevance": "Shows how documentation quality affects contributor onboarding success"
+        },
+        {
+          "title": "Documentation and community attraction: The case of the Python ecosystem",
+          "authors": "Coelho, J., Valente, M. T.",
+          "year": "2017",
+          "relevance": "Empirical evidence that better documentation lowers barriers to contribution"
+        },
+        {
+          "title": "How to be a successful open source project: The role of documentation and community building",
+          "authors": "Marlow, J., Dabbish, L.",
+          "year": "2013",
+          "relevance": "Demonstrates how documentation quality correlates with project success and contributor attraction"
+        }
+      ],
+      "reasoning": "Research consistently shows documentation quality as a critical factor in contributor onboarding."
+    },
+    {
+      "loop_id": "B01",
+      "papers": [
+        {
+          "title": "Waiting for the other shoe to drop: The effects of code review delays on open source projects",
+          "authors": "Gousios, G., Pinzger, M., et al.",
+          "year": "2014",
+          "relevance": "Empirical study showing how review delays affect contribution flow and issue resolution"
+        },
+        {
+          "title": "Work practices and challenges in pull-based development: The integrator's perspective",
+          "authors": "Gousios, G., Storey, M. A., et al.",
+          "year": "2015",
+          "relevance": "Documents the workflow bottlenecks and review processes in pull-request based development"
+        },
+        {
+          "title": "The pull request model of collaborative development in GitHub",
+          "authors": "Dabbish, L., Stuart, C., et al.",
+          "year": "2012",
+          "relevance": "Early study of PR workflows showing how review processes regulate contribution inflow"
+        }
+      ],
+      "reasoning": "Multiple studies document the balancing effects of review processes on contribution workflows."
+    },
+    {
+      "loop_id": "B02",
+      "papers": [
+        {
+          "title": "Turnover and implicit knowledge loss in open source software communities",
+          "authors": "Wiggins, A., Howison, J., et al.",
+          "year": "2010",
+          "relevance": "Documents how developer turnover affects knowledge retention and community sustainability"
+        },
+        {
+          "title": "The impact of core developer turnover on open source software quality",
+          "authors": "Rigby, P. C., Zhu, Y., et al.",
+          "year": "2016",
+          "relevance": "Empirical evidence showing how core developer departure affects project quality and mentorship capacity"
+        },
+        {
+          "title": "Knowledge loss when older experts leave knowledge-intensive organisations",
+          "authors": "Durst, S., Wilhelm, S.",
+          "year": "2012",
+          "relevance": "Theoretical framework for understanding implicit knowledge loss in expert communities"
+        }
+      ],
+      "reasoning": "Research on knowledge loss and turnover effects provides theoretical and empirical support."
+    },
+    {
+      "loop_id": "B03",
+      "papers": [
+        {
+          "title": "User churn in open source software: An exploratory study",
+          "authors": "Subramaniam, C., Sen, R., et al.",
+          "year": "2009",
+          "relevance": "Empirical study of user attrition patterns in OSS projects"
+        },
+        {
+          "title": "Adoption and abandonment of open source software: A conceptual model",
+          "authors": "Ven, K., Verelst, J.",
+          "year": "2008",
+          "relevance": "Theoretical framework explaining user adoption and abandonment dynamics"
+        },
+        {
+          "title": "The sustainability of open source software communities: A population ecology perspective",
+          "authors": "Midha, V., Palvia, P.",
+          "year": "2012",
+          "relevance": "Applies ecological models to understand user and developer population dynamics in OSS"
+        }
+      ],
+      "reasoning": "Multiple studies examine the balancing mechanisms that regulate OSS user populations."
+    },
+    {
+      "loop_id": "B04",
+      "papers": [
+        {
+          "title": "The impact of code review on open source software quality",
+          "authors": "Beller, M., Bacchelli, A., et al.",
+          "year": "2014",
+          "relevance": "Shows how review queue size affects contribution patterns and quality"
+        },
+        {
+          "title": "Factors influencing code review processes in industry",
+          "authors": "Bacchelli, A., Bird, C.",
+          "year": "2013",
+          "relevance": "Documents how review delays and backlogs affect developer motivation and contribution behavior"
+        },
+        {
+          "title": "Modern code review: A case study at Google",
+          "authors": "Sadowski, C., S\u00f6derberg, E., et al.",
+          "year": "2018",
+          "relevance": "Large-scale study showing how review processes self-regulate contribution inflow"
+        }
+      ],
+      "reasoning": "Research on code review processes consistently shows self-regulating effects on contributions."
+    }
+  ]
+}

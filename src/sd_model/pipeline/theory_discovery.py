@@ -154,7 +154,7 @@ def run_theory_discovery(
     from ..config import should_use_gpt
     provider, model = should_use_gpt("theory_discovery")
     client = LLMClient(provider=provider, model=model)
-    response = client.complete(prompt, temperature=0.4, max_tokens=4000)
+    response = client.complete(prompt, temperature=0.4, max_tokens=8000)
 
     # Parse response
     try:

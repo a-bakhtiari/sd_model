@@ -4,30 +4,14 @@
       "theory_name": "Legitimate Peripheral Participation",
       "key_citation": "Lave & Wenger 1991",
       "description": "Learning occurs through increasing participation in communities of practice, moving from peripheral to full participation",
-      "relevance_to_rqs": "Directly addresses the novice-to-core developer transition pathway in OSS communities",
-      "relevance_to_model": "Model AI's impact on legitimate participation pathways - does AI create new peripheral activities or bypass traditional ones?",
+      "relevance_to_rqs": "Directly addresses the novice-to-core developer transition pathway, which AI may fundamentally alter",
+      "relevance_to_model": "Model AI as changing the 'periphery' definition and creating new participation trajectories",
       "adjacency_level": "direct",
-      "phd_contribution": "Theorizing how AI transforms legitimate participation pathways in OSS communities of practice",
+      "phd_contribution": "Theorizing how AI redefines legitimate participation pathways in OSS communities",
       "model_additions": [
-        "AI-assisted contribution types",
-        "Pathway legitimacy threshold",
-        "AI-mediated participation quality"
-      ],
-      "risk": "low",
-      "reward": "high"
-    },
-    {
-      "theory_name": "Absorptive Capacity",
-      "key_citation": "Cohen & Levinthal 1990",
-      "description": "Organization's ability to recognize, assimilate, and apply new external knowledge",
-      "relevance_to_rqs": "Explains how developers and projects absorb AI-generated code and knowledge",
-      "relevance_to_model": "Model project/developer capacity to evaluate, integrate, and build upon AI contributions",
-      "adjacency_level": "direct",
-      "phd_contribution": "Extending absorptive capacity theory to AI-human collaboration in OSS",
-      "model_additions": [
-        "AI knowledge absorption rate",
-        "Prior knowledge stocks for AI evaluation",
-        "Assimilation capacity constraints"
+        "AI-assisted contributions",
+        "AI-mediated mentorship",
+        "Participation pathway thresholds"
       ],
       "risk": "low",
       "reward": "high"
@@ -35,15 +19,31 @@
     {
       "theory_name": "Competence Motivation Theory",
       "key_citation": "Harter 1978",
-      "description": "Individuals are motivated by developing competence and receiving positive feedback",
-      "relevance_to_rqs": "Explains how AI affects developer motivation and skill development pathways",
-      "relevance_to_model": "Model how AI-assisted contributions affect perceived competence and motivation feedback loops",
+      "description": "Individuals are motivated by developing competence and receiving positive feedback on their capabilities",
+      "relevance_to_rqs": "AI may change how developers build and demonstrate competence, affecting motivation and career progression",
+      "relevance_to_model": "Model competence development as a stock affected by AI tools and feedback mechanisms",
       "adjacency_level": "direct",
-      "phd_contribution": "Understanding AI's impact on competence development and motivation in OSS careers",
+      "phd_contribution": "Understanding how AI alters competence signaling and motivation in OSS career paths",
       "model_additions": [
         "Perceived competence",
-        "Motivation feedback",
-        "Skill demonstration opportunities"
+        "Motivation feedback loops",
+        "AI competence thresholds"
+      ],
+      "risk": "low",
+      "reward": "medium"
+    },
+    {
+      "theory_name": "Absorptive Capacity",
+      "key_citation": "Cohen & Levinthal 1990",
+      "description": "Organization's ability to recognize, assimilate, and apply new external knowledge",
+      "relevance_to_rqs": "AI changes how developers absorb project knowledge and community practices",
+      "relevance_to_model": "Model knowledge absorption rates and thresholds affected by AI tools",
+      "adjacency_level": "direct",
+      "phd_contribution": "Theorizing how AI transforms individual and collective absorptive capacity in OSS",
+      "model_additions": [
+        "Knowledge absorption rate",
+        "Prior knowledge base",
+        "AI absorption multiplier"
       ],
       "risk": "medium",
       "reward": "high"
@@ -53,11 +53,11 @@
     {
       "theory_name": "Boundary Objects",
       "key_citation": "Star & Griesemer 1989",
-      "description": "Artifacts that enable coordination between different social worlds while maintaining their individual meanings",
-      "why_adjacent": "Focuses on artifacts rather than people, but highly relevant to collaboration",
-      "novel_angle": "AI-generated code as boundary objects between human developers and AI systems",
+      "description": "Artifacts that enable coordination across different social worlds while maintaining separate meanings",
+      "why_adjacent": "Focuses on artifacts rather than people, but AI-generated code/documentation could become new boundary objects",
+      "novel_angle": "AI outputs as boundary objects that reshape community interactions and knowledge transfer",
       "adjacency_level": "adjacent",
-      "phd_contribution": "Theorizing AI outputs as boundary objects in OSS development",
+      "phd_contribution": "Understanding AI artifacts as coordination mechanisms in OSS career progression",
       "risk": "medium",
       "reward": "high"
     },
@@ -65,65 +65,55 @@
       "theory_name": "Distributed Cognition",
       "key_citation": "Hutchins 1995",
       "description": "Cognitive processes are distributed across individuals, artifacts, and environments",
-      "why_adjacent": "Shifts focus from individual learning to system-level cognition",
-      "novel_angle": "Modeling OSS communities as distributed cognitive systems now including AI agents",
+      "why_adjacent": "Shifts focus from individual learning to system-level cognition that AI transforms",
+      "novel_angle": "AI as a cognitive partner redistributing thinking and learning across the OSS ecosystem",
       "adjacency_level": "adjacent",
-      "phd_contribution": "Understanding how AI redistributes cognitive labor in OSS development",
+      "phd_contribution": "Modeling how AI redistributes cognitive labor in OSS career development",
       "risk": "medium",
       "reward": "medium"
     },
     {
-      "theory_name": "Institutional Work",
-      "key_citation": "Lawrence & Suddaby 2006",
-      "description": "The purposive action of individuals and organizations aimed at creating, maintaining, and disrupting institutions",
-      "why_adjacent": "Focuses on institutional level rather than individual career paths",
-      "novel_angle": "How core developers engage in institutional work to adapt OSS norms and practices to AI era",
+      "theory_name": "Social Cognitive Career Theory",
+      "key_citation": "Lent et al. 1994",
+      "description": "Career development through self-efficacy, outcome expectations, and personal goals",
+      "why_adjacent": "Individual-focused rather than community-focused, but AI may reshape career self-perceptions",
+      "novel_angle": "How AI tools affect developers' self-efficacy and career expectations in OSS",
       "adjacency_level": "adjacent",
-      "phd_contribution": "Understanding institutional maintenance work in OSS facing technological disruption",
-      "risk": "high",
-      "reward": "high"
+      "phd_contribution": "Understanding AI's impact on career self-concept and decision-making in OSS",
+      "risk": "medium",
+      "reward": "medium"
     }
   ],
   "cross_domain_inspiration": [
     {
       "theory": "Ecological Succession",
       "source_domain": "Ecology",
-      "parallel": "Community structure changes over time as species replace one another",
-      "transfer_potential": "Model OSS community succession patterns as AI changes skill requirements and role definitions",
+      "parallel": "Community structure changes over time as species replace one another in a habitat",
+      "transfer_potential": "Model OSS career paths as ecological succession with AI as environmental disturbance",
       "adjacency_level": "exploratory",
       "risk": "high",
-      "reward": "medium",
-      "rationale": "Provides dynamic framework for understanding long-term community transformation"
+      "reward": "high",
+      "rationale": "Provides powerful metaphors for understanding how AI disrupts established career succession patterns"
     },
     {
       "theory": "Actor-Network Theory",
-      "source_domain": "Sociology of Science & Technology",
-      "parallel": "Human and non-human actors form networks that shape social outcomes",
-      "transfer_potential": "Treat AI systems as actors in OSS development networks with agency and influence",
+      "source_domain": "Sociology of Science",
+      "parallel": "Human and non-human actors form networks that shape social structures",
+      "transfer_potential": "Treat AI systems as actors in OSS career networks with agency and influence",
+      "adjacency_level": "exploratory",
+      "risk": "high",
+      "reward": "medium",
+      "rationale": "Radically reframes AI from tool to participant, enabling novel insights about career pathways"
+    },
+    {
+      "theory": "Skill-Biased Technical Change",
+      "source_domain": "Labor Economics",
+      "parallel": "Technological change alters relative demand for different skill types",
+      "transfer_potential": "Model how AI changes the skill composition and valuation in OSS career ladders",
       "adjacency_level": "exploratory",
       "risk": "high",
       "reward": "high",
-      "rationale": "Radically reframes AI as active participant rather than passive tool"
-    },
-    {
-      "theory": "Competence-Destroying vs Competence-Enhancing Innovations",
-      "source_domain": "Technology Management",
-      "parallel": "Innovations that render existing skills obsolete vs those that build on them",
-      "transfer_potential": "Characterize AI programming tools as competence-destroying or enhancing for developer careers",
-      "adjacency_level": "exploratory",
-      "risk": "medium",
-      "reward": "high",
-      "rationale": "Provides strategic framework for understanding AI's disruptive potential"
+      "rationale": "Provides economic framing for understanding how AI reshapes the OSS labor market and career incentives"
     }
-  ],
-  "phd_strategy": {
-    "recommended_theories": [
-      "Legitimate Peripheral Participation",
-      "Absorptive Capacity",
-      "Competence Motivation Theory"
-    ],
-    "rationale": "These theories directly address the core research question while providing complementary perspectives: learning pathways, knowledge integration, and motivation dynamics",
-    "integration_strategy": "Use LPP as primary framework for career pathways, augmented by absorptive capacity for knowledge integration and competence motivation for individual development drivers",
-    "expected_impact": "Creates comprehensive theoretical framework explaining how AI transforms OSS career paths through learning, knowledge, and motivation mechanisms"
-  }
+  ]
 }

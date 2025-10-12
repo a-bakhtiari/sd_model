@@ -1,0 +1,316 @@
+{
+  "theories": [
+    {
+      "name": "Communities of Practice (Wenger)",
+      "rationale": "CoP emphasizes newcomer trajectories from peripheral to core participation, mutual engagement, and a shared repertoire that sustains learning. The current model captures mentorship and progression but lacks mechanisms for retention vs. dropout, psychological safety, onboarding friction, and the practices/rituals that stabilize community identity. Adding these elements clarifies how participation conditions translate into learning and retention, reinforcing feedbacks that grow or erode the community.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Psychological Safety",
+            "type": "Auxiliary",
+            "description": "Perceived safety for newcomers and contributors to ask, fail, and participate without negative repercussions."
+          },
+          {
+            "name": "Onboarding Friction",
+            "type": "Auxiliary",
+            "description": "Practical and social barriers for newcomers to contribute (e.g., unclear setup, norms, tooling)."
+          },
+          {
+            "name": "Newcomer Dropout Rate",
+            "type": "Flow",
+            "description": "Rate at which New Contributors leave the community before progressing."
+          },
+          {
+            "name": "Mentoring Capacity",
+            "type": "Auxiliary",
+            "description": "Effective capacity for mentorship and review support provided by core and experienced contributors given available time."
+          },
+          {
+            "name": "Community Practices and Rituals",
+            "type": "Stock",
+            "description": "Accumulated shared practices (onboarding sessions, review norms, meetings) that support mutual engagement."
+          },
+          {
+            "name": "Practice Formation Rate",
+            "type": "Flow",
+            "description": "Rate of creating or institutionalizing new community practices and rituals."
+          },
+          {
+            "name": "Practice Decay Rate",
+            "type": "Flow",
+            "description": "Rate at which practices/rituals become inactive or are abandoned."
+          }
+        ],
+        "connections": [
+          {
+            "from": "PR Feedback",
+            "to": "Psychological Safety",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Health",
+            "to": "Psychological Safety",
+            "relationship": "positive"
+          },
+          {
+            "from": "PR Review Delay",
+            "to": "Psychological Safety",
+            "relationship": "negative"
+          },
+          {
+            "from": "Culture Erosion",
+            "to": "Psychological Safety",
+            "relationship": "negative"
+          },
+          {
+            "from": "Onboarding Friction",
+            "to": "Newcomer Dropout Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Psychological Safety",
+            "to": "Newcomer Dropout Rate",
+            "relationship": "negative"
+          },
+          {
+            "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "to": "Onboarding Friction",
+            "relationship": "negative"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Mentoring Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Experienced Contributors",
+            "to": "Mentoring Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Maintainer time",
+            "to": "Mentoring Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mentoring Capacity",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mentoring Capacity",
+            "to": "PR Review Delay",
+            "relationship": "negative"
+          },
+          {
+            "from": "Community Practices and Rituals",
+            "to": "Psychological Safety",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community engagement",
+            "to": "Practice Formation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Culture Erosion",
+            "to": "Practice Decay Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Practices and Rituals",
+            "to": "Trust Building",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Practices and Rituals",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Practices and Rituals",
+            "to": "Community engagement",
+            "relationship": "positive"
+          },
+          {
+            "from": "Newcomer Dropout Rate",
+            "to": "New Contributors",
+            "relationship": "negative"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Nonaka's SECI Model",
+      "rationale": "SECI requires explicit representation of socialization, externalization, combination, and internalization dynamics. The model includes mentorship and some conversion flows, but it lacks combination/curation, explicit knowledge quality/obsolescence, discovery/use effectiveness, and a backlog that channels conversion efforts. These additions complete the spiral and make knowledge flows sensitive to production capacity and artifact quality.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Documentation Backlog",
+            "type": "Stock",
+            "description": "Accumulated undocumented insights and needed docs/tutorials derived from issues, PRs, and feedback."
+          },
+          {
+            "name": "Documentation Production Rate",
+            "type": "Flow",
+            "description": "Rate of producing or updating documentation that reduces the Documentation Backlog and increases explicit knowledge."
+          },
+          {
+            "name": "Knowledge Artifact Quality",
+            "type": "Auxiliary",
+            "description": "Average quality, clarity, and usability of explicit knowledge artifacts."
+          },
+          {
+            "name": "Knowledge Discovery Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness with which contributors find and apply relevant explicit knowledge."
+          },
+          {
+            "name": "Combination/Curation Rate",
+            "type": "Flow",
+            "description": "Rate of synthesizing, organizing, and integrating existing explicit knowledge into higher-value artifacts."
+          },
+          {
+            "name": "Explicit Knowledge Obsolescence Rate",
+            "type": "Flow",
+            "description": "Rate at which explicit knowledge becomes outdated and is removed or discounted."
+          },
+          {
+            "name": "Documentation Tooling Maturity",
+            "type": "Auxiliary",
+            "description": "Maturity of tools/processes for authoring, reviewing, and publishing documentation."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Open Issues",
+            "to": "Documentation Backlog",
+            "relationship": "positive"
+          },
+          {
+            "from": "Closed Issues",
+            "to": "Documentation Backlog",
+            "relationship": "positive"
+          },
+          {
+            "from": "PR Feedback",
+            "to": "Documentation Backlog",
+            "relationship": "positive"
+          },
+          {
+            "from": "Documentation Production Rate",
+            "to": "Documentation Backlog",
+            "relationship": "negative"
+          },
+          {
+            "from": "Maintainer time",
+            "to": "Documentation Production Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Documentation Tooling Maturity",
+            "to": "Documentation Production Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Documentation Production Rate",
+            "to": "Projects's Explicit Knowledge",
+            "relationship": "positive"
+          },
+          {
+            "from": "Combination/Curation Rate",
+            "to": "Projects's Explicit Knowledge",
+            "relationship": "positive"
+          },
+          {
+            "from": "Searchable Knowledge Base",
+            "to": "Combination/Curation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Maintainer time",
+            "to": "Combination/Curation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Documentation Tooling Maturity",
+            "to": "Combination/Curation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Projects's Explicit Knowledge",
+            "to": "Explicit Knowledge Obsolescence Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Source Code",
+            "to": "Explicit Knowledge Obsolescence Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Artifact Quality",
+            "to": "Explicit to Implicit Conversion",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Discovery Effectiveness",
+            "to": "Explicit to Implicit Conversion",
+            "relationship": "positive"
+          },
+          {
+            "from": "Searchable Knowledge Base",
+            "to": "Knowledge Discovery Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Projects's Explicit Knowledge",
+            "to": "Knowledge Discovery Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Documentation Tooling Maturity",
+            "to": "Knowledge Artifact Quality",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community engagement",
+            "to": "Knowledge Artifact Quality",
+            "relationship": "positive"
+          },
+          {
+            "from": "Explicit Knowledge Obsolescence Rate",
+            "to": "Projects's Explicit Knowledge",
+            "relationship": "negative"
+          },
+          {
+            "from": "Documentation Production Rate",
+            "to": "Searchable Knowledge Base",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Artifact Quality",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Documentation Backlog",
+            "to": "Onboarding Friction",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    }
+  ]
+}

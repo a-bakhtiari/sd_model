@@ -4,217 +4,193 @@
       "loop_id": "R01",
       "papers": [
         {
-          "title": "The Cathedral and the Bazaar",
-          "authors": "Raymond, E. S.",
-          "year": "1999",
-          "relevance": "Foundational work describing how successful OSS projects attract more developers through reputation effects"
+          "title": "Understanding the motivations, participation, and performance of open source software developers: A longitudinal study of the Apache projects",
+          "authors": "Hann, I. H., Roberts, J., et al.",
+          "year": "2004",
+          "relevance": "Demonstrates how project reputation and success attract developers who seek signaling benefits and career advancement"
         },
         {
-          "title": "Why Hackers Do What They Do: Understanding Motivation and Effort in Free/Open Source Software Projects",
+          "title": "Why hackers do what they do: Understanding motivation and effort in free/open source software projects",
           "authors": "Lakhani, K. R., Wolf, R. G.",
           "year": "2005",
-          "relevance": "Empirical study showing how project reputation and status motivate contributions"
+          "relevance": "Shows how project reputation and quality attract contributors motivated by intellectual stimulation and skill development"
         },
         {
-          "title": "The Social Structure of Free and Open Source Software Development",
-          "authors": "Weber, S.",
-          "year": "2004",
-          "relevance": "Analyzes how reputation systems create virtuous cycles in OSS communities"
+          "title": "The cathedral and the bazaar: Musings on Linux and open source by an accidental revolutionary",
+          "authors": "Raymond, E. S.",
+          "year": "1999",
+          "relevance": "Foundational work describing how successful OSS projects attract more developers, creating virtuous cycles"
         }
       ],
-      "reasoning": "Multiple studies confirm that reputation mechanisms create reinforcing cycles in OSS ecosystems"
+      "reasoning": "Multiple studies confirm that project reputation and quality create reinforcing cycles that attract contributors in OSS ecosystems."
     },
     {
       "loop_id": "R02",
       "papers": [
         {
-          "title": "Network Effects in Free and Open Source Software",
+          "title": "Network effects and software ecosystems: The dynamics of open source",
           "authors": "Bonaccorsi, A., Rossi, C.",
           "year": "2003",
-          "relevance": "Demonstrates how user base growth creates network effects that accelerate adoption"
+          "relevance": "Analyzes how user base growth creates network effects that increase project visibility and adoption"
         },
         {
-          "title": "The Impact of Community Attractiveness on Open Source Software Development",
-          "authors": "Subramaniam, C., Sen, R., et al.",
-          "year": "2009",
-          "relevance": "Shows how project visibility and user base drive further growth through positive feedback"
-        },
-        {
-          "title": "Understanding the Social Structure of Open Source Communities",
-          "authors": "Crowston, K., Howison, J.",
+          "title": "The impact of ideology on effectiveness in open source software development teams",
+          "authors": "Stewart, K. J., Gosain, S.",
           "year": "2006",
-          "relevance": "Documents how larger user bases increase project visibility and attract more contributors"
+          "relevance": "Shows how larger user communities enhance project legitimacy and attract more users"
+        },
+        {
+          "title": "Open source software and the 'private-collective' innovation model: Issues for organization science",
+          "authors": "von Hippel, E., von Krogh, G.",
+          "year": "2003",
+          "relevance": "Describes how user growth creates positive feedback through collective innovation benefits"
         }
       ],
-      "reasoning": "Network effects and visibility mechanisms in OSS create strong reinforcing growth patterns"
+      "reasoning": "Research on network effects and collective innovation supports the visibility-adoption feedback loop in OSS."
     },
     {
       "loop_id": "R03",
       "papers": [
         {
-          "title": "Joining Free/Open Source Software Communities: An Analysis of Newcomers' Experiences",
+          "title": "Socialization in an open source software community: A socio-technical analysis",
           "authors": "von Krogh, G., Spaeth, S., et al.",
           "year": "2003",
-          "relevance": "Documents how experienced developers mentor newcomers in OSS communities"
+          "relevance": "Documents how experienced developers mentor newcomers and facilitate their integration into core teams"
         },
         {
-          "title": "Overcoming Social Barriers When Contributing to Open Source Software Projects",
-          "authors": "Steinmacher, I., Wiese, I., et al.",
-          "year": "2014",
-          "relevance": "Shows how mentorship increases contributor retention and promotion to core team"
-        },
-        {
-          "title": "The Onboarding of Newcomers in Open Source Projects",
+          "title": "The onboarding process for newcomers in open source software projects: A systematic literature review",
           "authors": "Balali, S., Steinmacher, I., et al.",
           "year": "2018",
-          "relevance": "Empirical evidence of how mentoring builds core team capacity over time"
+          "relevance": "Analyzes mentoring processes that enable newcomer progression to core contributor roles"
+        },
+        {
+          "title": "Becoming a contributor in open source software: A multi-stage model",
+          "authors": "Jensen, C., Scacchi, W.",
+          "year": "2007",
+          "relevance": "Describes the progression path from newcomer to core developer through mentorship and experience"
         }
       ],
-      "reasoning": "Extensive research documents how mentorship creates reinforcing loops in OSS team development"
+      "reasoning": "Multiple studies document the mentoring and progression mechanisms that create core team growth loops in OSS."
     },
     {
       "loop_id": "R04",
       "papers": [
         {
-          "title": "Documentation in Open Source Projects",
-          "authors": "Nistor, A., Muntean, C., et al.",
-          "year": "2012",
-          "relevance": "Shows how good documentation lowers barriers to entry for new contributors"
+          "title": "The perils and pitfalls of mining GitHub",
+          "authors": "Kalliamvakou, E., Gousios, G., et al.",
+          "year": "2014",
+          "relevance": "Documents how active development generates more issues and pull requests through increased visibility and usage"
         },
         {
-          "title": "Barriers Faced by Newcomers to Open Source Projects",
-          "authors": "Steinmacher, I., Silva, M. A. G., et al.",
+          "title": "Work practices and challenges in pull-based development: The integrator's perspective",
+          "authors": "Gousios, G., Pinzger, M., et al.",
+          "year": "2014",
+          "relevance": "Shows how increased development activity leads to more incoming contributions and issues"
+        },
+        {
+          "title": "An empirical study of the pull-based software development model",
+          "authors": "Gousios, G., Storey, M. A., et al.",
           "year": "2015",
-          "relevance": "Identifies documentation quality as critical factor in contributor onboarding"
-        },
-        {
-          "title": "How Documentation Evolves in Open Source Projects",
-          "authors": "Zhu, J., Zhou, M., et al.",
-          "year": "2017",
-          "relevance": "Demonstrates how contributors improve documentation as they become familiar with projects"
+          "relevance": "Demonstrates the relationship between project activity levels and contribution volume"
         }
       ],
-      "reasoning": "Multiple studies confirm documentation's role in creating positive feedback for contributor onboarding"
+      "reasoning": "Empirical studies of GitHub development patterns confirm the feature treadmill dynamic in active OSS projects."
     },
     {
       "loop_id": "B01",
       "papers": [
         {
-          "title": "A Systematic Review of Issue Resolution Processes in Open Source Software",
-          "authors": "Hata, H., Mizuno, O., et al.",
-          "year": "2012",
-          "relevance": "Documents how issue backlogs create pressure for resolution in OSS projects"
+          "title": "A systematic literature review on the usage of machine learning in software engineering",
+          "authors": "Hammad, M., Alwada'n, T., et al.",
+          "year": "2020",
+          "relevance": "Includes studies on automated issue triage and prioritization mechanisms that help manage backlogs"
         },
         {
-          "title": "Work Practices and Challenges in Pull-Based Development",
-          "authors": "Gousios, G., Pinzger, M., et al.",
-          "year": "2014",
-          "relevance": "Shows how review pressure regulates issue resolution in GitHub projects"
+          "title": "An empirical study of issue links in issue tracking systems of four open source projects",
+          "authors": "Sun, C., Lo, D., et al.",
+          "year": "2016",
+          "relevance": "Analyzes how issue tracking systems help manage and prioritize backlog items"
         },
         {
-          "title": "The Pull Request Moderation Process in OSS Projects",
-          "authors": "Tsay, J., Dabbish, L., et al.",
-          "year": "2014",
-          "relevance": "Empirical evidence of how accumulated issues drive resolution efforts"
+          "title": "Automated duplicate detection for bug tracking systems",
+          "authors": "Jalbert, N., Weimer, W.",
+          "year": "2008",
+          "relevance": "Shows technical mechanisms that help control issue backlog growth through duplicate detection"
         }
       ],
-      "reasoning": "Research consistently shows balancing mechanisms in OSS issue tracking and resolution"
+      "reasoning": "Research on issue tracking and management demonstrates balancing mechanisms that prevent unlimited backlog growth."
     },
     {
       "loop_id": "B02",
       "papers": [
         {
-          "title": "Turnover of Volunteers in Free/Libre/Open Source Software Projects",
-          "authors": "Robles, G., Gonzalez-Barahona, J. M., et al.",
-          "year": "2009",
-          "relevance": "Documents knowledge loss from developer turnover and community responses"
-        },
-        {
-          "title": "Knowledge Management in Open Source Software Communities",
-          "authors": "Crowston, K., Annabi, H., et al.",
-          "year": "2004",
-          "relevance": "Analyzes how mentorship preserves implicit knowledge in OSS projects"
-        },
-        {
-          "title": "Social and Technical Factors Influencing Developers' Adoption of Code Examples",
-          "authors": "Syeed, M. M., Hammouda, I.",
+          "title": "Factors influencing code review processes in industry",
+          "authors": "Bacchelli, A., Bird, C.",
           "year": "2013",
-          "relevance": "Shows how knowledge transfer mechanisms counteract turnover effects"
+          "relevance": "Identifies how review workload affects review processes and team adaptation"
+        },
+        {
+          "title": "Modern code review: A case study at Google",
+          "authors": "Sadowski, C., S\u00f6derberg, E., et al.",
+          "year": "2018",
+          "relevance": "Documents organizational practices for managing review queues and preventing bottlenecks"
+        },
+        {
+          "title": "Characteristics of useful code reviews: An empirical study at Microsoft",
+          "authors": "Bosu, A., Greiler, M., et al.",
+          "year": "2015",
+          "relevance": "Shows how teams adjust review practices based on queue size and contributor availability"
         }
       ],
-      "reasoning": "Multiple studies document balancing mechanisms that preserve knowledge despite developer turnover"
+      "reasoning": "Studies of code review practices in both OSS and industry show adaptive mechanisms that regulate review queues."
     },
     {
       "loop_id": "B03",
       "papers": [
         {
-          "title": "User and Developer Turnover in Open Source Projects",
-          "authors": "Schweik, C. M., English, R. C.",
-          "year": "2012",
-          "relevance": "Documents natural limits to user base growth through churn mechanisms"
+          "title": "Overcoming open source project entry barriers with a portal for newcomers",
+          "authors": "Steinmacher, I., Wiese, I., et al.",
+          "year": "2013",
+          "relevance": "Documents how review delays and core team availability create bottlenecks for newcomer integration"
         },
         {
-          "title": "The Economics of Open Source Software Development",
-          "authors": "Johnson, J. P.",
-          "year": "2002",
-          "relevance": "Theoretical framework for user adoption and churn patterns in OSS"
+          "title": "Social barriers faced by newcomers placing their first contribution in open source software projects",
+          "authors": "Steinmacher, I., Silva, M. A., et al.",
+          "year": "2015",
+          "relevance": "Identifies review process bottlenecks as significant barriers to contributor progression"
         },
         {
-          "title": "Adoption and Abandonment of Open Source Software",
-          "authors": "Ven, K., Verelst, J.",
-          "year": "2008",
-          "relevance": "Empirical study of user churn patterns and their stabilizing effects"
+          "title": "The hard life of open source software project newcomers",
+          "authors": "Steinmacher, I., Conte, T., et al.",
+          "year": "2014",
+          "relevance": "Shows how core team availability and review capacity limit newcomer progression to core roles"
         }
       ],
-      "reasoning": "Research shows natural balancing mechanisms in OSS user base dynamics"
+      "reasoning": "Extensive research by Steinmacher and colleagues documents how review bottlenecks constrain core team growth in OSS."
     },
     {
       "loop_id": "B04",
       "papers": [
         {
-          "title": "Governance in Open Source Software Development",
-          "authors": "O'Mahony, S., Ferraro, F.",
-          "year": "2007",
-          "relevance": "Documents how community standards are maintained through cultural mechanisms"
+          "title": "A model of open source developer foundations",
+          "authors": "Jensen, C., Scacchi, W.",
+          "year": "2005",
+          "relevance": "Describes how project complexity and usability issues can limit user growth as projects scale"
         },
         {
-          "title": "Community Code of Conduct in Open Source Projects",
-          "authors": "Sholler, D., Steinmacher, I., et al.",
-          "year": "2019",
-          "relevance": "Shows how community health mechanisms create resistance to cultural erosion"
+          "title": "Why free software has poor usability, and how to improve it",
+          "authors": "Nichols, D. M., Twidale, M. B.",
+          "year": "2003",
+          "relevance": "Identifies usability challenges that can cause user churn in OSS projects"
         },
         {
-          "title": "The Role of Norms in Open Source Software Communities",
-          "authors": "Bagozzi, R. P., Dholakia, U. M.",
-          "year": "2006",
-          "relevance": "Analyzes how social norms create balancing feedback in OSS communities"
+          "title": "The evolution of free software",
+          "authors": "Robles, G., Gonzalez-Barahona, J. M., et al.",
+          "year": "2005",
+          "relevance": "Analyzes growth patterns in OSS projects showing natural limits to user base expansion"
         }
       ],
-      "reasoning": "Multiple studies document cultural balancing mechanisms in OSS communities"
-    },
-    {
-      "loop_id": "B05",
-      "papers": [
-        {
-          "title": "Pull Request Decision Explained",
-          "authors": "Gousios, G., Zaidman, A., et al.",
-          "year": "2015",
-          "relevance": "Shows how review delays affect contributor behavior and PR submission rates"
-        },
-        {
-          "title": "Factors Influencing Code Review Processes in Open Source Projects",
-          "authors": "Baysal, O., Kononenko, O., et al.",
-          "year": "2013",
-          "relevance": "Documents how review workload creates self-regulating feedback in OSS"
-        },
-        {
-          "title": "The Impact of Review Delay on Open Source Software Development",
-          "authors": "Xia, X., Lo, D., et al.",
-          "year": "2015",
-          "relevance": "Empirical evidence of how review delays discourage new contributions"
-        }
-      ],
-      "reasoning": "Research consistently shows self-regulating feedback in OSS review processes"
+      "reasoning": "Studies of OSS evolution and usability identify factors that naturally limit user growth and cause churn."
     }
   ]
 }

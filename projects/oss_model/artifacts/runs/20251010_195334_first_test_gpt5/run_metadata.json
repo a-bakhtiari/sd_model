@@ -1,0 +1,38 @@
+{
+  "run_id": "20251010_195334_first_test_gpt5",
+  "project": "oss_model",
+  "timestamp": "2025-10-10T20:05:53.425306",
+  "artifacts_directory": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5",
+  "pipeline_configuration": {
+    "improve_model": false,
+    "verify_citations": false,
+    "discover_papers": true,
+    "apply_patch": false
+  },
+  "artifacts_generated": {
+    "parsed": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/parsing/parsed.json",
+    "loops": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/loops/loops.json",
+    "connections": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/connections/connections.json",
+    "variables": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/parsing/variables.json",
+    "connection_descriptions": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/connections/connection_descriptions.json",
+    "connection_citations": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/connections/connection_citations.json",
+    "connection_citations_verified": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/connections/connection_citations_verified.json",
+    "loop_citations": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/loops/loop_citations.json",
+    "loop_citations_verified": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/loops/loop_citations_verified.json",
+    "citations_verified": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/improvements/citations_verified.json",
+    "gap_analysis": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/improvements/gap_analysis.json",
+    "paper_suggestions": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/improvements/paper_suggestions.json",
+    "connections_csv": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/connections/connections_export.csv",
+    "loops_csv": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/loops/loops_export.csv",
+    "theory_enhancement": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/theory/theory_enhancement.json",
+    "enhanced_mdl": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/mdl/enhanced/20251010_200220_Enhanced/untitled_enhanced.mdl",
+    "archetype_enhancement": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/theory/archetype_enhancement.json",
+    "archetype_mdl": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/mdl/enhanced/20251010_200359_Enhanced/untitled_theory_archetype_enhanced_enhanced.mdl",
+    "rq_alignment": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/research_questions/rq_alignment.json",
+    "rq_refinement": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/research_questions/rq_refinement.json",
+    "theory_discovery": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251010_195334_first_test_gpt5/theory/theory_discovery.json"
+  },
+  "summary": {
+    "total_artifacts": 21
+  }
+}

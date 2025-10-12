@@ -1,65 +1,69 @@
 {
   "citations": [
     {
-      "connection_id": "C01",
+      "connection_id": "C02",
       "papers": [
         {
-          "title": "Turnover of developers in libre software projects",
-          "authors": "Robles, G., Gonz\u00e1lez-Barahona, J. M., et al.",
-          "year": "2009",
-          "relevance": "Empirical study showing how developer turnover affects project sustainability and core team composition",
+          "title": "Social barriers faced by newcomers placing their first contribution in open source software projects",
+          "authors": "Steinmacher, I., Silva, M. A., et al.",
+          "year": "2015",
+          "relevance": "Documents how skill development enables newcomers to transition to active contributors",
           "verified": true,
           "verification_method": "semantic_scholar_with_llm",
           "semantic_scholar_match": {
-            "title": "Contributor Turnover in Libre Software Projects",
+            "title": "Social Barriers Faced by Newcomers Placing Their First Contribution in Open Source Software Projects",
             "authors": [
-              "G. Robles",
-              "Jesus M. Gonzalez-Barahona"
+              "Igor Steinmacher",
+              "T. Conte",
+              "M. Gerosa",
+              "D. Redmiles"
             ],
-            "year": 2006,
-            "url": "https://www.semanticscholar.org/paper/805937789c2a540c33f36a876b8991fdcd34f1ce",
-            "paper_id": "805937789c2a540c33f36a876b8991fdcd34f1ce",
-            "citation_count": 116,
+            "year": 2015,
+            "url": "https://www.semanticscholar.org/paper/18163f9f03c51a0f68d87523b52238680273acaf",
+            "paper_id": "18163f9f03c51a0f68d87523b52238680273acaf",
+            "citation_count": 276,
             "abstract": null,
-            "venue": "International Conference on Open Source Systems",
+            "venue": "Conference on Computer Supported Cooperative Work",
             "fields_of_study": [
-              "Computer Science",
-              "Engineering"
-            ]
-          }
-        }
-      ],
-      "reasoning": "These papers provide empirical evidence of how developer turnover directly reduces core developer capacity through knowledge loss and reduced project continuity."
-    },
-    {
-      "connection_id": "C08",
-      "papers": [
-        {
-          "title": "The social structure of free and open source software development",
-          "authors": "Crowston, K., Howison, J.",
-          "year": "2005",
-          "relevance": "Documents how core developer availability enables effective mentorship and knowledge sharing",
-          "verified": true,
-          "verification_method": "semantic_scholar_with_llm",
-          "semantic_scholar_match": {
-            "title": "The social structure of free and open source software development",
-            "authors": [
-              "Kevin Crowston",
-              "J. Howison"
-            ],
-            "year": 2005,
-            "url": "https://www.semanticscholar.org/paper/bae5575284776cabed101750ac41848c700af431",
-            "paper_id": "bae5575284776cabed101750ac41848c700af431",
-            "citation_count": 562,
-            "abstract": null,
-            "venue": "First Monday",
-            "fields_of_study": [
+              "Sociology",
               "Computer Science"
             ]
           }
         }
       ],
-      "reasoning": "These studies demonstrate that larger core developer populations increase mentorship capacity and facilitate implicit knowledge transfer through social structures and coordination mechanisms."
+      "reasoning": "Extensive research on OSS onboarding demonstrates that skill development is essential for transitioning individuals from learning to active contribution."
+    },
+    {
+      "connection_id": "C07",
+      "papers": [
+        {
+          "title": "Knowledge collaboration in online communities",
+          "authors": "Faraj, S., Jarvenpaa, S. L., et al.",
+          "year": "2011",
+          "relevance": "Theoretical framework showing how knowledge transfer enables role advancement",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Knowledge Collaboration in Online Communities",
+            "authors": [
+              "Samer Faraj",
+              "S. Jarvenpaa",
+              "A. Majchrzak"
+            ],
+            "year": 2011,
+            "url": "https://www.semanticscholar.org/paper/bc7e13b992329bcfaea9142695d5bb06de596703",
+            "paper_id": "bc7e13b992329bcfaea9142695d5bb06de596703",
+            "citation_count": 989,
+            "abstract": null,
+            "venue": "Organ. Sci.",
+            "fields_of_study": [
+              "Computer Science",
+              "Sociology"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Research on knowledge transfer and mentorship demonstrates how these mechanisms prepare contributors for promotion to advanced roles."
     }
   ],
   "summary": {

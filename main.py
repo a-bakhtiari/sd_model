@@ -49,12 +49,7 @@ def main() -> None:
     parser.add_argument(
         "--citations",
         action="store_true",
-        help="Generate LLM-based citations for connections/loops"
-    )
-    parser.add_argument(
-        "--verify-citations",
-        action="store_true",
-        help="Verify citations via Semantic Scholar (requires --citations or enables it automatically)"
+        help="Generate and verify citations for connections/loops via Semantic Scholar"
     )
 
     # Model improvement features
@@ -62,6 +57,11 @@ def main() -> None:
         "--theory-enhancement",
         action="store_true",
         help="Suggest theory-based model enhancements and generate enhanced MDL file"
+    )
+    parser.add_argument(
+        "--archetype-detection",
+        action="store_true",
+        help="Detect system archetypes and suggest missing loops/variables"
     )
     parser.add_argument(
         "--rq-analysis",
@@ -72,6 +72,16 @@ def main() -> None:
         "--theory-discovery",
         action="store_true",
         help="Discover relevant theories for the model"
+    )
+    parser.add_argument(
+        "--gap-analysis",
+        action="store_true",
+        help="Identify unsupported connections (requires --citations or enables it automatically)"
+    )
+    parser.add_argument(
+        "--discover-papers",
+        action="store_true",
+        help="Find papers for unsupported connections (requires --gap-analysis or enables it automatically)"
     )
 
     # Convenience flags
@@ -112,24 +122,28 @@ def main() -> None:
         # Enable all optional features
         args.loops = True
         args.citations = True
-        args.verify_citations = True
         args.theory_enhancement = True
+        args.archetype_detection = True
         args.rq_analysis = True
         args.theory_discovery = True
+        args.gap_analysis = True
+        args.discover_papers = True
 
     if args.improve_model:
         # Enable all model improvement features
         args.theory_enhancement = True
+        args.archetype_detection = True
         args.rq_analysis = True
         args.theory_discovery = True
 
     # Handle dependencies - auto-enable required features
-    # Citations always auto-enable verification (no point in unverified citations)
-    if args.citations:
-        args.verify_citations = True
-
-    if args.verify_citations and not args.citations:
+    if args.gap_analysis and not args.citations:
         args.citations = True
+
+    if args.discover_papers and not args.gap_analysis:
+        args.gap_analysis = True
+        if not args.citations:
+            args.citations = True
 
     setup_logging()
     logger = logging.getLogger(__name__)
@@ -142,11 +156,13 @@ def main() -> None:
             # Core optional features
             run_loops=args.loops,
             run_citations=args.citations,
-            verify_cit=args.verify_citations,
             # Model improvement features
             run_theory_enhancement=args.theory_enhancement,
+            run_archetype_detection=args.archetype_detection,
             run_rq_analysis=args.rq_analysis,
             run_theory_discovery=args.theory_discovery,
+            run_gap_analysis=args.gap_analysis,
+            discover_papers=args.discover_papers,
             # Other options
             apply_patch=args.apply_patch,
             save_run=args.save_run,

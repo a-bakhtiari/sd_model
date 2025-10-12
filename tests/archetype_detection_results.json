@@ -1,115 +1,202 @@
 {
   "archetypes": [
     {
-      "name": "Limits to Success",
-      "detected": true,
-      "confidence": 0.7,
-      "evidence": {
-        "reinforcing_growth_loop": [
-          "New Contributors",
-          "Experienced Contributors",
-          "Core Developer"
-        ],
-        "limiting_factor": [
-          "Developer's Turnover"
-        ],
-        "balancing_loop": [
-          "Developer's Turnover",
-          "Core Developer"
-        ]
-      },
-      "missing_components": {
+      "name": "Limits to Growth (Limits to Success)",
+      "rationale": "The model shows a growth engine where Project Reputation drives Joining Rate of new contributors, which should increase development capacity. However, this growth creates counteracting forces - more contributors increase PR Review Delay due to limited Core Developer capacity, and more activity creates more Open Issues that require Maintainer time. These balancing loops can limit the growth potential of the project.",
+      "additions": {
         "variables": [
           {
-            "name": "Project Attractiveness",
+            "name": "Growth Pressure",
             "type": "Auxiliary",
-            "rationale": "To represent the factor that drives initial contributor growth and eventually becomes constrained"
+            "description": "The pressure from increasing project activity that strains limited resources",
+            "rationale": "Needed to represent the increasing demand on limited core developer capacity"
           },
           {
-            "name": "Workload Pressure",
+            "name": "Capacity Constraint",
             "type": "Auxiliary",
-            "rationale": "To represent the increasing burden on core developers that leads to turnover"
+            "description": "The limiting factor of core developer availability and maintainer time",
+            "rationale": "Explicitly represents the system constraint that balances the growth engine"
+          }
+        ],
+        "connections": [
+          {
+            "from": "New Contributors",
+            "to": "Growth Pressure",
+            "relationship": "positive",
+            "rationale": "More contributors increase pressure on the system"
+          },
+          {
+            "from": "New Pull request",
+            "to": "Growth Pressure",
+            "relationship": "positive",
+            "rationale": "More pull requests increase review workload"
+          },
+          {
+            "from": "Open Issues",
+            "to": "Growth Pressure",
+            "relationship": "positive",
+            "rationale": "More issues increase maintenance workload"
+          },
+          {
+            "from": "Growth Pressure",
+            "to": "PR Review Delay",
+            "relationship": "positive",
+            "rationale": "Increased pressure leads to longer review delays"
+          },
+          {
+            "from": "Growth Pressure",
+            "to": "Developer's Turnover",
+            "relationship": "positive",
+            "rationale": "High pressure can lead to burnout and turnover"
+          },
+          {
+            "from": "Capacity Constraint",
+            "to": "Review Rate",
+            "relationship": "negative",
+            "rationale": "Limited capacity constrains how quickly reviews can be processed"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Shifting the Burden (Addiction/Dependence)",
+      "rationale": "The model shows potential for shifting from long-term capacity building (knowledge transfer, mentorship) to short-term fixes. When PR Review Delay increases, there may be pressure to quickly merge PRs without proper review or documentation, which undermines knowledge transfer and quality processes. This creates a dependency on quick fixes rather than building sustainable development capacity.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Quick Fix Pressure",
+            "type": "Auxiliary",
+            "description": "Pressure to use quick solutions rather than proper processes",
+            "rationale": "Represents the temptation to bypass proper review and documentation"
+          },
+          {
+            "name": "Quality Sacrifice",
+            "type": "Auxiliary",
+            "description": "Reduction in code quality and process adherence due to pressure",
+            "rationale": "Captures the negative consequences of shifting to quick fixes"
+          }
+        ],
+        "connections": [
+          {
+            "from": "PR Review Delay",
+            "to": "Quick Fix Pressure",
+            "relationship": "positive",
+            "rationale": "Long delays create pressure to bypass proper processes"
+          },
+          {
+            "from": "Open Issues",
+            "to": "Quick Fix Pressure",
+            "relationship": "positive",
+            "rationale": "Many open issues create pressure for quick solutions"
+          },
+          {
+            "from": "Quick Fix Pressure",
+            "to": "Merge/Commit",
+            "relationship": "positive",
+            "rationale": "Pressure leads to faster merging with less review"
+          },
+          {
+            "from": "Quick Fix Pressure",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "negative",
+            "rationale": "Quick fixes reduce time available for proper mentorship"
+          },
+          {
+            "from": "Quick Fix Pressure",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "relationship": "negative",
+            "rationale": "Pressure reduces documentation efforts"
+          },
+          {
+            "from": "Quality Sacrifice",
+            "to": "Software Quality and Features",
+            "relationship": "negative",
+            "rationale": "Quick fixes reduce overall software quality"
+          },
+          {
+            "from": "Quality Sacrifice",
+            "to": "Issue Creation Rate",
+            "relationship": "positive",
+            "rationale": "Lower quality leads to more issues being created"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Success to the Successful (Competitive Exclusion)",
+      "rationale": "The model shows reinforcement where Core Developers get more PR Feedback opportunities and mentorship access, while New Contributors struggle with delays and limited guidance. This creates a 'rich get richer' dynamic where experienced contributors become more successful while newcomers face barriers, potentially limiting diversity and long-term sustainability of the contributor base.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Resource Allocation Bias",
+            "type": "Auxiliary",
+            "description": "Unequal distribution of attention and resources toward core vs new contributors",
+            "rationale": "Captures the preferential treatment that reinforces existing success"
+          },
+          {
+            "name": "Newcomer Barrier",
+            "type": "Auxiliary",
+            "description": "Obstacles faced by new contributors in getting attention and support",
+            "rationale": "Represents the systemic barriers that maintain the success imbalance"
           }
         ],
         "connections": [
           {
             "from": "Core Developer",
-            "to": "Workload Pressure",
+            "to": "Resource Allocation Bias",
             "relationship": "positive",
-            "rationale": "More core developers create coordination complexity and workload"
+            "rationale": "More core developers increases bias toward established contributors"
           },
           {
-            "from": "Workload Pressure",
+            "from": "Resource Allocation Bias",
+            "to": "PR Feedback",
+            "relationship": "positive",
+            "rationale": "Bias directs more feedback opportunities to core developers"
+          },
+          {
+            "from": "Resource Allocation Bias",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive",
+            "rationale": "Bias provides more mentorship to already successful contributors"
+          },
+          {
+            "from": "Resource Allocation Bias",
+            "to": "Newcomer Barrier",
+            "relationship": "positive",
+            "rationale": "Resource bias creates higher barriers for newcomers"
+          },
+          {
+            "from": "Newcomer Barrier",
+            "to": "Skill up",
+            "relationship": "negative",
+            "rationale": "Barriers slow down skill development for new contributors"
+          },
+          {
+            "from": "Newcomer Barrier",
             "to": "Developer's Turnover",
             "relationship": "positive",
-            "rationale": "High workload pressure increases turnover rate"
-          },
-          {
-            "from": "Workload Pressure",
-            "to": "Project Attractiveness",
-            "relationship": "negative",
-            "rationale": "High workload makes the project less attractive to new contributors"
+            "rationale": "High barriers lead to frustration and turnover among new contributors"
           }
         ]
       },
-      "rationale": "The model shows a reinforcing growth loop of contributors progressing to core developers, but this growth is limited by developer turnover, creating a classic limits to success pattern where growth eventually hits constraints."
-    },
-    {
-      "name": "Shifting the Burden",
-      "detected": true,
-      "confidence": 0.6,
-      "evidence": {
-        "symptom": [
-          "Developer's Turnover"
-        ],
-        "symptomatic_solution": [
-          "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"
-        ],
-        "fundamental_solution": [
-          "Implicit Knowledge Transfer (Mentorship)"
-        ]
+      "modifications": {
+        "variables": []
       },
-      "missing_components": {
-        "variables": [
-          {
-            "name": "Knowledge Retention",
-            "type": "Stock",
-            "rationale": "To represent the accumulated organizational knowledge that affects project sustainability"
-          },
-          {
-            "name": "Quick Fix Pressure",
-            "type": "Auxiliary",
-            "rationale": "To represent the urgency driving preference for quick documentation over mentorship"
-          }
-        ],
-        "connections": [
-          {
-            "from": "Implicit Knowledge Transfer (Mentorship)",
-            "to": "Knowledge Retention",
-            "relationship": "positive",
-            "rationale": "Mentorship builds deep, sustainable knowledge"
-          },
-          {
-            "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
-            "to": "Knowledge Retention",
-            "relationship": "positive",
-            "rationale": "Documentation provides quick but superficial knowledge transfer"
-          },
-          {
-            "from": "Developer's Turnover",
-            "to": "Quick Fix Pressure",
-            "relationship": "positive",
-            "rationale": "High turnover creates pressure for quick solutions"
-          }
-        ]
-      },
-      "rationale": "The model suggests potential reliance on explicit documentation as a quick fix for knowledge loss, while the more fundamental solution of mentorship may be underutilized, representing a shifting the burden pattern."
+      "removals": {
+        "variables": []
+      }
     }
-  ],
-  "summary": {
-    "archetypes_detected": 2,
-    "high_confidence": 0,
-    "total_variables_suggested": 4,
-    "total_connections_suggested": 6
-  }
+  ]
 }

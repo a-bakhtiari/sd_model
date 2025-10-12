@@ -6,19 +6,15 @@
     },
     {
       "id": "R02",
-      "description": "This virtuous cycle amplifies team capability as mentorship builds experienced contributors who get promoted, creating more mentors to continue the skill-building process."
-    },
-    {
-      "id": "R03",
-      "description": "This reinforcing loop expands the contributor pipeline as new members gain skills and get promoted, eventually becoming mentors who accelerate skill development for others."
+      "description": "This virtuous cycle amplifies team capability as mentorship builds experienced contributors who get promoted, creating more mentors to continue the cycle."
     },
     {
       "id": "B01",
-      "description": "This balancing loop stabilizes team size by limiting core developer growth as natural turnover creates vacancies that must be filled through promotion."
+      "description": "This balancing loop maintains team stability by limiting growth; as the core team grows, turnover increases, naturally regulating its size."
     },
     {
       "id": "B02",
-      "description": "This balancing loop creates equilibrium in team composition by ensuring the promotion rate from experienced contributors matches the capacity for effective mentorship from core developers."
+      "description": "This balancing loop creates a delayed constraint on growth; while mentorship builds the contributor pipeline, it temporarily diverts core developer effort from coding."
     }
   ]
 }

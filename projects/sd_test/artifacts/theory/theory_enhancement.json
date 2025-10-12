@@ -2,49 +2,49 @@
   "theories": [
     {
       "name": "Communities of Practice (Wenger)",
-      "rationale": "The current model captures movement from periphery to core but lacks key community dynamics. Adding legitimate peripheral participation and boundary objects will better represent how newcomers become integrated into the community through gradual engagement and shared artifacts.",
+      "rationale": "The current model captures the movement from New to Experienced to Core Contributors but lacks key CoP concepts like legitimate peripheral participation and boundary interactions. Adding variables for peripheral participation effectiveness and community boundary spanning will better model how newcomers gradually become integrated into the community through legitimate participation opportunities and boundary objects.",
       "additions": {
         "variables": [
           {
-            "name": "Legitimate Peripheral Participation Rate",
-            "type": "Flow",
-            "description": "Rate at which newcomers engage in simple, low-risk community activities that provide learning opportunities"
-          },
-          {
-            "name": "Community Boundary Objects",
-            "type": "Stock",
-            "description": "Shared artifacts like code examples, templates, and standard practices that enable coordination between different participation levels"
-          },
-          {
-            "name": "Community Engagement Effectiveness",
+            "name": "Peripheral Participation Effectiveness",
             "type": "Auxiliary",
-            "description": "Effectiveness of community practices in facilitating newcomer integration and learning"
+            "description": "Effectiveness of newcomers engaging in legitimate peripheral activities"
+          },
+          {
+            "name": "Community Boundary Spanning",
+            "type": "Auxiliary",
+            "description": "Effectiveness of boundary objects and interactions that connect newcomers to the community"
+          },
+          {
+            "name": "Community Identity Strength",
+            "type": "Stock",
+            "description": "Accumulated shared identity and mutual engagement within the community"
           }
         ],
         "connections": [
           {
-            "from": "Legitimate Peripheral Participation Rate",
+            "from": "Peripheral Participation Effectiveness",
             "to": "Skill up",
             "relationship": "positive"
           },
           {
-            "from": "Community Boundary Objects",
-            "to": "Legitimate Peripheral Participation Rate",
+            "from": "Community Boundary Spanning",
+            "to": "Peripheral Participation Effectiveness",
             "relationship": "positive"
           },
           {
             "from": "Core Developer",
-            "to": "Community Boundary Objects",
+            "to": "Community Identity Strength",
             "relationship": "positive"
           },
           {
-            "from": "Community Engagement Effectiveness",
-            "to": "Legitimate Peripheral Participation Rate",
+            "from": "Community Identity Strength",
+            "to": "Peripheral Participation Effectiveness",
             "relationship": "positive"
           },
           {
             "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
-            "to": "Community Boundary Objects",
+            "to": "Community Boundary Spanning",
             "relationship": "positive"
           }
         ]
@@ -58,54 +58,79 @@
     },
     {
       "name": "Nonaka's SECI Model",
-      "rationale": "The current model has implicit and explicit knowledge but misses the complete knowledge spiral. Adding socialization spaces and internalization processes will capture how tacit knowledge becomes explicit and gets re-absorbed, creating a continuous knowledge creation cycle essential for community sustainability.",
+      "rationale": "The current model has implicit and explicit knowledge transfer but doesn't capture the full SECI knowledge spiral. Adding variables for knowledge externalization, combination, and internalization will model how tacit knowledge becomes explicit, gets combined with existing knowledge, and is then internalized by community members, creating a complete knowledge creation cycle.",
       "additions": {
         "variables": [
           {
-            "name": "Socialization Spaces",
-            "type": "Stock",
-            "description": "Opportunities for tacit knowledge sharing through informal interactions, pair programming, and community events"
+            "name": "Knowledge Externalization Rate",
+            "type": "Flow",
+            "description": "Rate at which tacit knowledge is converted to explicit knowledge"
+          },
+          {
+            "name": "Knowledge Combination Rate",
+            "type": "Flow",
+            "description": "Rate at which explicit knowledge is combined and systematized"
           },
           {
             "name": "Knowledge Internalization Rate",
             "type": "Flow",
-            "description": "Rate at which explicit knowledge is absorbed and converted into individual tacit knowledge and skills"
+            "description": "Rate at which explicit knowledge is converted to tacit knowledge through practice"
           },
           {
-            "name": "Knowledge Externalization Effectiveness",
-            "type": "Auxiliary",
-            "description": "Effectiveness of converting tacit knowledge into explicit, shareable forms"
+            "name": "Project's Explicit Knowledge Base",
+            "type": "Stock",
+            "description": "Accumulated explicit knowledge in documentation, code, and guides"
+          },
+          {
+            "name": "Community's Tacit Knowledge",
+            "type": "Stock",
+            "description": "Accumulated tacit knowledge held by community members"
           }
         ],
         "connections": [
           {
-            "from": "Socialization Spaces",
-            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "from": "Implicit Knowledge Transfer (Mentorship)",
+            "to": "Knowledge Externalization Rate",
             "relationship": "positive"
           },
           {
             "from": "Core Developer",
-            "to": "Socialization Spaces",
+            "to": "Knowledge Externalization Rate",
             "relationship": "positive"
           },
           {
-            "from": "Knowledge Internalization Rate",
-            "to": "Skill up",
+            "from": "Knowledge Externalization Rate",
+            "to": "Project's Explicit Knowledge Base",
             "relationship": "positive"
           },
           {
-            "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "from": "Project's Explicit Knowledge Base",
+            "to": "Knowledge Combination Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Combination Rate",
+            "to": "Project's Explicit Knowledge Base",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project's Explicit Knowledge Base",
             "to": "Knowledge Internalization Rate",
             "relationship": "positive"
           },
           {
-            "from": "Knowledge Externalization Effectiveness",
-            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "from": "Knowledge Internalization Rate",
+            "to": "Community's Tacit Knowledge",
             "relationship": "positive"
           },
           {
-            "from": "Core Developer",
-            "to": "Knowledge Externalization Effectiveness",
+            "from": "Community's Tacit Knowledge",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community's Tacit Knowledge",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
             "relationship": "positive"
           }
         ]

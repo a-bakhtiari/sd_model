@@ -1,0 +1,36 @@
+{
+  "descriptions": [
+    {
+      "id": "R01",
+      "description": "This reinforcing loop creates a virtuous cycle where a good reputation attracts contributors whose work improves the software, which in turn further enhances the project's reputation."
+    },
+    {
+      "id": "R02",
+      "description": "This reinforcing loop amplifies growth as a larger user base increases the project's visibility and adoption, which directly strengthens its reputation."
+    },
+    {
+      "id": "R03",
+      "description": "This reinforcing loop grows the core team as experienced developers mentor newcomers, increasing the promotion rate and expanding the core developer group."
+    },
+    {
+      "id": "R04",
+      "description": "This reinforcing loop accelerates contributor onboarding; better documentation lowers the barrier to entry, attracting more contributors who enhance the project."
+    },
+    {
+      "id": "B01",
+      "description": "This balancing loop regulates the issue backlog by creating a workflow where new PRs address issues, but review delays can slow the overall resolution rate."
+    },
+    {
+      "id": "B02",
+      "description": "This balancing loop counteracts core team growth; developer turnover depletes implicit knowledge, which can slow the mentorship needed to create new core developers."
+    },
+    {
+      "id": "B03",
+      "description": "This balancing loop stabilizes the user base by causing user churn to counteract growth, preventing unlimited expansion and seeking an equilibrium."
+    },
+    {
+      "id": "B04",
+      "description": "This balancing loop self-regulates the PR review queue; a large backlog increases review delay, which can discourage new contributions and reduce the inflow of new PRs."
+    }
+  ]
+}

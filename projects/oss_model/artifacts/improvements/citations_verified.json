@@ -1,5 +1,5 @@
 {
-  "verified_at": "2025-10-10T19:35:51.083689Z",
+  "verified_at": "2025-10-10T23:38:11.738368Z",
   "total_citations": 2,
   "verified_count": 0,
   "unverified_count": 2,
@@ -14,7 +14,7 @@
       "citation_count": null,
       "url": null,
       "abstract": null,
-      "verified_at": "2025-10-10T19:35:51.083689Z"
+      "verified_at": "2025-10-10T23:38:11.738368Z"
     },
     "Wenger 1998": {
       "citation_key": "Wenger 1998",
@@ -26,7 +26,7 @@
       "citation_count": null,
       "url": null,
       "abstract": null,
-      "verified_at": "2025-10-10T19:35:51.083689Z"
+      "verified_at": "2025-10-10T23:38:11.738368Z"
     }
   }
 }

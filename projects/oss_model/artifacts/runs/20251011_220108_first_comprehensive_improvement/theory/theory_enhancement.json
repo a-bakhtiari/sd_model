@@ -1,0 +1,1116 @@
+{
+  "theories": [
+    {
+      "name": "Communities of Practice (Wenger)",
+      "rationale": "The model already captures movement from newcomer to core via skill up and promotion, plus mentorship. It lacks explicit levers for mentoring capacity, peer support among newcomers, and identity-based retention. Adding these clarifies how social participation and feedback shape learning trajectories and retention, strengthening CoP dynamics.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Newcomer Dropout Rate",
+            "type": "Flow",
+            "description": "Rate at which New Contributors disengage due to poor socialization or friction."
+          },
+          {
+            "name": "Core Developer Mentoring Capacity",
+            "type": "Auxiliary",
+            "description": "Effective capacity of core developers to mentor newcomers given time and numbers."
+          },
+          {
+            "name": "Peer Support Among Newcomers",
+            "type": "Auxiliary",
+            "description": "Degree of mutual aid and knowledge sharing among newcomers."
+          },
+          {
+            "name": "Community Identity Strength",
+            "type": "Auxiliary",
+            "description": "Sense of belonging and identification with the project community."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Maintainer time",
+            "to": "Core Developer Mentoring Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Core Developer Mentoring Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer Mentoring Capacity",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          },
+          {
+            "from": "New Contributors",
+            "to": "Peer Support Among Newcomers",
+            "relationship": "positive"
+          },
+          {
+            "from": "Discussions",
+            "to": "Peer Support Among Newcomers",
+            "relationship": "positive"
+          },
+          {
+            "from": "Peer Support Among Newcomers",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Peer Support Among Newcomers",
+            "to": "Newcomer Dropout Rate",
+            "relationship": "negative"
+          },
+          {
+            "from": "PR Review Delay",
+            "to": "Newcomer Dropout Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "PR Feedback",
+            "to": "Newcomer Dropout Rate",
+            "relationship": "negative"
+          },
+          {
+            "from": "Community Health",
+            "to": "Newcomer Dropout Rate",
+            "relationship": "negative"
+          },
+          {
+            "from": "Newcomer Dropout Rate",
+            "to": "New Contributors",
+            "relationship": "negative"
+          },
+          {
+            "from": "Community Health",
+            "to": "Community Identity Strength",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Reputation",
+            "to": "Community Identity Strength",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Identity Strength",
+            "to": "Trust Building",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Identity Strength",
+            "to": "Culture Erosion",
+            "relationship": "negative"
+          },
+          {
+            "from": "Community Identity Strength",
+            "to": "Joining Rate",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Nonaka's SECI Model",
+      "rationale": "The model includes tacit/explicit stocks and some conversion, but externalization is conflated and internalization lacks a clear quality factor. Separating an explicit Implicit\u2192Explicit flow and adding effectiveness levers for externalization and internalization makes the SECI spiral operational and policy-sensitive.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Implicit to Explicit Conversion",
+            "type": "Flow",
+            "description": "Rate of converting Project's Implicit Knowledge into codified, shareable explicit artifacts."
+          },
+          {
+            "name": "Externalization Effort",
+            "type": "Auxiliary",
+            "description": "Effort allocated to eliciting and documenting tacit knowledge."
+          },
+          {
+            "name": "Internalization Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness with which contributors learn from explicit knowledge."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Project's Implicit Knowledge",
+            "to": "Implicit to Explicit Conversion",
+            "relationship": "positive"
+          },
+          {
+            "from": "Implicit to Explicit Conversion",
+            "to": "Project's Implicit Knowledge",
+            "relationship": "negative"
+          },
+          {
+            "from": "Implicit to Explicit Conversion",
+            "to": "Projects's Explicit Knowledge",
+            "relationship": "positive"
+          },
+          {
+            "from": "Maintainer time",
+            "to": "Externalization Effort",
+            "relationship": "positive"
+          },
+          {
+            "from": "Externalization Effort",
+            "to": "Implicit to Explicit Conversion",
+            "relationship": "positive"
+          },
+          {
+            "from": "PR Feedback",
+            "to": "Implicit to Explicit Conversion",
+            "relationship": "positive"
+          },
+          {
+            "from": "Closed Issues",
+            "to": "Implicit to Explicit Conversion",
+            "relationship": "positive"
+          },
+          {
+            "from": "Projects's Explicit Knowledge",
+            "to": "Internalization Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "to": "Internalization Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Internalization Effectiveness",
+            "to": "Explicit to Implicit Conversion",
+            "relationship": "positive"
+          },
+          {
+            "from": "Internalization Effectiveness",
+            "to": "Skill up",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "The Coevolution of New Organizational Forms",
+      "rationale": "Projects coevolve their processes and tools in response to ecosystem pressures (users, issue load) and internal culture. Adding process/tooling maturity stocks with adaptation/decay flows, driven by ecosystem pressure, captures this coevolution and its impact on throughput and delay.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Contribution Process Maturity",
+            "type": "Stock",
+            "description": "Maturity of contribution workflows (templates, CI, checklists, automation)."
+          },
+          {
+            "name": "Process Adaptation Rate",
+            "type": "Flow",
+            "description": "Rate of improving or updating contribution processes."
+          },
+          {
+            "name": "Process Decay Rate",
+            "type": "Flow",
+            "description": "Rate at which processes become outdated or are bypassed."
+          },
+          {
+            "name": "Tooling Maturity",
+            "type": "Stock",
+            "description": "Maturity of project tooling (CI/CD, bots, linters, triage automation)."
+          },
+          {
+            "name": "Tooling Investment Rate",
+            "type": "Flow",
+            "description": "Rate of investing in or adopting new tooling."
+          },
+          {
+            "name": "Tooling Obsolescence Rate",
+            "type": "Flow",
+            "description": "Rate at which existing tooling becomes obsolete or breaks."
+          },
+          {
+            "name": "Ecosystem Pressure",
+            "type": "Auxiliary",
+            "description": "External/internal demand to change processes and tools."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Process Adaptation Rate",
+            "to": "Contribution Process Maturity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Process Decay Rate",
+            "to": "Contribution Process Maturity",
+            "relationship": "negative"
+          },
+          {
+            "from": "Culture Erosion",
+            "to": "Process Decay Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "User Base",
+            "to": "Ecosystem Pressure",
+            "relationship": "positive"
+          },
+          {
+            "from": "Open Issues",
+            "to": "Ecosystem Pressure",
+            "relationship": "positive"
+          },
+          {
+            "from": "Ecosystem Pressure",
+            "to": "Process Adaptation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Contribution Process Maturity",
+            "to": "Review Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Contribution Process Maturity",
+            "to": "PR Review Delay",
+            "relationship": "negative"
+          },
+          {
+            "from": "Contribution Process Maturity",
+            "to": "Issue Resolution Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Tooling Investment Rate",
+            "to": "Tooling Maturity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Tooling Obsolescence Rate",
+            "to": "Tooling Maturity",
+            "relationship": "negative"
+          },
+          {
+            "from": "Maintainer time",
+            "to": "Tooling Investment Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Ecosystem Pressure",
+            "to": "Tooling Investment Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Tooling Maturity",
+            "to": "Review Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Tooling Maturity",
+            "to": "PR Review Delay",
+            "relationship": "negative"
+          },
+          {
+            "from": "Tooling Maturity",
+            "to": "Issue Resolution Rate",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Adaptive Structuration Theory",
+      "rationale": "AST emphasizes how formal structures (rules, guidelines) are appropriated by users, impacting outcomes. By adding governance formalization, change/erosion flows, and an appropriation fit construct, we can represent how clarity and fit shape review throughput and rejection patterns.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Governance Formalization Level",
+            "type": "Stock",
+            "description": "Degree to which contribution rules and roles are formalized."
+          },
+          {
+            "name": "Governance Change Rate",
+            "type": "Flow",
+            "description": "Rate of introducing or revising governance rules."
+          },
+          {
+            "name": "Governance Erosion Rate",
+            "type": "Flow",
+            "description": "Rate at which rules are ignored, outdated, or undermined."
+          },
+          {
+            "name": "Contribution Guidelines Clarity",
+            "type": "Auxiliary",
+            "description": "Clarity and accessibility of contribution guidelines."
+          },
+          {
+            "name": "Structure Appropriation Fit",
+            "type": "Auxiliary",
+            "description": "Fit between formal structures and contributor practices."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Governance Change Rate",
+            "to": "Governance Formalization Level",
+            "relationship": "positive"
+          },
+          {
+            "from": "Governance Erosion Rate",
+            "to": "Governance Formalization Level",
+            "relationship": "negative"
+          },
+          {
+            "from": "Maintainer time",
+            "to": "Governance Change Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Open Issues",
+            "to": "Governance Change Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Culture Erosion",
+            "to": "Governance Erosion Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Governance Formalization Level",
+            "to": "Contribution Guidelines Clarity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Projects's Explicit Knowledge",
+            "to": "Contribution Guidelines Clarity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Contribution Guidelines Clarity",
+            "to": "Structure Appropriation Fit",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Health",
+            "to": "Structure Appropriation Fit",
+            "relationship": "positive"
+          },
+          {
+            "from": "Structure Appropriation Fit",
+            "to": "Review Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Structure Appropriation Fit",
+            "to": "PR Review Delay",
+            "relationship": "negative"
+          },
+          {
+            "from": "Structure Appropriation Fit",
+            "to": "Rejection Rate",
+            "relationship": "negative"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Stability and Change in Organizational Routines",
+      "rationale": "Routines stabilize performance yet drift without investment. A stock for routine effectiveness with learning and drift flows links feedback and culture to throughput and delays, capturing both persistence and change in routine performance.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Routine Effectiveness",
+            "type": "Stock",
+            "description": "Effectiveness of established routines for PR review and issue triage."
+          },
+          {
+            "name": "Routine Learning Rate",
+            "type": "Flow",
+            "description": "Rate of improving routines through reflection and feedback."
+          },
+          {
+            "name": "Routine Drift Rate",
+            "type": "Flow",
+            "description": "Rate of routine degradation or misalignment."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Routine Learning Rate",
+            "to": "Routine Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Routine Drift Rate",
+            "to": "Routine Effectiveness",
+            "relationship": "negative"
+          },
+          {
+            "from": "PR Feedback",
+            "to": "Routine Learning Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Closed Issues",
+            "to": "Routine Learning Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Maintainer time",
+            "to": "Routine Learning Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Culture Erosion",
+            "to": "Routine Drift Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Routine Effectiveness",
+            "to": "Review Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Routine Effectiveness",
+            "to": "PR Review Delay",
+            "relationship": "negative"
+          },
+          {
+            "from": "Routine Effectiveness",
+            "to": "Issue Resolution Rate",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "A Dynamic Theory of Organizational Knowledge Creation",
+      "rationale": "Knowledge creation depends on enabling context (Ba) that energizes socialization, externalization, and combination. A climate variable links community health, reputation, and time availability to both tacit and explicit knowledge processes, and to engagement that populates the knowledge base.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Knowledge Creation Climate",
+            "type": "Auxiliary",
+            "description": "Supportive context for generating and sharing new knowledge."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Community Health",
+            "to": "Knowledge Creation Climate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Reputation",
+            "to": "Knowledge Creation Climate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Maintainer time",
+            "to": "Knowledge Creation Climate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Creation Climate",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Creation Climate",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Creation Climate",
+            "to": "Knowledge Conversion Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Creation Climate",
+            "to": "Explicit to Implicit Conversion",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Creation Climate",
+            "to": "Community engagement",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Routines and Transactive Memory Systems",
+      "rationale": "Performance hinges on knowing who knows what and routing work accordingly. A stock for an expertise map, with mapping/decay flows, and accuracy as an auxiliary, ties conversations and feedback to reduced review delays and faster issue resolution.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Contributor Expertise Map",
+            "type": "Stock",
+            "description": "Codified knowledge of who holds what expertise."
+          },
+          {
+            "name": "Expertise Mapping Rate",
+            "type": "Flow",
+            "description": "Rate of updating and enriching the expertise map."
+          },
+          {
+            "name": "Expertise Decay Rate",
+            "type": "Flow",
+            "description": "Rate at which the expertise map becomes outdated."
+          },
+          {
+            "name": "Transactive Memory Accuracy",
+            "type": "Auxiliary",
+            "description": "Accuracy of member knowledge about others' expertise."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Expertise Mapping Rate",
+            "to": "Contributor Expertise Map",
+            "relationship": "positive"
+          },
+          {
+            "from": "Expertise Decay Rate",
+            "to": "Contributor Expertise Map",
+            "relationship": "negative"
+          },
+          {
+            "from": "Discussions",
+            "to": "Expertise Mapping Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "PR Feedback",
+            "to": "Expertise Mapping Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Closed Issues",
+            "to": "Expertise Mapping Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Developer's Turnover",
+            "to": "Expertise Decay Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Depreciation/Loss of Knowledge",
+            "to": "Expertise Decay Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Contributor Expertise Map",
+            "to": "Transactive Memory Accuracy",
+            "relationship": "positive"
+          },
+          {
+            "from": "Searchable Knowledge Base",
+            "to": "Transactive Memory Accuracy",
+            "relationship": "positive"
+          },
+          {
+            "from": "Transactive Memory Accuracy",
+            "to": "Review Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Transactive Memory Accuracy",
+            "to": "Issue Resolution Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Transactive Memory Accuracy",
+            "to": "PR Review Delay",
+            "relationship": "negative"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Communities of Practice",
+      "rationale": "The model already embodies CoP dynamics via mentorship, feedback, and progression to core roles. Adding a few integrating connections clarifies how community health and discourse directly fuel learning and onboarding without adding new constructs.",
+      "additions": {
+        "variables": [],
+        "connections": [
+          {
+            "from": "Community Health",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Discussions",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Experienced Contributors",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community engagement",
+            "to": "Joining Rate",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Punctuated Equilibrium Theory in IS Research",
+      "rationale": "Periods of accumulation (backlogs, delays) trigger sharp change and release events. Introducing crisis intensity and major release pulses links buildups to adaptive surges that both improve reputation and temporarily spike issues.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Crisis Intensity",
+            "type": "Auxiliary",
+            "description": "Pressure to undertake rapid change due to backlog and delays."
+          },
+          {
+            "name": "Major Release Rate",
+            "type": "Flow",
+            "description": "Rate of significant releases that bundle changes."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Open Issues",
+            "to": "Crisis Intensity",
+            "relationship": "positive"
+          },
+          {
+            "from": "PR Review Delay",
+            "to": "Crisis Intensity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Crisis Intensity",
+            "to": "Process Adaptation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Crisis Intensity",
+            "to": "Governance Change Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Crisis Intensity",
+            "to": "Reputation Decline",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Major Release Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Tooling Maturity",
+            "to": "Major Release Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Major Release Rate",
+            "to": "Project Reputation",
+            "relationship": "positive"
+          },
+          {
+            "from": "Major Release Rate",
+            "to": "Issue Creation Rate",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Panarchy Theory",
+      "rationale": "Adaptive cycles are captured by the buildup and release of technical debt and by community resilience moderating collapse and recovery. Adding these elements allows cross-scale interactions: code quality pressures, knowledge loss, and social resilience affecting churn and reputation.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Technical Debt",
+            "type": "Stock",
+            "description": "Accumulated complexity and quality gaps that impede change."
+          },
+          {
+            "name": "Debt Accumulation Rate",
+            "type": "Flow",
+            "description": "Rate at which debt grows via quick fixes and unrefactored changes."
+          },
+          {
+            "name": "Debt Refactoring Rate",
+            "type": "Flow",
+            "description": "Rate of paying down technical debt via refactoring."
+          },
+          {
+            "name": "Community Resilience",
+            "type": "Auxiliary",
+            "description": "Capacity to absorb shocks and maintain function."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Debt Accumulation Rate",
+            "to": "Technical Debt",
+            "relationship": "positive"
+          },
+          {
+            "from": "Debt Refactoring Rate",
+            "to": "Technical Debt",
+            "relationship": "negative"
+          },
+          {
+            "from": "Merge/Commit",
+            "to": "Debt Accumulation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Maintainer time",
+            "to": "Debt Refactoring Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Debt Refactoring Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Technical Debt",
+            "to": "Issue Creation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Technical Debt",
+            "to": "Software Quality and Features",
+            "relationship": "negative"
+          },
+          {
+            "from": "Projects's Explicit Knowledge",
+            "to": "Community Resilience",
+            "relationship": "positive"
+          },
+          {
+            "from": "Experienced Contributors",
+            "to": "Community Resilience",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Resilience",
+            "to": "Trust Building",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Resilience",
+            "to": "Culture Erosion",
+            "relationship": "negative"
+          },
+          {
+            "from": "Community Resilience",
+            "to": "Reputation Decline",
+            "relationship": "negative"
+          },
+          {
+            "from": "Community Resilience",
+            "to": "Developer's Turnover",
+            "relationship": "negative"
+          },
+          {
+            "from": "Community Resilience",
+            "to": "User Churn Rate",
+            "relationship": "negative"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Legitimate Peripheral Participation",
+      "rationale": "LPP emphasizes graded participation via low-risk tasks leading to deeper engagement. Introducing a stock of good-first issues, with seeding and consumption flows and a task gradation quality measure, operationalizes pathways for newcomers to learn and progress while reducing dropout.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Good First Issues",
+            "type": "Stock",
+            "description": "Available low-barrier tasks suitable for newcomers."
+          },
+          {
+            "name": "Seeding Rate",
+            "type": "Flow",
+            "description": "Rate at which maintainers label or create good-first issues."
+          },
+          {
+            "name": "Consumption Rate",
+            "type": "Flow",
+            "description": "Rate at which good-first issues are taken up and completed."
+          },
+          {
+            "name": "Task Gradation Quality",
+            "type": "Auxiliary",
+            "description": "Quality of the issue ladder enabling progressive learning."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Seeding Rate",
+            "to": "Good First Issues",
+            "relationship": "positive"
+          },
+          {
+            "from": "Consumption Rate",
+            "to": "Good First Issues",
+            "relationship": "negative"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Seeding Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Experienced Contributors",
+            "to": "Seeding Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "New Pr rate",
+            "to": "Consumption Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "New Contributors",
+            "to": "Consumption Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Good First Issues",
+            "to": "Joining Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Good First Issues",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Good First Issues",
+            "to": "New Pr rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Good First Issues",
+            "to": "PR Review Delay",
+            "relationship": "negative"
+          },
+          {
+            "from": "Projects's Explicit Knowledge",
+            "to": "Task Gradation Quality",
+            "relationship": "positive"
+          },
+          {
+            "from": "Good First Issues",
+            "to": "Task Gradation Quality",
+            "relationship": "positive"
+          },
+          {
+            "from": "Task Gradation Quality",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Task Gradation Quality",
+            "to": "Newcomer Dropout Rate",
+            "relationship": "negative"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Absorptive Capacity",
+      "rationale": "Absorption of external and internal knowledge depends on prior knowledge, social systems, and search structures. An absorptive capacity auxiliary consolidates these drivers and ties them to review, acceptance, and conversion rates, making knowledge uptake policy-sensitive.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Absorptive Capacity",
+            "type": "Auxiliary",
+            "description": "Ability to recognize, assimilate, and apply incoming knowledge and contributions."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Experienced Contributors",
+            "to": "Absorptive Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Projects's Explicit Knowledge",
+            "to": "Absorptive Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Searchable Knowledge Base",
+            "to": "Absorptive Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Health",
+            "to": "Absorptive Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Transactive Memory Accuracy",
+            "to": "Absorptive Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Absorptive Capacity",
+            "to": "Review Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Absorptive Capacity",
+            "to": "Merge/Commit",
+            "relationship": "positive"
+          },
+          {
+            "from": "Absorptive Capacity",
+            "to": "Rejection Rate",
+            "relationship": "negative"
+          },
+          {
+            "from": "Absorptive Capacity",
+            "to": "Explicit to Implicit Conversion",
+            "relationship": "positive"
+          },
+          {
+            "from": "Absorptive Capacity",
+            "to": "Knowledge Conversion Rate",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Diversity Trumps Ability",
+      "rationale": "Cognitive diversity can improve problem solving but may raise coordination costs. A diversity index tied to newcomer inflow and user base size can improve resolution and quality while increasing review delay, with community health mitigating coordination overhead.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Cognitive Diversity Index",
+            "type": "Auxiliary",
+            "description": "Breadth of perspectives within the contributor community."
+          }
+        ],
+        "connections": [
+          {
+            "from": "New Contributors",
+            "to": "Cognitive Diversity Index",
+            "relationship": "positive"
+          },
+          {
+            "from": "User Base",
+            "to": "Cognitive Diversity Index",
+            "relationship": "positive"
+          },
+          {
+            "from": "Cognitive Diversity Index",
+            "to": "Issue Resolution Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Cognitive Diversity Index",
+            "to": "Software Quality and Features",
+            "relationship": "positive"
+          },
+          {
+            "from": "Cognitive Diversity Index",
+            "to": "PR Review Delay",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Health",
+            "to": "PR Review Delay",
+            "relationship": "negative"
+          },
+          {
+            "from": "Cognitive Diversity Index",
+            "to": "Reputation Building",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    }
+  ]
+}

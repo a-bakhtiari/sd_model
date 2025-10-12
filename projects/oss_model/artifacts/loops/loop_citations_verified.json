@@ -4,87 +4,204 @@
       "loop_id": "R01",
       "papers": [
         {
-          "title": "The Cathedral and the Bazaar",
-          "authors": "Raymond, E. S.",
-          "year": "1999",
-          "relevance": "Foundational work describing how successful OSS projects attract more developers through reputation effects",
+          "title": "Understanding the motivations, participation, and performance of open source software developers: A longitudinal study of the Apache projects",
+          "authors": "Hann, I. H., Roberts, J., et al.",
+          "year": "2004",
+          "relevance": "Demonstrates how project reputation and success attract developers who seek signaling benefits and career advancement",
           "verified": true,
           "verification_method": "semantic_scholar_with_llm",
           "semantic_scholar_match": {
-            "title": "The cathedral and the bazaar",
+            "title": "Understanding the Motivations, Participation, and Performance of Open Source Software Developers: A Longitudinal Study of the Apache Projects",
             "authors": [
-              "E. Raymond"
+              "Jeffrey A. Roberts",
+              "I. Hann",
+              "S. Slaughter"
             ],
-            "year": 1998,
-            "url": "https://www.semanticscholar.org/paper/5eaf9f92564b1ba8060c5d1021f8cfd70ae6b36b",
-            "paper_id": "5eaf9f92564b1ba8060c5d1021f8cfd70ae6b36b",
-            "citation_count": 3574,
+            "year": 2006,
+            "url": "https://www.semanticscholar.org/paper/bbe089fedff2d9579c9c624539a7afbf505988b2",
+            "paper_id": "bbe089fedff2d9579c9c624539a7afbf505988b2",
+            "citation_count": 1103,
             "abstract": null,
-            "venue": "First Monday",
-            "fields_of_study": [
-              "Computer Science",
-              "Engineering"
-            ]
-          }
-        }
-      ],
-      "reasoning": "Multiple studies confirm that reputation mechanisms create reinforcing cycles in OSS ecosystems"
-    },
-    {
-      "loop_id": "R04",
-      "papers": [
-        {
-          "title": "Barriers Faced by Newcomers to Open Source Projects",
-          "authors": "Steinmacher, I., Silva, M. A. G., et al.",
-          "year": "2015",
-          "relevance": "Identifies documentation quality as critical factor in contributor onboarding",
-          "verified": true,
-          "verification_method": "semantic_scholar_with_llm",
-          "semantic_scholar_match": {
-            "title": "A systematic literature review on the barriers faced by newcomers to open source software projects",
-            "authors": [
-              "Igor Steinmacher",
-              "Marco Aur\u00e9lio Graciotto Silva",
-              "M. Gerosa",
-              "D. Redmiles"
-            ],
-            "year": 2015,
-            "url": "https://www.semanticscholar.org/paper/2cc084ac5f98ad2d4c7955b009b787a22f96b385",
-            "paper_id": "2cc084ac5f98ad2d4c7955b009b787a22f96b385",
-            "citation_count": 220,
-            "abstract": null,
-            "venue": "Information and Software Technology",
+            "venue": "Management Sciences",
             "fields_of_study": [
               "Computer Science"
             ]
           }
         }
       ],
-      "reasoning": "Multiple studies confirm documentation's role in creating positive feedback for contributor onboarding"
+      "reasoning": "Multiple studies confirm that project reputation and quality create reinforcing cycles that attract contributors in OSS ecosystems."
+    },
+    {
+      "loop_id": "R02",
+      "papers": [
+        {
+          "title": "The impact of ideology on effectiveness in open source software development teams",
+          "authors": "Stewart, K. J., Gosain, S.",
+          "year": "2006",
+          "relevance": "Shows how larger user communities enhance project legitimacy and attract more users",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "The Impact of Ideology on Effectiveness in Open Source Software Development Teams",
+            "authors": [
+              "K. Stewart",
+              "S. Gosain"
+            ],
+            "year": 2006,
+            "url": "https://www.semanticscholar.org/paper/734a1101c739be8736086ca563380fbfcd965727",
+            "paper_id": "734a1101c739be8736086ca563380fbfcd965727",
+            "citation_count": 661,
+            "abstract": null,
+            "venue": "MIS Q.",
+            "fields_of_study": [
+              "Engineering",
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Research on network effects and collective innovation supports the visibility-adoption feedback loop in OSS."
     },
     {
       "loop_id": "B01",
       "papers": [
         {
-          "title": "Work Practices and Challenges in Pull-Based Development",
-          "authors": "Gousios, G., Pinzger, M., et al.",
-          "year": "2014",
-          "relevance": "Shows how review pressure regulates issue resolution in GitHub projects",
+          "title": "Automated duplicate detection for bug tracking systems",
+          "authors": "Jalbert, N., Weimer, W.",
+          "year": "2008",
+          "relevance": "Shows technical mechanisms that help control issue backlog growth through duplicate detection",
           "verified": true,
           "verification_method": "semantic_scholar_with_llm",
           "semantic_scholar_match": {
-            "title": "Work Practices and Challenges in Pull-Based Development: The Contributor's Perspective",
+            "title": "Automated duplicate detection for bug tracking systems",
             "authors": [
-              "Georgios Gousios",
-              "M. Storey",
+              "Nicholas Jalbert",
+              "Westley Weimer"
+            ],
+            "year": 2008,
+            "url": "https://www.semanticscholar.org/paper/649acd55aeece28925dd384d15b01e54c525c3f0",
+            "paper_id": "649acd55aeece28925dd384d15b01e54c525c3f0",
+            "citation_count": 298,
+            "abstract": null,
+            "venue": "Dependable Systems and Networks",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Research on issue tracking and management demonstrates balancing mechanisms that prevent unlimited backlog growth."
+    },
+    {
+      "loop_id": "B02",
+      "papers": [
+        {
+          "title": "Modern code review: A case study at Google",
+          "authors": "Sadowski, C., S\u00f6derberg, E., et al.",
+          "year": "2018",
+          "relevance": "Documents organizational practices for managing review queues and preventing bottlenecks",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Modern Code Review: A Case Study at Google",
+            "authors": [
+              "Caitlin Sadowski",
+              "Emma S\u00f6derberg",
+              "Luke Church",
+              "Michael A. Sipko",
               "Alberto Bacchelli"
             ],
-            "year": 2014,
-            "url": "https://www.semanticscholar.org/paper/8455b1a9c02e256cf9bc3244f31110db12eb62fc",
-            "paper_id": "8455b1a9c02e256cf9bc3244f31110db12eb62fc",
-            "citation_count": 467,
+            "year": 2017,
+            "url": "https://www.semanticscholar.org/paper/263568d744ae3d6e1284a1d10af6798fb76a398e",
+            "paper_id": "263568d744ae3d6e1284a1d10af6798fb76a398e",
+            "citation_count": 307,
+            "abstract": "Employing lightweight, tool-based code review of code changes (aka modern code review) has become the norm for a wide variety of open-source and industrial systems. In this paper, we make an exploratory investigation of modern code review at Google. Google introduced code review early on and evolved it over the years; our study sheds light on why Google introduced this practice and analyzes its current status, after the process has been refined through decades of code changes and millions of code reviews. By means of 12 interviews, a survey with 44 respondents, and the analysis of review logs for 9 million reviewed changes, we investigate motivations behind code review at Google, current practices, and developers' satisfaction and challenges.",
+            "venue": "2018 IEEE/ACM 40th International Conference on Software Engineering: Software Engineering in Practice Track (ICSE-SEIP)",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        },
+        {
+          "title": "Characteristics of useful code reviews: An empirical study at Microsoft",
+          "authors": "Bosu, A., Greiler, M., et al.",
+          "year": "2015",
+          "relevance": "Shows how teams adjust review practices based on queue size and contributor availability",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Characteristics of Useful Code Reviews: An Empirical Study at Microsoft",
+            "authors": [
+              "Amiangshu Bosu",
+              "Michaela Greiler",
+              "C. Bird"
+            ],
+            "year": 2015,
+            "url": "https://www.semanticscholar.org/paper/4c535cd6557b148cc048686ec64e20291b61c698",
+            "paper_id": "4c535cd6557b148cc048686ec64e20291b61c698",
+            "citation_count": 190,
             "abstract": null,
-            "venue": "International Conference on Software Engineering",
+            "venue": "2015 IEEE/ACM 12th Working Conference on Mining Software Repositories",
+            "fields_of_study": [
+              "Computer Science"
+            ]
+          }
+        }
+      ],
+      "reasoning": "Studies of code review practices in both OSS and industry show adaptive mechanisms that regulate review queues."
+    },
+    {
+      "loop_id": "B03",
+      "papers": [
+        {
+          "title": "Social barriers faced by newcomers placing their first contribution in open source software projects",
+          "authors": "Steinmacher, I., Silva, M. A., et al.",
+          "year": "2015",
+          "relevance": "Identifies review process bottlenecks as significant barriers to contributor progression",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "Social Barriers Faced by Newcomers Placing Their First Contribution in Open Source Software Projects",
+            "authors": [
+              "Igor Steinmacher",
+              "T. Conte",
+              "M. Gerosa",
+              "D. Redmiles"
+            ],
+            "year": 2015,
+            "url": "https://www.semanticscholar.org/paper/18163f9f03c51a0f68d87523b52238680273acaf",
+            "paper_id": "18163f9f03c51a0f68d87523b52238680273acaf",
+            "citation_count": 276,
+            "abstract": null,
+            "venue": "Conference on Computer Supported Cooperative Work",
+            "fields_of_study": [
+              "Sociology",
+              "Computer Science"
+            ]
+          }
+        },
+        {
+          "title": "The hard life of open source software project newcomers",
+          "authors": "Steinmacher, I., Conte, T., et al.",
+          "year": "2014",
+          "relevance": "Shows how core team availability and review capacity limit newcomer progression to core roles",
+          "verified": true,
+          "verification_method": "semantic_scholar_with_llm",
+          "semantic_scholar_match": {
+            "title": "The hard life of open source software project newcomers",
+            "authors": [
+              "Igor Steinmacher",
+              "I. Wiese",
+              "T. Conte",
+              "M. Gerosa",
+              "D. Redmiles"
+            ],
+            "year": 2014,
+            "url": "https://www.semanticscholar.org/paper/d3bac0c27eba91d3d3c5b17592a3f670af3ab699",
+            "paper_id": "d3bac0c27eba91d3d3c5b17592a3f670af3ab699",
+            "citation_count": 63,
+            "abstract": null,
+            "venue": "IEEE/ACM International Conference on Connected Health: Applications, Systems and Engineering Technologies",
             "fields_of_study": [
               "Computer Science",
               "Engineering"
@@ -92,13 +209,13 @@
           }
         }
       ],
-      "reasoning": "Research consistently shows balancing mechanisms in OSS issue tracking and resolution"
+      "reasoning": "Extensive research by Steinmacher and colleagues documents how review bottlenecks constrain core team growth in OSS."
     }
   ],
   "summary": {
-    "total_papers": 27,
-    "verified": 3,
-    "unverified": 24,
-    "verification_rate": 0.111
+    "total_papers": 24,
+    "verified": 7,
+    "unverified": 17,
+    "verification_rate": 0.292
   }
 }

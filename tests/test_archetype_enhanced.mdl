@@ -37,27 +37,31 @@ Developer's Turnover  = A FUNCTION OF( )
 	~	
 	~		|
 
-Workload Pressure  = A FUNCTION OF( Core Developer,-Sustainable Capacity)
+Burnout Pressure  = A FUNCTION OF( Mentoring Workload)
 	~	
 	~		|
 
-Sustainable Capacity  = A FUNCTION OF( )
+Mentoring Workload  = A FUNCTION OF( New Contributors,-Core Developer)
 	~	
 	~		|
 
-Investment in Knowledge Systems  = A FUNCTION OF( Perceived Performance Gap)
+Documentation Investment  = A FUNCTION OF( -Mentorship Dependency,Burnout Pressure)
 	~	
 	~		|
 
-Perceived Performance Gap  = A FUNCTION OF( Developer's Turnover)
+Documentation Quality  = A FUNCTION OF( )
 	~	
 	~		|
 
-Fundamental Solution Investment  = A FUNCTION OF( -Quick Fix Pressure)
+Mentorship Dependency  = A FUNCTION OF( Implicit Knowledge Transfer)
 	~	
 	~		|
 
-Quick Fix Pressure  = A FUNCTION OF( Developer's Turnover)
+Contributor Diversity  = A FUNCTION OF( -Approach Homogenization)
+	~	
+	~		|
+
+Approach Homogenization  = A FUNCTION OF( Core Developer)
 	~	
 	~		|
 
@@ -115,26 +119,22 @@ $-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,67,2
 10,21,"Explicit Knowledge Transfer (Documentation, Contributor's Guides)",1274,404,91,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
 1,22,21,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
 10,23,colored stock,1067,817,46,26,3,3,0,1,-1,1,0,0,252-102-255,0-0-0,|||0-0-0,0,0,0,0,0,0
-10,24,Workload Pressure,1684,450,60,26,8,3,0,1,-1,1,0,0,128-0-128,0-0-0,|||0-0-0,0,0,0,0,0,0
-10,25,Sustainable Capacity,1684,750,60,26,3,3,0,1,-1,1,0,0,128-0-128,0-0-0,|||0-0-0,0,0,0,0,0,0
-10,26,Investment in Knowledge Systems,1400,300,60,26,40,3,0,1,-1,1,0,0,220-20-60,0-0-0,|||0-0-0,0,0,0,0,0,0
-10,27,Perceived Performance Gap,1900,450,60,26,8,3,0,1,-1,1,0,0,220-20-60,0-0-0,|||0-0-0,0,0,0,0,0,0
-10,28,Fundamental Solution Investment,1200,300,60,26,40,3,0,1,-1,1,0,0,0-128-128,0-0-0,|||0-0-0,0,0,0,0,0,0
-10,29,Quick Fix Pressure,1600,200,60,26,8,3,0,1,-1,1,0,0,0-128-128,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,24,Burnout Pressure,1630,450,60,26,8,3,0,1,-1,1,0,0,128-0-128,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,25,Mentoring Workload,1470,450,60,26,8,3,0,1,-1,1,0,0,128-0-128,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,26,Documentation Investment,1250,300,60,26,40,3,0,1,-1,1,0,0,128-0-128,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,27,Documentation Quality,1100,400,60,26,3,3,0,1,-1,1,0,0,128-0-128,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,28,Mentorship Dependency,1400,350,60,26,8,3,0,1,-1,1,0,0,128-0-128,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,29,Contributor Diversity,1900,584,60,26,3,3,0,1,-1,1,0,0,128-0-128,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,30,Approach Homogenization,1750,450,60,26,8,3,0,1,-1,1,0,0,128-0-128,0-0-0,|||0-0-0,0,0,0,0,0,0
 1,24,23,1,0,0,0,0,1,192,0,251-2-128,|||0-0-0,1|(0,0)|
-1,25,2,24,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
-1,26,24,7,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
-1,27,25,24,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
-1,28,7,27,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
-1,29,27,26,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
-1,30,7,29,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
-1,31,29,28,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
-12,30,0,2000,500,250,120,3,7,0,1,-1,1,0,0,128-0-128,0-0-0,|||0-0-0,0,0,0,0,0,0
-Limits to Success: The model shows growth in Core Developers through promotion from New...
-12,31,0,2000,640,250,120,3,7,0,1,-1,1,0,0,220-20-60,0-0-0,|||0-0-0,0,0,0,0,0,0
-Growth and Underinvestment: The model shows knowledge transfer mechanisms (mentorship and...
-12,32,0,2000,780,250,120,3,7,0,1,-1,1,0,0,0-128-128,0-0-0,|||0-0-0,0,0,0,0,0,0
-Shifting the Burden: The model shows both implicit (mentorship) and explicit (documentation)...
+1,25,1,25,0,0,0,22,128,0,128,-1--1--1,,1|(0,0)|
+1,26,2,25,0,0,0,22,128,0,128,-1--1--1,,1|(0,0)|
+1,27,25,24,0,0,0,22,128,0,128,-1--1--1,,1|(0,0)|
+1,28,24,7,0,0,0,22,128,0,128,-1--1--1,,1|(0,0)|
+1,29,28,26,0,0,0,22,128,0,128,-1--1--1,,1|(0,0)|
+1,30,24,26,0,0,0,22,128,0,128,-1--1--1,,1|(0,0)|
+1,31,2,30,0,0,0,22,128,0,128,-1--1--1,,1|(0,0)|
+1,32,30,29,0,0,0,22,128,0,128,-1--1--1,,1|(0,0)|
 12,25,0,2204,386,80,40,3,7,0,1,-1,1,0,0,251-2-7,0-0-0,|||0-0-0,0,0,0,0,0,0
 This is a test comment written in red just to help you see how to make a comment.
 12,26,0,2209,537,80,40,3,7,0,1,-1,1,0,0,255-255-10,0-0-0,|||0-0-0,0,0,0,0,0,0

@@ -32,8 +32,8 @@ class ProjectPaths:
 
     # Parsing artifacts
     parsed_path: Path
-    variables_llm_path: Path
-    connections_llm_path: Path
+    parsed_variables_path: Path
+    parsed_connections_path: Path
     diagram_style_path: Path
 
     # Connection artifacts
@@ -57,6 +57,9 @@ class ProjectPaths:
     theory_enhancement_path: Path
     theory_enhancement_mdl_path: Path
     theory_discovery_path: Path
+
+    # Archetype artifacts
+    archetype_enhancement_path: Path
 
     # Research question artifacts
     rq_alignment_path: Path
@@ -135,8 +138,8 @@ def for_project(cfg: AppConfig, project: str, run_id: Optional[str] = None) -> P
         improvements_dir=improvements_dir,
         # Parsing artifacts
         parsed_path=parsing_dir / "parsed.json",
-        variables_llm_path=parsing_dir / "variables_llm.json",
-        connections_llm_path=parsing_dir / "connections_llm.json",
+        parsed_variables_path=parsing_dir / "variables.json",
+        parsed_connections_path=parsing_dir / "connections.json",
         diagram_style_path=parsing_dir / "diagram_style.json",
         # Connection artifacts
         connections_path=connections_dir / "connections.json",
@@ -157,6 +160,8 @@ def for_project(cfg: AppConfig, project: str, run_id: Optional[str] = None) -> P
         theory_enhancement_path=theory_dir / "theory_enhancement.json",
         theory_enhancement_mdl_path=theory_dir / "theory_enhancement_mdl.json",
         theory_discovery_path=theory_dir / "theory_discovery.json",
+        # Archetype artifacts
+        archetype_enhancement_path=theory_dir / "archetype_enhancement.json",
         # Research question artifacts
         rq_alignment_path=rq_dir / "rq_alignment.json",
         rq_refinement_path=rq_dir / "rq_refinement.json",

@@ -1,0 +1,191 @@
+{
+  "high_relevance": [
+    {
+      "theory_name": "Open Source Project Governance and Meritocracy",
+      "key_citation": "O\u2019Mahony & Ferraro 2007",
+      "description": "Explains how OSS projects formalize roles, governance, and meritocratic advancement from peripheral contributor to core maintainer.",
+      "relevance_to_rqs": "Directly addresses how contributors move from novice periphery to core roles, including the criteria and governance mechanisms that enable or block progression, now affected by AI-mediated contributions.",
+      "relevance_to_model": "Maps to Promotion Rate, Review Rate, PR Feedback, Culture Erosion/Trust Building, Maintainer time, and Community Health; governance rules affect gatekeeping, review throughput, and promotion thresholds.",
+      "adjacency_level": "direct",
+      "phd_contribution": "Model how AI-inflated contribution volume changes gatekeeping thresholds and role legitimation, identifying governance adaptations that preserve fairness and throughput.",
+      "model_additions": [
+        "Governance Strictness (Auxiliary)",
+        "Promotion Criteria Clarity (Stock)",
+        "Gatekeeping Intensity (Auxiliary \u2192 Review Rate, Rejection Rate)",
+        "Maintainer Role Load (Stock) \u2192 Developer's Turnover",
+        "AI-Assisted Contribution Share (Auxiliary) \u2192 New Pr rate, Rejection Rate"
+      ],
+      "risk": "low",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Absorptive Capacity",
+      "key_citation": "Cohen & Levinthal 1990",
+      "description": "An organization\u2019s ability to recognize, assimilate, and apply new knowledge depends on prior related knowledge and learning routines.",
+      "relevance_to_rqs": "Explains how projects internalize AI-related practices and how contributors assimilate AI-generated code/feedback to advance toward core roles.",
+      "relevance_to_model": "Links Projects's Explicit Knowledge, Project's Implicit Knowledge, Knowledge Conversion Rate, and Review Rate to effective utilization of AI-derived knowledge and faster skill up/promotion.",
+      "adjacency_level": "direct",
+      "phd_contribution": "Quantify how project- and individual-level absorptive capacity moderates the effect of AI tools on progression speed and quality outcomes.",
+      "model_additions": [
+        "Project Absorptive Capacity (Stock)",
+        "Individual Absorptive Capacity (Stock for contributor cohorts)",
+        "Learning Investment (Flow) \u2192 Absorptive Capacity",
+        "AI Knowledge Novelty (Auxiliary) \u2192 Conversion Rates",
+        "Assimilation Friction (Auxiliary) \u2192 Review Rate, Rejection Rate"
+      ],
+      "risk": "low",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Social Capital: Closure and Structural Holes",
+      "key_citation": "Coleman 1988; Burt 1992",
+      "description": "Social ties enable access to information, trust, and opportunities; bridging positions create advancement advantages.",
+      "relevance_to_rqs": "Clarifies how mentorship, review interactions, and network position affect movement from periphery to core, especially when AI alters contribution patterns.",
+      "relevance_to_model": "Affects Implicit Knowledge Transfer (Mentorship), Trust Building, PR Feedback quality, Promotion Rate; network structure conditions feedback loops of reputation and advancement.",
+      "adjacency_level": "direct",
+      "phd_contribution": "Model network-embedded effects of AI (e.g., auto-suggested reviewers, bot mediation) on bridging/closure and consequent promotion odds.",
+      "model_additions": [
+        "Network Closure Index (Auxiliary) \u2192 Trust Building",
+        "Bridging Position Share (Auxiliary) \u2192 Promotion Rate",
+        "Mentorship Tie Density (Stock) \u2192 Skill up",
+        "Bot-Mediated Routing (Auxiliary) \u2192 Review Rate, PR Feedback"
+      ],
+      "risk": "medium",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Transactive Memory Systems (TMS)",
+      "key_citation": "Wegner 1987; Lewis 2003",
+      "description": "Teams develop shared awareness of who knows what, improving coordination and performance.",
+      "relevance_to_rqs": "Explains how teams locate expertise and allocate reviews; AI code suggestions may disrupt or enhance who-knows-what maps, affecting progression.",
+      "relevance_to_model": "Influences PR Review Delay, Review Rate, Issue Resolution Rate, and Knowledge Conversion Rate via coordination efficiency and expertise mapping.",
+      "adjacency_level": "direct",
+      "phd_contribution": "Show how AI tooling reshapes TMS accuracy and its downstream effect on review latency and contributor advancement.",
+      "model_additions": [
+        "TMS Accuracy (Stock)",
+        "Expertise Visibility (Auxiliary) \u2192 Reviewer Assignment Efficiency",
+        "TMS Update Rate (Flow) \u2192 TMS Accuracy",
+        "AI Tagging/Code Ownership Signals (Auxiliary) \u2192 TMS Update Rate"
+      ],
+      "risk": "low",
+      "reward": "medium"
+    },
+    {
+      "theory_name": "Task-Technology Fit and Sociomaterial Affordances",
+      "key_citation": "Goodhue & Thompson 1995; Leonardi 2011",
+      "description": "Performance improves when technology capabilities match task demands; affordances describe action possibilities shaped by the technology and social context.",
+      "relevance_to_rqs": "Frames when AI coding tools augment novices versus create dependency; explains heterogeneity in progression paths with AI.",
+      "relevance_to_model": "Modulates New Pr rate, Software Quality and Features, Skill up, and Rejection Rate via fit between AI assistance and task complexity.",
+      "adjacency_level": "direct",
+      "phd_contribution": "Identify boundary conditions where AI assistance accelerates or stalls progression and model their systemic effects.",
+      "model_additions": [
+        "Task-Technology Fit (Auxiliary)",
+        "AI Assistance Level (Auxiliary)",
+        "Assistance Dependency (Stock) \u2192 Skill up",
+        "Error Amplification Risk (Auxiliary) \u2192 Rejection Rate"
+      ],
+      "risk": "medium",
+      "reward": "high"
+    }
+  ],
+  "adjacent_opportunities": [
+    {
+      "theory_name": "Self-Determination Theory (SDT)",
+      "key_citation": "Deci & Ryan 2000",
+      "description": "Motivation quality depends on autonomy, competence, and relatedness.",
+      "why_adjacent": "Focuses on motivational mechanisms rather than structural flows; vital as AI shifts perceived autonomy/competence.",
+      "novel_angle": "Model how AI tools and mentorship satisfy/frustrate needs, altering retention and effort that drive progression.",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Link motivation states to contribution persistence and promotion, moderated by AI feedback quality.",
+      "risk": "medium",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Psychological Safety",
+      "key_citation": "Edmondson 1999",
+      "description": "A shared belief that the team is safe for interpersonal risk-taking.",
+      "why_adjacent": "Targets micro-climate of reviews/discussions which indirectly affects learning and promotion.",
+      "novel_angle": "Quantify how review tone, bot messages, and governance affect error-reporting and learning loops.",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Demonstrate causal pathways from safety to skill up and retention in AI-augmented code review.",
+      "risk": "low",
+      "reward": "medium"
+    },
+    {
+      "theory_name": "Boundary Objects",
+      "key_citation": "Star & Griesemer 1989",
+      "description": "Artifacts that enable coordination across communities without consensus.",
+      "why_adjacent": "Issues, PR templates, and docs mediate between novices, experts, and AI agents.",
+      "novel_angle": "Model how artifact quality/structure affects knowledge conversion and onboarding throughput.",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Show how AI-enhanced templates and CI feedback restructure boundary objects to accelerate progression.",
+      "risk": "medium",
+      "reward": "medium"
+    },
+    {
+      "theory_name": "Algorithmic Governance/Management",
+      "key_citation": "Kellogg, Valentine & Christin 2020",
+      "description": "Algorithms coordinate and control work by shaping visibility, evaluation, and workflows.",
+      "why_adjacent": "Many OSS workflows now mediated by bots/CI, subtly governing access, evaluation, and pace.",
+      "novel_angle": "Treat bots/CI as gatekeepers affecting review order, visibility, and reputational signals.",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Estimate how algorithmic triage changes queue dynamics and promotion fairness under AI-induced PR surges.",
+      "risk": "medium",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Skill-Biased Technological Change",
+      "key_citation": "Acemoglu & Autor 2011",
+      "description": "Technological change complements certain skills while substituting others.",
+      "why_adjacent": "Explains heterogeneous effects of AI on novices vs. experienced contributors\u2019 tasks.",
+      "novel_angle": "Model task reallocation and the shifting value of review, architecture, and mentoring.",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Quantify distributional impacts of AI across roles and implications for career mobility.",
+      "risk": "medium",
+      "reward": "high"
+    },
+    {
+      "theory_name": "Diffusion of Innovations",
+      "key_citation": "Rogers 2003",
+      "description": "Adoption spreads through social systems via perceived attributes and communication channels.",
+      "why_adjacent": "Frames adoption of AI coding practices/tools within and across projects.",
+      "novel_angle": "Model how AI practice diffusion changes contribution quality and reputation growth.",
+      "adjacency_level": "adjacent",
+      "phd_contribution": "Link adopter categories to review outcomes and project reputation trajectories.",
+      "risk": "low",
+      "reward": "medium"
+    }
+  ],
+  "cross_domain_inspiration": [
+    {
+      "theory": "Queuing Theory and Little\u2019s Law",
+      "source_domain": "Operations Research",
+      "parallel": "PRs and issues form queues with stochastic arrivals and service times (reviews, merges).",
+      "transfer_potential": "Predict effects of AI-driven PR influx on review delay, rejection, and burnout; test policies for triage and prioritization.",
+      "adjacency_level": "exploratory",
+      "risk": "high",
+      "reward": "high",
+      "rationale": "Provides precise levers for throughput and latency; integrates cleanly with SD flows despite being operations-centric."
+    },
+    {
+      "theory": "Tournament Theory",
+      "source_domain": "Labor Economics",
+      "parallel": "Scarce maintainer/core roles create rank-order competition; prizes (status/power) drive risky effort.",
+      "transfer_potential": "Explain spikes in effort, gaming, or burnout as AI lowers entry barriers but not prize supply; test alternative promotion structures.",
+      "adjacency_level": "exploratory",
+      "risk": "medium",
+      "reward": "medium",
+      "rationale": "Illuminates unintended consequences of meritocracy under AI\u2014useful for designing fairer advancement mechanisms."
+    },
+    {
+      "theory": "Ecological Succession",
+      "source_domain": "Ecology",
+      "parallel": "Projects pass through stages (pioneer to climax communities) with changing niches for contributors and knowledge structures.",
+      "transfer_potential": "Model stage-dependent effects of AI (e.g., code generation helps pioneer growth but later requires governance/quality control).",
+      "adjacency_level": "exploratory",
+      "risk": "high",
+      "reward": "medium",
+      "rationale": "Offers a lifecycle lens to align governance, mentorship, and AI use with project maturity and contributor role availability."
+    }
+  ]
+}

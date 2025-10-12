@@ -1,0 +1,79 @@
+{
+  "current_rqs": [
+    "how is the career path of software developers in opensource software from novice periphery to core developer as a result of the rise of AI in programming?"
+  ],
+  "refinement_suggestions": [
+    {
+      "rq_number": 1,
+      "original": "how is the career path of software developers in opensource software from novice periphery to core developer as a result of the rise of AI in programming?",
+      "issues": [
+        "complete absence of AI representation in the model",
+        "theories don't address technological disruption of learning pathways",
+        "model focuses on traditional OSS dynamics without AI transformation",
+        "too broad and not measurable",
+        "doesn't specify causal mechanisms"
+      ],
+      "refined_versions": [
+        {
+          "version": "How do AI-assisted programming tools affect the time required for novice developers to achieve core contributor status in open-source projects, and what feedback mechanisms accelerate or inhibit this transition?",
+          "rationale": "Focuses on measurable time dynamics and leverages existing model feedback loops while staying within observable developer progression patterns",
+          "sd_modelability": "good",
+          "theoretical_grounding": "good",
+          "phd_worthiness": 7,
+          "feasibility": "high",
+          "contribution": "Quantifies AI's impact on learning curves and identifies reinforcing/balancing feedback in developer progression"
+        },
+        {
+          "version": "To what extent do AI-generated code contributions alter the traditional reputation-building mechanisms in open-source communities, and how does this affect the core-periphery structure?",
+          "rationale": "Leverages existing model variables around reputation and community structure while introducing AI as an external factor",
+          "sd_modelability": "moderate",
+          "theoretical_grounding": "good",
+          "phd_worthiness": 8,
+          "feasibility": "medium",
+          "contribution": "Examines how AI disrupts traditional meritocratic evaluation and social capital accumulation in OSS"
+        },
+        {
+          "version": "How do AI programming assistants influence the feedback between code contribution quality and developer learning rates in open-source software communities?",
+          "rationale": "Focuses on specific learning mechanisms already modeled while introducing AI as a moderating variable",
+          "sd_modelability": "excellent",
+          "theoretical_grounding": "good",
+          "phd_worthiness": 6,
+          "feasibility": "high",
+          "contribution": "Identifies how AI tools transform the relationship between practice, feedback, and skill development in OSS learning"
+        }
+      ],
+      "recommendation": "Version 3 is recommended because it leverages existing model capabilities around learning feedback loops while introducing AI as a measurable moderating factor, maintaining high feasibility and theoretical grounding"
+    }
+  ],
+  "new_rq_suggestions": [
+    {
+      "suggested_rq": "How do changes in code review workload and quality assessment patterns create reinforcing feedback that either strengthens or weakens community sustainability in open-source projects?",
+      "based_on_model": "Existing feedback loops around workload distribution, quality assessment, and community participation dynamics",
+      "theoretical_basis": "Community of Practice theory, Social Exchange Theory, System Dynamics of organizational learning",
+      "phd_worthiness": 9,
+      "originality": "high",
+      "rationale": "Directly leverages existing model structure while addressing fundamental sustainability questions in OSS communities"
+    },
+    {
+      "suggested_rq": "What are the dominant feedback mechanisms that determine whether open-source projects experience virtuous cycles of contributor growth or vicious cycles of contributor attrition?",
+      "based_on_model": "Multiple feedback loops connecting contributor satisfaction, workload distribution, and community reputation",
+      "theoretical_basis": "Complex Systems Theory, Organizational Ecology, Feedback Loop Dominance Analysis",
+      "phd_worthiness": 8,
+      "originality": "moderate-high",
+      "rationale": "Uses system dynamics to identify leverage points for community sustainability without requiring AI-specific variables"
+    },
+    {
+      "suggested_rq": "How do different onboarding and mentorship strategies create path dependencies that either accelerate or inhibit long-term contributor retention in open-source communities?",
+      "based_on_model": "Variables related to learning curves, social integration, and skill development pathways",
+      "theoretical_basis": "Situated Learning Theory, Social Capital Theory, Path Dependency in complex systems",
+      "phd_worthiness": 7,
+      "originality": "moderate",
+      "rationale": "Builds on existing model structure to test intervention strategies for community health and contributor development"
+    }
+  ],
+  "overall_strategy": {
+    "recommended_approach": "pivot",
+    "reasoning": "The current model lacks AI representation and the theoretical framework doesn't support technological disruption analysis. Pivoting to leverage existing model capabilities around learning dynamics and community feedback loops provides stronger methodological foundation",
+    "trade_offs": "Gain methodological rigor and feasibility but lose direct focus on AI impact; can position AI as future research direction while establishing robust system dynamics foundation"
+  }
+}

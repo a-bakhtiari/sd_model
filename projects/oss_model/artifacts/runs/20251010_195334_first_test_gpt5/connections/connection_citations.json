@@ -1,0 +1,664 @@
+{
+  "citations": [
+    {
+      "connection_id": "C01",
+      "from_var": "Adoption Rate",
+      "to_var": "User Base",
+      "relationship": "undeclared",
+      "description": "New users adopting the software increase the total user base.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C02",
+      "from_var": "User Churn Rate",
+      "to_var": "User Base",
+      "relationship": "undeclared",
+      "description": "Users leaving the project decrease the total user base.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C03",
+      "from_var": "Reputation Building",
+      "to_var": "Project Reputation",
+      "relationship": "undeclared",
+      "description": "Positive project activities and outcomes build up the project's reputation over time.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C04",
+      "from_var": "Reputation Decline",
+      "to_var": "Project Reputation",
+      "relationship": "undeclared",
+      "description": "Negative events or stagnation cause the project's reputation to decline.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C05",
+      "from_var": "Software Quality and Features",
+      "to_var": "Project Reputation",
+      "relationship": "positive",
+      "description": "Higher software quality and more features directly enhance the project's reputation.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C06",
+      "from_var": "User Base",
+      "to_var": "Project Reputation",
+      "relationship": "undeclared",
+      "description": "A larger user base provides more visibility and social proof, boosting reputation.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C07",
+      "from_var": "Trust Building",
+      "to_var": "Community Health",
+      "relationship": "undeclared",
+      "description": "Positive interactions and trust-building activities strengthen the community's health.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C08",
+      "from_var": "Culture Erosion",
+      "to_var": "Community Health",
+      "relationship": "undeclared",
+      "description": "Conflict and negative interactions erode the sense of community and its health.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C09",
+      "from_var": "Developer's Turnover",
+      "to_var": "Core Developer",
+      "relationship": "undeclared",
+      "description": "Developers leaving the project reduce the number of core developers.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C10",
+      "from_var": "New Pr rate",
+      "to_var": "New Pull request",
+      "relationship": "undeclared",
+      "description": "The creation of new pull requests increases the stock of new pull requests.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C11",
+      "from_var": "Review Rate",
+      "to_var": "New Pull request",
+      "relationship": "undeclared",
+      "description": "Initiating a review moves a pull request from 'new' to 'under review'.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C12",
+      "from_var": "Review Rate",
+      "to_var": "Pull Request Under review",
+      "relationship": "undeclared",
+      "description": "Starting a review increases the number of pull requests currently under review.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C13",
+      "from_var": "Merge/Commit",
+      "to_var": "Pull Request Under review",
+      "relationship": "undeclared",
+      "description": "Merging or committing code removes a pull request from the 'under review' state.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C14",
+      "from_var": "Merge/Commit",
+      "to_var": "Source Code",
+      "relationship": "undeclared",
+      "description": "Merging approved pull requests adds new code to the source code base.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C15",
+      "from_var": "Rejection Rate",
+      "to_var": "Pull Request Under review",
+      "relationship": "undeclared",
+      "description": "Rejecting a pull request removes it from the 'under review' state.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C16",
+      "from_var": "Core Developer",
+      "to_var": "PR Review Delay",
+      "relationship": "undeclared",
+      "description": "Fewer core developers increases the average delay before a pull request is reviewed.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C17",
+      "from_var": "PR Review Delay",
+      "to_var": "PR Feedback",
+      "relationship": "undeclared",
+      "description": "Longer review delays slow down the provision of feedback to contributors.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C18",
+      "from_var": "Skill up",
+      "to_var": "New Contributors",
+      "relationship": "undeclared",
+      "description": "As new contributors gain skills, they move out of the 'new contributors' stock.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C19",
+      "from_var": "Skill up",
+      "to_var": "Experienced Contributors",
+      "relationship": "undeclared",
+      "description": "New contributors who gain skills join the stock of experienced contributors.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C20",
+      "from_var": "Promotion Rate",
+      "to_var": "Experienced Contributors",
+      "relationship": "undeclared",
+      "description": "Promoting experienced contributors reduces their number in that stock.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C21",
+      "from_var": "Promotion Rate",
+      "to_var": "Core Developer",
+      "relationship": "undeclared",
+      "description": "Promoting experienced contributors increases the number of core developers.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C22",
+      "from_var": "Joining Rate",
+      "to_var": "New Contributors",
+      "relationship": "undeclared",
+      "description": "A higher joining rate increases the influx of new contributors to the project.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C23",
+      "from_var": "Pull Request Under review",
+      "to_var": "PR Feedback",
+      "relationship": "undeclared",
+      "description": "A larger backlog of pull requests under review increases the demand for providing feedback.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C24",
+      "from_var": "Depreciation/Loss of Knowledge",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "undeclared",
+      "description": "Knowledge loss, such as through forgetting, depletes the project's implicit knowledge.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C25",
+      "from_var": "Developer's Turnover",
+      "to_var": "Depreciation/Loss of Knowledge",
+      "relationship": "positive",
+      "description": "Developer turnover directly causes a loss of their unique, implicit knowledge.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C26",
+      "from_var": "Project's Implicit Knowledge",
+      "to_var": "Implicit Knowledge Transfer (Mentorship)",
+      "relationship": "undeclared",
+      "description": "A rich base of implicit knowledge enables more effective mentorship and knowledge sharing.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C27",
+      "from_var": "Implicit Knowledge Transfer (Mentorship)",
+      "to_var": "Skill up",
+      "relationship": "undeclared",
+      "description": "Effective mentorship accelerates the skill development of new and experienced contributors.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C28",
+      "from_var": "Implicit Knowledge Transfer (Mentorship)",
+      "to_var": "Promotion Rate",
+      "relationship": "positive",
+      "description": "Good mentorship prepares experienced contributors for promotion to core developer roles.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C29",
+      "from_var": "Core Developer",
+      "to_var": "Implicit Knowledge Transfer (Mentorship)",
+      "relationship": "positive",
+      "description": "More core developers provide more capacity for mentoring and transferring implicit knowledge.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C30",
+      "from_var": "Knowledge Conversion Rate",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "undeclared",
+      "description": "Converting implicit knowledge into documentation adds to the project's implicit and explicit knowledge stocks.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C31",
+      "from_var": "Knowledge Conversion Rate",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "undeclared",
+      "description": "The knowledge conversion process codifies implicit know-how into explicit documentation.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C32",
+      "from_var": "Explicit to Implicit Conversion",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "undeclared",
+      "description": "Applying documented knowledge in practice converts it back into personal, implicit understanding.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C33",
+      "from_var": "Explicit to Implicit Conversion",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "undeclared",
+      "description": "Internalizing explicit knowledge through use increases an individual's implicit knowledge.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C34",
+      "from_var": "PR Feedback",
+      "to_var": "New Contributors",
+      "relationship": "undeclared",
+      "description": "Timely and constructive feedback encourages new contributors to stay and remain active.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C35",
+      "from_var": "PR Feedback",
+      "to_var": "Experienced Contributors",
+      "relationship": "undeclared",
+      "description": "Quality feedback helps experienced contributors refine their skills and remain engaged.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C36",
+      "from_var": "PR Feedback",
+      "to_var": "Core Developer",
+      "relationship": "undeclared",
+      "description": "Effective feedback helps core developers solve complex problems and maintain their role.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C37",
+      "from_var": "New Contributors",
+      "to_var": "PR Feedback",
+      "relationship": "undeclared",
+      "description": "New contributors create a need for feedback as they submit their first contributions.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C38",
+      "from_var": "Experienced Contributors",
+      "to_var": "PR Feedback",
+      "relationship": "undeclared",
+      "description": "Experienced contributors submit more complex work, requiring detailed and specialized feedback.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C39",
+      "from_var": "PR Feedback",
+      "to_var": "Pull Request Under review",
+      "relationship": "undeclared",
+      "description": "Providing feedback often requires re-engagement, keeping the pull request in the review state longer.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C40",
+      "from_var": "Projects's Explicit Knowledge",
+      "to_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "relationship": "undeclared",
+      "description": "Well-documented explicit knowledge facilitates learning through guides and documentation.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C41",
+      "from_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "to_var": "Joining Rate",
+      "relationship": "undeclared",
+      "description": "Good documentation lowers the barrier to entry, increasing the project's joining rate.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C42",
+      "from_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "to_var": "Skill up",
+      "relationship": "undeclared",
+      "description": "Clear documentation and guides help contributors learn and skill up more quickly.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C43",
+      "from_var": "Issue Creation Rate",
+      "to_var": "Open Issues",
+      "relationship": "undeclared",
+      "description": "Users and developers reporting problems increase the number of open issues.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C44",
+      "from_var": "Issue Resolution Rate",
+      "to_var": "Open Issues",
+      "relationship": "undeclared",
+      "description": "Resolving issues decreases the number of open issues.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C45",
+      "from_var": "Issue Resolution Rate",
+      "to_var": "Closed Issues",
+      "relationship": "undeclared",
+      "description": "Resolving an issue moves it from the open state to the closed state.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C46",
+      "from_var": "Open Issues",
+      "to_var": "New Pr rate",
+      "relationship": "positive",
+      "description": "More open issues represent more work to be done, stimulating the creation of pull requests.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C47",
+      "from_var": "Community engagement",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "undeclared",
+      "description": "Community discussions and Q&A add valuable content to the searchable knowledge base.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C48",
+      "from_var": "PR Feedback",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "undeclared",
+      "description": "Feedback and discussions in pull requests become a searchable record for future reference.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C49",
+      "from_var": "Closed Issues",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "undeclared",
+      "description": "Resolved issues and their solutions are archived, enriching the searchable knowledge base.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C50",
+      "from_var": "Searchable Knowledge Base",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "positive",
+      "description": "A comprehensive knowledge base is a primary source for the project's explicit knowledge.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C51",
+      "from_var": "Discussions",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "undeclared",
+      "description": "Community discussions generate insights and solutions that are added to the knowledge base.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C52",
+      "from_var": "Project Reputation",
+      "to_var": "Joining Rate",
+      "relationship": "positive",
+      "description": "A strong project reputation attracts more potential contributors, increasing the joining rate.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C53",
+      "from_var": "Project Reputation",
+      "to_var": "User Base",
+      "relationship": "undeclared",
+      "description": "A good reputation makes the software more appealing, leading to a larger user base.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C54",
+      "from_var": "Open Issues",
+      "to_var": "Feedback",
+      "relationship": "undeclared",
+      "description": "Open issues represent user needs and problems, generating feedback for the project.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C55",
+      "from_var": "Feedback",
+      "to_var": "Open Issues",
+      "relationship": "undeclared",
+      "description": "User and developer feedback often reveals new problems, leading to the creation of new issues.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C56",
+      "from_var": "Source Code",
+      "to_var": "Issue Creation Rate",
+      "relationship": "undeclared",
+      "description": "A larger and more complex codebase has more potential points of failure, leading to more issues.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C57",
+      "from_var": "Community Health",
+      "to_var": "Project Reputation",
+      "relationship": "positive",
+      "description": "A healthy, collaborative community is a positive signal that enhances project reputation.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C58",
+      "from_var": "Project Reputation",
+      "to_var": "Joining Rate",
+      "relationship": "undeclared",
+      "description": "A good project reputation makes it more attractive for new developers to join.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C59",
+      "from_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "to_var": "Joining Rate",
+      "relationship": "undeclared",
+      "description": "Clear contributor guides make it easier for newcomers to join, increasing the joining rate.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C60",
+      "from_var": "Maintainer time",
+      "to_var": "Issue Resolution Rate",
+      "relationship": "undeclared",
+      "description": "More maintainer time available directly increases the capacity to resolve issues.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C61",
+      "from_var": "Open Issues",
+      "to_var": "Issue Resolution Rate",
+      "relationship": "undeclared",
+      "description": "A larger backlog of open issues increases the potential workload for issue resolution.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C62",
+      "from_var": "Project Reputation",
+      "to_var": "Reputation Decline",
+      "relationship": "undeclared",
+      "description": "A high reputation can be harder to maintain, and any misstep can accelerate its decline.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C63",
+      "from_var": "Projects's Explicit Knowledge",
+      "to_var": "Explicit to Implicit Conversion",
+      "relationship": "undeclared",
+      "description": "A larger body of explicit documentation provides more material for contributors to internalize.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C64",
+      "from_var": "User Base",
+      "to_var": "User Churn Rate",
+      "relationship": "undeclared",
+      "description": "A larger user base means a larger absolute number of users who may eventually leave.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C65",
+      "from_var": "Pull Request Under review",
+      "to_var": "Merge/Commit",
+      "relationship": "undeclared",
+      "description": "Pull requests that are successfully reviewed and approved are ready to be merged.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C66",
+      "from_var": "Pull Request Under review",
+      "to_var": "Rejection Rate",
+      "relationship": "undeclared",
+      "description": "Pull requests under review that do not meet standards are candidates for rejection.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C67",
+      "from_var": "New Pull request",
+      "to_var": "Review Rate",
+      "relationship": "undeclared",
+      "description": "An accumulation of new pull requests creates pressure to start the review process.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C68",
+      "from_var": "Core Developer",
+      "to_var": "Developer's Turnover",
+      "relationship": "undeclared",
+      "description": "Factors like burnout or conflict within the core team can lead to their turnover.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C69",
+      "from_var": "Experienced Contributors",
+      "to_var": "Promotion Rate",
+      "relationship": "undeclared",
+      "description": "Experienced contributors who demonstrate capability become candidates for promotion.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C70",
+      "from_var": "New Contributors",
+      "to_var": "Skill up",
+      "relationship": "undeclared",
+      "description": "New contributors must gain skills through activity and learning to advance.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C71",
+      "from_var": "Project's Implicit Knowledge",
+      "to_var": "Depreciation/Loss of Knowledge",
+      "relationship": "undeclared",
+      "description": "A larger stock of implicit knowledge is more susceptible to loss if not shared or documented.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C72",
+      "from_var": "Project's Implicit Knowledge",
+      "to_var": "Knowledge Conversion Rate",
+      "relationship": "undeclared",
+      "description": "A rich base of implicit knowledge provides more material to be converted into explicit documentation.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    },
+    {
+      "connection_id": "C73",
+      "from_var": "Community Health",
+      "to_var": "Culture Erosion",
+      "relationship": "undeclared",
+      "description": "An unhealthy community is more prone to conflict and attrition, accelerating cultural erosion.",
+      "papers": [],
+      "reasoning": "Citation suggestion failed"
+    }
+  ],
+  "notes": [
+    "Failed to parse LLM response: {\n  \"citations\": [\n    {\n      \"connection_id\": \"C01\",\n      \"papers\": [\n        {\n          \"title\": \"Understanding the adoption of open source software: The role of social networks\",\n          \"auth..."
+  ]
+}

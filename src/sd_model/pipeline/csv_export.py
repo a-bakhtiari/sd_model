@@ -87,6 +87,23 @@ def generate_connections_csv(
             for paper in papers:
                 s2_match = paper.get("semantic_scholar_match", {})
 
+                # Use verified Semantic Scholar data when available, fallback to LLM data
+                if s2_match:
+                    # Format authors list from S2
+                    authors_list = s2_match.get("authors", [])
+                    if isinstance(authors_list, list):
+                        citation_authors = ", ".join(authors_list)
+                    else:
+                        citation_authors = str(authors_list)
+
+                    citation_title = s2_match.get("title", "")
+                    citation_year = s2_match.get("year", "")
+                else:
+                    # No S2 match, use LLM data
+                    citation_title = paper.get("title", "")
+                    citation_authors = paper.get("authors", "")
+                    citation_year = paper.get("year", "")
+
                 row = {
                     "connection_id": conn_id,
                     "from_var": from_var,
@@ -95,9 +112,9 @@ def generate_connections_csv(
                     "description": description,
                     "from_type": from_type,
                     "to_type": to_type,
-                    "citation_title": paper.get("title", ""),
-                    "citation_authors": paper.get("authors", ""),
-                    "citation_year": paper.get("year", ""),
+                    "citation_title": citation_title,
+                    "citation_authors": citation_authors,
+                    "citation_year": citation_year,
                     "citation_relevance": paper.get("relevance", ""),
                     "semantic_scholar_url": s2_match.get("url", ""),
                     "semantic_scholar_paper_id": s2_match.get("paper_id", ""),
@@ -117,8 +134,8 @@ def generate_connections_csv(
                 "description": description,
                 "from_type": from_type,
                 "to_type": to_type,
-                "citation_title": "",
-                "citation_authors": "",
+                "citation_title": "Not found in Semantic Scholar database",
+                "citation_authors": "Not found in Semantic Scholar database",
                 "citation_year": "",
                 "citation_relevance": "",
                 "semantic_scholar_url": "",
@@ -205,14 +222,31 @@ def generate_loops_csv(
             for paper in papers:
                 s2_match = paper.get("semantic_scholar_match", {})
 
+                # Use verified Semantic Scholar data when available, fallback to LLM data
+                if s2_match:
+                    # Format authors list from S2
+                    authors_list = s2_match.get("authors", [])
+                    if isinstance(authors_list, list):
+                        citation_authors = ", ".join(authors_list)
+                    else:
+                        citation_authors = str(authors_list)
+
+                    citation_title = s2_match.get("title", "")
+                    citation_year = s2_match.get("year", "")
+                else:
+                    # No S2 match, use LLM data
+                    citation_title = paper.get("title", "")
+                    citation_authors = paper.get("authors", "")
+                    citation_year = paper.get("year", "")
+
                 row = {
                     "loop_id": loop_id,
                     "loop_type": loop_type,
                     "loop_edges": loop_edges,
                     "description": description,
-                    "citation_title": paper.get("title", ""),
-                    "citation_authors": paper.get("authors", ""),
-                    "citation_year": paper.get("year", ""),
+                    "citation_title": citation_title,
+                    "citation_authors": citation_authors,
+                    "citation_year": citation_year,
                     "citation_relevance": paper.get("relevance", ""),
                     "semantic_scholar_url": s2_match.get("url", ""),
                     "semantic_scholar_paper_id": s2_match.get("paper_id", ""),
@@ -229,8 +263,8 @@ def generate_loops_csv(
                 "loop_type": loop_type,
                 "loop_edges": loop_edges,
                 "description": description,
-                "citation_title": "",
-                "citation_authors": "",
+                "citation_title": "Not found in Semantic Scholar database",
+                "citation_authors": "Not found in Semantic Scholar database",
                 "citation_year": "",
                 "citation_relevance": "",
                 "semantic_scholar_url": "",

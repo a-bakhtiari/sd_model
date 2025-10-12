@@ -27,7 +27,9 @@ def create_refinement_prompt(
     # Calculate model statistics
     var_count = len(variables.get("variables", []))
     conn_count = len(connections.get("connections", []))
-    loop_count = len(loops.get("reinforcing", [])) + len(loops.get("balancing", [])) + len(loops.get("undetermined", []))
+    loop_count = 0
+    if loops:
+        loop_count = len(loops.get("reinforcing", [])) + len(loops.get("balancing", [])) + len(loops.get("undetermined", []))
 
     # Extract alignment scores from Module 3 output
     alignment_summary = ""

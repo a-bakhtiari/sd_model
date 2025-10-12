@@ -7,7 +7,7 @@
           "title": "Socialization in Open Source Software Projects: A Growth Mixture Modeling Approach",
           "authors": "Qureshi, I., Fang, Y.",
           "year": "2011",
-          "relevance": "Examines how socialization processes in OSS projects lead to role transitions and team growth through mentorship",
+          "relevance": "Examines how socialization processes including mentorship lead to core developer promotion and team growth in OSS projects",
           "verified": true,
           "verification_method": "semantic_scholar_with_llm",
           "semantic_scholar_match": {
@@ -28,13 +28,13 @@
           }
         }
       ],
-      "reasoning": "These papers provide empirical evidence for the reinforcing mechanism of team growth through mentorship and promotion in OSS communities."
+      "reasoning": "Multiple studies document how mentorship and socialization processes create reinforcing cycles of team growth in OSS communities."
     }
   ],
   "summary": {
-    "total_papers": 15,
+    "total_papers": 16,
     "verified": 1,
-    "unverified": 14,
-    "verification_rate": 0.067
+    "unverified": 15,
+    "verification_rate": 0.062
   }
 }

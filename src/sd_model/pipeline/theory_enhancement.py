@@ -40,7 +40,7 @@ def create_enhancement_prompt(
         for t in theories
     ])
 
-    prompt = f"""You are a system dynamics modeling expert.
+    prompt = f"""You are a system dynamics modeling expert, specialized in system design and modeling.
 
 # Current System Dynamics Model
 
@@ -64,13 +64,25 @@ For each theory, follow this structured process:
 
 ---
 
+## Important Context
+
+**Model Format**: We are using the Stock, Flow, Auxiliary format for this model. All standard system dynamics modeling conventions apply.
+
+**Theory Applicability**: Some of the theories are new and I have not included them in the current model. I am trying to find ways to add them if applicable. For this reason, they may or may not apply to our context, but I put them there to see if you can apply them or not. If a theory does not apply, explain why in the rationale and do not suggest any changes from it. But if the theory does apply, then suggest changes, additions, etc.
+
+**Model Design Goals**: The purpose of including new theories or modifications is to improve model's accuracy, completeness, and logical consistency. These new theories may also help me make a more robust model. This is a conceptualization step, but a model that can later work better in the simulation step as well.
+
+**Modularity Principle**: I am going to prepare a visual version of this model, so when providing new connections, my preference is modularity. Design modular sub-processes (2-5 interconnected variables) that integrate with existing model elements through 1-3 clear connection points. By keeping this design principle, I can later visualize the model better and it is easier to understand and keep track of everything.
+
+---
+
 ## SD Variable Type Guidelines
 
 When designing new variables, use these decision rules:
 
-- **Stock**: Accumulations that persist over time (people, knowledge, reputation, technical debt)
-- **Flow**: Rates of change that modify stocks (hiring rate, learning rate, knowledge decay rate)
-- **Auxiliary**: Calculated values, multipliers, ratios, effectiveness measures
+- **Stock**: Accumulations that persist over time (people, knowledge, reputation, technical debt, etc.)
+- **Flow**: Rates of change that modify stocks (hiring rate, learning rate, knowledge decay rate, etc.)
+- **Auxiliary**: Calculated values, multipliers, ratios, effectiveness measures, etc.
 
 ---
 
@@ -98,16 +110,6 @@ For each connection, specify:
 - **relationship**:
   - "positive": Increase in FROM → Increase in TO
   - "negative": Increase in FROM → Decrease in TO
-
----
-
-## Quality Criteria
-
-Your suggestions must be:
-✓ Implementable in Vensim system dynamics software
-✓ Connected to existing model elements (not isolated additions)
-✓ Grounded in the specific theories provided
-✓ Using specific, descriptive variable names
 
 ---
 
