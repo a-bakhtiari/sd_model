@@ -435,6 +435,11 @@ def run_pipeline(
                         from .mdl_text_patcher import apply_theory_enhancements
                         from .mdl_enhancement_utils import save_enhancement
 
+                        # Extract clustering scheme if present
+                        clustering_scheme = theory_enh.get('clustering_scheme', None)
+                        if clustering_scheme and theory_should_relayout:
+                            logger.info(f"✓ Using clustering scheme with {len(clustering_scheme.get('clusters', []))} clusters")
+
                         # Generate enhanced MDL in memory first
                         temp_mdl_path = paths.artifacts_dir / f"{mdl_path.stem}_temp.mdl"
 
@@ -445,7 +450,8 @@ def run_pipeline(
                             add_colors=True,
                             use_llm_layout=not theory_should_relayout,  # Use incremental only if not using full relayout
                             use_full_relayout=theory_should_relayout,
-                            llm_client=client
+                            llm_client=client,
+                            clustering_scheme=clustering_scheme if theory_should_relayout else None
                         )
 
                         # Read the generated MDL content
@@ -527,6 +533,15 @@ def run_pipeline(
                         # Prepare archetype data in theory enhancement format
                         archetype_for_patcher = {"theories": archetype_enh['archetypes']}
 
+                        # Extract clustering scheme if present (may be from theory enhancement or archetype detection)
+                        # Priority: archetype clustering > theory clustering
+                        archetype_clustering = archetype_enh.get('clustering_scheme', None)
+                        theory_clustering = theory_enh.get('clustering_scheme', None) if theory_enh else None
+                        clustering_scheme = archetype_clustering if archetype_clustering else theory_clustering
+
+                        if clustering_scheme and archetype_should_relayout:
+                            logger.info(f"✓ Using clustering scheme with {len(clustering_scheme.get('clusters', []))} clusters")
+
                         # Generate enhanced MDL in memory first
                         temp_archetype_path = paths.artifacts_dir / f"{current_mdl_path.stem}_archetype_temp.mdl"
 
@@ -538,7 +553,8 @@ def run_pipeline(
                             use_llm_layout=not archetype_should_relayout,  # Use incremental only if not using full relayout
                             use_full_relayout=archetype_should_relayout,
                             llm_client=client,
-                            color_scheme="archetype"
+                            color_scheme="archetype",
+                            clustering_scheme=clustering_scheme if archetype_should_relayout else None
                         )
 
                         # Read the generated MDL content

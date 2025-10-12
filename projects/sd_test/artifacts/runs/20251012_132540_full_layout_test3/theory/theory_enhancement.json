@@ -1,0 +1,211 @@
+{
+  "theories": [
+    {
+      "name": "Communities of Practice (Wenger)",
+      "rationale": "Your model already captures movement from periphery to core via Skill up and Promotion Rate, with mentorship and documentation as supports. However, CoP emphasizes legitimacy of participation and the capacity constraints of mentoring that enable or throttle newcomer progression. Adding onboarding and mentoring-capacity elements introduces the balancing loops (legitimate peripheral participation and mentoring load) that prevent unrealistic growth, while strengthening the reinforcing learning loop via engagement.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Newcomer Onboarding Rate",
+            "type": "Flow",
+            "description": "Rate at which potential community members become New Contributors through initial engagement and acceptance."
+          },
+          {
+            "name": "Newcomer Acceptance",
+            "type": "Auxiliary",
+            "description": "Degree to which the community legitimizes peripheral participation (norms, openness, governance)."
+          },
+          {
+            "name": "Mentorship Availability",
+            "type": "Auxiliary",
+            "description": "Effective availability of mentoring support given mentor capacity and newcomer load."
+          },
+          {
+            "name": "New Contributor Participation Intensity",
+            "type": "Auxiliary",
+            "description": "Average effort/engagement level of New Contributors, affecting how quickly they learn by participation."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Newcomer Onboarding Rate",
+            "to": "New Contributors",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mentorship Availability",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Mentorship Availability",
+            "relationship": "positive"
+          },
+          {
+            "from": "New Contributors",
+            "to": "Mentorship Availability",
+            "relationship": "negative"
+          },
+          {
+            "from": "Implicit Knowledge Transfer (Mentorship)",
+            "to": "New Contributor Participation Intensity",
+            "relationship": "positive"
+          },
+          {
+            "from": "New Contributor Participation Intensity",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "to": "Newcomer Onboarding Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mentorship Availability",
+            "to": "Newcomer Onboarding Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Newcomer Acceptance",
+            "to": "Newcomer Onboarding Rate",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    },
+    {
+      "name": "Nonaka's SECI Model",
+      "rationale": "The model includes implicit and explicit knowledge transfer but lacks the knowledge stocks and conversion processes central to SECI. Introducing explicit and tacit knowledge stocks with externalization, internalization, and decay flows makes knowledge creation, reuse, and loss endogenous. This enables turnover-driven tacit knowledge loss and documentation obsolescence to shape learning and promotion dynamics, while a shared context (Ba) raises conversion effectiveness.",
+      "additions": {
+        "variables": [
+          {
+            "name": "Project Explicit Knowledge Base",
+            "type": "Stock",
+            "description": "Accumulated documentation, guides, and formalized design knowledge available to contributors."
+          },
+          {
+            "name": "Externalization Rate",
+            "type": "Flow",
+            "description": "Rate at which tacit knowledge is documented into explicit artifacts (docs, guides, design notes)."
+          },
+          {
+            "name": "Knowledge Obsolescence Rate",
+            "type": "Flow",
+            "description": "Rate at which explicit knowledge becomes outdated or invalid."
+          },
+          {
+            "name": "Project Tacit Knowledge",
+            "type": "Stock",
+            "description": "Shared, embodied know-how distributed across contributors (practices, heuristics, norms)."
+          },
+          {
+            "name": "Tacit Knowledge Formation Rate",
+            "type": "Flow",
+            "description": "Rate at which tacit knowledge grows via socialization (mentoring) and internalization of explicit knowledge."
+          },
+          {
+            "name": "Tacit Knowledge Loss Rate",
+            "type": "Flow",
+            "description": "Rate at which tacit knowledge is lost due to developer turnover and forgetting."
+          },
+          {
+            "name": "Ba (Shared Context Quality)",
+            "type": "Auxiliary",
+            "description": "Quality of shared context (tools, rituals, forums) that enables effective knowledge conversion."
+          }
+        ],
+        "connections": [
+          {
+            "from": "Externalization Rate",
+            "to": "Project Explicit Knowledge Base",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Obsolescence Rate",
+            "to": "Project Explicit Knowledge Base",
+            "relationship": "negative"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Externalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Experienced Contributors",
+            "to": "Externalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Tacit Knowledge",
+            "to": "Externalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Ba (Shared Context Quality)",
+            "to": "Externalization Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Explicit Knowledge Base",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Tacit Knowledge Formation Rate",
+            "to": "Project Tacit Knowledge",
+            "relationship": "positive"
+          },
+          {
+            "from": "Tacit Knowledge Loss Rate",
+            "to": "Project Tacit Knowledge",
+            "relationship": "negative"
+          },
+          {
+            "from": "Implicit Knowledge Transfer (Mentorship)",
+            "to": "Tacit Knowledge Formation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Explicit Knowledge Base",
+            "to": "Tacit Knowledge Formation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Ba (Shared Context Quality)",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Developer's Turnover",
+            "to": "Tacit Knowledge Loss Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Explicit Knowledge Base",
+            "to": "Knowledge Obsolescence Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Tacit Knowledge",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    }
+  ]
+}

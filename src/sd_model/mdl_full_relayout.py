@@ -451,7 +451,8 @@ def reposition_entire_diagram(
     new_variables: List[Dict],
     new_connections: List[Dict],
     output_path: Path,
-    llm_client: Optional[LLMClient] = None
+    llm_client: Optional[LLMClient] = None,
+    clustering_scheme: Optional[Dict] = None
 ) -> Dict:
     """
     Reposition ENTIRE diagram (all variables) with new additions.
@@ -467,6 +468,7 @@ def reposition_entire_diagram(
         new_connections: New connections to add
         output_path: Where to save relayouted MDL
         llm_client: LLM client for layout optimization
+        clustering_scheme: Optional clustering scheme from theory enhancement
 
     Returns:
         Summary dict with counts: variables_repositioned, clusters,
@@ -542,13 +544,56 @@ def reposition_entire_diagram(
     all_vars_summary = [{'name': v['name'], 'type': v.get('type', 'Auxiliary')} for v in all_vars]
     all_conns_summary = [{'from': c['from'], 'to': c['to']} for c in all_conns]
 
+    # Build clustering section if provided
+    clustering_section = ""
+    if clustering_scheme:
+        clusters = clustering_scheme.get('clusters', [])
+        layout_hints = clustering_scheme.get('layout_hints', [])
+        rationale = clustering_scheme.get('rationale', '')
+
+        clustering_section = "\n## IMPORTANT: USE PROVIDED CLUSTERING SCHEME\n\n"
+        clustering_section += f"**Clustering Rationale**: {rationale}\n\n"
+        clustering_section += "You MUST use the following cluster organization:\n\n"
+
+        for cluster in clusters:
+            cluster_name = cluster.get('name', 'Unnamed')
+            theme = cluster.get('theme', '')
+            variables = cluster.get('variables', [])
+            connections_to = cluster.get('connections_to_other_clusters', {})
+
+            clustering_section += f"### {cluster_name}\n"
+            clustering_section += f"- **Theme**: {theme}\n"
+            clustering_section += f"- **Variables ({len(variables)})**: {', '.join(variables)}\n"
+            if connections_to:
+                clustering_section += f"- **Inter-cluster connections**: {dict(connections_to)}\n"
+            clustering_section += "\n"
+
+        if layout_hints:
+            clustering_section += "**Layout Hints from Theory Enhancement**:\n"
+            for hint in layout_hints:
+                clustering_section += f"- {hint}\n"
+            clustering_section += "\n"
+
+        clustering_section += "**Your Task**: Position variables according to these clusters while following the ASCII visualization approach below.\n\n"
+
     prompt = FULL_RELAYOUT_PROMPT.format(
         total_vars=len(all_vars),
         all_vars_json=json.dumps(all_vars_summary, indent=2),
         all_connections_json=json.dumps(all_conns_summary, indent=2)
     )
 
-    print(f"\nAsking LLM to create clustered layout for {len(all_vars)} variables...")
+    # Insert clustering section after CONNECTIONS if provided
+    if clustering_section:
+        # Find the position after CONNECTIONS section
+        insert_pos = prompt.find("## LAYOUT APPROACH:")
+        if insert_pos != -1:
+            prompt = prompt[:insert_pos] + clustering_section + prompt[insert_pos:]
+
+    if clustering_scheme:
+        num_clusters = len(clustering_scheme.get('clusters', []))
+        print(f"\nAsking LLM to create layout for {len(all_vars)} variables using {num_clusters} predefined clusters...")
+    else:
+        print(f"\nAsking LLM to create clustered layout for {len(all_vars)} variables...")
 
     try:
         response = llm_client.complete(

@@ -94,7 +94,8 @@ class MDLTextPatcher:
         use_llm_layout: bool = False,
         use_full_relayout: bool = False,
         llm_client: Optional[LLMClient] = None,
-        color_scheme: str = "theory"
+        color_scheme: str = "theory",
+        clustering_scheme: Optional[Dict] = None
     ) -> str:
         """
         Add new variables and connections to the MDL.
@@ -106,6 +107,7 @@ class MDLTextPatcher:
             use_llm_layout: Whether to use LLM for intelligent positioning (incremental)
             use_full_relayout: Whether to use full relayout (reposition ALL variables)
             llm_client: Optional LLM client for layout optimization
+            clustering_scheme: Optional clustering scheme from theory enhancement
 
         Returns:
             Enhanced MDL content as string
@@ -267,7 +269,8 @@ class MDLTextPatcher:
                     [],  # new_variables already added
                     [],  # new_connections already added
                     temp_output,
-                    llm_client
+                    llm_client,
+                    clustering_scheme
                 )
 
                 # Read the relayouted MDL
@@ -424,7 +427,8 @@ def apply_theory_enhancements(
     use_llm_layout: bool = False,
     use_full_relayout: bool = False,
     llm_client: Optional[LLMClient] = None,
-    color_scheme: str = "theory"
+    color_scheme: str = "theory",
+    clustering_scheme: Optional[Dict] = None
 ) -> Dict[str, int]:
     """
     Apply theory-based enhancements to MDL from new format.
@@ -438,6 +442,7 @@ def apply_theory_enhancements(
         use_llm_layout: Whether to use LLM for intelligent positioning (incremental)
         use_full_relayout: Whether to use full relayout (reposition ALL variables)
         llm_client: Optional LLM client for layout
+        clustering_scheme: Optional clustering scheme from theory enhancement
 
     Returns:
         Summary dict with counts
@@ -474,7 +479,8 @@ def apply_theory_enhancements(
         use_llm_layout,
         use_full_relayout,
         llm_client,
-        color_scheme
+        color_scheme,
+        clustering_scheme
     )
 
     output_path.write_text(enhanced_content, encoding='utf-8')
