@@ -211,6 +211,20 @@ class MDLTextPatcher:
 
             if from_id is None or to_id is None:
                 print(f"Warning: Skipping connection {from_var} → {to_var} (variable not found)")
+
+                # Debug: Print detailed info for connections with special chars
+                if '(' in from_var or ')' in from_var or '(' in to_var or ')' in to_var:
+                    print(f"  DEBUG Connection lookup:")
+                    print(f"    From: {repr(from_var)} - Found in var_id_map: {from_var in var_id_map}, name_to_id: {from_var in name_to_id}")
+                    print(f"    To: {repr(to_var)} - Found in var_id_map: {to_var in var_id_map}, name_to_id: {to_var in name_to_id}")
+
+                    if from_var not in name_to_id:
+                        # Try to find similar names
+                        similar = [k for k in name_to_id.keys() if 'Explicit Knowledge Transfer' in k]
+                        if similar:
+                            print(f"    Similar names in map: {similar}")
+                            print(f"    First similar name char codes: {[ord(c) for c in similar[0][:50]]}")
+
                 continue
 
             self.max_conn_id += 1
@@ -281,10 +295,20 @@ class MDLTextPatcher:
                     try:
                         var_id = int(parts[1])
                         var_name = parts[2].strip()
+                        raw_name = var_name
+
                         # Remove quotes if present
                         if var_name.startswith('"') and var_name.endswith('"'):
                             var_name = var_name[1:-1].replace('""', '"')
+
                         name_to_id[var_name] = var_id
+
+                        # Debug: Print names with special characters
+                        if '(' in var_name or ')' in var_name:
+                            print(f"DEBUG: Loaded variable: '{var_name}' (ID={var_id})")
+                            print(f"  Raw: {repr(raw_name)}")
+                            print(f"  Processed: {repr(var_name)}")
+                            print(f"  Char codes: {[ord(c) for c in var_name[:50]]}")
                     except (ValueError, IndexError):
                         pass
 

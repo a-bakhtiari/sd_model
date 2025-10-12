@@ -23,81 +23,113 @@ FULL_RELAYOUT_PROMPT = """You are a System Dynamics expert creating a profession
 - This is purely a visual layout optimization task
 
 ## TASK
-Reposition ALL {total_vars} variables (existing + new) into a clean, clustered layout that tells a clear story.
+Reposition ALL {total_vars} variables into a clean, clustered layout using ASCII VISUALIZATION.
 
-## ALL VARIABLES (existing and new)
+## VARIABLES TO POSITION
 {all_vars_json}
 
-## ALL CONNECTIONS
+## CONNECTIONS
 {all_connections_json}
 
-## LAYOUT PHILOSOPHY: Create Visual Narrative Clusters
+## LAYOUT APPROACH: VISUALIZE FIRST, THEN POSITION
 
-### CLUSTER-BASED ORGANIZATION
-Instead of placing things close because they connect, create DISTINCT THEMATIC ZONES:
+We'll use a TWO-STEP process to ensure good spatial layout:
+1. **STEP 1**: Create an ASCII visualization sketch showing variable placement
+2. **STEP 2**: Convert the ASCII sketch to exact (x, y) coordinates
 
-1. **Identify 3-5 major conceptual clusters** (e.g., "Knowledge Management", "Community Dynamics", "Contributor Pipeline")
-2. **Assign each variable to ONE cluster** based on its semantic meaning
-3. **Place each cluster in a distinct canvas region** (400-800px apart from other clusters)
-4. **Within each cluster**: arrange variables logically, with ~200px spacing
+---
 
-### SPATIAL LAYOUT STRATEGY
+# STEP 1: CREATE ASCII VISUALIZATION
 
-#### Cluster Positioning (Macro-level)
-- **Cluster centers should be 400-800px apart** (create clear visual separation)
-- Example cluster positions:
-  - Cluster 1: centered around (500, 300)
-  - Cluster 2: centered around (1200, 300)
-  - Cluster 3: centered around (1900, 300)
-  - Cluster 4: centered around (800, 700)
-  - Cluster 5: centered around (1500, 700)
+## Canvas Grid Reference
+```
+X-axis: 0────500───1000───1500───2000───2400
+Y-axis: 0, 200, 400, 600, 800, 1000
 
-#### Within-Cluster Layout (Micro-level)
-- **Stocks**: Horizontal line through cluster center
-- **Flows**: On paths between stocks
-- **Auxiliaries**: Above/below stocks in same cluster
-- **Variables in same cluster**: 200-300px apart
-- **Maintain vertical layering**: Auxiliaries on top (y=100-200), Stocks middle (y=300-600), Auxiliaries bottom (y=700-900)
+Canvas dimensions: 2400px wide × 1000px tall
+Each '─' in the grid ≈ 100px
+```
 
-### CRITICAL SPATIAL RULES - FOLLOW STRICTLY
+## Instructions for ASCII Sketch:
 
-1. **MANDATORY SPACING**: Minimum 200px between ANY two variable centers (formula: distance = sqrt((x2-x1)² + (y2-y1)²) ≥ 200)
-   - Variable widths are ~60-90px, heights ~26px
-   - Check EVERY variable against ALL other variables
-   - This is NON-NEGOTIABLE - positions will be validated programmatically
+1. **Identify 3-5 thematic clusters** (e.g., "Knowledge Management", "Community Dynamics", "Contributor Pipeline")
 
-2. **CROSS-CLUSTER CONNECTIONS ARE OK**: Long lines between clusters are acceptable - they show relationships
+2. **Draw a rough layout** using abbreviated variable names (3-5 characters each)
+   - Use `[ABC]` to represent variables
+   - Place cluster groups together
+   - Space variables apart (at least 2-3 characters between them)
+   - Mark cluster boundaries with comments
 
-3. **WITHIN-CLUSTER SPACING**: Variables in same cluster should be 200-300px apart for readability
+3. **Follow type-based vertical layering**:
+   - **Stocks (type: Stock)**: Middle rows (y ≈ 400-600)
+   - **Auxiliaries (type: Auxiliary)**: Top rows (y ≈ 100-300) or Bottom (y ≈ 700-900)
+   - **Flows (type: Flow)**: Between stocks (y ≈ 300-700)
 
-4. **CANVAS BOUNDS**: x: 100-2400, y: 50-950 (stay within bounds with margin)
+## Example ASCII Layout (for reference):
 
-### STEP-BY-STEP PROCESS
+```
+0────500───1000───1500───2000───2400
+│                                       │
+100   [DOC]  [QUA]        ← Cluster 1: Knowledge
+│                                       │
+300               [NEW]  [EXP]         ← Cluster 2: Contributors
+│     [KNW]                   [COR]    │
+500                     [MEN]          │
+│                                       │
+700            [ENG]        [SKL]      ← Cluster 3: Community
+│                                       │
+900                                     │
 
-**Step 1: Identify Clusters**
-Group variables into 3-5 thematic clusters based on meaning (NOT just connections).
+Legend:
+[DOC] = Documentation
+[QUA] = Quality
+[KNW] = Knowledge Stock
+[NEW] = New Contributors
+[EXP] = Experienced
+[COR] = Core Developers
+[MEN] = Mentoring
+[ENG] = Engagement
+[SKL] = Skill Level
+```
 
-**Step 2: Assign Cluster Positions**
-Choose distinct canvas regions for each cluster (400-800px apart).
+## Your ASCII Sketch:
+Create your ASCII visualization here, using the grid reference above.
 
-**Step 3: Position Variables Within Clusters**
-For EACH variable (process ONE AT A TIME):
-- Place it in its cluster region
-- Maintain type-based vertical layering
-- Check distance to ALL previously positioned variables (must be ≥200px)
-- If too close to any variable, adjust position and recheck
-- Keep 200-300px from other variables in same cluster
+---
 
-**Step 4: Final Verification**
-Before outputting, verify:
-- All clusters are visually separated (400-800px between cluster centers)
-- NO overlaps anywhere (all variables ≥200px apart)
-- Variables are clearly grouped by theme
-- All positions are within canvas bounds
+# STEP 2: CONVERT TO EXACT COORDINATES
+
+## Conversion Guidelines:
+
+1. **Horizontal positioning**:
+   - Each character position ≈ 50px
+   - If variable is at column 10, x ≈ 500px
+   - If variable is at column 30, x ≈ 1500px
+
+2. **Vertical positioning**:
+   - Each line ≈ 100-150px
+   - Line 1 (near top) → y ≈ 150
+   - Line 3 (middle) → y ≈ 400
+   - Line 7 (lower) → y ≈ 700
+
+3. **Spacing verification**:
+   - Ensure minimum 200px between ANY two variable centers
+   - Formula: distance = sqrt((x2-x1)² + (y2-y1)²) ≥ 200
+   - Our Python validator will auto-fix minor overlaps
+
+4. **Cluster-based organization**:
+   - Place each cluster 400-800px apart (cluster centers)
+   - Variables within cluster: 200-300px apart
+
+---
 
 ## OUTPUT FORMAT
-Return ONLY valid JSON (no markdown):
+
+Return JSON with BOTH the ASCII visualization AND the coordinate positions:
+
+```json
 {{
+  "ascii_layout": "Your complete ASCII sketch here (as multiline string)",
   "clusters": [
     {{
       "name": "Cluster Name",
@@ -105,28 +137,89 @@ Return ONLY valid JSON (no markdown):
       "center_x": 500,
       "center_y": 300,
       "variables": ["Var1", "Var2", "Var3"]
-    }},
-    ...
+    }}
   ],
   "positions": [
     {{
-      "name": "Variable Name",
+      "name": "Variable Name (full name)",
       "x": 520,
       "y": 280,
       "cluster": "Cluster Name",
-      "reasoning": "Stock in [cluster], 220px from [nearby var]"
-    }},
+      "reasoning": "In [cluster] at ASCII position [row, col]; 220px from [nearby var]"
+    }}
+  ]
+}}
+```
+
+---
+
+## WORKED EXAMPLE (showing full process)
+
+**Given 6 variables:**
+- "Project Knowledge" (Stock)
+- "Knowledge Creation" (Flow)
+- "Documentation" (Auxiliary)
+- "Team Size" (Stock)
+- "Hiring Rate" (Flow)
+- "Skill Level" (Auxiliary)
+
+**STEP 1: ASCII Sketch**
+```
+0────500───1000───1500───2000
+│
+200     [DOC]            [SKL]        ← Auxiliaries top
+│
+400   [PKN]            [TEM]          ← Stocks middle
+│       ↑                ↑
+500    [KCR]           [HIR]          ← Flows
+│
+700
+
+Cluster 1 (Knowledge): PKN, KCR, DOC - centered ~500
+Cluster 2 (Team): TEM, HIR, SKL - centered ~1500
+```
+
+**STEP 2: Convert to Coordinates**
+- [DOC] at col ~8, row ~2 → (400, 200)
+- [PKN] at col ~6, row ~4 → (300, 400)
+- [KCR] at col ~8, row ~5 → (400, 500)
+- [TEM] at col ~28, row ~4 → (1400, 400)
+- [HIR] at col ~28, row ~5 → (1400, 500)
+- [SKL] at col ~30, row ~2 → (1500, 200)
+
+Check spacing: all pairs >200px ✓
+
+**Output JSON:**
+```json
+{{
+  "ascii_layout": "[Full ASCII sketch here]",
+  "clusters": [
+    {{"name": "Knowledge Management", "center_x": 400, "center_y": 350, "variables": ["Project Knowledge", "Knowledge Creation", "Documentation"]}},
+    {{"name": "Team Dynamics", "center_x": 1450, "center_y": 350, "variables": ["Team Size", "Hiring Rate", "Skill Level"]}}
+  ],
+  "positions": [
+    {{"name": "Documentation", "x": 400, "y": 200, "cluster": "Knowledge Management", "reasoning": "Auxiliary in Knowledge cluster"}},
+    {{"name": "Project Knowledge", "x": 300, "y": 400, "cluster": "Knowledge Management", "reasoning": "Stock at cluster center"}},
     ...
   ]
 }}
+```
 
-IMPORTANT:
-- Create 3-5 distinct clusters with meaningful themes
-- Spread clusters across canvas (not all in one area)
-- Clear visual separation between clusters
-- Variables within cluster should be cohesive
+---
 
-Now create the clustered layout:"""
+## YOUR TURN
+
+Now create:
+1. Your ASCII visualization showing all {total_vars} variables
+2. The JSON with clusters and exact coordinates
+
+REMEMBER:
+- Think visually first (ASCII), then convert to coordinates
+- Cluster by meaning/theme (3-5 clusters)
+- Our Python validator will fix minor overlaps - focus on good clustering
+- Return valid JSON only (no markdown code blocks)
+
+Begin:"""
 
 
 def _validate_and_fix_overlaps(
@@ -480,6 +573,14 @@ def reposition_entire_diagram(
             response = '\n'.join(json_lines)
 
         layout_data = json.loads(response)
+
+        # Print ASCII visualization if present
+        if 'ascii_layout' in layout_data and layout_data['ascii_layout']:
+            print("\n" + "=" * 60)
+            print("LLM's ASCII Visualization:")
+            print("=" * 60)
+            print(layout_data['ascii_layout'])
+            print("=" * 60)
 
         # Print cluster info
         print("\nClusters created:")
