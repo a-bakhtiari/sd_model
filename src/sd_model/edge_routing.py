@@ -30,7 +30,7 @@ def calculate_bounding_boxes(variables: List[Dict]) -> List[Dict]:
         h = var.get('height', 26)
 
         # Add padding for visual clearance around variables
-        padding = 30
+        padding = 50
 
         boxes.append({
             'name': var.get('name', ''),
@@ -155,8 +155,12 @@ def find_waypoints(from_xy: Tuple[float, float], to_xy: Tuple[float, float],
     ]
 
     # If straight line is clear, use it (no waypoints needed)
-    if not any(line_intersects_box(from_xy, to_xy, box) for box in filtered_obstacles):
+    straight_clear = not any(line_intersects_box(from_xy, to_xy, box) for box in filtered_obstacles)
+    if straight_clear:
+        print(f"[Edge Routing] Connection {from_id}→{to_id}: Straight path clear, no waypoints needed")
         return []
+
+    print(f"[Edge Routing] Connection {from_id}→{to_id}: Straight path blocked by {len([b for b in filtered_obstacles if line_intersects_box(from_xy, to_xy, b)])} obstacles, trying alternative routes...")
 
     # Try H-V-H pattern (Horizontal-Vertical-Horizontal)
     # Go horizontally to midpoint, then vertically, then horizontally to target
@@ -216,19 +220,25 @@ def find_waypoints(from_xy: Tuple[float, float], to_xy: Tuple[float, float],
         perp_y = dx / length
 
         # Try offset to the side
-        offset_dist = 100
-        mid_x = (from_xy[0] + to_xy[0]) / 2
-        mid_y = (from_xy[1] + to_xy[1]) / 2
+        for offset_dist in [100, -100, 200, -200]:
+            mid_x = (from_xy[0] + to_xy[0]) / 2
+            mid_y = (from_xy[1] + to_xy[1]) / 2
 
-        waypoint = (mid_x + perp_x * offset_dist, mid_y + perp_y * offset_dist)
+            waypoint = (mid_x + perp_x * offset_dist, mid_y + perp_y * offset_dist)
 
-        path = [from_xy, waypoint, to_xy]
-        if route_is_clear(path, filtered_obstacles):
-            return [(int(waypoint[0]), int(waypoint[1]))]
+            path = [from_xy, waypoint, to_xy]
+            if route_is_clear(path, filtered_obstacles):
+                print(f"[Edge Routing] Connection {from_id}→{to_id}: Using perpendicular offset waypoint")
+                return [(int(waypoint[0]), int(waypoint[1]))]
 
-    # Last resort: return empty (let Vensim auto-route)
-    # This shouldn't happen often with the offset attempts above
-    return []
+    # Last resort: Force a waypoint using H-V-H pattern even if not perfect
+    # This prevents straight lines through obstacles
+    print(f"[Edge Routing] Connection {from_id}→{to_id}: All patterns blocked, forcing H-V-H waypoint as last resort")
+    midpoint_x = (from_xy[0] + to_xy[0]) / 2
+    waypoint1 = (midpoint_x, from_xy[1])
+    waypoint2 = (midpoint_x, to_xy[1])
+    return [(int(waypoint1[0]), int(waypoint1[1])),
+            (int(waypoint2[0]), int(waypoint2[1]))]
 
 
 def route_all_connections(variables: List[Dict], connections: List[Dict]) -> Dict[str, List[Tuple[int, int]]]:

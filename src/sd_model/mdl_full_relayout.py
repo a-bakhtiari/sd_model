@@ -12,8 +12,67 @@ from typing import Dict, List, Optional, Tuple
 import json
 import re
 import math
+from collections import Counter, defaultdict
 from .llm.client import LLMClient
 from .edge_routing import route_all_connections
+
+
+def analyze_connection_complexity(connections: List[Dict], variables: List[Dict]) -> Dict:
+    """
+    Analyze connection patterns to help LLM make better positioning decisions.
+
+    Returns dict with:
+    - high_connectivity_vars: Variables with most connections (should be central)
+    - long_connections: Connections that span large distances (minimize in layout)
+    - connection_count_by_var: Dict mapping var name to connection count
+    """
+    # Count connections per variable
+    connection_count = Counter()
+
+    for conn in connections:
+        from_var = conn.get('from')
+        to_var = conn.get('to')
+        if from_var:
+            connection_count[from_var] += 1
+        if to_var:
+            connection_count[to_var] += 1
+
+    # Get high-connectivity variables (top 20% or at least 5 connections)
+    high_connectivity = [
+        (var, count) for var, count in connection_count.most_common()
+        if count >= 5 or count >= max(connection_count.values(), default=1) * 0.8
+    ]
+
+    # Build variable position map (if available)
+    var_positions = {}
+    for var in variables:
+        if 'x' in var and 'y' in var:
+            var_positions[var['name']] = (var['x'], var['y'])
+
+    # Calculate connection lengths if positions available
+    long_connections = []
+    if var_positions:
+        for conn in connections:
+            from_var = conn.get('from')
+            to_var = conn.get('to')
+            if from_var in var_positions and to_var in var_positions:
+                x1, y1 = var_positions[from_var]
+                x2, y2 = var_positions[to_var]
+                distance = math.sqrt((x2-x1)**2 + (y2-y1)**2)
+                if distance > 600:  # Long connection threshold
+                    long_connections.append({
+                        'from': from_var,
+                        'to': to_var,
+                        'distance': int(distance)
+                    })
+
+    long_connections.sort(key=lambda x: x['distance'], reverse=True)
+
+    return {
+        'high_connectivity_vars': high_connectivity[:8],  # Top 8
+        'long_connections': long_connections[:5],  # Top 5 longest
+        'connection_count_by_var': dict(connection_count)
+    }
 
 
 FULL_RELAYOUT_PROMPT = """You are a System Dynamics expert creating a professional, publication-quality diagram layout.
@@ -31,6 +90,17 @@ Reposition ALL {total_vars} variables into a clean, clustered layout using ASCII
 
 ## CONNECTIONS
 {all_connections_json}
+
+## CONNECTION COMPLEXITY ANALYSIS
+
+To create an optimal layout that minimizes arrow length and crossing, consider these connection patterns:
+
+{connection_analysis}
+
+**Layout Goals:**
+1. **Position high-connectivity variables centrally** - They act as hubs; central placement minimizes total arrow length
+2. **Place connected variables closer together** - Reduces long diagonal arrows that are hard to route cleanly
+3. **Avoid crossing arrows when possible** - Cleaner, more readable diagrams
 
 ## LAYOUT APPROACH: VISUALIZE FIRST, THEN POSITION
 
@@ -596,10 +666,31 @@ def reposition_entire_diagram(
 
         clustering_section += "**Your Task**: Position variables according to these clusters while following the ASCII visualization approach below.\n\n"
 
+    # Analyze connection complexity to help LLM make better decisions
+    conn_analysis = analyze_connection_complexity(all_conns, all_vars)
+
+    # Format connection analysis for prompt
+    analysis_text = ""
+    if conn_analysis['high_connectivity_vars']:
+        analysis_text += "### High-Connectivity Variables (position centrally):\n"
+        for var, count in conn_analysis['high_connectivity_vars']:
+            analysis_text += f"- **{var}**: {count} connections\n"
+        analysis_text += "\n"
+
+    if conn_analysis['long_connections']:
+        analysis_text += "### Long-Distance Connections (consider proximity):\n"
+        for conn in conn_analysis['long_connections']:
+            analysis_text += f"- \"{conn['from']}\" ↔ \"{conn['to']}\": {conn['distance']}px apart\n"
+        analysis_text += "\n"
+
+    if not analysis_text:
+        analysis_text = "No significant connection complexity detected.\n\n"
+
     prompt = FULL_RELAYOUT_PROMPT.format(
         total_vars=len(all_vars),
         all_vars_json=json.dumps(all_vars_summary, indent=2),
-        all_connections_json=json.dumps(all_conns_summary, indent=2)
+        all_connections_json=json.dumps(all_conns_summary, indent=2),
+        connection_analysis=analysis_text
     )
 
     # Insert clustering section after CONNECTIONS if provided
