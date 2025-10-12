@@ -41,6 +41,7 @@ def run_pipeline(
     # Model improvement features
     run_theory_enhancement: bool = False,
     use_full_relayout: bool = False,
+    use_decomposed_theory: bool = False,
     run_archetype_detection: bool = False,
     run_rq_analysis: bool = False,
     run_theory_discovery: bool = False,
@@ -398,14 +399,78 @@ def run_pipeline(
 
         # Module 2: Theory Enhancement (optional)
         if run_theory_enhancement:
-            logger.info("Running Theory Enhancement module...")
+            # Choose between decomposed (3-step) or single-call approach
+            if use_decomposed_theory:
+                logger.info("Running Theory Enhancement module (DECOMPOSED 3-step approach)...")
+                logger.info("  Step 1: Strategic Theory Planning...")
+                try:
+                    from .pipeline.theory_planning import run_theory_planning
+                    from .pipeline.theory_concretization import run_theory_concretization, convert_to_legacy_format
+
+                    # Step 1: Strategic Planning
+                    planning_result = run_theory_planning(
+                        theories=theories,
+                        variables=variables_data,
+                        connections={"connections": connections_named},
+                        mdl_path=mdl_path,
+                        llm_client=client
+                    )
+
+                    # Save Step 1 output for inspection
+                    paths.artifacts_dir.mkdir(parents=True, exist_ok=True)
+                    (paths.artifacts_dir / "theory_planning_step1.json").write_text(
+                        json.dumps(planning_result, indent=2), encoding="utf-8"
+                    )
+
+                    theory_count_planned = len([
+                        t for t in planning_result.get('theory_decisions', [])
+                        if t.get('decision') in ['include', 'adapt']
+                    ])
+                    logger.info(f"  ✓ Step 1 complete: {theory_count_planned} theories planned")
+
+                    # Step 2: Concrete Generation
+                    logger.info("  Step 2: Concrete SD Element Generation...")
+                    concretization_result = run_theory_concretization(
+                        planning_result=planning_result,
+                        variables=variables_data,
+                        connections={"connections": connections_named},
+                        llm_client=client
+                    )
+
+                    # Save Step 2 output for inspection
+                    (paths.artifacts_dir / "theory_concretization_step2.json").write_text(
+                        json.dumps(concretization_result, indent=2), encoding="utf-8"
+                    )
+
+                    total_vars = concretization_result.get('summary', {}).get('total_variables_added', 0)
+                    total_conns = concretization_result.get('summary', {}).get('total_connections_added', 0)
+                    logger.info(f"  ✓ Step 2 complete: {total_vars} variables, {total_conns} connections")
+
+                    # Convert to legacy format for existing MDL enhancement code
+                    theory_enh = convert_to_legacy_format(concretization_result)
+                    logger.info("  ✓ Converted to legacy format for MDL generation")
+
+                except Exception as e:
+                    logger.error(f"✗ Decomposed Theory Enhancement failed: {e}")
+                    logger.exception("Full traceback:")
+                    theory_enh = {"error": str(e), "theories": []}
+
+            else:
+                logger.info("Running Theory Enhancement module (single-call approach)...")
+                try:
+                    theory_enh = execute_theory_enhancement(
+                        theories=theories,
+                        variables=variables_data,
+                        connections={"connections": connections_named},
+                        loops=loops
+                    )
+                except Exception as e:
+                    logger.error(f"✗ Theory Enhancement failed: {e}")
+                    logger.exception("Full traceback:")
+                    theory_enh = {"error": str(e), "theories": []}
+
+            # Common logic for both approaches
             try:
-                theory_enh = execute_theory_enhancement(
-                    theories=theories,
-                    variables=variables_data,
-                    connections={"connections": connections_named},
-                    loops=loops
-                )
                 if "error" in theory_enh:
                     logger.warning(f"Theory Enhancement returned error: {theory_enh.get('error')}")
                 paths.theory_enhancement_path.write_text(

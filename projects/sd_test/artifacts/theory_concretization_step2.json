@@ -1,62 +1,7 @@
 {
-  "clustering_scheme": {
-    "rationale": "Clusters organized around core community development processes, separating knowledge dynamics from contributor progression while maintaining logical flow between learning, participation, and advancement.",
-    "clusters": [
-      {
-        "name": "Knowledge Dynamics",
-        "theme": "Processes of knowledge creation, sharing, and conversion within the community",
-        "should_contain_existing": [
-          "Implicit Knowledge Transfer (Mentorship)",
-          "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"
-        ],
-        "should_contain_new": [
-          "concept: tacit knowledge socialization mechanisms",
-          "concept: knowledge externalization enabling factors",
-          "concept: knowledge internalization feedback loops"
-        ],
-        "rationale": "Centralizes all knowledge-related processes from both theories, creating a cohesive understanding of how knowledge flows and transforms in the community",
-        "spatial_recommendation": "Position centrally in region (500-800, 200-500) - available space and central connectivity to other clusters"
-      },
-      {
-        "name": "Contributor Progression",
-        "theme": "Movement of contributors through different participation levels and roles",
-        "should_contain_existing": [
-          "New Contributors",
-          "Experienced Contributors",
-          "Core Developer",
-          "Skill up",
-          "Promotion Rate"
-        ],
-        "should_contain_new": [
-          "concept: legitimate peripheral participation process",
-          "concept: community boundary negotiation dynamics"
-        ],
-        "rationale": "Groups all variables related to contributor advancement through community roles, reflecting the journey from periphery to core participation",
-        "spatial_recommendation": "Place in region (200-500, 500-800) - adjacent to Knowledge cluster with good capacity"
-      },
-      {
-        "name": "Community Engagement",
-        "theme": "Social participation and shared practice development within the community",
-        "should_contain_existing": [
-          "Developer's Turnover",
-          "colored stock"
-        ],
-        "should_contain_new": [
-          "concept: shared repertoire development process"
-        ],
-        "rationale": "Focuses on the social cohesion and engagement aspects that sustain community participation and reduce turnover",
-        "spatial_recommendation": "Position in region (200-500, 200-500) - isolated region suitable for engagement-focused variables"
-      }
-    ],
-    "layout_hints": [
-      "Place Knowledge Dynamics cluster centrally as it connects to both Contributor Progression and Community Engagement clusters",
-      "Position Contributor Progression and Community Engagement clusters adjacent to each other since they share turnover and progression dynamics",
-      "Maintain Knowledge cluster between the other two clusters to minimize crossing connections"
-    ]
-  },
   "theories": [
     {
-      "name": "Communities of Practice (Wenger)",
+      "theory_name": "Communities of Practice (Wenger)",
       "rationale": "These additions strengthen model alignment by explicitly modeling the legitimate peripheral participation process through which newcomers become integrated community members, and by capturing the boundary negotiation and shared repertoire development that define community identity and practice.",
       "additions": {
         "variables": [
@@ -131,16 +76,10 @@
             "rationale": "Stronger identity increases willingness to engage in mentorship and knowledge sharing"
           }
         ]
-      },
-      "modifications": {
-        "variables": []
-      },
-      "removals": {
-        "variables": []
       }
     },
     {
-      "name": "Nonaka's SECI Model",
+      "theory_name": "Nonaka's SECI Model",
       "rationale": "These additions strengthen model alignment by operationalizing the four knowledge conversion modes (Socialization, Externalization, Combination, Internalization) specifically for open-source contexts, showing how tacit and explicit knowledge interact across different contributor levels and community activities.",
       "additions": {
         "variables": [
@@ -241,13 +180,104 @@
             "rationale": "Experienced contributors can better integrate and systematize knowledge from multiple sources"
           }
         ]
-      },
-      "modifications": {
-        "variables": []
-      },
-      "removals": {
-        "variables": []
       }
     }
-  ]
+  ],
+  "organized_by_cluster": {
+    "Knowledge Dynamics": {
+      "new_variables": [
+        "Tacit Knowledge Socialization Effectiveness",
+        "Knowledge Externalization Rate",
+        "Explicit Knowledge Integration Rate",
+        "Knowledge Internalization Effectiveness",
+        "Community Knowledge Base"
+      ],
+      "new_connections_internal": 4,
+      "new_connections_external": 7,
+      "integration_note": "Integrates with existing knowledge transfer variables by operationalizing SECI model processes, connecting Core Developer and Experienced Contributors to knowledge creation and sharing activities"
+    },
+    "Contributor Progression": {
+      "new_variables": [
+        "Legitimate Peripheral Participation Rate",
+        "Community Boundary Permeability"
+      ],
+      "new_connections_internal": 1,
+      "new_connections_external": 4,
+      "integration_note": "Connects to existing progression variables (Skill up, Core Developer) by modeling boundary negotiation and legitimate participation processes that enable contributor advancement"
+    },
+    "Community Engagement": {
+      "new_variables": [
+        "Shared Practice Development Rate",
+        "Community Identity Strength"
+      ],
+      "new_connections_internal": 1,
+      "new_connections_external": 3,
+      "integration_note": "Links to Developer's Turnover and knowledge transfer variables by showing how shared practices and identity influence retention and collaboration"
+    }
+  },
+  "summary": {
+    "total_variables_added": 9,
+    "total_connections_added": 15,
+    "theories_applied": 2,
+    "clusters_affected": [
+      "Knowledge Dynamics",
+      "Contributor Progression",
+      "Community Engagement"
+    ]
+  },
+  "clustering_strategy": {
+    "rationale": "Clusters organized around core community development processes, separating knowledge dynamics from contributor progression while maintaining logical flow between learning, participation, and advancement.",
+    "clusters": [
+      {
+        "name": "Knowledge Dynamics",
+        "theme": "Processes of knowledge creation, sharing, and conversion within the community",
+        "should_contain_existing": [
+          "Implicit Knowledge Transfer (Mentorship)",
+          "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"
+        ],
+        "should_contain_new": [
+          "concept: tacit knowledge socialization mechanisms",
+          "concept: knowledge externalization enabling factors",
+          "concept: knowledge internalization feedback loops"
+        ],
+        "rationale": "Centralizes all knowledge-related processes from both theories, creating a cohesive understanding of how knowledge flows and transforms in the community",
+        "spatial_recommendation": "Position centrally in region (500-800, 200-500) - available space and central connectivity to other clusters"
+      },
+      {
+        "name": "Contributor Progression",
+        "theme": "Movement of contributors through different participation levels and roles",
+        "should_contain_existing": [
+          "New Contributors",
+          "Experienced Contributors",
+          "Core Developer",
+          "Skill up",
+          "Promotion Rate"
+        ],
+        "should_contain_new": [
+          "concept: legitimate peripheral participation process",
+          "concept: community boundary negotiation dynamics"
+        ],
+        "rationale": "Groups all variables related to contributor advancement through community roles, reflecting the journey from periphery to core participation",
+        "spatial_recommendation": "Place in region (200-500, 500-800) - adjacent to Knowledge cluster with good capacity"
+      },
+      {
+        "name": "Community Engagement",
+        "theme": "Social participation and shared practice development within the community",
+        "should_contain_existing": [
+          "Developer's Turnover",
+          "colored stock"
+        ],
+        "should_contain_new": [
+          "concept: shared repertoire development process"
+        ],
+        "rationale": "Focuses on the social cohesion and engagement aspects that sustain community participation and reduce turnover",
+        "spatial_recommendation": "Position in region (200-500, 200-500) - isolated region suitable for engagement-focused variables"
+      }
+    ],
+    "layout_hints": [
+      "Place Knowledge Dynamics cluster centrally as it connects to both Contributor Progression and Community Engagement clusters",
+      "Position Contributor Progression and Community Engagement clusters adjacent to each other since they share turnover and progression dynamics",
+      "Maintain Knowledge cluster between the other two clusters to minimize crossing connections"
+    ]
+  }
 }

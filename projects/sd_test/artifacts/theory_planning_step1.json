@@ -1,0 +1,180 @@
+{
+  "theory_decisions": [
+    {
+      "theory_name": "Communities of Practice (Wenger)",
+      "decision": "include",
+      "rationale": "This theory directly aligns with the existing model's focus on contributor progression from novice to core, providing a conceptual framework for understanding the social learning processes that drive skill development and community integration.",
+      "conceptual_additions": [
+        "concept: legitimate peripheral participation process",
+        "concept: community boundary negotiation dynamics",
+        "concept: shared repertoire development process"
+      ]
+    },
+    {
+      "theory_name": "Nonaka's SECI Model",
+      "decision": "adapt",
+      "rationale": "The SECI model's knowledge conversion processes complement the existing knowledge transfer variables but need adaptation to fit open-source community context, focusing on how tacit and explicit knowledge interact in distributed collaboration.",
+      "conceptual_additions": [
+        "concept: tacit knowledge socialization mechanisms",
+        "concept: knowledge externalization enabling factors",
+        "concept: knowledge internalization feedback loops"
+      ]
+    }
+  ],
+  "clustering_strategy": {
+    "rationale": "Clusters organized around core community development processes, separating knowledge dynamics from contributor progression while maintaining logical flow between learning, participation, and advancement.",
+    "clusters": [
+      {
+        "name": "Knowledge Dynamics",
+        "theme": "Processes of knowledge creation, sharing, and conversion within the community",
+        "should_contain_existing": [
+          "Implicit Knowledge Transfer (Mentorship)",
+          "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"
+        ],
+        "should_contain_new": [
+          "concept: tacit knowledge socialization mechanisms",
+          "concept: knowledge externalization enabling factors",
+          "concept: knowledge internalization feedback loops"
+        ],
+        "rationale": "Centralizes all knowledge-related processes from both theories, creating a cohesive understanding of how knowledge flows and transforms in the community",
+        "spatial_recommendation": "Position centrally in region (500-800, 200-500) - available space and central connectivity to other clusters"
+      },
+      {
+        "name": "Contributor Progression",
+        "theme": "Movement of contributors through different participation levels and roles",
+        "should_contain_existing": [
+          "New Contributors",
+          "Experienced Contributors",
+          "Core Developer",
+          "Skill up",
+          "Promotion Rate"
+        ],
+        "should_contain_new": [
+          "concept: legitimate peripheral participation process",
+          "concept: community boundary negotiation dynamics"
+        ],
+        "rationale": "Groups all variables related to contributor advancement through community roles, reflecting the journey from periphery to core participation",
+        "spatial_recommendation": "Place in region (200-500, 500-800) - adjacent to Knowledge cluster with good capacity"
+      },
+      {
+        "name": "Community Engagement",
+        "theme": "Social participation and shared practice development within the community",
+        "should_contain_existing": [
+          "Developer's Turnover",
+          "colored stock"
+        ],
+        "should_contain_new": [
+          "concept: shared repertoire development process"
+        ],
+        "rationale": "Focuses on the social cohesion and engagement aspects that sustain community participation and reduce turnover",
+        "spatial_recommendation": "Position in region (200-500, 200-500) - isolated region suitable for engagement-focused variables"
+      }
+    ],
+    "layout_hints": [
+      "Place Knowledge Dynamics cluster centrally as it connects to both Contributor Progression and Community Engagement clusters",
+      "Position Contributor Progression and Community Engagement clusters adjacent to each other since they share turnover and progression dynamics",
+      "Maintain Knowledge cluster between the other two clusters to minimize crossing connections"
+    ]
+  },
+  "inter_cluster_connections": [
+    {
+      "from_cluster": "Knowledge Dynamics",
+      "to_cluster": "Contributor Progression",
+      "estimated_connection_count": 12,
+      "note": "Knowledge processes directly enable skill development and promotion through learning and mentorship"
+    },
+    {
+      "from_cluster": "Contributor Progression",
+      "to_cluster": "Community Engagement",
+      "estimated_connection_count": 8,
+      "note": "Progression levels influence turnover rates and community participation patterns"
+    },
+    {
+      "from_cluster": "Community Engagement",
+      "to_cluster": "Knowledge Dynamics",
+      "estimated_connection_count": 6,
+      "note": "Community participation enables knowledge sharing and socialization processes"
+    }
+  ],
+  "spatial_context": {
+    "total_variables": 8,
+    "canvas_extent": {
+      "width": 774,
+      "height": 430,
+      "center": [
+        1431,
+        615
+      ],
+      "bounds": {
+        "x_min": 1044,
+        "x_max": 1818,
+        "y_min": 400,
+        "y_max": 830
+      }
+    },
+    "crowded_regions": [],
+    "available_space": [
+      {
+        "bounds": "(200-500, 200-500)",
+        "estimated_capacity": 9,
+        "proximity": "isolated region",
+        "current_occupancy": 0
+      },
+      {
+        "bounds": "(200-500, 500-800)",
+        "estimated_capacity": 9,
+        "proximity": "isolated region",
+        "current_occupancy": 0
+      },
+      {
+        "bounds": "(200-500, 800-1100)",
+        "estimated_capacity": 9,
+        "proximity": "isolated region",
+        "current_occupancy": 0
+      },
+      {
+        "bounds": "(200-500, 1100-1400)",
+        "estimated_capacity": 9,
+        "proximity": "isolated region",
+        "current_occupancy": 0
+      },
+      {
+        "bounds": "(500-800, 200-500)",
+        "estimated_capacity": 9,
+        "proximity": "isolated region",
+        "current_occupancy": 0
+      },
+      {
+        "bounds": "(500-800, 500-800)",
+        "estimated_capacity": 9,
+        "proximity": "isolated region",
+        "current_occupancy": 0
+      },
+      {
+        "bounds": "(500-800, 800-1100)",
+        "estimated_capacity": 9,
+        "proximity": "adjacent to 1 variables",
+        "current_occupancy": 0
+      },
+      {
+        "bounds": "(500-800, 1100-1400)",
+        "estimated_capacity": 9,
+        "proximity": "isolated region",
+        "current_occupancy": 0
+      },
+      {
+        "bounds": "(800-1100, 200-500)",
+        "estimated_capacity": 9,
+        "proximity": "isolated region",
+        "current_occupancy": 0
+      },
+      {
+        "bounds": "(800-1100, 500-800)",
+        "estimated_capacity": 9,
+        "proximity": "adjacent to 3 variables",
+        "current_occupancy": 0
+      }
+    ],
+    "spatial_summary": "Canvas size: 774\u00d7430 pixels\n\u2713 No crowded regions - layout has good spacing\n\u2713 10 regions available for new variables:\n  - (200-500, 200-500): capacity ~9 variables (isolated region)\n  - (200-500, 500-800): capacity ~9 variables (isolated region)\n  - (200-500, 800-1100): capacity ~9 variables (isolated region)\n  - (200-500, 1100-1400): capacity ~9 variables (isolated region)\n  - (500-800, 200-500): capacity ~9 variables (isolated region)"
+  }
+}

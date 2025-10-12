@@ -64,6 +64,11 @@ def main() -> None:
         help="Use full relayout (reposition ALL variables) instead of incremental placement"
     )
     parser.add_argument(
+        "--decomposed-theory",
+        action="store_true",
+        help="Use decomposed 3-step theory enhancement (strategic planning → concrete generation → positioning)"
+    )
+    parser.add_argument(
         "--archetype-detection",
         action="store_true",
         help="Detect system archetypes and suggest missing loops/variables"
@@ -165,6 +170,7 @@ def main() -> None:
             # Model improvement features
             run_theory_enhancement=args.theory_enhancement,
             use_full_relayout=args.full_relayout,
+            use_decomposed_theory=args.decomposed_theory,
             run_archetype_detection=args.archetype_detection,
             run_rq_analysis=args.rq_analysis,
             run_theory_discovery=args.theory_discovery,
