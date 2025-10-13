@@ -1645,9 +1645,7 @@ def main() -> None:
                                         if new_vars:
                                             st.markdown(f"**🔹 Variables** ({len(new_vars)})")
                                             for var in new_vars:
-                                                st.markdown(f"**{var.get('name')}**")
-                                                st.caption(f"Type: {var.get('type')}")
-                                                st.caption(f"{var.get('description', 'No description')}")
+                                                st.markdown(f"**{var.get('name')}** ({var.get('type')})")
                                                 if var.get('rationale'):
                                                     st.caption(f"💡 {var.get('rationale')}")
                                                 st.markdown("")  # Spacing between items
@@ -1758,7 +1756,6 @@ def main() -> None:
                                 with st.expander("View Variables"):
                                     for var in all_vars[:10]:  # Show first 10
                                         st.markdown(f"**{var.get('name')}** ({var.get('type')})")
-                                        st.caption(var.get('description', 'No description'))
                                     if len(all_vars) > 10:
                                         st.caption(f"... and {len(all_vars) - 10} more")
 
@@ -1814,7 +1811,6 @@ def main() -> None:
                                                 st.markdown(f"**🔹 Variables** ({len(new_vars)})")
                                                 for var in new_vars:
                                                     st.markdown(f"**{var.get('name')}** ({var.get('type')})")
-                                                    st.caption(var.get('description', 'No description'))
 
                                         with col2:
                                             if new_conns:

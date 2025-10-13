@@ -140,8 +140,7 @@ Return ONLY valid JSON in this structure (no markdown, no explanation):
       "variables": [
         {{
           "name": "Specific Variable Name",
-          "type": "Stock|Flow|Auxiliary",
-          "description": "Brief description"
+          "type": "Stock|Flow|Auxiliary"
         }}
       ],
       "connections": [
