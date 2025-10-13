@@ -428,7 +428,8 @@ def run_pipeline(
                         connections={"connections": connections_named},
                         plumbing=plumbing_data,
                         mdl_path=mdl_path,
-                        llm_client=client
+                        llm_client=client,
+                        recreate_mode=recreate_from_theory
                     )
 
                     # Save Step 1 output for inspection
@@ -450,7 +451,8 @@ def run_pipeline(
                         variables=variables_data,
                         connections={"connections": connections_named},
                         plumbing=plumbing_data,
-                        llm_client=client
+                        llm_client=client,
+                        recreate_mode=recreate_from_theory
                     )
 
                     # Save Step 2 output for inspection

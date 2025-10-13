@@ -16,9 +16,15 @@ def create_concretization_prompt(
     planning_result: Dict,
     variables: Dict,
     connections: Dict,
-    plumbing: Dict = None
+    plumbing: Dict = None,
+    recreate_mode: bool = False
 ) -> str:
-    """Create prompt for concrete SD element generation (Step 2)."""
+    """Create prompt for concrete SD element generation (Step 2).
+
+    Args:
+        recreate_mode: If True, prompts for generating a complete, self-contained model.
+                      If False (default), prompts for enhancing existing model.
+    """
 
     # Extract process narratives from Step 1
     clustering_strategy = planning_result.get('clustering_strategy', {})
@@ -37,14 +43,25 @@ def create_concretization_prompt(
         for c in clustering_strategy.get('clusters', [])
     ])
 
+    # Mode-specific context
+    if recreate_mode:
+        mode_task = """**Your task**: Transform process narratives into specific variables, connections, and feedback loops **for a complete, self-contained model**. Generate ALL necessary variables - do not rely on existing model variables as they will not be present.
+
+⚠️ **RECREATION MODE**: You are building a NEW model from scratch. Do not reference existing variables in connections unless you are also generating them. Ensure the model is complete and self-sufficient."""
+        mode_io = """**Input**: Process narratives + overall system narrative + existing model (for reference only)
+**Output**: Complete, self-contained modular processes with ALL necessary variables and connections"""
+    else:
+        mode_task = """**Your task**: Transform process narratives into specific variables, connections, and feedback loops **to enhance the existing model**. Each process is a self-contained mini-model with outputs that act as connection hubs between processes."""
+        mode_io = """**Input**: Process narratives with inputs/outputs + overall system narrative + existing model
+**Output**: Modular processes with concrete variables and connections"""
+
     prompt = f"""# Context
 
 You are a system dynamics modeling expert converting process narratives into concrete SD elements.
 
-**Your task**: Transform process narratives into specific variables, connections, and feedback loops. Each process is a self-contained mini-model with outputs that act as connection hubs between processes.
+{mode_task}
 
-**Input**: Process narratives with inputs/outputs + overall system narrative + existing model
-**Output**: Modular processes with concrete variables and connections
+{mode_io}
 
 ---
 
@@ -181,7 +198,8 @@ def run_theory_concretization(
     variables: Dict,
     connections: Dict,
     plumbing: Dict = None,
-    llm_client: LLMClient = None
+    llm_client: LLMClient = None,
+    recreate_mode: bool = False
 ) -> Dict:
     """Execute Step 2: Concrete SD Element Generation.
 
@@ -190,6 +208,7 @@ def run_theory_concretization(
         variables: Variables data from variables.json
         connections: Connections data from connections.json
         llm_client: Optional LLM client (creates new if None)
+        recreate_mode: If True, prompts for generating complete, self-contained model
 
     Returns:
         Dict with concrete variables and connections organized by process:
@@ -212,7 +231,7 @@ def run_theory_concretization(
         }
 
     # Create prompt
-    prompt = create_concretization_prompt(planning_result, variables, connections, plumbing)
+    prompt = create_concretization_prompt(planning_result, variables, connections, plumbing, recreate_mode=recreate_mode)
 
     # Call LLM
     if llm_client is None:

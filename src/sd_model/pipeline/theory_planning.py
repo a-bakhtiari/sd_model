@@ -195,9 +195,15 @@ def create_planning_prompt(
     variables: Dict,
     connections: Dict,
     plumbing: Dict = None,
-    spatial_context: Dict = None  # Kept for backwards compatibility but not used
+    spatial_context: Dict = None,  # Kept for backwards compatibility but not used
+    recreate_mode: bool = False
 ) -> str:
-    """Create prompt for strategic theory planning (Step 1)."""
+    """Create prompt for strategic theory planning (Step 1).
+
+    Args:
+        recreate_mode: If True, prompts for building a complete model from scratch.
+                      If False (default), prompts for enhancing existing model.
+    """
 
     # Format model structure as causal chains (includes cloud boundaries if present)
     model_structure = format_model_structure(variables, connections, plumbing)
@@ -208,9 +214,15 @@ def create_planning_prompt(
         for i, t in enumerate(theories)
     ])
 
+    # Mode-specific context
+    if recreate_mode:
+        mode_context = """You will evaluate theories and design process-based narratives for **building a complete SD model from scratch**. The existing model shown below is for reference only - your output will define an entirely new model based purely on theoretical foundations."""
+    else:
+        mode_context = """You will evaluate theories and design process-based narratives for **enhancing an existing SD model**."""
+
     prompt = f"""# Context
 
-You are a system dynamics modeling expert. You will evaluate theories and design process-based narratives for enhancing an existing SD model.
+You are a system dynamics modeling expert. {mode_context}
 
 **Your task**: Generate conceptual narratives describing system processes (NOT concrete variables). Another step will later convert your narratives into specific SD model elements.
 
@@ -402,7 +414,8 @@ def run_theory_planning(
     connections: Dict,
     plumbing: Dict = None,
     mdl_path: Path = None,  # Kept for backwards compatibility but not used
-    llm_client: LLMClient = None
+    llm_client: LLMClient = None,
+    recreate_mode: bool = False
 ) -> Dict:
     """Execute Step 1: Strategic Theory Planning.
 
@@ -413,6 +426,7 @@ def run_theory_planning(
         plumbing: Plumbing data from plumbing.json (optional)
         mdl_path: Path to current MDL file (unused, kept for backwards compatibility)
         llm_client: Optional LLM client (creates new if None)
+        recreate_mode: If True, prompts for building complete model from scratch
 
     Returns:
         Dict with strategic planning results:
@@ -423,7 +437,7 @@ def run_theory_planning(
     """
 
     # Create prompt
-    prompt = create_planning_prompt(theories, variables, connections, plumbing)
+    prompt = create_planning_prompt(theories, variables, connections, plumbing, recreate_mode=recreate_mode)
 
     # Call LLM
     if llm_client is None:
