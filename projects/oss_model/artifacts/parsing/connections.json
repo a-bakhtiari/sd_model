@@ -1,369 +1,692 @@
 {
   "connections": [
     {
-      "from": 11,
-      "to": 5,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 16,
-      "to": 5,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 21,
-      "to": 6,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 26,
-      "to": 6,
-      "polarity": "UNDECLARED"
-    },
-    {
+      "id": "28",
       "from": 27,
       "to": 6,
-      "polarity": "POSITIVE"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "43",
+        "field6": "0"
+      },
+      "points": [
+        [
+          2146,
+          637
+        ]
+      ]
     },
     {
+      "id": "29",
       "from": 5,
       "to": 6,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          2006,
+          828
+        ]
+      ]
     },
     {
-      "from": 35,
-      "to": 30,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 40,
-      "to": 30,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 46,
-      "to": 2,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 55,
-      "to": 47,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 60,
-      "to": 47,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 60,
-      "to": 56,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 64,
-      "to": 56,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 64,
-      "to": 4,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 69,
-      "to": 56,
-      "polarity": "UNDECLARED"
-    },
-    {
+      "id": "70",
       "from": 2,
       "to": 41,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1269,
+          421
+        ]
+      ]
     },
     {
+      "id": "71",
       "from": 41,
       "to": 3,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1102,
+          568
+        ]
+      ]
     },
     {
-      "from": 76,
-      "to": 1,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 76,
-      "to": 72,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 80,
-      "to": 72,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 80,
-      "to": 2,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 85,
-      "to": 1,
-      "polarity": "UNDECLARED"
-    },
-    {
+      "id": "86",
       "from": 56,
       "to": 3,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1017,
+          693
+        ]
+      ]
     },
     {
-      "from": 91,
-      "to": 49,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 46,
-      "to": 91,
-      "polarity": "POSITIVE"
-    },
-    {
+      "id": "94",
       "from": 49,
       "to": 93,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "0",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
     },
     {
-      "from": 93,
-      "to": 76,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 93,
-      "to": 80,
-      "polarity": "POSITIVE"
-    },
-    {
+      "id": "97",
       "from": 2,
       "to": 93,
-      "polarity": "POSITIVE"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "43",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1258,
+          185
+        ]
+      ]
     },
     {
-      "from": 101,
-      "to": 49,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 101,
-      "to": 50,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 105,
-      "to": 50,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 105,
-      "to": 49,
-      "polarity": "UNDECLARED"
-    },
-    {
+      "id": "107",
       "from": 3,
       "to": 1,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          885,
+          504
+        ]
+      ]
     },
     {
+      "id": "108",
       "from": 3,
       "to": 72,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1001,
+          433
+        ]
+      ]
     },
     {
+      "id": "109",
       "from": 3,
       "to": 2,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1150,
+          461
+        ]
+      ]
     },
     {
+      "id": "110",
       "from": 1,
       "to": 3,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          930,
+          439
+        ]
+      ]
     },
     {
+      "id": "111",
       "from": 72,
       "to": 3,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1044,
+          449
+        ]
+      ]
     },
     {
+      "id": "112",
       "from": 3,
       "to": 56,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1053,
+          641
+        ]
+      ]
     },
     {
+      "id": "115",
       "from": 50,
       "to": 114,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "0",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
     },
     {
-      "from": 114,
-      "to": 85,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 114,
-      "to": 76,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 122,
-      "to": 48,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 126,
-      "to": 48,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 126,
-      "to": 113,
-      "polarity": "UNDECLARED"
-    },
-    {
-      "from": 48,
-      "to": 55,
-      "polarity": "POSITIVE"
-    },
-    {
-      "from": 132,
-      "to": 106,
-      "polarity": "UNDECLARED"
-    },
-    {
+      "id": "133",
       "from": 3,
       "to": 106,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          643,
+          472
+        ]
+      ]
     },
     {
+      "id": "134",
       "from": 113,
       "to": 106,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          258,
+          412
+        ]
+      ]
     },
     {
+      "id": "135",
       "from": 106,
       "to": 50,
-      "polarity": "POSITIVE"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "43",
+        "field6": "0"
+      },
+      "points": [
+        [
+          326,
+          59
+        ]
+      ]
     },
     {
+      "id": "137",
       "from": 136,
       "to": 106,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          440,
+          256
+        ]
+      ]
     },
     {
+      "id": "139",
       "from": 6,
       "to": 138,
-      "polarity": "POSITIVE"
+      "polarity": "UNDECLARED",
+      "params": {
+        "field3": "0",
+        "field4": "0",
+        "field5": "43",
+        "field6": "0"
+      },
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
     },
     {
+      "id": "140",
       "from": 6,
       "to": 5,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1949,
+          602
+        ]
+      ]
     },
     {
+      "id": "148",
       "from": 48,
       "to": 147,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          352,
+          664
+        ]
+      ]
     },
     {
+      "id": "149",
       "from": 147,
       "to": 48,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          422,
+          659
+        ]
+      ]
     },
     {
-      "from": 4,
-      "to": 122,
-      "polarity": "UNDECLARED"
-    },
-    {
+      "id": "151",
       "from": 30,
       "to": 6,
-      "polarity": "POSITIVE"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "43",
+        "field6": "0"
+      },
+      "points": [
+        [
+          2182,
+          568
+        ]
+      ]
     },
     {
+      "id": "152",
       "from": 6,
       "to": 85,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "0",
+        "field4": "1",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
     },
     {
+      "id": "153",
       "from": 114,
       "to": 138,
-      "polarity": "UNDECLARED"
+      "polarity": "UNDECLARED",
+      "params": {
+        "field3": "0",
+        "field4": "1",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
     },
     {
+      "id": "253",
       "from": 154,
       "to": 126,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "source": "equation"
     },
     {
-      "from": 48,
-      "to": 126,
-      "polarity": "UNDECLARED"
+      "id": "255",
+      "from": 126,
+      "to": 113,
+      "polarity": "POSITIVE",
+      "source": "equation"
     },
     {
-      "from": 6,
-      "to": 26,
-      "polarity": "UNDECLARED"
+      "id": "257",
+      "from": 122,
+      "to": 48,
+      "polarity": "POSITIVE",
+      "source": "equation"
     },
     {
-      "from": 50,
-      "to": 105,
-      "polarity": "UNDECLARED"
+      "id": "258",
+      "from": 126,
+      "to": 48,
+      "polarity": "NEGATIVE",
+      "source": "equation"
     },
     {
-      "from": 5,
-      "to": 16,
-      "polarity": "UNDECLARED"
+      "id": "263",
+      "from": 4,
+      "to": 122,
+      "polarity": "POSITIVE",
+      "source": "equation"
     },
     {
-      "from": 56,
-      "to": 64,
-      "polarity": "UNDECLARED"
+      "id": "265",
+      "from": 21,
+      "to": 6,
+      "polarity": "POSITIVE",
+      "source": "equation"
     },
     {
-      "from": 56,
-      "to": 69,
-      "polarity": "UNDECLARED"
+      "id": "266",
+      "from": 26,
+      "to": 6,
+      "polarity": "NEGATIVE",
+      "source": "equation"
     },
     {
-      "from": 47,
-      "to": 60,
-      "polarity": "UNDECLARED"
+      "id": "270",
+      "from": 105,
+      "to": 50,
+      "polarity": "NEGATIVE",
+      "source": "equation"
     },
     {
-      "from": 2,
-      "to": 46,
-      "polarity": "UNDECLARED"
+      "id": "271",
+      "from": 101,
+      "to": 50,
+      "polarity": "POSITIVE",
+      "source": "equation"
     },
     {
-      "from": 72,
-      "to": 80,
-      "polarity": "UNDECLARED"
+      "id": "273",
+      "from": 11,
+      "to": 5,
+      "polarity": "POSITIVE",
+      "source": "equation"
     },
     {
-      "from": 1,
+      "id": "275",
+      "from": 16,
+      "to": 5,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "276",
+      "from": 64,
+      "to": 56,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "278",
+      "from": 69,
+      "to": 56,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "279",
+      "from": 60,
+      "to": 56,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "281",
+      "from": 64,
+      "to": 4,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "282",
+      "from": 114,
       "to": 76,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "source": "equation"
     },
     {
-      "from": 49,
+      "id": "283",
+      "from": 93,
+      "to": 76,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "285",
+      "from": 132,
+      "to": 106,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "288",
+      "from": 48,
+      "to": 55,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "289",
+      "from": 55,
+      "to": 47,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "290",
+      "from": 60,
+      "to": 47,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "291",
+      "from": 46,
+      "to": 2,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "293",
+      "from": 80,
+      "to": 2,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "294",
+      "from": 93,
+      "to": 80,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "295",
+      "from": 46,
       "to": 91,
-      "polarity": "UNDECLARED"
+      "polarity": "POSITIVE",
+      "source": "equation"
     },
     {
-      "from": 49,
-      "to": 101,
-      "polarity": "UNDECLARED"
+      "id": "297",
+      "from": 80,
+      "to": 72,
+      "polarity": "NEGATIVE",
+      "source": "equation"
     },
     {
-      "from": 30,
-      "to": 40,
-      "polarity": "UNDECLARED"
+      "id": "298",
+      "from": 76,
+      "to": 72,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "302",
+      "from": 85,
+      "to": 1,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "304",
+      "from": 76,
+      "to": 1,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "305",
+      "from": 91,
+      "to": 49,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "306",
+      "from": 105,
+      "to": 49,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "307",
+      "from": 101,
+      "to": 49,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "308",
+      "from": 40,
+      "to": 30,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "309",
+      "from": 35,
+      "to": 30,
+      "polarity": "POSITIVE",
+      "source": "equation"
     }
   ]
 }

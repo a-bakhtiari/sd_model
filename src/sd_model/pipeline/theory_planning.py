@@ -269,6 +269,7 @@ For each process stage:
 - **narrative**: Full prose description of what happens in this process (write in actual sentences)
   - Describe the process flow, including connections to other processes
   - Mention feedback loops and influences from/to other processes
+  - **IMPORTANT**: Build complete, theoretically sound narratives. If you need a theory beyond the provided list to complete the narrative coherently, USE IT. You will report which additional theories you used.
   - Example: "Raw materials arrive at the facility and undergo quality inspection. Approved materials move to the production floor where they are transformed through assembly. As products progress through production stages, they accumulate value and complexity. Finished products move to inventory storage, ready for distribution."
 - **inputs**: Conceptual description of what flows INTO this process (in prose, NOT variable names)
   - Can be multiple inputs from different sources
@@ -276,6 +277,18 @@ For each process stage:
 - **outputs**: Conceptual description of what flows OUT OF this process (in prose, NOT variable names)
   - Can be multiple outputs to different destinations
   - Example: "Approved inventory for production, inspection feedback, capacity constraints"
+- **theories_used**: List of theory names from the provided list that informed this cluster's narrative
+  - Only include theories you marked as "include" or "adapt" that were actually applied here
+  - Example: ["Communities of Practice", "SECI Model"]
+- **additional_theories_used**: List of theories NOT in the provided list that you needed to complete this narrative
+  - Include theory name and brief rationale for why it was needed
+  - This allows you to build complete narratives even when important theories are missing from the provided list
+  - Example: [{"theory_name": "Resource Dependency Theory", "rationale": "Needed to explain how external resource constraints affect process capacity"}]
+  - Can be empty array if no additional theories were needed
+- **connections_to_other_clusters**: Explicit connections showing how this cluster relates to other clusters
+  - List each connection with target cluster, type, and description
+  - Connection types: "feeds_into" (output), "receives_from" (input), "feedback_loop" (bidirectional)
+  - Example: [{"target_cluster": "Production Assembly", "connection_type": "feeds_into", "description": "Approved materials flow into production"}]
 
 Then, AFTER designing all individual processes, write an **overall_narrative**:
 - Synthesize how all processes connect into one cohesive pipeline
@@ -305,16 +318,37 @@ Do not copy this example's structure or complexity - design based on the theorie
    - Narrative: Raw materials arrive from suppliers and undergo quality checks based on inspection standards. When downstream quality issues increase, inspection criteria become stricter. Customer demand signals influence how much material to intake. Approved materials are logged into inventory and staged for production use.
    - Inputs: Raw materials from suppliers, quality standards feedback from production, demand signals from customers
    - Outputs: Approved materials inventory, rejected materials, updated quality criteria
+   - Theories Used: ["Quality Management Theory", "Feedback Control Systems"]
+   - Additional Theories Used: [{"theory_name": "Supply Chain Coordination Theory", "rationale": "Needed to explain supplier-buyer signaling dynamics"}]
+   - Connections to Other Clusters: [
+       {"target_cluster": "Production Assembly", "connection_type": "feeds_into", "description": "Approved materials inventory flows into production"},
+       {"target_cluster": "Production Assembly", "connection_type": "receives_from", "description": "Quality standards feedback from production issues"}
+     ]
 
 2. "Production Assembly":
    - Narrative: Materials from inventory are allocated to production lines based on downstream capacity availability. Workers and machines transform materials through assembly operations. Quality issues discovered here affect upstream inspection standards. Production rates adjust when distribution capacity becomes constrained. Assembled components accumulate and move to finishing operations.
    - Inputs: Approved materials from intake, capacity signals from distribution, production schedules
    - Outputs: Finished goods inventory, quality issue reports to intake, production rate adjustments
+   - Theories Used: ["Constraint Theory", "Production System Theory"]
+   - Additional Theories Used: []
+   - Connections to Other Clusters: [
+       {"target_cluster": "Material Intake", "connection_type": "receives_from", "description": "Receives approved materials"},
+       {"target_cluster": "Material Intake", "connection_type": "feedback_loop", "description": "Quality issue reports feed back to adjust inspection standards"},
+       {"target_cluster": "Distribution Preparation", "connection_type": "feeds_into", "description": "Finished goods flow to distribution"},
+       {"target_cluster": "Distribution Preparation", "connection_type": "receives_from", "description": "Capacity constraint signals adjust production rate"}
+     ]
 
 3. "Distribution Preparation":
    - Narrative: Finished products undergo final inspection and are packaged for shipment. When warehouse capacity nears limits, this signals to slow upstream production. Customer orders drive demand signals that propagate back through the system. Completed orders accumulate in the distribution warehouse ready for shipping.
    - Inputs: Finished goods from production, customer orders, packaging materials
    - Outputs: Shipped orders, capacity constraint signals to production, demand signals to intake
+   - Theories Used: ["Capacity Planning Theory", "Demand Management"]
+   - Additional Theories Used: []
+   - Connections to Other Clusters: [
+       {"target_cluster": "Production Assembly", "connection_type": "receives_from", "description": "Receives finished goods"},
+       {"target_cluster": "Production Assembly", "connection_type": "feedback_loop", "description": "Capacity constraints signal to slow production"},
+       {"target_cluster": "Material Intake", "connection_type": "feedback_loop", "description": "Customer demand signals propagate to material intake"}
+     ]
 
 **Overall System Narrative** (write this AFTER all individual processes):
 "Raw materials flow into the facility where quality inspection [Process 1] determines which materials enter active inventory. Approved inventory [overlap: Process 1→2] feeds the production assembly lines where transformation occurs. Quality issues discovered during assembly [feedback: Process 2→1] trigger stricter inspection standards. As assembly progresses [Process 2], finished goods accumulate [overlap: Process 2→3] and move to distribution preparation where they are packaged. Distribution capacity constraints [connection: Process 3→2] can slow production rates to prevent overflow. Customer demand signals [feedback loop: Process 3→1] influence material intake rates. This creates an interconnected system where each process affects multiple others."
@@ -329,6 +363,9 @@ Do not copy this example's structure or complexity - design based on the theorie
 ✓ **DO allow multiple inputs/outputs** - list all things flowing in and out, separated by commas
 ✓ **DO highlight overlap points in overall_narrative** - show where processes connect
 ✓ **DO include feedback loops** - describe how later processes feed back to earlier ones
+✓ **DO use additional theories when needed** - if the provided theories are insufficient to build a complete narrative, use relevant theories from your knowledge and report them in `additional_theories_used`
+✓ **DO specify theories_used for each cluster** - list which provided theories informed each cluster
+✓ **DO specify connections_to_other_clusters** - explicitly map how each cluster connects to others
 
 ---
 
@@ -349,7 +386,21 @@ Return ONLY valid JSON in this structure (no markdown, no explanation):
         "name": "Process Stage Name",
         "narrative": "Full prose description of what happens in this process. Write in actual sentences describing the conceptual flow. Include connections to other processes and feedback loops within the narrative.",
         "inputs": "Conceptual description of what flows into this process (prose, not variable names). Can list multiple inputs.",
-        "outputs": "Conceptual description of what flows out of this process (prose, not variable names). Can list multiple outputs."
+        "outputs": "Conceptual description of what flows out of this process (prose, not variable names). Can list multiple outputs.",
+        "theories_used": ["Theory Name 1", "Theory Name 2"],
+        "additional_theories_used": [
+          {{
+            "theory_name": "Theory Not In Provided List",
+            "rationale": "Brief explanation of why this theory was needed"
+          }}
+        ],
+        "connections_to_other_clusters": [
+          {{
+            "target_cluster": "Name of Another Cluster",
+            "connection_type": "feeds_into|receives_from|feedback_loop",
+            "description": "How these clusters connect"
+          }}
+        ]
       }}
     ],
     "overall_narrative": "Full prose description of how the entire pipeline flows. Describe how all processes connect and where they overlap. Highlight the integration points where outputs of one process become inputs of another."

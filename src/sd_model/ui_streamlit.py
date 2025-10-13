@@ -1697,6 +1697,41 @@ def main() -> None:
                                     st.markdown(f"**Inputs:** {cluster.get('inputs', 'N/A')}")
                                     st.markdown(f"**Outputs:** {cluster.get('outputs', 'N/A')}")
 
+                                    # Display theories used
+                                    theories_used = cluster.get('theories_used', [])
+                                    if theories_used:
+                                        st.markdown(f"**📚 Theories Used:** {', '.join(theories_used)}")
+
+                                    # Display additional theories used (if any)
+                                    additional_theories = cluster.get('additional_theories_used', [])
+                                    if additional_theories:
+                                        st.markdown("**➕ Additional Theories Used:**")
+                                        for add_theory in additional_theories:
+                                            theory_name = add_theory.get('theory_name', 'Unknown')
+                                            rationale = add_theory.get('rationale', 'No rationale provided')
+                                            st.markdown(f"- *{theory_name}*: {rationale}")
+
+                                    # Display connections to other clusters
+                                    connections = cluster.get('connections_to_other_clusters', [])
+                                    if connections:
+                                        st.markdown("**🔗 Connections to Other Clusters:**")
+                                        for conn in connections:
+                                            target = conn.get('target_cluster', 'Unknown')
+                                            conn_type = conn.get('connection_type', 'unknown')
+                                            description = conn.get('description', 'No description')
+
+                                            # Choose emoji based on connection type
+                                            if conn_type == 'feeds_into':
+                                                emoji = "➡️"
+                                            elif conn_type == 'receives_from':
+                                                emoji = "⬅️"
+                                            elif conn_type == 'feedback_loop':
+                                                emoji = "🔄"
+                                            else:
+                                                emoji = "🔗"
+
+                                            st.markdown(f"- {emoji} **{target}** ({conn_type}): {description}")
+
                                     variables = cluster.get('variables', [])
                                     if variables:
                                         st.markdown(f"**Variables ({len(variables)}):**")
