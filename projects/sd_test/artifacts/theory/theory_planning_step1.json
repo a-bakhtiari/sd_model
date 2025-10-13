@@ -12,103 +12,142 @@
   "clustering_strategy": {
     "clusters": [
       {
-        "name": "Tacit Knowledge Socialization",
-        "narrative": "There is a pool of peripheral members (Stock) who enter the community at an arrival rate (Flow) influenced by organizational visibility and perceived value. These newcomers accumulate shared experiences (Stock) through observation and informal interactions at a socialization rate (Flow) determined by community openness (Auxiliary: 0-1) and interaction frequency (Auxiliary: interactions/week). The tacit knowledge base (Stock) grows through these shared experiences, with knowledge transfer effectiveness (Auxiliary: 0-1) depending on trust levels that build slowly over 3-6 months. Feedback loop (Reinforcing): More shared experiences \u2192 higher trust \u2192 better knowledge transfer \u2192 more valuable shared experiences. Nonlinearity: Trust formation accelerates rapidly once members achieve 10+ meaningful interactions (tipping point).",
+        "name": "Community Entry and Peripheral Participation",
+        "narrative": "A pool of peripheral members accumulates when newcomers join at a rate influenced by community visibility and reputation signals. These newcomers build up observational experience through legitimate peripheral participation, with the pace of experience accumulation determined by community openness and interaction frequency (typically 2-4 meaningful interactions per week). The socialization process occurs as members absorb tacit knowledge through shared practice, with knowledge transfer effectiveness varying with trust levels and interaction quality. Members progress toward more central participation at a rate limited by available mentoring capacity and individual learning readiness. Reinforcing feedback: As more members achieve core status, mentoring capacity increases, accelerating newcomer progression and creating more future mentors. Nonlinear threshold: Progress accelerates sharply after members accumulate 8-12 successful practice experiences, but slows when mentor-to-newcomer ratio exceeds 1:7. Time delay: The transition from peripheral to active participation typically takes 4-8 months depending on community engagement patterns.",
         "theories_used": [
           "Communities of Practice (Wenger)",
           "Nonaka's SECI Model"
         ],
         "additional_theories_used": [
           {
-            "theory_name": "Social Network Theory",
-            "rationale": "Needed to explain interaction frequency and trust formation mechanisms"
+            "theory_name": "Social Learning Theory",
+            "rationale": "Needed to explain observational learning mechanisms and modeling processes in peripheral participation"
           }
         ],
         "connections_to_other_clusters": [
           {
-            "target_cluster": "Knowledge Externalization",
+            "target_cluster": "Knowledge Creation and Externalization",
             "connection_type": "feeds_into",
-            "description": "Tacit knowledge and experienced members flow into externalization process"
+            "description": "Experienced peripheral members contribute observations and questions that stimulate knowledge creation"
+          },
+          {
+            "target_cluster": "Core Community Development",
+            "connection_type": "feeds_into",
+            "description": "Successful peripheral members transition to core membership at progression rate"
+          },
+          {
+            "target_cluster": "Core Community Development",
+            "connection_type": "receives_from",
+            "description": "Mentoring capacity and guidance flows from core members to support peripheral learning"
           }
         ]
       },
       {
-        "name": "Knowledge Externalization",
-        "narrative": "Experienced members (Stock) with accumulated tacit knowledge engage in articulation activities at an externalization rate (Flow) limited by available documentation capacity (Auxiliary: hours/week). The articulation process converts tacit insights into explicit concepts (Stock) at a conversion efficiency (Auxiliary: 0-1) that depends on member motivation and articulation skills. There is a conceptual refinement delay of 2-4 weeks as initial concepts get tested and improved. Feedback loop (Balancing): As explicit concepts accumulate \u2192 conceptual clarity increases \u2192 externalization efficiency improves \u2192 more concepts created. Constraint: Externalization capacity becomes saturated when member-to-concept ratio exceeds 1:5, slowing the articulation rate. The quality of externalized knowledge (Auxiliary) increases with community feedback frequency.",
+        "name": "Knowledge Creation and Externalization",
+        "narrative": "Tacit knowledge accumulates through shared experiences and practice interactions, with the rate of knowledge generation driven by collaboration frequency and problem complexity. The externalization process converts tacit knowledge to explicit forms at a pace limited by documentation capacity and articulation skills. A knowledge repository builds up documented insights and practices, growing at the externalization rate minus knowledge obsolescence. Combination activities integrate and refine explicit knowledge, occurring at a processing rate constrained by review capacity and synthesis capability. Reinforcing feedback: More explicit knowledge in the repository stimulates new combinations and externalizations, creating knowledge multiplication effects. Balancing feedback: As the knowledge base grows, maintenance overhead increases, slowing the net addition rate. Nonlinearity: Knowledge creation accelerates when critical mass of 15-20 active contributors is reached, but saturates when coordination complexity exceeds available integration capacity. Time delay: Benefits of new knowledge typically appear 2-4 months after documentation as content gets validated and integrated.",
         "theories_used": [
           "Nonaka's SECI Model"
         ],
         "additional_theories_used": [
           {
-            "theory_name": "Articulation Theory",
-            "rationale": "Needed to explain the cognitive process of converting tacit to explicit knowledge"
+            "theory_name": "Organizational Learning Theory",
+            "rationale": "Needed to explain knowledge integration processes and organizational memory formation"
           }
         ],
         "connections_to_other_clusters": [
           {
-            "target_cluster": "Tacit Knowledge Socialization",
+            "target_cluster": "Community Entry and Peripheral Participation",
             "connection_type": "receives_from",
-            "description": "Receives experienced members and tacit knowledge from socialization process"
+            "description": "Receives observational insights and practice questions from peripheral members"
           },
           {
-            "target_cluster": "Knowledge Combination",
+            "target_cluster": "Core Community Development",
+            "connection_type": "receives_from",
+            "description": "Core members provide expertise for knowledge validation and combination activities"
+          },
+          {
+            "target_cluster": "Knowledge Internalization and Application",
             "connection_type": "feeds_into",
-            "description": "Explicit concepts flow into combination and systematization"
+            "description": "Explicit knowledge flows to application processes for internalization and use"
+          },
+          {
+            "target_cluster": "Knowledge Internalization and Application",
+            "connection_type": "feedback_loop",
+            "description": "Application feedback informs knowledge refinement and identifies gaps"
           }
         ]
       },
       {
-        "name": "Knowledge Combination",
-        "narrative": "Explicit concepts (Stock) enter a systematization process where they are combined and organized at a combination rate (Flow) determined by available systematization capacity (Auxiliary: organizer-hours/week). The knowledge repository (Stock) accumulates structured knowledge assets through this combination process. Repository quality (Auxiliary: 0-1) improves as more concepts get integrated, with a quality enhancement delay of 1-2 months as connections between concepts become apparent. Feedback loop (Reinforcing): Larger knowledge repository \u2192 more integration opportunities \u2192 higher combination value \u2192 faster repository growth. Nonlinearity: Combination effectiveness drops sharply when repository exceeds organizational absorption capacity, creating information overload. The accessibility index (Auxiliary) affects how quickly knowledge can be retrieved and applied.",
+        "name": "Core Community Development",
+        "narrative": "A core membership pool accumulates experienced practitioners who have progressed from peripheral status. Core members build up mentoring capacity measured in available mentor-hours per week, which grows as new members reach core status and declines through attrition or reduced availability. The community's collective expertise develops through shared practice and problem-solving, with expertise accumulation rate influenced by challenge diversity and reflection practices. Workload pressure accumulates as core members take on mentoring, coordination, and knowledge creation responsibilities. Balancing feedback: When workload exceeds sustainable capacity (typically 70% of available time), burnout risk increases, leading to reduced participation and potential attrition, which further increases workload on remaining members. Reinforcing feedback: Successful mentoring builds community reputation, attracting more qualified newcomers who eventually become core members. Nonlinear threshold: Community vitality drops sharply when core membership falls below 8-10 active members due to insufficient critical mass for sustained activity. Time delay: It takes 12-18 months for new core members to develop full mentoring capability and deep community understanding.",
         "theories_used": [
-          "Nonaka's SECI Model"
+          "Communities of Practice (Wenger)"
         ],
         "additional_theories_used": [
           {
-            "theory_name": "Information Processing Theory",
-            "rationale": "Needed to explain systematization capacity limits and absorption constraints"
+            "theory_name": "Community Resilience Theory",
+            "rationale": "Needed to explain how communities maintain vitality under workload pressure and member turnover"
           }
         ],
         "connections_to_other_clusters": [
           {
-            "target_cluster": "Knowledge Externalization",
-            "connection_type": "receives_from",
-            "description": "Receives explicit concepts from externalization process"
+            "target_cluster": "Community Entry and Peripheral Participation",
+            "connection_type": "feeds_into",
+            "description": "Provides mentoring capacity and guidance to support peripheral member progression"
           },
           {
-            "target_cluster": "Knowledge Internalization",
+            "target_cluster": "Community Entry and Peripheral Participation",
+            "connection_type": "receives_from",
+            "description": "Receives progressing members who transition from peripheral to core status"
+          },
+          {
+            "target_cluster": "Knowledge Creation and Externalization",
             "connection_type": "feeds_into",
-            "description": "Structured knowledge flows into internalization and application"
+            "description": "Core members contribute expertise for knowledge validation and combination"
+          },
+          {
+            "target_cluster": "Knowledge Internalization and Application",
+            "connection_type": "receives_from",
+            "description": "Application successes and challenges inform core community development priorities"
           }
         ]
       },
       {
-        "name": "Knowledge Internalization",
-        "narrative": "Structured knowledge (Stock) from the repository gets absorbed by community members at an internalization rate (Flow) limited by learning capacity (Auxiliary: learning-hours/week). Members progress from peripheral to core status (Stock: core members) through this internalization process, with an average progression time of 6-12 months. The application effectiveness (Auxiliary: 0-1) depends on practical opportunity frequency and feedback quality. Feedback loop (Reinforcing): More core members \u2192 better mentoring capacity \u2192 faster internalization \u2192 more future core members. Balancing pressure: As core member workload increases \u2192 mentoring capacity gets diverted \u2192 internalization rate slows. Threshold: Below 3 core members, mentoring becomes insufficient for effective knowledge transfer. The practical experience base (Stock) grows as knowledge gets applied.",
+        "name": "Knowledge Internalization and Application",
+        "narrative": "Applied knowledge accumulates as community members internalize explicit knowledge through practice and reflection. The internalization rate depends on learning opportunities, practice frequency, and feedback quality. Practical competence builds through repeated application, with competence development pace influenced by challenge appropriateness and support availability. Application outcomes generate performance feedback that accumulates as experience data. Reinforcing feedback: Successful applications build confidence and competence, enabling more complex applications and deeper internalization. Balancing feedback: Application failures create caution and trigger knowledge refinement needs. The internalization process typically shows rapid initial progress followed by plateau periods, with full mastery requiring 6-12 months of consistent practice. Nonlinearity: Internalization accelerates when members achieve 5-7 successful applications of core concepts, but slows when application complexity exceeds current competence by more than 20%. Time delay: Performance improvements from new knowledge typically manifest 1-3 months after internalization as skills become automated.",
         "theories_used": [
-          "Communities of Practice (Wenger)",
           "Nonaka's SECI Model"
         ],
         "additional_theories_used": [
           {
             "theory_name": "Experiential Learning Theory",
-            "rationale": "Needed to explain the application and internalization mechanisms from practice"
+            "rationale": "Needed to explain the cycle of concrete experience, reflective observation, abstract conceptualization, and active experimentation"
           }
         ],
         "connections_to_other_clusters": [
           {
-            "target_cluster": "Knowledge Combination",
+            "target_cluster": "Knowledge Creation and Externalization",
             "connection_type": "receives_from",
-            "description": "Receives structured knowledge from combination process"
+            "description": "Receives explicit knowledge for internalization and application"
           },
           {
-            "target_cluster": "Tacit Knowledge Socialization",
+            "target_cluster": "Knowledge Creation and Externalization",
             "connection_type": "feedback_loop",
-            "description": "Experienced core members feed back into socialization as mentors and role models"
+            "description": "Application outcomes provide feedback for knowledge refinement and gap identification"
+          },
+          {
+            "target_cluster": "Core Community Development",
+            "connection_type": "feeds_into",
+            "description": "Application successes and challenges inform core community development and mentoring focus"
+          },
+          {
+            "target_cluster": "Community Entry and Peripheral Participation",
+            "connection_type": "feedback_loop",
+            "description": "Application demonstrations and success stories enhance community reputation and attract newcomers"
           }
         ]
       }
     ],
-    "overall_narrative": "New members enter through Tacit Knowledge Socialization where they build shared experiences and trust through observation and interaction [Process 1]. As members gain experience, they flow into Knowledge Externalization where tacit insights get articulated into explicit concepts [overlap: Process 1\u21922]. These explicit concepts then move to Knowledge Combination where they are systematized and integrated into the organizational knowledge repository [overlap: Process 2\u21923]. The structured knowledge from the repository flows into Knowledge Internalization where members absorb and apply it, progressing toward core membership [overlap: Process 3\u21924]. Core members from the internalization process feed back into the socialization stage [feedback loop: Process 4\u21921] as mentors, creating a reinforcing cycle. Practical experience gained during internalization also enriches the tacit knowledge base, completing the knowledge spiral. This creates a continuous flow where knowledge transforms through socialization, externalization, combination, and internalization stages, with experienced members cycling back to accelerate newcomer development."
+    "overall_narrative": "Newcomers enter through peripheral participation where they accumulate observational experience and build foundational competence through legitimate peripheral engagement. As they progress, successful members transition to core status, building the community's mentoring capacity and collective expertise. Throughout this journey, knowledge flows through a continuous spiral: tacit knowledge develops through shared practice, gets externalized into explicit forms, combines with existing knowledge, and becomes internalized through application. The core community drives knowledge creation and validation while supporting newcomer development. Application outcomes feed back to refine the knowledge base and inform community development priorities. This creates an integrated learning ecosystem where member development, knowledge evolution, and community growth reinforce each other through multiple interconnected feedback loops. The complete flow moves from peripheral observation through progressive participation to core contribution, with knowledge continuously cycling between tacit and explicit forms through application and refinement."
   }
 }

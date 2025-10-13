@@ -6,7 +6,7 @@
     },
     {
       "id": "C02",
-      "description": "A larger pool of new contributors increases the potential inflow of individuals who can be mentored."
+      "description": "A larger pool of new contributors increases the potential candidates for promotion to experienced roles."
     },
     {
       "id": "C03",
@@ -14,11 +14,11 @@
     },
     {
       "id": "C04",
-      "description": "Developer turnover directly reduces the number of core developers by causing them to leave the project."
+      "description": "Developer turnover directly reduces the number of core developers through departures from the project."
     },
     {
       "id": "C05",
-      "description": "A higher promotion rate increases the core developer stock by moving experienced contributors into core roles."
+      "description": "A higher promotion rate increases the core developer stock by advancing experienced contributors."
     },
     {
       "id": "C06",
@@ -26,7 +26,7 @@
     },
     {
       "id": "C07",
-      "description": "The skill up flow increases the stock of experienced contributors by transitioning new contributors into this group."
+      "description": "The skill-up flow increases the stock of experienced contributors by advancing new contributors."
     },
     {
       "id": "C08",
@@ -34,7 +34,7 @@
     },
     {
       "id": "C09",
-      "description": "Effective mentorship accelerates practical skill development, increasing the rate at which contributors skill up."
+      "description": "Effective mentorship accelerates practical learning, increasing the rate at which contributors skill up."
     },
     {
       "id": "C10",
