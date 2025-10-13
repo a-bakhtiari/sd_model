@@ -1,0 +1,500 @@
+# Decomposed Theory Enhancement: Data Structure Guide
+
+## Overview
+
+The decomposed theory enhancement uses a **3-step approach**:
+1. **Step 1 (Planning)**: Strategic decisions about theories and process clustering
+2. **Step 2 (Concretization)**: Generate concrete SD variables and connections
+3. **Step 3 (MDL Creation)**: Create the actual .mdl file with spatial layout
+
+This guide explains the structure and purpose of the JSON outputs from Steps 1 and 2.
+
+---
+
+## Step 1: theory_planning_step1.json
+
+**Produced by**: `src/sd_model/pipeline/theory_planning.py` → `run_theory_planning()`
+
+**Input**:
+- Existing model (variables, connections, plumbing)
+- Available theories list
+- Research questions (optional)
+
+**Purpose**: Make **strategic decisions** about which theories to use and how to organize them into process-based clusters.
+
+### Structure:
+
+```json
+{
+  "theory_decisions": [...],
+  "clustering_strategy": {
+    "clusters": [...],
+    "overall_narrative": "..."
+  }
+}
+```
+
+---
+
+### 1. `theory_decisions` Array
+
+**Purpose**: Record which theories were selected/rejected and why.
+
+```json
+"theory_decisions": [
+  {
+    "theory_name": "Communities of Practice (Wenger)",
+    "decision": "include"
+  },
+  {
+    "theory_name": "Nonaka's SECI Model",
+    "decision": "include"
+  }
+]
+```
+
+**Elements**:
+- `theory_name`: Name of the theory evaluated
+- `decision`: "include" or "exclude"
+
+**Why needed**:
+- Documents which theories are being applied to the model
+- Provides provenance for the enhancement
+- Helps users understand theoretical foundation
+
+---
+
+### 2. `clustering_strategy` Object
+
+**Purpose**: Define how theory-generated elements will be organized into coherent process modules.
+
+#### 2.1 `clusters` Array
+
+**Purpose**: Break down the model into process-based clusters that represent distinct theoretical mechanisms.
+
+```json
+"clusters": [
+  {
+    "name": "Knowledge Socialization",
+    "narrative": "Individuals with diverse knowledge backgrounds...",
+    "theories_used": ["Communities of Practice (Wenger)", "Nonaka's SECI Model"],
+    "additional_theories_used": [
+      {
+        "theory_name": "Social Learning Theory",
+        "rationale": "Needed to explain how individuals learn through observation..."
+      }
+    ],
+    "connections_to_other_clusters": [
+      {
+        "target_cluster": "Knowledge Externalization",
+        "connection_type": "feeds_into",
+        "description": "Shared experiences and tacit understanding flow into..."
+      }
+    ]
+  }
+]
+```
+
+**Elements**:
+
+- **`name`**: Cluster/process name
+  - **Why**: Identifies the process module (used as key in Step 2)
+  - **Example**: "Knowledge Socialization", "Knowledge Externalization"
+
+- **`narrative`**: High-level description of what this process does
+  - **Why**: Guides Step 2 in creating appropriate variables and connections
+  - **Example**: "Individuals share experiences through direct interaction..."
+
+- **`theories_used`**: List of primary theories for this cluster
+  - **Why**: Documents theoretical foundation for this specific process
+  - **Example**: ["Nonaka's SECI Model"]
+
+- **`additional_theories_used`**: Extra theories needed beyond the primary ones
+  - **Why**: Captures when LLM identified gaps and brought in supporting theories
+  - **Structure**: `{theory_name, rationale}`
+  - **Example**: Social Learning Theory added to explain observation-based learning
+
+- **`connections_to_other_clusters`**: How this cluster connects to other clusters
+  - **Why**: CRITICAL for creating cohesive model - defines inter-cluster connections
+  - **Elements**:
+    - `target_cluster`: Which other cluster this connects to
+    - `connection_type`: "feeds_into", "receives_from", or "feedback_loop"
+    - `description`: What flows between the clusters
+  - **Used by Step 2**: To create concrete variable-to-variable connections
+
+#### 2.2 `overall_narrative` String
+
+**Purpose**: Describes how all clusters fit together as a cohesive system.
+
+```json
+"overall_narrative": "The knowledge creation system begins with Knowledge Socialization [Process 1] where individuals share experiences. This flows into Knowledge Externalization [overlap: Process 1→2] where understanding is articulated..."
+```
+
+**Why needed**:
+- Provides big-picture context for Step 2
+- Ensures LLM understands how clusters interconnect
+- Guides creation of inter-cluster connections
+
+---
+
+## Step 2: theory_concretization_step2.json
+
+**Produced by**: `src/sd_model/pipeline/theory_concretization.py` → `run_theory_concretization()`
+
+**Input**:
+- Step 1 output (theory_planning_step1.json)
+- Existing model (if enhancement mode)
+- Inter-cluster connection requirements
+
+**Purpose**: Transform abstract process narratives into **concrete System Dynamics elements** (variables, connections, types).
+
+### Structure:
+
+```json
+{
+  "processes": [...],
+  "cluster_positions": {...}
+}
+```
+
+---
+
+### 1. `processes` Array
+
+**Purpose**: One entry per cluster from Step 1, containing concrete SD elements.
+
+```json
+"processes": [
+  {
+    "process_name": "Knowledge Socialization",
+    "variables": [
+      {
+        "name": "Peripheral Community Members",
+        "type": "Stock"
+      },
+      {
+        "name": "Newcomer Arrival Rate",
+        "type": "Flow"
+      },
+      {
+        "name": "Socialization Effectiveness",
+        "type": "Auxiliary"
+      }
+    ],
+    "connections": [
+      {
+        "from": "Newcomer Arrival Rate",
+        "to": "Peripheral Community Members",
+        "relationship": "positive"
+      },
+      {
+        "from": "Tacit Knowledge Base",
+        "to": "Knowledge Articulation Rate",
+        "relationship": "positive",
+        "note": "INTER-CLUSTER to Knowledge Externalization"
+      }
+    ],
+    "boundary_flows": [
+      {
+        "flow_name": "Newcomer Arrival Rate",
+        "stock_name": "Peripheral Community Members",
+        "boundary_type": "source",
+        "description": "External individuals joining the community"
+      }
+    ]
+  }
+]
+```
+
+**Elements per process**:
+
+#### 1.1 `process_name` String
+
+**Purpose**: Links back to cluster name from Step 1
+
+**Why needed**:
+- Must match cluster name from Step 1 exactly
+- Used to organize variables by cluster
+- Used for cluster positioning
+
+#### 1.2 `variables` Array
+
+**Purpose**: Define all variables in this process with SD types.
+
+**Elements**:
+- **`name`**: Specific, descriptive variable name
+  - **Why**: Clear, unambiguous identification
+  - **Example**: "Peripheral Community Members" (not just "Members")
+
+- **`type`**: SD element type - "Stock", "Flow", or "Auxiliary"
+  - **Why**: Determines how variable is represented in Vensim
+  - **Rules**:
+    - Stock: Accumulations (people, knowledge, inventory)
+    - Flow: Rates connecting stocks (arrival rate, departure rate)
+    - Auxiliary: Calculated values, multipliers, effectiveness measures
+
+**Why needed**:
+- Provides complete list of SD elements to create
+- Type determines visual representation (rectangle vs pipe vs text)
+- Used in MDL generation
+
+#### 1.3 `connections` Array
+
+**Purpose**: Define causal relationships between variables (both internal and inter-cluster).
+
+**Elements**:
+- **`from`**: Source variable name
+  - Can be from THIS process OR another process (inter-cluster)
+
+- **`to`**: Target variable name
+  - Can be in THIS process OR another process (inter-cluster)
+
+- **`relationship`**: "positive" or "negative"
+  - **positive**: Increase in FROM → Increase in TO
+  - **negative**: Increase in FROM → Decrease in TO
+
+**Types of connections**:
+1. **Internal connections**: Both variables in same cluster
+   - Example: "Socialization Effectiveness" → "Socialization Progress Rate"
+
+2. **Inter-cluster connections** (CRITICAL!):
+   - Source in one cluster, target in another
+   - Example: "Tacit Knowledge Base" (Socialization) → "Knowledge Articulation Rate" (Externalization)
+   - **Why needed**: Creates cohesive model where processes connect to each other
+
+**Why needed**:
+- Defines the causal structure of the model
+- Inter-cluster connections implement the flows described in Step 1's `connections_to_other_clusters`
+- Becomes arrows in the Vensim diagram
+
+#### 1.4 `boundary_flows` Array (Optional)
+
+**Purpose**: Document flows that connect to external environment (not other stocks in model).
+
+**Elements**:
+- **`flow_name`**: Name of the Flow variable
+- **`stock_name`**: Name of the Stock it connects to
+- **`boundary_type`**: "source" or "sink"
+  - **source**: External → Model (e.g., hiring from labor market)
+  - **sink**: Model → External (e.g., employees retiring)
+- **`description`**: What the external boundary represents
+
+**Why needed**:
+- Documents model boundaries
+- Distinguishes external flows from stock-to-stock flows
+- Used in MDL generation for proper flow representation
+
+---
+
+### 2. `cluster_positions` Object (NEW!)
+
+**Purpose**: High-level spatial layout for diagram - which clusters go where.
+
+```json
+"cluster_positions": {
+  "Knowledge Socialization": [0, 0],
+  "Knowledge Externalization": [0, 1],
+  "Knowledge Combination": [1, 0],
+  "Knowledge Internalization": [1, 1],
+  "Community Core Development": [2, 0]
+}
+```
+
+**Elements**:
+- **Key**: Process name (matches cluster name from Step 1)
+- **Value**: `[row, col]` - Grid coordinates (0-indexed)
+
+**Why needed**:
+- Positions connected clusters near each other (shorter arrows)
+- Creates 2D grid layout instead of vertical stack
+- Used by `mdl_creator.py` to calculate pixel coordinates:
+  - `base_x = X_OFFSET + (col * CLUSTER_WIDTH)`
+  - `base_y = 100 + (row * CLUSTER_HEIGHT)`
+
+**Example layout**:
+```
+Row 0: [Socialization] [Externalization]
+Row 1: [Combination]   [Internalization]
+Row 2: [Community Core]
+```
+
+Connected clusters are adjacent → shorter arrows, clearer diagram!
+
+---
+
+## Data Flow: Step 1 → Step 2 → MDL Creation
+
+### Step 1 Output → Step 2 Input
+
+**What flows**:
+1. `clusters` → Used to structure `processes` (one process per cluster)
+2. `connections_to_other_clusters` → Guides inter-cluster connection creation
+3. `overall_narrative` → Context for coherent variable naming and connections
+
+**How Step 2 uses Step 1 data**:
+```
+For each cluster in Step 1:
+  1. Create a process with same name
+  2. Generate variables based on narrative
+  3. Create internal connections (within cluster)
+  4. Create inter-cluster connections (based on connections_to_other_clusters)
+  5. Assign spatial position (cluster_positions)
+```
+
+### Step 2 Output → MDL Creation
+
+**What flows**:
+1. `processes` → All variables and connections to create
+2. `cluster_positions` → Spatial layout for diagram
+
+**How MDL creator uses Step 2 data**:
+```python
+# mdl_creator.py
+for process in processes:
+    process_name = process['process_name']
+    grid_pos = cluster_positions[process_name]  # [row, col]
+
+    # Calculate base position for this cluster
+    base_x = X_OFFSET + (col * 1500)  # 1500px per cluster horizontally
+    base_y = 100 + (row * 800)         # 800px per cluster vertically
+
+    # Position variables within cluster
+    for i, var in enumerate(process['variables']):
+        var['x'] = base_x + (i % 5) * 250  # 5-column grid
+        var['y'] = base_y + (i // 5) * 150  # Row spacing
+
+    # Add connections to MDL
+    for conn in process['connections']:
+        # Creates arrow from source to target (may be inter-cluster)
+```
+
+---
+
+## Example: How Inter-Cluster Connections Flow Through
+
+### Step 1 says:
+```json
+"connections_to_other_clusters": [
+  {
+    "target_cluster": "Knowledge Externalization",
+    "connection_type": "feeds_into",
+    "description": "Shared experiences and tacit understanding flow into externalization"
+  }
+]
+```
+
+### Step 2 implements:
+```json
+{
+  "process_name": "Knowledge Socialization",
+  "variables": [
+    {"name": "Tacit Knowledge Base", "type": "Stock"}
+  ],
+  "connections": [
+    {
+      "from": "Tacit Knowledge Base",
+      "to": "Knowledge Articulation Rate",
+      "relationship": "positive"
+      // Note: "Knowledge Articulation Rate" is in Knowledge Externalization cluster
+    }
+  ]
+}
+```
+
+### MDL creates:
+```
+Arrow from "Tacit Knowledge Base" (Socialization cluster)
+       to "Knowledge Articulation Rate" (Externalization cluster)
+
+Because clusters are positioned adjacently, this arrow is SHORT and CLEAR!
+```
+
+---
+
+## Why This Structure?
+
+### Separation of Concerns
+
+1. **Step 1**: Strategic thinking
+   - Which theories apply?
+   - How should we organize the model?
+   - What are the high-level processes?
+   - How do processes connect?
+
+2. **Step 2**: Tactical implementation
+   - What are the specific variables?
+   - What type is each variable?
+   - What connects to what?
+   - Where should clusters be positioned?
+
+3. **Step 3**: Technical rendering
+   - Convert to MDL format
+   - Calculate pixel coordinates
+   - Add proper Vensim syntax
+
+### Benefits
+
+1. **Modularity**: Each step has clear input/output
+2. **Debuggability**: Can inspect outputs at each stage
+3. **Reusability**: Can re-run Step 2 with different Step 1 outputs
+4. **Flexibility**: Can manually edit Step 1 output before running Step 2
+5. **Provenance**: Complete audit trail of decisions
+
+---
+
+## Quick Reference
+
+| Element | File | Purpose | Used By |
+|---------|------|---------|---------|
+| `theory_decisions` | Step 1 | Document which theories selected | Documentation, provenance |
+| `clusters.narrative` | Step 1 | Guide variable/connection generation | Step 2 prompt |
+| `connections_to_other_clusters` | Step 1 | Define inter-cluster relationships | Step 2 prompt (CRITICAL!) |
+| `overall_narrative` | Step 1 | System-level context | Step 2 prompt |
+| `processes.variables` | Step 2 | Concrete SD elements to create | MDL creation |
+| `processes.connections` | Step 2 | Causal relationships (internal + inter-cluster) | MDL creation |
+| `cluster_positions` | Step 2 | Spatial layout grid | MDL creation (pixel calculation) |
+
+---
+
+## Common Questions
+
+**Q: Why separate `connections_to_other_clusters` (Step 1) and inter-cluster connections in `processes.connections` (Step 2)?**
+
+A: Step 1 is high-level ("Socialization feeds into Externalization"). Step 2 is concrete ("Tacit Knowledge Base → Knowledge Articulation Rate"). Step 1 provides the WHAT and WHY, Step 2 provides the HOW.
+
+**Q: Can I skip Step 1 and go straight to Step 2?**
+
+A: No - Step 2 depends on cluster definitions and narratives from Step 1. Without Step 1, the LLM wouldn't know how to organize variables into coherent processes.
+
+**Q: What if I manually edit Step 1 output?**
+
+A: Encouraged! You can refine narratives, add/remove clusters, or adjust connections before running Step 2. This gives you control over the strategic design.
+
+**Q: Why do inter-cluster connections appear in the SOURCE process's connections array?**
+
+A: Convention - the connection is "owned" by the source cluster. This avoids duplication and makes it clear which cluster creates the output that flows to others.
+
+**Q: What happens if `cluster_positions` is missing?**
+
+A: Fallback to vertical stacking (backward compatibility). All clusters arranged in single column. Works but may have longer arrows between connected clusters.
+
+---
+
+## Summary
+
+**Step 1 (Planning)**: Strategic design - which theories, what processes, how they connect
+- Output: High-level clusters with narratives and inter-cluster relationships
+
+**Step 2 (Concretization)**: Tactical implementation - specific variables, types, connections, positions
+- Output: Concrete SD elements ready for MDL creation
+
+**The flow**:
+```
+Step 1 narratives + connections_to_other_clusters
+  → Guide Step 2 variable generation
+  → Step 2 creates concrete inter-cluster connections
+  → MDL creator uses positions + connections
+  → Final diagram with connected processes!
+```
+
+The key innovation: **Inter-cluster connections** ensure processes aren't isolated - they form a cohesive, interconnected system dynamics model where knowledge flows through the SECI spiral.
