@@ -424,49 +424,48 @@ class MDLTextPatcher:
         """
         lines = self.lines.copy()
 
-        # Step 1: Remove all existing variable equations
-        # Find equation section bounds
+        # Step 1: Find all sections FIRST (before any deletions)
         equation_start = 0
         equation_end = 0
+        sketch_vars_start = None
+        sketch_end_marker = None
+        sketch_start = None
+
         for i, line in enumerate(lines):
+            # Find equation section bounds
             if line.strip() == '{UTF-8}':
                 equation_start = i + 1
             elif '********************************************************' in line and i + 1 < len(lines) and '.Control' in lines[i + 1]:
                 equation_end = i
-                break
 
-        # Remove all equations (each variable has 4 lines: equation, ~, ~, |, blank)
-        if equation_start > 0 and equation_end > equation_start:
-            del lines[equation_start:equation_end]
-
-        # Step 2: Remove all sketch Type 10 (variables) and Type 1 (connections) lines
-        # Find sketch section
-        sketch_start = None
-        sketch_vars_start = None
-        sketch_end_marker = None
-
-        for i, line in enumerate(lines):
+            # Find sketch section bounds
             if line.startswith('\\\\\\---///'):
                 sketch_start = i
             elif sketch_start and line.startswith(':') and not line.startswith(':GRAPH'):
                 sketch_vars_start = i + 1
-            elif line.startswith(':GRAPH') or (line.startswith('///---\\\\\\') and sketch_vars_start):
+            elif (line.startswith('///---\\\\\\') or line.startswith(':GRAPH')) and sketch_vars_start:
                 sketch_end_marker = i
-                break
+                # Don't break - keep scanning for equation_end if not found
 
-        # Remove all Type 10 and Type 1 lines between sketch_vars_start and sketch_end_marker
+        # Step 2: Mark all lines to remove (equations + sketch elements)
+        lines_to_remove = set()
+
+        # Mark equation lines for removal
+        if equation_start > 0 and equation_end > equation_start:
+            for i in range(equation_start, equation_end):
+                lines_to_remove.add(i)
+
+        # Mark sketch element lines for removal (Type 10, 1, 11, 12)
         if sketch_vars_start and sketch_end_marker:
-            lines_to_remove = []
             for i in range(sketch_vars_start, sketch_end_marker):
                 if lines[i].startswith('10,') or lines[i].startswith('1,') or lines[i].startswith('11,') or lines[i].startswith('12,'):
-                    lines_to_remove.append(i)
+                    lines_to_remove.add(i)
 
-            # Remove in reverse order to maintain indices
-            for i in reversed(lines_to_remove):
-                del lines[i]
+        # Step 3: Remove all marked lines in one pass (reverse order)
+        for i in sorted(lines_to_remove, reverse=True):
+            del lines[i]
 
-        # Step 3: Now rebuild the patcher with the cleaned template
-        # Write cleaned lines back as temporary content
+        # Step 4: Write cleaned template
         cleaned_content = '\n'.join(lines)
 
         # Create a new patcher instance with cleaned content
