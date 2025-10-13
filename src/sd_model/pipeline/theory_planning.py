@@ -250,27 +250,27 @@ def create_planning_prompt(
 
     # Mode-specific context
     if recreate_mode:
-        mode_context = """You will evaluate theories and design process-based narratives for **building a complete SD model from scratch**. The summary below provides domain context only - your output will define an entirely new model based purely on theoretical foundations."""
+        mode_context = "You will evaluate theories and design process-based narratives for **building a complete SD model from scratch**. The summary below provides domain context only - your output will define an entirely new model based purely on theoretical foundations."
         model_section_title = "# Domain Context"
     else:
-        mode_context = """You will evaluate theories and design process-based narratives for **enhancing an existing SD model**."""
+        mode_context = "You will evaluate theories and design process-based narratives for **enhancing an existing SD model**."
         model_section_title = "# Current System Dynamics Model"
 
-    prompt = f"""# Context
+    prompt = """# Context
 
-You are a system dynamics modeling expert. {mode_context}
+You are a system dynamics modeling expert. """ + mode_context + """
 
 **Your task**: Generate conceptual narratives describing system processes (NOT concrete variables). Another step will later convert your narratives into specific SD model elements.
 
 **Output format**: JSON with theory evaluations and process narratives.
 
-{model_section_title}
+""" + model_section_title + """
 
-{model_structure}
+""" + model_structure + """
 
-# Theories to Evaluate ({len(theories)} total)
+# Theories to Evaluate (""" + str(len(theories)) + """ total)
 
-{theories_text}
+""" + theories_text + """
 
 # System Archetypes (Optional Reference)
 
