@@ -402,6 +402,7 @@ def apply_text_patch_enhancements(
     output_path: Path,
     add_colors: bool = True,
     use_llm_layout: bool = False,
+    use_full_relayout: bool = False,
     llm_client: Optional[LLMClient] = None
 ) -> Dict[str, int]:
     """
@@ -413,7 +414,8 @@ def apply_text_patch_enhancements(
         new_connections: List of new connection specs
         output_path: Where to save enhanced MDL
         add_colors: Whether to add color highlights
-        use_llm_layout: Whether to use LLM for intelligent positioning
+        use_llm_layout: Whether to use LLM for intelligent positioning (incremental)
+        use_full_relayout: Whether to use full relayout (reposition ALL variables)
         llm_client: Optional LLM client for layout
 
     Returns:
@@ -425,6 +427,7 @@ def apply_text_patch_enhancements(
         new_connections,
         add_colors,
         use_llm_layout,
+        use_full_relayout,  # Pass through use_full_relayout
         llm_client
     )
 

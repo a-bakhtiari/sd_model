@@ -46,6 +46,17 @@ def create_concretization_prompt(
         for c in clustering_strategy.get('clusters', [])
     ])
 
+    # Format inter-cluster connections from Step 1
+    inter_cluster_text = "\n\n".join([
+        f"**{c['name']}** connects to:\n" +
+        "\n".join([
+            f"  → {conn['target_cluster']} ({conn['connection_type']}): \"{conn['description']}\""
+            for conn in c.get('connections_to_other_clusters', [])
+        ])
+        for c in clustering_strategy.get('clusters', [])
+        if c.get('connections_to_other_clusters')
+    ])
+
     # Mode-specific context
     if recreate_mode:
         mode_task = """**Your task**: Transform process narratives into specific variables, connections, and feedback loops **for a complete, self-contained model**. Generate ALL necessary variables - do not rely on existing model variables as they will not be present.
@@ -90,6 +101,14 @@ You are a system dynamics modeling expert converting process narratives into con
 
 ---
 
+# Inter-Cluster Connections (CRITICAL!)
+
+The following connections MUST exist between processes to create a cohesive, connected model:
+
+{inter_cluster_text}
+
+---
+
 # Your Task: Convert Narratives to SD Elements
 
 **Read the overall system narrative** to understand how processes connect as a cohesive whole.
@@ -98,10 +117,48 @@ Then **for EACH process narrative**, create:
 1. **Stocks** - Accumulations described in the narrative
 2. **Flows** - Rates of change connecting stocks
 3. **Auxiliaries** - Calculated values, ratios, multipliers
-4. **Connections** - Causal relationships implementing the narrative logic
+4. **Connections** - Causal relationships implementing the narrative logic (BOTH internal AND inter-cluster)
 5. **Hub outputs** - Key variables that connect this process to others
 
 **Key Principle**: Each process is a modular mini-model. Process outputs become connection points (hubs) linking multiple processes together.
+
+## ⚠️ CRITICAL: Creating Inter-Cluster Connections
+
+You MUST create concrete variable-to-variable connections between processes based on the inter-cluster relationships shown above.
+
+**How to implement inter-cluster connections:**
+
+For EACH inter-cluster relationship shown above:
+1. Identify or create a "hub output" variable in the SOURCE process
+2. Identify or create a receiving variable in the TARGET process
+3. Add the connection to the SOURCE process's connections array
+
+**Example:**
+```
+If Step 1 says:
+  "Knowledge Socialization → feeds_into → Knowledge Externalization"
+  Description: "Shared experiences and tacit understanding flow into the externalization process"
+
+Then in Step 2:
+  - Socialization process: Create hub output "Tacit Knowledge Base" (Stock)
+  - Externalization process: Create input "Tacit Knowledge Available" (Auxiliary)
+    OR reuse existing variable that receives tacit knowledge
+  - In Socialization's connections array, ADD:
+    {{"from": "Tacit Knowledge Base", "to": "Knowledge Articulation Rate", "relationship": "positive"}}
+```
+
+**Connection Types Guide:**
+- **feeds_into** → Positive connection from output of source to input/rate of target
+- **receives_from** → This is the REVERSE; create connection in the OTHER process
+- **feedback_loop** → Bidirectional; create connections in BOTH processes
+
+**Critical Rules:**
+- ✅ Every process MUST have at least 1-2 inter-cluster connections
+- ✅ Hub outputs from one process MUST connect to variables in other processes
+- ✅ Use the connection descriptions to identify appropriate variable names
+- ✅ Inter-cluster connections go in the SOURCE process's connections array
+- ❌ DO NOT create isolated processes - all must connect to form cohesive model
+- ❌ DO NOT skip inter-cluster connections - they are REQUIRED for model coherence
 
 ## Design Guidelines
 
@@ -162,36 +219,61 @@ Return ONLY valid JSON in this structure (no markdown, no explanation):
 {{
   "processes": [
     {{
-      "process_name": "Process Name from Step 1",
+      "process_name": "Knowledge Socialization",
       "variables": [
         {{
-          "name": "Specific Variable Name",
-          "type": "Stock|Flow|Auxiliary"
+          "name": "Tacit Knowledge Base",
+          "type": "Stock"
+        }},
+        {{
+          "name": "Socialization Rate",
+          "type": "Flow"
         }}
       ],
       "connections": [
         {{
-          "from": "Variable A (existing or new)",
-          "to": "Variable B (existing or new)",
-          "relationship": "positive|negative"
+          "from": "Socialization Rate",
+          "to": "Tacit Knowledge Base",
+          "relationship": "positive"
+        }},
+        {{
+          "from": "Tacit Knowledge Base",
+          "to": "Knowledge Articulation Rate",
+          "relationship": "positive",
+          "note": "INTER-CLUSTER connection to Knowledge Externalization"
         }}
       ],
-      "boundary_flows": [
+      "boundary_flows": []
+    }},
+    {{
+      "process_name": "Knowledge Externalization",
+      "variables": [
         {{
-          "flow_name": "Flow Variable Name",
-          "stock_name": "Stock Variable Name",
-          "boundary_type": "source|sink",
-          "description": "What the boundary represents (external labor market, environment, etc.)"
+          "name": "Articulated Knowledge",
+          "type": "Stock"
+        }},
+        {{
+          "name": "Knowledge Articulation Rate",
+          "type": "Flow"
         }}
-      ]
+      ],
+      "connections": [
+        {{
+          "from": "Knowledge Articulation Rate",
+          "to": "Articulated Knowledge",
+          "relationship": "positive"
+        }}
+      ],
+      "boundary_flows": []
     }}
   ],
   "cluster_positions": {{
-    "Process Name 1": [0, 0],
-    "Process Name 2": [0, 1],
-    "Process Name 3": [1, 0]
+    "Knowledge Socialization": [0, 0],
+    "Knowledge Externalization": [0, 1]
   }}
 }}
+
+**Example showing inter-cluster connection:** "Tacit Knowledge Base" (in Socialization) connects to "Knowledge Articulation Rate" (in Externalization). This connection appears in the Socialization process's connections array.
 
 **Notes**:
 - Process names must match the cluster names from Step 1
