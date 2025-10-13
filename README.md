@@ -62,8 +62,15 @@ python main.py --project oss_model --theory-enhancement
 #    Step 1: Strategic planning → Step 2: Concrete generation → Step 3: Positioning
 python main.py --project oss_model --theory-enhancement --decomposed-theory
 
-# 6. Theory enhancement with full relayout (reposition ALL variables)
+# 6. Theory enhancement - THREE LAYOUT MODES:
+#    a) Incremental (DEFAULT): Keep existing variables, add new ones
+python main.py --project oss_model --theory-enhancement --decomposed-theory
+
+#    b) Full Relayout: Keep ALL variables (existing + new), reposition everything
 python main.py --project oss_model --theory-enhancement --decomposed-theory --full-relayout
+
+#    c) Recreation: DISCARD existing model, build fresh from theory variables only
+python main.py --project oss_model --theory-enhancement --decomposed-theory --recreate-model
 
 # 7. Archetype detection (detect system archetypes and suggest patterns)
 python main.py --project oss_model --archetype-detection
@@ -93,6 +100,28 @@ python main.py --project oss_model --all --save-run "baseline-v1"
 python main.py --project oss_model --theory-enhancement --apply-patch
 ```
 
+**Understanding Theory Enhancement Layout Modes:**
+
+Theory enhancement offers three distinct approaches for how to handle your model:
+
+1. **Incremental Mode (Default)**: Best for iteratively improving existing models
+   - Keeps all original variables at their exact positions
+   - Adds only new variables/connections from theory
+   - Original model stays intact, new elements added around it
+   - Use when: You want to enhance an existing, well-organized model
+
+2. **Full Relayout Mode (`--full-relayout`)**: Best for reorganizing cluttered models
+   - Keeps ALL variables (original + new)
+   - Repositions everything using LLM-based clustering
+   - All content preserved, just reorganized spatially
+   - Use when: Your model has grown messy and needs spatial reorganization
+
+3. **Recreation Mode (`--recreate-model`)**: Best for theory-driven model building
+   - **Completely discards the existing model**
+   - Builds brand new MDL with ONLY theory-generated variables
+   - Fresh start based purely on theoretical foundation
+   - Use when: You want to build a model from theoretical principles, not adapt an existing one
+
 **Common Workflows:**
 
 ```bash
@@ -104,6 +133,9 @@ python main.py --project oss_model --citations --gap-analysis --discover-papers
 
 # Model improvement with decomposed theory enhancement (recommended)
 python main.py --project oss_model --theory-enhancement --decomposed-theory --full-relayout --rq-analysis --theory-discovery
+
+# Build new model from scratch based on theories
+python main.py --project oss_model --theory-enhancement --decomposed-theory --recreate-model
 
 # Complete analysis (everything)
 python main.py --project oss_model --all --save-run "complete-analysis"

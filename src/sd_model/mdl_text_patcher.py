@@ -432,6 +432,7 @@ def apply_theory_enhancements(
     add_colors: bool = True,
     use_llm_layout: bool = False,
     use_full_relayout: bool = False,
+    recreate_mode: bool = False,
     llm_client: Optional[LLMClient] = None,
     color_scheme: str = "theory",
     clustering_scheme: Optional[Dict] = None
@@ -447,12 +448,30 @@ def apply_theory_enhancements(
         add_colors: Whether to add color highlights
         use_llm_layout: Whether to use LLM for intelligent positioning (incremental)
         use_full_relayout: Whether to use full relayout (reposition ALL variables)
+        recreate_mode: Whether to recreate model from scratch (discard existing model)
         llm_client: Optional LLM client for layout
         clustering_scheme: Optional clustering scheme from theory enhancement
 
     Returns:
         Summary dict with counts
     """
+
+    # If recreate mode, use mdl_creator instead
+    if recreate_mode:
+        from .mdl_creator import create_mdl_from_scratch
+
+        # enhancement_json should have theory_concretization in it
+        # or be the concretization output itself
+        theory_concretization = enhancement_json
+
+        result = create_mdl_from_scratch(
+            theory_concretization,
+            output_path,
+            llm_client,
+            clustering_scheme
+        )
+
+        return result
     # Collect all additions from all theories
     all_new_variables = []
     all_new_connections = []

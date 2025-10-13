@@ -64,6 +64,11 @@ def main() -> None:
         help="Use full relayout (reposition ALL variables) instead of incremental placement"
     )
     parser.add_argument(
+        "--recreate-model",
+        action="store_true",
+        help="Recreate model from scratch using ONLY theory-generated variables (discards existing model)"
+    )
+    parser.add_argument(
         "--decomposed-theory",
         action="store_true",
         help="Use decomposed 3-step theory enhancement (strategic planning → concrete generation → positioning)"
@@ -170,6 +175,7 @@ def main() -> None:
             # Model improvement features
             run_theory_enhancement=args.theory_enhancement,
             use_full_relayout=args.full_relayout,
+            recreate_from_theory=args.recreate_model,
             use_decomposed_theory=args.decomposed_theory,
             run_archetype_detection=args.archetype_detection,
             run_rq_analysis=args.rq_analysis,

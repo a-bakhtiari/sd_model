@@ -41,6 +41,7 @@ def run_pipeline(
     # Model improvement features
     run_theory_enhancement: bool = False,
     use_full_relayout: bool = False,
+    recreate_from_theory: bool = False,
     use_decomposed_theory: bool = False,
     run_archetype_detection: bool = False,
     run_rq_analysis: bool = False,
@@ -68,6 +69,9 @@ def run_pipeline(
 
         # Model improvement features
         run_theory_enhancement: Suggest theory-based enhancements and generate enhanced MDL
+        use_full_relayout: Reposition ALL variables (existing + new) using LLM layout
+        recreate_from_theory: Recreate model from scratch using ONLY theory-generated variables
+        use_decomposed_theory: Use 3-step decomposed approach for theory enhancement
         run_rq_analysis: Run research question alignment and refinement
         run_theory_discovery: Discover relevant theories for the model
         run_gap_analysis: Identify unsupported connections (requires run_citations)
@@ -459,8 +463,13 @@ def run_pipeline(
                     logger.info(f"  ✓ Step 2 complete: {total_vars} variables, {total_conns} connections")
 
                     # Convert to legacy format for existing MDL enhancement code
-                    theory_enh = convert_to_legacy_format(concretization_result)
-                    logger.info("  ✓ Converted to legacy format for MDL generation")
+                    # Unless we're in recreate mode, then use concretization directly
+                    if recreate_from_theory:
+                        theory_enh = concretization_result
+                        logger.info("  ✓ Using concretization result directly for model recreation")
+                    else:
+                        theory_enh = convert_to_legacy_format(concretization_result)
+                        logger.info("  ✓ Converted to legacy format for MDL generation")
 
                 except Exception as e:
                     logger.error(f"✗ Decomposed Theory Enhancement failed: {e}")
@@ -507,7 +516,10 @@ def run_pipeline(
                     for t in theory_enh.get('theories', [])
                 )
                 if "error" not in theory_enh and has_changes:
-                    logger.info("Applying theory enhancements to MDL...")
+                    if recreate_from_theory:
+                        logger.info("Recreating model from scratch using theory-generated variables...")
+                    else:
+                        logger.info("Applying theory enhancements to MDL...")
                     try:
                         from .mdl_text_patcher import apply_theory_enhancements
                         from .mdl_enhancement_utils import save_enhancement
@@ -527,6 +539,7 @@ def run_pipeline(
                             add_colors=True,
                             use_llm_layout=not theory_should_relayout,  # Use incremental only if not using full relayout
                             use_full_relayout=theory_should_relayout,
+                            recreate_mode=recreate_from_theory,
                             llm_client=client,
                             clustering_scheme=clustering_scheme if theory_should_relayout else None
                         )
