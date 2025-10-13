@@ -163,8 +163,7 @@ Return ONLY valid JSON:
   ],
   "cluster_positions": {{
     "Process Name": [row, column]
-  }},
-  "clustering_strategy": {clustering_strategy}
+  }}
 }}
 
 CRITICAL: Include cluster_positions for spatial layout (2D grid positions).
