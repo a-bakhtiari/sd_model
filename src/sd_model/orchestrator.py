@@ -499,24 +499,39 @@ def run_pipeline(
                 paths.theory_enhancement_path.write_text(
                     json.dumps(theory_enh, indent=2), encoding="utf-8"
                 )
-                # Count from new format
-                theory_count = len(theory_enh.get('theories', []))
-                total_vars = sum(len(t.get('additions', {}).get('variables', [])) for t in theory_enh.get('theories', []))
-                total_conns = sum(len(t.get('additions', {}).get('connections', [])) for t in theory_enh.get('theories', []))
-                logger.info(f"✓ Theory Enhancement complete: {theory_count} theories, {total_vars} variables, {total_conns} connections")
-                log_event(paths.db_dir / "provenance.sqlite", "theory_enhancement", {})
+                # Count from appropriate format based on mode
+                if recreate_from_theory:
+                    # In recreate mode, theory_enh is concretization_result with "processes" key
+                    theory_count = len(theory_enh.get('processes', []))
+                    total_vars = sum(len(p.get('variables', [])) for p in theory_enh.get('processes', []))
+                    total_conns = sum(len(p.get('connections', [])) for p in theory_enh.get('processes', []))
+                    logger.info(f"✓ Theory Enhancement complete: {theory_count} processes, {total_vars} variables, {total_conns} connections")
 
-                # Always generate enhanced MDL file when theory enhancement runs
-                # Check if any theories have additions, modifications, or removals
-                has_changes = any(
-                    len(t.get('additions', {}).get('variables', [])) > 0 or
-                    len(t.get('additions', {}).get('connections', [])) > 0 or
-                    len(t.get('modifications', {}).get('variables', [])) > 0 or
-                    len(t.get('modifications', {}).get('connections', [])) > 0 or
-                    len(t.get('removals', {}).get('variables', [])) > 0 or
-                    len(t.get('removals', {}).get('connections', [])) > 0
-                    for t in theory_enh.get('theories', [])
-                )
+                    # Check if processes have variables/connections
+                    has_changes = any(
+                        len(p.get('variables', [])) > 0 or
+                        len(p.get('connections', [])) > 0
+                        for p in theory_enh.get('processes', [])
+                    )
+                else:
+                    # In enhancement mode, theory_enh is legacy format with "theories" key
+                    theory_count = len(theory_enh.get('theories', []))
+                    total_vars = sum(len(t.get('additions', {}).get('variables', [])) for t in theory_enh.get('theories', []))
+                    total_conns = sum(len(t.get('additions', {}).get('connections', [])) for t in theory_enh.get('theories', []))
+                    logger.info(f"✓ Theory Enhancement complete: {theory_count} theories, {total_vars} variables, {total_conns} connections")
+
+                    # Check if any theories have additions, modifications, or removals
+                    has_changes = any(
+                        len(t.get('additions', {}).get('variables', [])) > 0 or
+                        len(t.get('additions', {}).get('connections', [])) > 0 or
+                        len(t.get('modifications', {}).get('variables', [])) > 0 or
+                        len(t.get('modifications', {}).get('connections', [])) > 0 or
+                        len(t.get('removals', {}).get('variables', [])) > 0 or
+                        len(t.get('removals', {}).get('connections', [])) > 0
+                        for t in theory_enh.get('theories', [])
+                    )
+
+                log_event(paths.db_dir / "provenance.sqlite", "theory_enhancement", {})
                 if "error" not in theory_enh and has_changes:
                     if recreate_from_theory:
                         logger.info("Recreating model from scratch using theory-generated variables...")
