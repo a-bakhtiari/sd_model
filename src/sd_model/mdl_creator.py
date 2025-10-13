@@ -85,8 +85,8 @@ def create_mdl_from_scratch(
     output_path.write_text(mdl_content, encoding='utf-8')
 
     return {
-        'variables_created': len(positioned_variables),
-        'connections_created': len(all_connections),
+        'variables_added': len(positioned_variables),
+        'connections_added': len(all_connections),
         'boundary_flows_created': len(all_boundary_flows),
         'output_path': str(output_path)
     }
