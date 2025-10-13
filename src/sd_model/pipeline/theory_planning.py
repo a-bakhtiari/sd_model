@@ -186,7 +186,7 @@ def run_theory_planning(
         provider, model = should_use_gpt("theory_planning")
         llm_client = LLMClient(provider=provider, model=model)
 
-    response = llm_client.complete(prompt, temperature=0.3, max_tokens=4000)
+    response = llm_client.complete(prompt, temperature=0.3, max_tokens=16000)
 
     # Parse response
     try:

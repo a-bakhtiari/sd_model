@@ -210,7 +210,7 @@ def run_theory_concretization(
         provider, model = should_use_gpt("theory_concretization")
         llm_client = LLMClient(provider=provider, model=model)
 
-    response = llm_client.complete(prompt, temperature=0.3, max_tokens=4000)
+    response = llm_client.complete(prompt, temperature=0.3, max_tokens=16000)
 
     # Parse response
     try:
