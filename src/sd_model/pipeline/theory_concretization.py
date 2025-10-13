@@ -185,7 +185,12 @@ Return ONLY valid JSON in this structure (no markdown, no explanation):
         }}
       ]
     }}
-  ]
+  ],
+  "cluster_positions": {{
+    "Process Name 1": [0, 0],
+    "Process Name 2": [0, 1],
+    "Process Name 3": [1, 0]
+  }}
 }}
 
 **Notes**:
@@ -195,6 +200,11 @@ Return ONLY valid JSON in this structure (no markdown, no explanation):
   - `source`: External entity feeding INTO the model (e.g., labor market hiring into "Active Contributors")
   - `sink`: External entity draining FROM the model (e.g., contributors leaving to job market)
   - If both ends of a Flow are Stocks in the model, use `connections` instead, not `boundary_flows`
+- `cluster_positions` is REQUIRED - high-level spatial layout for diagram:
+  - Format: `{{"Process Name": [row, col]}}` where row and col are 0-indexed grid coordinates
+  - Place connected processes near each other (same row or adjacent rows/cols) for shorter arrows
+  - Use 2-3 columns, multiple rows as needed
+  - Example: If Process A feeds into Process B, put them adjacent like `A: [0,0], B: [0,1]` or `B: [1,0]`
 
 **Remember**: Transform each process narrative into a modular mini-model with concrete SD elements. Use the overall narrative to ensure processes connect coherently.
 """

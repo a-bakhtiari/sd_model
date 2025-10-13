@@ -77,22 +77,52 @@ def create_mdl_from_scratch(
     # Apply X offset to position theory model to the RIGHT of original model
     X_OFFSET = 3000  # Theory model appears 3000px to the right
 
-    # Use simple grid layout for theory variables (organized by process cluster)
-    processes_dict = {p['process_name']: p for p in processes}
+    # Get cluster spatial layout from Step 2 (if provided by LLM)
+    cluster_positions = theory_concretization.get('cluster_positions', {})
 
-    y_offset = 100
-    for process_name, process in processes_dict.items():
-        process_vars = [v for v in all_variables if v.get('cluster') == process_name]
+    # Layout parameters
+    CLUSTER_WIDTH = 1500   # Horizontal space per cluster
+    CLUSTER_HEIGHT = 800   # Vertical space per cluster
+    VARS_PER_ROW = 5       # Variables per row within cluster
+    VAR_SPACING_X = 250    # Horizontal spacing between variables
+    VAR_SPACING_Y = 150    # Vertical spacing between variables
 
-        # Position variables in this process cluster in a grid
-        for i, var in enumerate(process_vars):
-            var['x'] = X_OFFSET + (i % 5) * 250  # 5 columns, 250px spacing
-            var['y'] = y_offset + (i // 5) * 150  # 150px row spacing
+    # Use cluster positions if available, otherwise fallback to vertical stacking
+    if cluster_positions:
+        print(f"Using LLM-suggested cluster layout: {len(cluster_positions)} clusters positioned")
+        for process in processes:
+            process_name = process['process_name']
+            process_vars = [v for v in all_variables if v.get('cluster') == process_name]
 
-        # Move down for next process cluster
-        if process_vars:
-            rows_needed = (len(process_vars) + 4) // 5  # Ceiling division
-            y_offset += rows_needed * 150 + 200  # Extra 200px gap between processes
+            # Get cluster grid position from LLM (default to [0, 0] if missing)
+            grid_pos = cluster_positions.get(process_name, [0, 0])
+            grid_row, grid_col = grid_pos[0], grid_pos[1]
+
+            # Calculate base position for this cluster
+            base_x = X_OFFSET + (grid_col * CLUSTER_WIDTH)
+            base_y = 100 + (grid_row * CLUSTER_HEIGHT)
+
+            # Position variables within cluster in a grid
+            for i, var in enumerate(process_vars):
+                var['x'] = base_x + (i % VARS_PER_ROW) * VAR_SPACING_X
+                var['y'] = base_y + (i // VARS_PER_ROW) * VAR_SPACING_Y
+    else:
+        # Fallback: simple vertical stacking (for old JSON files without cluster_positions)
+        print("No cluster positions found, using vertical stacking layout")
+        y_offset = 100
+        for process in processes:
+            process_name = process['process_name']
+            process_vars = [v for v in all_variables if v.get('cluster') == process_name]
+
+            # Position variables in this process cluster in a grid
+            for i, var in enumerate(process_vars):
+                var['x'] = X_OFFSET + (i % VARS_PER_ROW) * VAR_SPACING_X
+                var['y'] = y_offset + (i // VARS_PER_ROW) * VAR_SPACING_Y
+
+            # Move down for next process cluster
+            if process_vars:
+                rows_needed = (len(process_vars) + 4) // VARS_PER_ROW  # Ceiling division
+                y_offset += rows_needed * VAR_SPACING_Y + 200  # Extra 200px gap between processes
 
     # Use regular addition mode with offset variables
     # This is proven, stable code that works perfectly
