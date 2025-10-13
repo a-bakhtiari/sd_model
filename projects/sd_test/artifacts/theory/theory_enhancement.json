@@ -12,23 +12,19 @@
           "type": "Flow"
         },
         {
-          "name": "Shared Experiences Quality",
+          "name": "Social Interaction Quality",
           "type": "Auxiliary"
         },
         {
-          "name": "Trust Level",
+          "name": "Shared Context Effectiveness",
           "type": "Auxiliary"
         },
         {
-          "name": "Mentoring Effectiveness",
-          "type": "Auxiliary"
+          "name": "Peripheral Participation Rate",
+          "type": "Flow"
         },
         {
-          "name": "Peripheral Participation Level",
-          "type": "Stock"
-        },
-        {
-          "name": "Movement to Core Participation",
+          "name": "New Member Inflow",
           "type": "Flow"
         }
       ],
@@ -39,29 +35,24 @@
           "relationship": "positive"
         },
         {
-          "from": "Shared Experiences Quality",
+          "from": "Social Interaction Quality",
           "to": "Socialization Rate",
           "relationship": "positive"
         },
         {
-          "from": "Trust Level",
+          "from": "Shared Context Effectiveness",
           "to": "Socialization Rate",
           "relationship": "positive"
         },
         {
-          "from": "Mentoring Effectiveness",
+          "from": "Peripheral Participation Rate",
           "to": "Socialization Rate",
           "relationship": "positive"
         },
         {
-          "from": "Peripheral Participation Level",
-          "to": "Socialization Rate",
+          "from": "New Member Inflow",
+          "to": "Peripheral Participation Rate",
           "relationship": "positive"
-        },
-        {
-          "from": "Movement to Core Participation",
-          "to": "Peripheral Participation Level",
-          "relationship": "negative"
         },
         {
           "from": "Tacit Knowledge Base",
@@ -70,19 +61,25 @@
           "note": "INTER-CLUSTER connection to Knowledge Externalization"
         },
         {
-          "from": "Community Bond Strength",
-          "to": "Trust Level",
+          "from": "Tacit Knowledge Base",
+          "to": "Socialization Effectiveness",
           "relationship": "positive",
-          "note": "INTER-CLUSTER connection from Community Development"
+          "note": "INTER-CLUSTER connection to Community Core Development"
         },
         {
-          "from": "Tacit Knowledge Base",
-          "to": "Community Bond Strength",
+          "from": "Internalized Knowledge Base",
+          "to": "Socialization Rate",
           "relationship": "positive",
-          "note": "INTER-CLUSTER feedback to Community Development"
+          "note": "INTER-CLUSTER feedback from Knowledge Internalization"
         }
       ],
-      "boundary_flows": []
+      "boundary_flows": [
+        {
+          "name": "New Member Inflow",
+          "type": "source",
+          "connected_to": "Peripheral Participation Rate"
+        }
+      ]
     },
     {
       "process_name": "Knowledge Externalization",
@@ -100,15 +97,11 @@
           "type": "Auxiliary"
         },
         {
-          "name": "Reflection Effectiveness",
+          "name": "Articulation Difficulty",
           "type": "Auxiliary"
         },
         {
-          "name": "Shared Language Development",
-          "type": "Auxiliary"
-        },
-        {
-          "name": "Tacit Knowledge Available",
+          "name": "Core Member Facilitation",
           "type": "Auxiliary"
         }
       ],
@@ -124,37 +117,32 @@
           "relationship": "positive"
         },
         {
-          "from": "Reflection Effectiveness",
+          "from": "Articulation Difficulty",
+          "to": "Knowledge Articulation Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Core Member Facilitation",
           "to": "Knowledge Articulation Rate",
           "relationship": "positive"
         },
         {
-          "from": "Shared Language Development",
+          "from": "Tacit Knowledge Base",
           "to": "Knowledge Articulation Rate",
-          "relationship": "positive"
-        },
-        {
-          "from": "Tacit Knowledge Available",
-          "to": "Knowledge Articulation Rate",
-          "relationship": "positive"
+          "relationship": "positive",
+          "note": "INTER-CLUSTER connection from Knowledge Socialization"
         },
         {
           "from": "Articulated Knowledge",
-          "to": "Knowledge Integration Rate",
+          "to": "Knowledge Combination Rate",
           "relationship": "positive",
           "note": "INTER-CLUSTER connection to Knowledge Combination"
         },
         {
-          "from": "Community Norms Clarity",
-          "to": "Dialogue Quality",
+          "from": "Articulated Knowledge",
+          "to": "Core Member Expertise",
           "relationship": "positive",
-          "note": "INTER-CLUSTER connection from Community Development"
-        },
-        {
-          "from": "Community Language Richness",
-          "to": "Shared Language Development",
-          "relationship": "positive",
-          "note": "INTER-CLUSTER connection from Community Development"
+          "note": "INTER-CLUSTER feedback to Community Core Development"
         }
       ],
       "boundary_flows": []
@@ -167,69 +155,51 @@
           "type": "Stock"
         },
         {
-          "name": "Knowledge Integration Rate",
+          "name": "Knowledge Combination Rate",
           "type": "Flow"
         },
         {
-          "name": "System Organization Effectiveness",
+          "name": "System Integration Effectiveness",
           "type": "Auxiliary"
         },
         {
-          "name": "Knowledge Repository Quality",
-          "type": "Auxiliary"
-        },
-        {
-          "name": "Framework Development Capability",
-          "type": "Auxiliary"
-        },
-        {
-          "name": "Explicit Knowledge Available",
+          "name": "Knowledge Synthesis Capability",
           "type": "Auxiliary"
         }
       ],
       "connections": [
         {
-          "from": "Knowledge Integration Rate",
+          "from": "Knowledge Combination Rate",
           "to": "Organized Knowledge Systems",
           "relationship": "positive"
         },
         {
-          "from": "System Organization Effectiveness",
-          "to": "Knowledge Integration Rate",
+          "from": "System Integration Effectiveness",
+          "to": "Knowledge Combination Rate",
           "relationship": "positive"
         },
         {
-          "from": "Knowledge Repository Quality",
-          "to": "Knowledge Integration Rate",
+          "from": "Knowledge Synthesis Capability",
+          "to": "Knowledge Combination Rate",
           "relationship": "positive"
         },
         {
-          "from": "Framework Development Capability",
-          "to": "Knowledge Integration Rate",
-          "relationship": "positive"
-        },
-        {
-          "from": "Explicit Knowledge Available",
-          "to": "Knowledge Integration Rate",
-          "relationship": "positive"
+          "from": "Articulated Knowledge",
+          "to": "Knowledge Combination Rate",
+          "relationship": "positive",
+          "note": "INTER-CLUSTER connection from Knowledge Externalization"
         },
         {
           "from": "Organized Knowledge Systems",
-          "to": "Knowledge Absorption Rate",
+          "to": "Knowledge Internalization Rate",
           "relationship": "positive",
           "note": "INTER-CLUSTER connection to Knowledge Internalization"
         },
         {
           "from": "Organized Knowledge Systems",
-          "to": "Community Shared Understanding",
+          "to": "Infrastructure Development Rate",
           "relationship": "positive",
-          "note": "INTER-CLUSTER feedback to Community Development"
-        },
-        {
-          "from": "Community Identity Strength",
-          "to": "Framework Development Capability",
-          "relationship": "positive",
-          "note": "INTER-CLUSTER connection from Community Development"
+          "note": "INTER-CLUSTER connection to Community Infrastructure"
         }
       ],
       "boundary_flows": []
@@ -238,11 +208,11 @@
       "process_name": "Knowledge Internalization",
       "variables": [
         {
-          "name": "Individual Tacit Capabilities",
+          "name": "Internalized Knowledge Base",
           "type": "Stock"
         },
         {
-          "name": "Knowledge Absorption Rate",
+          "name": "Knowledge Internalization Rate",
           "type": "Flow"
         },
         {
@@ -250,179 +220,203 @@
           "type": "Auxiliary"
         },
         {
-          "name": "Practice Opportunity Level",
-          "type": "Auxiliary"
-        },
-        {
-          "name": "Personal Mastery Development",
-          "type": "Auxiliary"
-        },
-        {
-          "name": "Explicit Knowledge Access",
+          "name": "Practical Application Opportunity",
           "type": "Auxiliary"
         }
       ],
       "connections": [
         {
-          "from": "Knowledge Absorption Rate",
-          "to": "Individual Tacit Capabilities",
+          "from": "Knowledge Internalization Rate",
+          "to": "Internalized Knowledge Base",
           "relationship": "positive"
         },
         {
           "from": "Learning by Doing Effectiveness",
-          "to": "Knowledge Absorption Rate",
+          "to": "Knowledge Internalization Rate",
           "relationship": "positive"
         },
         {
-          "from": "Practice Opportunity Level",
-          "to": "Knowledge Absorption Rate",
+          "from": "Practical Application Opportunity",
+          "to": "Knowledge Internalization Rate",
           "relationship": "positive"
         },
         {
-          "from": "Personal Mastery Development",
-          "to": "Knowledge Absorption Rate",
-          "relationship": "positive"
+          "from": "Organized Knowledge Systems",
+          "to": "Knowledge Internalization Rate",
+          "relationship": "positive",
+          "note": "INTER-CLUSTER connection from Knowledge Combination"
         },
         {
-          "from": "Explicit Knowledge Access",
-          "to": "Knowledge Absorption Rate",
-          "relationship": "positive"
-        },
-        {
-          "from": "Individual Tacit Capabilities",
+          "from": "Internalized Knowledge Base",
           "to": "Socialization Rate",
           "relationship": "positive",
-          "note": "INTER-CLUSTER connection to Knowledge Socialization"
+          "note": "INTER-CLUSTER feedback to Knowledge Socialization"
         },
         {
-          "from": "Individual Tacit Capabilities",
-          "to": "Core Participation Capacity",
+          "from": "Internalized Knowledge Base",
+          "to": "Member Progression Rate",
           "relationship": "positive",
-          "note": "INTER-CLUSTER feedback to Community Development"
-        },
-        {
-          "from": "Community Participation Level",
-          "to": "Practice Opportunity Level",
-          "relationship": "positive",
-          "note": "INTER-CLUSTER connection from Community Development"
+          "note": "INTER-CLUSTER connection to Community Core Development"
         }
       ],
       "boundary_flows": []
     },
     {
-      "process_name": "Community Development",
+      "process_name": "Community Core Development",
       "variables": [
         {
-          "name": "Community Bond Strength",
+          "name": "Core Member Expertise",
           "type": "Stock"
         },
         {
-          "name": "Bond Development Rate",
+          "name": "Member Progression Rate",
           "type": "Flow"
         },
         {
-          "name": "Core Participation Capacity",
+          "name": "Socialization Effectiveness",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Core Member Contribution",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Peripheral Member Pool",
+          "type": "Stock"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Member Progression Rate",
+          "to": "Core Member Expertise",
+          "relationship": "positive"
+        },
+        {
+          "from": "Member Progression Rate",
+          "to": "Peripheral Member Pool",
+          "relationship": "negative"
+        },
+        {
+          "from": "Socialization Effectiveness",
+          "to": "Member Progression Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Core Member Expertise",
+          "to": "Core Member Facilitation",
+          "relationship": "positive"
+        },
+        {
+          "from": "Core Member Expertise",
+          "to": "Infrastructure Stewardship",
+          "relationship": "positive"
+        },
+        {
+          "from": "Tacit Knowledge Base",
+          "to": "Socialization Effectiveness",
+          "relationship": "positive",
+          "note": "INTER-CLUSTER connection from Knowledge Socialization"
+        },
+        {
+          "from": "Internalized Knowledge Base",
+          "to": "Member Progression Rate",
+          "relationship": "positive",
+          "note": "INTER-CLUSTER connection from Knowledge Internalization"
+        },
+        {
+          "from": "Articulated Knowledge",
+          "to": "Core Member Expertise",
+          "relationship": "positive",
+          "note": "INTER-CLUSTER feedback from Knowledge Externalization"
+        },
+        {
+          "from": "Community Infrastructure Level",
+          "to": "Member Progression Rate",
+          "relationship": "positive",
+          "note": "INTER-CLUSTER feedback from Community Infrastructure"
+        }
+      ],
+      "boundary_flows": []
+    },
+    {
+      "process_name": "Community Infrastructure",
+      "variables": [
+        {
+          "name": "Community Infrastructure Level",
           "type": "Stock"
         },
         {
-          "name": "Capacity Development Rate",
+          "name": "Infrastructure Development Rate",
           "type": "Flow"
         },
         {
-          "name": "Community Norms Clarity",
+          "name": "Infrastructure Stewardship",
           "type": "Auxiliary"
         },
         {
-          "name": "Community Language Richness",
-          "type": "Auxiliary"
-        },
-        {
-          "name": "Community Identity Strength",
-          "type": "Auxiliary"
-        },
-        {
-          "name": "Community Shared Understanding",
-          "type": "Auxiliary"
-        },
-        {
-          "name": "Community Participation Level",
-          "type": "Auxiliary"
-        },
-        {
-          "name": "Mentoring Activity Level",
+          "name": "Infrastructure Utilization",
           "type": "Auxiliary"
         }
       ],
       "connections": [
         {
-          "from": "Bond Development Rate",
-          "to": "Community Bond Strength",
+          "from": "Infrastructure Development Rate",
+          "to": "Community Infrastructure Level",
           "relationship": "positive"
         },
         {
-          "from": "Capacity Development Rate",
-          "to": "Core Participation Capacity",
+          "from": "Infrastructure Stewardship",
+          "to": "Infrastructure Development Rate",
           "relationship": "positive"
         },
         {
-          "from": "Community Bond Strength",
-          "to": "Bond Development Rate",
+          "from": "Infrastructure Utilization",
+          "to": "Infrastructure Development Rate",
           "relationship": "positive"
         },
         {
-          "from": "Core Participation Capacity",
-          "to": "Capacity Development Rate",
+          "from": "Community Infrastructure Level",
+          "to": "Social Interaction Quality",
           "relationship": "positive"
         },
         {
-          "from": "Community Bond Strength",
-          "to": "Community Norms Clarity",
-          "relationship": "positive"
-        },
-        {
-          "from": "Community Bond Strength",
-          "to": "Community Identity Strength",
-          "relationship": "positive"
-        },
-        {
-          "from": "Core Participation Capacity",
-          "to": "Mentoring Activity Level",
-          "relationship": "positive"
-        },
-        {
-          "from": "Core Participation Capacity",
-          "to": "Community Participation Level",
-          "relationship": "positive"
-        },
-        {
-          "from": "Community Norms Clarity",
+          "from": "Community Infrastructure Level",
           "to": "Dialogue Quality",
-          "relationship": "positive",
-          "note": "INTER-CLUSTER connection to Knowledge Externalization"
+          "relationship": "positive"
         },
         {
-          "from": "Community Language Richness",
-          "to": "Shared Language Development",
-          "relationship": "positive",
-          "note": "INTER-CLUSTER connection to Knowledge Externalization"
+          "from": "Community Infrastructure Level",
+          "to": "System Integration Effectiveness",
+          "relationship": "positive"
         },
         {
-          "from": "Community Identity Strength",
-          "to": "Framework Development Capability",
-          "relationship": "positive",
-          "note": "INTER-CLUSTER connection to Knowledge Combination"
+          "from": "Community Infrastructure Level",
+          "to": "Practical Application Opportunity",
+          "relationship": "positive"
         },
         {
-          "from": "Community Participation Level",
-          "to": "Practice Opportunity Level",
+          "from": "Organized Knowledge Systems",
+          "to": "Infrastructure Development Rate",
           "relationship": "positive",
-          "note": "INTER-CLUSTER connection to Knowledge Internalization"
+          "note": "INTER-CLUSTER connection from Knowledge Combination"
         },
         {
-          "from": "Mentoring Activity Level",
-          "to": "Mentoring Effectiveness",
+          "from": "Core Member Expertise",
+          "to": "Infrastructure Stewardship",
           "relationship": "positive",
-          "note": "INTER-CLUSTER connection to Knowledge Socialization"
+          "note": "INTER-CLUSTER feedback from Community Core Development"
+        },
+        {
+          "from": "Community Infrastructure Level",
+          "to": "Member Progression Rate",
+          "relationship": "positive",
+          "note": "INTER-CLUSTER feedback to Community Core Development"
+        },
+        {
+          "from": "Community Infrastructure Level",
+          "to": "Socialization Rate",
+          "relationship": "positive",
+          "note": "INTER-CLUSTER feedback to Knowledge Socialization"
         }
       ],
       "boundary_flows": []
@@ -438,15 +432,19 @@
       1
     ],
     "Knowledge Combination": [
-      0,
-      2
+      1,
+      1
     ],
     "Knowledge Internalization": [
-      0,
-      3
-    ],
-    "Community Development": [
       1,
+      0
+    ],
+    "Community Core Development": [
+      2,
+      0
+    ],
+    "Community Infrastructure": [
+      2,
       1
     ]
   },
@@ -454,7 +452,7 @@
     "clusters": [
       {
         "name": "Knowledge Socialization",
-        "narrative": "Tacit knowledge is shared through direct interaction and shared experiences among organizational members. Newcomers enter through legitimate peripheral participation, observing and learning from experienced practitioners. Social bonds and trust develop through shared practice, creating the foundation for knowledge exchange. This process occurs through informal interactions, mentoring relationships, and collaborative work environments where implicit understanding is transferred.",
+        "narrative": "Tacit knowledge is shared through shared experiences and social interaction. New members enter the community through legitimate peripheral participation, observing and learning from experienced practitioners. This process creates a foundation of shared understanding through direct observation, imitation, and practice. The quality of social interaction and shared context determines how effectively tacit knowledge transfers between community members.",
         "theories_used": [
           "Communities of Practice (Wenger)",
           "Nonaka's SECI Model"
@@ -462,85 +460,85 @@
         "additional_theories_used": [
           {
             "theory_name": "Social Learning Theory",
-            "rationale": "Needed to explain how observation and modeling facilitate knowledge transfer in social contexts"
+            "rationale": "Needed to explain how observation and imitation facilitate knowledge transfer in social contexts"
           }
         ],
         "connections_to_other_clusters": [
           {
             "target_cluster": "Knowledge Externalization",
             "connection_type": "feeds_into",
-            "description": "Shared tacit knowledge becomes available for articulation and formalization"
+            "description": "Shared tacit understanding provides raw material for articulation and formalization"
           },
           {
-            "target_cluster": "Community Development",
-            "connection_type": "feedback_loop",
-            "description": "Socialization strengthens community bonds which in turn enables more effective socialization"
+            "target_cluster": "Community Core Development",
+            "connection_type": "feeds_into",
+            "description": "Successful socialization enables movement toward community core participation"
           }
         ]
       },
       {
         "name": "Knowledge Externalization",
-        "narrative": "Tacit knowledge gained through socialization is articulated and converted into explicit forms. Practitioners develop concepts, models, and documentation that capture their implicit understanding. This involves dialogue, reflection, and the creation of shared language and frameworks. The process transforms personal insights into communicable knowledge that can be shared more broadly across the organization.",
+        "narrative": "Tacit knowledge gained through socialization is articulated into explicit concepts and models. Community members engage in dialogue and reflection to convert their intuitive understanding into communicable forms. This process involves creating metaphors, analogies, and conceptual frameworks that make implicit knowledge accessible to others. The difficulty of articulation and the quality of dialogue influence how effectively knowledge becomes explicit.",
         "theories_used": [
           "Nonaka's SECI Model"
         ],
         "additional_theories_used": [
           {
-            "theory_name": "Cognitive Apprenticeship",
-            "rationale": "Needed to explain how experts make their thinking visible and help others articulate implicit knowledge"
+            "theory_name": "Articulation Theory",
+            "rationale": "Needed to explain the cognitive and communicative processes of converting tacit to explicit knowledge"
           }
         ],
         "connections_to_other_clusters": [
           {
             "target_cluster": "Knowledge Socialization",
             "connection_type": "receives_from",
-            "description": "Receives tacit knowledge from socialization processes"
+            "description": "Receives tacit knowledge foundation from socialization processes"
           },
           {
             "target_cluster": "Knowledge Combination",
             "connection_type": "feeds_into",
-            "description": "Articulated explicit knowledge flows into combination processes"
+            "description": "Articulated explicit knowledge flows into systematic combination processes"
           },
           {
-            "target_cluster": "Community Development",
-            "connection_type": "receives_from",
-            "description": "Receives community norms and language that facilitate articulation"
+            "target_cluster": "Community Core Development",
+            "connection_type": "feedback_loop",
+            "description": "Core members facilitate externalization while externalization reinforces core expertise"
           }
         ]
       },
       {
         "name": "Knowledge Combination",
-        "narrative": "Explicit knowledge from various sources is systematically combined, organized, and integrated into coherent knowledge systems. Different pieces of articulated knowledge are synthesized, categorized, and connected to form comprehensive frameworks. This process involves creating knowledge repositories, developing training materials, and building organizational memory systems. The combined knowledge becomes more accessible and applicable across different contexts.",
+        "narrative": "Explicit knowledge from various sources is systematically combined, organized, and integrated into coherent knowledge systems. This process involves categorizing, editing, and synthesizing different pieces of explicit knowledge to create more complex and applicable knowledge structures. Documentation, databases, and formal procedures emerge as knowledge becomes more structured and accessible across the community.",
         "theories_used": [
           "Nonaka's SECI Model"
         ],
         "additional_theories_used": [
           {
-            "theory_name": "Organizational Learning Theory",
-            "rationale": "Needed to explain how organizations systematically integrate and institutionalize knowledge"
+            "theory_name": "Information Processing Theory",
+            "rationale": "Needed to explain how knowledge is organized, categorized, and integrated into systematic structures"
           }
         ],
         "connections_to_other_clusters": [
           {
             "target_cluster": "Knowledge Externalization",
             "connection_type": "receives_from",
-            "description": "Receives articulated explicit knowledge from externalization"
+            "description": "Receives articulated explicit knowledge for systematic organization"
           },
           {
             "target_cluster": "Knowledge Internalization",
             "connection_type": "feeds_into",
-            "description": "Organized knowledge systems flow into internalization processes"
+            "description": "Organized knowledge systems flow into learning and application processes"
           },
           {
-            "target_cluster": "Community Development",
-            "connection_type": "feedback_loop",
-            "description": "Combined knowledge strengthens community identity and shared understanding"
+            "target_cluster": "Community Infrastructure",
+            "connection_type": "feeds_into",
+            "description": "Structured knowledge contributes to community tools and resources"
           }
         ]
       },
       {
         "name": "Knowledge Internalization",
-        "narrative": "Explicit knowledge from combination processes is absorbed, practiced, and transformed into individual tacit knowledge and capabilities. Organizational members learn through doing, applying combined knowledge in real work situations, and developing personal mastery. This learning-by-doing process creates new skills, intuitions, and practical know-how that become part of individual competence. As knowledge is internalized, it creates the foundation for new cycles of socialization.",
+        "narrative": "Explicit knowledge is learned, applied, and absorbed back into tacit understanding through practice and experience. Community members engage with organized knowledge through learning-by-doing, experimentation, and practical application. As knowledge becomes internalized, it transforms into personal expertise and intuitive capability. This process creates new tacit knowledge that can restart the socialization cycle.",
         "theories_used": [
           "Nonaka's SECI Model",
           "Communities of Practice (Wenger)"
@@ -548,63 +546,93 @@
         "additional_theories_used": [
           {
             "theory_name": "Experiential Learning Theory",
-            "rationale": "Needed to explain how knowledge transforms through concrete experience and reflection"
+            "rationale": "Needed to explain how knowledge transforms through practical application and reflection"
           }
         ],
         "connections_to_other_clusters": [
           {
             "target_cluster": "Knowledge Combination",
             "connection_type": "receives_from",
-            "description": "Receives organized explicit knowledge systems"
+            "description": "Receives organized knowledge systems for learning and application"
           },
           {
             "target_cluster": "Knowledge Socialization",
-            "connection_type": "feeds_into",
-            "description": "Newly developed tacit knowledge flows back into socialization processes"
+            "connection_type": "feedback_loop",
+            "description": "Newly internalized tacit knowledge feeds back into socialization processes"
           },
           {
-            "target_cluster": "Community Development",
-            "connection_type": "feedback_loop",
-            "description": "Internalized knowledge increases individual participation capacity in the community"
+            "target_cluster": "Community Core Development",
+            "connection_type": "feeds_into",
+            "description": "Internalized expertise enables progression toward core community membership"
           }
         ]
       },
       {
-        "name": "Community Development",
-        "narrative": "The community of practice evolves as members move from peripheral to core participation through increasing engagement and competence development. Core members take on mentoring roles, shape community norms, and steward the community's knowledge domain. The community develops shared identity, mutual accountability, and collective capability. This process creates the social container that enables all knowledge processes to function effectively.",
+        "name": "Community Core Development",
+        "narrative": "Community members progress from peripheral participation to core engagement through demonstrated expertise and contribution. As individuals internalize knowledge and develop capabilities, they take on more central roles in the community. Core members guide newcomers, facilitate knowledge processes, and steward community practices. This progression creates a dynamic where expertise distribution affects all knowledge processes.",
         "theories_used": [
           "Communities of Practice (Wenger)"
         ],
         "additional_theories_used": [
           {
-            "theory_name": "Social Identity Theory",
-            "rationale": "Needed to explain how group identity and belonging develop through shared practice"
+            "theory_name": "Expertise Development Theory",
+            "rationale": "Needed to explain the progression from novice to expert and the development of mastery"
           }
         ],
         "connections_to_other_clusters": [
           {
             "target_cluster": "Knowledge Socialization",
-            "connection_type": "feedback_loop",
-            "description": "Community development enables socialization while being strengthened by it"
-          },
-          {
-            "target_cluster": "Knowledge Externalization",
-            "connection_type": "feeds_into",
-            "description": "Community norms and language facilitate knowledge articulation"
-          },
-          {
-            "target_cluster": "Knowledge Combination",
-            "connection_type": "feedback_loop",
-            "description": "Community identity is reinforced by shared knowledge frameworks"
+            "connection_type": "receives_from",
+            "description": "Receives socialized members ready for progression"
           },
           {
             "target_cluster": "Knowledge Internalization",
+            "connection_type": "receives_from",
+            "description": "Receives members with internalized expertise for core development"
+          },
+          {
+            "target_cluster": "Knowledge Externalization",
             "connection_type": "feedback_loop",
-            "description": "Community participation levels influence and are influenced by knowledge internalization"
+            "description": "Core members facilitate externalization while progression reinforces core"
+          },
+          {
+            "target_cluster": "Community Infrastructure",
+            "connection_type": "feedback_loop",
+            "description": "Core development strengthens infrastructure while infrastructure supports development"
+          }
+        ]
+      },
+      {
+        "name": "Community Infrastructure",
+        "narrative": "Supporting structures, tools, and resources that enable and sustain knowledge processes evolve through community activity. As knowledge becomes combined and internalized, the community develops shared artifacts, communication channels, and collaborative spaces. This infrastructure both enables knowledge flow and is shaped by it, creating a reinforcing cycle where better infrastructure improves knowledge processes, which in turn enhances infrastructure.",
+        "theories_used": [
+          "Communities of Practice (Wenger)"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Structuration Theory",
+            "rationale": "Needed to explain how social structures both enable and are shaped by community practices"
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Knowledge Combination",
+            "connection_type": "receives_from",
+            "description": "Receives structured knowledge that becomes embedded in infrastructure"
+          },
+          {
+            "target_cluster": "Community Core Development",
+            "connection_type": "feedback_loop",
+            "description": "Infrastructure supports core development while core members shape infrastructure"
+          },
+          {
+            "target_cluster": "Knowledge Socialization",
+            "connection_type": "feedback_loop",
+            "description": "Infrastructure enables socialization while social practices shape infrastructure evolution"
           }
         ]
       }
     ],
-    "overall_narrative": "The knowledge creation system operates as an integrated spiral where knowledge continuously transforms through interconnected processes. Knowledge Socialization [Process 1] creates the foundational tacit understanding through shared experiences, feeding into Knowledge Externalization [overlap: Process 1\u21922] where implicit knowledge is articulated into explicit forms. These articulated concepts flow into Knowledge Combination [overlap: Process 2\u21923] where they are systematically organized into comprehensive knowledge systems. The organized knowledge then moves to Knowledge Internalization [overlap: Process 3\u21924] where it is absorbed through practice and transformed back into new tacit capabilities. This newly developed tacit knowledge completes the cycle by flowing back into Knowledge Socialization [feedback: Process 4\u21921], creating an upward knowledge spiral. Throughout this entire flow, Community Development [Process 5] provides the essential social context that enables all knowledge processes, with bidirectional feedback loops connecting it to every other process. The community's development both enables and is strengthened by each knowledge transformation, while individual movement from peripheral to core participation [connection: Process 5\u2192all] drives the entire system's capacity for knowledge creation and sharing."
+    "overall_narrative": "The knowledge creation system begins with Knowledge Socialization where tacit knowledge transfers through shared experiences and peripheral participation [Process 1]. This shared understanding flows into Knowledge Externalization [overlap: Process 1\u21922] where community members articulate tacit knowledge into explicit concepts through dialogue. The articulated knowledge then moves to Knowledge Combination [overlap: Process 2\u21923] where explicit knowledge is systematically organized into coherent systems. These organized knowledge systems feed into Knowledge Internalization [overlap: Process 3\u21924] where learning-by-doing transforms explicit knowledge back into personal tacit expertise. The newly internalized knowledge creates a feedback loop [connection: Process 4\u21921] that enriches future socialization processes. Throughout this SECI spiral, Community Core Development [Process 5] enables member progression from periphery to core, with core members facilitating knowledge processes while their own expertise grows through internalization [feedback: Process 4\u21925]. Community Infrastructure [Process 6] provides the supporting structures that enable all knowledge processes, evolving through the combination of explicit knowledge [connection: Process 3\u21926] and being shaped by core member stewardship [feedback: Process 5\u21926]. This creates a dynamic knowledge ecosystem where social learning, knowledge transformation, community development, and infrastructure evolution continuously reinforce each other in a virtuous cycle of organizational learning."
   }
 }

@@ -2,11 +2,11 @@
   "descriptions": [
     {
       "id": "C01",
-      "description": "More core developers increase the availability of mentors, facilitating implicit knowledge sharing."
+      "description": "More core developers increase the availability of mentors, facilitating implicit knowledge transfer."
     },
     {
       "id": "C02",
-      "description": "A larger pool of new contributors increases the potential inflow of individuals joining the project."
+      "description": "A larger pool of new contributors increases the potential inflow of individuals who can become experienced."
     },
     {
       "id": "C03",
@@ -18,15 +18,15 @@
     },
     {
       "id": "C05",
-      "description": "A higher promotion rate increases the core developer stock by transitioning experienced contributors into core roles."
+      "description": "A higher promotion rate increases the core developer stock by moving experienced contributors into core roles."
     },
     {
       "id": "C06",
-      "description": "A higher promotion rate decreases the stock of experienced contributors as they move into core roles."
+      "description": "Promoting experienced contributors to core roles reduces the stock of experienced contributors."
     },
     {
       "id": "C07",
-      "description": "The skill-up flow increases the stock of experienced contributors by transitioning new contributors into this group."
+      "description": "The skill-up flow increases the stock of experienced contributors by transitioning new contributors into this role."
     },
     {
       "id": "C08",
@@ -34,11 +34,11 @@
     },
     {
       "id": "C09",
-      "description": "Effective mentorship accelerates practical learning, increasing the rate at which contributors skill up."
+      "description": "Effective mentorship accelerates practical skill development, increasing the rate at which contributors skill up."
     },
     {
       "id": "C10",
-      "description": "Effective mentorship prepares experienced contributors for core responsibilities, increasing their promotion rate."
+      "description": "Mentorship builds the necessary skills and social capital for experienced contributors to be promoted."
     }
   ]
 }

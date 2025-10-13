@@ -1,0 +1,313 @@
+{UTF-8}
+colored stock  = A FUNCTION OF( )
+	~	
+	~		|
+
+New Contributors  = A FUNCTION OF( colored stock,-Skill up)
+	~	
+	~		|
+
+Core Developer  = A FUNCTION OF( -Developer's Turnover,Promotion Rate)
+	~	
+	~		|
+
+Experienced Contributors  = A FUNCTION OF( -Promotion Rate,Skill up)
+	~	
+	~		|
+
+"Explicit Knowledge Transfer (Documentation, Contributor's Guides)"  = A FUNCTION OF(\
+		 )
+	~	
+	~		|
+
+"Implicit Knowledge Transfer (Mentorship)"  = A FUNCTION OF( Core Developer)
+	~	
+	~		|
+
+Skill up  = A FUNCTION OF( "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"\
+		,"Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Promotion Rate  = A FUNCTION OF( "Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Developer's Turnover  = A FUNCTION OF( )
+	~	
+	~		|
+
+Tacit Knowledge Base  = A FUNCTION OF( Socialization Rate)
+	~	
+	~		|
+
+Socialization Rate  = A FUNCTION OF( Social Interaction Quality,Shared Context Effectiveness\
+		,Peripheral Participation Rate,Internalized Knowledge Base,Internalized Knowledge Base\
+		,Community Infrastructure Level)
+	~	
+	~		|
+
+Social Interaction Quality  = A FUNCTION OF( Community Infrastructure Level)
+	~	
+	~		|
+
+Shared Context Effectiveness  = A FUNCTION OF( )
+	~	
+	~		|
+
+Peripheral Participation Rate  = A FUNCTION OF( New Member Inflow)
+	~	
+	~		|
+
+New Member Inflow  = A FUNCTION OF( )
+	~	
+	~		|
+
+Articulated Knowledge  = A FUNCTION OF( Knowledge Articulation Rate)
+	~	
+	~		|
+
+Knowledge Articulation Rate  = A FUNCTION OF( Tacit Knowledge Base,Dialogue Quality,-\
+		Articulation Difficulty,Core Member Facilitation,Tacit Knowledge Base)
+	~	
+	~		|
+
+Dialogue Quality  = A FUNCTION OF( Community Infrastructure Level)
+	~	
+	~		|
+
+Articulation Difficulty  = A FUNCTION OF( )
+	~	
+	~		|
+
+Core Member Facilitation  = A FUNCTION OF( Core Member Expertise)
+	~	
+	~		|
+
+Organized Knowledge Systems  = A FUNCTION OF( Knowledge Combination Rate)
+	~	
+	~		|
+
+Knowledge Combination Rate  = A FUNCTION OF( Articulated Knowledge,System Integration Effectiveness\
+		,Knowledge Synthesis Capability,Articulated Knowledge)
+	~	
+	~		|
+
+System Integration Effectiveness  = A FUNCTION OF( Community Infrastructure Level)
+	~	
+	~		|
+
+Knowledge Synthesis Capability  = A FUNCTION OF( )
+	~	
+	~		|
+
+Internalized Knowledge Base  = A FUNCTION OF( Knowledge Internalization Rate)
+	~	
+	~		|
+
+Knowledge Internalization Rate  = A FUNCTION OF( Organized Knowledge Systems,Learning by Doing Effectiveness\
+		,Practical Application Opportunity,Organized Knowledge Systems)
+	~	
+	~		|
+
+Learning by Doing Effectiveness  = A FUNCTION OF( )
+	~	
+	~		|
+
+Practical Application Opportunity  = A FUNCTION OF( Community Infrastructure Level)
+	~	
+	~		|
+
+Core Member Expertise  = A FUNCTION OF( Articulated Knowledge,Member Progression Rate\
+		,Articulated Knowledge)
+	~	
+	~		|
+
+Member Progression Rate  = A FUNCTION OF( Internalized Knowledge Base,Socialization Effectiveness\
+		,Internalized Knowledge Base,Community Infrastructure Level,Community Infrastructure Level\
+		)
+	~	
+	~		|
+
+Socialization Effectiveness  = A FUNCTION OF( Tacit Knowledge Base,Tacit Knowledge Base\
+		)
+	~	
+	~		|
+
+Core Member Contribution  = A FUNCTION OF( )
+	~	
+	~		|
+
+Peripheral Member Pool  = A FUNCTION OF( -Member Progression Rate)
+	~	
+	~		|
+
+Community Infrastructure Level  = A FUNCTION OF( Infrastructure Development Rate)
+	~	
+	~		|
+
+Infrastructure Development Rate  = A FUNCTION OF( Organized Knowledge Systems,Infrastructure Stewardship\
+		,Infrastructure Utilization,Organized Knowledge Systems)
+	~	
+	~		|
+
+Infrastructure Stewardship  = A FUNCTION OF( Core Member Expertise,Core Member Expertise\
+		)
+	~	
+	~		|
+
+Infrastructure Utilization  = A FUNCTION OF( )
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,28,2
+10,1,New Contributors,293,1584,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Core Developer,720,1587,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,3,48,897,1587,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,6,2,100,0,0,22,0,192,0,-1--1--1,,1|(793,1587)|
+1,5,6,3,4,0,0,22,0,192,0,-1--1--1,,1|(859,1587)|
+11,6,0,826,1587,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,7,Developer's Turnover,826,1621,56,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,8,Experienced Contributors,511,1587,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,11,1,100,0,0,22,0,192,0,-1--1--1,,1|(378,1588)|
+1,10,11,8,4,0,0,22,0,192,0,-1--1--1,,1|(427,1588)|
+11,11,0,404,1588,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,12,Skill up,404,1622,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,13,15,8,100,0,0,22,0,192,0,-1--1--1,,1|(599,1586)|
+1,14,15,2,4,0,0,22,0,192,0,-1--1--1,,1|(653,1586)|
+11,15,0,627,1586,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,16,Promotion Rate,627,1620,46,26,40,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,17,"Implicit Knowledge Transfer (Mentorship)",571,1416,57,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,18,17,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,19,17,15,0,0,43,0,0,192,0,-1--1--1,,1|(0,0)|
+1,20,2,17,1,0,43,0,0,192,0,-1--1--1,,1|(689,1471)|
+10,21,"Explicit Knowledge Transfer (Documentation, Contributor's Guides)",310,1407,91,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,22,21,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,23,colored stock,103,1820,46,26,3,3,0,1,-1,1,0,0,252-102-255,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,24,Tacit Knowledge Base,2036,1103,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,25,Socialization Rate,2871,1552,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,26,Social Interaction Quality,3230,1555,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,27,Shared Context Effectiveness,2852,1417,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,28,Peripheral Participation Rate,3099,1355,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,29,New Member Inflow,2036,1253,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,30,Articulated Knowledge,3526,1626,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,31,Knowledge Articulation Rate,3786,1103,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,32,Dialogue Quality,3357,1423,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,33,Articulation Difficulty,3963,1248,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,34,Core Member Facilitation,3863,1477,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,35,Organized Knowledge Systems,2731,1805,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,36,Knowledge Combination Rate,3187,1945,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,37,System Integration Effectiveness,3248,1648,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,38,Knowledge Synthesis Capability,3197,1753,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,39,Internalized Knowledge Base,2655,1680,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,40,Knowledge Internalization Rate,2426,1754,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,41,Learning by Doing Effectiveness,2442,1888,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,42,Practical Application Opportunity,2730,1967,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,43,Core Member Expertise,3734,1765,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,44,Member Progression Rate,2941,2106,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,45,Socialization Effectiveness,2536,2703,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,46,Core Member Contribution,2786,2703,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,47,Peripheral Member Pool,3036,2703,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,48,Community Infrastructure Level,3232,1400,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,49,Infrastructure Development Rate,2912,1758,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,50,Infrastructure Stewardship,3395,1798,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,51,Infrastructure Utilization,2974,1824,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,52,23,1,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,53,25,24,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,54,48,25,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,55,39,25,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,56,28,25,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,57,27,25,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,58,26,25,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,59,48,26,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,60,29,28,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,61,31,30,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,62,33,31,1,0,0,0,0,64,0,-1--1--1,,1|(3867,1185)|
+1,63,34,31,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,64,32,31,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,65,24,31,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,66,48,32,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,67,43,34,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,68,36,35,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,69,30,36,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,70,38,36,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,71,37,36,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,72,48,37,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,73,40,39,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,74,41,40,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,75,35,40,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,76,42,40,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,77,48,42,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,78,30,43,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,79,44,43,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,80,48,44,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,81,39,44,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,82,45,44,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,83,24,45,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,84,44,47,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,85,49,48,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,86,50,49,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,87,51,49,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,88,35,49,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,89,43,50,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+///---\\\
+:L<%^E!@
+5:Infrastructure Utilization
+19:28,0
+24:0
+25:0
+26:0
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Vensim Sans|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

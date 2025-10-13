@@ -126,73 +126,109 @@ Then **for EACH process narrative**, create:
 
 You MUST create concrete variable-to-variable connections between processes based on the inter-cluster relationships shown above.
 
-**Hub-Based Connection Pattern (REQUIRED):**
+**STRICT SISO (Single-Input, Single-Output) Pattern (REQUIRED):**
 
-Each process should have **ONE clear hub output** that serves as the connection point to other processes. This creates a clean, modular architecture.
+Each process module MUST follow the SISO principle:
+- **EXACTLY ONE input** (receives from ONE upstream process)
+- **EXACTLY ONE output** (sends to ONE downstream process)
+
+This creates the cleanest possible pipeline architecture where each process transforms one input into one output.
 
 **Pattern:**
 ```
 Process A:
-  - Internal Stock: "Knowledge Base"  ← Main accumulation
-  - Internal connections within the process
-  - Hub Output: "Knowledge Base" → connects to multiple downstream processes
+  - Input: (from external or previous process)
+  - Internal: Stocks, Flows, Auxiliaries for processing
+  - Output Hub: "Process A Output" → connects to EXACTLY ONE next process
 
 Process B:
-  - Receives from Process A: "Knowledge Base" → "Application Rate"
-  - ONLY ONE connection from A to B (via the hub)
+  - Input: "Process A Output" → "Process B Input Rate"
+  - Internal: Processing logic
+  - Output Hub: "Process B Output" → connects to EXACTLY ONE next process
 
 Process C:
-  - Also receives from Process A: "Knowledge Base" → "Integration Effectiveness"
-  - Same hub output serves multiple processes
+  - Input: "Process B Output" → "Process C Input Rate"
+  - Internal: Processing logic
+  - Output Hub: "Process C Output" → connects to next process or loops back
 ```
 
-**How to implement inter-cluster connections:**
+**How to implement SISO inter-cluster connections:**
 
-For EACH inter-cluster relationship shown above:
-1. **Identify or create ONE "hub output" variable** in the SOURCE process
-   - Typically the main Stock or key Auxiliary that represents the process output
-   - This hub should serve ALL outgoing connections to other processes
+For EACH process:
 
-2. **Create receiving variable(s)** in the TARGET process
-   - Usually a Flow rate or Auxiliary that uses the hub output
+1. **Identify EXACTLY ONE input**
+   - Look at `receives_from` relationships - this is your ONE input source
+   - Create an input variable (Flow or Auxiliary) that receives from ONE upstream hub
+   - If no `receives_from`, this is a source process (external input)
 
-3. **Add EXACTLY ONE connection per process pair** to the SOURCE process's connections array
-   - From: Hub output (source process)
-   - To: Receiving variable (target process)
-   - Use the SAME hub output for all downstream connections
+2. **Create EXACTLY ONE output hub**
+   - The main Stock or key Auxiliary representing what this process produces
+   - This hub connects to EXACTLY ONE downstream process
 
-**Example:**
+3. **Add EXACTLY ONE outgoing connection**
+   - From: Your output hub
+   - To: ONE downstream process's input variable
+   - Look at `feeds_into` relationships to identify the ONE primary downstream
+
+**Example (SECI Pipeline):**
 ```
-If Step 1 says:
-  "Knowledge Socialization → feeds_into → Knowledge Externalization"
-  "Knowledge Socialization → feeds_into → Community Core Development"
+Step 1 shows:
+  Socialization → feeds_into → Externalization
+  Externalization → feeds_into → Combination
+  Combination → feeds_into → Internalization
+  Internalization → feedback_loop → Socialization (cycle back)
 
-Then in Step 2:
-  - Socialization process: ONE hub output "Tacit Knowledge Base" (Stock)
-  - Externalization process: Create "Knowledge Articulation Rate" (Flow) that receives from hub
-  - Community Core process: Create "Socialization Effectiveness" (Auxiliary) that receives from hub
+Step 2 implementation:
 
-  In Socialization's connections array, ADD exactly TWO connections:
+Process: Knowledge Socialization
+  - Input: (external newcomers joining)
+  - Output Hub: "Tacit Knowledge Base" (Stock)
+  - ONE outgoing connection:
     {{"from": "Tacit Knowledge Base", "to": "Knowledge Articulation Rate", "relationship": "positive"}}
-    {{"from": "Tacit Knowledge Base", "to": "Socialization Effectiveness", "relationship": "positive"}}
+  - Sends to: Externalization ONLY
 
-  Both use the SAME hub output!
+Process: Knowledge Externalization
+  - Input: "Tacit Knowledge Base" → "Knowledge Articulation Rate" (Flow)
+  - Output Hub: "Articulated Knowledge" (Stock)
+  - ONE outgoing connection:
+    {{"from": "Articulated Knowledge", "to": "Knowledge Integration Rate", "relationship": "positive"}}
+  - Sends to: Combination ONLY
+
+Process: Knowledge Combination
+  - Input: "Articulated Knowledge" → "Knowledge Integration Rate" (Flow)
+  - Output Hub: "Integrated Knowledge Systems" (Stock)
+  - ONE outgoing connection:
+    {{"from": "Integrated Knowledge Systems", "to": "Knowledge Application Rate", "relationship": "positive"}}
+  - Sends to: Internalization ONLY
+
+Process: Knowledge Internalization
+  - Input: "Integrated Knowledge Systems" → "Knowledge Application Rate" (Flow)
+  - Output Hub: "Internalized Expertise" (Stock)
+  - ONE outgoing connection:
+    {{"from": "Internalized Expertise", "to": "Shared Experience Rate", "relationship": "positive"}}
+  - Sends to: Socialization (feedback loop closes the cycle)
+
+Result: Clean linear pipeline A→B→C→D→A
 ```
 
 **Connection Types Guide:**
-- **feeds_into** → Positive connection from hub output of source to rate/input of target
-- **receives_from** → This is the REVERSE; create connection in the OTHER process (their hub → your variable)
-- **feedback_loop** → Bidirectional; create connections in BOTH processes using their respective hubs
+- **feeds_into** → Your output hub connects to target's input (ONE connection)
+- **receives_from** → You receive from source's output hub (create input variable)
+- **feedback_loop** → Bidirectional between TWO processes (each has ONE input, ONE output pointing to each other)
 
-**Critical Rules:**
-- ✅ Each process MUST have ONE primary hub output (Stock or key Auxiliary)
-- ✅ Use the SAME hub output for ALL outgoing connections to other processes
-- ✅ EXACTLY ONE connection per process-pair (no duplicate connections between same clusters)
-- ✅ Hub outputs can connect to MULTIPLE downstream processes (one-to-many is good!)
-- ✅ Inter-cluster connections go in the SOURCE process's connections array
-- ❌ DO NOT create multiple scattered connections between same two clusters
-- ❌ DO NOT create isolated processes - all must connect to form cohesive model
-- ❌ DO NOT skip inter-cluster connections - they are REQUIRED for model coherence
+**STRICT SISO Rules:**
+- ✅ Each process has EXACTLY ONE output hub
+- ✅ Each process receives from EXACTLY ONE upstream process (or is source process)
+- ✅ Each output hub connects to EXACTLY ONE downstream process
+- ✅ Linear pipeline preferred: A → B → C → D
+- ✅ Feedback loops allowed: Last process loops back to first
+- ✅ If Step 1 shows multiple `feeds_into`, choose the PRIMARY one (main flow)
+- ❌ DO NOT create one-to-many (one output to multiple downstream)
+- ❌ DO NOT create many-to-one (multiple inputs from different upstream)
+- ❌ DO NOT create isolated processes
+- ❌ DO NOT skip inter-cluster connections
+
+**Exception:** If Step 1 explicitly designates one process as a "coordinating hub" (e.g., "Community Core Development" that provides context to all others), it MAY have multiple outputs. But default to SISO unless clearly indicated.
 
 ## Design Guidelines
 
