@@ -1,0 +1,29 @@
+{
+  "run_id": "20251012_202519_full_layout_test_clustering",
+  "project": "sd_test",
+  "timestamp": "2025-10-12T20:32:03.573752",
+  "artifacts_directory": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/runs/20251012_202519_full_layout_test_clustering",
+  "pipeline_configuration": {
+    "improve_model": false,
+    "verify_citations": false,
+    "discover_papers": false,
+    "apply_patch": false
+  },
+  "artifacts_generated": {
+    "parsed": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/runs/20251012_202519_full_layout_test_clustering/parsing/parsed.json",
+    "loops": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/runs/20251012_202519_full_layout_test_clustering/loops/loops.json",
+    "connections": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/runs/20251012_202519_full_layout_test_clustering/connections/connections.json",
+    "variables": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/runs/20251012_202519_full_layout_test_clustering/parsing/variables.json",
+    "connection_descriptions": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/runs/20251012_202519_full_layout_test_clustering/connections/connection_descriptions.json",
+    "connection_citations": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/runs/20251012_202519_full_layout_test_clustering/connections/connection_citations.json",
+    "connection_citations_verified": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/runs/20251012_202519_full_layout_test_clustering/connections/connection_citations_verified.json",
+    "loop_citations": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/runs/20251012_202519_full_layout_test_clustering/loops/loop_citations.json",
+    "loop_citations_verified": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/runs/20251012_202519_full_layout_test_clustering/loops/loop_citations_verified.json",
+    "connections_csv": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/runs/20251012_202519_full_layout_test_clustering/connections/connections_export.csv",
+    "loops_csv": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/runs/20251012_202519_full_layout_test_clustering/loops/loops_export.csv",
+    "theory_enhancement": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/runs/20251012_202519_full_layout_test_clustering/theory/theory_enhancement.json"
+  },
+  "summary": {
+    "total_artifacts": 12
+  }
+}

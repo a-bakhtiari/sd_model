@@ -1,0 +1,44 @@
+{
+  "descriptions": [
+    {
+      "id": "C01",
+      "description": "More core developers increase the availability of mentors, facilitating implicit knowledge transfer."
+    },
+    {
+      "id": "C02",
+      "description": "A larger pool of new contributors increases the potential inflow of individuals who can become experienced."
+    },
+    {
+      "id": "C03",
+      "description": "As new contributors skill up, they flow out of the 'New Contributors' stock and into a more experienced category."
+    },
+    {
+      "id": "C04",
+      "description": "Developer turnover directly reduces the stock of core developers as they leave the project."
+    },
+    {
+      "id": "C05",
+      "description": "A higher promotion rate increases the core developer stock by moving experienced contributors into core roles."
+    },
+    {
+      "id": "C06",
+      "description": "A higher promotion rate decreases the stock of experienced contributors as they are promoted to core developers."
+    },
+    {
+      "id": "C07",
+      "description": "The skill-up flow increases the stock of experienced contributors by moving new contributors into this category."
+    },
+    {
+      "id": "C08",
+      "description": "Better explicit documentation accelerates learning, increasing the rate at which contributors skill up."
+    },
+    {
+      "id": "C09",
+      "description": "Effective mentorship accelerates practical skill development, increasing the rate at which contributors skill up."
+    },
+    {
+      "id": "C10",
+      "description": "Effective mentorship prepares experienced contributors for core responsibilities, increasing their promotion rate."
+    }
+  ]
+}

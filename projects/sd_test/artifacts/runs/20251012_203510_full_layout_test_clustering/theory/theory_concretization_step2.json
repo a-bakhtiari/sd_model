@@ -1,0 +1,394 @@
+{
+  "processes": [
+    {
+      "process_name": "Knowledge Codification",
+      "variables": [
+        {
+          "name": "Codified Knowledge Repository",
+          "type": "Stock",
+          "description": "Accumulated structured knowledge artifacts including documentation, guides, and procedures"
+        },
+        {
+          "name": "Knowledge Codification Rate",
+          "type": "Flow",
+          "description": "Rate at which tacit knowledge is transformed into structured codified resources"
+        },
+        {
+          "name": "Knowledge Repository Obsolescence Rate",
+          "type": "Flow",
+          "description": "Rate at which codified knowledge becomes outdated and needs updating"
+        },
+        {
+          "name": "Tacit Knowledge Availability",
+          "type": "Auxiliary",
+          "description": "Available tacit knowledge from experienced members for codification"
+        },
+        {
+          "name": "Knowledge Gap Identification",
+          "type": "Auxiliary",
+          "description": "Signals about missing or incomplete knowledge from application processes"
+        },
+        {
+          "name": "Codification Effectiveness",
+          "type": "Auxiliary",
+          "description": "Effectiveness of transforming tacit knowledge into accessible resources"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Knowledge Codification Rate",
+          "to": "Codified Knowledge Repository",
+          "relationship": "positive"
+        },
+        {
+          "from": "Knowledge Repository Obsolescence Rate",
+          "to": "Codified Knowledge Repository",
+          "relationship": "negative"
+        },
+        {
+          "from": "Tacit Knowledge Availability",
+          "to": "Knowledge Codification Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Knowledge Gap Identification",
+          "to": "Knowledge Codification Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Codification Effectiveness",
+          "to": "Knowledge Codification Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Core Developer",
+          "to": "Tacit Knowledge Availability",
+          "relationship": "positive"
+        },
+        {
+          "from": "Experienced Contributors",
+          "to": "Tacit Knowledge Availability",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": []
+    },
+    {
+      "process_name": "Social Learning Integration",
+      "variables": [
+        {
+          "name": "Socialized Participants",
+          "type": "Stock",
+          "description": "Community members who have internalized community practices through social learning"
+        },
+        {
+          "name": "Social Learning Rate",
+          "type": "Flow",
+          "description": "Rate at which newcomers become socialized through mentorship and collaboration"
+        },
+        {
+          "name": "Mentorship Capacity",
+          "type": "Auxiliary",
+          "description": "Available mentoring capacity from experienced community members"
+        },
+        {
+          "name": "Social Learning Effectiveness",
+          "type": "Auxiliary",
+          "description": "Effectiveness of social learning processes in transferring implicit knowledge"
+        },
+        {
+          "name": "Codified Knowledge Accessibility",
+          "type": "Auxiliary",
+          "description": "Accessibility and quality of codified knowledge resources"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Social Learning Rate",
+          "to": "Socialized Participants",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentorship Capacity",
+          "to": "Social Learning Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Social Learning Effectiveness",
+          "to": "Social Learning Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Codified Knowledge Accessibility",
+          "to": "Social Learning Effectiveness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Core Developer",
+          "to": "Mentorship Capacity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Experienced Contributors",
+          "to": "Mentorship Capacity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Codified Knowledge Repository",
+          "to": "Codified Knowledge Accessibility",
+          "relationship": "positive"
+        },
+        {
+          "from": "New Contributors",
+          "to": "Social Learning Rate",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": []
+    },
+    {
+      "process_name": "Skill Development Progression",
+      "variables": [
+        {
+          "name": "Qualified Contributors",
+          "type": "Stock",
+          "description": "Community members who have demonstrated competence through practical application"
+        },
+        {
+          "name": "Skill Development Rate",
+          "type": "Flow",
+          "description": "Rate at which socialized participants develop demonstrated competence"
+        },
+        {
+          "name": "Skill Attrition Rate",
+          "type": "Flow",
+          "description": "Rate at which qualified contributors lose skills or leave"
+        },
+        {
+          "name": "Practical Application Opportunities",
+          "type": "Auxiliary",
+          "description": "Availability of appropriate tasks for skill development"
+        },
+        {
+          "name": "Skill Development Effectiveness",
+          "type": "Auxiliary",
+          "description": "Effectiveness of skill development processes"
+        },
+        {
+          "name": "Progression Readiness",
+          "type": "Auxiliary",
+          "description": "Assessment of member readiness for role transition"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Skill Development Rate",
+          "to": "Qualified Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from": "Skill Attrition Rate",
+          "to": "Qualified Contributors",
+          "relationship": "negative"
+        },
+        {
+          "from": "Practical Application Opportunities",
+          "to": "Skill Development Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Skill Development Effectiveness",
+          "to": "Skill Development Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Socialized Participants",
+          "to": "Skill Development Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Implicit Knowledge Transfer (Mentorship)",
+          "to": "Skill Development Effectiveness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+          "to": "Skill Development Effectiveness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Qualified Contributors",
+          "to": "Progression Readiness",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": []
+    },
+    {
+      "process_name": "Community Role Transition",
+      "variables": [
+        {
+          "name": "Role Transition Rate",
+          "type": "Flow",
+          "description": "Rate at which qualified contributors transition to more central roles"
+        },
+        {
+          "name": "Community Capacity Needs",
+          "type": "Auxiliary",
+          "description": "Community's need for additional core members based on growth and workload"
+        },
+        {
+          "name": "Role Transition Effectiveness",
+          "type": "Auxiliary",
+          "description": "Effectiveness of role transition processes"
+        },
+        {
+          "name": "Core Member Acceptance",
+          "type": "Auxiliary",
+          "description": "Acceptance and recognition from existing core members"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Role Transition Rate",
+          "to": "Core Developer",
+          "relationship": "positive"
+        },
+        {
+          "from": "Role Transition Rate",
+          "to": "Experienced Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from": "Progression Readiness",
+          "to": "Role Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Community Capacity Needs",
+          "to": "Role Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Role Transition Effectiveness",
+          "to": "Role Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Core Member Acceptance",
+          "to": "Role Transition Effectiveness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Qualified Contributors",
+          "to": "Role Transition Rate",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": []
+    },
+    {
+      "process_name": "Knowledge Spiral Reinforcement",
+      "variables": [
+        {
+          "name": "Advanced Practical Experience",
+          "type": "Auxiliary",
+          "description": "Accumulated advanced experience from core community members"
+        },
+        {
+          "name": "Knowledge Reflection Effectiveness",
+          "type": "Auxiliary",
+          "description": "Effectiveness of reflection processes in identifying new insights"
+        },
+        {
+          "name": "Continuous Improvement Signals",
+          "type": "Auxiliary",
+          "description": "Signals driving updates to knowledge artifacts and practices"
+        },
+        {
+          "name": "Knowledge Reinforcement Rate",
+          "type": "Auxiliary",
+          "description": "Rate at which advanced experience is transformed into improved knowledge resources"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Core Developer",
+          "to": "Advanced Practical Experience",
+          "relationship": "positive"
+        },
+        {
+          "from": "Experienced Contributors",
+          "to": "Advanced Practical Experience",
+          "relationship": "positive"
+        },
+        {
+          "from": "Advanced Practical Experience",
+          "to": "Knowledge Reinforcement Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Knowledge Reflection Effectiveness",
+          "to": "Knowledge Reinforcement Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Knowledge Reinforcement Rate",
+          "to": "Tacit Knowledge Availability",
+          "relationship": "positive"
+        },
+        {
+          "from": "Knowledge Reinforcement Rate",
+          "to": "Knowledge Codification Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Knowledge Gap Identification",
+          "to": "Knowledge Reinforcement Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Continuous Improvement Signals",
+          "to": "Knowledge Reinforcement Rate",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": []
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Knowledge Codification",
+        "narrative": "Explicit knowledge artifacts such as documentation and contributor guides are created and maintained by experienced community members. This process transforms tacit understanding into structured, accessible resources that serve as foundational learning materials. The quality and comprehensiveness of these resources directly influence how effectively newcomers can acquire basic skills and understand community norms. As the community evolves, these codified resources are continuously updated based on feedback from knowledge application processes.",
+        "inputs": "Tacit knowledge from experienced members, feedback about knowledge gaps from application processes, community standards and practices",
+        "outputs": "Structured learning materials, documented procedures, accessible knowledge repositories, signals about knowledge completeness"
+      },
+      {
+        "name": "Social Learning Integration",
+        "narrative": "New community members engage in legitimate peripheral participation through mentorship and collaborative activities. This process facilitates the transfer of implicit knowledge that cannot be fully captured in documentation. Experienced members guide newcomers through practical application, helping them internalize community practices and develop contextual understanding. The effectiveness of this social learning depends on both the availability of mentors and the quality of codified knowledge that provides initial orientation. As newcomers gain confidence, they gradually take on more responsibility and move toward full participation.",
+        "inputs": "New community participants, codified knowledge resources, available mentors and guides, community participation opportunities",
+        "outputs": "Developing skills and competencies, socialized community members, strengthened community bonds, mentorship capacity signals"
+      },
+      {
+        "name": "Skill Development Progression",
+        "narrative": "Community members advance through skill levels as they apply knowledge in practical contexts. This process transforms basic understanding into demonstrated competence through increasingly complex tasks. Members receive feedback on their contributions and adjust their learning focus accordingly. The rate of skill development depends on both the quality of social learning experiences and the availability of appropriate challenge opportunities. As members demonstrate mastery, they become eligible for more significant roles and responsibilities within the community.",
+        "inputs": "Socialized participants, practical application opportunities, performance feedback, progression criteria",
+        "outputs": "Enhanced capabilities, qualified contributors, skill demonstration evidence, capacity for advanced work"
+      },
+      {
+        "name": "Community Role Transition",
+        "narrative": "Qualified contributors move into more central roles as they demonstrate sustained competence and commitment. This process involves both formal recognition and informal acceptance by existing core members. Transition decisions consider both individual readiness and community capacity needs. Successful transitions strengthen the community's mentoring capacity while unsuccessful transitions may indicate gaps in earlier development processes. The rate of promotion influences both community growth dynamics and knowledge transfer sustainability.",
+        "inputs": "Qualified contributors, community capacity needs, role availability, acceptance signals from core members",
+        "outputs": "Expanded core membership, increased mentoring capacity, community structure evolution, role transition feedback"
+      },
+      {
+        "name": "Knowledge Spiral Reinforcement",
+        "narrative": "Experienced community members reflect on their practices and identify new insights that can be formalized. This process completes the knowledge cycle by transforming advanced practical experience back into shareable knowledge. Core members externalize their refined understanding through both updated documentation and enhanced mentoring approaches. The vitality of this process determines whether the community's knowledge base remains current and relevant. Effective reinforcement creates a virtuous cycle where advanced practice informs basic learning resources.",
+        "inputs": "Advanced practical experience, emerging challenges and solutions, community reflection opportunities, knowledge gap identification",
+        "outputs": "Refined knowledge artifacts, updated practices, enhanced mentoring approaches, continuous improvement signals"
+      }
+    ],
+    "overall_narrative": "The knowledge development pipeline begins with Knowledge Codification where experienced members transform tacit understanding into structured resources. These codified materials flow into Social Learning Integration where newcomers engage with mentors to internalize community practices. Socialized participants then progress through Skill Development where they apply knowledge in practical contexts and demonstrate growing competence. Qualified contributors transition into more central roles through Community Role Transition, which expands the community's mentoring capacity. Finally, experienced members complete the cycle through Knowledge Spiral Reinforcement where they reflect on advanced practice and contribute back to the knowledge base. This creates multiple feedback loops: knowledge gaps identified during social learning inform codification updates, skill development challenges refine mentoring approaches, and role transition experiences influence progression criteria. The entire system operates as an interconnected knowledge ecosystem where each process both depends on and enhances the others."
+  }
+}

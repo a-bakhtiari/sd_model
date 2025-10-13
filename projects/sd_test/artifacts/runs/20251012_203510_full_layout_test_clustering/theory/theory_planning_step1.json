@@ -1,0 +1,47 @@
+{
+  "theory_decisions": [
+    {
+      "theory_name": "Communities of Practice (Wenger)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Nonaka's SECI Model",
+      "decision": "adapt"
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Knowledge Codification",
+        "narrative": "Explicit knowledge artifacts such as documentation and contributor guides are created and maintained by experienced community members. This process transforms tacit understanding into structured, accessible resources that serve as foundational learning materials. The quality and comprehensiveness of these resources directly influence how effectively newcomers can acquire basic skills and understand community norms. As the community evolves, these codified resources are continuously updated based on feedback from knowledge application processes.",
+        "inputs": "Tacit knowledge from experienced members, feedback about knowledge gaps from application processes, community standards and practices",
+        "outputs": "Structured learning materials, documented procedures, accessible knowledge repositories, signals about knowledge completeness"
+      },
+      {
+        "name": "Social Learning Integration",
+        "narrative": "New community members engage in legitimate peripheral participation through mentorship and collaborative activities. This process facilitates the transfer of implicit knowledge that cannot be fully captured in documentation. Experienced members guide newcomers through practical application, helping them internalize community practices and develop contextual understanding. The effectiveness of this social learning depends on both the availability of mentors and the quality of codified knowledge that provides initial orientation. As newcomers gain confidence, they gradually take on more responsibility and move toward full participation.",
+        "inputs": "New community participants, codified knowledge resources, available mentors and guides, community participation opportunities",
+        "outputs": "Developing skills and competencies, socialized community members, strengthened community bonds, mentorship capacity signals"
+      },
+      {
+        "name": "Skill Development Progression",
+        "narrative": "Community members advance through skill levels as they apply knowledge in practical contexts. This process transforms basic understanding into demonstrated competence through increasingly complex tasks. Members receive feedback on their contributions and adjust their learning focus accordingly. The rate of skill development depends on both the quality of social learning experiences and the availability of appropriate challenge opportunities. As members demonstrate mastery, they become eligible for more significant roles and responsibilities within the community.",
+        "inputs": "Socialized participants, practical application opportunities, performance feedback, progression criteria",
+        "outputs": "Enhanced capabilities, qualified contributors, skill demonstration evidence, capacity for advanced work"
+      },
+      {
+        "name": "Community Role Transition",
+        "narrative": "Qualified contributors move into more central roles as they demonstrate sustained competence and commitment. This process involves both formal recognition and informal acceptance by existing core members. Transition decisions consider both individual readiness and community capacity needs. Successful transitions strengthen the community's mentoring capacity while unsuccessful transitions may indicate gaps in earlier development processes. The rate of promotion influences both community growth dynamics and knowledge transfer sustainability.",
+        "inputs": "Qualified contributors, community capacity needs, role availability, acceptance signals from core members",
+        "outputs": "Expanded core membership, increased mentoring capacity, community structure evolution, role transition feedback"
+      },
+      {
+        "name": "Knowledge Spiral Reinforcement",
+        "narrative": "Experienced community members reflect on their practices and identify new insights that can be formalized. This process completes the knowledge cycle by transforming advanced practical experience back into shareable knowledge. Core members externalize their refined understanding through both updated documentation and enhanced mentoring approaches. The vitality of this process determines whether the community's knowledge base remains current and relevant. Effective reinforcement creates a virtuous cycle where advanced practice informs basic learning resources.",
+        "inputs": "Advanced practical experience, emerging challenges and solutions, community reflection opportunities, knowledge gap identification",
+        "outputs": "Refined knowledge artifacts, updated practices, enhanced mentoring approaches, continuous improvement signals"
+      }
+    ],
+    "overall_narrative": "The knowledge development pipeline begins with Knowledge Codification where experienced members transform tacit understanding into structured resources. These codified materials flow into Social Learning Integration where newcomers engage with mentors to internalize community practices. Socialized participants then progress through Skill Development where they apply knowledge in practical contexts and demonstrate growing competence. Qualified contributors transition into more central roles through Community Role Transition, which expands the community's mentoring capacity. Finally, experienced members complete the cycle through Knowledge Spiral Reinforcement where they reflect on advanced practice and contribute back to the knowledge base. This creates multiple feedback loops: knowledge gaps identified during social learning inform codification updates, skill development challenges refine mentoring approaches, and role transition experiences influence progression criteria. The entire system operates as an interconnected knowledge ecosystem where each process both depends on and enhances the others."
+  }
+}

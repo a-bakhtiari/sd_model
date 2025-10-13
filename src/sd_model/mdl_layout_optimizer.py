@@ -40,35 +40,61 @@ Variables that need positions:
 - Check distance to ALL existing AND previously positioned new variables
 - Formula: distance = sqrt((x2-x1)² + (y2-y1)²) must be ≥ 200
 
-### 2. LINE MANAGEMENT - Minimize Crossings & Clutter
-- **Connected variables should be close**: 200-400px apart (not too far, not too close)
-- **Unconnected variables should be far**: 300+ px apart
-- **Avoid line crossings**: If A→B and C→D, don't place them so lines intersect
-- **Avoid long diagonal lines**: Prefer horizontal/vertical alignment where possible
+### 2. ARROW ROUTING - Clear Connection Paths
+**Understanding Arrow Paths:**
+- Arrows connect the CENTER of one variable to the CENTER of another variable
+- Avoid placing new variables directly in the arrow's path between connected variables
+- You don't need to avoid the entire rectangular area, just the direct arrow line
 
-### 3. SEMANTIC GROUPING - Logical Organization
-- Group by conceptual clusters (e.g., all knowledge variables together)
+**Good patterns for multiple connections:**
+- **Chain**: A→B→C→D (linear flow, no blocking)
+- **Star**: Hub in center, others around it (clean radial connections)
+- **Triangle**: Three variables forming triangle (no variable in the middle)
+- **Grid**: 2x2 layout with clear paths between connections
+- **Branching**: Tree-like structure with clear parent-child paths
+
+**Key Principle**: If A connects to B, don't place C directly between them on the arrow line.
+
+### 3. MINIMIZE ARROW CROSSINGS
+- When two arrows cross each other (e.g., A→B and C→D forming an X), readability suffers
+- Try to arrange variables so arrows run parallel (horizontal or vertical)
+- Group connections with similar directions together
+
+**Example - avoiding crossings:**
+```
+BAD (diagonal crossing):        BETTER (parallel):
+[A]         [D]                 [A]    [B]
+  ↘       ↗                       ↓      ↓
+    ✗                           [D]    [C]
+  ↗       ↘
+[B]         [C]
+A→B and D→C cross               Same connections, parallel arrows
+```
+
+### 4. SEMANTIC GROUPING - Logical Organization
+- Group by process or conceptual clusters (e.g., production variables, quality variables)
 - Respect causal flow direction: causes on left/top, effects on right/bottom
 - Keep feedback loops compact and circular
 
-### 4. TYPE-BASED LAYERS (vertical organization)
+### 5. TYPE-BASED LAYERS (vertical organization)
 - **Stocks (type: Stock)**: y = 200-700 (main horizontal band)
 - **Flows (type: Flow)**: y = 100-800 (between stocks they connect)
 - **Auxiliaries (type: Auxiliary)**: y = -100 to 200 OR y = 700-900 (above/below stocks)
 
-### 5. HORIZONTAL DISTRIBUTION
+### 6. HORIZONTAL DISTRIBUTION
 - **Don't cluster**: Spread new variables across x-axis
 - **Continue existing patterns**: Extend current layout, don't create isolated islands
 - **Canvas bounds**: x: -200 to 2500, y: -200 to 1000
 
-### 6. STEP-BY-STEP POSITIONING PROCESS
+### 7. STEP-BY-STEP POSITIONING PROCESS
 For each new variable:
 a) Identify which existing/new variables it connects to
 b) Calculate average position of connected variables
 c) Place near that average (within 200-400px)
 d) Check spacing to ALL other variables (≥200px)
 e) Adjust if too close to any variable
-f) Verify lines won't create excessive crossings
+f) Apply arrow routing principles: avoid blocking paths between connected variables
+g) Verify arrangement minimizes arrow crossings
 
 ## OUTPUT FORMAT
 Return ONLY valid JSON (no markdown blocks, no explanation before/after):
@@ -77,8 +103,7 @@ Return ONLY valid JSON (no markdown blocks, no explanation before/after):
     {{
       "name": "Variable Name",
       "x": 1200,
-      "y": 400,
-      "reasoning": "Near [connected vars] at avg position (x,y), avoiding [nearby vars], maintains 250px spacing"
+      "y": 400
     }},
     ...
   ]
@@ -210,7 +235,7 @@ class MDLLayoutOptimizer:
                     if pos['name'] == new_var['name']:
                         var_copy['x'] = pos['x']
                         var_copy['y'] = pos['y']
-                        print(f"  {new_var['name']}: ({pos['x']}, {pos['y']}) - {pos.get('reasoning', '')}")
+                        print(f"  {new_var['name']}: ({pos['x']}, {pos['y']})")
                         break
                 else:
                     # LLM didn't provide position, use fallback

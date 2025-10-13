@@ -1,0 +1,676 @@
+{UTF-8}
+Maintainer time  = A FUNCTION OF( )
+	~	
+	~		|
+
+Issue Resolution Rate  = A FUNCTION OF( Maintainer time)
+	~	
+	~		|
+
+"Explicit Knowledge Transfer (Documentation, Contributor's Guides)"  = A FUNCTION OF(\
+		 Projects's Explicit Knowledge)
+	~	
+	~		|
+
+Closed Issues  = A FUNCTION OF( Issue Resolution Rate)
+	~	
+	~		|
+
+Community engagement  = A FUNCTION OF( )
+	~	
+	~		|
+
+Open Issues  = A FUNCTION OF( Feedback,Issue Creation Rate,-Issue Resolution Rate)
+	~	
+	~		|
+
+PR Feedback  = A FUNCTION OF( Experienced Contributors,New Contributors,PR Review Delay\
+		,Pull Request Under review)
+	~	
+	~		|
+
+Issue Creation Rate  = A FUNCTION OF( Source Code)
+	~	
+	~		|
+
+Project Reputation  = A FUNCTION OF( Community Health,Reputation Building,-Reputation Decline\
+		,Software Quality and Features,User Base)
+	~	
+	~		|
+
+Joining Rate  = A FUNCTION OF( "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"\
+		) ~~|
+Joining Rate  = A FUNCTION OF( Project Reputation)
+	~	
+	~		|
+
+Discussions  = A FUNCTION OF( )
+	~	
+	~		|
+
+Projects's Explicit Knowledge  = A FUNCTION OF( -Explicit to Implicit Conversion,Knowledge Conversion Rate\
+		,Searchable Knowledge Base)
+	~	
+	~		|
+
+User Base  = A FUNCTION OF( Adoption Rate,Project Reputation,-User Churn Rate)
+	~	
+	~		|
+
+Pull Request Under review  = A FUNCTION OF( -"Merge/Commit",PR Feedback,-Rejection Rate\
+		,Review Rate)
+	~	
+	~		|
+
+Feedback  = A FUNCTION OF( Open Issues)
+	~	
+	~		|
+
+Source Code  = A FUNCTION OF( "Merge/Commit")
+	~	
+	~		|
+
+Skill up  = A FUNCTION OF( "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"\
+		,"Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Searchable Knowledge Base  = A FUNCTION OF( Closed Issues,Community engagement,Discussions\
+		,PR Feedback)
+	~	
+	~		|
+
+New Pr rate  = A FUNCTION OF( Open Issues)
+	~	
+	~		|
+
+New Pull request  = A FUNCTION OF( New Pr rate,-Review Rate)
+	~	
+	~		|
+
+Knowledge Conversion Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Core Developer  = A FUNCTION OF( -Developer's Turnover,PR Feedback,Promotion Rate)
+	~	
+	~		|
+
+Culture Erosion  = A FUNCTION OF( )
+	~	
+	~		|
+
+Promotion Rate  = A FUNCTION OF( "Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+"Depreciation/Loss of Knowledge"  = A FUNCTION OF( Developer's Turnover)
+	~	
+	~		|
+
+Rejection Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Experienced Contributors  = A FUNCTION OF( PR Feedback,-Promotion Rate,Skill up)
+	~	
+	~		|
+
+Explicit to Implicit Conversion  = A FUNCTION OF( )
+	~	
+	~		|
+
+PR Review Delay  = A FUNCTION OF( Core Developer)
+	~	
+	~		|
+
+"Implicit Knowledge Transfer (Mentorship)"  = A FUNCTION OF( Core Developer,Project's Implicit Knowledge\
+		)
+	~	
+	~		|
+
+"Merge/Commit"  = A FUNCTION OF( )
+	~	
+	~		|
+
+New Contributors  = A FUNCTION OF( Joining Rate,PR Feedback,-Skill up)
+	~	
+	~		|
+
+Project's Implicit Knowledge  = A FUNCTION OF( -"Depreciation/Loss of Knowledge",Explicit to Implicit Conversion\
+		,-Knowledge Conversion Rate)
+	~	
+	~		|
+
+Review Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Trust Building  = A FUNCTION OF( )
+	~	
+	~		|
+
+Adoption Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Community Health  = A FUNCTION OF( -Culture Erosion,Trust Building)
+	~	
+	~		|
+
+Developer's Turnover  = A FUNCTION OF( )
+	~	
+	~		|
+
+Reputation Building  = A FUNCTION OF( )
+	~	
+	~		|
+
+Reputation Decline  = A FUNCTION OF( )
+	~	
+	~		|
+
+Software Quality and Features  = A FUNCTION OF( )
+	~	
+	~		|
+
+User Churn Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Potential Contributor Pool  = A FUNCTION OF( Project Discovery Rate,-Evaluation and Joining Rate\
+		)
+	~	
+	~		|
+
+New Contributor Candidates  = A FUNCTION OF( Evaluation and Joining Rate)
+	~	
+	~		|
+
+Project Discovery Rate  = A FUNCTION OF( Project Reputation,Community Outreach Effectiveness\
+		)
+	~	
+	~		|
+
+Evaluation and Joining Rate  = A FUNCTION OF( Perceived Project Fit,Learning Resource Availability\
+		)
+	~	
+	~		|
+
+Perceived Project Fit  = A FUNCTION OF( Community Health)
+	~	
+	~		|
+
+Learning Resource Availability  = A FUNCTION OF( )
+	~	
+	~		|
+
+Community Outreach Effectiveness  = A FUNCTION OF( Project Reputation)
+	~	
+	~		|
+
+Initial Skill Assessment Quality  = A FUNCTION OF( )
+	~	
+	~		|
+
+Contributor Skill Level  = A FUNCTION OF( Skill Development Rate)
+	~	
+	~		|
+
+Knowledge Artifacts  = A FUNCTION OF( Knowledge Creation Rate)
+	~	
+	~		|
+
+Skill Development Rate  = A FUNCTION OF( New Contributor Candidates,Mentorship Capacity\
+		,Learning Pathway Effectiveness,SECI Knowledge Spiral Effectiveness,Transactive Memory System Strength\
+		)
+	~	
+	~		|
+
+Knowledge Creation Rate  = A FUNCTION OF( Contributor Skill Level)
+	~	
+	~		|
+
+Mentorship Capacity  = A FUNCTION OF( Contributor Skill Level)
+	~	
+	~		|
+
+Learning Pathway Effectiveness  = A FUNCTION OF( Knowledge Artifacts)
+	~	
+	~		|
+
+SECI Knowledge Spiral Effectiveness  = A FUNCTION OF( )
+	~	
+	~		|
+
+Transactive Memory System Strength  = A FUNCTION OF( )
+	~	
+	~		|
+
+Pull Request Backlog  = A FUNCTION OF( Pull Request Creation Rate,-Code Integration Rate\
+		)
+	~	
+	~		|
+
+Technical Debt  = A FUNCTION OF( Technical Debt Accumulation Rate)
+	~	
+	~		|
+
+Code Integration Rate  = A FUNCTION OF( Review Capacity,Social Capital)
+	~	
+	~		|
+
+Technical Debt Accumulation Rate  = A FUNCTION OF( -Code Quality Signals)
+	~	
+	~		|
+
+Review Capacity  = A FUNCTION OF( Core Developer)
+	~	
+	~		|
+
+Social Capital  = A FUNCTION OF( Community Health)
+	~	
+	~		|
+
+Code Quality Signals  = A FUNCTION OF( )
+	~	
+	~		|
+
+Community Engagement Level  = A FUNCTION OF( Engagement Building Rate,-Burnout Accumulation Rate\
+		)
+	~	
+	~		|
+
+Organizational Routine Stability  = A FUNCTION OF( Community Engagement Level)
+	~	
+	~		|
+
+Engagement Building Rate  = A FUNCTION OF( Contributor Skill Level,Recognition Effectiveness\
+		,Career Progression Opportunities)
+	~	
+	~		|
+
+Burnout Accumulation Rate  = A FUNCTION OF( -Job Demands vs Resources Balance)
+	~	
+	~		|
+
+Job Demands vs Resources Balance  = A FUNCTION OF( )
+	~	
+	~		|
+
+Recognition Effectiveness  = A FUNCTION OF( )
+	~	
+	~		|
+
+Career Progression Opportunities  = A FUNCTION OF( Promotion Rate)
+	~	
+	~		|
+
+Knowledge Preservation Effectiveness  = A FUNCTION OF( )
+	~	
+	~		|
+
+Software Feature Richness  = A FUNCTION OF( Feature Integration Rate)
+	~	
+	~		|
+
+User Satisfaction Level  = A FUNCTION OF( User Satisfaction Change Rate)
+	~	
+	~		|
+
+Feature Integration Rate  = A FUNCTION OF( Code Integration Rate)
+	~	
+	~		|
+
+Software Quality  = A FUNCTION OF( -Technical Debt)
+	~	
+	~		|
+
+Innovation Diffusion Effectiveness  = A FUNCTION OF( )
+	~	
+	~		|
+
+User Feedback Quality  = A FUNCTION OF( User Satisfaction Level)
+	~	
+	~		|
+
+Ecosystem Network Effects  = A FUNCTION OF( Network Effect Accumulation Rate)
+	~	
+	~		|
+
+Competitive Positioning Strength  = A FUNCTION OF( Competitive Position Change Rate)
+	~	
+	~		|
+
+Network Effect Accumulation Rate  = A FUNCTION OF( User Base)
+	~	
+	~		|
+
+Competitive Position Change Rate  = A FUNCTION OF( Ecosystem Network Effects,Social Capital Accumulation\
+		,Structural Advantage)
+	~	
+	~		|
+
+Project Success Signals  = A FUNCTION OF( Software Quality and Features,User Base,Community Health\
+		)
+	~	
+	~		|
+
+External Recognition Level  = A FUNCTION OF( )
+	~	
+	~		|
+
+Social Capital Accumulation  = A FUNCTION OF( )
+	~	
+	~		|
+
+Structural Advantage  = A FUNCTION OF( )
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,71,2
+10,1,New Contributors,1783,1606,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Core Developer,2272,1784,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,PR Feedback,2021,1471,54,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,Source Code,1244,1288,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,5,User Base,1708,781,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,6,Project Reputation,2234,602,50,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,7,48,1494,783,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,8,10,7,100,0,0,22,0,192,0,-1--1--1,,1|(1528,783)|
+1,9,10,5,4,0,0,22,0,192,0,-1--1--1,,1|(1613,783)|
+11,10,0,1559,783,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,11,Adoption Rate,1559,817,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,12,48,1702,899,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,13,15,5,100,0,0,22,0,192,0,-1--1--1,,1|(1702,812)|
+1,14,15,12,4,0,0,22,0,192,0,-1--1--1,,1|(1702,862)|
+11,15,0,1702,825,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,16,User Churn Rate,1702,859,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,17,48,2245,793,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,18,20,17,100,0,0,22,0,192,0,-1--1--1,,1|(2245,752)|
+1,19,20,6,4,0,0,22,0,192,0,-1--1--1,,1|(2245,665)|
+11,20,0,2245,710,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,21,Reputation Building,2245,744,52,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,22,48,2463,598,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,23,25,6,100,0,0,22,0,192,0,-1--1--1,,1|(2348,598)|
+1,24,25,22,4,0,0,22,0,192,0,-1--1--1,,1|(2439,598)|
+11,25,0,2419,598,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,26,Reputation Decline,2419,632,51,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,27,Software Quality and Features,1968,598,55,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,28,27,6,0,0,43,0,0,192,0,-1--1--1,,1|(0,0)|
+1,29,5,6,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,30,Community Health,1612,418,50,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,31,48,1605,593,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,32,34,31,100,0,0,22,0,192,0,-1--1--1,,1|(1605,547)|
+1,33,34,30,4,0,0,22,0,192,0,-1--1--1,,1|(1605,469)|
+11,34,0,1605,501,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,35,Trust Building,1605,535,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,36,48,1883,403,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,37,39,30,100,0,0,22,0,192,0,-1--1--1,,1|(1713,403)|
+1,38,39,36,4,0,0,22,0,192,0,-1--1--1,,1|(1824,403)|
+11,39,0,1770,403,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,40,Culture Erosion,1770,437,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,41,PR Review Delay,2065,1650,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,42,48,2269,1327,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,43,45,2,100,0,0,22,0,192,0,-1--1--1,,1|(2269,1590)|
+1,44,45,42,4,0,0,22,0,192,0,-1--1--1,,1|(2269,1370)|
+11,45,0,2269,1414,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,46,Developer's Turnover,2269,1448,56,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,47,New Pull request,1497,1426,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,48,Open Issues,1038,1492,46,26,3,3,0,2,-1,1,0,0,0-0-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,49,Project's Implicit Knowledge,2468,2078,51,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,50,Projects's Explicit Knowledge,1919,2194,50,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,51,48,1225,1433,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,52,54,51,100,0,0,22,0,192,0,-1--1--1,,1|(1280,1433)|
+1,53,54,47,4,0,0,22,0,192,0,-1--1--1,,1|(1396,1433)|
+11,54,0,1334,1433,8,6,33,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,55,New Pr rate,1334,1465,47,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,56,Pull Request Under review,1593,1296,51,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,57,59,47,100,0,0,22,0,192,0,-1--1--1,,1|(1556,1427)|
+1,58,59,56,4,0,0,22,0,192,0,-1--1--1,,1|(1576,1370)|
+11,59,0,1576,1427,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,60,Review Rate,1576,1461,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,61,63,56,100,0,0,22,0,192,0,-1--1--1,,1|(1506,1275)|
+1,62,63,4,4,0,0,22,0,192,0,-1--1--1,,1|(1372,1275)|
+11,63,0,1462,1275,8,6,33,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,64,"Merge/Commit",1462,1307,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,65,48,1625,1493,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,66,68,56,100,0,0,22,0,192,0,-1--1--1,,1|(1625,1360)|
+1,67,68,65,4,0,0,22,0,192,0,-1--1--1,,1|(1625,1447)|
+11,68,0,1625,1404,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,69,Rejection Rate,1679,1404,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,70,2,41,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,71,41,3,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,72,Experienced Contributors,1951,1868,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,73,75,1,100,0,0,22,0,192,0,-1--1--1,,1|(1782,1657)|
+1,74,75,72,4,0,0,22,0,192,0,-1--1--1,,1|(1782,1868)|
+11,75,0,1782,1691,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,76,Skill up,1782,1725,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,77,79,72,100,0,0,22,0,192,0,-1--1--1,,1|(2094,1858)|
+1,78,79,2,4,0,0,22,0,192,0,-1--1--1,,1|(2272,1858)|
+11,79,0,2177,1858,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,80,Promotion Rate,2177,1892,46,26,40,3,0,0,-1,1,0,0,0,0,0,0,0,0
+12,81,48,1529,1580,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,82,84,81,100,0,0,22,0,192,0,-1--1--1,,1|(1566,1580)|
+1,83,84,1,4,0,0,22,0,192,0,-1--1--1,,1|(1599,1606)|
+11,84,0,1599,1580,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,85,Joining Rate,1599,1614,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,86,56,3,1,0,0,0,0,192,0,-1--1--1,,1|(1884,1364)|
+12,87,48,2762,2080,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,88,90,49,100,0,0,22,0,192,0,-1--1--1,,1|(2581,2080)|
+1,89,90,87,4,0,0,22,0,192,0,-1--1--1,,1|(2704,2080)|
+11,90,0,2650,2080,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,91,"Depreciation/Loss of Knowledge",2650,2114,55,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,92,45,90,0,0,43,0,0,192,0,-1--1--1,,1|(0,0)|
+10,93,"Implicit Knowledge Transfer (Mentorship)",2463,1890,57,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,94,49,93,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,95,93,75,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,96,93,79,0,0,43,0,0,192,0,-1--1--1,,1|(0,0)|
+1,97,2,93,1,0,43,0,0,192,0,-1--1--1,,1|(2421,1742)|
+1,98,100,49,100,0,0,22,0,192,0,-1--1--1,,1|(2459,2111)|
+1,99,100,50,4,0,0,22,0,192,0,-1--1--1,,1|(2459,2194)|
+11,100,0,2459,2127,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,101,Knowledge Conversion Rate,2459,2161,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,102,104,50,100,0,0,22,0,192,0,-1--1--1,,1|(2177,2194)|
+1,103,104,49,4,0,0,22,0,192,0,-1--1--1,,1|(2300,2071)|
+11,104,0,2177,2071,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,105,Explicit to Implicit Conversion,2177,2105,47,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,106,Searchable Knowledge Base,1683,1952,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,107,3,1,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,108,3,72,1,0,0,0,0,192,0,-1--1--1,,1|(1907,1620)|
+1,109,3,2,1,0,0,0,0,192,0,-1--1--1,,1|(2121,1482)|
+1,110,1,3,1,0,0,0,0,192,0,-1--1--1,,1|(2012,1460)|
+1,111,72,3,1,0,0,0,0,192,0,-1--1--1,,1|(2033,1710)|
+1,112,3,56,1,0,0,0,0,192,0,-1--1--1,,1|(1836,1297)|
+10,113,Closed Issues,602,1501,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,114,"Explicit Knowledge Transfer (Documentation, Contributor's Guides)",1399,1757,91,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,115,50,114,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,116,114,84,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,117,114,75,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+12,118,48,1035,1337,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,119,121,118,100,0,0,22,0,192,0,-1--1--1,,1|(1035,1353)|
+1,120,121,48,4,0,0,22,0,192,0,-1--1--1,,1|(1035,1421)|
+11,121,0,1035,1369,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,122,Issue Creation Rate,1035,1403,51,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,123,125,48,100,0,0,22,0,192,0,-1--1--1,,1|(974,1493)|
+1,124,125,113,4,0,0,22,0,192,0,-1--1--1,,1|(796,1493)|
+11,125,0,950,1493,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,126,Issue Resolution Rate,950,1527,56,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,127,48,54,1,0,43,0,0,192,0,-1--1--1,,1|(1268,1501)|
+12,128,48,1429,1863,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,129,131,128,100,0,0,22,0,192,0,-1--1--1,,1|(1458,1863)|
+1,130,131,106,4,0,0,22,0,192,0,-1--1--1,,1|(1486,1952)|
+11,131,0,1486,1863,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,132,Community engagement,1558,1863,64,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,133,3,106,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,134,113,106,1,0,0,0,0,192,0,-1--1--1,,1|(1052,1856)|
+1,135,106,50,1,0,43,0,0,192,0,-1--1--1,,1|(1833,2078)|
+10,136,Discussions,1672,2080,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,137,136,106,1,0,0,0,0,192,0,-1--1--1,,1|(1701,2019)|
+10,138,Joining Rate,1003,1691,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,139,6,5,1,0,0,0,0,192,0,-1--1--1,,1|(2057,689)|
+12,140,48,-331,1174,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,141,Feedback,755,1374,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,142,48,141,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,143,141,48,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,144,4,121,1,0,0,0,0,192,0,-1--1--1,,1|(1109,1331)|
+1,145,30,6,0,0,43,0,0,192,0,-1--1--1,,1|(0,0)|
+1,146,114,138,0,1,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,147,Maintainer time,1766,1640,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,148,Potential Contributor Pool,870,407,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,149,New Contributor Candidates,463,391,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,150,Project Discovery Rate,1325,1193,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,151,Evaluation and Joining Rate,1013,279,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,152,Perceived Project Fit,1602,280,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,153,Learning Resource Availability,1087,450,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,154,Community Outreach Effectiveness,1876,1240,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,155,Initial Skill Assessment Quality,3560,1072,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,156,Contributor Skill Level,38,862,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,157,Knowledge Artifacts,-215,680,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,158,Skill Development Rate,151,600,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,159,Knowledge Creation Rate,-22,759,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,160,Mentorship Capacity,243,770,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,161,Learning Pathway Effectiveness,-210,541,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,162,SECI Knowledge Spiral Effectiveness,392,564,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,163,Transactive Memory System Strength,-62,635,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,164,Pull Request Backlog,2863,327,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,165,Technical Debt,3246,726,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,166,Pull Request Creation Rate,2854,483,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,167,Code Integration Rate,2519,321,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,168,Technical Debt Accumulation Rate,3523,775,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,169,Review Capacity,2504,731,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,170,Social Capital,1794,337,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,171,Code Quality Signals,3342,570,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,172,Community Engagement Level,78,981,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,173,Organizational Routine Stability,309,1016,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,174,Engagement Building Rate,576,770,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,175,Burnout Accumulation Rate,498,895,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,176,Job Demands vs Resources Balance,634,981,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,177,Recognition Effectiveness,386,693,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,178,Career Progression Opportunities,1968,2061,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,179,Knowledge Preservation Effectiveness,3439,1255,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,180,Software Feature Richness,2273,400,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,181,User Satisfaction Level,3216,1078,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,182,Feature Integration Rate,2255,491,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,183,User Satisfaction Change Rate,3339,1109,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,184,Software Quality,3266,836,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,185,Innovation Diffusion Effectiveness,3444,1330,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,186,User Feedback Quality,3129,1143,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,187,Ecosystem Network Effects,1379,491,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,188,Competitive Positioning Strength,1064,544,60,26,3,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,189,Network Effect Accumulation Rate,1489,649,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,190,Competitive Position Change Rate,1212,557,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,191,Project Success Signals,1759,560,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,192,External Recognition Level,3449,1421,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,193,Social Capital Accumulation,1192,702,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,194,Structural Advantage,1406,722,60,26,8,3,0,1,-1,1,0,0,0-255-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+1,195,183,181,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,196,181,186,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,197,165,184,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,198,27,191,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,199,5,191,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,200,30,191,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,201,5,189,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,202,189,187,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,203,187,190,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,204,193,190,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,205,194,190,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,206,190,188,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,207,6,154,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,208,147,126,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,209,151,148,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,210,150,148,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,211,151,149,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,212,154,150,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,213,6,150,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,214,153,151,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,215,152,151,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,216,30,152,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,217,158,156,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,218,159,157,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,219,161,158,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,220,160,158,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,221,149,158,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,222,162,158,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,223,163,158,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,224,156,159,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,225,156,160,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,226,157,161,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,227,167,164,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,228,166,164,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,229,168,165,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,230,169,167,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,231,170,167,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,232,171,168,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,233,2,169,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,234,30,170,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,235,175,172,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,236,174,172,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,237,172,173,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,238,178,174,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,239,156,174,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,240,177,174,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,241,176,175,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,242,80,178,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,243,182,180,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,244,167,182,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+///---\\\
+:L<%^E!@
+5:"Depreciation/Loss of Knowledge"
+19:71,0
+24:0
+25:0
+26:0
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Vensim Sans|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

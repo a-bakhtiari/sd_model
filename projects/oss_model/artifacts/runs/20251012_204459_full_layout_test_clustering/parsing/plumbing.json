@@ -1,0 +1,450 @@
+{
+  "clouds": [
+    {
+      "id": 7,
+      "code": 48,
+      "x": 1693,
+      "y": 712,
+      "w": 10,
+      "h": 8
+    },
+    {
+      "id": 12,
+      "code": 48,
+      "x": 2005,
+      "y": 712,
+      "w": 10,
+      "h": 8
+    },
+    {
+      "id": 17,
+      "code": 48,
+      "x": 2049,
+      "y": 705,
+      "w": 10,
+      "h": 8
+    },
+    {
+      "id": 22,
+      "code": 48,
+      "x": 2372,
+      "y": 708,
+      "w": 10,
+      "h": 8
+    },
+    {
+      "id": 31,
+      "code": 48,
+      "x": 1846,
+      "y": 400,
+      "w": 10,
+      "h": 8
+    },
+    {
+      "id": 36,
+      "code": 48,
+      "x": 2256,
+      "y": 403,
+      "w": 10,
+      "h": 8
+    },
+    {
+      "id": 42,
+      "code": 48,
+      "x": 1466,
+      "y": 301,
+      "w": 10,
+      "h": 8
+    },
+    {
+      "id": 51,
+      "code": 48,
+      "x": 627,
+      "y": 734,
+      "w": 10,
+      "h": 8
+    },
+    {
+      "id": 65,
+      "code": 48,
+      "x": 1084,
+      "y": 862,
+      "w": 10,
+      "h": 8
+    },
+    {
+      "id": 81,
+      "code": 48,
+      "x": 628,
+      "y": 299,
+      "w": 10,
+      "h": 8
+    },
+    {
+      "id": 87,
+      "code": 48,
+      "x": 1379,
+      "y": -44,
+      "w": 10,
+      "h": 8
+    },
+    {
+      "id": 118,
+      "code": 48,
+      "x": 548,
+      "y": 566,
+      "w": 10,
+      "h": 8
+    },
+    {
+      "id": 128,
+      "code": 48,
+      "x": 341,
+      "y": 136,
+      "w": 10,
+      "h": 8
+    },
+    {
+      "id": 142,
+      "code": 48,
+      "x": -198,
+      "y": 391,
+      "w": 10,
+      "h": 8
+    },
+    {
+      "id": 146,
+      "code": 48,
+      "x": -169,
+      "y": 622,
+      "w": 10,
+      "h": 8
+    }
+  ],
+  "valves": [
+    {
+      "id": 10,
+      "var_name": "valve_10",
+      "x": 1751,
+      "y": 712,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 15,
+      "var_name": "valve_15",
+      "x": 1943,
+      "y": 712,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 20,
+      "var_name": "valve_20",
+      "x": 2085,
+      "y": 705,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 25,
+      "var_name": "valve_25",
+      "x": 2286,
+      "y": 708,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 34,
+      "var_name": "valve_34",
+      "x": 1900,
+      "y": 400,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 39,
+      "var_name": "valve_39",
+      "x": 2171,
+      "y": 403,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 45,
+      "var_name": "valve_45",
+      "x": 1395,
+      "y": 301,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 54,
+      "var_name": "valve_54",
+      "x": 701,
+      "y": 734,
+      "w": 8,
+      "h": 6
+    },
+    {
+      "id": 59,
+      "var_name": "valve_59",
+      "x": 971,
+      "y": 735,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 63,
+      "var_name": "valve_63",
+      "x": 1237,
+      "y": 736,
+      "w": 8,
+      "h": 6
+    },
+    {
+      "id": 68,
+      "var_name": "valve_68",
+      "x": 1084,
+      "y": 810,
+      "w": 8,
+      "h": 6
+    },
+    {
+      "id": 75,
+      "var_name": "valve_75",
+      "x": 973,
+      "y": 302,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 79,
+      "var_name": "valve_79",
+      "x": 1196,
+      "y": 300,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 84,
+      "var_name": "valve_84",
+      "x": 724,
+      "y": 299,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 90,
+      "var_name": "valve_90",
+      "x": 1286,
+      "y": -44,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 100,
+      "var_name": "valve_100",
+      "x": 1000,
+      "y": -46,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 104,
+      "var_name": "valve_104",
+      "x": 1131,
+      "y": -197,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 121,
+      "var_name": "valve_121",
+      "x": 498,
+      "y": 566,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 125,
+      "var_name": "valve_125",
+      "x": 285,
+      "y": 566,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 131,
+      "var_name": "valve_131",
+      "x": 341,
+      "y": 179,
+      "w": 8,
+      "h": 6
+    },
+    {
+      "id": 143,
+      "var_name": "valve_143",
+      "x": -198,
+      "y": 439,
+      "w": 8,
+      "h": 6
+    }
+  ],
+  "flows": [
+    {
+      "valve_id": 10,
+      "from": {
+        "kind": "cloud",
+        "ref": 7
+      },
+      "to": {
+        "kind": "stock",
+        "ref": "User Base"
+      }
+    },
+    {
+      "valve_id": 15,
+      "from": {
+        "kind": "stock",
+        "ref": "User Base"
+      },
+      "to": {
+        "kind": "cloud",
+        "ref": 12
+      }
+    },
+    {
+      "valve_id": 20,
+      "from": {
+        "kind": "cloud",
+        "ref": 17
+      },
+      "to": {
+        "kind": "stock",
+        "ref": "Project Reputation"
+      }
+    },
+    {
+      "valve_id": 25,
+      "from": {
+        "kind": "stock",
+        "ref": "Project Reputation"
+      },
+      "to": {
+        "kind": "cloud",
+        "ref": 22
+      }
+    },
+    {
+      "valve_id": 34,
+      "from": {
+        "kind": "cloud",
+        "ref": 31
+      },
+      "to": {
+        "kind": "stock",
+        "ref": "Community Health"
+      }
+    },
+    {
+      "valve_id": 39,
+      "from": {
+        "kind": "stock",
+        "ref": "Community Health"
+      },
+      "to": {
+        "kind": "cloud",
+        "ref": 36
+      }
+    },
+    {
+      "valve_id": 59,
+      "from": {
+        "kind": "stock",
+        "ref": "New Pull request"
+      },
+      "to": {
+        "kind": "stock",
+        "ref": "Pull Request Under review"
+      }
+    },
+    {
+      "valve_id": 63,
+      "from": {
+        "kind": "stock",
+        "ref": "Pull Request Under review"
+      },
+      "to": {
+        "kind": "stock",
+        "ref": "Source Code"
+      }
+    },
+    {
+      "valve_id": 68,
+      "from": {
+        "kind": "stock",
+        "ref": "Pull Request Under review"
+      },
+      "to": {
+        "kind": "cloud",
+        "ref": 65
+      }
+    },
+    {
+      "valve_id": 90,
+      "from": {
+        "kind": "stock",
+        "ref": "Project's Implicit Knowledge"
+      },
+      "to": {
+        "kind": "cloud",
+        "ref": 87
+      }
+    },
+    {
+      "valve_id": 100,
+      "from": {
+        "kind": "stock",
+        "ref": "Project's Implicit Knowledge"
+      },
+      "to": {
+        "kind": "stock",
+        "ref": "Projects's Explicit Knowledge"
+      }
+    },
+    {
+      "valve_id": 104,
+      "from": {
+        "kind": "stock",
+        "ref": "Projects's Explicit Knowledge"
+      },
+      "to": {
+        "kind": "stock",
+        "ref": "Project's Implicit Knowledge"
+      }
+    },
+    {
+      "valve_id": 131,
+      "from": {
+        "kind": "cloud",
+        "ref": 128
+      },
+      "to": {
+        "kind": "stock",
+        "ref": "Searchable Knowledge Base"
+      }
+    },
+    {
+      "valve_id": 143,
+      "from": {
+        "kind": "cloud",
+        "ref": 142
+      },
+      "to": {
+        "kind": "stock",
+        "ref": "hi"
+      }
+    }
+  ]
+}

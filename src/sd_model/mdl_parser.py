@@ -254,21 +254,17 @@ class MDLParser:
                     flow_conn['points'] = points
                 self.flow_connections.append(flow_conn)
             else:
-                # Regular influence connection
-                from_name = self.id_to_name.get(from_id)
-                to_name = self.id_to_name.get(to_id)
-
-                if from_name and to_name:
-                    connection = {
-                        'id': conn_id,
-                        'from_var': from_name,
-                        'to_var': to_name,
-                        'relationship': 'undeclared',  # Will be determined from equations
-                        'params': params  # Store original parameters
-                    }
-                    if points:
-                        connection['points'] = points
-                    self.connections.append(connection)
+                # Regular influence connection - use ID-based format for compatibility
+                connection = {
+                    'id': conn_id,
+                    'from': from_id,
+                    'to': to_id,
+                    'polarity': 'UNDECLARED',  # Will be determined from equations
+                    'params': params  # Store original parameters
+                }
+                if points:
+                    connection['points'] = points
+                self.connections.append(connection)
 
         except (ValueError, IndexError) as e:
             print(f"Error parsing connection: {line}")
@@ -326,7 +322,7 @@ class MDLParser:
             print(f"Error parsing valve: {line}")
 
     def _parse_cloud(self, line: str):
-        """Parse a Type 12 cloud line."""
+        """Parse a Type 12 cloud line (not comments)."""
         try:
             reader = csv.reader(io.StringIO(line))
             parts = next(reader)
@@ -340,6 +336,10 @@ class MDLParser:
             y = int(parts[4])
             w = int(parts[5])
             h = int(parts[6])
+
+            # Only add actual clouds (code 48), skip comments (code 0)
+            if code != 48:
+                return
 
             cloud = {
                 'id': cloud_id,
@@ -428,20 +428,29 @@ class MDLParser:
 
     def _add_or_update_connection(self, from_var: str, to_var: str, relationship: str, conn_id: int):
         """Add or update a connection."""
+        # Get variable IDs
+        from_id = self.name_to_id.get(from_var)
+        to_id = self.name_to_id.get(to_var)
+
+        if not from_id or not to_id:
+            return
+
         # Check if connection already exists
         for conn in self.connections:
-            if conn['from_var'] == from_var and conn['to_var'] == to_var:
-                # Update relationship if it was undeclared
-                if conn['relationship'] == 'undeclared':
-                    conn['relationship'] = relationship
+            if conn.get('from') == from_id and conn.get('to') == to_id:
+                # Update polarity if it was undeclared
+                if conn.get('polarity') == 'UNDECLARED':
+                    polarity = 'POSITIVE' if relationship == 'positive' else ('NEGATIVE' if relationship == 'negative' else 'UNDECLARED')
+                    conn['polarity'] = polarity
                 return
 
-        # Add new connection (from equation)
+        # Add new connection (from equation) - use ID-based format
+        polarity = 'POSITIVE' if relationship == 'positive' else ('NEGATIVE' if relationship == 'negative' else 'UNDECLARED')
         connection = {
             'id': str(conn_id),
-            'from_var': from_var,
-            'to_var': to_var,
-            'relationship': relationship,
+            'from': from_id,
+            'to': to_id,
+            'polarity': polarity,
             'source': 'equation'  # Mark as coming from equation analysis
         }
         self.connections.append(connection)

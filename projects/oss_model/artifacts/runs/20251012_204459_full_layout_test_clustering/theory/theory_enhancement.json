@@ -1,0 +1,736 @@
+{
+  "clustering_scheme": {
+    "clusters": [
+      {
+        "name": "Community Attraction and Onboarding",
+        "narrative": "Potential contributors discover the project through reputation signals and community outreach. They evaluate whether to join based on perceived fit and available learning resources. New members enter through legitimate peripheral participation, accessing documentation and initial guidance. As they join, they bring diverse perspectives that can enhance problem-solving capacity. The onboarding process filters and prepares individuals for meaningful participation.",
+        "inputs": "External talent pool, project reputation signals, community outreach efforts, documentation quality",
+        "outputs": "New contributor candidates, diversity of perspectives, initial skill assessments, community growth signals",
+        "variables": [
+          "Potential Contributor Pool",
+          "New Contributor Candidates",
+          "Project Discovery Rate",
+          "Evaluation and Joining Rate",
+          "Perceived Project Fit",
+          "Learning Resource Availability",
+          "Community Outreach Effectiveness",
+          "Initial Skill Assessment Quality"
+        ]
+      },
+      {
+        "name": "Knowledge Development and Skill Building",
+        "narrative": "Contributors progress through structured learning pathways that combine explicit knowledge transfer through documentation with implicit knowledge sharing via mentorship. The SECI knowledge spiral operates as contributors socialize, externalize, combine, and internalize knowledge. Skill development occurs through legitimate peripheral participation, moving contributors from periphery to core. Transactive memory systems develop where contributors know who knows what, creating collective expertise. As skills grow, contributors gain self-efficacy and clearer career pathways.",
+        "inputs": "New contributor candidates, mentorship capacity, documentation resources, learning opportunities",
+        "outputs": "Skilled contributors, knowledge artifacts, mentorship capacity growth, career progression readiness",
+        "variables": [
+          "Contributor Skill Level",
+          "Knowledge Artifacts",
+          "Skill Development Rate",
+          "Knowledge Creation Rate",
+          "Mentorship Capacity",
+          "Learning Pathway Effectiveness",
+          "SECI Knowledge Spiral Effectiveness",
+          "Transactive Memory System Strength",
+          "Contributor Self-Efficacy"
+        ]
+      },
+      {
+        "name": "Contribution and Code Development",
+        "narrative": "Skilled contributors engage with open issues and create pull requests to address project needs. The contribution process involves technical work, peer review, and integration of feedback. Task-technology fit influences how effectively contributors can address issues. Social capital develops as contributors build networks and bridge structural holes between different project areas. Quality signals emerge through code review and integration processes, affecting both individual reputation and project quality.",
+        "inputs": "Skilled contributors, open issues, technical requirements, review capacity",
+        "outputs": "Code contributions, pull request activity, technical debt changes, contributor reputation signals",
+        "variables": [
+          "Pull Request Backlog",
+          "Technical Debt",
+          "Pull Request Creation Rate",
+          "Code Integration Rate",
+          "Technical Debt Accumulation Rate",
+          "Task-Technology Fit",
+          "Review Capacity",
+          "Social Capital",
+          "Code Quality Signals"
+        ]
+      },
+      {
+        "name": "Community Health and Retention",
+        "narrative": "The community maintains health through balancing job demands with available resources, preventing burnout while sustaining engagement. Organizational routines stabilize through repeated interactions, but remain adaptable to changing conditions. Social capital accumulates through sustained relationships and trust-building activities. Retention mechanisms include recognition, career progression opportunities, and positive community culture. When demands exceed resources, turnover increases, creating knowledge loss that must be addressed through knowledge preservation.",
+        "inputs": "Engaged contributors, community demands, recognition signals, resource availability",
+        "outputs": "Retained core developers, community culture strength, knowledge preservation, turnover signals",
+        "variables": [
+          "Community Engagement Level",
+          "Organizational Routine Stability",
+          "Engagement Building Rate",
+          "Burnout Accumulation Rate",
+          "Job Demands vs Resources Balance",
+          "Recognition Effectiveness",
+          "Career Progression Opportunities",
+          "Knowledge Preservation Effectiveness"
+        ]
+      },
+      {
+        "name": "Product Evolution and User Adoption",
+        "narrative": "Code contributions integrate into the evolving codebase, creating new features and addressing user needs. Software quality and feature richness influence project reputation and user adoption rates. The innovation diffusion process spreads through user networks as early adopters influence later adopters. User feedback creates new issues and feature requests, driving further development. As the product evolves, it must maintain fit with user tasks and technological capabilities.",
+        "inputs": "Integrated code contributions, user feedback, technological trends, market signals",
+        "outputs": "Evolving software product, user adoption growth, reputation changes, new requirement signals",
+        "variables": [
+          "Software Feature Richness",
+          "User Satisfaction Level",
+          "Feature Integration Rate",
+          "User Satisfaction Change Rate",
+          "Software Quality",
+          "Task-Technology Fit for Users",
+          "Innovation Diffusion Effectiveness",
+          "User Feedback Quality"
+        ]
+      },
+      {
+        "name": "Reputation and Ecosystem Growth",
+        "narrative": "Project reputation builds through successful outcomes, community health signals, and external recognition. Reputation signals attract new contributors, users, and potential collaborators. The ecosystem grows through network effects as more participants create more value. Social capital and structural advantages create competitive positioning. Reputation decline can occur through quality issues, community problems, or technological obsolescence, creating balancing feedback to maintain standards.",
+        "inputs": "Project success signals, community health indicators, external recognition, network growth",
+        "outputs": "Enhanced project reputation, ecosystem expansion, attraction signals, competitive positioning",
+        "variables": [
+          "Ecosystem Network Effects",
+          "Competitive Positioning Strength",
+          "Network Effect Accumulation Rate",
+          "Competitive Position Change Rate",
+          "Project Success Signals",
+          "External Recognition Level",
+          "Social Capital Accumulation",
+          "Structural Advantage"
+        ]
+      }
+    ],
+    "overall_narrative": "The open source ecosystem flows through interconnected processes that create virtuous cycles of growth and development. Community Attraction and Onboarding brings new talent into the system [overlap: Process 1\u21922], feeding the Knowledge Development and Skill Building process where contributors gain capabilities. Skilled contributors then flow into Contribution and Code Development [overlap: Process 2\u21923], creating value through code contributions. The resulting product improvements feed Product Evolution and User Adoption [overlap: Process 3\u21925], which generates success signals that enhance Reputation and Ecosystem Growth [overlap: Process 5\u21926]. Strong reputation then feeds back to attract more talent [feedback loop: Process 6\u21921], completing the primary growth cycle. Simultaneously, Community Health and Retention [Process 4] provides stabilizing forces, receiving engaged contributors from skill building [connection: Process 2\u21924] and feeding retained expertise back into contribution activities [feedback: Process 4\u21923]. Knowledge flows bidirectionally throughout, with transactive memory systems and SECI processes connecting all stages. The system maintains adaptability through feedback mechanisms where product evolution signals influence contribution priorities [connection: Process 5\u21923] and community health indicators affect attraction strategies [connection: Process 4\u21921]."
+  },
+  "theories": [
+    {
+      "name": "Process-Based Enhancement",
+      "rationale": "Variables and connections generated from process narratives",
+      "additions": {
+        "variables": [
+          {
+            "name": "Potential Contributor Pool",
+            "type": "Stock",
+            "description": "Individuals aware of and considering joining the project"
+          },
+          {
+            "name": "New Contributor Candidates",
+            "type": "Stock",
+            "description": "Individuals who have completed initial evaluation and are ready for onboarding"
+          },
+          {
+            "name": "Project Discovery Rate",
+            "type": "Flow",
+            "description": "Rate at which potential contributors discover the project"
+          },
+          {
+            "name": "Evaluation and Joining Rate",
+            "type": "Flow",
+            "description": "Rate at which potential contributors evaluate and decide to join"
+          },
+          {
+            "name": "Perceived Project Fit",
+            "type": "Auxiliary",
+            "description": "Potential contributors' perception of alignment with project goals and values"
+          },
+          {
+            "name": "Learning Resource Availability",
+            "type": "Auxiliary",
+            "description": "Accessibility and quality of documentation and initial guidance"
+          },
+          {
+            "name": "Community Outreach Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness of community outreach efforts in attracting talent"
+          },
+          {
+            "name": "Initial Skill Assessment Quality",
+            "type": "Auxiliary",
+            "description": "Quality of initial skill evaluation during onboarding"
+          },
+          {
+            "name": "Contributor Skill Level",
+            "type": "Stock",
+            "description": "Accumulated skills and capabilities of contributors"
+          },
+          {
+            "name": "Knowledge Artifacts",
+            "type": "Stock",
+            "description": "Documentation, guides, and other explicit knowledge resources"
+          },
+          {
+            "name": "Skill Development Rate",
+            "type": "Flow",
+            "description": "Rate at which contributors gain new skills and capabilities"
+          },
+          {
+            "name": "Knowledge Creation Rate",
+            "type": "Flow",
+            "description": "Rate at which new knowledge artifacts are created"
+          },
+          {
+            "name": "Mentorship Capacity",
+            "type": "Auxiliary",
+            "description": "Available mentorship resources and capability"
+          },
+          {
+            "name": "Learning Pathway Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness of structured learning pathways"
+          },
+          {
+            "name": "SECI Knowledge Spiral Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness of socialization, externalization, combination, internalization processes"
+          },
+          {
+            "name": "Transactive Memory System Strength",
+            "type": "Auxiliary",
+            "description": "Effectiveness of collective knowledge about who knows what"
+          },
+          {
+            "name": "Contributor Self-Efficacy",
+            "type": "Auxiliary",
+            "description": "Contributors' belief in their ability to succeed"
+          },
+          {
+            "name": "Pull Request Backlog",
+            "type": "Stock",
+            "description": "Accumulated pull requests awaiting review and integration"
+          },
+          {
+            "name": "Technical Debt",
+            "type": "Stock",
+            "description": "Accumulated technical debt requiring future rework"
+          },
+          {
+            "name": "Pull Request Creation Rate",
+            "type": "Flow",
+            "description": "Rate at which new pull requests are created"
+          },
+          {
+            "name": "Code Integration Rate",
+            "type": "Flow",
+            "description": "Rate at which pull requests are reviewed and integrated"
+          },
+          {
+            "name": "Technical Debt Accumulation Rate",
+            "type": "Flow",
+            "description": "Rate at which technical debt accumulates"
+          },
+          {
+            "name": "Task-Technology Fit",
+            "type": "Auxiliary",
+            "description": "Alignment between contributor skills and technical requirements"
+          },
+          {
+            "name": "Review Capacity",
+            "type": "Auxiliary",
+            "description": "Available capacity for reviewing and integrating contributions"
+          },
+          {
+            "name": "Social Capital",
+            "type": "Auxiliary",
+            "description": "Networks, relationships, and trust among contributors"
+          },
+          {
+            "name": "Code Quality Signals",
+            "type": "Auxiliary",
+            "description": "Signals indicating quality of code contributions"
+          },
+          {
+            "name": "Community Engagement Level",
+            "type": "Stock",
+            "description": "Overall level of contributor engagement and participation"
+          },
+          {
+            "name": "Organizational Routine Stability",
+            "type": "Stock",
+            "description": "Stability and effectiveness of established community routines"
+          },
+          {
+            "name": "Engagement Building Rate",
+            "type": "Flow",
+            "description": "Rate at which community engagement increases"
+          },
+          {
+            "name": "Burnout Accumulation Rate",
+            "type": "Flow",
+            "description": "Rate at which burnout and disengagement accumulate"
+          },
+          {
+            "name": "Job Demands vs Resources Balance",
+            "type": "Auxiliary",
+            "description": "Balance between community demands and available resources"
+          },
+          {
+            "name": "Recognition Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness of recognition and reward systems"
+          },
+          {
+            "name": "Career Progression Opportunities",
+            "type": "Auxiliary",
+            "description": "Availability of clear career progression pathways"
+          },
+          {
+            "name": "Knowledge Preservation Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness of preserving knowledge when contributors leave"
+          },
+          {
+            "name": "Software Feature Richness",
+            "type": "Stock",
+            "description": "Accumulated features and capabilities of the software"
+          },
+          {
+            "name": "User Satisfaction Level",
+            "type": "Stock",
+            "description": "Overall satisfaction level of user base"
+          },
+          {
+            "name": "Feature Integration Rate",
+            "type": "Flow",
+            "description": "Rate at which new features are integrated into the software"
+          },
+          {
+            "name": "User Satisfaction Change Rate",
+            "type": "Flow",
+            "description": "Rate at which user satisfaction changes"
+          },
+          {
+            "name": "Software Quality",
+            "type": "Auxiliary",
+            "description": "Overall quality and reliability of the software"
+          },
+          {
+            "name": "Task-Technology Fit for Users",
+            "type": "Auxiliary",
+            "description": "Alignment between software capabilities and user needs"
+          },
+          {
+            "name": "Innovation Diffusion Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness of spreading adoption through user networks"
+          },
+          {
+            "name": "User Feedback Quality",
+            "type": "Auxiliary",
+            "description": "Quality and usefulness of user feedback"
+          },
+          {
+            "name": "Ecosystem Network Effects",
+            "type": "Stock",
+            "description": "Accumulated network effects from ecosystem growth"
+          },
+          {
+            "name": "Competitive Positioning Strength",
+            "type": "Stock",
+            "description": "Strength of project's competitive position in ecosystem"
+          },
+          {
+            "name": "Network Effect Accumulation Rate",
+            "type": "Flow",
+            "description": "Rate at which network effects accumulate"
+          },
+          {
+            "name": "Competitive Position Change Rate",
+            "type": "Flow",
+            "description": "Rate at which competitive position changes"
+          },
+          {
+            "name": "Project Success Signals",
+            "type": "Auxiliary",
+            "description": "Signals indicating project success and achievement"
+          },
+          {
+            "name": "External Recognition Level",
+            "type": "Auxiliary",
+            "description": "Level of external recognition and awards"
+          },
+          {
+            "name": "Social Capital Accumulation",
+            "type": "Auxiliary",
+            "description": "Accumulation of social capital through relationships"
+          },
+          {
+            "name": "Structural Advantage",
+            "type": "Auxiliary",
+            "description": "Structural advantages in the ecosystem"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Project Reputation",
+            "to": "Project Discovery Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Outreach Effectiveness",
+            "to": "Project Discovery Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Perceived Project Fit",
+            "to": "Evaluation and Joining Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Learning Resource Availability",
+            "to": "Evaluation and Joining Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Discovery Rate",
+            "to": "Potential Contributor Pool",
+            "relationship": "positive"
+          },
+          {
+            "from": "Evaluation and Joining Rate",
+            "to": "Potential Contributor Pool",
+            "relationship": "negative"
+          },
+          {
+            "from": "Evaluation and Joining Rate",
+            "to": "New Contributor Candidates",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Health",
+            "to": "Perceived Project Fit",
+            "relationship": "positive"
+          },
+          {
+            "from": "New Contributor Candidates",
+            "to": "Skill Development Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mentorship Capacity",
+            "to": "Skill Development Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Learning Pathway Effectiveness",
+            "to": "Skill Development Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "SECI Knowledge Spiral Effectiveness",
+            "to": "Skill Development Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Transactive Memory System Strength",
+            "to": "Skill Development Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Skill Development Rate",
+            "to": "Contributor Skill Level",
+            "relationship": "positive"
+          },
+          {
+            "from": "Contributor Skill Level",
+            "to": "Knowledge Creation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Creation Rate",
+            "to": "Knowledge Artifacts",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Artifacts",
+            "to": "Learning Pathway Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Contributor Skill Level",
+            "to": "Mentorship Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Contributor Skill Level",
+            "to": "Contributor Self-Efficacy",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Artifacts",
+            "to": "Explicit Knowledge Transfer",
+            "relationship": "positive"
+          },
+          {
+            "from": "Contributor Skill Level",
+            "to": "Pull Request Creation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Open Issues",
+            "to": "Pull Request Creation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Task-Technology Fit",
+            "to": "Pull Request Creation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Pull Request Creation Rate",
+            "to": "Pull Request Backlog",
+            "relationship": "positive"
+          },
+          {
+            "from": "Review Capacity",
+            "to": "Code Integration Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Social Capital",
+            "to": "Code Integration Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Code Integration Rate",
+            "to": "Pull Request Backlog",
+            "relationship": "negative"
+          },
+          {
+            "from": "Code Integration Rate",
+            "to": "Source Code",
+            "relationship": "positive"
+          },
+          {
+            "from": "Code Quality Signals",
+            "to": "Technical Debt Accumulation Rate",
+            "relationship": "negative"
+          },
+          {
+            "from": "Technical Debt Accumulation Rate",
+            "to": "Technical Debt",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Review Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Health",
+            "to": "Social Capital",
+            "relationship": "positive"
+          },
+          {
+            "from": "Contributor Skill Level",
+            "to": "Task-Technology Fit",
+            "relationship": "positive"
+          },
+          {
+            "from": "Contributor Skill Level",
+            "to": "Engagement Building Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Recognition Effectiveness",
+            "to": "Engagement Building Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Career Progression Opportunities",
+            "to": "Engagement Building Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Engagement Building Rate",
+            "to": "Community Engagement Level",
+            "relationship": "positive"
+          },
+          {
+            "from": "Job Demands vs Resources Balance",
+            "to": "Burnout Accumulation Rate",
+            "relationship": "negative"
+          },
+          {
+            "from": "Burnout Accumulation Rate",
+            "to": "Community Engagement Level",
+            "relationship": "negative"
+          },
+          {
+            "from": "Community Engagement Level",
+            "to": "Organizational Routine Stability",
+            "relationship": "positive"
+          },
+          {
+            "from": "Organizational Routine Stability",
+            "to": "Community Health",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Engagement Level",
+            "to": "Trust Building",
+            "relationship": "positive"
+          },
+          {
+            "from": "Burnout Accumulation Rate",
+            "to": "Developer's Turnover",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Preservation Effectiveness",
+            "to": "Culture Erosion",
+            "relationship": "negative"
+          },
+          {
+            "from": "Promotion Rate",
+            "to": "Career Progression Opportunities",
+            "relationship": "positive"
+          },
+          {
+            "from": "Code Integration Rate",
+            "to": "Feature Integration Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Feature Integration Rate",
+            "to": "Software Feature Richness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Software Feature Richness",
+            "to": "Software Quality and Features",
+            "relationship": "positive"
+          },
+          {
+            "from": "Software Quality",
+            "to": "User Satisfaction Change Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Task-Technology Fit for Users",
+            "to": "User Satisfaction Change Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "User Satisfaction Change Rate",
+            "to": "User Satisfaction Level",
+            "relationship": "positive"
+          },
+          {
+            "from": "User Satisfaction Level",
+            "to": "Adoption Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "User Satisfaction Level",
+            "to": "User Churn Rate",
+            "relationship": "negative"
+          },
+          {
+            "from": "User Satisfaction Level",
+            "to": "User Feedback Quality",
+            "relationship": "positive"
+          },
+          {
+            "from": "User Feedback Quality",
+            "to": "Issue Creation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Innovation Diffusion Effectiveness",
+            "to": "Adoption Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Technical Debt",
+            "to": "Software Quality",
+            "relationship": "negative"
+          },
+          {
+            "from": "Software Quality and Features",
+            "to": "Project Success Signals",
+            "relationship": "positive"
+          },
+          {
+            "from": "User Base",
+            "to": "Project Success Signals",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Health",
+            "to": "Project Success Signals",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Success Signals",
+            "to": "Reputation Building",
+            "relationship": "positive"
+          },
+          {
+            "from": "External Recognition Level",
+            "to": "Reputation Building",
+            "relationship": "positive"
+          },
+          {
+            "from": "User Base",
+            "to": "Network Effect Accumulation Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Network Effect Accumulation Rate",
+            "to": "Ecosystem Network Effects",
+            "relationship": "positive"
+          },
+          {
+            "from": "Ecosystem Network Effects",
+            "to": "Competitive Position Change Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Social Capital Accumulation",
+            "to": "Competitive Position Change Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Structural Advantage",
+            "to": "Competitive Position Change Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Competitive Position Change Rate",
+            "to": "Competitive Positioning Strength",
+            "relationship": "positive"
+          },
+          {
+            "from": "Competitive Positioning Strength",
+            "to": "Project Reputation",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Reputation",
+            "to": "Community Outreach Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Technical Debt",
+            "to": "Reputation Decline",
+            "relationship": "positive"
+          }
+        ],
+        "boundary_flows": [
+          {
+            "flow_name": "Project Discovery Rate",
+            "stock_name": "Potential Contributor Pool",
+            "boundary_type": "source",
+            "description": "External talent market and broader open source ecosystem"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    }
+  ]
+}

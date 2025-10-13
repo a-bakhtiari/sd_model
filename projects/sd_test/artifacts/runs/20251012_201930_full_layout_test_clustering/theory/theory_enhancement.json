@@ -1,0 +1,424 @@
+{
+  "clustering_scheme": {
+    "clusters": [
+      {
+        "name": "Knowledge Codification",
+        "narrative": "Core developers and experienced contributors systematically document their knowledge, creating guides, tutorials, and reference materials. This process transforms tacit understanding into explicit resources that can be shared broadly. The quality and completeness of documentation improves as more community members contribute their expertise and identify gaps in existing materials. This creates a growing repository of institutional knowledge that reduces dependency on individual experts.",
+        "inputs": "Tacit knowledge from experienced members, identified knowledge gaps from newcomers, feedback on documentation effectiveness",
+        "outputs": "Structured documentation and guides, updated knowledge repositories, identified areas needing better codification",
+        "variables": [
+          "Documentation Quality Index",
+          "Knowledge Gap Identification Rate",
+          "Documentation Update Rate",
+          "Available Documentation Inventory",
+          "Expert Contribution Capacity"
+        ]
+      },
+      {
+        "name": "Community Socialization",
+        "narrative": "New contributors enter the community and begin participating in peripheral activities, learning through observation and limited engagement. They interact with documentation and begin forming relationships with experienced members. As they demonstrate commitment and basic competence, they gain access to more central community practices. This process creates a pipeline of potential contributors who are gradually integrated into community norms and practices through legitimate peripheral participation.",
+        "inputs": "New community members, available documentation, community welcoming signals, peripheral participation opportunities",
+        "outputs": "Socialized newcomers, initial relationship networks, demonstrated commitment signals, basic competence indicators",
+        "variables": [
+          "Community Welcoming Effectiveness",
+          "Peripheral Participation Opportunities",
+          "Socialization Progress Rate",
+          "Socialized Newcomers",
+          "Initial Relationship Network Strength"
+        ]
+      },
+      {
+        "name": "Skill Development & Mentorship",
+        "narrative": "Experienced community members provide guidance and mentorship to newcomers, transferring implicit knowledge that cannot be fully captured in documentation. This includes contextual understanding, problem-solving approaches, and community-specific practices. Mentorship relationships form organically based on shared interests and demonstrated willingness to learn. As newcomers develop skills, they take on more complex tasks and begin contributing meaningfully to community projects. The effectiveness of mentorship increases when both parties are actively engaged and when explicit documentation supports the learning process.",
+        "inputs": "Socialized newcomers, available mentors, explicit documentation, project opportunities requiring guidance",
+        "outputs": "Skill development progress, strengthened community bonds, project contributions, mentorship capacity signals",
+        "variables": [
+          "Mentorship Availability",
+          "Mentorship Effectiveness",
+          "Skill Development Rate",
+          "Skill Level",
+          "Project Guidance Opportunities"
+        ]
+      },
+      {
+        "name": "Contribution Integration",
+        "narrative": "As contributors develop skills and demonstrate reliability, their work becomes integrated into core community projects and decision-making processes. This involves reviewing contributions, providing constructive feedback, and gradually increasing responsibility. Contributors who consistently produce quality work and align with community values experience accelerated integration. This process validates the effectiveness of previous knowledge transfer stages and reinforces community standards through practical application and peer review.",
+        "inputs": "Developed skills from mentorship, project contributions, community trust signals, demonstrated competence",
+        "outputs": "Integrated contributions, community trust reinforcement, promotion eligibility signals, quality standards validation",
+        "variables": [
+          "Contribution Quality Assessment",
+          "Community Trust Level",
+          "Integration Progress Rate",
+          "Integration Status",
+          "Peer Review Effectiveness"
+        ]
+      },
+      {
+        "name": "Role Transition & Leadership Development",
+        "narrative": "Successful contributors transition to more central roles within the community, taking on leadership responsibilities and becoming mentors themselves. This process involves both formal recognition and informal acceptance by existing core members. As contributors move into core roles, they begin contributing to the knowledge codification process, creating a reinforcing cycle. Leadership development ensures the community maintains its capacity for knowledge transfer even as members transition in and out of active participation.",
+        "inputs": "Proven contributors, community leadership needs, mentorship capacity requirements, role transition opportunities",
+        "outputs": "New core developers and experienced contributors, expanded mentorship capacity, leadership succession, community resilience",
+        "variables": [
+          "Leadership Capacity Need",
+          "Role Transition Readiness",
+          "Leadership Development Rate",
+          "Leadership Capacity",
+          "Succession Planning Effectiveness"
+        ]
+      }
+    ],
+    "overall_narrative": "The knowledge ecosystem begins with Knowledge Codification [Process 1] where experienced members create explicit resources. These resources flow into Community Socialization [overlap: Process 1\u21922] where newcomers first engage with the community. Socialized members then enter Skill Development & Mentorship [overlap: Process 2\u21923] where they receive personalized guidance, supported by both explicit documentation and implicit knowledge transfer. As skills develop [Process 3], contributors move into Contribution Integration [overlap: Process 3\u21924] where their work becomes part of community projects. Successful integration leads to Role Transition & Leadership Development [overlap: Process 4\u21925] where contributors become core members. The system features multiple feedback loops: newly developed leaders [feedback: Process 5\u21921] contribute back to knowledge codification, mentorship effectiveness [connection: Process 3\u21922] influences socialization success, and integration experiences [feedback: Process 4\u21923] inform skill development approaches. This creates a continuous knowledge spiral where explicit and implicit knowledge reinforce each other through community participation."
+  },
+  "theories": [
+    {
+      "name": "Process-Based Enhancement",
+      "rationale": "Variables and connections generated from process narratives",
+      "additions": {
+        "variables": [
+          {
+            "name": "Documentation Quality Index",
+            "type": "Auxiliary",
+            "description": "Measure of how comprehensive and useful the documentation is"
+          },
+          {
+            "name": "Knowledge Gap Identification Rate",
+            "type": "Auxiliary",
+            "description": "Rate at which missing or unclear documentation is identified"
+          },
+          {
+            "name": "Documentation Update Rate",
+            "type": "Flow",
+            "description": "Rate at which documentation is improved and expanded"
+          },
+          {
+            "name": "Available Documentation Inventory",
+            "type": "Stock",
+            "description": "Accumulated body of explicit knowledge resources"
+          },
+          {
+            "name": "Expert Contribution Capacity",
+            "type": "Auxiliary",
+            "description": "Capacity of experienced members to contribute to documentation"
+          },
+          {
+            "name": "Community Welcoming Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness of community in welcoming and orienting newcomers"
+          },
+          {
+            "name": "Peripheral Participation Opportunities",
+            "type": "Auxiliary",
+            "description": "Availability of low-risk participation opportunities for newcomers"
+          },
+          {
+            "name": "Socialization Progress Rate",
+            "type": "Flow",
+            "description": "Rate at which newcomers become socialized into community norms"
+          },
+          {
+            "name": "Socialized Newcomers",
+            "type": "Stock",
+            "description": "Newcomers who have learned community norms and practices"
+          },
+          {
+            "name": "Initial Relationship Network Strength",
+            "type": "Auxiliary",
+            "description": "Strength of initial social connections formed by newcomers"
+          },
+          {
+            "name": "Mentorship Availability",
+            "type": "Auxiliary",
+            "description": "Availability of experienced members to provide mentorship"
+          },
+          {
+            "name": "Mentorship Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness of mentorship relationships in transferring skills"
+          },
+          {
+            "name": "Skill Development Rate",
+            "type": "Flow",
+            "description": "Rate at which newcomers develop community-specific skills"
+          },
+          {
+            "name": "Skill Level",
+            "type": "Stock",
+            "description": "Accumulated skills and knowledge of community members"
+          },
+          {
+            "name": "Project Guidance Opportunities",
+            "type": "Auxiliary",
+            "description": "Availability of projects suitable for guided learning"
+          },
+          {
+            "name": "Contribution Quality Assessment",
+            "type": "Auxiliary",
+            "description": "Assessment of contribution quality and alignment with standards"
+          },
+          {
+            "name": "Community Trust Level",
+            "type": "Auxiliary",
+            "description": "Level of trust community places in contributor's work"
+          },
+          {
+            "name": "Integration Progress Rate",
+            "type": "Flow",
+            "description": "Rate at which contributors become integrated into core projects"
+          },
+          {
+            "name": "Integration Status",
+            "type": "Stock",
+            "description": "Degree to which contributor is integrated into community work"
+          },
+          {
+            "name": "Peer Review Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness of peer review process in validating contributions"
+          },
+          {
+            "name": "Leadership Capacity Need",
+            "type": "Auxiliary",
+            "description": "Community's need for additional leadership capacity"
+          },
+          {
+            "name": "Role Transition Readiness",
+            "type": "Auxiliary",
+            "description": "Readiness of contributors to transition to leadership roles"
+          },
+          {
+            "name": "Leadership Development Rate",
+            "type": "Flow",
+            "description": "Rate at which contributors transition to leadership roles"
+          },
+          {
+            "name": "Leadership Capacity",
+            "type": "Stock",
+            "description": "Accumulated leadership capacity within the community"
+          },
+          {
+            "name": "Succession Planning Effectiveness",
+            "type": "Auxiliary",
+            "description": "Effectiveness of leadership succession planning"
+          }
+        ],
+        "connections": [
+          {
+            "from": "Core Developer",
+            "to": "Expert Contribution Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Experienced Contributors",
+            "to": "Expert Contribution Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Knowledge Gap Identification Rate",
+            "to": "Documentation Update Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Expert Contribution Capacity",
+            "to": "Documentation Update Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Documentation Update Rate",
+            "to": "Available Documentation Inventory",
+            "relationship": "positive"
+          },
+          {
+            "from": "Available Documentation Inventory",
+            "to": "Documentation Quality Index",
+            "relationship": "positive"
+          },
+          {
+            "from": "Documentation Quality Index",
+            "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Welcoming Effectiveness",
+            "to": "Socialization Progress Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Peripheral Participation Opportunities",
+            "to": "Socialization Progress Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Available Documentation Inventory",
+            "to": "Socialization Progress Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Socialization Progress Rate",
+            "to": "Socialized Newcomers",
+            "relationship": "positive"
+          },
+          {
+            "from": "Socialized Newcomers",
+            "to": "Initial Relationship Network Strength",
+            "relationship": "positive"
+          },
+          {
+            "from": "Initial Relationship Network Strength",
+            "to": "Skill Development & Mentorship",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mentorship Availability",
+            "to": "Mentorship Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Core Developer",
+            "to": "Mentorship Availability",
+            "relationship": "positive"
+          },
+          {
+            "from": "Experienced Contributors",
+            "to": "Mentorship Availability",
+            "relationship": "positive"
+          },
+          {
+            "from": "Available Documentation Inventory",
+            "to": "Mentorship Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Initial Relationship Network Strength",
+            "to": "Mentorship Effectiveness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mentorship Effectiveness",
+            "to": "Skill Development Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Project Guidance Opportunities",
+            "to": "Skill Development Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Skill Development Rate",
+            "to": "Skill Level",
+            "relationship": "positive"
+          },
+          {
+            "from": "Skill Level",
+            "to": "Skill up",
+            "relationship": "positive"
+          },
+          {
+            "from": "Mentorship Effectiveness",
+            "to": "Implicit Knowledge Transfer (Mentorship)",
+            "relationship": "positive"
+          },
+          {
+            "from": "Skill Level",
+            "to": "Contribution Quality Assessment",
+            "relationship": "positive"
+          },
+          {
+            "from": "Contribution Quality Assessment",
+            "to": "Community Trust Level",
+            "relationship": "positive"
+          },
+          {
+            "from": "Community Trust Level",
+            "to": "Integration Progress Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Peer Review Effectiveness",
+            "to": "Integration Progress Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Integration Progress Rate",
+            "to": "Integration Status",
+            "relationship": "positive"
+          },
+          {
+            "from": "Integration Status",
+            "to": "Promotion Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Integration Status",
+            "to": "Knowledge Gap Identification Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Integration Status",
+            "to": "Role Transition Readiness",
+            "relationship": "positive"
+          },
+          {
+            "from": "Leadership Capacity Need",
+            "to": "Leadership Development Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Role Transition Readiness",
+            "to": "Leadership Development Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Succession Planning Effectiveness",
+            "to": "Leadership Development Rate",
+            "relationship": "positive"
+          },
+          {
+            "from": "Leadership Development Rate",
+            "to": "Leadership Capacity",
+            "relationship": "positive"
+          },
+          {
+            "from": "Leadership Capacity",
+            "to": "Core Developer",
+            "relationship": "positive"
+          },
+          {
+            "from": "Leadership Capacity",
+            "to": "Experienced Contributors",
+            "relationship": "positive"
+          },
+          {
+            "from": "Leadership Capacity",
+            "to": "Mentorship Availability",
+            "relationship": "positive"
+          },
+          {
+            "from": "Leadership Capacity",
+            "to": "Expert Contribution Capacity",
+            "relationship": "positive"
+          }
+        ],
+        "boundary_flows": [
+          {
+            "flow_name": "Newcomer Arrival Rate",
+            "stock_name": "New Contributors",
+            "boundary_type": "source",
+            "description": "External source of new community members joining"
+          },
+          {
+            "flow_name": "Developer's Turnover",
+            "stock_name": "Core Developer",
+            "boundary_type": "sink",
+            "description": "Core developers leaving the community for external opportunities"
+          }
+        ]
+      },
+      "modifications": {
+        "variables": []
+      },
+      "removals": {
+        "variables": []
+      }
+    }
+  ]
+}

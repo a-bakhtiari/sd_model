@@ -55,35 +55,42 @@ python main.py --project oss_model --loops
 # 3. With citations (for connections)
 python main.py --project oss_model --citations
 
-# 4. Citations + verification via Semantic Scholar
-python main.py --project oss_model --citations --verify-citations
-
-# 5. Theory-based model enhancement
+# 4. Theory-based model enhancement (single-call approach)
 python main.py --project oss_model --theory-enhancement
 
-# 6. Theory enhancement + generate enhanced MDL file
-python main.py --project oss_model --theory-enhancement --theory-enhancement-mdl
+# 5. Theory enhancement with decomposed 3-step approach (recommended)
+#    Step 1: Strategic planning → Step 2: Concrete generation → Step 3: Positioning
+python main.py --project oss_model --theory-enhancement --decomposed-theory
 
-# 7. Research question analysis
+# 6. Theory enhancement with full relayout (reposition ALL variables)
+python main.py --project oss_model --theory-enhancement --decomposed-theory --full-relayout
+
+# 7. Archetype detection (detect system archetypes and suggest patterns)
+python main.py --project oss_model --archetype-detection
+
+# 8. Research question analysis
 python main.py --project oss_model --rq-analysis
 
-# 8. Discover new relevant theories
+# 9. Discover new relevant theories
 python main.py --project oss_model --theory-discovery
 
-# 9. Gap analysis (find unsupported connections)
+# 10. Gap analysis (find unsupported connections)
 python main.py --project oss_model --citations --gap-analysis
 
-# 10. Paper discovery for gaps
+# 11. Paper discovery for gaps
 python main.py --project oss_model --citations --gap-analysis --discover-papers
 
-# 11. Run ALL optional features
+# 12. Run ALL optional features
 python main.py --project oss_model --all
 
-# 12. Run all model improvement features
+# 13. Run all model improvement features
 python main.py --project oss_model --improve-model
 
-# 13. Save versioned run for later comparison
+# 14. Save versioned run for later comparison
 python main.py --project oss_model --all --save-run "baseline-v1"
+
+# 15. Apply MDL patch automatically (use with theory-enhancement)
+python main.py --project oss_model --theory-enhancement --apply-patch
 ```
 
 **Common Workflows:**
@@ -92,11 +99,11 @@ python main.py --project oss_model --all --save-run "baseline-v1"
 # Quick analysis: loops + citations
 python main.py --project oss_model --loops --citations
 
-# Full verification: citations + verification + gap analysis + papers
-python main.py --project oss_model --citations --verify-citations --gap-analysis --discover-papers
+# Full verification: citations + gap analysis + papers
+python main.py --project oss_model --citations --gap-analysis --discover-papers
 
-# Model improvement: enhancement + RQ analysis + theory discovery
-python main.py --project oss_model --theory-enhancement --theory-enhancement-mdl --rq-analysis --theory-discovery
+# Model improvement with decomposed theory enhancement (recommended)
+python main.py --project oss_model --theory-enhancement --decomposed-theory --full-relayout --rq-analysis --theory-discovery
 
 # Complete analysis (everything)
 python main.py --project oss_model --all --save-run "complete-analysis"

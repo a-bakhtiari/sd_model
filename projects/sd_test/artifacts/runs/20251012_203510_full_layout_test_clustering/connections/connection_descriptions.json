@@ -1,0 +1,44 @@
+{
+  "descriptions": [
+    {
+      "id": "C01",
+      "description": "More core developers increase the availability of mentors, facilitating implicit knowledge sharing."
+    },
+    {
+      "id": "C02",
+      "description": "A larger pool of experienced contributors provides more support, attracting and retaining new contributors."
+    },
+    {
+      "id": "C03",
+      "description": "As new contributors gain skills and are promoted, they leave the new contributor stock."
+    },
+    {
+      "id": "C04",
+      "description": "Developer turnover directly reduces the number of core developers through departures."
+    },
+    {
+      "id": "C05",
+      "description": "Promoting experienced contributors directly increases the stock of core developers."
+    },
+    {
+      "id": "C06",
+      "description": "Promoting experienced contributors directly reduces their stock as they move to the core group."
+    },
+    {
+      "id": "C07",
+      "description": "As new contributors develop skills, they flow into the stock of experienced contributors."
+    },
+    {
+      "id": "C08",
+      "description": "Better documentation provides accessible knowledge, accelerating the skill development process."
+    },
+    {
+      "id": "C09",
+      "description": "Effective mentorship accelerates learning by providing personalized guidance and tacit knowledge."
+    },
+    {
+      "id": "C10",
+      "description": "Mentorship prepares experienced contributors for core responsibilities, increasing their promotion rate."
+    }
+  ]
+}

@@ -15,121 +15,117 @@ from ..llm.client import LLMClient
 def create_concretization_prompt(
     planning_result: Dict,
     variables: Dict,
-    connections: Dict
+    connections: Dict,
+    plumbing: Dict = None
 ) -> str:
     """Create prompt for concrete SD element generation (Step 2)."""
 
-    # Extract strategic plan from Step 1
-    theory_decisions = planning_result.get('theory_decisions', [])
+    # Extract process narratives from Step 1
     clustering_strategy = planning_result.get('clustering_strategy', {})
 
-    # Filter to only included/adapted theories
-    active_theories = [
-        t for t in theory_decisions
-        if t.get('decision') in ['include', 'adapt']
-    ]
+    # Use same model structure formatting as Step 1 (includes cloud flows if present)
+    from .theory_planning import format_model_structure
+    model_structure = format_model_structure(variables, connections, plumbing)
 
-    # Format current model
-    all_vars = variables.get("variables", [])
-    vars_text = "\n".join([
-        f"- {v['name']} ({v.get('type', 'Unknown')})"
-        for v in all_vars
-    ])
-
-    all_conns = connections.get("connections", [])
-    conns_text = "\n".join([
-        f"- {c['from_var']} → {c['to_var']} ({c.get('relationship', 'unknown')})"
-        for c in all_conns
-    ])
-
-    # Format strategic plan
-    theories_plan_text = "\n".join([
-        f"**{t['theory_name']}** ({t['decision']})\n"
-        f"  Rationale: {t['rationale']}\n"
-        f"  Conceptual additions: {', '.join(t.get('conceptual_additions', []))}"
-        for t in active_theories
-    ])
-
-    # Format clustering strategy
-    clusters_text = "\n".join([
-        f"**{c['name']}**: {c['theme']}\n"
-        f"  Existing: {', '.join(c.get('should_contain_existing', []))}\n"
-        f"  New concepts: {', '.join(c.get('should_contain_new', []))}\n"
-        f"  Spatial: {c.get('spatial_recommendation', 'N/A')}"
+    # Format process narratives from Step 1
+    overall_narrative = clustering_strategy.get('overall_narrative', 'N/A')
+    processes_text = "\n\n".join([
+        f"**{c['name']}**:\n"
+        f"  Narrative: {c.get('narrative', c.get('theme', 'N/A'))}\n"
+        f"  Inputs: {c.get('inputs', 'N/A')}\n"
+        f"  Outputs: {c.get('outputs', 'N/A')}"
         for c in clustering_strategy.get('clusters', [])
     ])
 
-    prompt = f"""You are a system dynamics modeling expert. Your task is to generate CONCRETE variables and connections based on the strategic plan from Step 1.
+    prompt = f"""# Context
+
+You are a system dynamics modeling expert converting process narratives into concrete SD elements.
+
+**Your task**: Transform process narratives into specific variables, connections, and feedback loops. Each process is a self-contained mini-model with outputs that act as connection hubs between processes.
+
+**Input**: Process narratives with inputs/outputs + overall system narrative + existing model
+**Output**: Modular processes with concrete variables and connections
+
+---
 
 # Current Model
 
-## Variables ({len(all_vars)} total)
-{vars_text}
-
-## Connections ({len(all_conns)} total)
-{conns_text}
+{model_structure}
 
 ---
 
-# Strategic Plan from Step 1
+# Process Narratives from Strategic Planning
 
-## Active Theories (include/adapt)
-{theories_plan_text}
+## Overall System Flow
+{overall_narrative}
 
-## Clustering Strategy
-{clusters_text}
+## Individual Processes
+{processes_text}
 
 ---
 
-# Your Task: Generate Concrete SD Elements
+# Your Task: Convert Narratives to SD Elements
 
-For EACH conceptual addition from the strategic plan, create specific variables and connections.
+**Read the overall system narrative** to understand how processes connect as a cohesive whole.
 
-## Variable Design Guidelines
+Then **for EACH process narrative**, create:
+1. **Stocks** - Accumulations described in the narrative
+2. **Flows** - Rates of change connecting stocks
+3. **Auxiliaries** - Calculated values, ratios, multipliers
+4. **Connections** - Causal relationships implementing the narrative logic
+5. **Hub outputs** - Key variables that connect this process to others
 
-**Naming Conventions:**
+**Key Principle**: Each process is a modular mini-model. Process outputs become connection points (hubs) linking multiple processes together.
+
+## Design Guidelines
+
+**Variable Naming:**
 ✅ **Good**: Specific and descriptive
-  - "Project's Explicit Knowledge"
-  - "Core Developer Mentoring Capacity"
-  - "Newcomer Onboarding Rate"
+  - "Approved Materials Inventory"
+  - "Production Line Capacity"
+  - "Quality Inspection Rate"
 
 ❌ **Avoid**: Vague or generic
-  - "Knowledge" (knowledge of what?)
+  - "Inventory" (inventory of what?)
   - "Capacity" (capacity for what?)
   - "Rate" (rate of what?)
 
 **Type Selection:**
-- **Stock**: Accumulations that persist (people, knowledge, reputation, technical debt)
-- **Flow**: Rates of change modifying stocks (learning rate, knowledge decay rate)
-- **Auxiliary**: Calculated values, multipliers, ratios, effectiveness measures
+- **Stock**: Accumulations (inventory, people, knowledge, capacity)
+  - Represented as rectangles in SD diagrams
+  - Hold values that accumulate over time
 
-## Connection Design Rules
+- **Flow**: Rates connecting stocks (production rate, hiring rate)
+  - Represented as pipes with valves
+  - **CRITICAL**: Flows only exist between two Stocks OR between Stock and model boundary
+  - Stock ↔ Stock: Internal flow (both stocks in model)
+  - Stock ↔ Boundary: External flow (use `boundary_flows` array below)
+  - If no Stock connection, use Auxiliary instead
 
-For each connection:
-- **from**: Source variable (existing OR newly added)
-- **to**: Target variable (existing OR newly added)
-- **relationship**:
-  - "positive": Increase in FROM → Increase in TO
-  - "negative": Increase in FROM → Decrease in TO
-- **rationale**: Brief explanation (1 sentence)
+- **Auxiliary**: Calculated values, multipliers, effectiveness measures
+  - Support intermediate calculations
+  - Plain text variables in SD diagrams
 
-## Cluster Assignment
-
-EVERY new variable MUST be assigned to one of the clusters from Step 1:
-{', '.join([c['name'] for c in clustering_strategy.get('clusters', [])])}
-
-The cluster assignment guides spatial positioning in Step 3.
+**Connection Design:**
+- **from**: Source variable (existing OR new)
+- **to**: Target variable (existing OR new)
+- **relationship**: "positive" or "negative"
+  - positive: Increase in FROM → Increase in TO
+  - negative: Increase in FROM → Decrease in TO
 
 ---
 
 ## Critical Instructions
 
-✓ **DO generate specific variable names** (this is where you name them properly)
-✓ **DO specify connections** (both to existing vars and between new vars)
-✓ **DO assign every variable to a cluster** from Step 1
-✓ **DO ensure connections integrate new elements with existing model**
-⚠️ **DO NOT generate isolated variables** - must connect to existing or other new vars
+✓ **DO create modular processes** - each is self-contained with clear boundaries
+✓ **DO identify hub outputs** - key variables connecting multiple processes
+✓ **DO use the overall narrative** for coherence between processes
+✓ **DO integrate with existing model** - connect new elements to existing variables
+✓ **DO generate specific variable names** - descriptive and unambiguous
+✓ **DO use Flow type ONLY between Stocks** - fundamental SD rule
+⚠️ **DO NOT create isolated variables** - must connect to other variables
 ⚠️ **DO NOT duplicate existing variable names** - check current model first
+⚠️ **DO NOT create Flows without Stock-to-Stock connections** - use Auxiliary instead
 
 ---
 
@@ -138,49 +134,44 @@ The cluster assignment guides spatial positioning in Step 3.
 Return ONLY valid JSON in this structure (no markdown, no explanation):
 
 {{
-  "theories": [
+  "processes": [
     {{
-      "theory_name": "Theory Name",
-      "rationale": "2-3 sentences explaining how these specific additions strengthen model alignment with this theory",
-      "additions": {{
-        "variables": [
-          {{
-            "name": "Specific Variable Name",
-            "type": "Stock|Flow|Auxiliary",
-            "description": "What it represents",
-            "cluster": "Cluster Name from Step 1",
-            "source_theory": "Theory Name",
-            "rationale": "Why needed for this theory"
-          }}
-        ],
-        "connections": [
-          {{
-            "from": "Variable A (existing or new)",
-            "to": "Variable B (existing or new)",
-            "relationship": "positive|negative",
-            "rationale": "Brief explanation"
-          }}
-        ]
-      }}
+      "process_name": "Process Name from Step 1",
+      "variables": [
+        {{
+          "name": "Specific Variable Name",
+          "type": "Stock|Flow|Auxiliary",
+          "description": "Brief description"
+        }}
+      ],
+      "connections": [
+        {{
+          "from": "Variable A (existing or new)",
+          "to": "Variable B (existing or new)",
+          "relationship": "positive|negative"
+        }}
+      ],
+      "boundary_flows": [
+        {{
+          "flow_name": "Flow Variable Name",
+          "stock_name": "Stock Variable Name",
+          "boundary_type": "source|sink",
+          "description": "What the boundary represents (external labor market, environment, etc.)"
+        }}
+      ]
     }}
-  ],
-  "organized_by_cluster": {{
-    "Cluster Name": {{
-      "new_variables": ["list of new variable names in this cluster"],
-      "new_connections_internal": 5,
-      "new_connections_external": 8,
-      "integration_note": "How this cluster integrates with existing model"
-    }}
-  }},
-  "summary": {{
-    "total_variables_added": 12,
-    "total_connections_added": 18,
-    "theories_applied": 3,
-    "clusters_affected": ["Cluster A", "Cluster B"]
-  }}
+  ]
 }}
 
-**Remember**: Use the strategic plan from Step 1 as your guide. Transform conceptual additions into concrete, well-named SD elements that integrate seamlessly with the existing model.
+**Notes**:
+- Process names must match the cluster names from Step 1
+- Variables in each process automatically belong to that process's cluster
+- `boundary_flows` is OPTIONAL - only use when a Flow connects a Stock to external environment (not another stock in model)
+  - `source`: External entity feeding INTO the model (e.g., labor market hiring into "Active Contributors")
+  - `sink`: External entity draining FROM the model (e.g., contributors leaving to job market)
+  - If both ends of a Flow are Stocks in the model, use `connections` instead, not `boundary_flows`
+
+**Remember**: Transform each process narrative into a modular mini-model with concrete SD elements. Use the overall narrative to ensure processes connect coherently.
 """
 
     return prompt
@@ -190,6 +181,7 @@ def run_theory_concretization(
     planning_result: Dict,
     variables: Dict,
     connections: Dict,
+    plumbing: Dict = None,
     llm_client: LLMClient = None
 ) -> Dict:
     """Execute Step 2: Concrete SD Element Generation.
@@ -201,14 +193,14 @@ def run_theory_concretization(
         llm_client: Optional LLM client (creates new if None)
 
     Returns:
-        Dict with concrete variables and connections:
+        Dict with concrete variables and connections organized by process:
         {
-            "theories": [{
-                "theory_name": "...",
-                "additions": {"variables": [...], "connections": [...]}
+            "processes": [{
+                "process_name": "...",
+                "variables": [...],
+                "connections": [...]
             }],
-            "organized_by_cluster": {...},
-            "summary": {...}
+            "clustering_strategy": {...}  # Passed through from Step 1
         }
     """
 
@@ -217,11 +209,11 @@ def run_theory_concretization(
         return {
             "error": "Step 1 (planning) failed, cannot proceed to Step 2",
             "planning_error": planning_result.get("error"),
-            "theories": []
+            "processes": []
         }
 
     # Create prompt
-    prompt = create_concretization_prompt(planning_result, variables, connections)
+    prompt = create_concretization_prompt(planning_result, variables, connections, plumbing)
 
     # Call LLM
     if llm_client is None:
@@ -251,7 +243,7 @@ def run_theory_concretization(
         return {
             "error": str(e),
             "raw_response": response,
-            "theories": []
+            "processes": []
         }
 
 
@@ -262,31 +254,74 @@ def convert_to_legacy_format(concretization_result: Dict) -> Dict:
     without modification.
 
     Args:
-        concretization_result: Output from Step 2
+        concretization_result: Output from Step 2 with process-based structure
 
     Returns:
         Dict in legacy theory_enhancement.py format
     """
 
-    # Extract theories from Step 2 output
-    theories = concretization_result.get('theories', [])
+    # Extract processes from Step 2 output
+    processes = concretization_result.get('processes', [])
     clustering_strategy = concretization_result.get('clustering_strategy', {})
+
+    # Flatten all variables, connections, and boundary flows from all processes
+    all_variables = []
+    all_connections = []
+    all_boundary_flows = []
+    process_variable_map = {}  # process_name -> list of variable names
+
+    for process in processes:
+        process_name = process.get('process_name')
+        process_vars = process.get('variables', [])
+        process_conns = process.get('connections', [])
+        process_boundaries = process.get('boundary_flows', [])
+
+        # Collect variables
+        all_variables.extend(process_vars)
+
+        # Track which variables belong to which process
+        var_names = [v.get('name') for v in process_vars]
+        if process_name:
+            process_variable_map[process_name] = var_names
+
+        # Collect connections
+        all_connections.extend(process_conns)
+
+        # Collect boundary flows
+        all_boundary_flows.extend(process_boundaries)
+
+    # Build clustering_scheme with flat variable lists
+    updated_clusters = []
+    for cluster in clustering_strategy.get('clusters', []):
+        cluster_name = cluster.get('name')
+
+        # Get variables for this cluster from process mapping
+        cluster_vars = process_variable_map.get(cluster_name, [])
+
+        updated_cluster = cluster.copy()
+        updated_cluster['variables'] = cluster_vars
+        updated_clusters.append(updated_cluster)
+
+    updated_clustering = clustering_strategy.copy()
+    updated_clustering['clusters'] = updated_clusters
+
+    # Create single theory entry with all additions (theory-agnostic)
+    legacy_theory = {
+        'name': 'Process-Based Enhancement',
+        'rationale': 'Variables and connections generated from process narratives',
+        'additions': {
+            'variables': all_variables,
+            'connections': all_connections,
+            'boundary_flows': all_boundary_flows
+        },
+        'modifications': {'variables': []},  # Decomposed approach doesn't modify
+        'removals': {'variables': []}  # Decomposed approach doesn't remove
+    }
 
     # Legacy format wraps everything
     legacy_output = {
-        'clustering_scheme': clustering_strategy,  # Already in correct format
-        'theories': []
+        'clustering_scheme': updated_clustering,
+        'theories': [legacy_theory]
     }
-
-    # Convert each theory to legacy format
-    for theory in theories:
-        legacy_theory = {
-            'name': theory.get('theory_name'),
-            'rationale': theory.get('rationale'),
-            'additions': theory.get('additions', {}),
-            'modifications': {'variables': []},  # Decomposed approach doesn't modify
-            'removals': {'variables': []}  # Decomposed approach doesn't remove
-        }
-        legacy_output['theories'].append(legacy_theory)
 
     return legacy_output

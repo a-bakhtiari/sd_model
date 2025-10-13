@@ -1,0 +1,47 @@
+{
+  "theory_decisions": [
+    {
+      "theory_name": "Communities of Practice (Wenger)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Nonaka's SECI Model",
+      "decision": "adapt"
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Knowledge Codification",
+        "narrative": "Core developers and experienced contributors systematically document their knowledge, creating guides, tutorials, and reference materials. This process transforms tacit understanding into explicit resources that can be shared broadly. The quality and completeness of documentation improves as more community members contribute their expertise and identify gaps in existing materials. This creates a growing repository of institutional knowledge that reduces dependency on individual experts.",
+        "inputs": "Tacit knowledge from experienced members, identified knowledge gaps from newcomers, feedback on documentation effectiveness",
+        "outputs": "Structured documentation and guides, updated knowledge repositories, identified areas needing better codification"
+      },
+      {
+        "name": "Community Socialization",
+        "narrative": "New contributors enter the community and begin participating in peripheral activities, learning through observation and limited engagement. They interact with documentation and begin forming relationships with experienced members. As they demonstrate commitment and basic competence, they gain access to more central community practices. This process creates a pipeline of potential contributors who are gradually integrated into community norms and practices through legitimate peripheral participation.",
+        "inputs": "New community members, available documentation, community welcoming signals, peripheral participation opportunities",
+        "outputs": "Socialized newcomers, initial relationship networks, demonstrated commitment signals, basic competence indicators"
+      },
+      {
+        "name": "Skill Development & Mentorship",
+        "narrative": "Experienced community members provide guidance and mentorship to newcomers, transferring implicit knowledge that cannot be fully captured in documentation. This includes contextual understanding, problem-solving approaches, and community-specific practices. Mentorship relationships form organically based on shared interests and demonstrated willingness to learn. As newcomers develop skills, they take on more complex tasks and begin contributing meaningfully to community projects. The effectiveness of mentorship increases when both parties are actively engaged and when explicit documentation supports the learning process.",
+        "inputs": "Socialized newcomers, available mentors, explicit documentation, project opportunities requiring guidance",
+        "outputs": "Skill development progress, strengthened community bonds, project contributions, mentorship capacity signals"
+      },
+      {
+        "name": "Contribution Integration",
+        "narrative": "As contributors develop skills and demonstrate reliability, their work becomes integrated into core community projects and decision-making processes. This involves reviewing contributions, providing constructive feedback, and gradually increasing responsibility. Contributors who consistently produce quality work and align with community values experience accelerated integration. This process validates the effectiveness of previous knowledge transfer stages and reinforces community standards through practical application and peer review.",
+        "inputs": "Developed skills from mentorship, project contributions, community trust signals, demonstrated competence",
+        "outputs": "Integrated contributions, community trust reinforcement, promotion eligibility signals, quality standards validation"
+      },
+      {
+        "name": "Role Transition & Leadership Development",
+        "narrative": "Successful contributors transition to more central roles within the community, taking on leadership responsibilities and becoming mentors themselves. This process involves both formal recognition and informal acceptance by existing core members. As contributors move into core roles, they begin contributing to the knowledge codification process, creating a reinforcing cycle. Leadership development ensures the community maintains its capacity for knowledge transfer even as members transition in and out of active participation.",
+        "inputs": "Proven contributors, community leadership needs, mentorship capacity requirements, role transition opportunities",
+        "outputs": "New core developers and experienced contributors, expanded mentorship capacity, leadership succession, community resilience"
+      }
+    ],
+    "overall_narrative": "The knowledge ecosystem begins with Knowledge Codification [Process 1] where experienced members create explicit resources. These resources flow into Community Socialization [overlap: Process 1\u21922] where newcomers first engage with the community. Socialized members then enter Skill Development & Mentorship [overlap: Process 2\u21923] where they receive personalized guidance, supported by both explicit documentation and implicit knowledge transfer. As skills develop [Process 3], contributors move into Contribution Integration [overlap: Process 3\u21924] where their work becomes part of community projects. Successful integration leads to Role Transition & Leadership Development [overlap: Process 4\u21925] where contributors become core members. The system features multiple feedback loops: newly developed leaders [feedback: Process 5\u21921] contribute back to knowledge codification, mentorship effectiveness [connection: Process 3\u21922] influences socialization success, and integration experiences [feedback: Process 4\u21923] inform skill development approaches. This creates a continuous knowledge spiral where explicit and implicit knowledge reinforce each other through community participation."
+  }
+}

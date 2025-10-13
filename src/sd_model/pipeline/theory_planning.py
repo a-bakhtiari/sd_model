@@ -11,29 +11,196 @@ from typing import Dict, List
 from pathlib import Path
 
 from ..llm.client import LLMClient
-from .spatial_analysis import analyze_spatial_layout
+
+
+def format_model_structure(variables: Dict, connections: Dict, plumbing: Dict = None) -> str:
+    """Format model as causal chains showing Stock-Flow relationships and feedback loops.
+
+    Args:
+        variables: Variables dict with 'variables' list
+        connections: Connections dict with 'connections' list (can be ID-based or name-based)
+        plumbing: Optional plumbing dict with clouds, valves, flows
+
+    Returns:
+        Formatted string showing model structure as causal chains
+    """
+    all_vars = variables.get("variables", [])
+    all_conns = connections.get("connections", [])
+
+    # Convert ID-based connections to name-based if needed
+    if all_conns and 'from' in all_conns[0]:  # ID-based format
+        id_to_name = {int(v["id"]): v["name"] for v in all_vars}
+        name_based_conns = []
+        for conn in all_conns:
+            from_name = id_to_name.get(int(conn.get("from", -1)))
+            to_name = id_to_name.get(int(conn.get("to", -1)))
+            if not from_name or not to_name:
+                continue
+            polarity = str(conn.get("polarity", "UNDECLARED")).upper()
+            if polarity == "POSITIVE":
+                relationship = "positive"
+            elif polarity == "NEGATIVE":
+                relationship = "negative"
+            else:
+                relationship = "unknown"
+            name_based_conns.append({
+                "from_var": from_name,
+                "to_var": to_name,
+                "relationship": relationship
+            })
+        all_conns = name_based_conns
+
+    # Build lookup dicts
+    vars_by_name = {v['name']: v for v in all_vars}
+
+    # Organize variables by type
+    stocks = [v for v in all_vars if v.get('type') == 'Stock']
+    flows = [v for v in all_vars if v.get('type') == 'Flow']
+    auxiliaries = [v for v in all_vars if v.get('type') == 'Auxiliary']
+
+    # Build outgoing connections map
+    outgoing = {}
+    for conn in all_conns:
+        from_var = conn.get('from_var')
+        to_var = conn.get('to_var')
+        relationship = conn.get('relationship', 'unknown')
+
+        if from_var not in outgoing:
+            outgoing[from_var] = []
+        outgoing[from_var].append((to_var, relationship))
+
+    # Check for model boundaries (clouds) and map flow connections
+    cloud_count = 0
+    cloud_flow_connections = []  # List of (flow_name, from_entity, to_entity, direction)
+
+    if plumbing:
+        clouds = plumbing.get('clouds', [])
+        cloud_count = len(clouds)
+        flows_data = plumbing.get('flows', [])
+        valves = plumbing.get('valves', [])
+
+        # Build valve_id -> flow_variable mapping
+        valve_to_flow = {}
+        for valve in valves:
+            valve_id = valve.get('id')
+            valve_name = valve.get('name', '')
+            # Try to find matching flow variable by name
+            for var in all_vars:
+                if var.get('type') == 'Flow' and var.get('name') == valve_name:
+                    valve_to_flow[valve_id] = var.get('name')
+                    break
+
+        # Build id -> name mapping for variables
+        id_to_name = {int(v['id']): v['name'] for v in all_vars}
+
+        # Find cloud-connected flows
+        for flow_data in flows_data:
+            from_ref = flow_data.get('from', {})
+            to_ref = flow_data.get('to', {})
+            valve_id = flow_data.get('valve_id')
+
+            # Get flow variable name
+            flow_name = valve_to_flow.get(valve_id, f'Flow_{valve_id}')
+
+            # Check if cloud is involved
+            from_is_cloud = from_ref.get('kind') == 'cloud'
+            to_is_cloud = to_ref.get('kind') == 'cloud'
+
+            if from_is_cloud or to_is_cloud:
+                from_entity = f"[EXTERNAL: Cloud {from_ref.get('ref')}]" if from_is_cloud else id_to_name.get(from_ref.get('ref'), 'Unknown')
+                to_entity = f"[EXTERNAL: Cloud {to_ref.get('ref')}]" if to_is_cloud else id_to_name.get(to_ref.get('ref'), 'Unknown')
+
+                cloud_flow_connections.append((flow_name, from_entity, to_entity))
+
+    # Format Stock-Flow relationships
+    stock_flow_text = []
+    for stock in stocks:
+        stock_name = stock['name']
+        # Find flows affecting this stock
+        affecting_flows = []
+        for flow in flows:
+            flow_name = flow['name']
+            # Check if this flow connects to the stock
+            for conn in all_conns:
+                if conn.get('to_var') == stock_name and conn.get('from_var') == flow_name:
+                    affecting_flows.append((flow_name, 'inflow'))
+                elif conn.get('from_var') == stock_name and conn.get('to_var') == flow_name:
+                    affecting_flows.append((flow_name, 'outflow'))
+
+        if affecting_flows:
+            for flow_name, direction in affecting_flows:
+                # Find what influences this flow
+                influences = []
+                for var_name, targets in outgoing.items():
+                    for target_name, rel in targets:
+                        if target_name == flow_name:
+                            var_type = vars_by_name.get(var_name, {}).get('type', 'Unknown')
+                            influences.append(f"{var_name} ({var_type}) --[{rel}]-->")
+
+                if influences:
+                    influences_str = " ".join(influences)
+                    stock_flow_text.append(f"{influences_str} {flow_name} (Flow) --[{direction}]--> {stock_name} (Stock)")
+                else:
+                    stock_flow_text.append(f"{flow_name} (Flow) --[{direction}]--> {stock_name} (Stock)")
+
+    # Format auxiliary relationships
+    aux_text = []
+    for aux in auxiliaries:
+        aux_name = aux['name']
+        if aux_name in outgoing:
+            for target, rel in outgoing[aux_name]:
+                target_type = vars_by_name.get(target, {}).get('type', 'Unknown')
+                aux_text.append(f"{aux_name} (Auxiliary) --[{rel}]--> {target} ({target_type})")
+
+    # Build output
+    output = "## Model Structure\n\n"
+
+    if stock_flow_text:
+        output += "**Stock-Flow Processes**:\n"
+        for line in stock_flow_text[:15]:  # Limit to avoid overwhelming
+            output += f"- {line}\n"
+        if len(stock_flow_text) > 15:
+            output += f"... and {len(stock_flow_text) - 15} more stock-flow relationships\n"
+        output += "\n"
+
+    if aux_text:
+        output += "**Auxiliary Influences** (sample):\n"
+        for line in aux_text[:10]:  # Show sample
+            output += f"- {line}\n"
+        if len(aux_text) > 10:
+            output += f"... and {len(aux_text) - 10} more auxiliary relationships\n"
+        output += "\n"
+
+    # Add cloud boundary flows
+    if cloud_flow_connections:
+        output += f"\n**Model Boundaries** ({len(cloud_flow_connections)} boundary flows to/from external environment):\n"
+        for flow_name, from_entity, to_entity in cloud_flow_connections[:10]:  # Limit to 10
+            output += f"- {from_entity} → {flow_name} (Flow) → {to_entity}\n"
+        if len(cloud_flow_connections) > 10:
+            output += f"... and {len(cloud_flow_connections) - 10} more boundary flows\n"
+        output += "\n"
+    elif cloud_count > 0:
+        output += f"\n**Model Boundaries**: {cloud_count} clouds representing external sources/sinks (entities outside model scope)\n"
+        output += "- Note: Cloud connections not yet mapped in plumbing data\n\n"
+
+    # Add summary
+    boundary_note = f", {cloud_count} External Boundaries" if cloud_count > 0 else ""
+    output += f"**Summary**: {len(stocks)} Stocks, {len(flows)} Flows, {len(auxiliaries)} Auxiliaries, {len(all_conns)} connections{boundary_note}\n"
+
+    return output
 
 
 def create_planning_prompt(
     theories: List[Dict],
     variables: Dict,
     connections: Dict,
-    spatial_context: Dict
+    plumbing: Dict = None,
+    spatial_context: Dict = None  # Kept for backwards compatibility but not used
 ) -> str:
     """Create prompt for strategic theory planning (Step 1)."""
 
-    # Format current model
-    all_vars = variables.get("variables", [])
-    vars_text = "\n".join([
-        f"- {v['name']} ({v.get('type', 'Unknown')})"
-        for v in all_vars
-    ])
-
-    all_conns = connections.get("connections", [])
-    conns_text = "\n".join([
-        f"- {c['from_var']} → {c['to_var']} ({c.get('relationship', 'unknown')})"
-        for c in all_conns
-    ])
+    # Format model structure as causal chains (includes cloud boundaries if present)
+    model_structure = format_model_structure(variables, connections, plumbing)
 
     # Format theories
     theories_text = "\n".join([
@@ -41,26 +208,39 @@ def create_planning_prompt(
         for i, t in enumerate(theories)
     ])
 
-    # Format spatial context
-    spatial_summary = spatial_context.get('spatial_summary', 'No spatial analysis available')
+    prompt = f"""# Context
 
-    prompt = f"""You are a system dynamics modeling expert. Your task is to strategically plan theory enhancements WITHOUT generating concrete variables yet. This is Step 1 of 2.
+You are a system dynamics modeling expert. You will evaluate theories and design process-based narratives for enhancing an existing SD model.
+
+**Your task**: Generate conceptual narratives describing system processes (NOT concrete variables). Another step will later convert your narratives into specific SD model elements.
+
+**Output format**: JSON with theory evaluations and process narratives.
 
 # Current System Dynamics Model
 
-## Variables ({len(all_vars)} total)
-{vars_text}
-
-## Connections ({len(all_conns)} total)
-{conns_text}
-
-# Current Spatial Layout
-
-{spatial_summary}
+{model_structure}
 
 # Theories to Evaluate ({len(theories)} total)
 
 {theories_text}
+
+# System Archetypes (Optional Reference)
+
+**Note**: These archetypes are provided for awareness and may help inform your process narratives. You are NOT required to explicitly identify or apply them. If a process naturally reflects archetype dynamics, that's valuable, but don't force archetype patterns.
+
+**Common System Archetypes:**
+- **Balancing Process with Delay**: Adjustment processes with time delays that can cause oscillation
+- **Limits to Growth**: Growth that encounters constraining factors
+- **Shifting the Burden**: Short-term fixes that undermine long-term solutions
+- **Eroding Goals**: Performance standards that drift downward under pressure
+- **Escalation**: Competitive dynamics where parties intensify their actions
+- **Success to the Successful**: Resource allocation that reinforces existing winners
+- **Tragedy of the Commons**: Individual actions that deplete shared resources
+- **Fixes that Fail**: Solutions that initially work but create worse problems later
+- **Growth and Underinvestment**: Growth constrained by delayed capacity building
+- **Policy Resistance**: Multiple actors working at cross-purposes
+
+These patterns may naturally emerge in your process narratives when describing system dynamics.
 
 ---
 
@@ -75,53 +255,80 @@ For EACH theory, decide:
 - **exclude**: Theory doesn't fit this context
 - **adapt**: Theory partially applies, needs modification
 
-For each theory, provide:
-- Decision (include/exclude/adapt)
-- Rationale (2-3 sentences explaining why)
-- Conceptual additions (high-level concepts, NOT variable names yet)
-  - Example: "concept: tacit knowledge accumulation process"
-  - Example: "concept: mentor-mentee interaction dynamics"
 
-## 2. Clustering Strategy
+## 2. Process-Flow Clustering Strategy
 
-Based on included theories, design 3-5 conceptual clusters to organize ALL variables (existing + new):
+Design **process stages** to organize ALL variables (existing + new) as smaller processes that add up to a whole.
 
-For each cluster:
-- **name**: Short cluster name (e.g., "Knowledge Creation")
-- **theme**: What this cluster represents conceptually
-- **should_contain_existing**: List existing variable names that belong here
-- **should_contain_new**: List NEW concepts (from theory evaluation) that belong here
-- **rationale**: Why these elements cluster together
+**Step-by-step approach**:
 
-Consider:
-- Semantic similarity (related processes/themes)
-- Connection topology (tightly connected elements cluster together)
-- Theory-driven organization (how theories conceptualize the system)
+First, design each individual process stage:
 
-## 3. Spatial Strategy
+For each process stage:
+- **name**: Short process name (e.g., "Material Intake", "Production Assembly")
+- **narrative**: Full prose description of what happens in this process (write in actual sentences)
+  - Describe the process flow, including connections to other processes
+  - Mention feedback loops and influences from/to other processes
+  - Example: "Raw materials arrive at the facility and undergo quality inspection. Approved materials move to the production floor where they are transformed through assembly. As products progress through production stages, they accumulate value and complexity. Finished products move to inventory storage, ready for distribution."
+- **inputs**: Conceptual description of what flows INTO this process (in prose, NOT variable names)
+  - Can be multiple inputs from different sources
+  - Example: "Materials from suppliers, quality standards from downstream processes, demand signals"
+- **outputs**: Conceptual description of what flows OUT OF this process (in prose, NOT variable names)
+  - Can be multiple outputs to different destinations
+  - Example: "Approved inventory for production, inspection feedback, capacity constraints"
 
-Based on current layout and clustering:
+Then, AFTER designing all individual processes, write an **overall_narrative**:
+- Synthesize how all processes connect into one cohesive pipeline
+- Highlight where processes overlap (where outputs of one become inputs of another)
+- Describe the complete flow from start to finish
+- Show feedback loops if they exist
 
-For each cluster:
-- **spatial_recommendation**: Where to position (refer to spatial analysis above)
-  - Example: "Place centrally near (1000, 500) - available space and high connectivity"
-  - Example: "Position in top-left (400, 300) - currently empty region"
-  - Example: "Keep near existing Knowledge variables (600-800, 200-400)"
+Design Principles:
+- **Small, focused processes** - Each cluster describes one coherent part of the system with its own dynamics
+- **Clear I/O boundaries** - Be explicit about what flows into and out of each process
+- **System thinking** - Processes can connect to multiple other processes (not just sequential)
+- **Allow feedback loops** - Later processes can feed back to earlier ones
+- **Modularity** - Each process should be independently understandable as a mini-model
 
-Also provide:
-- **layout_hints**: 2-3 strategic hints for minimizing line crossings
-  - Example: "Place Knowledge cluster centrally since it connects to all others"
-  - Example: "Position Contributor and Community clusters adjacent (they have 15 connections)"
+Example (manufacturing context - for illustration only):
+
+**Note**: This is a simplified example to demonstrate narrative structure and how to describe connections between processes. Your actual model will likely have:
+- More processes (not limited to 3)
+- More complex interconnections
+- Multiple feedback loops within and between processes
+- Non-linear dynamics
+
+Do not copy this example's structure or complexity - design based on the theories and model context.
+
+**Individual Process Narratives** (write these first):
+1. "Material Intake":
+   - Narrative: Raw materials arrive from suppliers and undergo quality checks based on inspection standards. When downstream quality issues increase, inspection criteria become stricter. Customer demand signals influence how much material to intake. Approved materials are logged into inventory and staged for production use.
+   - Inputs: Raw materials from suppliers, quality standards feedback from production, demand signals from customers
+   - Outputs: Approved materials inventory, rejected materials, updated quality criteria
+
+2. "Production Assembly":
+   - Narrative: Materials from inventory are allocated to production lines based on downstream capacity availability. Workers and machines transform materials through assembly operations. Quality issues discovered here affect upstream inspection standards. Production rates adjust when distribution capacity becomes constrained. Assembled components accumulate and move to finishing operations.
+   - Inputs: Approved materials from intake, capacity signals from distribution, production schedules
+   - Outputs: Finished goods inventory, quality issue reports to intake, production rate adjustments
+
+3. "Distribution Preparation":
+   - Narrative: Finished products undergo final inspection and are packaged for shipment. When warehouse capacity nears limits, this signals to slow upstream production. Customer orders drive demand signals that propagate back through the system. Completed orders accumulate in the distribution warehouse ready for shipping.
+   - Inputs: Finished goods from production, customer orders, packaging materials
+   - Outputs: Shipped orders, capacity constraint signals to production, demand signals to intake
+
+**Overall System Narrative** (write this AFTER all individual processes):
+"Raw materials flow into the facility where quality inspection [Process 1] determines which materials enter active inventory. Approved inventory [overlap: Process 1→2] feeds the production assembly lines where transformation occurs. Quality issues discovered during assembly [feedback: Process 2→1] trigger stricter inspection standards. As assembly progresses [Process 2], finished goods accumulate [overlap: Process 2→3] and move to distribution preparation where they are packaged. Distribution capacity constraints [connection: Process 3→2] can slow production rates to prevent overflow. Customer demand signals [feedback loop: Process 3→1] influence material intake rates. This creates an interconnected system where each process affects multiple others."
 
 ---
 
 ## Critical Instructions
 
-⚠️ **DO NOT generate variable names** - use conceptual descriptions only
-⚠️ **DO NOT specify connections yet** - focus on clustering strategy
-✓ **DO leverage spatial analysis** - recommend specific regions based on crowding/availability
-✓ **DO consider theory conflicts** - if theories overlap, note this in rationale
-✓ **DO think holistically** - evaluate all theories together, not in isolation
+✓ **DO write process narratives in full prose** - describe what happens conceptually
+✓ **DO design focused processes** - each describes one coherent part of the system
+✓ **DO specify inputs/outputs as prose** - describe what flows in/out conceptually (e.g., "demand signals, quality feedback")
+✓ **DO allow multiple inputs/outputs** - list all things flowing in and out, separated by commas
+✓ **DO highlight overlap points in overall_narrative** - show where processes connect
+✓ **DO include feedback loops** - describe how later processes feed back to earlier ones
 
 ---
 
@@ -133,42 +340,22 @@ Return ONLY valid JSON in this structure (no markdown, no explanation):
   "theory_decisions": [
     {{
       "theory_name": "Theory Name",
-      "decision": "include|exclude|adapt",
-      "rationale": "2-3 sentence explanation of why this decision was made",
-      "conceptual_additions": [
-        "concept: high-level description of what to add (NO variable names)",
-        "concept: another conceptual addition"
-      ]
+      "decision": "include|exclude|adapt"
     }}
   ],
   "clustering_strategy": {{
-    "rationale": "1-2 sentences explaining the overall clustering logic",
     "clusters": [
       {{
-        "name": "Cluster Name",
-        "theme": "What this cluster represents",
-        "should_contain_existing": ["Existing Var 1", "Existing Var 2"],
-        "should_contain_new": ["concept: new concept 1", "concept: new concept 2"],
-        "rationale": "Why these elements cluster together",
-        "spatial_recommendation": "Where to position this cluster (reference spatial analysis)"
+        "name": "Process Stage Name",
+        "narrative": "Full prose description of what happens in this process. Write in actual sentences describing the conceptual flow. Include connections to other processes and feedback loops within the narrative.",
+        "inputs": "Conceptual description of what flows into this process (prose, not variable names). Can list multiple inputs.",
+        "outputs": "Conceptual description of what flows out of this process (prose, not variable names). Can list multiple outputs."
       }}
     ],
-    "layout_hints": [
-      "Strategic hint for positioning clusters to minimize crossings",
-      "Another positioning strategy"
-    ]
-  }},
-  "inter_cluster_connections": [
-    {{
-      "from_cluster": "Cluster A",
-      "to_cluster": "Cluster B",
-      "estimated_connection_count": 8,
-      "note": "Brief note about the nature of these connections"
-    }}
-  ]
+    "overall_narrative": "Full prose description of how the entire pipeline flows. Describe how all processes connect and where they overlap. Highlight the integration points where outputs of one process become inputs of another."
+  }}
 }}
 
-**Remember**: This is strategic planning ONLY. No concrete variable names or connections yet. Focus on concepts, clustering logic, and spatial strategy.
 """
 
     return prompt
@@ -178,7 +365,8 @@ def run_theory_planning(
     theories: List[Dict],
     variables: Dict,
     connections: Dict,
-    mdl_path: Path,
+    plumbing: Dict = None,
+    mdl_path: Path = None,  # Kept for backwards compatibility but not used
     llm_client: LLMClient = None
 ) -> Dict:
     """Execute Step 1: Strategic Theory Planning.
@@ -187,23 +375,20 @@ def run_theory_planning(
         theories: List of theory dictionaries
         variables: Variables data from variables.json
         connections: Connections data from connections.json
-        mdl_path: Path to current MDL file (for spatial analysis)
+        plumbing: Plumbing data from plumbing.json (optional)
+        mdl_path: Path to current MDL file (unused, kept for backwards compatibility)
         llm_client: Optional LLM client (creates new if None)
 
     Returns:
         Dict with strategic planning results:
         {
             "theory_decisions": [...],
-            "clustering_strategy": {...},
-            "inter_cluster_connections": [...]
+            "clustering_strategy": {...}
         }
     """
 
-    # Analyze current spatial layout
-    spatial_context = analyze_spatial_layout(mdl_path)
-
     # Create prompt
-    prompt = create_planning_prompt(theories, variables, connections, spatial_context)
+    prompt = create_planning_prompt(theories, variables, connections, plumbing)
 
     # Call LLM
     if llm_client is None:
@@ -223,9 +408,6 @@ def run_theory_planning(
             result = json.loads(json_str)
         else:
             raise ValueError("No JSON found in response")
-
-        # Add spatial context to result for reference in Step 2
-        result['spatial_context'] = spatial_context
 
         return result
 

@@ -15,7 +15,8 @@ def create_discovery_prompt(
     rqs: List[str],
     current_theories: List[Dict],
     variables: Dict,
-    connections: Dict
+    connections: Dict,
+    plumbing: Dict = None
 ) -> str:
     """Create prompt for theory discovery."""
 
@@ -28,19 +29,9 @@ def create_discovery_prompt(
     # Format RQs
     rqs_text = "\n".join([f"{i+1}. {rq}" for i, rq in enumerate(rqs)])
 
-    # Get all variables
-    all_vars = variables.get("variables", [])
-    vars_text = "\n".join([
-        f"- {v['name']} ({v.get('type', 'Unknown')})"
-        for v in all_vars
-    ])
-
-    # Get all connections
-    all_conns = connections.get("connections", [])
-    conns_text = "\n".join([
-        f"- {c['from_var']} → {c['to_var']} ({c.get('relationship', 'unknown')})"
-        for c in all_conns
-    ])
+    # Use the same model structure formatting as Step 1 (includes clouds)
+    from .theory_planning import format_model_structure
+    model_structure = format_model_structure(variables, connections, plumbing)
 
     prompt = f"""You are an expert in theory development and research methodology. Recommend new theories that could strengthen this research project.
 
@@ -49,69 +40,30 @@ def create_discovery_prompt(
 
 # Current System Dynamics Model
 
-## Current Variables
-{vars_text}
-
-## Current Connections
-{conns_text}
+{model_structure}
 
 # Current Theories
 {theories_text}
 
 # Your Task
 
-Recommend theories at three levels:
-1. **Direct**: Clearly relevant to current RQs and model
-2. **Adjacent**: Slightly different angle, creative connection
-3. **Cross-domain**: Provocative parallels from other fields
+Recommend theories that are clearly relevant to the current RQs and model.
 
 For each theory, provide:
 - Theory name and key scholars
+- Brief description
 - Relevance to RQs and model
-- Adjacency level (direct, adjacent, exploratory)
-- PhD contribution potential
-- Risk/reward assessment
 
 Return JSON in this structure:
 
 {{
-  "high_relevance": [
+  "recommended_theories": [
     {{
       "theory_name": "Theory Name",
       "key_citation": "Author Year",
       "description": "brief description of theory",
       "relevance_to_rqs": "how it addresses RQs",
-      "relevance_to_model": "how it could be modeled in SD",
-      "adjacency_level": "direct",
-      "phd_contribution": "what novel contribution this enables",
-      "model_additions": ["what to add to model"],
-      "risk": "low|medium|high",
-      "reward": "low|medium|high"
-    }}
-  ],
-  "adjacent_opportunities": [
-    {{
-      "theory_name": "Theory Name",
-      "key_citation": "Author Year",
-      "description": "brief description",
-      "why_adjacent": "why slightly off-center but valuable",
-      "novel_angle": "what new perspective this brings",
-      "adjacency_level": "adjacent",
-      "phd_contribution": "potential contribution",
-      "risk": "medium|high",
-      "reward": "medium|high"
-    }}
-  ],
-  "cross_domain_inspiration": [
-    {{
-      "theory": "Theory from different field",
-      "source_domain": "where it comes from",
-      "parallel": "how it relates to OSS development",
-      "transfer_potential": "what insight could transfer",
-      "adjacency_level": "exploratory",
-      "risk": "high",
-      "reward": "low|medium|high",
-      "rationale": "why this is worth considering despite risk"
+      "relevance_to_model": "how it could be modeled in SD"
     }}
   ]
 }}
@@ -133,7 +85,8 @@ def run_theory_discovery(
     rqs: List[str],
     current_theories: List[Dict],
     variables: Dict,
-    connections: Dict
+    connections: Dict,
+    plumbing: Dict = None
 ) -> Dict:
     """Discover new theories to strengthen research.
 
@@ -142,13 +95,14 @@ def run_theory_discovery(
         current_theories: List of theory dictionaries from theories.csv
         variables: Variables data from variables.json
         connections: Connections data from connections.json
+        plumbing: Plumbing data from plumbing.json (optional)
 
     Returns:
         Dictionary with theory discovery recommendations
     """
 
     # Create prompt
-    prompt = create_discovery_prompt(rqs, current_theories, variables, connections)
+    prompt = create_discovery_prompt(rqs, current_theories, variables, connections, plumbing)
 
     # Call LLM (use config to determine provider/model)
     from ..config import should_use_gpt

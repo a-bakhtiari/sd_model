@@ -289,18 +289,24 @@ class MDLTextPatcher:
 
     def _build_name_to_id_map(self) -> Dict[str, int]:
         """Build mapping from variable names to IDs."""
+        import csv
+        import io
+
         name_to_id = {}
 
         for line in self.lines:
             if line.startswith('10,'):
-                parts = line.split(',')
-                if len(parts) > 2:
-                    try:
+                # Use CSV reader to handle quoted fields with commas
+                try:
+                    reader = csv.reader(io.StringIO(line))
+                    parts = next(reader)
+
+                    if len(parts) > 2:
                         var_id = int(parts[1])
                         var_name = parts[2].strip()
                         raw_name = var_name
 
-                        # Remove quotes if present
+                        # Remove quotes if present (csv.reader may leave them)
                         if var_name.startswith('"') and var_name.endswith('"'):
                             var_name = var_name[1:-1].replace('""', '"')
 
@@ -312,8 +318,8 @@ class MDLTextPatcher:
                             print(f"  Raw: {repr(raw_name)}")
                             print(f"  Processed: {repr(var_name)}")
                             print(f"  Char codes: {[ord(c) for c in var_name[:50]]}")
-                    except (ValueError, IndexError):
-                        pass
+                except (ValueError, IndexError):
+                    pass
 
         return name_to_id
 

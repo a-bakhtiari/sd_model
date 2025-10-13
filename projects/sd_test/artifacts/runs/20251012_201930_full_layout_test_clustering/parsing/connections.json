@@ -1,0 +1,96 @@
+{
+  "connections": [
+    {
+      "id": "20",
+      "from": 2,
+      "to": 17,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "43",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1653,
+          468
+        ]
+      ]
+    },
+    {
+      "id": "24",
+      "from": 23,
+      "to": 1,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "0",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "125",
+      "from": 12,
+      "to": 1,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "126",
+      "from": 7,
+      "to": 2,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "127",
+      "from": 16,
+      "to": 2,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "128",
+      "from": 16,
+      "to": 8,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "129",
+      "from": 12,
+      "to": 8,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "131",
+      "from": 21,
+      "to": 12,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "132",
+      "from": 17,
+      "to": 12,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "133",
+      "from": 17,
+      "to": 16,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    }
+  ]
+}

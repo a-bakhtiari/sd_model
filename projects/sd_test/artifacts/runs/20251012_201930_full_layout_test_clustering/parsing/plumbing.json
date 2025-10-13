@@ -1,0 +1,51 @@
+{
+  "clouds": [
+    {
+      "id": 3,
+      "code": 48,
+      "x": 1861,
+      "y": 584,
+      "w": 10,
+      "h": 8
+    }
+  ],
+  "valves": [
+    {
+      "id": 6,
+      "var_name": "valve_6",
+      "x": 1790,
+      "y": 584,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 11,
+      "var_name": "valve_11",
+      "x": 1368,
+      "y": 585,
+      "w": 6,
+      "h": 8
+    },
+    {
+      "id": 15,
+      "var_name": "valve_15",
+      "x": 1591,
+      "y": 583,
+      "w": 6,
+      "h": 8
+    }
+  ],
+  "flows": [
+    {
+      "valve_id": 6,
+      "from": {
+        "kind": "stock",
+        "ref": "Core Developer"
+      },
+      "to": {
+        "kind": "cloud",
+        "ref": 3
+      }
+    }
+  ]
+}

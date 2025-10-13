@@ -49,6 +49,8 @@ class MDLEnhancer:
         # Track next available IDs
         self.next_var_id = max([v['id'] for v in self.variables]) + 1 if self.variables else 1
         self.next_conn_id = max([int(c['id']) for c in self.connections]) + 1 if self.connections else 1
+        self.next_cloud_id = max([c['id'] for c in self.clouds], default=10000) + 1
+        self.next_valve_id = max([v['id'] for v in self.valves], default=5000) + 1
 
     def apply_enhancements(
         self,
@@ -89,6 +91,12 @@ class MDLEnhancer:
             for conn_spec in new_conns:
                 self._add_connection(conn_spec)
                 summary['connections_added'] += 1
+
+            # Add boundary flows (clouds)
+            boundary_flows = sd_impl.get('boundary_flows', [])
+            for bf_spec in boundary_flows:
+                self._add_boundary_cloud(bf_spec)
+                summary['clouds_added'] = summary.get('clouds_added', 0) + 1
 
         # Generate the enhanced MDL
         self._generate_output(output_path)
@@ -150,6 +158,99 @@ class MDLEnhancer:
 
         self.connections.append(new_conn)
         self.next_conn_id += 1
+
+    def _add_boundary_cloud(self, bf_spec: Dict):
+        """Add a complete boundary flow structure (cloud + valve + flow connection).
+
+        Args:
+            bf_spec: {
+                "flow_name": "Attrition Rate",
+                "stock_name": "Active Contributors",
+                "boundary_type": "source|sink",
+                "description": "..."
+            }
+        """
+        stock_name = bf_spec['stock_name']
+        flow_name = bf_spec['flow_name']
+        boundary_type = bf_spec['boundary_type']
+
+        # Find stock variable
+        stock = next((v for v in self.variables if v['name'] == stock_name), None)
+        if not stock:
+            print(f"Warning: Stock '{stock_name}' not found for boundary flow")
+            return
+
+        # Position cloud offset from stock
+        if boundary_type == "source":
+            # Source feeds INTO stock, place left/above
+            cloud_x = stock['x'] - 250
+            cloud_y = stock['y'] - 80
+        else:  # sink
+            # Sink drains FROM stock, place right/below
+            cloud_x = stock['x'] + 250
+            cloud_y = stock['y'] + 80
+
+        # Create cloud (Type 12)
+        cloud = {
+            'id': self.next_cloud_id,
+            'code': 48,  # Standard cloud code
+            'x': cloud_x,
+            'y': cloud_y,
+            'w': 50,
+            'h': 50
+        }
+        self.clouds.append(cloud)
+        cloud_id = self.next_cloud_id
+        self.next_cloud_id += 1
+
+        # Create Flow variable (Type 10, code 40) - positioned below valve
+        valve_x = (stock['x'] + cloud_x) // 2
+        valve_y = (stock['y'] + cloud_y) // 2
+
+        flow_var = {
+            'id': self.next_var_id,
+            'name': flow_name,
+            'type': 'Flow',
+            'x': valve_x,
+            'y': valve_y + 34,  # Position below valve (same as existing flows)
+            'w': 56,
+            'h': 26
+        }
+        self.variables.append(flow_var)
+        self.name_to_id[flow_name] = self.next_var_id
+        self.id_to_name[self.next_var_id] = flow_name
+        flow_var_id = self.next_var_id
+        self.next_var_id += 1
+
+        # Create valve (Type 11) - positioned midpoint between stock and cloud
+        valve = {
+            'id': self.next_valve_id,
+            'name': flow_name,  # Link valve to flow variable name
+            'x': valve_x,
+            'y': valve_y,
+            'w': 6,
+            'h': 8
+        }
+        self.valves.append(valve)
+        valve_id = self.next_valve_id
+        self.next_valve_id += 1
+
+        # Create flow connection linking stock ↔ valve ↔ cloud
+        if boundary_type == "source":
+            # Source: cloud → valve → stock
+            flow = {
+                'valve_id': valve_id,
+                'from': {'kind': 'cloud', 'ref': cloud_id},
+                'to': {'kind': 'variable', 'ref': stock['id']}
+            }
+        else:  # sink
+            # Sink: stock → valve → cloud
+            flow = {
+                'valve_id': valve_id,
+                'from': {'kind': 'variable', 'ref': stock['id']},
+                'to': {'kind': 'cloud', 'ref': cloud_id}
+            }
+        self.flows.append(flow)
 
     def _calculate_position(
         self,

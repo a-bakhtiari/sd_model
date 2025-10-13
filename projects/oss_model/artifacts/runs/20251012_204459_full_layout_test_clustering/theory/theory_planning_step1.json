@@ -1,0 +1,129 @@
+{
+  "theory_decisions": [
+    {
+      "theory_name": "Communities of Practice (Wenger)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Nonaka's SECI Model",
+      "decision": "include"
+    },
+    {
+      "theory_name": "The Coevolution of New Organizational Forms",
+      "decision": "adapt"
+    },
+    {
+      "theory_name": "Adaptive Structuration Theory",
+      "decision": "adapt"
+    },
+    {
+      "theory_name": "Stability and Change in Organizational Routines",
+      "decision": "include"
+    },
+    {
+      "theory_name": "A Dynamic Theory of Organizational Knowledge Creation",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Routines and Transactive Memory Systems",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Communities of Practice",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Punctuated Equilibrium Theory in IS Research",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Panarchy Theory",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Legitimate Peripheral Participation",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Absorptive Capacity",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Diversity Trumps Ability",
+      "decision": "adapt"
+    },
+    {
+      "theory_name": "Hidden Order: How Adaptation Builds Complexity",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Social Cognitive Career Theory (SCCT)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Diffusion of Innovations",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Task-Technology Fit (TTF)",
+      "decision": "adapt"
+    },
+    {
+      "theory_name": "Skill-Biased Technical Change",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Social Capital and Structural Holes",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Signaling Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Job Demands-Resources (JD-R) Model",
+      "decision": "include"
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Community Attraction and Onboarding",
+        "narrative": "Potential contributors discover the project through reputation signals and community outreach. They evaluate whether to join based on perceived fit and available learning resources. New members enter through legitimate peripheral participation, accessing documentation and initial guidance. As they join, they bring diverse perspectives that can enhance problem-solving capacity. The onboarding process filters and prepares individuals for meaningful participation.",
+        "inputs": "External talent pool, project reputation signals, community outreach efforts, documentation quality",
+        "outputs": "New contributor candidates, diversity of perspectives, initial skill assessments, community growth signals"
+      },
+      {
+        "name": "Knowledge Development and Skill Building",
+        "narrative": "Contributors progress through structured learning pathways that combine explicit knowledge transfer through documentation with implicit knowledge sharing via mentorship. The SECI knowledge spiral operates as contributors socialize, externalize, combine, and internalize knowledge. Skill development occurs through legitimate peripheral participation, moving contributors from periphery to core. Transactive memory systems develop where contributors know who knows what, creating collective expertise. As skills grow, contributors gain self-efficacy and clearer career pathways.",
+        "inputs": "New contributor candidates, mentorship capacity, documentation resources, learning opportunities",
+        "outputs": "Skilled contributors, knowledge artifacts, mentorship capacity growth, career progression readiness"
+      },
+      {
+        "name": "Contribution and Code Development",
+        "narrative": "Skilled contributors engage with open issues and create pull requests to address project needs. The contribution process involves technical work, peer review, and integration of feedback. Task-technology fit influences how effectively contributors can address issues. Social capital develops as contributors build networks and bridge structural holes between different project areas. Quality signals emerge through code review and integration processes, affecting both individual reputation and project quality.",
+        "inputs": "Skilled contributors, open issues, technical requirements, review capacity",
+        "outputs": "Code contributions, pull request activity, technical debt changes, contributor reputation signals"
+      },
+      {
+        "name": "Community Health and Retention",
+        "narrative": "The community maintains health through balancing job demands with available resources, preventing burnout while sustaining engagement. Organizational routines stabilize through repeated interactions, but remain adaptable to changing conditions. Social capital accumulates through sustained relationships and trust-building activities. Retention mechanisms include recognition, career progression opportunities, and positive community culture. When demands exceed resources, turnover increases, creating knowledge loss that must be addressed through knowledge preservation.",
+        "inputs": "Engaged contributors, community demands, recognition signals, resource availability",
+        "outputs": "Retained core developers, community culture strength, knowledge preservation, turnover signals"
+      },
+      {
+        "name": "Product Evolution and User Adoption",
+        "narrative": "Code contributions integrate into the evolving codebase, creating new features and addressing user needs. Software quality and feature richness influence project reputation and user adoption rates. The innovation diffusion process spreads through user networks as early adopters influence later adopters. User feedback creates new issues and feature requests, driving further development. As the product evolves, it must maintain fit with user tasks and technological capabilities.",
+        "inputs": "Integrated code contributions, user feedback, technological trends, market signals",
+        "outputs": "Evolving software product, user adoption growth, reputation changes, new requirement signals"
+      },
+      {
+        "name": "Reputation and Ecosystem Growth",
+        "narrative": "Project reputation builds through successful outcomes, community health signals, and external recognition. Reputation signals attract new contributors, users, and potential collaborators. The ecosystem grows through network effects as more participants create more value. Social capital and structural advantages create competitive positioning. Reputation decline can occur through quality issues, community problems, or technological obsolescence, creating balancing feedback to maintain standards.",
+        "inputs": "Project success signals, community health indicators, external recognition, network growth",
+        "outputs": "Enhanced project reputation, ecosystem expansion, attraction signals, competitive positioning"
+      }
+    ],
+    "overall_narrative": "The open source ecosystem flows through interconnected processes that create virtuous cycles of growth and development. Community Attraction and Onboarding brings new talent into the system [overlap: Process 1\u21922], feeding the Knowledge Development and Skill Building process where contributors gain capabilities. Skilled contributors then flow into Contribution and Code Development [overlap: Process 2\u21923], creating value through code contributions. The resulting product improvements feed Product Evolution and User Adoption [overlap: Process 3\u21925], which generates success signals that enhance Reputation and Ecosystem Growth [overlap: Process 5\u21926]. Strong reputation then feeds back to attract more talent [feedback loop: Process 6\u21921], completing the primary growth cycle. Simultaneously, Community Health and Retention [Process 4] provides stabilizing forces, receiving engaged contributors from skill building [connection: Process 2\u21924] and feeding retained expertise back into contribution activities [feedback: Process 4\u21923]. Knowledge flows bidirectionally throughout, with transactive memory systems and SECI processes connecting all stages. The system maintains adaptability through feedback mechanisms where product evolution signals influence contribution priorities [connection: Process 5\u21923] and community health indicators affect attraction strategies [connection: Process 4\u21921]."
+  }
+}

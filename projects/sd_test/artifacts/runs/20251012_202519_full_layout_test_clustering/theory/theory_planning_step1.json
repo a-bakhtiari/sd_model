@@ -1,0 +1,47 @@
+{
+  "theory_decisions": [
+    {
+      "theory_name": "Communities of Practice (Wenger)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Nonaka's SECI Model",
+      "decision": "adapt"
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Knowledge Codification",
+        "narrative": "Core developers and experienced contributors systematically document their expertise through formal documentation, contributor guides, and technical specifications. This process transforms tacit knowledge into explicit, shareable formats that can be accessed by newcomers. The quality and completeness of documentation improves as more community members participate in its creation and refinement. When knowledge gaps are identified through community feedback, documentation efforts intensify to address these deficiencies.",
+        "inputs": "Expert knowledge from core developers, community feedback on knowledge gaps, identified documentation needs from onboarding processes",
+        "outputs": "Structured documentation resources, contributor guides, knowledge repositories, updated technical specifications"
+      },
+      {
+        "name": "Community Onboarding",
+        "narrative": "New contributors enter the community and begin their journey from peripheral participation toward full engagement. They access codified knowledge resources and start building foundational skills through guided tasks and initial contributions. The onboarding process creates opportunities for legitimate peripheral participation where newcomers can observe community practices and gradually increase their involvement. As newcomers gain confidence and basic competence, they become more integrated into community activities and begin forming relationships with experienced members.",
+        "inputs": "New community members, structured documentation resources, initial task assignments, community welcoming signals",
+        "outputs": "Skill-building contributors, community integration progress, relationship formation with mentors, initial contribution outputs"
+      },
+      {
+        "name": "Mentorship and Social Learning",
+        "narrative": "Experienced community members provide guidance, coaching, and tacit knowledge transfer through direct interactions with less experienced contributors. This process enables the socialization phase where implicit knowledge is shared through observation, joint work, and informal communication. Mentorship relationships develop organically as contributors demonstrate commitment and learning potential. The quality of mentorship improves when mentors themselves receive recognition and support from the community. This social learning process accelerates skill development and cultural assimilation.",
+        "inputs": "Skill-building contributors seeking guidance, experienced community members with mentoring capacity, community norms and practices to transmit, recognition signals for effective mentors",
+        "outputs": "Accelerated skill development, cultural assimilation of community values, strengthened community bonds, mentor satisfaction and retention"
+      },
+      {
+        "name": "Contribution Progression",
+        "narrative": "Community members advance through different levels of responsibility and contribution based on demonstrated competence and community engagement. As contributors gain experience and receive mentorship, they take on more complex tasks and greater ownership of community work. The progression pathway includes clear milestones and recognition of achievement that motivate continued development. When contributors reach competence thresholds, they become eligible for promotion to more advanced roles with increased responsibilities and influence.",
+        "inputs": "Skilled contributors ready for advancement, demonstrated competence evidence, community trust and recognition, available advanced roles",
+        "outputs": "Role promotions, increased responsibility assignments, community leadership development, retention of valuable contributors"
+      },
+      {
+        "name": "Community Renewal and Turnover",
+        "narrative": "The community experiences natural turnover as members transition out of active participation while new leadership emerges to fill vacated roles. Core developers may move on to other opportunities, creating openings for experienced contributors to advance. This turnover process maintains community vitality by preventing stagnation and bringing fresh perspectives into leadership positions. The community's ability to handle turnover depends on the strength of its knowledge preservation and leadership development processes.",
+        "inputs": "Career transitions of core developers, emerging leadership from experienced contributors, community capacity for role succession, knowledge preservation effectiveness",
+        "outputs": "Leadership transitions, knowledge retention challenges, community adaptation to change, renewed leadership perspectives"
+      }
+    ],
+    "overall_narrative": "New community members enter through the Community Onboarding process where they access Codified Knowledge resources and begin building foundational skills. As they progress, these contributors engage in Mentorship and Social Learning, receiving tacit knowledge from experienced members that complements the explicit documentation. Successful skill development and community integration through these processes enables Contribution Progression, where members advance to more responsible roles. The knowledge gained by advancing contributors feeds back into the Knowledge Codification process, creating a virtuous cycle of knowledge preservation and renewal. Community Renewal and Turnover naturally occurs as core developers transition out, creating advancement opportunities that motivate the progression pathway. This creates an interconnected system where knowledge flows bidirectionally between explicit documentation and tacit social learning, while community members progress along a development pathway that both depends on and contributes to the community's knowledge ecosystem."
+  }
+}

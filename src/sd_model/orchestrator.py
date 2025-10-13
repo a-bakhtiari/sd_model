@@ -23,7 +23,7 @@ from .pipeline.rq_refinement import run_rq_refinement
 from .pipeline.theory_discovery import run_theory_discovery as execute_theory_discovery
 from .pipeline.archetype_detection import detect_archetypes
 from .llm.client import LLMClient
-from .parsers import extract_variables, extract_connections
+from .mdl_parser import MDLParser
 from .pipeline.llm_extraction import extract_diagram_style
 from .provenance.store import log_event
 from .validation.schema import validate_json_schema
@@ -96,19 +96,29 @@ def run_pipeline(
         raise FileNotFoundError(f"No .mdl file found in {paths.mdl_dir}")
     logger.info(f"Found MDL file: {mdl_path.name}")
 
-    logger.info("Extracting variables from MDL file (Python parser)...")
-    variables_data = extract_variables(mdl_path)
-    logger.info(f"✓ Found {len(variables_data.get('variables', []))} variables")
+    logger.info("Parsing MDL file (full parser with plumbing)...")
+    parser = MDLParser(mdl_path)
+    parsed_data = parser.parse()
 
-    logger.info("Extracting connections from MDL file (Python parser)...")
-    connections_data = extract_connections(mdl_path, variables_data)
-    logger.info(f"✓ Found {len(connections_data.get('connections', []))} connections")
+    # Save parsed data
+    paths.parsing_dir.mkdir(parents=True, exist_ok=True)
 
-    logger.info("Initializing LLM client for downstream tasks...")
-    client = LLMClient()
+    variables_data = {"variables": parsed_data["variables"]}
+    connections_data = {"connections": parsed_data["connections"]}
+    plumbing_data = {
+        "clouds": parsed_data["clouds"],
+        "valves": parsed_data["valves"],
+        "flows": parsed_data["flows"]
+    }
 
     paths.parsed_variables_path.write_text(json.dumps(variables_data, indent=2), encoding="utf-8")
     paths.parsed_connections_path.write_text(json.dumps(connections_data, indent=2), encoding="utf-8")
+    (paths.parsing_dir / "plumbing.json").write_text(json.dumps(plumbing_data, indent=2), encoding="utf-8")
+
+    logger.info(f"✓ Parsed {len(parsed_data['variables'])} variables, {len(parsed_data['connections'])} connections, {len(parsed_data['clouds'])} clouds")
+
+    logger.info("Initializing LLM client for downstream tasks...")
+    client = LLMClient()
 
     # Extract and save diagram style configuration
     style_data = extract_diagram_style(mdl_path)
@@ -412,13 +422,14 @@ def run_pipeline(
                         theories=theories,
                         variables=variables_data,
                         connections={"connections": connections_named},
+                        plumbing=plumbing_data,
                         mdl_path=mdl_path,
                         llm_client=client
                     )
 
                     # Save Step 1 output for inspection
-                    paths.artifacts_dir.mkdir(parents=True, exist_ok=True)
-                    (paths.artifacts_dir / "theory_planning_step1.json").write_text(
+                    paths.theory_dir.mkdir(parents=True, exist_ok=True)
+                    (paths.theory_dir / "theory_planning_step1.json").write_text(
                         json.dumps(planning_result, indent=2), encoding="utf-8"
                     )
 
@@ -434,11 +445,12 @@ def run_pipeline(
                         planning_result=planning_result,
                         variables=variables_data,
                         connections={"connections": connections_named},
+                        plumbing=plumbing_data,
                         llm_client=client
                     )
 
                     # Save Step 2 output for inspection
-                    (paths.artifacts_dir / "theory_concretization_step2.json").write_text(
+                    (paths.theory_dir / "theory_concretization_step2.json").write_text(
                         json.dumps(concretization_result, indent=2), encoding="utf-8"
                     )
 

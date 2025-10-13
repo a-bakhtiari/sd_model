@@ -1,0 +1,338 @@
+{
+  "processes": [
+    {
+      "process_name": "Knowledge Codification",
+      "variables": [
+        {
+          "name": "Documentation Quality Index",
+          "type": "Auxiliary",
+          "description": "Measure of how complete and useful the documentation resources are"
+        },
+        {
+          "name": "Knowledge Gap Identification Rate",
+          "type": "Auxiliary",
+          "description": "Rate at which missing or unclear documentation is identified"
+        },
+        {
+          "name": "Documentation Improvement Rate",
+          "type": "Auxiliary",
+          "description": "Rate at which documentation is updated and enhanced"
+        },
+        {
+          "name": "Community Documentation Participation",
+          "type": "Auxiliary",
+          "description": "Extent to which community members contribute to documentation"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Core Developer",
+          "to": "Documentation Quality Index",
+          "relationship": "positive"
+        },
+        {
+          "from": "Experienced Contributors",
+          "to": "Documentation Quality Index",
+          "relationship": "positive"
+        },
+        {
+          "from": "Knowledge Gap Identification Rate",
+          "to": "Documentation Improvement Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Community Documentation Participation",
+          "to": "Documentation Improvement Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Documentation Improvement Rate",
+          "to": "Documentation Quality Index",
+          "relationship": "positive"
+        },
+        {
+          "from": "Documentation Quality Index",
+          "to": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": []
+    },
+    {
+      "process_name": "Community Onboarding",
+      "variables": [
+        {
+          "name": "New Community Members",
+          "type": "Stock",
+          "description": "People who have recently joined the community"
+        },
+        {
+          "name": "Community Entry Rate",
+          "type": "Flow",
+          "description": "Rate at which new people join the community"
+        },
+        {
+          "name": "Initial Skill Development Rate",
+          "type": "Flow",
+          "description": "Rate at which newcomers build foundational skills"
+        },
+        {
+          "name": "Community Integration Progress",
+          "type": "Auxiliary",
+          "description": "Measure of how well newcomers are integrating into community"
+        },
+        {
+          "name": "Legitimate Peripheral Participation",
+          "type": "Auxiliary",
+          "description": "Opportunities for newcomers to observe and gradually participate"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Community Entry Rate",
+          "to": "New Community Members",
+          "relationship": "positive"
+        },
+        {
+          "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+          "to": "Initial Skill Development Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Legitimate Peripheral Participation",
+          "to": "Initial Skill Development Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Initial Skill Development Rate",
+          "to": "New Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from": "Community Integration Progress",
+          "to": "Skill up",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "flow_name": "Community Entry Rate",
+          "stock_name": "New Community Members",
+          "boundary_type": "source",
+          "description": "External pool of potential community members"
+        }
+      ]
+    },
+    {
+      "process_name": "Mentorship and Social Learning",
+      "variables": [
+        {
+          "name": "Mentoring Capacity",
+          "type": "Auxiliary",
+          "description": "Available experienced members who can provide mentorship"
+        },
+        {
+          "name": "Mentorship Effectiveness",
+          "type": "Auxiliary",
+          "description": "Quality and impact of mentorship relationships"
+        },
+        {
+          "name": "Cultural Assimilation Rate",
+          "type": "Auxiliary",
+          "description": "Rate at which newcomers adopt community values and practices"
+        },
+        {
+          "name": "Mentor Satisfaction Index",
+          "type": "Auxiliary",
+          "description": "Measure of mentor motivation and recognition"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Core Developer",
+          "to": "Mentoring Capacity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Experienced Contributors",
+          "to": "Mentoring Capacity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentoring Capacity",
+          "to": "Implicit Knowledge Transfer (Mentorship)",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentor Satisfaction Index",
+          "to": "Mentorship Effectiveness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentorship Effectiveness",
+          "to": "Implicit Knowledge Transfer (Mentorship)",
+          "relationship": "positive"
+        },
+        {
+          "from": "Implicit Knowledge Transfer (Mentorship)",
+          "to": "Cultural Assimilation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Cultural Assimilation Rate",
+          "to": "Skill up",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": []
+    },
+    {
+      "process_name": "Contribution Progression",
+      "variables": [
+        {
+          "name": "Competence Threshold Achievement",
+          "type": "Auxiliary",
+          "description": "Measure of contributors reaching required skill levels"
+        },
+        {
+          "name": "Advanced Role Availability",
+          "type": "Auxiliary",
+          "description": "Number of available positions for promotion"
+        },
+        {
+          "name": "Community Trust Level",
+          "type": "Auxiliary",
+          "description": "Degree of trust earned by contributors for advancement"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Skill up",
+          "to": "Competence Threshold Achievement",
+          "relationship": "positive"
+        },
+        {
+          "from": "Cultural Assimilation Rate",
+          "to": "Community Trust Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Community Trust Level",
+          "to": "Promotion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Competence Threshold Achievement",
+          "to": "Promotion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Advanced Role Availability",
+          "to": "Promotion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Promotion Rate",
+          "to": "Experienced Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from": "Promotion Rate",
+          "to": "Core Developer",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": []
+    },
+    {
+      "process_name": "Community Renewal and Turnover",
+      "variables": [
+        {
+          "name": "Core Developer Turnover Rate",
+          "type": "Flow",
+          "description": "Rate at which core developers leave the community"
+        },
+        {
+          "name": "Knowledge Retention Effectiveness",
+          "type": "Auxiliary",
+          "description": "Effectiveness of preserving knowledge when members leave"
+        },
+        {
+          "name": "Succession Readiness",
+          "type": "Auxiliary",
+          "description": "Preparedness of experienced contributors to fill leadership roles"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Core Developer Turnover Rate",
+          "to": "Core Developer",
+          "relationship": "negative"
+        },
+        {
+          "from": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+          "to": "Knowledge Retention Effectiveness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Implicit Knowledge Transfer (Mentorship)",
+          "to": "Succession Readiness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Succession Readiness",
+          "to": "Advanced Role Availability",
+          "relationship": "positive"
+        },
+        {
+          "from": "Knowledge Retention Effectiveness",
+          "to": "Documentation Quality Index",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "flow_name": "Core Developer Turnover Rate",
+          "stock_name": "Core Developer",
+          "boundary_type": "sink",
+          "description": "External career opportunities and life transitions"
+        }
+      ]
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Knowledge Codification",
+        "narrative": "Core developers and experienced contributors systematically document their expertise through formal documentation, contributor guides, and technical specifications. This process transforms tacit knowledge into explicit, shareable formats that can be accessed by newcomers. The quality and completeness of documentation improves as more community members participate in its creation and refinement. When knowledge gaps are identified through community feedback, documentation efforts intensify to address these deficiencies.",
+        "inputs": "Expert knowledge from core developers, community feedback on knowledge gaps, identified documentation needs from onboarding processes",
+        "outputs": "Structured documentation resources, contributor guides, knowledge repositories, updated technical specifications"
+      },
+      {
+        "name": "Community Onboarding",
+        "narrative": "New contributors enter the community and begin their journey from peripheral participation toward full engagement. They access codified knowledge resources and start building foundational skills through guided tasks and initial contributions. The onboarding process creates opportunities for legitimate peripheral participation where newcomers can observe community practices and gradually increase their involvement. As newcomers gain confidence and basic competence, they become more integrated into community activities and begin forming relationships with experienced members.",
+        "inputs": "New community members, structured documentation resources, initial task assignments, community welcoming signals",
+        "outputs": "Skill-building contributors, community integration progress, relationship formation with mentors, initial contribution outputs"
+      },
+      {
+        "name": "Mentorship and Social Learning",
+        "narrative": "Experienced community members provide guidance, coaching, and tacit knowledge transfer through direct interactions with less experienced contributors. This process enables the socialization phase where implicit knowledge is shared through observation, joint work, and informal communication. Mentorship relationships develop organically as contributors demonstrate commitment and learning potential. The quality of mentorship improves when mentors themselves receive recognition and support from the community. This social learning process accelerates skill development and cultural assimilation.",
+        "inputs": "Skill-building contributors seeking guidance, experienced community members with mentoring capacity, community norms and practices to transmit, recognition signals for effective mentors",
+        "outputs": "Accelerated skill development, cultural assimilation of community values, strengthened community bonds, mentor satisfaction and retention"
+      },
+      {
+        "name": "Contribution Progression",
+        "narrative": "Community members advance through different levels of responsibility and contribution based on demonstrated competence and community engagement. As contributors gain experience and receive mentorship, they take on more complex tasks and greater ownership of community work. The progression pathway includes clear milestones and recognition of achievement that motivate continued development. When contributors reach competence thresholds, they become eligible for promotion to more advanced roles with increased responsibilities and influence.",
+        "inputs": "Skilled contributors ready for advancement, demonstrated competence evidence, community trust and recognition, available advanced roles",
+        "outputs": "Role promotions, increased responsibility assignments, community leadership development, retention of valuable contributors"
+      },
+      {
+        "name": "Community Renewal and Turnover",
+        "narrative": "The community experiences natural turnover as members transition out of active participation while new leadership emerges to fill vacated roles. Core developers may move on to other opportunities, creating openings for experienced contributors to advance. This turnover process maintains community vitality by preventing stagnation and bringing fresh perspectives into leadership positions. The community's ability to handle turnover depends on the strength of its knowledge preservation and leadership development processes.",
+        "inputs": "Career transitions of core developers, emerging leadership from experienced contributors, community capacity for role succession, knowledge preservation effectiveness",
+        "outputs": "Leadership transitions, knowledge retention challenges, community adaptation to change, renewed leadership perspectives"
+      }
+    ],
+    "overall_narrative": "New community members enter through the Community Onboarding process where they access Codified Knowledge resources and begin building foundational skills. As they progress, these contributors engage in Mentorship and Social Learning, receiving tacit knowledge from experienced members that complements the explicit documentation. Successful skill development and community integration through these processes enables Contribution Progression, where members advance to more responsible roles. The knowledge gained by advancing contributors feeds back into the Knowledge Codification process, creating a virtuous cycle of knowledge preservation and renewal. Community Renewal and Turnover naturally occurs as core developers transition out, creating advancement opportunities that motivate the progression pathway. This creates an interconnected system where knowledge flows bidirectionally between explicit documentation and tacit social learning, while community members progress along a development pathway that both depends on and contributes to the community's knowledge ecosystem."
+  }
+}

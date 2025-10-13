@@ -91,16 +91,139 @@ Reposition ALL {total_vars} variables into a clean, clustered layout using ASCII
 ## CONNECTIONS
 {all_connections_json}
 
-## CONNECTION COMPLEXITY ANALYSIS
+**Your Goal:** Create a clean, readable diagram by:
+1. Grouping process modules spatially
+2. Positioning high-connectivity hubs centrally
+3. Keeping connected variables close together
+4. Avoiding variables in arrow paths and minimizing arrow crossings (details below)
 
-To create an optimal layout that minimizes arrow length and crossing, consider these connection patterns:
+## CRITICAL: ARROW ROUTING AND VARIABLE PLACEMENT
 
-{connection_analysis}
+**Understanding Arrow Paths:**
+- Arrows connect the CENTER of one variable to the CENTER of another variable
+- These arrow paths should remain clear - avoid placing other variables directly in the arrow's path
+- You don't need to avoid the entire rectangular area between variables, just the direct arrow line
 
-**Layout Goals:**
-1. **Position high-connectivity variables centrally** - They act as hubs; central placement minimizes total arrow length
-2. **Place connected variables closer together** - Reduces long diagonal arrows that are hard to route cleanly
-3. **Avoid crossing arrows when possible** - Cleaner, more readable diagrams
+**Good vs Bad Placement:**
+
+```
+GOOD - Variable C is offset from arrow path:
+[A] ────────────────→ [B]
+        [C]
+Arrow from A→B is clear (C is below the path)
+
+ALSO GOOD - Horizontal offset works too:
+[A] ────────────────→ [B]
+
+[C]
+Variables can be near connected pairs, just not ON the arrow line
+
+BAD - Variable C directly blocks arrow path:
+[A] ──────[C]──────→ [B]
+Arrow from A→B has to route around C
+
+ALSO BAD - Variable in middle of long connection:
+[A] ───────────────── [D] ────────────────→ [B]
+If A connects to B, arrow has to route around D
+
+GOOD - Multiple connections with clear paths:
+[A] ────→ [B] ────→ [C]
+
+         [D]
+A→B→C chain is clear, D is offset below and doesn't block
+
+ALSO GOOD - Star pattern with hub:
+        [A]
+         │
+[B] ←─ [HUB] ─→ [C]
+         │
+        [D]
+Hub connects to A, B, C, D - all arrows radiate cleanly
+
+ALSO GOOD - Triangle arrangement:
+        [A]
+       ↙  ↘
+    [B]    [C]
+A connects to both B and C, arrows don't overlap
+
+ALSO GOOD - Grid pattern:
+[A] ─→ [B]
+ │      │
+ ↓      ↓
+[C] ─→ [D]
+Multiple connections (A→B, A→C, B→D, C→D) all clear
+
+ALSO GOOD - Branching chain:
+        [B]
+       ↗
+[A] ─→ [C]
+       ↘
+        [D]
+A branches to B, C, D without arrows crossing
+
+BAD - Variable blocking multiple arrow paths:
+[A] ─────[E]────→ [B]
+          ↓
+          ↓
+[C] ─────────────→ [D]
+E is in the path of A→B arrow, forces arrow to route around it
+
+BETTER - Offset the blocking variable:
+[A] ───────────→ [B]
+
+    [E]
+
+[C] ───────────→ [D]
+Now E is offset and doesn't block either arrow path
+```
+
+**Key Principle**: When placing a variable, check if any existing connections would pass through its position. If so, offset the variable vertically or horizontally to keep the arrow path clear. The layout doesn't need to follow any specific pattern (like triangles) - just avoid placing variables directly in arrow paths. With multiple connections, think about all the arrow paths and position variables in the spaces between them.
+
+## AVOIDING ARROW OVERLAPS
+
+**Arrow Crossing Issue:**
+- When two arrows cross each other, the diagram becomes harder to read
+- Ideally, minimize the number of arrow crossings in your layout
+
+**Good vs Bad Arrow Routing:**
+
+```
+GOOD - Parallel arrows don't cross:
+[A] ────→ [B]
+
+[C] ────→ [D]
+Two horizontal arrows running parallel
+
+ALSO GOOD - Vertical parallel arrows:
+    [A]     [B]
+     │       │
+     ↓       ↓
+    [C]     [D]
+A→C and B→D run parallel vertically
+
+BAD - Diagonal crossing:
+[A]         [D]
+  ╲       ╱
+   ╲     ╱
+    ╲   ╱
+     ╲ ╱
+      X
+     ╱ ╲
+    ╱   ╲
+   ╱     ╲
+[C]         [B]
+A→B and D→C cross in the middle
+
+BETTER - Same connections, no crossing:
+[A]         [D]
+ │           │
+ │           │
+ ↓           ↓
+[B]         [C]
+A→B and D→C now run parallel (swapped B and C positions)
+```
+
+**Strategy**: When you have many connections, try to group variables so that their connections run in similar directions (parallel) rather than crossing paths. If process A connects to process B, and process C connects to process D, position them so A-B and C-D arrows don't intersect.
 
 ## LAYOUT APPROACH: VISUALIZE FIRST, THEN POSITION
 
@@ -123,13 +246,17 @@ Each '─' in the grid ≈ 100px
 
 ## Instructions for ASCII Sketch:
 
-1. **Identify 3-5 thematic clusters** (e.g., "Knowledge Management", "Community Dynamics", "Contributor Pipeline")
+1. **Use provided process-based clusters** (if provided above) - Each process is a mini-model with inputs/outputs
+   - If no clusters provided, identify 3-5 thematic groupings
+   - Process outputs are hub connections - position them to link multiple processes
 
 2. **Draw a rough layout** using abbreviated variable names (3-5 characters each)
    - Use `[ABC]` to represent variables
-   - Place cluster groups together
+   - Group each process's variables together
    - Space variables apart (at least 2-3 characters between them)
-   - Mark cluster boundaries with comments
+   - Mark process boundaries with comments
+   - Position hub outputs (variables connecting multiple processes) centrally
+   - **Apply arrow routing principles**: avoid blocking paths, minimize crossings (see detailed examples above)
 
 3. **Follow type-based vertical layering**:
    - **Stocks (type: Stock)**: Middle rows (y ≈ 400-600)
@@ -139,28 +266,22 @@ Each '─' in the grid ≈ 100px
 ## Example ASCII Layout (for reference):
 
 ```
-0────500───1000───1500───2000───2400
-│                                       │
-100   [DOC]  [QUA]        ← Cluster 1: Knowledge
-│                                       │
-300               [NEW]  [EXP]         ← Cluster 2: Contributors
-│     [KNW]                   [COR]    │
-500                     [MEN]          │
-│                                       │
-700            [ENG]        [SKL]      ← Cluster 3: Community
-│                                       │
-900                                     │
+     0        500      1000     1500     2000
+     |         |         |         |         |
+100  [QC]
+     │
+200  [INP]─────────────────→[CAP]
+     │                      │ ↓
+300  [MAT]            [WIP][RAT]
+                       ↓    ↓
+400                   [OUT]────────────→[DEM]
+                                         ↓
+500                                     [SHP]
 
-Legend:
-[DOC] = Documentation
-[QUA] = Quality
-[KNW] = Knowledge Stock
-[NEW] = New Contributors
-[EXP] = Experienced
-[COR] = Core Developers
-[MEN] = Mentoring
-[ENG] = Engagement
-[SKL] = Skill Level
+Process 1: QC→INP→MAT (vertical, left)
+Process 2: CAP→WIP,RAT→OUT (grid, center) - CAP is hub
+Process 3: DEM→SHP (vertical, right)
+Inter-process: INP→CAP, OUT→DEM
 ```
 
 ## Your ASCII Sketch:
@@ -188,9 +309,10 @@ Create your ASCII visualization here, using the grid reference above.
    - Formula: distance = sqrt((x2-x1)² + (y2-y1)²) ≥ 200
    - Our Python validator will auto-fix minor overlaps
 
-4. **Cluster-based organization**:
-   - Place each cluster 400-800px apart (cluster centers)
-   - Variables within cluster: 200-300px apart
+4. **Process-based organization**:
+   - Place each process module 400-800px apart (process centers)
+   - Variables within process: 200-300px apart
+   - Position hub outputs (connecting multiple processes) between their connected processes
 
 ---
 
@@ -205,8 +327,6 @@ Return JSON with BOTH the ASCII visualization AND the coordinate positions:
     {{
       "name": "Cluster Name",
       "description": "What this cluster represents",
-      "center_x": 500,
-      "center_y": 300,
       "variables": ["Var1", "Var2", "Var3"]
     }}
   ],
@@ -215,8 +335,7 @@ Return JSON with BOTH the ASCII visualization AND the coordinate positions:
       "name": "Variable Name (full name)",
       "x": 520,
       "y": 280,
-      "cluster": "Cluster Name",
-      "reasoning": "In [cluster] at ASCII position [row, col]; 220px from [nearby var]"
+      "cluster": "Cluster Name"
     }}
   ]
 }}
@@ -226,37 +345,42 @@ Return JSON with BOTH the ASCII visualization AND the coordinate positions:
 
 ## WORKED EXAMPLE (showing full process)
 
-**Given 6 variables:**
-- "Project Knowledge" (Stock)
-- "Knowledge Creation" (Flow)
-- "Documentation" (Auxiliary)
-- "Team Size" (Stock)
-- "Hiring Rate" (Flow)
-- "Skill Level" (Auxiliary)
+**Given 6 variables in 2 processes:**
+
+Process 1 (Material Intake):
+- "Raw Materials" (Stock)
+- "Intake Rate" (Flow)
+- "Quality Standard" (Auxiliary)
+
+Process 2 (Production):
+- "Work In Progress" (Stock)
+- "Production Rate" (Flow)
+- "Capacity" (Auxiliary) - hub output
 
 **STEP 1: ASCII Sketch**
 ```
 0────500───1000───1500───2000
 │
-200     [DOC]            [SKL]        ← Auxiliaries top
+200     [QS]             [CAP]        ← Auxiliaries (CAP is hub)
 │
-400   [PKN]            [TEM]          ← Stocks middle
+400   [RM]             [WIP]          ← Stocks middle
 │       ↑                ↑
-500    [KCR]           [HIR]          ← Flows
+500    [IR]            [PR]           ← Flows
 │
 700
 
-Cluster 1 (Knowledge): PKN, KCR, DOC - centered ~500
-Cluster 2 (Team): TEM, HIR, SKL - centered ~1500
+Process 1 (Material Intake): RM, IR, QS - centered ~400
+Process 2 (Production): WIP, PR, CAP - centered ~1500
+Note: CAP connects to multiple processes
 ```
 
 **STEP 2: Convert to Coordinates**
-- [DOC] at col ~8, row ~2 → (400, 200)
-- [PKN] at col ~6, row ~4 → (300, 400)
-- [KCR] at col ~8, row ~5 → (400, 500)
-- [TEM] at col ~28, row ~4 → (1400, 400)
-- [HIR] at col ~28, row ~5 → (1400, 500)
-- [SKL] at col ~30, row ~2 → (1500, 200)
+- [QS] at col ~8, row ~2 → (400, 200)
+- [RM] at col ~6, row ~4 → (300, 400)
+- [IR] at col ~8, row ~5 → (400, 500)
+- [CAP] at col ~30, row ~2 → (1500, 200) - hub positioned centrally
+- [WIP] at col ~28, row ~4 → (1400, 400)
+- [PR] at col ~28, row ~5 → (1400, 500)
 
 Check spacing: all pairs >200px ✓
 
@@ -265,12 +389,13 @@ Check spacing: all pairs >200px ✓
 {{
   "ascii_layout": "[Full ASCII sketch here]",
   "clusters": [
-    {{"name": "Knowledge Management", "center_x": 400, "center_y": 350, "variables": ["Project Knowledge", "Knowledge Creation", "Documentation"]}},
-    {{"name": "Team Dynamics", "center_x": 1450, "center_y": 350, "variables": ["Team Size", "Hiring Rate", "Skill Level"]}}
+    {{"name": "Material Intake", "description": "Material sourcing and quality control", "variables": ["Raw Materials", "Intake Rate", "Quality Standard"]}},
+    {{"name": "Production", "description": "Assembly and production capacity", "variables": ["Work In Progress", "Production Rate", "Capacity"]}}
   ],
   "positions": [
-    {{"name": "Documentation", "x": 400, "y": 200, "cluster": "Knowledge Management", "reasoning": "Auxiliary in Knowledge cluster"}},
-    {{"name": "Project Knowledge", "x": 300, "y": 400, "cluster": "Knowledge Management", "reasoning": "Stock at cluster center"}},
+    {{"name": "Quality Standard", "x": 400, "y": 200, "cluster": "Material Intake"}},
+    {{"name": "Raw Materials", "x": 300, "y": 400, "cluster": "Material Intake"}},
+    {{"name": "Capacity", "x": 1500, "y": 200, "cluster": "Production"}},
     ...
   ]
 }}
@@ -286,8 +411,9 @@ Now create:
 
 REMEMBER:
 - Think visually first (ASCII), then convert to coordinates
-- Cluster by meaning/theme (3-5 clusters)
-- Our Python validator will fix minor overlaps - focus on good clustering
+- Apply the arrow routing principles from above (avoid blocking paths, minimize crossings)
+- Use process-based clusters if provided (hub outputs connect multiple processes)
+- Our Python validator will fix minor overlaps - focus on good clustering and clear routing
 - Return valid JSON only (no markdown code blocks)
 
 Begin:"""
@@ -472,6 +598,69 @@ def _reposition_valves(
     return new_lines, valves_updated
 
 
+def _reposition_clouds(
+    lines: List[str],
+    position_map: Dict[str, Tuple[int, int]]
+) -> Tuple[List[str], int]:
+    """
+    Reposition cloud elements (Type 12) relative to moved stocks.
+
+    Clouds represent model boundaries (sources/sinks). When stocks move,
+    clouds should maintain their relative offset from connected stocks.
+
+    Args:
+        lines: MDL file lines
+        position_map: Variable name -> (x, y) new positions
+
+    Returns:
+        (updated_lines, clouds_updated_count)
+    """
+    new_lines = []
+    clouds_updated = 0
+
+    # Build variable name to position lookup
+    var_positions = position_map.copy()
+
+    for line in lines:
+        if line.startswith('12,'):  # Type 12 = cloud
+            parts = line.split(',')
+            if len(parts) > 6:
+                try:
+                    cloud_id = int(parts[1])
+                    old_x = int(parts[3])
+                    old_y = int(parts[4])
+
+                    # Find closest stock (within 400px)
+                    closest_stock = None
+                    min_dist = 400
+                    original_offset = None
+
+                    for var_name, (var_x, var_y) in var_positions.items():
+                        dist = ((var_x - old_x)**2 + (var_y - old_y)**2)**0.5
+                        if dist < min_dist:
+                            min_dist = dist
+                            closest_stock = (var_x, var_y)
+                            original_offset = (old_x - var_x, old_y - var_y)
+
+                    if closest_stock and original_offset:
+                        # Maintain relative offset from stock
+                        new_x = closest_stock[0] + original_offset[0]
+                        new_y = closest_stock[1] + original_offset[1]
+
+                        # Update cloud position
+                        parts[3] = str(new_x)
+                        parts[4] = str(new_y)
+                        line = ','.join(parts)
+                        clouds_updated += 1
+
+                except (ValueError, IndexError):
+                    pass
+
+        new_lines.append(line)
+
+    return new_lines, clouds_updated
+
+
 def _update_arrow_waypoints(lines: List[str], waypoint_map: Dict[str, List[Tuple[int, int]]]) -> Tuple[List[str], int]:
     """
     Update arrow lines with calculated waypoints for obstacle avoidance.
@@ -558,7 +747,7 @@ def reposition_entire_diagram(
 
     Returns:
         Summary dict with counts: variables_repositioned, clusters,
-        valves_repositioned, arrows_simplified
+        valves_repositioned, clouds_repositioned, arrows_simplified
     """
     # Read original MDL
     content = mdl_path.read_text(encoding='utf-8')
@@ -618,7 +807,9 @@ def reposition_entire_diagram(
     # Get LLM layout
     if not llm_client:
         try:
-            llm_client = LLMClient(provider="deepseek")
+            from .config import should_use_gpt
+            provider, model = should_use_gpt("full_relayout")
+            llm_client = LLMClient(provider=provider, model=model)
         except RuntimeError:
             llm_client = None
 
@@ -634,59 +825,48 @@ def reposition_entire_diagram(
     clustering_section = ""
     if clustering_scheme:
         clusters = clustering_scheme.get('clusters', [])
+        overall_narrative = clustering_scheme.get('overall_narrative', '')
         layout_hints = clustering_scheme.get('layout_hints', [])
-        rationale = clustering_scheme.get('rationale', '')
 
-        clustering_section = "\n## IMPORTANT: USE PROVIDED CLUSTERING SCHEME\n\n"
-        clustering_section += f"**Clustering Rationale**: {rationale}\n\n"
-        clustering_section += "You MUST use the following cluster organization:\n\n"
+        clustering_section = "\n## IMPORTANT: USE PROVIDED PROCESS-BASED CLUSTERING\n\n"
+
+        # Add overall narrative showing system-wide connections
+        if overall_narrative:
+            clustering_section += "**Overall System Flow**:\n"
+            clustering_section += f"{overall_narrative}\n\n"
+
+        clustering_section += "You MUST use the following process-based organization:\n\n"
+        clustering_section += "**Key Principle**: Each process is a self-contained mini-model. Process outputs act as connection hubs linking multiple processes. Position hub variables centrally to minimize arrow length.\n\n"
 
         for cluster in clusters:
             cluster_name = cluster.get('name', 'Unnamed')
-            theme = cluster.get('theme', '')
+            narrative = cluster.get('narrative', cluster.get('theme', ''))  # Fallback to theme for backwards compat
+            inputs_desc = cluster.get('inputs', 'N/A')
+            outputs_desc = cluster.get('outputs', 'N/A')
             variables = cluster.get('variables', [])
             connections_to = cluster.get('connections_to_other_clusters', {})
 
             clustering_section += f"### {cluster_name}\n"
-            clustering_section += f"- **Theme**: {theme}\n"
-            clustering_section += f"- **Variables ({len(variables)})**: {', '.join(variables)}\n"
+            clustering_section += f"- **Process Description**: {narrative}\n"
+            clustering_section += f"- **Inputs**: {inputs_desc}\n"
+            clustering_section += f"- **Outputs** (hub connections): {outputs_desc}\n"
+            clustering_section += f"- **Variables ({len(variables)})**: {', '.join(variables) if variables else '[Generated by Step 2]'}\n"
             if connections_to:
-                clustering_section += f"- **Inter-cluster connections**: {dict(connections_to)}\n"
+                clustering_section += f"- **Inter-process connections**: {dict(connections_to)}\n"
             clustering_section += "\n"
 
         if layout_hints:
-            clustering_section += "**Layout Hints from Theory Enhancement**:\n"
+            clustering_section += "**Layout Hints**:\n"
             for hint in layout_hints:
                 clustering_section += f"- {hint}\n"
             clustering_section += "\n"
 
-        clustering_section += "**Your Task**: Position variables according to these clusters while following the ASCII visualization approach below.\n\n"
-
-    # Analyze connection complexity to help LLM make better decisions
-    conn_analysis = analyze_connection_complexity(all_conns, all_vars)
-
-    # Format connection analysis for prompt
-    analysis_text = ""
-    if conn_analysis['high_connectivity_vars']:
-        analysis_text += "### High-Connectivity Variables (position centrally):\n"
-        for var, count in conn_analysis['high_connectivity_vars']:
-            analysis_text += f"- **{var}**: {count} connections\n"
-        analysis_text += "\n"
-
-    if conn_analysis['long_connections']:
-        analysis_text += "### Long-Distance Connections (consider proximity):\n"
-        for conn in conn_analysis['long_connections']:
-            analysis_text += f"- \"{conn['from']}\" ↔ \"{conn['to']}\": {conn['distance']}px apart\n"
-        analysis_text += "\n"
-
-    if not analysis_text:
-        analysis_text = "No significant connection complexity detected.\n\n"
+        clustering_section += "**Your Task**: Position variables according to these process modules while following the ASCII visualization approach below. Group each process's variables spatially, then connect modules via their output hubs.\n\n"
 
     prompt = FULL_RELAYOUT_PROMPT.format(
         total_vars=len(all_vars),
         all_vars_json=json.dumps(all_vars_summary, indent=2),
-        all_connections_json=json.dumps(all_conns_summary, indent=2),
-        connection_analysis=analysis_text
+        all_connections_json=json.dumps(all_conns_summary, indent=2)
     )
 
     # Insert clustering section after CONNECTIONS if provided
@@ -724,7 +904,17 @@ def reposition_entire_diagram(
                     json_lines.append(line)
             response = '\n'.join(json_lines)
 
-        layout_data = json.loads(response)
+        try:
+            layout_data = json.loads(response)
+        except json.JSONDecodeError as e:
+            print(f"\n{'='*60}")
+            print("ERROR: LLM returned invalid JSON")
+            print(f"{'='*60}")
+            print(f"Parse error: {e}")
+            print(f"\nLLM Response (first 2000 chars):")
+            print(response[:2000])
+            print(f"{'='*60}\n")
+            raise
 
         # Print ASCII visualization if present
         if 'ascii_layout' in layout_data and layout_data['ascii_layout']:
@@ -738,7 +928,6 @@ def reposition_entire_diagram(
         print("\nClusters created:")
         for cluster in layout_data.get('clusters', []):
             print(f"  {cluster['name']}: {cluster['description']}")
-            print(f"    Center: ({cluster['center_x']}, {cluster['center_y']})")
             print(f"    Variables: {len(cluster['variables'])}")
 
         # Build position map
@@ -774,6 +963,12 @@ def reposition_entire_diagram(
         new_lines, valves_updated = _reposition_valves(new_lines, position_map)
         if valves_updated > 0:
             print(f"✓ Repositioned {valves_updated} flow valves")
+
+        # Step 2b: Reposition clouds (Type 12)
+        print("\nRepositioning boundary clouds...")
+        new_lines, clouds_updated = _reposition_clouds(new_lines, position_map)
+        if clouds_updated > 0:
+            print(f"✓ Repositioned {clouds_updated} boundary clouds")
 
         # Step 3: Calculate smart waypoints for arrows (Type 1)
         print("\nCalculating smart arrow routes to avoid overlaps...")
@@ -836,6 +1031,7 @@ def reposition_entire_diagram(
             'variables_repositioned': len(position_map),
             'clusters': len(layout_data.get('clusters', [])),
             'valves_repositioned': valves_updated,
+            'clouds_repositioned': clouds_updated,
             'arrows_routed': arrows_updated
         }
 
