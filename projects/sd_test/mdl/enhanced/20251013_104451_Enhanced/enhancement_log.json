@@ -1,0 +1,20 @@
+{
+  "timestamp": "2025-10-13T10:44:51.415859",
+  "original_mdl": "test.mdl",
+  "theories_applied": [],
+  "summary": {
+    "total_variables_added": 0,
+    "total_connections_added": 0,
+    "total_theories": 0
+  },
+  "source_artifacts": {
+    "theory_enhancement": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/theory/theory_enhancement.json",
+    "theory_enhancement_mdl": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/theory/theory_enhancement_mdl.json"
+  },
+  "mdl_generation_details": {
+    "variables_created": 44,
+    "connections_created": 38,
+    "boundary_flows_created": 0,
+    "output_path": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/sd_test/artifacts/test_temp.mdl"
+  }
+}

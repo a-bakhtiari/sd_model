@@ -6,11 +6,11 @@
     },
     {
       "id": "C02",
-      "description": "A larger pool of new contributors increases the potential for them to become experienced contributors."
+      "description": "A larger pool of potential mentors attracts more newcomers to join the project as contributors."
     },
     {
       "id": "C03",
-      "description": "As new contributors skill up, they flow out of the 'New Contributors' stock into more experienced roles."
+      "description": "As new contributors skill up, they move out of the 'New Contributors' stock into more experienced roles."
     },
     {
       "id": "C04",
@@ -18,27 +18,27 @@
     },
     {
       "id": "C05",
-      "description": "A higher promotion rate increases the core developer stock by moving experienced contributors into core roles."
+      "description": "Promoting experienced contributors directly increases the stock of core developers."
     },
     {
       "id": "C06",
-      "description": "A higher promotion rate decreases the stock of experienced contributors as they move into core roles."
+      "description": "The promotion rate decreases the stock of experienced contributors as they move into core roles."
     },
     {
       "id": "C07",
-      "description": "The skill up flow increases the stock of experienced contributors by advancing new contributors into this role."
+      "description": "The skill up flow increases the number of experienced contributors as newcomers gain proficiency."
     },
     {
       "id": "C08",
-      "description": "Better explicit knowledge transfer, like documentation, accelerates the skill-up process for contributors."
+      "description": "Better documentation and guides accelerate learning, increasing the rate at which contributors skill up."
     },
     {
       "id": "C09",
-      "description": "Effective implicit mentorship accelerates skill development, increasing the rate at which contributors skill up."
+      "description": "Effective mentorship accelerates practical learning, thereby increasing the skill up rate."
     },
     {
       "id": "C10",
-      "description": "Strong mentorship prepares experienced contributors for core responsibilities, increasing their promotion rate."
+      "description": "Mentorship helps experienced contributors develop the competencies needed for promotion to core roles."
     }
   ]
 }

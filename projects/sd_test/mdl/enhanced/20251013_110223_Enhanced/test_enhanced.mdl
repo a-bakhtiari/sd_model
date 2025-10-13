@@ -1,0 +1,316 @@
+{UTF-8}
+"Shared Tacit Knowledge Base" = A FUNCTION OF( "Peripheral Participation Rate","Tacit Knowledge Sharing Rate","Embodied Tacit Knowledge" )
+	~	
+	~		|
+
+"Tacit Knowledge Sharing Rate" = A FUNCTION OF( "Social Interaction Frequency","Interaction Depth Quality" )
+	~	
+	~		|
+
+"Social Interaction Frequency" = A FUNCTION OF( "Community Vitality" )
+	~	
+	~		|
+
+"Interaction Depth Quality" = A FUNCTION OF( "Trust Level Among Members" )
+	~	
+	~		|
+
+"Socialization Effectiveness" = A FUNCTION OF( "Shared Mental Models Development" )
+	~	
+	~		|
+
+"Peripheral Participation Rate" = A FUNCTION OF( )
+	~	
+	~		|
+
+"Trust Level Among Members" = A FUNCTION OF( "Core Community Members" )
+	~	
+	~		|
+
+"Shared Mental Models Development" = A FUNCTION OF( )
+	~	
+	~		|
+
+"Articulated Explicit Knowledge" = A FUNCTION OF( "Knowledge Externalization Rate" )
+	~	
+	~		|
+
+"Knowledge Externalization Rate" = A FUNCTION OF( "Shared Tacit Knowledge Base","Dialogue and Documentation Activity","Externalization Effectiveness" )
+	~	
+	~		|
+
+"Dialogue and Documentation Activity" = A FUNCTION OF( "Community Vitality" )
+	~	
+	~		|
+
+"Shared Language Development" = A FUNCTION OF( "Core Community Members" )
+	~	
+	~		|
+
+"Externalization Effectiveness" = A FUNCTION OF( "Shared Language Development","Conceptualization Capability" )
+	~	
+	~		|
+
+"Conceptualization Capability" = A FUNCTION OF( "Core Community Members" )
+	~	
+	~		|
+
+"Structured Knowledge Systems" = A FUNCTION OF( "Knowledge Combination Rate" )
+	~	
+	~		|
+
+"Knowledge Combination Rate" = A FUNCTION OF( "Articulated Explicit Knowledge","Combination Effectiveness" )
+	~	
+	~		|
+
+"Knowledge Integration Capability" = A FUNCTION OF( "Core Community Members" )
+	~	
+	~		|
+
+"Repository Development Level" = A FUNCTION OF( "Core Community Members" )
+	~	
+	~		|
+
+"Framework and Standards Quality" = A FUNCTION OF( "Core Community Members" )
+	~	
+	~		|
+
+"Combination Effectiveness" = A FUNCTION OF( "Knowledge Integration Capability","Repository Development Level","Framework and Standards Quality" )
+	~	
+	~		|
+
+"Embodied Tacit Knowledge" = A FUNCTION OF( "Knowledge Internalization Rate" )
+	~	
+	~		|
+
+"Knowledge Internalization Rate" = A FUNCTION OF( "Structured Knowledge Systems","Internalization Effectiveness" )
+	~	
+	~		|
+
+"Learning by Doing Activity" = A FUNCTION OF( "Community Vitality" )
+	~	
+	~		|
+
+"Experimentation and Practice Level" = A FUNCTION OF( )
+	~	
+	~		|
+
+"Reflection and Application Quality" = A FUNCTION OF( )
+	~	
+	~		|
+
+"Internalization Effectiveness" = A FUNCTION OF( "Learning by Doing Activity","Experimentation and Practice Level","Reflection and Application Quality" )
+	~	
+	~		|
+
+"Mastery Development Rate" = A FUNCTION OF( "Knowledge Internalization Rate" )
+	~	
+	~		|
+
+"Core Community Members" = A FUNCTION OF( "Community Advancement Rate" )
+	~	
+	~		|
+
+"Peripheral Community Members" = A FUNCTION OF( "Community Advancement Rate" )
+	~	
+	~		|
+
+"Community Advancement Rate" = A FUNCTION OF( "Mastery Development Rate" )
+	~	
+	~		|
+
+"New Member Entry Rate" = A FUNCTION OF( )
+	~	
+	~		|
+
+"Member Departure Rate" = A FUNCTION OF( )
+	~	
+	~		|
+
+"Community Norms Strength" = A FUNCTION OF( "Core Community Members" )
+	~	
+	~		|
+
+"Identity Development Level" = A FUNCTION OF( )
+	~	
+	~		|
+
+"Community Vitality" = A FUNCTION OF( "Community Norms Strength","Identity Development Level" )
+	~	
+	~		|
+
+"Competence Development Rate" = A FUNCTION OF( )
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,67,2
+10,1,New Contributors,1257,581,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Core Developer,1684,584,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,3,48,1861,584,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,6,2,100,0,0,22,0,192,0,-1--1--1,,1|(1757,584)|
+1,5,6,3,4,0,0,22,0,192,0,-1--1--1,,1|(1823,584)|
+11,6,0,1790,584,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,7,Developer's Turnover,1790,618,56,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,8,Experienced Contributors,1475,584,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,11,1,100,0,0,22,0,192,0,-1--1--1,,1|(1342,585)|
+1,10,11,8,4,0,0,22,0,192,0,-1--1--1,,1|(1391,585)|
+11,11,0,1368,585,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,12,Skill up,1368,619,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,13,15,8,100,0,0,22,0,192,0,-1--1--1,,1|(1563,583)|
+1,14,15,2,4,0,0,22,0,192,0,-1--1--1,,1|(1617,583)|
+11,15,0,1591,583,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,16,Promotion Rate,1591,617,46,26,40,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,17,"Implicit Knowledge Transfer (Mentorship)",1535,413,57,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,18,17,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,19,17,15,0,0,43,0,0,192,0,-1--1--1,,1|(0,0)|
+1,20,2,17,1,0,43,0,0,192,0,-1--1--1,,1|(1653,468)|
+10,21,"Explicit Knowledge Transfer (Documentation, Contributor's Guides)",1274,404,91,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,22,21,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,23,colored stock,1067,817,46,26,3,3,0,1,-1,1,0,0,252-102-255,0-0-0,|||0-0-0,0,0,0,0,0,0
+1,24,23,1,0,0,0,0,1,192,0,251-2-128,|||0-0-0,1|(0,0)|
+12,25,0,2204,386,80,40,3,7,0,1,-1,1,0,0,251-2-7,0-0-0,|||0-0-0,0,0,0,0,0,0
+This is a test comment written in red just to help you see how to make a comment.
+12,26,0,2209,537,80,40,3,7,0,1,-1,1,0,0,255-255-10,0-0-0,|||0-0-0,0,0,0,0,0,0
+Here is another comment with yellow outline
+12,27,0,2188,708,80,40,3,7,0,1,-1,1,0,0,33-255-6,0-0-0,|||0-0-0,0,0,0,0,0,0
+Here is yet another comment with green outline
+12,28,0,1928,826,80,40,8,7,0,0,-1,1,0,0,0,0,0,0,0,0
+Comment
+12,29,0,1461,301,80,40,8,7,0,0,-1,1,0,0,0,0,0,0,0,0
+Comment
+///---\\\
+:L<%^E!@
+10,1,"Shared Tacit Knowledge Base",100,100,40,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,"Tacit Knowledge Sharing Rate",300,100,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,"Social Interaction Frequency",500,100,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,"Interaction Depth Quality",700,100,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,5,"Socialization Effectiveness",900,100,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,6,"Peripheral Participation Rate",1100,100,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,7,"Trust Level Among Members",1300,100,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,8,"Shared Mental Models Development",1500,100,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,9,"Articulated Explicit Knowledge",1700,100,40,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,10,"Knowledge Externalization Rate",1900,100,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,11,"Dialogue and Documentation Activity",100,250,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,12,"Shared Language Development",300,250,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,13,"Externalization Effectiveness",500,250,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,14,"Conceptualization Capability",700,250,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,15,"Structured Knowledge Systems",900,250,40,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,16,"Knowledge Combination Rate",1100,250,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,17,"Knowledge Integration Capability",1300,250,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,18,"Repository Development Level",1500,250,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,19,"Framework and Standards Quality",1700,250,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,20,"Combination Effectiveness",1900,250,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,21,"Embodied Tacit Knowledge",100,400,40,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,22,"Knowledge Internalization Rate",300,400,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,23,"Learning by Doing Activity",500,400,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,24,"Experimentation and Practice Level",700,400,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,25,"Reflection and Application Quality",900,400,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,26,"Internalization Effectiveness",1100,400,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,27,"Mastery Development Rate",1300,400,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,28,"Core Community Members",1500,400,40,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,29,"Peripheral Community Members",1700,400,40,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,30,"Community Advancement Rate",1900,400,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,31,"New Member Entry Rate",100,550,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,32,"Member Departure Rate",300,550,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,33,"Community Norms Strength",500,550,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,34,"Identity Development Level",700,550,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,35,"Community Vitality",900,550,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,36,"Competence Development Rate",1100,550,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,1,3,2,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,2,4,2,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,3,7,4,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,4,8,5,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,5,6,1,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,6,2,1,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,7,1,10,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,8,11,10,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,9,12,13,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,10,14,13,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,11,13,10,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,12,10,9,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,13,9,16,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,14,17,20,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,15,18,20,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,16,19,20,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,17,20,16,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,18,16,15,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,19,15,22,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,20,23,26,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,21,24,26,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,22,25,26,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,23,26,22,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,24,22,21,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,25,21,1,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,26,22,27,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,27,27,30,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,28,30,28,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,29,30,29,0,0,43,22,0,192,1,-1--1--1,,1|(0,0)|
+1,30,28,33,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,31,33,35,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,32,34,35,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,33,35,3,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,34,35,11,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,35,35,23,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,36,28,7,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,37,28,12,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,38,28,14,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,39,28,17,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,40,28,18,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,41,28,19,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+///---\\\
+:GRAPH
+///---\\\
+:BUTTON
+///---\\\
+:FUNCTION
+///---\\\
+:TABLE
+///---\\\
+:L<%^E!@
+1:untitled.vdfx
+9:untitled
+22:$,Dollar,Dollars,$s
+22:Hour,Hours
+22:Month,Months
+22:Person,People,Persons
+22:Unit,Units
+22:Week,Weeks
+22:Year,Years
+23:0
+15:0,0,0,0,0,0
+19:100,0
+27:2,
+34:0,
+42:1
+72:0
+73:0

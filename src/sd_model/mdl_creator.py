@@ -76,22 +76,35 @@ def create_mdl_from_scratch(
 
     # Apply X offset to position theory model to the RIGHT of original model
     X_OFFSET = 3000  # Theory model appears 3000px to the right
-    for var in all_variables:
-        # Add offset to X coordinate (use default 1000 if no position set yet)
-        var['x'] = var.get('x', 1000) + X_OFFSET
-        # Keep Y coordinate as-is (or use default)
-        if 'y' not in var:
-            var['y'] = 500
+
+    # Use simple grid layout for theory variables (organized by process cluster)
+    processes_dict = {p['process_name']: p for p in processes}
+
+    y_offset = 100
+    for process_name, process in processes_dict.items():
+        process_vars = [v for v in all_variables if v.get('cluster') == process_name]
+
+        # Position variables in this process cluster in a grid
+        for i, var in enumerate(process_vars):
+            var['x'] = X_OFFSET + (i % 5) * 250  # 5 columns, 250px spacing
+            var['y'] = y_offset + (i // 5) * 150  # 150px row spacing
+
+        # Move down for next process cluster
+        if process_vars:
+            rows_needed = (len(process_vars) + 4) // 5  # Ceiling division
+            y_offset += rows_needed * 150 + 200  # Extra 200px gap between processes
 
     # Use regular addition mode with offset variables
     # This is proven, stable code that works perfectly
+    # IMPORTANT: use_llm_layout=False to preserve manual X offset positioning
+    # (LLM optimizer would overwrite our side-by-side offset coordinates)
     result = apply_text_patch_enhancements(
         template_mdl_path,
         all_variables,
         all_connections,
         output_path,
         add_colors=False,  # No colors for recreation
-        use_llm_layout=True,  # ALWAYS use LLM positioning
+        use_llm_layout=False,  # Preserve manual X offset positioning
         llm_client=llm_client
     )
 

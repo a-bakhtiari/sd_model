@@ -1,0 +1,405 @@
+{UTF-8}
+colored stock  = A FUNCTION OF( )
+	~	
+	~		|
+
+New Contributors  = A FUNCTION OF( colored stock,-Skill up)
+	~	
+	~		|
+
+Core Developer  = A FUNCTION OF( -Developer's Turnover,Promotion Rate)
+	~	
+	~		|
+
+Experienced Contributors  = A FUNCTION OF( -Promotion Rate,Skill up)
+	~	
+	~		|
+
+"Explicit Knowledge Transfer (Documentation, Contributor's Guides)"  = A FUNCTION OF(\
+		 )
+	~	
+	~		|
+
+"Implicit Knowledge Transfer (Mentorship)"  = A FUNCTION OF( Core Developer)
+	~	
+	~		|
+
+Skill up  = A FUNCTION OF( "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"\
+		,"Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Promotion Rate  = A FUNCTION OF( "Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Developer's Turnover  = A FUNCTION OF( )
+	~	
+	~		|
+
+Peripheral Community Members  = A FUNCTION OF( Newcomer Arrival Rate,-Socialization Progress Rate)
+	~	
+	~		|
+
+Tacit Knowledge Base  = A FUNCTION OF( Tacit Knowledge Creation Rate)
+	~	
+	~		|
+
+Newcomer Arrival Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Socialization Progress Rate  = A FUNCTION OF( Socialization Effectiveness,Peripheral Community Members)
+	~	
+	~		|
+
+Tacit Knowledge Creation Rate  = A FUNCTION OF( Socialization Effectiveness)
+	~	
+	~		|
+
+Core Member Availability  = A FUNCTION OF( )
+	~	
+	~		|
+
+Socialization Effectiveness  = A FUNCTION OF( Core Member Availability,Mentoring Capacity,Shared Experience Opportunities)
+	~	
+	~		|
+
+Mentoring Capacity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Shared Experience Opportunities  = A FUNCTION OF( )
+	~	
+	~		|
+
+Tacit Knowledge Available  = A FUNCTION OF( -Externalization Rate)
+	~	
+	~		|
+
+Explicit Knowledge Base  = A FUNCTION OF( Externalization Rate,-Explicit Knowledge Utilization Rate)
+	~	
+	~		|
+
+Externalization Rate  = A FUNCTION OF( Externalization Effectiveness,Tacit Knowledge Available)
+	~	
+	~		|
+
+Explicit Knowledge Utilization Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Externalization Effectiveness  = A FUNCTION OF( Dialogue Opportunities,Documentation Capacity,Shared Language Development,Core Member Contribution)
+	~	
+	~		|
+
+Dialogue Opportunities  = A FUNCTION OF( )
+	~	
+	~		|
+
+Documentation Capacity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Shared Language Development  = A FUNCTION OF( )
+	~	
+	~		|
+
+Core Member Contribution  = A FUNCTION OF( )
+	~	
+	~		|
+
+Available Explicit Knowledge  = A FUNCTION OF( -Knowledge Combination Rate)
+	~	
+	~		|
+
+Combined Knowledge Base  = A FUNCTION OF( Knowledge Combination Rate,-Combined Knowledge Application Rate)
+	~	
+	~		|
+
+Knowledge Combination Rate  = A FUNCTION OF( Combination Effectiveness,Available Explicit Knowledge)
+	~	
+	~		|
+
+Combined Knowledge Application Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Combination Effectiveness  = A FUNCTION OF( System Integration Capacity,Knowledge Synthesis Capability,Categorization Framework Quality,Core Member Integration Role)
+	~	
+	~		|
+
+System Integration Capacity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Knowledge Synthesis Capability  = A FUNCTION OF( )
+	~	
+	~		|
+
+Categorization Framework Quality  = A FUNCTION OF( )
+	~	
+	~		|
+
+Core Member Integration Role  = A FUNCTION OF( )
+	~	
+	~		|
+
+Combined Knowledge Available  = A FUNCTION OF( -Internalization Rate)
+	~	
+	~		|
+
+Internalized Knowledge Base  = A FUNCTION OF( Internalization Rate,-Knowledge Application Rate)
+	~	
+	~		|
+
+Internalization Rate  = A FUNCTION OF( Internalization Effectiveness,Combined Knowledge Available)
+	~	
+	~		|
+
+Knowledge Application Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Internalization Effectiveness  = A FUNCTION OF( Training Availability,Practice Opportunities,Reflection Capacity,Application Context Quality)
+	~	
+	~		|
+
+Training Availability  = A FUNCTION OF( )
+	~	
+	~		|
+
+Practice Opportunities  = A FUNCTION OF( )
+	~	
+	~		|
+
+Reflection Capacity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Application Context Quality  = A FUNCTION OF( )
+	~	
+	~		|
+
+Peripheral Members  = A FUNCTION OF( -Core Development Rate)
+	~	
+	~		|
+
+Core Community Members  = A FUNCTION OF( Core Development Rate,-Core Member Departure Rate)
+	~	
+	~		|
+
+Core Development Rate  = A FUNCTION OF( Core Development Effectiveness,Peripheral Members)
+	~	
+	~		|
+
+Core Member Departure Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Core Development Effectiveness  = A FUNCTION OF( Member Expertise Level,Knowledge Internalization Level,Engagement Opportunities,Contribution Pathways)
+	~	
+	~		|
+
+Member Expertise Level  = A FUNCTION OF( )
+	~	
+	~		|
+
+Knowledge Internalization Level  = A FUNCTION OF( )
+	~	
+	~		|
+
+Engagement Opportunities  = A FUNCTION OF( )
+	~	
+	~		|
+
+Contribution Pathways  = A FUNCTION OF( )
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,67,2
+10,1,New Contributors,1257,581,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Core Developer,1684,584,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,3,48,1861,584,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,6,2,100,0,0,22,0,192,0,-1--1--1,,1|(1757,584)|
+1,5,6,3,4,0,0,22,0,192,0,-1--1--1,,1|(1823,584)|
+11,6,0,1790,584,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,7,Developer's Turnover,1790,618,56,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,8,Experienced Contributors,1475,584,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,11,1,100,0,0,22,0,192,0,-1--1--1,,1|(1342,585)|
+1,10,11,8,4,0,0,22,0,192,0,-1--1--1,,1|(1391,585)|
+11,11,0,1368,585,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,12,Skill up,1368,619,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,13,15,8,100,0,0,22,0,192,0,-1--1--1,,1|(1563,583)|
+1,14,15,2,4,0,0,22,0,192,0,-1--1--1,,1|(1617,583)|
+11,15,0,1591,583,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,16,Promotion Rate,1591,617,46,26,40,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,17,"Implicit Knowledge Transfer (Mentorship)",1535,413,57,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,18,17,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,19,17,15,0,0,43,0,0,192,0,-1--1--1,,1|(0,0)|
+1,20,2,17,1,0,43,0,0,192,0,-1--1--1,,1|(1653,468)|
+10,21,"Explicit Knowledge Transfer (Documentation, Contributor's Guides)",1274,404,91,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,22,21,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,23,colored stock,1067,817,46,26,3,3,0,1,-1,1,0,0,252-102-255,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,24,Peripheral Community Members,3000,100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,25,Tacit Knowledge Base,3250,100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,26,Newcomer Arrival Rate,3500,100,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,27,Socialization Progress Rate,3750,100,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,28,Tacit Knowledge Creation Rate,4000,100,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,29,Core Member Availability,3000,250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,30,Socialization Effectiveness,3250,250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,31,Mentoring Capacity,3500,250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,32,Shared Experience Opportunities,3750,250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,33,Tacit Knowledge Available,3000,600,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,34,Explicit Knowledge Base,3250,600,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,35,Externalization Rate,3500,600,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,36,Explicit Knowledge Utilization Rate,3750,600,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,37,Externalization Effectiveness,4000,600,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,38,Dialogue Opportunities,3000,750,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,39,Documentation Capacity,3250,750,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,40,Shared Language Development,3500,750,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,41,Core Member Contribution,3750,750,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,42,Available Explicit Knowledge,3000,1100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,43,Combined Knowledge Base,3250,1100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,44,Knowledge Combination Rate,3500,1100,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,45,Combined Knowledge Application Rate,3750,1100,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,46,Combination Effectiveness,4000,1100,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,47,System Integration Capacity,3000,1250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,48,Knowledge Synthesis Capability,3250,1250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,49,Categorization Framework Quality,3500,1250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,50,Core Member Integration Role,3750,1250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,51,Combined Knowledge Available,3000,1600,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,52,Internalized Knowledge Base,3250,1600,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,53,Internalization Rate,3500,1600,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,54,Knowledge Application Rate,3750,1600,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,55,Internalization Effectiveness,4000,1600,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,56,Training Availability,3000,1750,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,57,Practice Opportunities,3250,1750,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,58,Reflection Capacity,3500,1750,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,59,Application Context Quality,3750,1750,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,60,Peripheral Members,3000,2100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,61,Core Community Members,3250,2100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,62,Core Development Rate,3500,2100,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,63,Core Member Departure Rate,3750,2100,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,64,Core Development Effectiveness,4000,2100,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,65,Member Expertise Level,3000,2250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,66,Knowledge Internalization Level,3250,2250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,67,Engagement Opportunities,3500,2250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,68,Contribution Pathways,3750,2250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,24,23,1,0,0,0,0,1,192,0,251-2-128,|||0-0-0,1|(0,0)|
+1,25,26,24,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,26,27,24,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,27,28,25,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,28,29,30,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,29,31,30,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,30,32,30,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,31,30,27,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,32,30,28,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,33,24,27,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,34,35,33,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,35,35,34,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,36,36,34,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,37,38,37,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,38,39,37,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,39,40,37,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,40,41,37,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,41,37,35,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,42,33,35,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,43,44,42,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,44,44,43,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,45,45,43,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,46,47,46,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,47,48,46,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,48,49,46,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,49,50,46,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,50,46,44,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,51,42,44,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,52,53,51,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,53,53,52,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,54,54,52,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,55,56,55,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,56,57,55,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,57,58,55,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,58,59,55,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,59,55,53,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,60,51,53,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,61,62,60,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,62,62,61,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,63,63,61,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,64,65,64,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,65,66,64,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,66,67,64,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,67,68,64,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,68,64,62,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,69,60,62,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+12,25,0,2204,386,80,40,3,7,0,1,-1,1,0,0,251-2-7,0-0-0,|||0-0-0,0,0,0,0,0,0
+This is a test comment written in red just to help you see how to make a comment.
+12,26,0,2209,537,80,40,3,7,0,1,-1,1,0,0,255-255-10,0-0-0,|||0-0-0,0,0,0,0,0,0
+Here is another comment with yellow outline
+12,27,0,2188,708,80,40,3,7,0,1,-1,1,0,0,33-255-6,0-0-0,|||0-0-0,0,0,0,0,0,0
+Here is yet another comment with green outline
+12,28,0,1928,826,80,40,8,7,0,0,-1,1,0,0,0,0,0,0,0,0
+Comment
+12,29,0,1461,301,80,40,8,7,0,0,-1,1,0,0,0,0,0,0,0,0
+Comment
+///---\\\
+:L<%^E!@
+5:New Contributors
+19:67,0
+24:0
+25:0
+26:0
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Vensim Sans|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

@@ -1,0 +1,165 @@
+{
+  "theory_decisions": [
+    {
+      "theory_name": "Communities of Practice (Wenger)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Nonaka's SECI Model",
+      "decision": "include"
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Knowledge Socialization & Peripheral Engagement",
+        "narrative": "New members enter the community through observation and shared experiences with established practitioners. They begin at the periphery, learning through legitimate peripheral participation by observing workflows, absorbing tacit knowledge through informal interactions, and building relationships. This process creates the foundation for community membership through shared practice and mutual engagement. The quality of socialization experiences determines how effectively newcomers become integrated into the community.",
+        "theories_used": [
+          "Communities of Practice (Wenger)",
+          "Nonaka's SECI Model"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Social Learning Theory",
+            "rationale": "Needed to explain how observation and modeling facilitate knowledge acquisition in social contexts"
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Knowledge Externalization & Core Contribution",
+            "connection_type": "feeds_into",
+            "description": "Socialized members with foundational understanding move toward contributing their own knowledge"
+          },
+          {
+            "target_cluster": "Knowledge Combination & Community Integration",
+            "connection_type": "receives_from",
+            "description": "Receives codified knowledge and community standards that guide socialization practices"
+          }
+        ]
+      },
+      {
+        "name": "Knowledge Externalization & Core Contribution",
+        "narrative": "Community members articulate their tacit knowledge into explicit concepts, moving from peripheral to core participation. This involves creating documentation, developing best practices, and contributing new insights to the community. As members gain expertise, they transition from knowledge consumers to knowledge producers, articulating their understanding in ways that others can access and build upon. This process represents the movement toward full community membership and the creation of shared artifacts.",
+        "theories_used": [
+          "Communities of Practice (Wenger)",
+          "Nonaka's SECI Model"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Expertise Development Theory",
+            "rationale": "Needed to explain the progression from novice to expert and the cognitive processes involved in knowledge articulation"
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Knowledge Socialization & Peripheral Engagement",
+            "connection_type": "receives_from",
+            "description": "Receives newly socialized members ready to contribute their developing knowledge"
+          },
+          {
+            "target_cluster": "Knowledge Combination & Community Integration",
+            "connection_type": "feeds_into",
+            "description": "Articulated knowledge flows into the community's shared knowledge base"
+          },
+          {
+            "target_cluster": "Knowledge Internalization & Practice Refinement",
+            "connection_type": "feedback_loop",
+            "description": "Feedback from practice application informs what knowledge needs better articulation"
+          }
+        ]
+      },
+      {
+        "name": "Knowledge Combination & Community Integration",
+        "narrative": "The community systematically organizes and integrates newly articulated knowledge with existing knowledge structures. This involves combining different knowledge sources, creating coherent frameworks, and establishing community standards and practices. Knowledge becomes institutionalized through formal processes, documentation systems, and shared repositories. This process ensures that individual contributions become part of the collective intelligence and are accessible to all community members regardless of their participation level.",
+        "theories_used": [
+          "Nonaka's SECI Model"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Organizational Learning Theory",
+            "rationale": "Needed to explain how individual knowledge becomes institutionalized and embedded in community structures"
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Knowledge Externalization & Core Contribution",
+            "connection_type": "receives_from",
+            "description": "Receives articulated knowledge contributions from core members"
+          },
+          {
+            "target_cluster": "Knowledge Internalization & Practice Refinement",
+            "connection_type": "feeds_into",
+            "description": "Organized knowledge flows to members for application and internalization"
+          },
+          {
+            "target_cluster": "Knowledge Socialization & Peripheral Engagement",
+            "connection_type": "feedback_loop",
+            "description": "Integrated knowledge informs socialization practices and onboarding materials"
+          }
+        ]
+      },
+      {
+        "name": "Knowledge Internalization & Practice Refinement",
+        "narrative": "Community members absorb and apply the organized knowledge through practice, transforming explicit knowledge back into tacit understanding and refined skills. This learning-by-doing process leads to mastery and the development of intuitive expertise. As members internalize knowledge, they identify gaps, inconsistencies, and opportunities for improvement in both their own practice and the community's knowledge base. This creates a continuous cycle of learning and refinement that drives community evolution and individual growth.",
+        "theories_used": [
+          "Nonaka's SECI Model",
+          "Communities of Practice (Wenger)"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Experiential Learning Theory",
+            "rationale": "Needed to explain how knowledge application through experience leads to deeper understanding and skill development"
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Knowledge Combination & Community Integration",
+            "connection_type": "receives_from",
+            "description": "Receives organized knowledge for application and learning"
+          },
+          {
+            "target_cluster": "Knowledge Externalization & Core Contribution",
+            "connection_type": "feedback_loop",
+            "description": "Practice insights and identified knowledge gaps feed back to drive new knowledge articulation"
+          },
+          {
+            "target_cluster": "Community Evolution & Boundary Management",
+            "connection_type": "feeds_into",
+            "description": "Refined practices and deep expertise contribute to community evolution"
+          }
+        ]
+      },
+      {
+        "name": "Community Evolution & Boundary Management",
+        "narrative": "The community continuously adapts its practices, membership boundaries, and identity in response to internal learning and external pressures. This involves managing the tension between maintaining core identity and adapting to changing contexts. The community evolves its shared repertoire, redefines what constitutes legitimate participation, and adjusts its boundaries with other communities. This process ensures the community remains relevant and vibrant while preserving its essential character and knowledge base.",
+        "theories_used": [
+          "Communities of Practice (Wenger)"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Complex Adaptive Systems Theory",
+            "rationale": "Needed to explain how communities self-organize, adapt, and evolve in response to internal and external changes"
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Knowledge Internalization & Practice Refinement",
+            "connection_type": "receives_from",
+            "description": "Receives refined practices and expertise that drive community evolution"
+          },
+          {
+            "target_cluster": "Knowledge Combination & Community Integration",
+            "connection_type": "feedback_loop",
+            "description": "Community evolution influences how knowledge is organized and integrated"
+          },
+          {
+            "target_cluster": "Knowledge Socialization & Peripheral Engagement",
+            "connection_type": "feedback_loop",
+            "description": "Evolving community boundaries and identity affect socialization processes and membership criteria"
+          }
+        ]
+      }
+    ],
+    "overall_narrative": "The knowledge creation and community development system flows through five interconnected processes. New members enter through Knowledge Socialization & Peripheral Engagement [Process 1], where they absorb foundational understanding through observation and shared experiences. As they develop, they transition to Knowledge Externalization & Core Contribution [Process 2], articulating their growing expertise and moving toward full community membership. Their articulated knowledge flows into Knowledge Combination & Community Integration [Process 3], where individual contributions become organized into the community's shared knowledge base. This organized knowledge then feeds into Knowledge Internalization & Practice Refinement [Process 4], where members apply and master the knowledge through practice, developing deep expertise. The refined practices and expertise from this internalization process contribute to Community Evolution & Boundary Management [Process 5], where the community adapts and redefines itself. Critical feedback loops connect these processes: practice insights from internalization [Process 4] inform new knowledge articulation in externalization [Process 2], community evolution [Process 5] influences how knowledge is organized [Process 3], and evolving community standards affect socialization practices [Process 1]. This creates a continuous knowledge spiral where individual learning fuels community development, and community evolution enables deeper individual mastery."
+  }
+}

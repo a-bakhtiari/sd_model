@@ -238,3 +238,86 @@ Mirror changes in `1,` links if maintaining visual connections.
 - **Field counts:** Don't change number of fields in sketch lines when editing
 - **Quote consistency:** Quotes in sketch must match equation exactly
 - **Dependencies:** When removing variable, update all equations that reference it
+
+
+
+Here is the details from vensim's documentation:
+
+When models are stored in .mdl format the sketch information is appended at the end.  This information is not intended for user modification, but a brief overview of its structure is useful.  Consider the following model:
+
+
+
+The sketch information for this appears as:
+
+\\\---/// Sketch information - do not modify anything except names
+
+V300  Do not put anything below this section - it will be ignored
+
+*View 1
+
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,100,0
+
+10,1,Population,275,69,40,20,3,3,0,0,0,0,0,0
+
+12,2,48,91,71,8,8,0,3,0,0,-1,0,0,0
+
+1,3,5,1,4,0,0,22,0,0,0,-1--1--1,,1|(204,71)|
+
+1,4,5,2,100,0,0,22,0,0,0,-1--1--1,,1|(130,71)|
+
+11,5,48,167,71,6,8,34,3,0,0,1,0,0,0
+
+10,6,births,167,90,19,11,40,3,0,0,-1,0,0,0
+
+12,7,48,487,70,8,8,0,3,0,0,-1,0,0,0
+
+1,8,10,7,4,0,0,22,0,0,0,-1--1--1,,1|(441,70)|
+
+1,9,10,1,100,0,0,22,0,0,0,-1--1--1,,1|(353,70)|
+
+11,10,48,397,70,6,8,34,3,0,0,1,0,0,0
+
+10,11,deaths,397,89,22,11,40,3,0,0,-1,0,0,0
+
+10,12,birth rate,99,118,29,11,8,3,0,0,0,0,0,0
+
+10,13,average lifetime,508,104,49,11,8,3,0,0,0,0,0,0
+
+1,14,12,6,0,0,0,0,0,64,0,-1--1--1,,1|(130,104)|
+
+1,15,13,11,0,0,0,0,0,64,0,-1--1--1,,1|(445,95)|
+
+12,16,0,269,22,37,9,8,4,0,0,-1,0,0,0
+
+Comment
+
+1,17,1,5,1,0,0,0,0,64,0,-1--1--1,,1|(203,31)|
+
+1,18,1,10,1,0,0,0,0,64,0,-1--1--1,,1|(349,27)|
+
+The first line beginning \\\ marks the beginning of sketch information.  This line is repeated for each view.  Only the beginning \\\---/// is significant.
+
+The second line beginning V300 is a version code.  Vensim versions 5,4 and 3 all use the same version code (300).  Vensim tests this to be sure the information will be in the expected format.  Only the version code itself (V300) is significant.
+
+The third line beginning with a * names the view.  You can use any name you want subject to the length limitation of 30 characters.
+
+The fourth line beginning $ defines the views default font and color settings for the view (when font and color are not set for a specific object the defaults are used).  This is in the format
+
+$iniarrow,n2,face|size|attributes|color|shape|arrow|fill|background|ppix,ppiy,zoom,tf
+
+With
+
+•	iniarrow the color of initial arrows  or 0.
+•	n2 a reserved number (16 bit integer) must be 0.
+•	face the name of the font face as in Times New Roman.
+•	size the size in points of the font.
+•	attributes  one or more of BUSI for bold underline strike-through and italic.
+•	color the color of the font.  This and all the colors that follow are in R-G-B format where each of R, G, and B ranges from 0 to 255.  The color -1--1--1 is used to indicate a default color.
+•	shape the color of shapes.
+•	arrow the color of arrows.
+•	fill the fill color for shapes. -1--1--1 is used to indicate no fill.
+•	background the background color for the sketch. -1--1--1 is used to indicate that a normal window background should be used.
+•	ppix the number of pixels per inch in the x direction on the display the model was last edited with.
+•	ppiy the number of pixels per inch in the y direction on the display the model was last edited with.
+•	zoom the percentage zoom for displaying the view (5 percent means fit to screen)
+•	tf the template flag 0 is normal, 1 means don’t use the template and 3 means it is the template view.

@@ -1,0 +1,319 @@
+{UTF-8}
+"Tacit Knowledge Base"  = A FUNCTION OF( "Shared Experiences Rate","Relationship Building Rate")
+	~	
+	~		|
+
+"Shared Experiences Rate"  = A FUNCTION OF( "Trust Level","Mentoring Effectiveness")
+	~	
+	~		|
+
+"Relationship Building Rate"  = A FUNCTION OF( "Peripheral Participation Level")
+	~	
+	~		|
+
+"Trust Level"  = A FUNCTION OF( "Community Cohesion")
+	~	
+	~		|
+
+"Mentoring Effectiveness"  = A FUNCTION OF( "Socialization Effectiveness")
+	~	
+	~		|
+
+"Peripheral Participation Level"  = A FUNCTION OF( "Movement to Core Rate")
+	~	
+	~		|
+
+"Community Cohesion"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Socialization Effectiveness"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Articulated Knowledge Inventory"  = A FUNCTION OF( "Knowledge Articulation Rate")
+	~	
+	~		|
+
+"Knowledge Articulation Rate"  = A FUNCTION OF( "Dialogue Effectiveness","Documentation Quality","Conceptualization Capability","Artifact Creation Rate")
+	~	
+	~		|
+
+"Dialogue Effectiveness"  = A FUNCTION OF( "Externalization Effectiveness")
+	~	
+	~		|
+
+"Documentation Quality"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Conceptualization Capability"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Central Participation Level"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Artifact Creation Rate"  = A FUNCTION OF( "Central Participation Level")
+	~	
+	~		|
+
+"Externalization Effectiveness"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Organized Knowledge Systems"  = A FUNCTION OF( "Knowledge Integration Rate","System Organization Rate")
+	~	
+	~		|
+
+"Knowledge Integration Rate"  = A FUNCTION OF( "Synthesis Capability","Training Material Development Rate","Integration Challenges")
+	~	
+	~		|
+
+"System Organization Rate"  = A FUNCTION OF( "Categorization Effectiveness","Database Quality")
+	~	
+	~		|
+
+"Synthesis Capability"  = A FUNCTION OF( "Combination Effectiveness")
+	~	
+	~		|
+
+"Categorization Effectiveness"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Database Quality"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Training Material Development Rate"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Combination Effectiveness"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Integration Challenges"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Individual Expertise Base"  = A FUNCTION OF( "Knowledge Absorption Rate","Application Experience Rate")
+	~	
+	~		|
+
+"Knowledge Absorption Rate"  = A FUNCTION OF( "Training Effectiveness","Intuitive Understanding Level","Internalization Difficulties")
+	~	
+	~		|
+
+"Application Experience Rate"  = A FUNCTION OF( "Experimentation Rate","On-the-Job Application Quality")
+	~	
+	~		|
+
+"Training Effectiveness"  = A FUNCTION OF( "Internalization Effectiveness")
+	~	
+	~		|
+
+"Experimentation Rate"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"On-the-Job Application Quality"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Intuitive Understanding Level"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Internalization Effectiveness"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Internalization Difficulties"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Core Participation Level"  = A FUNCTION OF( "Movement to Core Rate")
+	~	
+	~		|
+
+"Peripheral Participation Level"  = A FUNCTION OF( "Movement to Core Rate")
+	~	
+	~		|
+
+"Community Leadership Strength"  = A FUNCTION OF( "Leadership Development Rate")
+	~	
+	~		|
+
+"Movement to Core Rate"  = A FUNCTION OF( "Community Identity Strength","Legitimate Participation Level")
+	~	
+	~		|
+
+"Leadership Development Rate"  = A FUNCTION OF( "Community Evolution Effectiveness")
+	~	
+	~		|
+
+"Community Identity Strength"  = A FUNCTION OF( "Practice Evolution Rate")
+	~	
+	~		|
+
+"Practice Evolution Rate"  = A FUNCTION OF( "Boundary Shifting Rate")
+	~	
+	~		|
+
+"Boundary Shifting Rate"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Legitimate Participation Level"  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Community Evolution Effectiveness"  = A FUNCTION OF( )
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  =
+		TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,0
+///---\\\
+:
+10,1,"Tacit Knowledge Base",100,100,40,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,"Shared Experiences Rate",300,100,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,"Relationship Building Rate",500,100,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,"Trust Level",700,100,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,5,"Mentoring Effectiveness",900,100,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,36,"Peripheral Participation Level",1100,100,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,7,"Community Cohesion",1300,100,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,8,"Socialization Effectiveness",1500,100,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,9,"Articulated Knowledge Inventory",1700,100,40,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,10,"Knowledge Articulation Rate",1900,100,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,11,"Dialogue Effectiveness",100,250,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,12,"Documentation Quality",300,250,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,13,"Conceptualization Capability",500,250,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,14,"Central Participation Level",700,250,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,15,"Artifact Creation Rate",900,250,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,16,"Externalization Effectiveness",1100,250,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,17,"Organized Knowledge Systems",1300,250,40,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,18,"Knowledge Integration Rate",1500,250,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,19,"System Organization Rate",1700,250,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,20,"Synthesis Capability",1900,250,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,21,"Categorization Effectiveness",100,400,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,22,"Database Quality",300,400,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,23,"Training Material Development Rate",500,400,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,24,"Combination Effectiveness",700,400,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,25,"Integration Challenges",900,400,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,26,"Individual Expertise Base",1100,400,40,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,27,"Knowledge Absorption Rate",1300,400,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,28,"Application Experience Rate",1500,400,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,29,"Training Effectiveness",1700,400,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,30,"Experimentation Rate",1900,400,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,31,"On-the-Job Application Quality",100,550,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,32,"Intuitive Understanding Level",300,550,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,33,"Internalization Effectiveness",500,550,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,34,"Internalization Difficulties",700,550,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,35,"Core Participation Level",900,550,40,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,36,"Peripheral Participation Level",1100,550,40,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,37,"Community Leadership Strength",1300,550,40,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,38,"Movement to Core Rate",1500,550,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,39,"Leadership Development Rate",1700,550,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,40,"Community Identity Strength",1900,550,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,41,"Practice Evolution Rate",100,700,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,42,"Boundary Shifting Rate",300,700,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,43,"Legitimate Participation Level",500,700,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,44,"Community Evolution Effectiveness",700,700,40,20,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,1,2,1,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,2,3,1,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,3,4,2,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,4,5,2,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,5,36,3,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,6,7,4,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,7,8,5,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,8,10,9,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,9,11,10,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,10,12,10,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,11,13,10,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,12,14,15,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,13,15,10,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,14,16,11,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,15,18,17,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,16,19,17,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,17,20,18,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,18,21,19,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,19,22,19,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,20,23,18,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,21,24,20,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,22,25,18,0,0,43,22,0,192,1,-1--1--1,,1|(0,0)|
+1,23,27,26,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,24,28,26,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,25,29,27,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,26,30,28,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,27,31,28,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,28,32,27,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,29,33,29,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,30,34,27,0,0,43,22,0,192,1,-1--1--1,,1|(0,0)|
+1,31,38,35,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,32,38,36,0,0,43,22,0,192,1,-1--1--1,,1|(0,0)|
+1,33,39,37,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,34,40,38,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,35,41,40,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,36,42,41,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,37,43,38,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+1,38,44,39,0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|
+///---\\\
+:GRAPH
+///---\\\
+:BUTTON
+///---\\\
+:FUNCTION
+///---\\\
+:TABLE
+///---\\\
+:L<%^E!@
+1:untitled.vdfx
+9:untitled
+22:$,Dollar,Dollars,$s
+22:Hour,Hours
+22:Month,Months
+22:Person,People,Persons
+22:Unit,Units
+22:Week,Weeks
+22:Year,Years
+23:0
+15:0,0,0,0,0,0
+19:100,0
+27:2,
+34:0,
+42:1
+72:0
+73:0
