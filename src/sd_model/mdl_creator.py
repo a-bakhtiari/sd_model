@@ -103,87 +103,9 @@ def _assign_positions(
 
     Returns list of variables with x, y coordinates added.
     """
-    # If no LLM client, use simple grid layout
-    if not llm_client or not llm_client.enabled:
-        return _simple_grid_layout(variables, clustering_scheme)
-
-    # Use full relayout logic to position variables
-    from .mdl_full_relayout import _get_llm_layout
-
-    # Build clustering section if provided
-    clustering_section = ""
-    if clustering_scheme:
-        clusters = clustering_scheme.get('clusters', [])
-        overall_narrative = clustering_scheme.get('overall_narrative', '')
-
-        if clusters:
-            clustering_section = "\n## PROCESS CLUSTERING (Spatial Organization Hint)\n\n"
-            clustering_section += f"**Overall Flow**: {overall_narrative}\n\n"
-            clustering_section += "**Process Modules**:\n"
-            for cluster in clusters:
-                name = cluster.get('name', '')
-                narrative = cluster.get('narrative', '')
-                clustering_section += f"- **{name}**: {narrative}\n"
-
-            clustering_section += "\nUse these clusters to spatially organize variables. Place related variables near each other.\n"
-
-    # Create simplified variables for LLM
-    vars_for_llm = [{'name': v['name'], 'type': v['type']} for v in variables]
-    conns_for_llm = [{'from': c['from'], 'to': c['to']} for c in connections]
-
-    # Build prompt (simplified version of full relayout prompt)
-    prompt = f"""You are positioning {len(variables)} variables for a System Dynamics model diagram.
-
-## VARIABLES TO POSITION
-{json.dumps(vars_for_llm, indent=2)}
-
-## CONNECTIONS
-{json.dumps(conns_for_llm, indent=2)}
-
-{clustering_section}
-
-## YOUR TASK
-Create an ASCII diagram showing variable positions. Use this format:
-
-```
-Var Name 1 (x,y)       Var Name 2 (x,y)
-
-     Var Name 3 (x,y)
-
-               Var Name 4 (x,y)
-```
-
-Requirements:
-- Use coordinates between (0,0) and (2000,2000)
-- Group related variables spatially
-- Leave space between variables (minimum 150px)
-- Place high-connectivity variables centrally
-
-Return ONLY the ASCII diagram showing positions.
-"""
-
-    try:
-        response = llm_client.complete(prompt, temperature=0.1, max_tokens=2000)
-
-        # Parse LLM response to extract positions
-        position_map = _parse_llm_positions(response)
-
-        # Apply positions to variables
-        positioned = []
-        for var in variables:
-            var_copy = var.copy()
-            if var['name'] in position_map:
-                var_copy['x'], var_copy['y'] = position_map[var['name']]
-            else:
-                # Default position if not found
-                var_copy['x'], var_copy['y'] = 500, 500
-            positioned.append(var_copy)
-
-        return positioned
-
-    except Exception as e:
-        print(f"Warning: LLM positioning failed ({e}), using grid layout")
-        return _simple_grid_layout(variables, clustering_scheme)
+    # For recreation mode, always use simple grid layout
+    # (LLM-based layout would require the full relayout infrastructure)
+    return _simple_grid_layout(variables, clustering_scheme)
 
 
 def _simple_grid_layout(variables: List[Dict], clustering_scheme: Optional[Dict]) -> List[Dict]:
