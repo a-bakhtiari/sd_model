@@ -360,13 +360,24 @@ def _generate_mdl_structure(
     for conn in connections:
         from_var = conn.get('from', '')
         to_var = conn.get('to', '')
+        relationship = conn.get('relationship', 'positive')
 
         from_id = var_name_to_id.get(from_var)
         to_id = var_name_to_id.get(to_var)
 
         if from_id and to_id:
-            # Format: 1,conn_id,from_id,to_id,polarity_flag,hidden_flag,thickness,shape,color...
-            line = f"1,{conn_id},{from_id},{to_id},0,0,0,22,0,192,0,-1--1--1,,1|(0,0)|"
+            # Determine polarity based on relationship
+            # Negative polarity: thickness=43, polarity_flag=1
+            # Positive polarity: thickness=0, polarity_flag=0
+            if relationship == 'negative':
+                thickness = 43
+                polarity_flag = 1
+            else:  # positive or unspecified
+                thickness = 0
+                polarity_flag = 0
+
+            # Format: 1,conn_id,from_id,to_id,shape,hidden,thickness,font_size,color_r,color_g,color_b,polarity_code,...
+            line = f"1,{conn_id},{from_id},{to_id},0,0,{thickness},22,0,192,{polarity_flag},-1--1--1,,1|(0,0)|"
             lines.append(line)
             conn_id += 1
 

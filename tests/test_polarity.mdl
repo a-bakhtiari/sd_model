@@ -1,0 +1,127 @@
+{UTF-8}
+Population  = INTEG( Birth Rate-Death Rate, 1000)
+	~	People
+	~	Total population
+	|
+
+Birth Rate  = Population*0.03
+	~	People/Year
+	~	Births per year (positive effect from Population)
+	|
+
+Death Rate  = Population*0.02
+	~	People/Year
+	~	Deaths per year (positive effect from Population)
+	|
+
+Resource Availability  = 100
+	~	Units
+	~	Available resources
+	|
+
+Carrying Capacity  = Resource Availability*10
+	~	People
+	~	Maximum sustainable population
+	|
+
+Growth Pressure  = Population/Carrying Capacity
+	~	Dimensionless
+	~	Ratio of current to max population
+	|
+
+Crowding Effect  = Growth Pressure
+	~	Dimensionless
+	~	Negative effect on birth rate (increases as population grows)
+	|
+
+Adjusted Birth Rate  = Birth Rate*(1-Crowding Effect)
+	~	People/Year
+	~	Birth rate reduced by crowding (negative polarity from Crowding Effect)
+	|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Year
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Year
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  =
+		TIME STEP
+	~	Year [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Year [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,0
+///---\\\
+:
+10,1,Population,400,300,40,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Birth Rate,250,200,40,20,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,Death Rate,550,200,40,20,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,Resource Availability,700,400,60,20,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,5,Carrying Capacity,700,300,60,20,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,6,Growth Pressure,550,350,50,20,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,7,Crowding Effect,400,450,50,20,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,8,Adjusted Birth Rate,250,350,60,20,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,9,48,350,200,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,10,12,1,4,0,0,22,0,0,0,-1--1--1,,1|(350,250)|
+1,11,12,9,100,0,0,22,0,0,0,-1--1--1,,1|(350,220)|
+11,12,0,350,235,8,6,33,3,0,0,2,0,0,0,0,0,0,0,0,0
+10,13,Birth Rate,350,265,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,14,48,450,200,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,15,17,14,4,0,0,22,0,0,0,-1--1--1,,1|(475,200)|
+1,16,17,1,100,0,0,22,0,0,0,-1--1--1,,1|(425,250)|
+11,17,0,450,225,8,6,33,3,0,0,2,0,0,0,0,0,0,0,0,0
+10,18,Death Rate,450,255,40,20,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,19,1,2,1,0,0,0,0,64,0,-1--1--1,,1|(325,250)|
+1,20,1,3,1,0,0,0,0,64,0,-1--1--1,,1|(475,250)|
+1,21,4,5,1,0,0,0,0,64,0,-1--1--1,,1|(700,350)|
+1,22,1,6,1,0,0,0,0,64,0,-1--1--1,,1|(475,325)|
+1,23,5,6,1,0,43,0,0,64,1,-1--1--1,,1|(625,325)|
+1,24,6,7,1,0,0,0,0,64,0,-1--1--1,,1|(475,400)|
+1,25,2,8,1,0,0,0,0,64,0,-1--1--1,,1|(250,275)|
+1,26,7,8,1,0,43,0,0,64,1,-1--1--1,,1|(325,400)|
+///---\\\
+:GRAPH
+///---\\\
+:BUTTON
+///---\\\
+:FUNCTION
+///---\\\
+:TABLE
+///---\\\
+:L<%^E!@
+1:test_polarity.vdfx
+9:test_polarity
+22:$,Dollar,Dollars,$s
+22:Hour,Hours
+22:Month,Months
+22:Person,People,Persons
+22:Unit,Units
+22:Week,Weeks
+22:Year,Years
+23:0
+15:0,0,0,0,0,0
+19:100,0
+27:2,
+34:0,
+42:1
+72:0
+73:0

@@ -206,6 +206,7 @@ class MDLTextPatcher:
         for conn in new_connections:
             from_var = conn['from']
             to_var = conn['to']
+            relationship = conn.get('relationship', 'positive')
 
             # Get IDs (from existing or newly added)
             from_id = var_id_map.get(from_var) or name_to_id.get(from_var)
@@ -231,6 +232,16 @@ class MDLTextPatcher:
 
             self.max_conn_id += 1
 
+            # Determine polarity based on relationship
+            # Negative polarity: thickness=43, polarity_flag=1
+            # Positive polarity: thickness=0, polarity_flag=0
+            if relationship == 'negative':
+                thickness = 43
+                polarity_flag = 1
+            else:  # positive or unspecified
+                thickness = 0
+                polarity_flag = 0
+
             # Select color based on scheme
             if add_colors:
                 if color_scheme == "archetype":
@@ -240,8 +251,8 @@ class MDLTextPatcher:
             else:
                 conn_color = "0,0,0"  # Black for no colors
 
-            # Standard influence connection
-            line = f"1,{self.max_conn_id},{from_id},{to_id},0,0,0,22,{conn_color},-1--1--1,,1|(0,0)|"
+            # Standard influence connection with polarity support
+            line = f"1,{self.max_conn_id},{from_id},{to_id},0,0,{thickness},22,{conn_color},{polarity_flag},-1--1--1,,1|(0,0)|"
             sketch_conn_lines.append(line)
 
         if sketch_conn_lines and self.sketch_conn_insert_line:
