@@ -1694,8 +1694,6 @@ def main() -> None:
                             for idx, cluster in enumerate(clusters):
                                 with st.expander(f"📦 **{cluster.get('name', 'Unknown Process')}**", expanded=(idx == 0)):
                                     st.markdown(f"**Narrative:** {cluster.get('narrative', 'N/A')}")
-                                    st.markdown(f"**Inputs:** {cluster.get('inputs', 'N/A')}")
-                                    st.markdown(f"**Outputs:** {cluster.get('outputs', 'N/A')}")
 
                                     # Display theories used
                                     theories_used = cluster.get('theories_used', [])
