@@ -1,0 +1,15 @@
+# Research Questions
+#
+# Define your research questions here. These will be included in the theory
+# planning phase so the LLM understands the purpose and goals of your model.
+#
+# Leave empty if you don't have specific research questions.
+#
+# Format: One research question per line (or use RQ1:, RQ2:, etc.)
+#
+# Examples:
+# RQ1: How do knowledge management practices affect OSS project sustainability?
+# RQ2: What role does governance play in community engagement?
+# RQ3: How do trust dynamics influence contributor retention?
+#
+# Your research questions below:

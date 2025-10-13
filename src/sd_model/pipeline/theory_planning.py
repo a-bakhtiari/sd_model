@@ -17,7 +17,8 @@ def create_planning_prompt(
     theories: List[Dict],
     current_model_summary: Dict,
     model_name: str = None,
-    user_instructions_path: str = None
+    user_instructions_path: str = None,
+    project_path: Path = None
 ) -> str:
     """Create prompt for Step 1: Strategic Theory Planning - CONDENSED.
 
@@ -26,6 +27,7 @@ def create_planning_prompt(
         current_model_summary: Summary of the current model structure
         model_name: Optional name of the model being enhanced
         user_instructions_path: Optional path to user instructions file
+        project_path: Optional project path for finding RQ.txt
 
     Returns:
         Prompt string for LLM
@@ -50,6 +52,27 @@ def create_planning_prompt(
             # Silently ignore if can't read file
             pass
 
+    # Read research questions from project-specific location
+    research_questions = ""
+    if project_path:
+        rq_path = project_path / "knowledge" / "RQ.txt"
+    else:
+        # Fallback to global location
+        rq_path = Path(__file__).parent.parent.parent.parent / "research_questions.txt"
+
+    if rq_path.exists():
+        try:
+            with open(rq_path, 'r') as f:
+                content = f.read().strip()
+                # Filter out comment lines starting with #
+                lines = [line for line in content.split('\n') if not line.strip().startswith('#')]
+                rq_content = '\n'.join(lines).strip()
+                if rq_content:
+                    research_questions = f"\n## Research Questions\n\nThe model should address these research questions:\n\n{rq_content}\n"
+        except Exception as e:
+            # Silently ignore if can't read file
+            pass
+
     # Format theories list
     theories_text = "\n".join([
         f"{i+1}. **{t['name']}**\n   {t.get('core_concept', '')[:200]}"
@@ -66,7 +89,7 @@ def create_planning_prompt(
 You are planning how theories can enhance an existing SD model through process-based decomposition.
 
 {model_context}
-{user_instructions}
+{research_questions}{user_instructions}
 ## Available Theories ({len(theories)} total)
 
 {theories_text}
@@ -182,26 +205,51 @@ Return ONLY valid JSON:
 
 def run_theory_planning(
     theories: List[Dict],
-    current_model_summary: Dict,
-    model_name: str = None,
+    variables: Dict = None,
+    connections: Dict = None,
+    plumbing: Dict = None,
+    mdl_path: Path = None,
     llm_client: LLMClient = None,
-    user_instructions_path: str = None
+    user_instructions_path: str = None,
+    recreate_mode: bool = False
 ) -> Dict:
     """Execute Step 1: Strategic Theory Planning - CONDENSED.
 
     Args:
         theories: List of available theories
-        current_model_summary: Summary of current model
-        model_name: Optional model name
+        variables: Variables dict (for current_model_summary)
+        connections: Connections dict (for current_model_summary)
+        plumbing: Optional plumbing data (unused but kept for compatibility)
+        mdl_path: Optional MDL path to derive project path
         llm_client: Optional LLM client
         user_instructions_path: Optional path to user instructions file
+        recreate_mode: If True, recreating model from scratch
 
     Returns:
         Dict with theory decisions and clustering strategy
     """
 
+    # Build current model summary from variables and connections
+    current_model_summary = {
+        'variables': len(variables.get('variables', [])) if variables else 0,
+        'connections': len(connections.get('connections', [])) if connections else 0
+    }
+
+    # Derive project path from mdl_path
+    project_path = None
+    if mdl_path:
+        # mdl_path is like: /path/to/projects/oss_model/mdl/untitled.mdl
+        # We want: /path/to/projects/oss_model
+        project_path = Path(mdl_path).parent.parent
+
     # Create prompt
-    prompt = create_planning_prompt(theories, current_model_summary, model_name, user_instructions_path)
+    prompt = create_planning_prompt(
+        theories,
+        current_model_summary,
+        model_name=None,
+        user_instructions_path=user_instructions_path,
+        project_path=project_path
+    )
 
     # Call LLM
     if llm_client is None:
