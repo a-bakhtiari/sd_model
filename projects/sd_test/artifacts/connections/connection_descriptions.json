@@ -2,11 +2,11 @@
   "descriptions": [
     {
       "id": "C01",
-      "description": "More core developers increase the availability of mentors, facilitating implicit knowledge transfer."
+      "description": "More core developers increase the availability of mentors, facilitating implicit knowledge sharing."
     },
     {
       "id": "C02",
-      "description": "A larger pool of new contributors increases the potential inflow of individuals who can become experienced."
+      "description": "A larger pool of new contributors increases the potential inflow of individuals who can be mentored."
     },
     {
       "id": "C03",
@@ -14,7 +14,7 @@
     },
     {
       "id": "C04",
-      "description": "Developer turnover directly reduces the number of core developers through departures from the project."
+      "description": "Developer turnover directly reduces the number of core developers by causing them to leave the project."
     },
     {
       "id": "C05",
@@ -22,15 +22,15 @@
     },
     {
       "id": "C06",
-      "description": "Promoting experienced contributors to core roles reduces the stock of experienced contributors."
+      "description": "A higher promotion rate decreases the stock of experienced contributors as they move into core roles."
     },
     {
       "id": "C07",
-      "description": "The skill-up flow increases the stock of experienced contributors by transitioning new contributors into this role."
+      "description": "The skill up flow increases the stock of experienced contributors by transitioning new contributors into this group."
     },
     {
       "id": "C08",
-      "description": "Better explicit documentation accelerates learning, thereby increasing the rate at which contributors skill up."
+      "description": "Better explicit documentation accelerates learning, increasing the rate at which contributors skill up."
     },
     {
       "id": "C09",
@@ -38,7 +38,7 @@
     },
     {
       "id": "C10",
-      "description": "Mentorship builds the necessary skills and social capital for experienced contributors to be promoted."
+      "description": "Effective mentorship prepares experienced contributors for core responsibilities, increasing their promotion rate."
     }
   ]
 }

@@ -296,6 +296,76 @@ These patterns may naturally emerge in your process narratives when describing s
 
 You must perform THREE distinct analyses:
 
+---
+
+## CRITICAL: Writing SD-Ready Process Narratives
+
+Your narratives must be **mechanistically explicit** to enable concrete SD translation. Include these elements:
+
+### Required Mechanistic Elements:
+
+**1. Stocks (Accumulations)**
+Explicitly mention collections that build up or deplete:
+- ✅ "There is a **pool of peripheral members** who are learning..."
+- ✅ "The **knowledge base** accumulates documentation over time..."
+- ✅ "The community has a **capacity** for mentoring measured in mentor-hours..."
+- ❌ "Members learn through observation" (too vague)
+
+**2. Flows (Rates of Change)**
+Describe rates, speeds, and transitions per unit time:
+- ✅ "Members transition to core status at a **rate** determined by mentoring availability..."
+- ✅ "Documentation is created at a **pace** proportional to active contributors..."
+- ✅ "The **speed of integration** depends on community openness..."
+- ❌ "Members become more integrated" (no rate specified)
+
+**3. Feedback Loops (Self-Reinforcing or Self-Correcting)**
+Explicitly state circular causal chains:
+- ✅ "**Reinforcing**: More core members → more mentoring capacity → faster newcomer progression → more future core members"
+- ✅ "**Balancing**: As workload increases → burnout rises → attrition increases → workload increases further (vicious cycle)"
+- ✅ "**Goal-seeking**: Capacity gap → increased recruitment → more contributors → reduced gap"
+- ❌ "Members help each other" (no feedback mechanism)
+
+**4. Delays (Time Lags)**
+Mention time constants and delayed effects:
+- ✅ "It takes **6-12 months on average** for a newcomer to become proficient..."
+- ✅ "The benefits of documentation appear with a **delay** as it gets refined..."
+- ✅ "Trust builds **slowly over time** through repeated interactions..."
+- ❌ "Members eventually gain expertise" (no time dimension)
+
+**5. Nonlinearities (Thresholds, Saturation, Tipping Points)**
+Describe non-proportional relationships:
+- ✅ "Below a **threshold** of 5 core members, mentoring becomes insufficient..."
+- ✅ "Adoption **accelerates rapidly** once 20% of community has adopted (tipping point)..."
+- ✅ "Mentoring effectiveness **saturates** as mentor-to-newcomer ratio exceeds 1:10..."
+- ❌ "More mentors help more" (assumes linearity)
+
+**6. Causal Drivers (What Affects What)**
+State explicit cause-effect relationships:
+- ✅ "Documentation quality **increases** as more experts contribute..."
+- ✅ "Engagement **drops** when response time exceeds 48 hours..."
+- ✅ "The rate of knowledge transfer is **limited by** available mentors..."
+- ❌ "Quality improves over time" (no causal mechanism)
+
+### Example: Before vs After
+
+**❌ Too Abstract (Current Style):**
+> "New members enter the community through observation and shared experiences. They learn by observing workflows and absorbing tacit knowledge through interactions. The rate of engagement depends on motivation and community openness."
+
+**✅ SD-Ready (Target Style):**
+> "There is a **pool of peripheral members** (Stock) who enter the community at an **arrival rate** (Flow) influenced by project visibility. These newcomers **progress toward core membership** at a **transition rate** (Flow) determined by: (1) available **mentoring capacity** (Stock × time), (2) **average socialization time** (~6 months), and (3) **community openness factor** (0-1 multiplier). **Feedback loop (Reinforcing)**: As more members reach core status (Stock increases) → mentoring capacity grows → transition rate increases → more future core members. **Balancing pressure**: If peripheral member pool grows too large, mentoring capacity becomes saturated, slowing transition rate."
+
+### Narrative Checklist (Use for Each Process)
+
+Before finalizing each narrative, verify:
+- [ ] **2-4 Stocks mentioned** (what accumulates?)
+- [ ] **2-4 Flows mentioned** (what rates drive change?)
+- [ ] **At least 1 feedback loop** explicitly stated (reinforcing or balancing)
+- [ ] **Time constants/delays** mentioned (how long do things take?)
+- [ ] **Causal drivers** stated (what increases/decreases what?)
+- [ ] **Constraints or nonlinearities** (limits, thresholds, saturation)
+
+---
+
 ## 1. Theory Evaluation
 
 For EACH theory, decide:
@@ -314,10 +384,12 @@ First, design each individual process stage:
 
 For each process stage:
 - **name**: Short process name (e.g., "Material Intake", "Production Assembly")
-- **narrative**: Full prose description of what happens in this process (write in actual sentences)
+- **narrative**: Full prose description with **SD-mechanistic detail** (write in actual sentences)
   - Describe the process flow and its role in the overall system
+  - **REQUIRED**: Include stocks (accumulations), flows (rates), feedback loops, delays, and causal mechanisms
+  - See "CRITICAL: Writing SD-Ready Process Narratives" section above for detailed guidance
   - **IMPORTANT**: Build complete, theoretically sound narratives. If you need a theory beyond the provided list to complete the narrative coherently, USE IT. You will report which additional theories you used.
-  - Example: "Raw materials arrive at the facility and undergo quality inspection. Approved materials move to the production floor where they are transformed through assembly. As products progress through production stages, they accumulate value and complexity. Finished products move to inventory storage, ready for distribution."
+  - Example: "There is a **material inventory** (Stock) that receives raw materials at an **arrival rate** (Flow) from suppliers. Materials undergo quality inspection at a **processing rate** (Flow) limited by inspector capacity. The **inspection pass rate** (Auxiliary: 0-1) adjusts based on **downstream defect feedback** with a **2-week delay**. **Feedback loop (Balancing)**: Higher defects → stricter standards → lower pass rate → fewer defects. Approved materials accumulate in **staging inventory** (Stock) for production."
 - **theories_used**: List of theory names from the provided list that informed this cluster's narrative
   - Only include theories you marked as "include" or "adapt" that were actually applied here
   - Example: ["Communities of Practice", "SECI Model"]
@@ -357,7 +429,7 @@ Do not copy this example's structure or complexity - design based on the theorie
 
 **Individual Process Narratives** (write these first):
 1. "Material Intake":
-   - Narrative: Raw materials arrive from suppliers and undergo quality checks based on inspection standards. When downstream quality issues increase, inspection criteria become stricter. Customer demand signals influence how much material to intake. Approved materials are logged into inventory and staged for production use.
+   - Narrative: There is a **supplier pipeline** (Stock) that provides raw materials at an **arrival rate** (Flow) driven by **purchase orders** (Auxiliary). Materials enter a **quality inspection queue** (Stock) where they are processed at an **inspection rate** (Flow) limited by **inspector capacity** (Auxiliary). The **inspection pass rate** (Auxiliary: 0-1) is adjusted based on **downstream defect feedback** (Auxiliary) with a **2-week response delay**. **Feedback loop (Balancing)**: Higher defect rates → stricter inspection standards → lower pass rate → fewer defects (goal-seeking behavior). Approved materials accumulate in **staging inventory** (Stock) ready for production. **Customer demand signal** (Auxiliary) influences the arrival rate, but with a **procurement delay** of 4-6 weeks.
    - Theories Used: ["Quality Management Theory", "Feedback Control Systems"]
    - Additional Theories Used: [{"theory_name": "Supply Chain Coordination Theory", "rationale": "Needed to explain supplier-buyer signaling dynamics"}]
    - Connections to Other Clusters: [
@@ -366,7 +438,7 @@ Do not copy this example's structure or complexity - design based on the theorie
      ]
 
 2. "Production Assembly":
-   - Narrative: Materials from inventory are allocated to production lines based on downstream capacity availability. Workers and machines transform materials through assembly operations. Quality issues discovered here affect upstream inspection standards. Production rates adjust when distribution capacity becomes constrained. Assembled components accumulate and move to finishing operations.
+   - Narrative: **Staging inventory** (Stock) feeds **production lines** (Stock: work-in-progress) at an **allocation rate** (Flow) determined by **available capacity** (Auxiliary: machine-hours/week). The **production completion rate** (Flow) transforms materials into **finished goods** (Stock) at a pace limited by **workforce capacity** (Auxiliary) and **equipment utilization** (Auxiliary: 0-1). **Quality defect rate** (Auxiliary: defects/unit) feeds back to Material Intake with a **1-week delay**. **Feedback loop (Balancing)**: When **distribution capacity** (Auxiliary) becomes constrained → **production rate adjustment signal** (Auxiliary) slows the allocation rate → prevents overflow. Assembly time averages **3-5 days per unit**. **Nonlinearity**: Production efficiency **drops sharply** when utilization exceeds 90% due to bottlenecks.
    - Theories Used: ["Constraint Theory", "Production System Theory"]
    - Additional Theories Used: []
    - Connections to Other Clusters: [
@@ -377,7 +449,7 @@ Do not copy this example's structure or complexity - design based on the theorie
      ]
 
 3. "Distribution Preparation":
-   - Narrative: Finished products undergo final inspection and are packaged for shipment. When warehouse capacity nears limits, this signals to slow upstream production. Customer orders drive demand signals that propagate back through the system. Completed orders accumulate in the distribution warehouse ready for shipping.
+   - Narrative: **Finished goods** (Stock) flow into a **distribution warehouse** (Stock) at the **incoming rate** (Flow) from production. Products undergo **final inspection** at a **processing rate** (Flow) limited by **inspection capacity** (Auxiliary: units/day). **Warehouse capacity** (Auxiliary: max units) creates a **capacity gap** (Auxiliary: available - occupied). **Feedback loop (Balancing)**: As gap narrows → **capacity constraint signal** (Auxiliary: 0-1) increases → production slows → gap widens (goal-seeking toward target capacity). **Customer orders** (Stock) accumulate at an **order arrival rate** (Flow) that varies with **market demand** (Auxiliary). **Shipping rate** (Flow) depletes warehouse inventory. **Delay**: Demand signals take **2-3 weeks** to propagate back to Material Intake. **Threshold**: When warehouse exceeds 80% capacity, constraint signal activates sharply.
    - Theories Used: ["Capacity Planning Theory", "Demand Management"]
    - Additional Theories Used: []
    - Connections to Other Clusters: [
@@ -393,10 +465,12 @@ Do not copy this example's structure or complexity - design based on the theorie
 
 ## Critical Instructions
 
-✓ **DO write process narratives in full prose** - describe what happens conceptually
+✓ **DO write SD-mechanistic narratives** - include stocks, flows, feedback loops, delays, and causal drivers (see "CRITICAL: Writing SD-Ready Process Narratives" section above)
+✓ **DO write process narratives in full prose** - describe what happens conceptually with explicit mechanisms
 ✓ **DO design focused processes** - each describes one coherent part of the system
 ✓ **DO highlight overlap points in overall_narrative** - show where processes connect
-✓ **DO include feedback loops** - describe how later processes feed back to earlier ones
+✓ **DO include feedback loops** - describe how later processes feed back to earlier ones with explicit causal chains
+✓ **DO mention time constants and delays** - specify how long processes take or how long feedback takes to propagate
 ✓ **DO use additional theories when needed** - if the provided theories are insufficient to build a complete narrative, use relevant theories from your knowledge and report them in `additional_theories_used`
 ✓ **DO specify theories_used for each cluster** - list which provided theories informed each cluster
 ✓ **DO specify connections_to_other_clusters** - explicitly map how each cluster connects to others (this replaces separate inputs/outputs fields)

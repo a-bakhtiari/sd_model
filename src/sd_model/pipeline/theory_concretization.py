@@ -109,6 +109,130 @@ The following connections MUST exist between processes to create a cohesive, con
 
 ---
 
+# Canonical SD Patterns (USE THESE!)
+
+When translating theoretical mechanisms to SD elements, match your theory to these proven patterns. These patterns come from SD literature (Sterman, 2000) and ensure robust dynamic structure.
+
+## Pattern 1: Aging Chain (Progression Through Stages)
+
+**Use when**: Theory describes progression through levels/stages (novice→expert, peripheral→core)
+
+```
+Stock 1 → (Flow Rate 1) → Stock 2 → (Flow Rate 2) → Stock 3
+
+Variables:
+  Stock: Level_1, Level_2, Level_3 (entities at each stage)
+  Flow: Progression_Rate_1_to_2 = Level_1 * Effectiveness_1 * Time_Constant_1
+  Flow: Progression_Rate_2_to_3 = Level_2 * Effectiveness_2 * Time_Constant_2
+  Auxiliary: Effectiveness (factors affecting progression)
+
+Example (Learning):
+  Stock: Novices, Intermediates, Experts
+  Flow: Learning_Rate = Novices * Mentoring_Effectiveness / Learning_Time
+  Flow: Mastery_Rate = Intermediates * Practice_Quality / Mastery_Time
+```
+
+## Pattern 2: Stock Management with Feedback
+
+**Use when**: Theory describes resource/capacity management with desired levels
+
+```
+  Desired_Level
+       ↓
+  Gap → Adjustment_Rate → Stock
+       ↑                    ↓
+       └────────────────────┘
+
+Variables:
+  Stock: Actual_Level (resource, capacity, knowledge)
+  Auxiliary: Desired_Level, Gap = Desired - Actual
+  Flow: Adjustment_Rate = Gap / Adjustment_Time
+  Feedback: Stock → Gap → Adjustment Rate (balancing loop - goal seeking)
+
+Example (Knowledge):
+  Stock: Knowledge_Base
+  Auxiliary: Desired_Knowledge = f(requirements)
+  Auxiliary: Knowledge_Gap = Desired_Knowledge - Knowledge_Base
+  Flow: Learning_Rate = Knowledge_Gap / Learning_Time
+```
+
+## Pattern 3: Diffusion/Adoption (S-Curve Growth)
+
+**Use when**: Theory describes spreading/adoption with word-of-mouth effects
+
+```
+Potential_Adopters ← Adoption_Flow → Adopters
+                          ↑              ↓
+                          └──────────────┘
+
+Variables:
+  Stock: Potential_Adopters, Adopters
+  Flow: Adoption_Flow = Potential * Contact_Rate * Adoption_Fraction
+  Auxiliary: Contact_Rate = Adopters * Contacts_Per_Adopter / Total_Population
+  Feedback: More Adopters → More Contacts → Faster Adoption (reinforcing S-curve)
+
+Example (Knowledge Spread):
+  Stock: Unknowing_Members, Knowing_Members
+  Flow: Knowledge_Transfer_Rate = Unknowing * (Knowing/Total) * Transfer_Effectiveness
+  Feedback: Knowing → Transfer Rate → More Knowing (S-curve diffusion)
+```
+
+## Pattern 4: Resource with Regeneration
+
+**Use when**: Theory involves renewable resources (trust, capacity, knowledge that regenerates)
+
+```
+Resource_Stock ← Regeneration_Flow
+      ↓
+   Usage_Flow
+
+Variables:
+  Stock: Resource_Level
+  Flow: Usage_Flow = Resource * Usage_Fraction
+  Flow: Regeneration_Flow = (Max_Resource - Resource) / Regeneration_Time
+  Feedback: Resource → Usage (reinforcing depletion)
+  Feedback: Resource → Regeneration (balancing restoration)
+
+Example (Trust):
+  Stock: Trust_Level
+  Flow: Trust_Erosion = Trust * Erosion_Rate
+  Flow: Trust_Building = (Max_Trust - Trust) * Positive_Interactions / Building_Time
+```
+
+## Pattern 5: Co-flow (Bidirectional Transfer)
+
+**Use when**: Theory describes mutual exchange between groups
+
+```
+Stock_A ↔ Transfer_Flows ↔ Stock_B
+
+Variables:
+  Stock: Group_A_Knowledge, Group_B_Knowledge
+  Flow: A_to_B_Transfer = Group_A_Knowledge * Transfer_Rate_AB * Willingness_B
+  Flow: B_to_A_Transfer = Group_B_Knowledge * Transfer_Rate_BA * Willingness_A
+  Feedback: Reciprocal knowledge sharing
+
+Example (Communities):
+  Stock: Core_Member_Knowledge, Peripheral_Member_Knowledge
+  Flow: Mentoring_Flow = Core_Knowledge * Mentoring_Rate * Peripheral_Receptiveness
+  Flow: Contribution_Flow = Peripheral_Knowledge * Contribution_Rate * Core_Openness
+```
+
+## How to Use Patterns
+
+1. **Read your process narrative**
+2. **Identify which pattern(s) match the mechanism**
+   - Progression through stages? → Aging Chain
+   - Goal-seeking behavior? → Stock Management
+   - Spreading with network effects? → Diffusion
+   - Renewable resource? → Regeneration
+   - Mutual exchange? → Co-flow
+3. **Adapt the pattern** to your theory's specific variables
+4. **Keep the mathematical structure** (stocks, flows, feedbacks)
+5. **Combine patterns** if theory involves multiple mechanisms
+
+---
+
 # Your Task: Convert Narratives to SD Elements
 
 **Read the overall system narrative** to understand how processes connect as a cohesive whole.
@@ -120,7 +244,7 @@ Then **for EACH process narrative**, create:
 4. **Connections** - Causal relationships implementing the narrative logic (BOTH internal AND inter-cluster)
 5. **Hub outputs** - Key variables that connect this process to others
 
-**Key Principle**: Each process is a modular mini-model. Process outputs become connection points (hubs) linking multiple processes together.
+**Key Principle**: Each process is a modular mini-model with canonical SD structure. Use the patterns above to ensure robust dynamics with proper feedback loops.
 
 ## ⚠️ CRITICAL: Creating Inter-Cluster Connections
 
@@ -243,21 +367,108 @@ Result: Clean linear pipeline A→B→C→D→A
   - "Capacity" (capacity for what?)
   - "Rate" (rate of what?)
 
-**Type Selection:**
-- **Stock**: Accumulations (inventory, people, knowledge, capacity)
-  - Represented as rectangles in SD diagrams
-  - Hold values that accumulate over time
+**Type Selection - Use This Decision Tree:**
 
-- **Flow**: Rates connecting stocks (production rate, hiring rate)
-  - Represented as pipes with valves
-  - **CRITICAL**: Flows only exist between two Stocks OR between Stock and model boundary
-  - Stock ↔ Stock: Internal flow (both stocks in model)
-  - Stock ↔ Boundary: External flow (use `boundary_flows` array below)
-  - If no Stock connection, use Auxiliary instead
+### Step 1: Is this a COLLECTION of entities that accumulates/depletes over time?
+**→ STOCK**
 
-- **Auxiliary**: Calculated values, multipliers, effectiveness measures
-  - Support intermediate calculations
-  - Plain text variables in SD diagrams
+**Test Questions:**
+- Can you ask "How much/many is there RIGHT NOW?"
+- Does it have units of "things" (people, documents, units of knowledge)?
+- Does it persist even if inflows/outflows stop?
+
+**Examples from Knowledge Management Theory:**
+- ✅ "Novice Contributors" (people)
+- ✅ "Documented Knowledge Base" (documents/artifacts)
+- ✅ "Core Developers" (people)
+- ✅ "Tacit Knowledge Pool" (units of tacit knowledge)
+- ✅ "Organizational Memory" (accumulated experience)
+
+**Units Check:** People, documents, knowledge units, capacity units
+
+---
+
+### Step 2: Is this a RATE that changes a Stock over time?
+**→ FLOW**
+
+**Test Questions:**
+- Can you ask "How fast is it changing PER UNIT TIME?"
+- Does it have units of "things PER TIME" (people/month, documents/week)?
+- Does it connect TWO Stocks OR a Stock to model boundary?
+
+**CRITICAL RULE:** Flows ONLY exist between Stocks. If there's no Stock-to-Stock connection, use Auxiliary instead.
+
+**Valid Flow Patterns:**
+- Stock A → [Flow] → Stock B (internal transfer)
+- Stock A → [Flow] → Boundary (outflow to external)
+- Boundary → [Flow] → Stock A (inflow from external)
+
+**Examples from Knowledge Management Theory:**
+- ✅ "Learning Rate" (Novices → Intermediates: people/month)
+- ✅ "Documentation Creation Rate" (→ Knowledge Base: documents/month)
+- ✅ "Attrition Rate" (Core Developers → Boundary: people/month)
+- ✅ "Knowledge Transfer Rate" (Tacit Pool → Explicit Docs: knowledge units/month)
+- ❌ "Mentoring Effectiveness" → NOT a Flow (no Stock-to-Stock connection) → Use Auxiliary
+
+**Units Check:** [Stock units] / [Time unit] (people/month, documents/week, etc.)
+
+---
+
+### Step 3: Is this a CALCULATED VALUE, multiplier, or intermediate factor?
+**→ AUXILIARY**
+
+**Test Questions:**
+- Is it calculated from other variables (no direct accumulation)?
+- Does it affect rates (Flows) but isn't itself a rate between Stocks?
+- Does it represent effectiveness, ratio, probability, or dimensionless factor?
+
+**Examples from Knowledge Management Theory:**
+- ✅ "Mentoring Effectiveness" (dimensionless: 0-1 multiplier)
+- ✅ "Documentation Quality Index" (dimensionless ratio)
+- ✅ "Community Engagement Level" (calculated from multiple factors)
+- ✅ "Knowledge Gap" (Desired - Actual: knowledge units, but not a rate)
+- ✅ "Time to Competency" (months, derived from skill level)
+
+**Common Use Cases:**
+- Multipliers/effectiveness factors (0-1 range)
+- Ratios and fractions (dimensionless)
+- Gaps (Desired - Actual)
+- Time constants (adjustment time, delay time)
+- Thresholds and conditions
+
+**Units Check:** Often dimensionless, or composite units (not [things/time])
+
+---
+
+## Theory-to-Type Mapping Guide
+
+When translating theoretical concepts, use this mapping:
+
+| Theoretical Concept | SD Type | Example Variable |
+|---------------------|---------|------------------|
+| **Actors/Agents** (people, entities) | Stock | "Novice Contributors", "Core Developers" |
+| **Resources/Assets** (knowledge, capacity) | Stock | "Knowledge Base", "Development Capacity" |
+| **State/Level** (maturity, trust) | Stock | "Organizational Maturity Level", "Trust Level" |
+| **Movement/Transfer** (people moving, knowledge flow) | Flow | "Promotion Rate", "Knowledge Transfer Rate" |
+| **Change Rate** (any "per time" concept) | Flow | "Learning Rate", "Attrition Rate" |
+| **Effectiveness/Quality** (how well something works) | Auxiliary | "Mentoring Effectiveness", "Code Quality" |
+| **Multipliers** (amplifying/dampening factors) | Auxiliary | "Network Effect Multiplier", "Fatigue Factor" |
+| **Gaps** (desired vs actual) | Auxiliary | "Skill Gap", "Capacity Gap" |
+| **Time Constants** (how long processes take) | Auxiliary | "Time to Learn", "Onboarding Duration" |
+| **Conditions/Thresholds** (when things happen) | Auxiliary | "Burnout Threshold", "Promotion Readiness" |
+
+---
+
+## Quick Validation Checklist
+
+Before finalizing your variable list:
+
+- [ ] **Every Stock has at least ONE Flow** (inflow or outflow)
+- [ ] **Every Flow connects TWO Stocks** (or Stock-to-Boundary)
+- [ ] **Auxiliaries are used for calculated values**, not direct accumulations
+- [ ] **Units are consistent**: Stocks (things), Flows (things/time), Auxiliaries (various)
+- [ ] **Feedback loops exist**: At least one Stock → Auxiliary → Flow → Stock cycle
+- [ ] **Names are specific**: "Novice Contributors" not just "Novices"
 
 **Connection Design:**
 - **from**: Source variable (existing OR new)
@@ -279,6 +490,197 @@ Result: Clean linear pipeline A→B→C→D→A
 ⚠️ **DO NOT create isolated variables** - must connect to other variables
 ⚠️ **DO NOT duplicate existing variable names** - check current model first
 ⚠️ **DO NOT create Flows without Stock-to-Stock connections** - use Auxiliary instead
+
+---
+
+## Worked Examples: Theory Narrative → SD Translation
+
+These examples demonstrate how to translate theoretical mechanisms into concrete SD structure with proper feedback loops and canonical patterns.
+
+---
+
+### Example 1: Knowledge Transfer via Mentorship (Aging Chain Pattern)
+
+**Theory Narrative (from Step 1):**
+"Nonaka's SECI model describes knowledge conversion through socialization (tacit-to-tacit), externalization (tacit-to-explicit), combination (explicit-to-explicit), and internalization (explicit-to-tacit). In open source, newcomers gain tacit knowledge through mentorship from core developers, then document this knowledge, which gets integrated into guides, and finally internalized by future newcomers."
+
+**SD Translation:**
+
+**Step 1: Identify Stocks** (collections that accumulate)
+- "Newcomers with Tacit Knowledge" (people)
+- "Contributors with Documented Knowledge" (people)
+- "Core Developers" (people)
+
+**Step 2: Identify Flows** (rates connecting stocks)
+- "Mentorship Completion Rate" (Newcomers → Contributors: people/month)
+- "Documentation Mastery Rate" (Contributors → Core Developers: people/month)
+
+**Step 3: Identify Auxiliaries** (calculated values, multipliers)
+- "Mentoring Effectiveness" (dimensionless: 0-1, depends on Core Developer availability)
+- "Documentation Quality" (dimensionless: 0-1, affects mastery rate)
+- "Average Mentoring Time" (months, time constant)
+
+**Step 4: Create Feedback Loop**
+- Core Developers → Mentoring Effectiveness (more mentors = better effectiveness)
+- Mentoring Effectiveness → Mentorship Completion Rate (effectiveness speeds progression)
+- Mentorship Completion Rate → Core Developers (eventually) (creates reinforcing loop)
+
+**Result:** Aging Chain pattern with reinforcing feedback (more core devs → better mentorship → more future core devs)
+
+**Variables:**
+```json
+[
+  {{"name": "Newcomers with Tacit Knowledge", "type": "Stock"}},
+  {{"name": "Contributors with Documented Knowledge", "type": "Stock"}},
+  {{"name": "Core Developers", "type": "Stock"}},
+  {{"name": "Mentorship Completion Rate", "type": "Flow"}},
+  {{"name": "Documentation Mastery Rate", "type": "Flow"}},
+  {{"name": "Mentoring Effectiveness", "type": "Auxiliary"}},
+  {{"name": "Documentation Quality", "type": "Auxiliary"}},
+  {{"name": "Average Mentoring Time", "type": "Auxiliary"}}
+]
+```
+
+**Connections (including feedback):**
+```json
+[
+  {{"from": "Mentorship Completion Rate", "to": "Contributors with Documented Knowledge", "relationship": "positive"}},
+  {{"from": "Newcomers with Tacit Knowledge", "to": "Mentorship Completion Rate", "relationship": "positive"}},
+  {{"from": "Mentoring Effectiveness", "to": "Mentorship Completion Rate", "relationship": "positive"}},
+  {{"from": "Core Developers", "to": "Mentoring Effectiveness", "relationship": "positive"}},
+  {{"from": "Documentation Mastery Rate", "to": "Core Developers", "relationship": "positive"}},
+  {{"from": "Contributors with Documented Knowledge", "to": "Documentation Mastery Rate", "relationship": "positive"}},
+  {{"from": "Documentation Quality", "to": "Documentation Mastery Rate", "relationship": "positive"}}
+]
+```
+
+---
+
+### Example 2: Community Capacity Management (Stock Management with Feedback Pattern)
+
+**Theory Narrative (from Step 1):**
+"Social Capital Theory emphasizes network ties and trust. In OSS, contribution capacity depends on active contributors, but burnout and turnover reduce capacity. Projects adjust onboarding efforts based on capacity gaps."
+
+**SD Translation:**
+
+**Step 1: Identify Stocks** (collections that accumulate)
+- "Active Contributors" (people)
+- "Contribution Capacity" (person-hours/month) — derived stock representing available effort
+
+**Step 2: Identify Flows** (rates connecting stocks)
+- "Onboarding Rate" (→ Active Contributors: people/month)
+- "Attrition Rate" (Active Contributors →: people/month)
+
+**Step 3: Identify Auxiliaries** (calculated values, multipliers)
+- "Desired Capacity" (person-hours/month, target level)
+- "Capacity Gap" (Desired - Actual: person-hours/month)
+- "Onboarding Adjustment" (dimensionless multiplier based on gap)
+- "Burnout Factor" (dimensionless: 0-1, increases with overwork)
+
+**Step 4: Create Feedback Loop**
+- Capacity Gap → Onboarding Adjustment (larger gap → more recruiting)
+- Onboarding Adjustment → Onboarding Rate (adjustment speeds onboarding)
+- Onboarding Rate → Active Contributors → Contribution Capacity (closes gap)
+- **Balancing Loop:** Gap-seeking behavior (classic goal-seeking pattern)
+
+**Result:** Stock Management pattern with balancing feedback (capacity gap drives corrective action)
+
+**Variables:**
+```json
+[
+  {{"name": "Active Contributors", "type": "Stock"}},
+  {{"name": "Contribution Capacity", "type": "Stock"}},
+  {{"name": "Onboarding Rate", "type": "Flow"}},
+  {{"name": "Attrition Rate", "type": "Flow"}},
+  {{"name": "Desired Capacity", "type": "Auxiliary"}},
+  {{"name": "Capacity Gap", "type": "Auxiliary"}},
+  {{"name": "Onboarding Adjustment", "type": "Auxiliary"}},
+  {{"name": "Burnout Factor", "type": "Auxiliary"}}
+]
+```
+
+**Connections (including feedback):**
+```json
+[
+  {{"from": "Onboarding Rate", "to": "Active Contributors", "relationship": "positive"}},
+  {{"from": "Active Contributors", "to": "Attrition Rate", "relationship": "positive"}},
+  {{"from": "Attrition Rate", "to": "Active Contributors", "relationship": "negative"}},
+  {{"from": "Active Contributors", "to": "Contribution Capacity", "relationship": "positive"}},
+  {{"from": "Capacity Gap", "to": "Onboarding Adjustment", "relationship": "positive"}},
+  {{"from": "Onboarding Adjustment", "to": "Onboarding Rate", "relationship": "positive"}},
+  {{"from": "Desired Capacity", "to": "Capacity Gap", "relationship": "positive"}},
+  {{"from": "Contribution Capacity", "to": "Capacity Gap", "relationship": "negative"}},
+  {{"from": "Burnout Factor", "to": "Attrition Rate", "relationship": "positive"}}
+]
+```
+
+---
+
+### Example 3: Knowledge Diffusion with Network Effects (Diffusion/Adoption Pattern)
+
+**Theory Narrative (from Step 1):**
+"Rogers' Diffusion of Innovation theory suggests adoption follows an S-curve driven by social exposure. In OSS, best practices spread as more developers adopt them, with network effects accelerating adoption among the non-adopter population."
+
+**SD Translation:**
+
+**Step 1: Identify Stocks** (collections that accumulate)
+- "Non-Adopters" (people who haven't adopted the practice)
+- "Adopters" (people who have adopted the practice)
+
+**Step 2: Identify Flows** (rates connecting stocks)
+- "Adoption Rate" (Non-Adopters → Adopters: people/month)
+
+**Step 3: Identify Auxiliaries** (calculated values, multipliers)
+- "Contact Rate" (contacts/person/month, how often people interact)
+- "Adoption Probability" (dimensionless: 0-1, probability per contact)
+- "Network Effect Multiplier" (dimensionless, increases with adopter fraction)
+- "Total Population" (people, constant)
+
+**Step 4: Create Feedback Loop**
+- Adopters → Network Effect Multiplier (more adopters → stronger network effect)
+- Network Effect Multiplier → Adoption Probability (network effect increases adoption)
+- Adoption Probability → Adoption Rate (higher probability → faster adoption)
+- Adoption Rate → Adopters (creates reinforcing loop)
+- **Reinforcing Loop with Limits:** S-curve growth (fast in middle, slow at extremes)
+
+**Result:** Diffusion pattern with reinforcing feedback and natural saturation
+
+**Variables:**
+```json
+[
+  {{"name": "Non-Adopters", "type": "Stock"}},
+  {{"name": "Adopters", "type": "Stock"}},
+  {{"name": "Adoption Rate", "type": "Flow"}},
+  {{"name": "Contact Rate", "type": "Auxiliary"}},
+  {{"name": "Adoption Probability", "type": "Auxiliary"}},
+  {{"name": "Network Effect Multiplier", "type": "Auxiliary"}},
+  {{"name": "Total Population", "type": "Auxiliary"}}
+]
+```
+
+**Connections (including feedback):**
+```json
+[
+  {{"from": "Adoption Rate", "to": "Adopters", "relationship": "positive"}},
+  {{"from": "Non-Adopters", "to": "Adoption Rate", "relationship": "positive"}},
+  {{"from": "Adoption Rate", "to": "Non-Adopters", "relationship": "negative"}},
+  {{"from": "Adoption Probability", "to": "Adoption Rate", "relationship": "positive"}},
+  {{"from": "Contact Rate", "to": "Adoption Rate", "relationship": "positive"}},
+  {{"from": "Adopters", "to": "Network Effect Multiplier", "relationship": "positive"}},
+  {{"from": "Network Effect Multiplier", "to": "Adoption Probability", "relationship": "positive"}}
+]
+```
+
+---
+
+## Key Takeaways from Examples
+
+1. **Every process needs 3-5 Stocks minimum** (not just 1-2) to capture progression/stages
+2. **Feedback loops are REQUIRED** - no isolated linear chains
+3. **Match theory to canonical patterns** - use the pattern library above
+4. **Auxiliaries enable feedback** - they connect stocks back to flows
+5. **Names must be specific** - "Newcomers with Tacit Knowledge" not just "Newcomers"
+6. **Units guide types** - people = Stock, people/month = Flow, dimensionless = Auxiliary
 
 ---
 

@@ -1,0 +1,309 @@
+{UTF-8}
+colored stock  = A FUNCTION OF( )
+	~	
+	~		|
+
+New Contributors  = A FUNCTION OF( colored stock,-Skill up)
+	~	
+	~		|
+
+Core Developer  = A FUNCTION OF( -Developer's Turnover,Promotion Rate)
+	~	
+	~		|
+
+Experienced Contributors  = A FUNCTION OF( -Promotion Rate,Skill up)
+	~	
+	~		|
+
+"Explicit Knowledge Transfer (Documentation, Contributor's Guides)"  = A FUNCTION OF(\
+		 )
+	~	
+	~		|
+
+"Implicit Knowledge Transfer (Mentorship)"  = A FUNCTION OF( Core Developer)
+	~	
+	~		|
+
+Skill up  = A FUNCTION OF( "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"\
+		,"Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Promotion Rate  = A FUNCTION OF( "Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Developer's Turnover  = A FUNCTION OF( )
+	~	
+	~		|
+
+Tacit Knowledge Base  = A FUNCTION OF( Shared Experience Rate)
+	~	
+	~		|
+
+Community Participation Level  = A FUNCTION OF( Community Engagement Rate)
+	~	
+	~		|
+
+Shared Experience Rate  = A FUNCTION OF( Socialization Effectiveness,Internalized Expertise\
+		,Internalized Expertise)
+	~	
+	~		|
+
+Community Engagement Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Socialization Effectiveness  = A FUNCTION OF( Community Participation Level,Trust Level\
+		,Mentoring Intensity,Community Competence)
+	~	
+	~		|
+
+Trust Level  = A FUNCTION OF( )
+	~	
+	~		|
+
+Mentoring Intensity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Articulated Knowledge  = A FUNCTION OF( Knowledge Articulation Rate)
+	~	
+	~		|
+
+Knowledge Articulation Rate  = A FUNCTION OF( Tacit Knowledge Base,Conceptualization Effectiveness\
+		,Tacit Knowledge Base)
+	~	
+	~		|
+
+Conceptualization Effectiveness  = A FUNCTION OF( Member Centrality,Dialogue Quality)
+	~	
+	~		|
+
+Member Centrality  = A FUNCTION OF( )
+	~	
+	~		|
+
+Dialogue Quality  = A FUNCTION OF( Community Identity Strength)
+	~	
+	~		|
+
+Integrated Knowledge Systems  = A FUNCTION OF( Knowledge Integration Rate)
+	~	
+	~		|
+
+Knowledge Integration Rate  = A FUNCTION OF( Articulated Knowledge,System Integration Effectiveness\
+		,Articulated Knowledge)
+	~	
+	~		|
+
+System Integration Effectiveness  = A FUNCTION OF( Knowledge Categorization Quality,Framework Coherence\
+		)
+	~	
+	~		|
+
+Knowledge Categorization Quality  = A FUNCTION OF( )
+	~	
+	~		|
+
+Framework Coherence  = A FUNCTION OF( )
+	~	
+	~		|
+
+Internalized Expertise  = A FUNCTION OF( Knowledge Application Rate)
+	~	
+	~		|
+
+Knowledge Application Rate  = A FUNCTION OF( Integrated Knowledge Systems,Learning by Doing Effectiveness\
+		,Integrated Knowledge Systems)
+	~	
+	~		|
+
+Learning by Doing Effectiveness  = A FUNCTION OF( Practical Application Quality,Routine Integration Level\
+		,Community Competence)
+	~	
+	~		|
+
+Practical Application Quality  = A FUNCTION OF( )
+	~	
+	~		|
+
+Routine Integration Level  = A FUNCTION OF( )
+	~	
+	~		|
+
+Community Competence  = A FUNCTION OF( Competence Growth Rate)
+	~	
+	~		|
+
+Community Identity Strength  = A FUNCTION OF( Identity Formation Rate)
+	~	
+	~		|
+
+Competence Growth Rate  = A FUNCTION OF( Community Vitality)
+	~	
+	~		|
+
+Identity Formation Rate  = A FUNCTION OF( Community Vitality)
+	~	
+	~		|
+
+Boundary Negotiation Effectiveness  = A FUNCTION OF( )
+	~	
+	~		|
+
+Member Participation Dynamics  = A FUNCTION OF( )
+	~	
+	~		|
+
+Community Vitality  = A FUNCTION OF( Boundary Negotiation Effectiveness,Member Participation Dynamics\
+		)
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,155,2
+10,1,New Contributors,-2627,856,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Core Developer,-2200,859,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,3,48,-2023,859,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,6,2,100,0,0,22,0,192,0,-1--1--1,,1|(-2127,859)|
+1,5,6,3,4,0,0,22,0,192,0,-1--1--1,,1|(-2060,859)|
+11,6,0,-2094,859,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,7,Developer's Turnover,-2094,893,56,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,8,Experienced Contributors,-2409,859,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,11,1,100,0,0,22,0,192,0,-1--1--1,,1|(-2541,860)|
+1,10,11,8,4,0,0,22,0,192,0,-1--1--1,,1|(-2492,860)|
+11,11,0,-2516,860,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,12,Skill up,-2516,894,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,13,15,8,100,0,0,22,0,192,0,-1--1--1,,1|(-2321,858)|
+1,14,15,2,4,0,0,22,0,192,0,-1--1--1,,1|(-2266,858)|
+11,15,0,-2293,858,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,16,Promotion Rate,-2293,892,46,26,40,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,17,"Implicit Knowledge Transfer (Mentorship)",-2349,688,57,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,18,17,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,19,17,15,0,0,43,0,0,192,0,-1--1--1,,1|(0,0)|
+1,20,2,17,1,0,43,0,0,192,0,-1--1--1,,1|(-2231,743)|
+10,21,"Explicit Knowledge Transfer (Documentation, Contributor's Guides)",-2610,679,91,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,22,21,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,23,colored stock,-2817,1092,46,26,3,3,0,1,-1,1,0,0,252-102-255,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,24,Tacit Knowledge Base,426,377,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,25,Community Participation Level,365,558,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,26,Shared Experience Rate,659,280,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,27,Community Engagement Rate,446,452,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,28,Socialization Effectiveness,745,404,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,29,Trust Level,740,541,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,30,Mentoring Intensity,585,612,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,31,Articulated Knowledge,672,97,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,32,Knowledge Articulation Rate,339,198,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,33,Conceptualization Effectiveness,149,238,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,34,Member Centrality,278,423,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,35,Dialogue Quality,124,614,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,36,Integrated Knowledge Systems,2183,596,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,37,Knowledge Integration Rate,2366,375,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,38,System Integration Effectiveness,2427,571,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,39,Knowledge Categorization Quality,2527,397,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,40,Framework Coherence,2694,500,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,41,Internalized Expertise,2456,860,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,42,Knowledge Application Rate,2672,788,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,43,Learning by Doing Effectiveness,2593,969,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,44,Practical Application Quality,3084,901,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,45,Routine Integration Level,2976,1028,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,46,Community Competence,1117,1081,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,47,Community Identity Strength,646,1399,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,48,Competence Growth Rate,1188,1192,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,49,Identity Formation Rate,914,1410,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,50,Boundary Negotiation Effectiveness,1172,1407,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,51,Member Participation Dynamics,888,1316,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,52,Community Vitality,1088,1317,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,53,23,1,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,54,26,24,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,55,27,25,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,56,41,26,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,57,28,26,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,58,46,28,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,59,25,28,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,60,30,28,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,61,29,28,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,62,32,31,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,63,33,32,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,64,24,32,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,65,35,33,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,66,34,33,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,67,47,35,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,68,37,36,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,69,31,37,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,70,38,37,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,71,40,38,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,72,39,38,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,73,42,41,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,74,36,42,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,75,43,42,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,76,46,43,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,77,44,43,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,78,45,43,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,79,48,46,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,80,49,47,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,81,52,48,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,82,52,49,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,83,50,52,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,84,51,52,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+///---\\\
+:L<%^E!@
+5:Shared Experience Rate
+19:155,0
+24:0
+25:0
+26:0
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Vensim Sans|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1
