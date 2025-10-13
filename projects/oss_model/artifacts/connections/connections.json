@@ -111,245 +111,251 @@
     {
       "id": "C19",
       "from_var": "Project Reputation",
-      "to_var": "Joining Rate_1",
-      "relationship": "undeclared"
-    },
-    {
-      "id": "C20",
-      "from_var": "Project Reputation",
       "to_var": "User Base",
       "relationship": "positive"
     },
     {
-      "id": "C21",
+      "id": "C20",
       "from_var": "Open Issues",
       "to_var": "Feedback",
       "relationship": "positive"
     },
     {
-      "id": "C22",
+      "id": "C21",
       "from_var": "Feedback",
       "to_var": "Open Issues",
       "relationship": "positive"
     },
     {
-      "id": "C23",
+      "id": "C22",
       "from_var": "Community Health",
       "to_var": "Project Reputation",
       "relationship": "positive"
     },
     {
-      "id": "C24",
-      "from_var": "Project Reputation",
-      "to_var": "Joining Rate",
-      "relationship": "positive"
-    },
-    {
-      "id": "C25",
+      "id": "C23",
       "from_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
       "to_var": "Joining Rate_1",
       "relationship": "undeclared"
     },
     {
+      "id": "C24",
+      "from_var": "Governance strategy",
+      "to_var": "Joining Rate_1",
+      "relationship": "undeclared"
+    },
+    {
+      "id": "C25",
+      "from_var": "Governance strategy",
+      "to_var": "Joining Rate",
+      "relationship": "undeclared"
+    },
+    {
       "id": "C26",
+      "from_var": "Project Reputation",
+      "to_var": "Joining Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C27",
       "from_var": "Maintainer time",
       "to_var": "Issue Resolution Rate",
       "relationship": "positive"
     },
     {
-      "id": "C27",
+      "id": "C28",
       "from_var": "Issue Resolution Rate",
       "to_var": "Closed Issues",
       "relationship": "positive"
     },
     {
-      "id": "C28",
+      "id": "C29",
       "from_var": "Issue Creation Rate",
       "to_var": "Open Issues",
       "relationship": "positive"
     },
     {
-      "id": "C29",
+      "id": "C30",
       "from_var": "Issue Resolution Rate",
       "to_var": "Open Issues",
       "relationship": "negative"
     },
     {
-      "id": "C30",
+      "id": "C31",
       "from_var": "Source Code",
       "to_var": "Issue Creation Rate",
       "relationship": "positive"
     },
     {
-      "id": "C31",
+      "id": "C32",
       "from_var": "Reputation Building",
       "to_var": "Project Reputation",
       "relationship": "positive"
     },
     {
-      "id": "C32",
+      "id": "C33",
       "from_var": "Reputation Decline",
       "to_var": "Project Reputation",
       "relationship": "negative"
     },
     {
-      "id": "C33",
+      "id": "C34",
       "from_var": "Explicit to Implicit Conversion",
       "to_var": "Projects's Explicit Knowledge",
       "relationship": "negative"
     },
     {
-      "id": "C34",
+      "id": "C35",
       "from_var": "Knowledge Conversion Rate",
       "to_var": "Projects's Explicit Knowledge",
       "relationship": "positive"
     },
     {
-      "id": "C35",
+      "id": "C36",
       "from_var": "Adoption Rate",
       "to_var": "User Base",
       "relationship": "positive"
     },
     {
-      "id": "C36",
+      "id": "C37",
       "from_var": "User Churn Rate",
       "to_var": "User Base",
       "relationship": "negative"
     },
     {
-      "id": "C37",
-      "from_var": "Merge/Commit",
-      "to_var": "Pull Request Under review",
-      "relationship": "negative"
-    },
-    {
       "id": "C38",
-      "from_var": "Rejection Rate",
+      "from_var": "Merge/Commit",
       "to_var": "Pull Request Under review",
       "relationship": "negative"
     },
     {
       "id": "C39",
+      "from_var": "Rejection Rate",
+      "to_var": "Pull Request Under review",
+      "relationship": "negative"
+    },
+    {
+      "id": "C40",
       "from_var": "Review Rate",
       "to_var": "Pull Request Under review",
       "relationship": "positive"
     },
     {
-      "id": "C40",
+      "id": "C41",
       "from_var": "Merge/Commit",
       "to_var": "Source Code",
       "relationship": "positive"
     },
     {
-      "id": "C41",
+      "id": "C42",
       "from_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
       "to_var": "Skill up",
       "relationship": "positive"
     },
     {
-      "id": "C42",
+      "id": "C43",
       "from_var": "Implicit Knowledge Transfer (Mentorship)",
       "to_var": "Skill up",
       "relationship": "positive"
     },
     {
-      "id": "C43",
+      "id": "C44",
       "from_var": "Community engagement",
       "to_var": "Searchable Knowledge Base",
       "relationship": "positive"
     },
     {
-      "id": "C44",
+      "id": "C45",
       "from_var": "Open Issues",
       "to_var": "New Pr rate",
       "relationship": "positive"
     },
     {
-      "id": "C45",
+      "id": "C46",
       "from_var": "New Pr rate",
       "to_var": "New Pull request",
       "relationship": "positive"
     },
     {
-      "id": "C46",
+      "id": "C47",
       "from_var": "Review Rate",
       "to_var": "New Pull request",
       "relationship": "negative"
     },
     {
-      "id": "C47",
+      "id": "C48",
       "from_var": "Developer's Turnover",
       "to_var": "Core Developer",
       "relationship": "negative"
     },
     {
-      "id": "C48",
+      "id": "C49",
       "from_var": "Promotion Rate",
       "to_var": "Core Developer",
       "relationship": "positive"
     },
     {
-      "id": "C49",
+      "id": "C50",
       "from_var": "Implicit Knowledge Transfer (Mentorship)",
       "to_var": "Promotion Rate",
       "relationship": "positive"
     },
     {
-      "id": "C50",
+      "id": "C51",
       "from_var": "Developer's Turnover",
       "to_var": "Depreciation/Loss of Knowledge",
       "relationship": "positive"
     },
     {
-      "id": "C51",
+      "id": "C52",
       "from_var": "Promotion Rate",
       "to_var": "Experienced Contributors",
       "relationship": "negative"
     },
     {
-      "id": "C52",
+      "id": "C53",
       "from_var": "Skill up",
       "to_var": "Experienced Contributors",
       "relationship": "positive"
     },
     {
-      "id": "C53",
+      "id": "C54",
       "from_var": "Joining Rate",
       "to_var": "New Contributors",
       "relationship": "positive"
     },
     {
-      "id": "C54",
+      "id": "C55",
       "from_var": "Skill up",
       "to_var": "New Contributors",
       "relationship": "negative"
     },
     {
-      "id": "C55",
+      "id": "C56",
       "from_var": "Depreciation/Loss of Knowledge",
       "to_var": "Project's Implicit Knowledge",
       "relationship": "negative"
     },
     {
-      "id": "C56",
+      "id": "C57",
       "from_var": "Explicit to Implicit Conversion",
       "to_var": "Project's Implicit Knowledge",
       "relationship": "positive"
     },
     {
-      "id": "C57",
+      "id": "C58",
       "from_var": "Knowledge Conversion Rate",
       "to_var": "Project's Implicit Knowledge",
       "relationship": "negative"
     },
     {
-      "id": "C58",
+      "id": "C59",
       "from_var": "Culture Erosion",
       "to_var": "Community Health",
       "relationship": "negative"
     },
     {
-      "id": "C59",
+      "id": "C60",
       "from_var": "Trust Building",
       "to_var": "Community Health",
       "relationship": "positive"

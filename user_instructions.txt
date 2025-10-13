@@ -1,0 +1,14 @@
+# User Instructions for Theory Planning (Step 1)
+#
+# Add any specific instructions or requirements for the theory planning phase here.
+# These will be included in the Step 1 prompt to guide the LLM.
+#
+# Leave this file empty if you don't have specific instructions.
+#
+# Examples:
+# - "Focus on governance mechanisms in the model"
+# - "Emphasize feedback loops related to trust building"
+# - "Include decision-making processes"
+# - "Consider power dynamics between different actor groups"
+#
+# Your instructions below:

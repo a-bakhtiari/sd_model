@@ -72,7 +72,7 @@ class LLMClient:
                 result = self._openai.responses.create(
                     model=self.model,
                     input=prompt,
-                    reasoning={"effort": "high"}
+                    reasoning={"effort": "low"}
                 )
                 return result.output_text
 

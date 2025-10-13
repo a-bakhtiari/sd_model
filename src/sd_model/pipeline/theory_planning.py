@@ -16,7 +16,8 @@ from ..llm.client import LLMClient
 def create_planning_prompt(
     theories: List[Dict],
     current_model_summary: Dict,
-    model_name: str = None
+    model_name: str = None,
+    user_instructions_path: str = None
 ) -> str:
     """Create prompt for Step 1: Strategic Theory Planning - CONDENSED.
 
@@ -24,10 +25,30 @@ def create_planning_prompt(
         theories: List of available theories
         current_model_summary: Summary of the current model structure
         model_name: Optional name of the model being enhanced
+        user_instructions_path: Optional path to user instructions file
 
     Returns:
         Prompt string for LLM
     """
+
+    # Read user instructions if provided
+    user_instructions = ""
+    if user_instructions_path is None:
+        # Default path
+        user_instructions_path = Path(__file__).parent.parent.parent.parent / "user_instructions.txt"
+
+    if user_instructions_path and Path(user_instructions_path).exists():
+        try:
+            with open(user_instructions_path, 'r') as f:
+                content = f.read().strip()
+                # Filter out comment lines starting with #
+                lines = [line for line in content.split('\n') if not line.strip().startswith('#')]
+                user_content = '\n'.join(lines).strip()
+                if user_content:
+                    user_instructions = f"\n## User-Specific Instructions\n\n{user_content}\n"
+        except Exception as e:
+            # Silently ignore if can't read file
+            pass
 
     # Format theories list
     theories_text = "\n".join([
@@ -45,7 +66,7 @@ def create_planning_prompt(
 You are planning how theories can enhance an existing SD model through process-based decomposition.
 
 {model_context}
-
+{user_instructions}
 ## Available Theories ({len(theories)} total)
 
 {theories_text}
@@ -163,7 +184,8 @@ def run_theory_planning(
     theories: List[Dict],
     current_model_summary: Dict,
     model_name: str = None,
-    llm_client: LLMClient = None
+    llm_client: LLMClient = None,
+    user_instructions_path: str = None
 ) -> Dict:
     """Execute Step 1: Strategic Theory Planning - CONDENSED.
 
@@ -172,13 +194,14 @@ def run_theory_planning(
         current_model_summary: Summary of current model
         model_name: Optional model name
         llm_client: Optional LLM client
+        user_instructions_path: Optional path to user instructions file
 
     Returns:
         Dict with theory decisions and clustering strategy
     """
 
     # Create prompt
-    prompt = create_planning_prompt(theories, current_model_summary, model_name)
+    prompt = create_planning_prompt(theories, current_model_summary, model_name, user_instructions_path)
 
     # Call LLM
     if llm_client is None:
