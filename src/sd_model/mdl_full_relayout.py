@@ -419,6 +419,366 @@ REMEMBER:
 Begin:"""
 
 
+RECREATION_LAYOUT_PROMPT = """You are a System Dynamics expert creating a professional diagram layout from scratch.
+
+## TASK
+Position {total_vars} theory-generated variables into a clean, clustered layout.
+
+These variables were generated from theoretical frameworks and organized into
+process-based modules. Your goal is to create a clear, readable spatial layout.
+
+## VARIABLES TO POSITION
+{all_vars_json}
+
+## CONNECTIONS
+{all_connections_json}
+
+**Your Goal:** Create a clean, readable diagram by:
+1. Grouping process modules spatially
+2. Positioning high-connectivity hubs centrally
+3. Keeping connected variables close together
+4. Avoiding variables in arrow paths and minimizing arrow crossings (details below)
+
+## CRITICAL: ARROW ROUTING AND VARIABLE PLACEMENT
+
+**Understanding Arrow Paths:**
+- Arrows connect the CENTER of one variable to the CENTER of another variable
+- These arrow paths should remain clear - avoid placing other variables directly in the arrow's path
+- You don't need to avoid the entire rectangular area between variables, just the direct arrow line
+
+**Good vs Bad Placement:**
+
+```
+GOOD - Variable C is offset from arrow path:
+[A] ────────────────→ [B]
+        [C]
+Arrow from A→B is clear (C is below the path)
+
+ALSO GOOD - Horizontal offset works too:
+[A] ────────────────→ [B]
+
+[C]
+Variables can be near connected pairs, just not ON the arrow line
+
+BAD - Variable C directly blocks arrow path:
+[A] ──────[C]──────→ [B]
+Arrow from A→B has to route around C
+
+ALSO BAD - Variable in middle of long connection:
+[A] ───────────────── [D] ────────────────→ [B]
+If A connects to B, arrow has to route around D
+
+GOOD - Multiple connections with clear paths:
+[A] ────→ [B] ────→ [C]
+
+         [D]
+A→B→C chain is clear, D is offset below and doesn't block
+
+ALSO GOOD - Star pattern with hub:
+        [A]
+         │
+[B] ←─ [HUB] ─→ [C]
+         │
+        [D]
+Hub connects to A, B, C, D - all arrows radiate cleanly
+
+ALSO GOOD - Triangle arrangement:
+        [A]
+       ↙  ↘
+    [B]    [C]
+A connects to both B and C, arrows don't overlap
+
+ALSO GOOD - Grid pattern:
+[A] ─→ [B]
+ │      │
+ ↓      ↓
+[C] ─→ [D]
+Multiple connections (A→B, A→C, B→D, C→D) all clear
+
+ALSO GOOD - Branching chain:
+        [B]
+       ↗
+[A] ─→ [C]
+       ↘
+        [D]
+A branches to B, C, D without arrows crossing
+
+BAD - Variable blocking multiple arrow paths:
+[A] ─────[E]────→ [B]
+          ↓
+          ↓
+[C] ─────────────→ [D]
+E is in the path of A→B arrow, forces arrow to route around it
+
+BETTER - Offset the blocking variable:
+[A] ───────────→ [B]
+
+    [E]
+
+[C] ───────────→ [D]
+Now E is offset and doesn't block either arrow path
+```
+
+**Key Principle**: When placing a variable, check if any existing connections would pass through its position. If so, offset the variable vertically or horizontally to keep the arrow path clear. The layout doesn't need to follow any specific pattern (like triangles) - just avoid placing variables directly in arrow paths. With multiple connections, think about all the arrow paths and position variables in the spaces between them.
+
+## AVOIDING ARROW OVERLAPS
+
+**Arrow Crossing Issue:**
+- When two arrows cross each other, the diagram becomes harder to read
+- Ideally, minimize the number of arrow crossings in your layout
+
+**Good vs Bad Arrow Routing:**
+
+```
+GOOD - Parallel arrows don't cross:
+[A] ────→ [B]
+
+[C] ────→ [D]
+Two horizontal arrows running parallel
+
+ALSO GOOD - Vertical parallel arrows:
+    [A]     [B]
+     │       │
+     ↓       ↓
+    [C]     [D]
+A→C and B→D run parallel vertically
+
+BAD - Diagonal crossing:
+[A]         [D]
+  ╲       ╱
+   ╲     ╱
+    ╲   ╱
+     ╲ ╱
+      X
+     ╱ ╲
+    ╱   ╲
+   ╱     ╲
+[C]         [B]
+A→B and D→C cross in the middle
+
+BETTER - Same connections, no crossing:
+[A]         [D]
+ │           │
+ │           │
+ ↓           ↓
+[B]         [C]
+A→B and D→C now run parallel (swapped B and C positions)
+```
+
+**Strategy**: When you have many connections, try to group variables so that their connections run in similar directions (parallel) rather than crossing paths. If process A connects to process B, and process C connects to process D, position them so A-B and C-D arrows don't intersect.
+
+## LAYOUT APPROACH: VISUALIZE FIRST, THEN POSITION
+
+We'll use a TWO-STEP process to ensure good spatial layout:
+1. **STEP 1**: Create an ASCII visualization sketch showing variable placement
+2. **STEP 2**: Convert the ASCII sketch to exact (x, y) coordinates
+
+---
+
+# STEP 1: CREATE ASCII VISUALIZATION
+
+## Canvas Grid Reference
+```
+X-axis: 0────{canvas_x1}───{canvas_x2}───{canvas_x3}───{canvas_x4}
+Y-axis: 0, {canvas_y1}, {canvas_y2}, {canvas_y3}, {canvas_y4}
+
+Canvas dimensions: {canvas_width}px wide × {canvas_height}px tall
+Each '─' in the grid ≈ 100px
+```
+
+## Instructions for ASCII Sketch:
+
+1. **Use provided process-based clusters** (if provided above) - Each process is a mini-model with inputs/outputs
+   - If no clusters provided, identify 3-5 thematic groupings
+   - Process outputs are hub connections - position them to link multiple processes
+
+2. **Draw a rough layout** using abbreviated variable names (3-5 characters each)
+   - Use `[ABC]` to represent variables
+   - Group each process's variables together
+   - Space variables apart (at least 2-3 characters between them)
+   - Mark process boundaries with comments
+   - Position hub outputs (variables connecting multiple processes) centrally
+   - **Apply arrow routing principles**: avoid blocking paths, minimize crossings (see detailed examples above)
+
+3. **Follow type-based vertical layering**:
+   - **Stocks (type: Stock)**: Middle rows (y ≈ {stock_y_min}-{stock_y_max})
+   - **Auxiliaries (type: Auxiliary)**: Top rows (y ≈ {aux_y_top_min}-{aux_y_top_max}) or Bottom (y ≈ {aux_y_bot_min}-{aux_y_bot_max})
+   - **Flows (type: Flow)**: Between stocks (y ≈ {flow_y_min}-{flow_y_max})
+
+## Example ASCII Layout (for reference):
+
+```
+     0        500      1000     1500     2000
+     |         |         |         |         |
+100  [QC]
+     │
+200  [INP]─────────────────→[CAP]
+     │                      │ ↓
+300  [MAT]            [WIP][RAT]
+                       ↓    ↓
+400                   [OUT]────────────→[DEM]
+                                         ↓
+500                                     [SHP]
+
+Process 1: QC→INP→MAT (vertical, left)
+Process 2: CAP→WIP,RAT→OUT (grid, center) - CAP is hub
+Process 3: DEM→SHP (vertical, right)
+Inter-process: INP→CAP, OUT→DEM
+```
+
+## Your ASCII Sketch:
+Create your ASCII visualization here, using the grid reference above.
+
+---
+
+# STEP 2: CONVERT TO EXACT COORDINATES
+
+## Conversion Guidelines:
+
+1. **Horizontal positioning**:
+   - Each character position ≈ 50px
+   - If variable is at column 10, x ≈ 500px
+   - If variable is at column 30, x ≈ 1500px
+
+2. **Vertical positioning**:
+   - Each line ≈ 100-150px
+   - Line 1 (near top) → y ≈ 150
+   - Line 3 (middle) → y ≈ 400
+   - Line 7 (lower) → y ≈ 700
+
+3. **Spacing verification**:
+   - Ensure minimum 200px between ANY two variable centers
+   - Formula: distance = sqrt((x2-x1)² + (y2-y1)²) ≥ 200
+   - Our Python validator will auto-fix minor overlaps
+
+4. **Process-based organization**:
+   - Place each process module 400-800px apart (process centers)
+   - Variables within process: 200-300px apart
+   - Position hub outputs (connecting multiple processes) between their connected processes
+
+---
+
+## OUTPUT FORMAT
+
+Return JSON with BOTH the ASCII visualization AND the coordinate positions:
+
+```json
+{{
+  "ascii_layout": "Your complete ASCII sketch here (as multiline string)",
+  "clusters": [
+    {{
+      "name": "Cluster Name",
+      "description": "What this cluster represents",
+      "variables": ["Var1", "Var2", "Var3"]
+    }}
+  ],
+  "positions": [
+    {{
+      "name": "Variable Name (full name)",
+      "x": 520,
+      "y": 280,
+      "cluster": "Cluster Name"
+    }}
+  ]
+}}
+```
+
+---
+
+## YOUR TURN
+
+Now create:
+1. Your ASCII visualization showing all {total_vars} variables
+2. The JSON with clusters and exact coordinates
+
+REMEMBER:
+- Think visually first (ASCII), then convert to coordinates
+- Apply the arrow routing principles from above (avoid blocking paths, minimize crossings)
+- Use process-based clusters if provided (hub outputs connect multiple processes)
+- Our Python validator will fix minor overlaps - focus on good clustering and clear routing
+- Return valid JSON only (no markdown code blocks)
+
+Begin:"""
+
+
+def _get_layout_prompt(
+    is_recreation: bool,
+    total_vars: int,
+    all_vars_json: str,
+    all_connections_json: str
+) -> str:
+    """
+    Select and format the appropriate layout prompt based on mode.
+
+    Args:
+        is_recreation: True if creating fresh layout (recreation mode),
+                      False if repositioning existing model (full relayout)
+        total_vars: Number of variables to position
+        all_vars_json: JSON string of variables
+        all_connections_json: JSON string of connections
+
+    Returns:
+        Formatted prompt string ready for LLM
+    """
+    # Calculate adaptive canvas size based on number of variables
+    canvas_width = max(2400, total_vars * 150)
+    canvas_height = max(1000, total_vars * 50)
+
+    # Canvas grid points for visualization
+    canvas_x1 = canvas_width // 6
+    canvas_x2 = canvas_width // 3
+    canvas_x3 = canvas_width // 2
+    canvas_x4 = canvas_width
+
+    canvas_y1 = canvas_height // 5
+    canvas_y2 = canvas_height // 3
+    canvas_y3 = canvas_height // 2
+    canvas_y4 = canvas_height
+
+    # Type-based layering coordinates
+    stock_y_min = int(canvas_height * 0.4)
+    stock_y_max = int(canvas_height * 0.6)
+
+    aux_y_top_min = int(canvas_height * 0.1)
+    aux_y_top_max = int(canvas_height * 0.3)
+    aux_y_bot_min = int(canvas_height * 0.7)
+    aux_y_bot_max = int(canvas_height * 0.9)
+
+    flow_y_min = int(canvas_height * 0.3)
+    flow_y_max = int(canvas_height * 0.7)
+
+    # Select prompt based on mode
+    if is_recreation:
+        prompt_template = RECREATION_LAYOUT_PROMPT
+    else:
+        prompt_template = FULL_RELAYOUT_PROMPT
+
+    # Format with all parameters
+    return prompt_template.format(
+        total_vars=total_vars,
+        all_vars_json=all_vars_json,
+        all_connections_json=all_connections_json,
+        canvas_width=canvas_width,
+        canvas_height=canvas_height,
+        canvas_x1=canvas_x1,
+        canvas_x2=canvas_x2,
+        canvas_x3=canvas_x3,
+        canvas_x4=canvas_x4,
+        canvas_y1=canvas_y1,
+        canvas_y2=canvas_y2,
+        canvas_y3=canvas_y3,
+        canvas_y4=canvas_y4,
+        stock_y_min=stock_y_min,
+        stock_y_max=stock_y_max,
+        aux_y_top_min=aux_y_top_min,
+        aux_y_top_max=aux_y_top_max,
+        aux_y_bot_min=aux_y_bot_min,
+        aux_y_bot_max=aux_y_bot_max,
+        flow_y_min=flow_y_min,
+        flow_y_max=flow_y_max
+    )
+
+
 def _validate_and_fix_overlaps(
     position_map: Dict[str, Tuple[int, int]],
     min_spacing: int = 200,
