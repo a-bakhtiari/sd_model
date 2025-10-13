@@ -394,6 +394,103 @@ class MDLTextPatcher:
 
         return variables
 
+    def recreate_from_theory(
+        self,
+        new_variables: List[Dict],
+        new_connections: List[Dict],
+        use_llm_layout: bool = True,
+        llm_client: Optional[LLMClient] = None,
+        clustering_scheme: Optional[Dict] = None
+    ) -> str:
+        """
+        Recreate MDL from scratch using theory-generated variables.
+
+        Removes ALL existing equations and sketch elements, keeps only:
+        - Control section
+        - Sketch headers and footers
+        - Metadata sections
+
+        Then adds new theory-generated variables and connections.
+
+        Args:
+            new_variables: New variables from theory enhancement
+            new_connections: New connections from theory enhancement
+            use_llm_layout: Whether to use LLM positioning (should always be True)
+            llm_client: LLM client for positioning
+            clustering_scheme: Clustering from theory planning
+
+        Returns:
+            Recreated MDL content as string
+        """
+        lines = self.lines.copy()
+
+        # Step 1: Remove all existing variable equations
+        # Find equation section bounds
+        equation_start = 0
+        equation_end = 0
+        for i, line in enumerate(lines):
+            if line.strip() == '{UTF-8}':
+                equation_start = i + 1
+            elif '********************************************************' in line and i + 1 < len(lines) and '.Control' in lines[i + 1]:
+                equation_end = i
+                break
+
+        # Remove all equations (each variable has 4 lines: equation, ~, ~, |, blank)
+        if equation_start > 0 and equation_end > equation_start:
+            del lines[equation_start:equation_end]
+
+        # Step 2: Remove all sketch Type 10 (variables) and Type 1 (connections) lines
+        # Find sketch section
+        sketch_start = None
+        sketch_vars_start = None
+        sketch_end_marker = None
+
+        for i, line in enumerate(lines):
+            if line.startswith('\\\\\\---///'):
+                sketch_start = i
+            elif sketch_start and line.startswith(':') and not line.startswith(':GRAPH'):
+                sketch_vars_start = i + 1
+            elif line.startswith(':GRAPH') or (line.startswith('///---\\\\\\') and sketch_vars_start):
+                sketch_end_marker = i
+                break
+
+        # Remove all Type 10 and Type 1 lines between sketch_vars_start and sketch_end_marker
+        if sketch_vars_start and sketch_end_marker:
+            lines_to_remove = []
+            for i in range(sketch_vars_start, sketch_end_marker):
+                if lines[i].startswith('10,') or lines[i].startswith('1,') or lines[i].startswith('11,') or lines[i].startswith('12,'):
+                    lines_to_remove.append(i)
+
+            # Remove in reverse order to maintain indices
+            for i in reversed(lines_to_remove):
+                del lines[i]
+
+        # Step 3: Now rebuild the patcher with the cleaned template
+        # Write cleaned lines back as temporary content
+        cleaned_content = '\n'.join(lines)
+
+        # Create a new patcher instance with cleaned content
+        temp_path = self.mdl_path.parent / f"{self.mdl_path.stem}_temp_cleaned.mdl"
+        temp_path.write_text(cleaned_content, encoding='utf-8')
+
+        cleaned_patcher = MDLTextPatcher(temp_path)
+
+        # Step 4: Add new variables using existing add_enhancements logic
+        result_content = cleaned_patcher.add_enhancements(
+            new_variables,
+            new_connections,
+            add_colors=False,  # No colors for recreation
+            use_llm_layout=use_llm_layout,
+            use_full_relayout=False,  # LLM layout handles positioning
+            llm_client=llm_client,
+            clustering_scheme=clustering_scheme
+        )
+
+        # Clean up temp file
+        temp_path.unlink()
+
+        return result_content
+
 
 def apply_text_patch_enhancements(
     mdl_path: Path,

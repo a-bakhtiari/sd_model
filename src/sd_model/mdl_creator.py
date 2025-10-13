@@ -21,22 +21,23 @@ def create_mdl_from_scratch(
     template_mdl_path: Optional[Path] = None
 ) -> Dict:
     """
-    Create a new MDL file from theory enhancement output using template approach.
+    Create a new MDL file from theory enhancement output using recreation approach.
 
-    Uses the original MDL file as a template to preserve Vensim formatting,
-    but replaces all equations and sketch elements with theory-generated content.
-    This ensures proper Vensim compatibility while effectively creating from scratch.
+    Uses MDLTextPatcher to remove all existing elements from template and add
+    only theory-generated variables. This preserves Vensim formatting while
+    effectively building from scratch.
 
     Args:
         theory_concretization: Output from theory_concretization step (step 2)
         output_path: Where to save the new MDL file
-        llm_client: Optional LLM client for layout optimization
+        llm_client: LLM client for layout optimization (REQUIRED)
         clustering_scheme: Optional clustering from step 1 for spatial organization
         template_mdl_path: Path to original MDL to use as template for formatting
 
     Returns:
         Dict with creation summary
     """
+    from .mdl_text_patcher import MDLTextPatcher
 
     # Extract all variables and connections from theory enhancement
     all_variables = []
@@ -61,36 +62,27 @@ def create_mdl_from_scratch(
             'variables_added': 0
         }
 
-    # Read template MDL to preserve control section and formatting
-    if template_mdl_path and template_mdl_path.exists():
-        template_content = template_mdl_path.read_text(encoding='utf-8')
-    else:
-        template_content = None
+    if not template_mdl_path or not template_mdl_path.exists():
+        return {
+            'error': 'Template MDL path required for recreation mode',
+            'variables_added': 0
+        }
 
-    # Assign positions using LLM layout (ALWAYS use LLM, never grid)
-    positioned_variables = _assign_positions(
+    # Use MDLTextPatcher to recreate from theory
+    patcher = MDLTextPatcher(template_mdl_path)
+    mdl_content = patcher.recreate_from_theory(
         all_variables,
         all_connections,
-        llm_client,
-        clustering_scheme
-    )
-
-    # Build variable name to ID mapping
-    var_name_to_id = {var['name']: i + 1 for i, var in enumerate(positioned_variables)}
-
-    # Generate MDL content using template
-    mdl_content = _generate_mdl_from_template(
-        positioned_variables,
-        all_connections,
-        var_name_to_id,
-        template_content
+        use_llm_layout=True,  # ALWAYS use LLM positioning
+        llm_client=llm_client,
+        clustering_scheme=clustering_scheme
     )
 
     # Write to file
     output_path.write_text(mdl_content, encoding='utf-8')
 
     return {
-        'variables_added': len(positioned_variables),
+        'variables_added': len(all_variables),
         'connections_added': len(all_connections),
         'output_path': str(output_path)
     }
