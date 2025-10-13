@@ -17,20 +17,22 @@ def create_mdl_from_scratch(
     theory_concretization: Dict,
     output_path: Path,
     llm_client: Optional[LLMClient] = None,
-    clustering_scheme: Optional[Dict] = None
+    clustering_scheme: Optional[Dict] = None,
+    template_mdl_path: Optional[Path] = None
 ) -> Dict:
     """
-    Create a completely new MDL file from theory enhancement output.
+    Create a new MDL file from theory enhancement output using template approach.
 
-    This function builds an MDL from scratch using ONLY the variables and
-    connections generated from theory enhancement. The original model is
-    completely discarded.
+    Uses the original MDL file as a template to preserve Vensim formatting,
+    but replaces all equations and sketch elements with theory-generated content.
+    This ensures proper Vensim compatibility while effectively creating from scratch.
 
     Args:
         theory_concretization: Output from theory_concretization step (step 2)
         output_path: Where to save the new MDL file
         llm_client: Optional LLM client for layout optimization
         clustering_scheme: Optional clustering from step 1 for spatial organization
+        template_mdl_path: Path to original MDL to use as template for formatting
 
     Returns:
         Dict with creation summary
@@ -39,14 +41,12 @@ def create_mdl_from_scratch(
     # Extract all variables and connections from theory enhancement
     all_variables = []
     all_connections = []
-    all_boundary_flows = []
 
     processes = theory_concretization.get('processes', [])
     for process in processes:
         process_name = process.get('process_name', 'Unknown')
         variables = process.get('variables', [])
         connections = process.get('connections', [])
-        boundary_flows = process.get('boundary_flows', [])
 
         # Add cluster assignment to each variable
         for var in variables:
@@ -54,15 +54,20 @@ def create_mdl_from_scratch(
 
         all_variables.extend(variables)
         all_connections.extend(connections)
-        all_boundary_flows.extend(boundary_flows)
 
     if not all_variables:
         return {
             'error': 'No variables found in theory concretization output',
-            'variables_created': 0
+            'variables_added': 0
         }
 
-    # Assign positions using LLM layout if available
+    # Read template MDL to preserve control section and formatting
+    if template_mdl_path and template_mdl_path.exists():
+        template_content = template_mdl_path.read_text(encoding='utf-8')
+    else:
+        template_content = None
+
+    # Assign positions using LLM layout (ALWAYS use LLM, never grid)
     positioned_variables = _assign_positions(
         all_variables,
         all_connections,
@@ -73,12 +78,12 @@ def create_mdl_from_scratch(
     # Build variable name to ID mapping
     var_name_to_id = {var['name']: i + 1 for i, var in enumerate(positioned_variables)}
 
-    # Generate MDL content
-    mdl_content = _generate_mdl_structure(
+    # Generate MDL content using template
+    mdl_content = _generate_mdl_from_template(
         positioned_variables,
         all_connections,
-        all_boundary_flows,
-        var_name_to_id
+        var_name_to_id,
+        template_content
     )
 
     # Write to file
@@ -87,7 +92,6 @@ def create_mdl_from_scratch(
     return {
         'variables_added': len(positioned_variables),
         'connections_added': len(all_connections),
-        'boundary_flows_created': len(all_boundary_flows),
         'output_path': str(output_path)
     }
 
@@ -179,23 +183,72 @@ def _parse_llm_positions(response: str) -> Dict[str, Tuple[int, int]]:
     return position_map
 
 
-def _generate_mdl_structure(
+def _generate_mdl_from_template(
     variables: List[Dict],
     connections: List[Dict],
-    boundary_flows: List[Dict],
-    var_name_to_id: Dict[str, int]
+    var_name_to_id: Dict[str, int],
+    template_content: Optional[str]
 ) -> str:
     """
-    Generate complete MDL file structure.
+    Generate MDL content using original file as template.
+
+    Preserves control section and formatting from template, but replaces
+    all equations and sketch elements with new theory-generated content.
 
     Returns MDL content as string.
     """
     lines = []
 
+    # Extract control and metadata sections from template if available
+    control_section = None
+    sketch_header = None
+    sketch_footer = None
+
+    if template_content:
+        template_lines = template_content.split('\n')
+
+        # Find control section (from .Control to sketch marker)
+        control_start = None
+        control_end = None
+        for i, line in enumerate(template_lines):
+            if '.Control' in line:
+                control_start = i - 1  # Include the *** line before
+            elif line.startswith('\\\\\\---///') and control_start is not None:
+                control_end = i
+                break
+
+        if control_start is not None and control_end is not None:
+            control_section = template_lines[control_start:control_end]
+
+        # Find sketch header (from \\\ to first :)
+        sketch_start = None
+        sketch_header_end = None
+        for i, line in enumerate(template_lines):
+            if line.startswith('\\\\\\---///'):
+                sketch_start = i
+            elif sketch_start is not None and line.startswith(':') and not line.startswith(':GRAPH'):
+                sketch_header_end = i + 1
+                break
+
+        if sketch_start is not None and sketch_header_end is not None:
+            sketch_header = template_lines[sketch_start:sketch_header_end]
+
+        # Find sketch footer (from :GRAPH to end)
+        footer_start = None
+        for i, line in enumerate(template_lines):
+            if line.startswith(':GRAPH') or line.startswith('///---\\\\\\'):
+                # Look for the section divider after sketch elements
+                if i > sketch_header_end if sketch_header_end else 0:
+                    footer_start = i
+                    break
+
+        if footer_start is not None:
+            sketch_footer = template_lines[footer_start:]
+
     # Header
     lines.append("{UTF-8}")
 
-    # Equations section
+    # Equations section - new variables only
     for var in variables:
         var_name = var['name']
 
@@ -210,51 +263,58 @@ def _generate_mdl_structure(
 
         if deps:
             deps_str = ",".join([_quote_var_name(d) for d in deps if d])
-            lines.append(f"{quoted_name}  = A FUNCTION OF( {deps_str})")
+            lines.append(f"{quoted_name} = A FUNCTION OF( {deps_str} )")
         else:
-            lines.append(f"{quoted_name}  = A FUNCTION OF( )")
+            lines.append(f"{quoted_name} = A FUNCTION OF( )")
         lines.append("\t~\t")
         lines.append("\t~\t\t|")
         lines.append("")
 
-    # Control section
-    lines.append("********************************************************")
-    lines.append("\t.Control")
-    lines.append("********************************************************~")
-    lines.append("\t\tSimulation Control Parameters")
-    lines.append("\t|")
-    lines.append("")
-    lines.append("FINAL TIME  = 100")
-    lines.append("\t~\tMonth")
-    lines.append("\t~\tThe final time for the simulation.")
-    lines.append("\t|")
-    lines.append("")
-    lines.append("INITIAL TIME  = 0")
-    lines.append("\t~\tMonth")
-    lines.append("\t~\tThe initial time for the simulation.")
-    lines.append("\t|")
-    lines.append("")
-    lines.append("SAVEPER  =")
-    lines.append("\t\tTIME STEP")
-    lines.append("\t~\tMonth [0,?]")
-    lines.append("\t~\tThe frequency with which output is stored.")
-    lines.append("\t|")
-    lines.append("")
-    lines.append("TIME STEP  = 1")
-    lines.append("\t~\tMonth [0,?]")
-    lines.append("\t~\tThe time step for the simulation.")
-    lines.append("\t|")
-    lines.append("")
+    # Control section from template or default
+    if control_section:
+        lines.extend(control_section)
+    else:
+        # Default control section
+        lines.append("********************************************************")
+        lines.append("\t.Control")
+        lines.append("********************************************************~")
+        lines.append("\t\tSimulation Control Parameters")
+        lines.append("\t|")
+        lines.append("")
+        lines.append("FINAL TIME  = 100")
+        lines.append("\t~\tMonth")
+        lines.append("\t~\tThe final time for the simulation.")
+        lines.append("\t|")
+        lines.append("")
+        lines.append("INITIAL TIME  = 0")
+        lines.append("\t~\tMonth")
+        lines.append("\t~\tThe initial time for the simulation.")
+        lines.append("\t|")
+        lines.append("")
+        lines.append("SAVEPER  =")
+        lines.append("\t\tTIME STEP")
+        lines.append("\t~\tMonth [0,?]")
+        lines.append("\t~\tThe frequency with which output is stored.")
+        lines.append("\t|")
+        lines.append("")
+        lines.append("TIME STEP  = 1")
+        lines.append("\t~\tMonth [0,?]")
+        lines.append("\t~\tThe time step for the simulation.")
+        lines.append("\t|")
+        lines.append("")
 
-    # Sketch section
-    lines.append("\\\\\\---/// Sketch information - do not modify anything except names")
-    lines.append("V300  Do not put anything below this section - it will be ignored")
-    lines.append("*View 1")
-    lines.append("$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,0")
-    lines.append("///---\\\\\\")
-    lines.append(":")
+    # Sketch section header from template or default
+    if sketch_header:
+        lines.extend(sketch_header)
+    else:
+        lines.append("\\\\\\---/// Sketch information - do not modify anything except names")
+        lines.append("V300  Do not put anything below this section - it will be ignored")
+        lines.append("*View 1")
+        lines.append("$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,0")
+        lines.append("///---\\\\\\")
+        lines.append(":")
 
-    # Variable sketch entries (Type 10)
+    # Variable sketch entries (Type 10) - new variables only
     for var in variables:
         var_id = var_name_to_id[var['name']]
         var_name = var['name']
@@ -277,7 +337,7 @@ def _generate_mdl_structure(
         line = f"10,{var_id},{quoted_name},{x},{y},40,20,{type_code},3,0,0,-1,0,0,0,0,0,0,0,0,0"
         lines.append(line)
 
-    # Connection sketch entries (Type 1)
+    # Connection sketch entries (Type 1) - new connections only
     conn_id = 1
     for conn in connections:
         from_var = conn.get('from', '')
@@ -289,8 +349,6 @@ def _generate_mdl_structure(
 
         if from_id and to_id:
             # Determine polarity based on relationship
-            # Negative polarity: thickness=43, polarity_flag=1
-            # Positive polarity: thickness=0, polarity_flag=0
             if relationship == 'negative':
                 thickness = 43
                 polarity_flag = 1
@@ -303,35 +361,38 @@ def _generate_mdl_structure(
             lines.append(line)
             conn_id += 1
 
-    # End sketch section
-    lines.append("///---\\\\\\")
-    lines.append(":GRAPH")
-    lines.append("///---\\\\\\")
-    lines.append(":BUTTON")
-    lines.append("///---\\\\\\")
-    lines.append(":FUNCTION")
-    lines.append("///---\\\\\\")
-    lines.append(":TABLE")
-    lines.append("///---\\\\\\")
-    lines.append(":L<%^E!@")
-    lines.append("1:untitled.vdfx")
-    lines.append("9:untitled")
-    lines.append("22:$,Dollar,Dollars,$s")
-    lines.append("22:Hour,Hours")
-    lines.append("22:Month,Months")
-    lines.append("22:Person,People,Persons")
-    lines.append("22:Unit,Units")
-    lines.append("22:Week,Weeks")
-    lines.append("22:Year,Years")
-    lines.append("23:0")
-    lines.append("15:0,0,0,0,0,0")
-    lines.append("19:100,0")
-    lines.append("27:2,")
-    lines.append("34:0,")
-    lines.append("42:1")
-    lines.append("72:0")
-    lines.append("73:0")
-    lines.append("")
+    # Sketch footer from template or default
+    if sketch_footer:
+        lines.extend(sketch_footer)
+    else:
+        lines.append("///---\\\\\\")
+        lines.append(":GRAPH")
+        lines.append("///---\\\\\\")
+        lines.append(":BUTTON")
+        lines.append("///---\\\\\\")
+        lines.append(":FUNCTION")
+        lines.append("///---\\\\\\")
+        lines.append(":TABLE")
+        lines.append("///---\\\\\\")
+        lines.append(":L<%^E!@")
+        lines.append("1:untitled.vdfx")
+        lines.append("9:untitled")
+        lines.append("22:$,Dollar,Dollars,$s")
+        lines.append("22:Hour,Hours")
+        lines.append("22:Month,Months")
+        lines.append("22:Person,People,Persons")
+        lines.append("22:Unit,Units")
+        lines.append("22:Week,Weeks")
+        lines.append("22:Year,Years")
+        lines.append("23:0")
+        lines.append("15:0,0,0,0,0,0")
+        lines.append("19:100,0")
+        lines.append("27:2,")
+        lines.append("34:0,")
+        lines.append("42:1")
+        lines.append("72:0")
+        lines.append("73:0")
+        lines.append("")
 
     return '\n'.join(lines)
 

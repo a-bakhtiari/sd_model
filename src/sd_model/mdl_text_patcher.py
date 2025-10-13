@@ -479,7 +479,8 @@ def apply_theory_enhancements(
             theory_concretization,
             output_path,
             llm_client,
-            clustering_scheme
+            clustering_scheme,
+            template_mdl_path=mdl_path  # Pass original MDL as template
         )
 
         return result
