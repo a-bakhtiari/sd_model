@@ -190,6 +190,37 @@ def format_model_structure(variables: Dict, connections: Dict, plumbing: Dict = 
     return output
 
 
+def format_minimal_model_summary(variables: Dict, connections: Dict, plumbing: Dict = None) -> str:
+    """Format minimal model summary for recreation mode context.
+
+    Shows only high-level statistics without detailed structure.
+    """
+    all_vars = variables.get("variables", [])
+    all_conns = connections.get("connections", [])
+
+    # Count by type
+    stocks = [v for v in all_vars if v.get('type') == 'Stock']
+    flows = [v for v in all_vars if v.get('type') == 'Flow']
+    auxiliaries = [v for v in all_vars if v.get('type') == 'Auxiliary']
+
+    # Count clouds (model boundaries)
+    cloud_count = 0
+    if plumbing:
+        cloud_count = len(plumbing.get('clouds', []))
+
+    output = "## Domain Context (Existing Model Summary - For Reference Only)\n\n"
+    output += f"- **{len(all_vars)} total variables** ({len(stocks)} Stocks, {len(flows)} Flows, {len(auxiliaries)} Auxiliaries)\n"
+    output += f"- **{len(all_conns)} connections** between variables\n"
+
+    if cloud_count > 0:
+        output += f"- **{cloud_count} model boundaries** (external sources/sinks)\n"
+
+    output += "\n**Note**: This summary provides domain context only. You are building a NEW model from scratch based on theories. "
+    output += "The existing model structure is not shown - your output will define a complete new model.\n"
+
+    return output
+
+
 def create_planning_prompt(
     theories: List[Dict],
     variables: Dict,
@@ -205,8 +236,11 @@ def create_planning_prompt(
                       If False (default), prompts for enhancing existing model.
     """
 
-    # Format model structure as causal chains (includes cloud boundaries if present)
-    model_structure = format_model_structure(variables, connections, plumbing)
+    # Format model structure - use minimal summary in recreation mode
+    if recreate_mode:
+        model_structure = format_minimal_model_summary(variables, connections, plumbing)
+    else:
+        model_structure = format_model_structure(variables, connections, plumbing)
 
     # Format theories
     theories_text = "\n".join([
@@ -216,9 +250,11 @@ def create_planning_prompt(
 
     # Mode-specific context
     if recreate_mode:
-        mode_context = """You will evaluate theories and design process-based narratives for **building a complete SD model from scratch**. The existing model shown below is for reference only - your output will define an entirely new model based purely on theoretical foundations."""
+        mode_context = """You will evaluate theories and design process-based narratives for **building a complete SD model from scratch**. The summary below provides domain context only - your output will define an entirely new model based purely on theoretical foundations."""
+        model_section_title = "# Domain Context"
     else:
         mode_context = """You will evaluate theories and design process-based narratives for **enhancing an existing SD model**."""
+        model_section_title = "# Current System Dynamics Model"
 
     prompt = f"""# Context
 
@@ -228,7 +264,7 @@ You are a system dynamics modeling expert. {mode_context}
 
 **Output format**: JSON with theory evaluations and process narratives.
 
-# Current System Dynamics Model
+{model_section_title}
 
 {model_structure}
 

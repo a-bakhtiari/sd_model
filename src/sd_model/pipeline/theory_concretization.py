@@ -29,9 +29,12 @@ def create_concretization_prompt(
     # Extract process narratives from Step 1
     clustering_strategy = planning_result.get('clustering_strategy', {})
 
-    # Use same model structure formatting as Step 1 (includes cloud flows if present)
-    from .theory_planning import format_model_structure
-    model_structure = format_model_structure(variables, connections, plumbing)
+    # Format model structure - skip entirely in recreation mode
+    if recreate_mode:
+        model_structure = None  # Will not show model in recreation mode
+    else:
+        from .theory_planning import format_model_structure
+        model_structure = format_model_structure(variables, connections, plumbing)
 
     # Format process narratives from Step 1
     overall_narrative = clustering_strategy.get('overall_narrative', 'N/A')
@@ -48,12 +51,22 @@ def create_concretization_prompt(
         mode_task = """**Your task**: Transform process narratives into specific variables, connections, and feedback loops **for a complete, self-contained model**. Generate ALL necessary variables - do not rely on existing model variables as they will not be present.
 
 ⚠️ **RECREATION MODE**: You are building a NEW model from scratch. Do not reference existing variables in connections unless you are also generating them. Ensure the model is complete and self-sufficient."""
-        mode_io = """**Input**: Process narratives + overall system narrative + existing model (for reference only)
+        mode_io = """**Input**: Process narratives + overall system narrative
 **Output**: Complete, self-contained modular processes with ALL necessary variables and connections"""
+        model_section = ""  # No model shown in recreation mode
     else:
         mode_task = """**Your task**: Transform process narratives into specific variables, connections, and feedback loops **to enhance the existing model**. Each process is a self-contained mini-model with outputs that act as connection hubs between processes."""
         mode_io = """**Input**: Process narratives with inputs/outputs + overall system narrative + existing model
 **Output**: Modular processes with concrete variables and connections"""
+        model_section = f"""---
+
+# Current Model
+
+{model_structure}
+
+---
+
+"""
 
     prompt = f"""# Context
 
@@ -65,11 +78,7 @@ You are a system dynamics modeling expert converting process narratives into con
 
 ---
 
-# Current Model
-
-{model_structure}
-
----
+{model_section}
 
 # Process Narratives from Strategic Planning
 
