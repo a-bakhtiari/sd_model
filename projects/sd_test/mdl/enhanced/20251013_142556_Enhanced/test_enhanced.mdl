@@ -1,0 +1,356 @@
+{UTF-8}
+colored stock  = A FUNCTION OF( )
+	~	
+	~		|
+
+New Contributors  = A FUNCTION OF( colored stock,-Skill up)
+	~	
+	~		|
+
+Core Developer  = A FUNCTION OF( -Developer's Turnover,Promotion Rate)
+	~	
+	~		|
+
+Experienced Contributors  = A FUNCTION OF( -Promotion Rate,Skill up)
+	~	
+	~		|
+
+"Explicit Knowledge Transfer (Documentation, Contributor's Guides)"  = A FUNCTION OF(\
+		 )
+	~	
+	~		|
+
+"Implicit Knowledge Transfer (Mentorship)"  = A FUNCTION OF( Core Developer)
+	~	
+	~		|
+
+Skill up  = A FUNCTION OF( "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"\
+		,"Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Promotion Rate  = A FUNCTION OF( "Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Developer's Turnover  = A FUNCTION OF( )
+	~	
+	~		|
+
+Tacit Knowledge Base  = A FUNCTION OF( Socialization Rate)
+	~	
+	~		|
+
+Socialization Rate  = A FUNCTION OF( Shared Experiences Quality,Trust Level,Mentoring Effectiveness,Peripheral Participation Level,Individual Tacit Capabilities)
+	~	
+	~		|
+
+Shared Experiences Quality  = A FUNCTION OF( )
+	~	
+	~		|
+
+Trust Level  = A FUNCTION OF( Community Bond Strength)
+	~	
+	~		|
+
+Mentoring Effectiveness  = A FUNCTION OF( Mentoring Activity Level)
+	~	
+	~		|
+
+Peripheral Participation Level  = A FUNCTION OF( -Movement to Core Participation)
+	~	
+	~		|
+
+Movement to Core Participation  = A FUNCTION OF( )
+	~	
+	~		|
+
+Articulated Knowledge  = A FUNCTION OF( Knowledge Articulation Rate)
+	~	
+	~		|
+
+Knowledge Articulation Rate  = A FUNCTION OF( Tacit Knowledge Base,Dialogue Quality,Reflection Effectiveness,Shared Language Development,Tacit Knowledge Available)
+	~	
+	~		|
+
+Dialogue Quality  = A FUNCTION OF( Community Norms Clarity,Community Norms Clarity)
+	~	
+	~		|
+
+Reflection Effectiveness  = A FUNCTION OF( )
+	~	
+	~		|
+
+Shared Language Development  = A FUNCTION OF( Community Language Richness,Community Language Richness)
+	~	
+	~		|
+
+Tacit Knowledge Available  = A FUNCTION OF( )
+	~	
+	~		|
+
+Organized Knowledge Systems  = A FUNCTION OF( Knowledge Integration Rate)
+	~	
+	~		|
+
+Knowledge Integration Rate  = A FUNCTION OF( Articulated Knowledge,System Organization Effectiveness,Knowledge Repository Quality,Framework Development Capability,Explicit Knowledge Available)
+	~	
+	~		|
+
+System Organization Effectiveness  = A FUNCTION OF( )
+	~	
+	~		|
+
+Knowledge Repository Quality  = A FUNCTION OF( )
+	~	
+	~		|
+
+Framework Development Capability  = A FUNCTION OF( Community Identity Strength,Community Identity Strength)
+	~	
+	~		|
+
+Explicit Knowledge Available  = A FUNCTION OF( )
+	~	
+	~		|
+
+Individual Tacit Capabilities  = A FUNCTION OF( Knowledge Absorption Rate)
+	~	
+	~		|
+
+Knowledge Absorption Rate  = A FUNCTION OF( Organized Knowledge Systems,Learning by Doing Effectiveness,Practice Opportunity Level,Personal Mastery Development,Explicit Knowledge Access)
+	~	
+	~		|
+
+Learning by Doing Effectiveness  = A FUNCTION OF( )
+	~	
+	~		|
+
+Practice Opportunity Level  = A FUNCTION OF( Community Participation Level,Community Participation Level)
+	~	
+	~		|
+
+Personal Mastery Development  = A FUNCTION OF( )
+	~	
+	~		|
+
+Explicit Knowledge Access  = A FUNCTION OF( )
+	~	
+	~		|
+
+Community Bond Strength  = A FUNCTION OF( Tacit Knowledge Base,Bond Development Rate)
+	~	
+	~		|
+
+Bond Development Rate  = A FUNCTION OF( Community Bond Strength)
+	~	
+	~		|
+
+Core Participation Capacity  = A FUNCTION OF( Individual Tacit Capabilities,Capacity Development Rate)
+	~	
+	~		|
+
+Capacity Development Rate  = A FUNCTION OF( Core Participation Capacity)
+	~	
+	~		|
+
+Community Norms Clarity  = A FUNCTION OF( Community Bond Strength)
+	~	
+	~		|
+
+Community Language Richness  = A FUNCTION OF( )
+	~	
+	~		|
+
+Community Identity Strength  = A FUNCTION OF( Community Bond Strength)
+	~	
+	~		|
+
+Community Shared Understanding  = A FUNCTION OF( Organized Knowledge Systems)
+	~	
+	~		|
+
+Community Participation Level  = A FUNCTION OF( Core Participation Capacity)
+	~	
+	~		|
+
+Mentoring Activity Level  = A FUNCTION OF( Core Participation Capacity)
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,67,2
+10,1,New Contributors,1257,581,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Core Developer,1684,584,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,3,48,1861,584,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,6,2,100,0,0,22,0,192,0,-1--1--1,,1|(1757,584)|
+1,5,6,3,4,0,0,22,0,192,0,-1--1--1,,1|(1823,584)|
+11,6,0,1790,584,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,7,Developer's Turnover,1790,618,56,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,8,Experienced Contributors,1475,584,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,11,1,100,0,0,22,0,192,0,-1--1--1,,1|(1342,585)|
+1,10,11,8,4,0,0,22,0,192,0,-1--1--1,,1|(1391,585)|
+11,11,0,1368,585,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,12,Skill up,1368,619,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,13,15,8,100,0,0,22,0,192,0,-1--1--1,,1|(1563,583)|
+1,14,15,2,4,0,0,22,0,192,0,-1--1--1,,1|(1617,583)|
+11,15,0,1591,583,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,16,Promotion Rate,1591,617,46,26,40,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,17,"Implicit Knowledge Transfer (Mentorship)",1535,413,57,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,18,17,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,19,17,15,0,0,43,0,0,192,0,-1--1--1,,1|(0,0)|
+1,20,2,17,1,0,43,0,0,192,0,-1--1--1,,1|(1653,468)|
+10,21,"Explicit Knowledge Transfer (Documentation, Contributor's Guides)",1274,404,91,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,22,21,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,23,colored stock,1067,817,46,26,3,3,0,1,-1,1,0,0,252-102-255,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,24,Tacit Knowledge Base,3000,100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,25,Socialization Rate,3250,100,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,26,Shared Experiences Quality,3500,100,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,27,Trust Level,3750,100,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,28,Mentoring Effectiveness,4000,100,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,29,Peripheral Participation Level,3000,250,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,30,Movement to Core Participation,3250,250,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,31,Articulated Knowledge,4500,100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,32,Knowledge Articulation Rate,4750,100,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,33,Dialogue Quality,5000,100,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,34,Reflection Effectiveness,5250,100,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,35,Shared Language Development,5500,100,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,36,Tacit Knowledge Available,4500,250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,37,Organized Knowledge Systems,6000,100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,38,Knowledge Integration Rate,6250,100,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,39,System Organization Effectiveness,6500,100,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,40,Knowledge Repository Quality,6750,100,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,41,Framework Development Capability,7000,100,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,42,Explicit Knowledge Available,6000,250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,43,Individual Tacit Capabilities,7500,100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,44,Knowledge Absorption Rate,7750,100,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,45,Learning by Doing Effectiveness,8000,100,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,46,Practice Opportunity Level,8250,100,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,47,Personal Mastery Development,8500,100,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,48,Explicit Knowledge Access,7500,250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,49,Community Bond Strength,4500,900,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,50,Bond Development Rate,4750,900,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,51,Core Participation Capacity,5000,900,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,52,Capacity Development Rate,5250,900,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,53,Community Norms Clarity,5500,900,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,54,Community Language Richness,4500,1050,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,55,Community Identity Strength,4750,1050,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,56,Community Shared Understanding,5000,1050,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,57,Community Participation Level,5250,1050,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,58,Mentoring Activity Level,5500,1050,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,24,23,1,0,0,0,0,1,192,0,251-2-128,|||0-0-0,1|(0,0)|
+1,25,25,24,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,26,26,25,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,27,27,25,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,28,28,25,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,29,29,25,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,30,30,29,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,31,24,32,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,32,49,27,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,33,24,49,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,34,32,31,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,35,33,32,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,36,34,32,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,37,35,32,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,38,36,32,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,39,31,38,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,40,53,33,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,41,54,35,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,42,38,37,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,43,39,38,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,44,40,38,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,45,41,38,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,46,42,38,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,47,37,44,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,48,37,56,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,49,55,41,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,50,44,43,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,51,45,44,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,52,46,44,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,53,47,44,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,54,48,44,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,55,43,25,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,56,43,51,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,57,57,46,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,58,50,49,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,59,52,51,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,60,49,50,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,61,51,52,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,62,49,53,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,63,49,55,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,64,51,58,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,65,51,57,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,66,53,33,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,67,54,35,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,68,55,41,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,69,57,46,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,70,58,28,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+12,25,0,2204,386,80,40,3,7,0,1,-1,1,0,0,251-2-7,0-0-0,|||0-0-0,0,0,0,0,0,0
+This is a test comment written in red just to help you see how to make a comment.
+12,26,0,2209,537,80,40,3,7,0,1,-1,1,0,0,255-255-10,0-0-0,|||0-0-0,0,0,0,0,0,0
+Here is another comment with yellow outline
+12,27,0,2188,708,80,40,3,7,0,1,-1,1,0,0,33-255-6,0-0-0,|||0-0-0,0,0,0,0,0,0
+Here is yet another comment with green outline
+12,28,0,1928,826,80,40,8,7,0,0,-1,1,0,0,0,0,0,0,0,0
+Comment
+12,29,0,1461,301,80,40,8,7,0,0,-1,1,0,0,0,0,0,0,0,0
+Comment
+///---\\\
+:L<%^E!@
+5:New Contributors
+19:67,0
+24:0
+25:0
+26:0
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Vensim Sans|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

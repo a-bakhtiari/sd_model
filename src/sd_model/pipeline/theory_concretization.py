@@ -126,37 +126,71 @@ Then **for EACH process narrative**, create:
 
 You MUST create concrete variable-to-variable connections between processes based on the inter-cluster relationships shown above.
 
+**Hub-Based Connection Pattern (REQUIRED):**
+
+Each process should have **ONE clear hub output** that serves as the connection point to other processes. This creates a clean, modular architecture.
+
+**Pattern:**
+```
+Process A:
+  - Internal Stock: "Knowledge Base"  ← Main accumulation
+  - Internal connections within the process
+  - Hub Output: "Knowledge Base" → connects to multiple downstream processes
+
+Process B:
+  - Receives from Process A: "Knowledge Base" → "Application Rate"
+  - ONLY ONE connection from A to B (via the hub)
+
+Process C:
+  - Also receives from Process A: "Knowledge Base" → "Integration Effectiveness"
+  - Same hub output serves multiple processes
+```
+
 **How to implement inter-cluster connections:**
 
 For EACH inter-cluster relationship shown above:
-1. Identify or create a "hub output" variable in the SOURCE process
-2. Identify or create a receiving variable in the TARGET process
-3. Add the connection to the SOURCE process's connections array
+1. **Identify or create ONE "hub output" variable** in the SOURCE process
+   - Typically the main Stock or key Auxiliary that represents the process output
+   - This hub should serve ALL outgoing connections to other processes
+
+2. **Create receiving variable(s)** in the TARGET process
+   - Usually a Flow rate or Auxiliary that uses the hub output
+
+3. **Add EXACTLY ONE connection per process pair** to the SOURCE process's connections array
+   - From: Hub output (source process)
+   - To: Receiving variable (target process)
+   - Use the SAME hub output for all downstream connections
 
 **Example:**
 ```
 If Step 1 says:
   "Knowledge Socialization → feeds_into → Knowledge Externalization"
-  Description: "Shared experiences and tacit understanding flow into the externalization process"
+  "Knowledge Socialization → feeds_into → Community Core Development"
 
 Then in Step 2:
-  - Socialization process: Create hub output "Tacit Knowledge Base" (Stock)
-  - Externalization process: Create input "Tacit Knowledge Available" (Auxiliary)
-    OR reuse existing variable that receives tacit knowledge
-  - In Socialization's connections array, ADD:
+  - Socialization process: ONE hub output "Tacit Knowledge Base" (Stock)
+  - Externalization process: Create "Knowledge Articulation Rate" (Flow) that receives from hub
+  - Community Core process: Create "Socialization Effectiveness" (Auxiliary) that receives from hub
+
+  In Socialization's connections array, ADD exactly TWO connections:
     {{"from": "Tacit Knowledge Base", "to": "Knowledge Articulation Rate", "relationship": "positive"}}
+    {{"from": "Tacit Knowledge Base", "to": "Socialization Effectiveness", "relationship": "positive"}}
+
+  Both use the SAME hub output!
 ```
 
 **Connection Types Guide:**
-- **feeds_into** → Positive connection from output of source to input/rate of target
-- **receives_from** → This is the REVERSE; create connection in the OTHER process
-- **feedback_loop** → Bidirectional; create connections in BOTH processes
+- **feeds_into** → Positive connection from hub output of source to rate/input of target
+- **receives_from** → This is the REVERSE; create connection in the OTHER process (their hub → your variable)
+- **feedback_loop** → Bidirectional; create connections in BOTH processes using their respective hubs
 
 **Critical Rules:**
-- ✅ Every process MUST have at least 1-2 inter-cluster connections
-- ✅ Hub outputs from one process MUST connect to variables in other processes
-- ✅ Use the connection descriptions to identify appropriate variable names
+- ✅ Each process MUST have ONE primary hub output (Stock or key Auxiliary)
+- ✅ Use the SAME hub output for ALL outgoing connections to other processes
+- ✅ EXACTLY ONE connection per process-pair (no duplicate connections between same clusters)
+- ✅ Hub outputs can connect to MULTIPLE downstream processes (one-to-many is good!)
 - ✅ Inter-cluster connections go in the SOURCE process's connections array
+- ❌ DO NOT create multiple scattered connections between same two clusters
 - ❌ DO NOT create isolated processes - all must connect to form cohesive model
 - ❌ DO NOT skip inter-cluster connections - they are REQUIRED for model coherence
 
