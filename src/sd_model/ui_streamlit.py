@@ -1725,60 +1725,13 @@ def main() -> None:
 
                             for idx, cluster in enumerate(clusters):
                                 with st.expander(f"📦 **{cluster.get('name', 'Unknown Process')}**", expanded=(idx == 0)):
-                                    # Format the narrative for better readability
+                                    # Display the narrative
                                     narrative = cluster.get('narrative', 'N/A')
 
-                                    # Better formatting with info boxes for each section
-                                    if narrative != 'N/A':
-                                        # Split narrative into sections
-                                        sections = {
-                                            "Accumulations:": "💧 **What Accumulates**",
-                                            "Rates and speeds:": "⚡ **Flow Rates**",
-                                            "Feedback loops:": "🔄 **Feedback Dynamics**",
-                                            "Time delays:": "⏱️ **Time Delays**",
-                                            "Nonlinearities:": "📈 **Nonlinearities**",
-                                            "Causal relationships:": "🔗 **Causal Drivers**"
-                                        }
-
-                                        for key, header in sections.items():
-                                            if key in narrative:
-                                                start = narrative.find(key) + len(key)
-                                                # Find the next section or end of narrative
-                                                end = len(narrative)
-                                                for next_key in sections.keys():
-                                                    next_pos = narrative.find(next_key, start)
-                                                    if next_pos != -1 and next_pos < end:
-                                                        end = next_pos
-
-                                                section_text = narrative[start:end].strip()
-
-                                                # Use info boxes for better visual separation
-                                                if "Accumulations" in key:
-                                                    st.info(f"{header}\n\n{section_text}")
-                                                elif "Feedback" in key:
-                                                    # Split reinforcing and balancing if present
-                                                    if "Reinforcing" in section_text and "Balancing" in section_text:
-                                                        st.success(f"🔄 **Feedback Dynamics**")
-                                                        # Split at 'Balancing'
-                                                        parts = section_text.split("Balancing")
-                                                        reinforcing = parts[0].replace("Reinforcing—", "").replace("Reinforcing:", "").strip()
-                                                        balancing = parts[1].replace("—", "").strip() if len(parts) > 1 else ""
-
-                                                        col1, col2 = st.columns(2)
-                                                        with col1:
-                                                            st.success(f"**➕ Reinforcing**\n{reinforcing}")
-                                                        with col2:
-                                                            st.warning(f"**➖ Balancing**\n{balancing}")
-                                                    else:
-                                                        st.success(f"{header}\n\n{section_text}")
-                                                elif "Time" in key:
-                                                    st.info(f"{header}\n\n{section_text}")
-                                                else:
-                                                    st.markdown(f"**{header}**")
-                                                    st.markdown(section_text)
-                                                    st.markdown("")
+                                    if narrative and narrative != 'N/A':
+                                        st.info(f"**📖 Process Narrative**\n\n{narrative}")
                                     else:
-                                        st.markdown(narrative)
+                                        st.warning("No narrative available for this process.")
 
                                     # Theories and Connections in a cleaner layout
                                     st.markdown("---")

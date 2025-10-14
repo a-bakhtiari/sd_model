@@ -18,7 +18,8 @@ def create_planning_prompt(
     current_model_summary: Dict,
     model_name: str = None,
     user_instructions_path: str = None,
-    project_path: Path = None
+    project_path: Path = None,
+    recreate_mode: bool = False
 ) -> str:
     """Create prompt for Step 1: Strategic Theory Planning - CONDENSED.
 
@@ -28,6 +29,7 @@ def create_planning_prompt(
         model_name: Optional name of the model being enhanced
         user_instructions_path: Optional path to user instructions file
         project_path: Optional project path for finding RQ.txt
+        recreate_mode: If True, creating model from scratch; if False, enhancing existing model
 
     Returns:
         Prompt string for LLM
@@ -79,14 +81,21 @@ def create_planning_prompt(
         for i, t in enumerate(theories)
     ])
 
-    # Model context
-    model_context = f"**Model**: {model_name or 'System Dynamics Model'}\n**Current Structure**: {current_model_summary.get('variables', 0)} variables, {current_model_summary.get('connections', 0)} connections"
+    # Model context and task description based on mode
+    if recreate_mode:
+        task_description = "You are planning how to create a new SD model from scratch using theories through process-based decomposition."
+        model_context = f"**Model**: {model_name or 'System Dynamics Model'}\n**Starting from**: Empty model (0 variables, 0 connections)"
+        prompt_title = "# Strategic Theory Planning for SD Model Creation"
+    else:
+        task_description = "You are planning how theories can enhance an existing SD model through process-based decomposition."
+        model_context = f"**Model**: {model_name or 'System Dynamics Model'}\n**Current Structure**: {current_model_summary.get('variables', 0)} variables, {current_model_summary.get('connections', 0)} connections"
+        prompt_title = "# Strategic Theory Planning for SD Enhancement"
 
-    prompt = f"""# Strategic Theory Planning for SD Enhancement
+    prompt = f"""{prompt_title}
 
 ## Context
 
-You are planning how theories can enhance an existing SD model through process-based decomposition.
+{task_description}
 
 {model_context}
 {research_questions}{user_instructions}
@@ -106,68 +115,154 @@ For each theory, decide:
 
 ## 2. Process-Based Clustering
 
-Design process clusters that COMPREHENSIVELY cover the theories provided.
+Design process clusters that COMPREHENSIVELY cover the theories provided. Only include theories that genuinely apply to the model context.
 
-SCALING GUIDANCE - Generate proportionally to theory count:
-- 2-4 theories → Design 2-3 focused processes
-- 5-8 theories → Design 4-6 processes
-- 9-12 theories → Design 6-8 processes
-- 13+ theories → Design 8-10 processes
+**Using Additional Theories**: Primarily use theories from the provided list. However, if you need additional theories beyond this list to build complete, coherent narratives, you may use them. Report any such theories in `additional_theories_used` with a brief rationale.
 
-Note: Only include theories that genuinely apply to the model context. Each cluster should be a self-contained process that transforms inputs to outputs.
+SCALING GUIDANCE (rough guidance): Generate proportionally to theory count:
+- 2-4 theories → 2-3 processes | 5-8 theories → 4-6 processes | 9-12 theories → 6-8 processes | 13+ theories → 8-10 processes
+
+**What is a Process Cluster?**
+Each cluster is a **mini-model**—a focused, independently understandable part of the system with its own dynamics:
+- Has a clear primary input stock (what accumulates as input) and primary output stock (what accumulates as output)
+- Contains its own stocks, flows, and feedback loops internally
+
+**Hierarchical System Design:**
+- **Process level**: Each process is its own system with internal dynamics (stocks, flows, feedback)
+- **Overall system level**: Processes are elements in the larger system, which can exhibit system-wide feedback loops and dynamics
+- **Connectivity**: Every process must connect to the rest of the system (no isolated processes)
+- Keep inter-process connections minimal for clarity (typically one primary path through each process)
+- Add feedback connections between processes only where system dynamics clearly require them
+
+## SD Elements Fundamentals
+
+**Stock**: Accumulations that persist over time (can ask "how many now?")
+- Examples: people, documents, knowledge units, trust levels, inventory
+- Test: Does it accumulate/deplete over time?
+
+**Flow**: Rates of change between stocks (units: things/time)
+- Examples: hiring rate, creation rate, depletion rate (people/month, documents/week)
+- Must connect: Stock→Stock or Stock→Boundary
+
+**Boundary (Cloud)**: System edge - sources that fill stocks or sinks that drain stocks
+- Source: External supply entering the system (e.g., job market → hiring flow → employees stock)
+- Sink: Outflow leaving the system (e.g., employees stock → attrition flow → outside world)
+
+**Auxiliary**: Calculated variables (not stocks or flows) computed from other model elements
+- Used to clarify causal relationships and represent factors that influence system behavior
+- Examples: effectiveness factors (0-1), gaps, time constants, capacity limits, ratios
+
+**Reinforcing Loop**: Amplifies change (more leads to more, or less leads to less)
+- Creates exponential growth or runaway collapse
+- Example: More contributors create more visibility, attracting more contributors
+
+**Balancing Loop**: Counteracts change, seeks equilibrium or goal
+- Stabilizes system toward target or constraint
+- Example: Gap between goal and actual triggers corrective action that closes the gap
 
 ## Writing Mechanistic Narratives
 
-**IMPORTANT**: Do NOT label variable types (Stock, Flow, Auxiliary). Focus on mechanisms.
+### What is a Narrative?
 
-Your narratives must describe:
+A narrative is a mechanistic story describing how a process unfolds over time. Write in natural language (not variables or equations) to capture the dynamic behavior—what accumulates, what drives rates, how feedback operates.
 
-### Required Elements:
+**Expected Length** (not a rule but rough numbers): 200-400 words per process narrative
+- For models with 8+ processes: aim for ~200-300 words each
+- For models with fewer processes: aim for ~300-400 words each
 
-1. **Accumulations**: What builds up or depletes over time
-   - "The pool of peripheral members grows when..."
-   - "Knowledge accumulates through..."
-   - "Trust builds up slowly over..."
+This ensures sufficient mechanistic detail for Step 2 to identify concrete SD elements.
 
-2. **Rates and Speeds**: How fast things change
-   - "Members transition at a rate determined by..."
-   - "Documentation occurs at a pace limited by..."
-   - "The speed of adoption depends on..."
+### Required Elements to Include:
 
-3. **Feedback Loops**: Reinforcing or balancing cycles
-   - "Reinforcing: More X leads to more Y, which creates more X"
-   - "Balancing: As gap increases, adjustment rate increases to close it"
+1. **Accumulations**: What builds up/depletes — "Pool of members grows when..." or "Trust accumulates through..."
+2. **Rates and Speeds**: How fast things change — "Transition at rate determined by..." or "Adoption pace depends on..."
+3. **Feedback Loops**: Reinforcing or balancing — "More X → more Y → more X" or "Gap increases → adjustment closes gap"
+4. **Time Delays**: How long processes take — "Takes 6-12 months for..." or "Benefits appear after 3-month delay..."
+5. **Nonlinearities**: Thresholds, saturation, tipping points — "Accelerates after 10+ interactions" or "Saturates when ratio exceeds 1:8"
+6. **Causal Relationships**: What drives what — "Rate limited by available mentors" or "Quality increases with expert contributions"
 
-4. **Time Delays**: How long processes take
-   - "It takes 6-12 months for newcomers to..."
-   - "Benefits appear with a 3-month delay..."
+**Example Contrast** (Good ✅ vs Insufficient ❌):
 
-5. **Nonlinearities**: Thresholds, saturation, tipping points
-   - "Progress accelerates after 10+ interactions..."
-   - "Effectiveness saturates when ratio exceeds 1:8..."
+❌ **Insufficient**: "New members join the community and learn by observing workflows. They gain experience through interactions and eventually become contributors who help other members."
 
-6. **Causal Relationships**: What drives what
-   - "Transfer rate is limited by available mentors..."
-   - "Quality increases with expert contributions..."
+✅ **Mechanistically Rich**: "A **pool of newcomers accumulates** as they discover the project at a **rate** influenced by community visibility (5-10 per month). They **build tacit knowledge** through observation, with the **pace** limited by interaction frequency (typically 3-5 meaningful exchanges per week). Members **transition to active contributor status** after a **socialization period of 6-9 months**, at a **rate** determined by available mentoring capacity (2-3 mentor-hours per week currently available). As the contributor base grows, more experienced members become available to mentor, which increases the capacity to support newcomers and **accelerates their progression rate**. However, when the newcomer pool exceeds 20 people, the mentor-to-newcomer ratio becomes unfavorable, and mentoring quality **begins to deteriorate**, slowing transition rates. Individual progress shows a **nonlinear pattern**—newcomers who complete fewer than 10 meaningful interactions show minimal advancement, but those surpassing this threshold experience **sharply accelerated** skill development."
 
-### Narrative Checklist:
-✓ 2-4 accumulations described
-✓ 2-4 rates/speeds mentioned
-✓ At least 1 feedback loop stated
-✓ Time constants specified
-✓ Causal drivers explicit
-✓ Constraints/limits noted
+*Note the feedback loops: (1) **Reinforcing** - as contributors grow, mentoring capacity increases, accelerating newcomer progression, creating more contributors; (2) **Balancing** - when newcomers exceed capacity, mentoring quality degrades, slowing progression until the imbalance corrects.*
+
+Systems typically have BOTH (not always) types competing. These may emerge in the overall system or in some of the processes.
+
+## Common SD Patterns from the System Zoo
+
+These canonical patterns appear frequently in well-designed SD models. Consider whether your process resembles any of these, but feel free to combine or adapt them as needed, or come up with your own if needed. These are examples to learn from, not strict templates.
+
+### A. One-Stock with Competing Balancing Loops (Thermostat)
+**Structure**: Two balancing loops pulling stock toward different goals | **Example**: Room temp (furnace heating vs. insulation loss)
+**Behavior**: Stock settles where loops balance; equilibrium shifts if one loop strengthens
+**Use when**: Goal-seeking with competing forces (quality vs. onboarding speed, documentation vs. velocity, debt vs. features)
+
+### B. Reinforcing + Balancing Loop (Population/Capital Growth)
+**Structure**: Reinforcing (growth) vs. balancing (constraint) | **Example**: Population (births vs. deaths), capital (investment vs. depreciation)
+**Behavior**: Exponential growth if reinforcing dominates, decay if balancing dominates, equilibrium if equal; dominance shifts over time
+**Use when**: Accumulation with growth and decline (contributor pools, knowledge bases, reputation, trust, capabilities, etc)
+
+### C. System with Delays (Business Inventory)
+**Structure**: Perception + response + delivery delays in balancing loops | **Example**: Car dealer ordering on delayed sales (averages trend, responds gradually, waits for delivery)
+**Behavior**: Oscillations! Overshooting/undershooting target. Counterintuitively, acting faster worsens oscillations. Delays strongly determine behavior.
+**Use when**: Information or physical responses take time (onboarding learning, code review queues, knowledge absorption, reputation building)
+
+### D. Renewable Constrained by Nonrenewable (Oil Economy)
+**Structure**: Capital grows (reinforcing), depletes finite resource | **Example**: Oil extraction (profit enables investment, but oil depletes until unprofitable)
+**Behavior**: Exponential growth → peak → collapse as resource depletes. Doubling resource only slightly delays peak.
+**Use when**: Consuming finite stocks (attention spans, legacy expertise, one-time adoption windows, initial enthusiasm, founding knowledge)
+
+### E. Renewable Constrained by Renewable (Fishery)
+**Structure**: Capital constrained by regenerating resource (regeneration can be damaged) | **Example**: Fishing fleet vs. fish population (regenerates fastest at moderate density)
+**Behavior** (3 outcomes): (1) Sustainable equilibrium if feedback quick, (2) Oscillation if delayed, (3) Collapse if extraction exceeds regeneration threshold
+**Critical**: High extraction efficiency can turn renewable into nonrenewable by allowing profitable harvest at dangerously low levels
+**Use when**: Depending on regenerating resources (contributor pools, updating knowledge, evolving practices, mentor capacity)
+
+### Pattern Combinations
+Real processes often (not always) combine multiple patterns: aging chain + resource constraints, population growth + delays → oscillation, stock management + resource depletion. These show how accumulations, rates, feedback, delays, and nonlinearities create recognizable dynamics.
+
+## System Archetypes (Classic Patterns)
+
+These are common behavioral patterns identified by Senge and Meadows. Use as optional reference—if a process naturally reflects archetype dynamics, that's valuable, but don't force them.
+
+**Limits to Growth**: Growth encounters constraint | Reinforcing growth + balancing limit
+**Shifting the Burden**: Short-term fix undermines long-term solution | Quick fix becomes addictive
+**Tragedy of the Commons**: Individual actions deplete shared resource | Self-interest erodes collective good
+**Success to the Successful**: Resource allocation reinforces winners | Rich get richer dynamic
+**Fixes that Fail**: Solution works initially but creates worse problems | Unintended consequences
+**Escalation**: Competitive intensification | Arms race, each party responds to other's actions
+**Growth and Underinvestment**: Growth constrained by delayed capacity building | Demand outpaces supply
+**Eroding Goals**: Performance standards drift downward under pressure | Lowering the bar
+**Balancing with Delay**: Adjustment with time delays causes oscillation | Overshooting target
+**Policy Resistance**: Multiple actors working at cross-purposes | Everyone pushing, nothing moves
+
+## Example Process Narrative
+
+This manufacturing example shows how to include all mechanistic elements in ~250 words:
+
+**Process: Material Intake**
+"The **supplier pipeline accumulates** raw materials arriving at a **rate** driven by purchase orders (100 units/day baseline). Materials **build up in inspection queue** where they're processed at a **pace** limited by inspector capacity (50 units/day/inspector). The **inspection pass rate** adjusts based on downstream defect feedback with a **2-week delay**—when defects rise above 5%, standards tighten within 3 days. **Balancing feedback**: When defects increase, this triggers stricter inspection standards, which lowers the pass rate, ultimately bringing defects back down in a goal-seeking pattern. Approved materials **accumulate in staging inventory** at the pass rate minus the production allocation rate. Customer demand signals influence material arrival **rate**, but with a **4-6 week procurement delay**. **Reinforcing loop**: As staging inventory builds up, production confidence increases, leading to higher allocation rates that deplete inventory faster, which then signals for more orders to replenish stock. **Nonlinearity**: Inspection effectiveness **drops sharply** when queue exceeds 500 units due to inspector fatigue—pass rate falls from 95% to 70%. **Threshold**: When staging inventory falls below 200 units (critical minimum), production halts within 24 hours. The process **transforms** raw supplier output into quality-verified inventory ready for production, with **constraint** from inspection capacity and **driver** from customer demand propagating backward through the supply chain."
 
 ## Process Design Requirements
 
 Each process must have:
 - **Name**: Clear, descriptive process name
-- **Narrative**: Mechanistically rich description (see guidelines above)
-- **Theories Used**: Which included theories inform this process
-- **Connections**: How this process connects to others
-  - feeds_into: Output becomes input for another
-  - receives_from: Gets input from another
-  - feedback_loop: Bidirectional influence
+- **Narrative**: Mechanistically rich (300-500 words, per guidelines above)
+- **Theories Used**: Which theories inform this process
+- **Connections** (`connections_to_other_clusters`): Explicitly map how this process relates to others—what flows between them and in which direction:
+  - **feeds_into**: Output of this process → input of target (e.g., "approved materials → production")
+  - **receives_from**: Input from another process (e.g., "receives feedback from quality control")
+  - **feedback_loop**: Circular causal chain where one process influences another, which influences the first back (directly or through other processes). Simple example: "production affects inventory, which signals back to production"
+
+Additional Design Principles:
+- **Small, focused processes** - Each cluster describes one coherent part of the system with its own dynamics
+- **Clear I/O boundaries** - Be explicit about what flows into and out of each process
+- **System thinking** - Processes can connect to multiple other processes (not just sequential)
+- **Allow feedback loops** - Later processes can feed back to earlier ones if it is needed in the overall system dynamics
+- **Modularity** - Each process should be independently understandable as a mini-model
 
 ## Output Format
 
@@ -202,9 +297,8 @@ Return ONLY valid JSON:
 ## Critical Instructions
 
 ✓ Write mechanistic narratives WITHOUT type labels
-✓ Include accumulations, rates, feedbacks, delays
 ✓ Design process clusters scaled to theory count
-✓ Each narrative must be comprehensive (300-400 words for 8+ processes, 400-500 words for fewer)
+✓ Each narrative should be comprehensive (see word count guidance in narrative section)
 ✓ Ensure processes connect (no isolated clusters)
 ✓ Use additional theories if needed for completeness
 """
@@ -257,7 +351,8 @@ def run_theory_planning(
         current_model_summary,
         model_name=None,
         user_instructions_path=user_instructions_path,
-        project_path=project_path
+        project_path=project_path,
+        recreate_mode=recreate_mode
     )
 
     # Call LLM

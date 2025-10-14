@@ -71,6 +71,15 @@ You are a system dynamics expert converting narratives into concrete SD elements
 
 {mode_io}
 
+## Step 1 Design Decisions
+
+Step 1 has planned a hierarchical system:
+- **Process level**: Each process is its own mini-system with internal dynamics
+- **Overall system level**: Processes connect to form the larger system
+- **Connectivity**: Every process must connect to others (no isolated processes)
+
+Your task: Implement these design decisions by identifying concrete SD elements.
+
 ---
 
 {model_section}
@@ -90,59 +99,114 @@ You are a system dynamics expert converting narratives into concrete SD elements
 
 # SD Design Principles
 
-## 1. SISO Architecture (REQUIRED)
-Each process must have EXACTLY ONE input and EXACTLY ONE output:
-- Linear pipeline: Process A → Process B → Process C
-- No hub-and-spoke, no many-to-one connections
-- Each process transforms one input stream into one output stream
+## 1. Process Connection Architecture
 
-## 2. Canonical SD Patterns
-Match narratives to these patterns:
+Step 1 has already planned how processes connect. Implement these connections using proper SD structure:
+- Identify the primary input stock and primary output stock for each process (as described in narratives)
+- Implement the connections specified in `connections_to_other_clusters` from Step 1
+  - Step 1 specifies three connection types:
+    - **feeds_into**: Primary forward connection from one process to the next
+    - **receives_from**: Input from another process
+    - **feedback_loop**: Circular causation where processes influence each other
+- Use flows to connect output stock of one process to input stock of another
+- Implement any feedback connections specified in Step 1
 
-**Aging Chain**: Progression through stages (Stock1 → Flow → Stock2 → Flow → Stock3)
-**Stock Management**: Goal-seeking with balancing feedback (Gap → Adjustment → Stock → Gap)
-**Diffusion**: S-curve growth with reinforcing feedback (adopter fraction drives adoption rate)
-**Resource Cycles**: Depletion and regeneration flows
-**Co-flow**: Bidirectional transfer between stock pairs
+## 1.5 Module Interfaces: Stock-to-Stock Connections (REQUIRED)
 
-## 3. Variable Types
+Each process should have:
+- **Primary input stock**: What accumulates as this process receives input
+- **Primary output stock**: What accumulates at this process's endpoint
 
-**STOCK**: Accumulations that persist (can count "how many now?")
-- Units: people, documents, knowledge units, trust levels
-- Test: Does it accumulate/deplete over time?
+Connect processes via flows:
+- Output stock of Process A → Flow → Input stock of Process B
+- Example: "Onboarded Contributors" → "Promotion Rate" → "Active Contributors"
 
-**FLOW**: Rates between stocks ONLY (never standalone)
-- Units: things/time (people/month, documents/week)
-- Must connect: Stock→Stock or Stock→Boundary
+## 2. Your Task: Identify SD Elements in Narratives
 
-**AUXILIARY**: Calculated values, factors, multipliers
-- Effectiveness (0-1), gaps, time constants, thresholds
-- Enable feedback: Stock → Auxiliary → Flow → Stock
+**CRITICAL**: The narratives from Step 1 already contain all the SD structure. Your job is pure extraction—identify what's already described, don't add elements not mentioned. If the narrative describes an accumulation, extract it as a stock. If it describes a rate, extract it as a flow. Be faithful to what's written.
 
-## 4. Requirements Per Process - SCALE WITH THEORY COMPLEXITY
+**Identify Stocks** - Look for what accumulates or depletes over time:
+- "A pool of X builds up..." → Stock: X Pool
+- "Trust accumulates through..." → Stock: Trust Level
+- "Knowledge depreciates when..." → Stock: Knowledge Base
+- "The number of Y grows/shrinks..." → Stock: Y Count
+- etc.
 
-Generate variables proportional to the richness of theories informing each process:
+**Identify Flows** - Look for rates that change stocks:
+- "Members transition at a rate of..." → Flow connecting two stocks
+- "Creation occurs at a pace limited by..." → Flow into a stock
+- "Depletion/exit happens when..." → Flow out of a stock
+- Flows always connect Stock→Stock or Stock→Boundary or Boundary→Stock
+- etc.
 
-**For processes informed by 1-2 theories:**
-• 4-6 Stocks
-• 3-4 Flows
-• 4-6 Auxiliaries
+**Identify Auxiliaries** - Look for calculated values that aren't stocks or flows:
+- "Rate is limited by available mentors..." → Auxiliary: Available Mentors
+- "Effectiveness of 0.8 means..." → Auxiliary: Effectiveness Factor
+- "Gap between target and actual..." → Auxiliary: Gap
+- "Time constant of 3 months..." → Auxiliary: Time Constant
 
-**For processes informed by 3-4 theories:**
-• 6-8 Stocks
-• 4-6 Flows
-• 6-8 Auxiliaries
+**Connectivity requirement**: Every variable must connect to the rest of the process structure. No isolated variables—each stock, flow, and auxiliary should have causal relationships with other elements. If a narrative describes an element, it also describes how that element relates to others. If the connection is not clear from the narrative for a variable, infer it.
 
-**For processes informed by 5+ theories:**
-• 8-12 Stocks
-• 6-8 Flows
-• 8-12 Auxiliaries
+**How many stocks per process?** Let the narrative guide you. Rich, multi-theory narratives naturally describe more accumulations. Simple narratives describe fewer. Don't force counts—extract what's actually described.
 
-Include SD elements that capture the essential mechanisms from theories informing this process.
-✓ At least 1 feedback loop (reinforcing or balancing)
-✓ SISO connections to other processes
+## 2.5 Common SD Patterns from the System Zoo
 
-## 5. Naming Convention
+Step 1 used these patterns when crafting narratives. Recognizing them helps you extract the right SD elements:
+
+### A. One-Stock with Competing Balancing Loops (Thermostat)
+**Structure**: Two balancing loops pulling stock toward different goals | **Example**: Room temp (furnace heating vs. insulation loss)
+**Behavior**: Stock settles where loops balance; equilibrium shifts if one loop strengthens
+**Use when**: Goal-seeking with competing forces (quality vs. onboarding speed, documentation vs. velocity, debt vs. features)
+
+### B. Reinforcing + Balancing Loop (Population/Capital Growth)
+**Structure**: Reinforcing (growth) vs. balancing (constraint) | **Example**: Population (births vs. deaths), capital (investment vs. depreciation)
+**Behavior**: Exponential growth if reinforcing dominates, decay if balancing dominates, equilibrium if equal; dominance shifts over time
+**Use when**: Accumulation with growth and decline (contributor pools, knowledge bases, reputation, trust, capabilities, etc)
+
+### C. System with Delays (Business Inventory)
+**Structure**: Perception + response + delivery delays in balancing loops | **Example**: Car dealer ordering on delayed sales (averages trend, responds gradually, waits for delivery)
+**Behavior**: Oscillations! Overshooting/undershooting target. Counterintuitively, acting faster worsens oscillations. Delays strongly determine behavior.
+**Use when**: Information or physical responses take time (onboarding learning, code review queues, knowledge absorption, reputation building)
+
+### D. Renewable Constrained by Nonrenewable (Oil Economy)
+**Structure**: Capital grows (reinforcing), depletes finite resource | **Example**: Oil extraction (profit enables investment, but oil depletes until unprofitable)
+**Behavior**: Exponential growth → peak → collapse as resource depletes. Doubling resource only slightly delays peak.
+**Use when**: Consuming finite stocks (attention spans, legacy expertise, one-time adoption windows, initial enthusiasm, founding knowledge)
+
+### E. Renewable Constrained by Renewable (Fishery)
+**Structure**: Capital constrained by regenerating resource (regeneration can be damaged) | **Example**: Fishing fleet vs. fish population (regenerates fastest at moderate density)
+**Behavior** (3 outcomes): (1) Sustainable equilibrium if feedback quick, (2) Oscillation if delayed, (3) Collapse if extraction exceeds regeneration threshold
+**Critical**: High extraction efficiency can turn renewable into nonrenewable by allowing profitable harvest at dangerously low levels
+**Use when**: Depending on regenerating resources (contributor pools, updating knowledge, evolving practices, mentor capacity)
+
+### Pattern Combinations
+Real processes often (not always) combine multiple patterns: aging chain + resource constraints, population growth + delays → oscillation, stock management + resource depletion. These show how accumulations, rates, feedback, delays, and nonlinearities create recognizable dynamics.
+
+## 3. SD Elements Fundamentals
+
+**Stock**: Accumulations that persist over time
+- Examples: people, documents, knowledge units, trust levels, inventory
+
+**Flow**: Rates of change between stocks or between stocks and boundaries (units: things/time)
+- Examples: hiring rate, creation rate, depletion rate (people/month, documents/week)
+
+**Boundary (Cloud)**: System edge - sources that fill stocks or sinks that drain stocks
+- Source: External supply entering the system (e.g., Cloud → hiring flow → employees stock)
+- Sink: Outflow leaving the system (e.g., employees stock → attrition flow → Cloud)
+
+**Auxiliary**: Calculated variables (not stocks or flows) computed from other model elements
+- Used to clarify causal relationships and represent factors that influence system behavior
+- Examples: effectiveness factors (0-1), gaps, time constants, capacity limits, ratios
+
+**Reinforcing Loop**: Amplifies change (more leads to more, or less leads to less)
+- Creates exponential growth or runaway collapse
+- Example: More contributors create more visibility, attracting more contributors
+
+**Balancing Loop**: Counteracts change, seeks equilibrium or goal
+- Stabilizes system toward target or constraint
+- Example: Gap between goal and actual triggers corrective action that closes the gap
+
+## 4. Naming Convention
 Be specific and descriptive:
 - ✅ "Novice Contributors" not ❌ "Novices"
 - ✅ "Documentation Creation Rate" not ❌ "Rate"
@@ -176,13 +240,8 @@ Return ONLY valid JSON:
         }}
       ]
     }}
-  ],
-  "cluster_positions": {{
-    "Process Name": [row, column]
-  }}
+  ]
 }}
-
-CRITICAL: Include cluster_positions for spatial layout (2D grid positions).
 """
 
     return prompt
