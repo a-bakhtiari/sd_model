@@ -1,0 +1,1300 @@
+{
+  "variables": [
+    {
+      "id": 1,
+      "name": "New Contributors",
+      "type": "Stock",
+      "x": 644,
+      "y": 212,
+      "width": 66,
+      "height": 26
+    },
+    {
+      "id": 2,
+      "name": "Core Developer",
+      "type": "Stock",
+      "x": 1071,
+      "y": 215,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 3,
+      "name": "PR Feedback",
+      "type": "Auxiliary",
+      "x": 750,
+      "y": 511,
+      "width": 54,
+      "height": 26
+    },
+    {
+      "id": 4,
+      "name": "Source Code",
+      "type": "Stock",
+      "x": 1149,
+      "y": 651,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 5,
+      "name": "User Base",
+      "type": "Stock",
+      "x": 1627,
+      "y": 626,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 6,
+      "name": "Project Reputation",
+      "type": "Stock",
+      "x": 1943,
+      "y": 622,
+      "width": 50,
+      "height": 26
+    },
+    {
+      "id": 11,
+      "name": "Adoption Rate",
+      "type": "Flow",
+      "x": 1533,
+      "y": 660,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 16,
+      "name": "User Churn Rate",
+      "type": "Flow",
+      "x": 1725,
+      "y": 660,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 21,
+      "name": "Reputation Building",
+      "type": "Flow",
+      "x": 1867,
+      "y": 653,
+      "width": 52,
+      "height": 26
+    },
+    {
+      "id": 26,
+      "name": "Reputation Decline",
+      "type": "Flow",
+      "x": 2068,
+      "y": 656,
+      "width": 51,
+      "height": 26
+    },
+    {
+      "id": 27,
+      "name": "Software Quality and Features",
+      "type": "Auxiliary",
+      "x": 1881,
+      "y": 490,
+      "width": 55,
+      "height": 26
+    },
+    {
+      "id": 30,
+      "name": "Community Health",
+      "type": "Stock",
+      "x": 1779,
+      "y": 317,
+      "width": 50,
+      "height": 26
+    },
+    {
+      "id": 35,
+      "name": "Trust Building",
+      "type": "Flow",
+      "x": 1682,
+      "y": 348,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 40,
+      "name": "Culture Erosion",
+      "type": "Flow",
+      "x": 1953,
+      "y": 351,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 41,
+      "name": "PR Review Delay",
+      "type": "Auxiliary",
+      "x": 988,
+      "y": 441,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 46,
+      "name": "Developer's Turnover",
+      "type": "Flow",
+      "x": 1177,
+      "y": 249,
+      "width": 56,
+      "height": 26
+    },
+    {
+      "id": 47,
+      "name": "New Pull request",
+      "type": "Stock",
+      "x": 621,
+      "y": 645,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 48,
+      "name": "Open Issues",
+      "type": "Stock",
+      "x": 165,
+      "y": 483,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 49,
+      "name": "Project's Implicit Knowledge",
+      "type": "Stock",
+      "x": 919,
+      "y": -131,
+      "width": 51,
+      "height": 26
+    },
+    {
+      "id": 50,
+      "name": "Projects's Explicit Knowledge",
+      "type": "Stock",
+      "x": 647,
+      "y": -133,
+      "width": 50,
+      "height": 26
+    },
+    {
+      "id": 55,
+      "name": "New Pr rate",
+      "type": "Flow",
+      "x": 483,
+      "y": 680,
+      "width": 47,
+      "height": 26
+    },
+    {
+      "id": 56,
+      "name": "Pull Request Under review",
+      "type": "Stock",
+      "x": 866,
+      "y": 655,
+      "width": 51,
+      "height": 26
+    },
+    {
+      "id": 60,
+      "name": "Review Rate",
+      "type": "Flow",
+      "x": 753,
+      "y": 683,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 64,
+      "name": "Merge/Commit",
+      "type": "Flow",
+      "x": 1019,
+      "y": 682,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 69,
+      "name": "Rejection Rate",
+      "type": "Flow",
+      "x": 920,
+      "y": 724,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 72,
+      "name": "Experienced Contributors",
+      "type": "Stock",
+      "x": 862,
+      "y": 215,
+      "width": 66,
+      "height": 26
+    },
+    {
+      "id": 76,
+      "name": "Skill up",
+      "type": "Flow",
+      "x": 755,
+      "y": 250,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 80,
+      "name": "Promotion Rate",
+      "type": "Flow",
+      "x": 978,
+      "y": 248,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 85,
+      "name": "Joining Rate",
+      "type": "Flow",
+      "x": 506,
+      "y": 247,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 91,
+      "name": "Depreciation/Loss of Knowledge",
+      "type": "Flow",
+      "x": 1068,
+      "y": -96,
+      "width": 55,
+      "height": 26
+    },
+    {
+      "id": 93,
+      "name": "Implicit Knowledge Transfer (Mentorship)",
+      "type": "Auxiliary",
+      "x": 922,
+      "y": 44,
+      "width": 57,
+      "height": 26
+    },
+    {
+      "id": 101,
+      "name": "Knowledge Conversion Rate",
+      "type": "Flow",
+      "x": 782,
+      "y": -98,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 105,
+      "name": "Explicit to Implicit Conversion",
+      "type": "Flow",
+      "x": 913,
+      "y": -249,
+      "width": 47,
+      "height": 26
+    },
+    {
+      "id": 106,
+      "name": "Searchable Knowledge Base",
+      "type": "Stock",
+      "x": 127,
+      "y": 177,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 113,
+      "name": "Closed Issues",
+      "type": "Stock",
+      "x": -22,
+      "y": 481,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 114,
+      "name": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "type": "Auxiliary",
+      "x": 661,
+      "y": 35,
+      "width": 91,
+      "height": 27
+    },
+    {
+      "id": 122,
+      "name": "Issue Creation Rate",
+      "type": "Flow",
+      "x": 280,
+      "y": 514,
+      "width": 51,
+      "height": 26
+    },
+    {
+      "id": 126,
+      "name": "Issue Resolution Rate",
+      "type": "Flow",
+      "x": 67,
+      "y": 514,
+      "width": 56,
+      "height": 26
+    },
+    {
+      "id": 132,
+      "name": "Community engagement",
+      "type": "Flow",
+      "x": 195,
+      "y": 93,
+      "width": 64,
+      "height": 26
+    },
+    {
+      "id": 136,
+      "name": "Discussions",
+      "type": "Stock",
+      "x": 315,
+      "y": 154,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 138,
+      "name": "Joining Rate_1",
+      "type": "Auxiliary",
+      "x": 562,
+      "y": 373,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 140,
+      "name": "hi",
+      "type": "Stock",
+      "x": -416,
+      "y": 420,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 146,
+      "name": "Feedback",
+      "type": "Auxiliary",
+      "x": 168,
+      "y": 659,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 152,
+      "name": "Maintainer time",
+      "type": "Auxiliary",
+      "x": 107,
+      "y": 390,
+      "width": 46,
+      "height": 26
+    },
+    {
+      "id": 154,
+      "name": "Governance strategy",
+      "type": "Auxiliary",
+      "x": 414,
+      "y": 300,
+      "width": 55,
+      "height": 26
+    },
+    {
+      "id": 155,
+      "name": "Starter Tasks Inventory",
+      "type": "Stock",
+      "x": 3000,
+      "y": 100,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 156,
+      "name": "Starter Task Curation Rate",
+      "type": "Flow",
+      "x": 3250,
+      "y": 100,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 157,
+      "name": "Starter Task Consumption Rate",
+      "type": "Flow",
+      "x": 3500,
+      "y": 100,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 158,
+      "name": "Onboarding Scaffolding Index",
+      "type": "Auxiliary",
+      "x": 3750,
+      "y": 100,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 159,
+      "name": "Entry Conversion Friction",
+      "type": "Auxiliary",
+      "x": 4000,
+      "y": 100,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 160,
+      "name": "Newcomer Response Time",
+      "type": "Auxiliary",
+      "x": 3000,
+      "y": 250,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 161,
+      "name": "CI Stability",
+      "type": "Auxiliary",
+      "x": 3250,
+      "y": 250,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 162,
+      "name": "Run Instructions Completeness",
+      "type": "Auxiliary",
+      "x": 3500,
+      "y": 250,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 163,
+      "name": "Practice Interactions Completed",
+      "type": "Stock",
+      "x": 3000,
+      "y": 600,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 164,
+      "name": "Practice Interaction Accumulation",
+      "type": "Flow",
+      "x": 3250,
+      "y": 600,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 165,
+      "name": "Legitimate Opportunity Availability",
+      "type": "Auxiliary",
+      "x": 3500,
+      "y": 600,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 166,
+      "name": "Feedback Latency",
+      "type": "Auxiliary",
+      "x": 3750,
+      "y": 600,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 167,
+      "name": "Available Mentors",
+      "type": "Auxiliary",
+      "x": 4000,
+      "y": 600,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 168,
+      "name": "Effective Absorptive Capacity",
+      "type": "Auxiliary",
+      "x": 3000,
+      "y": 750,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 169,
+      "name": "Practice Threshold Multiplier",
+      "type": "Auxiliary",
+      "x": 3250,
+      "y": 750,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 170,
+      "name": "Reviewer Energy Reserve",
+      "type": "Stock",
+      "x": 3000,
+      "y": 1100,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 171,
+      "name": "Energy Recovery Rate",
+      "type": "Flow",
+      "x": 3250,
+      "y": 1100,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 172,
+      "name": "Energy Drain Rate",
+      "type": "Flow",
+      "x": 3500,
+      "y": 1100,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 173,
+      "name": "Mentoring Hours Available",
+      "type": "Stock",
+      "x": 3750,
+      "y": 1100,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 174,
+      "name": "Mentoring Hours Replenishment",
+      "type": "Flow",
+      "x": 4000,
+      "y": 1100,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 175,
+      "name": "Mentoring Hours Used",
+      "type": "Flow",
+      "x": 3000,
+      "y": 1250,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 176,
+      "name": "Review Routine Maturity",
+      "type": "Stock",
+      "x": 3250,
+      "y": 1250,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 177,
+      "name": "Routine Improvement Rate",
+      "type": "Flow",
+      "x": 3500,
+      "y": 1250,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 178,
+      "name": "Routine Disruption Rate",
+      "type": "Flow",
+      "x": 3750,
+      "y": 1250,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 179,
+      "name": "Reviewer Cognitive Load",
+      "type": "Auxiliary",
+      "x": 4000,
+      "y": 1250,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 180,
+      "name": "Effective Review Capacity",
+      "type": "Auxiliary",
+      "x": 3000,
+      "y": 1400,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 181,
+      "name": "Quality Gate Strictness",
+      "type": "Auxiliary",
+      "x": 3250,
+      "y": 1400,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 182,
+      "name": "Acceptance Probability",
+      "type": "Auxiliary",
+      "x": 3500,
+      "y": 1400,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 183,
+      "name": "Review Latency",
+      "type": "Auxiliary",
+      "x": 3750,
+      "y": 1400,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 184,
+      "name": "Abandonment Rate",
+      "type": "Flow",
+      "x": 4000,
+      "y": 1400,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 185,
+      "name": "Automation Level",
+      "type": "Auxiliary",
+      "x": 3000,
+      "y": 1550,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 186,
+      "name": "Review Queue Length",
+      "type": "Auxiliary",
+      "x": 3250,
+      "y": 1550,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 187,
+      "name": "Submission Quality",
+      "type": "Auxiliary",
+      "x": 3500,
+      "y": 1550,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 188,
+      "name": "Reputation Accumulation Rate",
+      "type": "Flow",
+      "x": 3000,
+      "y": 1900,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 189,
+      "name": "Reputation Decay Rate",
+      "type": "Flow",
+      "x": 3250,
+      "y": 1900,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 190,
+      "name": "Signal Strength",
+      "type": "Auxiliary",
+      "x": 3500,
+      "y": 1900,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 191,
+      "name": "Social Capital Multiplier",
+      "type": "Auxiliary",
+      "x": 3750,
+      "y": 1900,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 192,
+      "name": "Role Readiness Gap",
+      "type": "Auxiliary",
+      "x": 4000,
+      "y": 1900,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 193,
+      "name": "Consequential Task Assignment Rate",
+      "type": "Auxiliary",
+      "x": 3000,
+      "y": 2050,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 194,
+      "name": "Recent Activity Level",
+      "type": "Auxiliary",
+      "x": 3250,
+      "y": 2050,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 195,
+      "name": "Task Difficulty",
+      "type": "Auxiliary",
+      "x": 3500,
+      "y": 2050,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 196,
+      "name": "Maintainer Endorsements",
+      "type": "Auxiliary",
+      "x": 3750,
+      "y": 2050,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 197,
+      "name": "Governance Gatekeeping Strictness",
+      "type": "Auxiliary",
+      "x": 3000,
+      "y": 2400,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 198,
+      "name": "Role Threshold Level",
+      "type": "Auxiliary",
+      "x": 3250,
+      "y": 2400,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 199,
+      "name": "Review Overload Indicator",
+      "type": "Auxiliary",
+      "x": 3500,
+      "y": 2400,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 200,
+      "name": "Incident Rate",
+      "type": "Auxiliary",
+      "x": 3750,
+      "y": 2400,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 201,
+      "name": "New Maintainers in Onboarding",
+      "type": "Stock",
+      "x": 4000,
+      "y": 2400,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 202,
+      "name": "Nomination to Onboarding Rate",
+      "type": "Flow",
+      "x": 3000,
+      "y": 2550,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 203,
+      "name": "Onboarding Completion Rate",
+      "type": "Flow",
+      "x": 3250,
+      "y": 2550,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 204,
+      "name": "Governance Tooling Maturity",
+      "type": "Stock",
+      "x": 3500,
+      "y": 2550,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 205,
+      "name": "Governance Tooling Improvement Rate",
+      "type": "Flow",
+      "x": 3750,
+      "y": 2550,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 206,
+      "name": "Tooling Change Disruption Rate",
+      "type": "Flow",
+      "x": 4000,
+      "y": 2550,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 207,
+      "name": "Vetting Speed",
+      "type": "Auxiliary",
+      "x": 3000,
+      "y": 2700,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 208,
+      "name": "Knowledge Artifacts",
+      "type": "Stock",
+      "x": 3000,
+      "y": 3050,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 209,
+      "name": "Knowledge Artifact Creation Rate",
+      "type": "Flow",
+      "x": 3250,
+      "y": 3050,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 210,
+      "name": "Artifact Obsolescence Rate",
+      "type": "Flow",
+      "x": 3500,
+      "y": 3050,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 211,
+      "name": "Ownership Clarity Index",
+      "type": "Auxiliary",
+      "x": 3750,
+      "y": 3050,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 212,
+      "name": "Discoverability Index",
+      "type": "Auxiliary",
+      "x": 4000,
+      "y": 3050,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 213,
+      "name": "Review Effort per PR",
+      "type": "Auxiliary",
+      "x": 3000,
+      "y": 3200,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 214,
+      "name": "Bus Factor Risk",
+      "type": "Auxiliary",
+      "x": 3250,
+      "y": 3200,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 215,
+      "name": "Documentation Quality",
+      "type": "Auxiliary",
+      "x": 3500,
+      "y": 3200,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 216,
+      "name": "Demands Level",
+      "type": "Auxiliary",
+      "x": 3000,
+      "y": 3550,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 217,
+      "name": "Resource Supports Level",
+      "type": "Auxiliary",
+      "x": 3250,
+      "y": 3550,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 218,
+      "name": "Psychological Resource Recovery Rate",
+      "type": "Flow",
+      "x": 3500,
+      "y": 3550,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 219,
+      "name": "Psychological Resource Drain Rate",
+      "type": "Flow",
+      "x": 3750,
+      "y": 3550,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 220,
+      "name": "Engagement Attrition Rate",
+      "type": "Flow",
+      "x": 4000,
+      "y": 3550,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 221,
+      "name": "Conflict Frequency",
+      "type": "Auxiliary",
+      "x": 3000,
+      "y": 3700,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 222,
+      "name": "Recognition Rituals Level",
+      "type": "Auxiliary",
+      "x": 3250,
+      "y": 3700,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 223,
+      "name": "Mentorship Program Coverage",
+      "type": "Auxiliary",
+      "x": 3500,
+      "y": 3700,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 224,
+      "name": "Feedback Quality",
+      "type": "Auxiliary",
+      "x": 3750,
+      "y": 3700,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 225,
+      "name": "Clear Standards Level",
+      "type": "Auxiliary",
+      "x": 4000,
+      "y": 3700,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 226,
+      "name": "Task Complexity",
+      "type": "Auxiliary",
+      "x": 3000,
+      "y": 3850,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 227,
+      "name": "Diversity Index",
+      "type": "Auxiliary",
+      "x": 3000,
+      "y": 4200,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 228,
+      "name": "Brokerage Strength",
+      "type": "Auxiliary",
+      "x": 3250,
+      "y": 4200,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 229,
+      "name": "Coalition Support Level",
+      "type": "Auxiliary",
+      "x": 3500,
+      "y": 4200,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 230,
+      "name": "Time Budget for Bridging",
+      "type": "Auxiliary",
+      "x": 3750,
+      "y": 4200,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 231,
+      "name": "Openness to Change",
+      "type": "Auxiliary",
+      "x": 4000,
+      "y": 4200,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 232,
+      "name": "Innovative Proposals Pending",
+      "type": "Stock",
+      "x": 3000,
+      "y": 4350,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 233,
+      "name": "Innovative Proposal Arrival Rate",
+      "type": "Flow",
+      "x": 3250,
+      "y": 4350,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 234,
+      "name": "Innovative Proposal Review Rate",
+      "type": "Flow",
+      "x": 3500,
+      "y": 4350,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 235,
+      "name": "Innovative Proposal Acceptance Rate",
+      "type": "Flow",
+      "x": 3750,
+      "y": 4350,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 236,
+      "name": "Innovative Proposal Rejection Rate",
+      "type": "Flow",
+      "x": 4000,
+      "y": 4350,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 237,
+      "name": "Accepted Innovative Proposals",
+      "type": "Stock",
+      "x": 3000,
+      "y": 4500,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 238,
+      "name": "Adopted Innovations",
+      "type": "Stock",
+      "x": 3000,
+      "y": 4850,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 239,
+      "name": "Adoption Rate_1",
+      "type": "Flow",
+      "x": 3250,
+      "y": 4850,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 240,
+      "name": "De-adoption Rate",
+      "type": "Flow",
+      "x": 3500,
+      "y": 4850,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 241,
+      "name": "Training Materials",
+      "type": "Stock",
+      "x": 3750,
+      "y": 4850,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 242,
+      "name": "Training Creation Rate",
+      "type": "Flow",
+      "x": 4000,
+      "y": 4850,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 243,
+      "name": "Training Obsolescence Rate",
+      "type": "Flow",
+      "x": 3000,
+      "y": 5000,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 244,
+      "name": "Task-Technology Fit",
+      "type": "Auxiliary",
+      "x": 3250,
+      "y": 5000,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 245,
+      "name": "Competent Maintainers Fraction",
+      "type": "Auxiliary",
+      "x": 3500,
+      "y": 5000,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 246,
+      "name": "Adoption Slowdown Policy",
+      "type": "Auxiliary",
+      "x": 3750,
+      "y": 5000,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 247,
+      "name": "Rework Rate Multiplier",
+      "type": "Auxiliary",
+      "x": 4000,
+      "y": 5000,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 248,
+      "name": "Pressure Level",
+      "type": "Stock",
+      "x": 3000,
+      "y": 5350,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 249,
+      "name": "Pressure Accumulation Rate",
+      "type": "Flow",
+      "x": 3250,
+      "y": 5350,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 250,
+      "name": "Pressure Dissipation Rate",
+      "type": "Flow",
+      "x": 3500,
+      "y": 5350,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 251,
+      "name": "Freeze Strictness",
+      "type": "Auxiliary",
+      "x": 3750,
+      "y": 5350,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 252,
+      "name": "Synchrony with Upstream",
+      "type": "Auxiliary",
+      "x": 4000,
+      "y": 5350,
+      "width": 60,
+      "height": 26
+    },
+    {
+      "id": 253,
+      "name": "Post-Release Recovery Rate",
+      "type": "Auxiliary",
+      "x": 3000,
+      "y": 5500,
+      "width": 60,
+      "height": 26
+    }
+  ]
+}

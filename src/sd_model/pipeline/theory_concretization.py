@@ -67,6 +67,10 @@ def create_concretization_prompt(
 
 You are a system dynamics expert converting narratives into concrete SD elements.
 
+Think step by step. Consider the task carefully: you need to identify SD elements (stocks, flows, auxiliaries) and their connections that are described in the narratives and create a complete and robust research grade system dynamics model in its entirety. You have the expertise to recognize accumulations, rates, and causal relationships when they appear in prose. Be precise.
+
+This stage creates the causal diagram structure for now, but design it to be simulation-ready: proper stock-flow relationships and clear causal connections that will support future quantification and testing.
+
 {mode_task}
 
 {mode_io}
@@ -99,17 +103,16 @@ Your task: Implement these design decisions by identifying concrete SD elements.
 
 # SD Design Principles
 
-## 1. Process Connection Architecture
+## 1. SISO Architecture: Process Connections
 
-Step 1 has already planned how processes connect. Implement these connections using proper SD structure:
-- Identify the primary input stock and primary output stock for each process (as described in narratives)
-- Implement the connections specified in `connections_to_other_clusters` from Step 1
-  - Step 1 specifies three connection types:
-    - **feeds_into**: Primary forward connection from one process to the next
-    - **receives_from**: Input from another process
-    - **feedback_loop**: Circular causation where processes influence each other
-- Use flows to connect output stock of one process to input stock of another
-- Implement any feedback connections specified in Step 1
+Step 1 has planned a pipeline with SISO (Single Input Single Output) per process:
+- Each process has EXACTLY ONE input stock and EXACTLY ONE output stock
+- Processes connect via flows: Output stock of Process A → Flow → Input stock of Process B
+- The system MAY form loops (e.g., last process → first process for circular dynamics)
+- Implement connections specified in `connections_to_other_clusters` from Step 1:
+  - **feeds_into**: Primary forward flow to next process
+  - **receives_from**: Input from another process
+  - **feedback_loop**: System-level circular connection (e.g., last → first)
 
 ## 1.5 Module Interfaces: Stock-to-Stock Connections (REQUIRED)
 
@@ -146,6 +149,8 @@ Connect processes via flows:
 - "Time constant of 3 months..." → Auxiliary: Time Constant
 
 **Connectivity requirement**: Every variable must connect to the rest of the process structure. No isolated variables—each stock, flow, and auxiliary should have causal relationships with other elements. If a narrative describes an element, it also describes how that element relates to others. If the connection is not clear from the narrative for a variable, infer it.
+
+**Variable-Connection Consistency**: Every variable referenced in connections must first be extracted in the variables list. Extract all stocks/flows mentioned in narratives BEFORE creating connections to them. No dangling references.
 
 **How many stocks per process?** Let the narrative guide you. Rich, multi-theory narratives naturally describe more accumulations. Simple narratives describe fewer. Don't force counts—extract what's actually described.
 
@@ -211,6 +216,14 @@ Be specific and descriptive:
 - ✅ "Novice Contributors" not ❌ "Novices"
 - ✅ "Documentation Creation Rate" not ❌ "Rate"
 - ✅ "Mentoring Effectiveness" not ❌ "Effectiveness"
+
+---
+
+# Validation Checklist
+
+Before finalizing:
+- ✓ All variables in connections exist in some process's variables list
+- ✓ No undefined references
 
 ---
 
@@ -287,7 +300,13 @@ def run_theory_concretization(
         logger.info(f"  → Step 2 using: {provider.upper()} ({model})")
         llm_client = LLMClient(provider=provider, model=model)
 
-    response = llm_client.complete(prompt, temperature=0.3, max_tokens=16000)
+    response = llm_client.complete(prompt, temperature=0.3, max_tokens=64000)
+
+    # Save raw response for debugging
+    from pathlib import Path as PathLib
+    debug_path = PathLib("/tmp/step2_raw_response.txt")
+    debug_path.write_text(response)
+    print(f"[DEBUG] Raw Step 2 response saved to: {debug_path}")
 
     # Parse response
     try:

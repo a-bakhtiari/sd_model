@@ -1,0 +1,360 @@
+{
+  "theory_decisions": [
+    {
+      "theory_name": "Communities of Practice (Wenger)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Nonaka's SECI Model",
+      "decision": "include"
+    },
+    {
+      "theory_name": "The Coevolution of New Organizational Forms",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Adaptive Structuration Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Stability and Change in Organizational Routines",
+      "decision": "include"
+    },
+    {
+      "theory_name": "A Dynamic Theory of Organizational Knowledge Creation",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Routines and Transactive Memory Systems",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Communities of Practice",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Punctuated Equilibrium Theory in IS Research",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Panarchy Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Legitimate Peripheral Participation",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Absorptive Capacity",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Diversity Trumps Ability",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Hidden Order: How Adaptation Builds Complexity",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Social Cognitive Career Theory (SCCT)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Diffusion of Innovations",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Task-Technology Fit (TTF)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Skill-Biased Technical Change",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Social Capital and Structural Holes",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Signaling Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Job Demands-Resources (JD-R) Model",
+      "decision": "include"
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Attraction & Entry Funnel",
+        "narrative": "A stock of Project Awareness accumulates as potential contributors discover the project through social visibility, dependency networks, and word-of-mouth. The discovery rate rises with visible signals of project health\u2014recent merges, stars, and labeled starter tasks\u2014creating a reinforcing loop: more visible success brings more discovery. Awareness converts into a stock of Newcomers in Periphery at a pace shaped by perceived accessibility and the clarity of first steps. Task-Technology Fit moderates the entry rate: when the labeled tasks match newcomer skills and tooling, conversion is faster; poor fit elevates setup friction, adding a 1\u20133 week delay before first contact. A balancing loop emerges through onboarding bandwidth: when Newcomers in Periphery surge beyond mentoring and documentation capacity, response times elongate, reducing conversion to first contribution and pushing interested observers back to the boundary (drop-out flow). Nonlinearities appear: below a threshold of project scaffolding (e.g., missing run instructions or flaky CI), conversion abruptly collapses; conversely, the presence of a small number of curated, low-risk issues sharply increases conversion probability. Social signals (READMEs with explicit expectations, code of conduct, governance overview) reduce ambiguity and shorten the delay from awareness to first interaction. Over time, the Newcomers in Periphery stock feeds the pipeline of peripheral learning. The cycle is sensitive to seasonal spikes (e.g., program cohorts), which can exceed capacity and thereby activate the balancing loop that stabilizes entry throughput.",
+        "theories_used": [
+          "Diffusion of Innovations",
+          "Communities of Practice (Wenger)",
+          "Legitimate Peripheral Participation",
+          "Signaling Theory",
+          "Task-Technology Fit (TTF)"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Peripheral Learning & Skill Formation",
+            "connection_type": "feeds_into",
+            "description": "Newcomers in Periphery flow into learning interactions as they begin observing and attempting micro-tasks."
+          },
+          {
+            "target_cluster": "Reputation, Trust & Role Readiness",
+            "connection_type": "feedback_loop",
+            "description": "Visible accepted contributions and maintainer endorsements increase project visibility, raising the discovery rate."
+          }
+        ]
+      },
+      {
+        "name": "Peripheral Learning & Skill Formation",
+        "narrative": "A stock of Peripheral Participants accumulates as newcomers begin observing workflows, social norms, and technical patterns. Through ongoing interactions, they build a stock of Contributory Competence\u2014situated know-how sufficient for non-trivial contributions. The learning flow is governed by Legitimate Peripheral Participation: frequency of legitimate opportunities (documentation fixes, test improvements) and social permission (welcoming responses) elevate participation quality. Tacit knowledge grows via SECI socialization\u2014lurking on review threads, pairing in chats\u2014followed by externalization (writing docs) and combination (integrating patterns across modules). Absorptive capacity of individuals (prior related knowledge and learning routines) and the project (quality of knowledge artifacts) jointly determine the learning rate. Time delays of 2\u20136 months are typical before participants reliably ship changes without high rework. A reinforcing loop accelerates learning: as Contributory Competence rises, contributors can attempt slightly harder tasks, yielding richer feedback, which in turn deepens tacit understanding; successful steps also lift self-efficacy (SCCT), increasing persistence and practice time. A balancing loop activates when mentor availability or review attention is scarce: feedback cycle times lengthen, and the learning rate decays; prolonged delays raise the risk of attrition from the peripheral pool. Nonlinearities occur around practice thresholds: below ~10 meaningful interactions, progress is slow; above this threshold, pattern recognition and tool mastery improve steeply, shortening the time to first accepted PR.",
+        "theories_used": [
+          "Legitimate Peripheral Participation",
+          "Nonaka's SECI Model",
+          "Absorptive Capacity",
+          "Communities of Practice (Wenger)",
+          "Social Cognitive Career Theory (SCCT)"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Review & Mentoring Throughput",
+            "connection_type": "feeds_into",
+            "description": "Contributors with growing Contributory Competence submit changes that enter the review queue."
+          },
+          {
+            "target_cluster": "Motivation, Demands-Resources & Persistence",
+            "connection_type": "feedback_loop",
+            "description": "Learning successes boost self-efficacy and engagement; prolonged feedback delays erode motivation and increase dropout."
+          },
+          {
+            "target_cluster": "Knowledge Architecture & Transactive Memory",
+            "connection_type": "feedback_loop",
+            "description": "As contributors learn, they also enrich and consume project knowledge artifacts, which alter future learning rates."
+          }
+        ]
+      },
+      {
+        "name": "Contribution Review & Mentoring Throughput",
+        "narrative": "A stock of Pending Contributions (PRs/issues) accumulates as submissions arrive from the contributor base. They drain into a stock of Accepted Contributions at a rate limited by review capacity and routine efficiency. Routine stability matters: clear review checklists, CI signals, and bot triage convert reviewer attention into throughput with low variance. Adaptive Structuration of tooling (linters, templated PRs) strengthens routines over time, while process changes impose temporary learning delays. A reinforcing loop exists: more Accepted Contributions yield more experienced reviewers, which increases effective capacity and reduces queue time. Two balancing loops constrain the system. First, the JD-R mechanism: sustained high queue length increases reviewer demands (cognitive load, context switching), depleting reviewer energy and shrinking available review hours\u2014lowering throughput until recovery occurs; resource boosts (additional maintainers, automation) can counteract this. Second, a quality gate: stricter standards decrease acceptance probability to protect code quality, reducing Accepted Contributions when defect feedback rises. Nonlinearities appear when the Pending Contributions stock exceeds a manageable threshold: review latency jumps, submitters rework or abandon, and resubmission volume can drop precipitously (oscillation risk with delays of 1\u20133 weeks). Punctuations in release windows tighten gates temporarily, escalating queue growth unless capacity scales. Mentoring time is an internal stock: effective mentoring drains review hours but increases future submission quality and reduces rework, creating a delayed payoff. Overall, the queue acts as a central throttle: it governs the latency of learning feedback to individuals and the rate at which reputation signals are generated from accepted work.",
+        "theories_used": [
+          "Stability and Change in Organizational Routines",
+          "Adaptive Structuration Theory",
+          "Task-Technology Fit (TTF)",
+          "Job Demands-Resources (JD-R) Model"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Reputation, Trust & Role Readiness",
+            "connection_type": "feeds_into",
+            "description": "Accepted Contributions and high-quality reviews generate observable signals that build reputation and trust."
+          },
+          {
+            "target_cluster": "Release Cadence & Punctuated Pressure",
+            "connection_type": "receives_from",
+            "description": "Pre-release freezes and deadlines modulate acceptance criteria and effective review capacity."
+          },
+          {
+            "target_cluster": "Knowledge Architecture & Transactive Memory",
+            "connection_type": "feedback_loop",
+            "description": "Documentation and code ownership clarity reduce review effort per PR; accepted changes update knowledge artifacts that further streamline reviewing."
+          }
+        ]
+      },
+      {
+        "name": "Reputation, Trust & Role Readiness",
+        "narrative": "A stock of Recognized Contribution Outcomes accumulates from accepted PRs, helpful reviews, and incident responses. This stock feeds a slower-accumulating stock of Reputation Capital\u2014trust held by maintainers and peers that someone can be relied upon for quality and stewardship. Gains to Reputation Capital are weighted by signal strength (task difficulty, architectural impact, social endorsements) per Signaling Theory; weak signals fade quickly. Social Capital amplifies gains: occupying brokerage positions between modules or teams increases visibility and cross-validation of competence. Reputation decays with a half-life if activity declines or when a major failure is attributed to the individual. A reinforcing loop operates: higher Reputation Capital increases the rate of being assigned or self-selecting into consequential tasks, which yields opportunities to emit stronger signals that further increase reputation. A balancing loop emerges as thresholds for role readiness rise when system complexity increases: as the codebase and governance sophistication grow, the amount of reputation required to be considered for elevated roles increases (moving goalpost), slowing transitions. SCCT mechanisms couple here: reputation boosts self-efficacy, increasing persistence through setbacks; conversely, repeated rejections or lack of recognition reduce outcome expectations and slow future signal emission. Nonlinearities occur around trust thresholds: once reputation passes a widely recognized bar, peers begin deferring reviews, accelerating signal accumulation and opening the door to nomination. Below that bar, additional small signals accumulate slowly with diminishing returns until a qualitatively different contribution (cross-module refactor, incident lead) shifts perception.",
+        "theories_used": [
+          "Signaling Theory",
+          "Social Capital and Structural Holes",
+          "Social Cognitive Career Theory (SCCT)"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Governance Gatekeeping & Role Transition",
+            "connection_type": "feeds_into",
+            "description": "Role-ready candidates emerge when Reputation Capital crosses governance-defined thresholds."
+          },
+          {
+            "target_cluster": "Attraction & Entry Funnel",
+            "connection_type": "feedback_loop",
+            "description": "Visible track records and endorsements attract new potential contributors, increasing project awareness."
+          }
+        ]
+      },
+      {
+        "name": "Governance Gatekeeping & Role Transition",
+        "narrative": "A stock of Role-Ready Candidates accumulates as contributors build sufficient, broadly recognized reputation. Candidates transition to a stock of Core Developers/Maintainers via nomination, vetting, and onboarding flows governed by project rules. Governance design shapes rates and thresholds: meritocratic voting or maintainer approvals, contribution minimums, and code of conduct adherence. Adaptive Structuration applies as governance tools (CODEOWNERS, protected branches, review bots) embody rules that change how authority is enacted; changes to these tools produce short-term delays as actors adjust. The coevolution of organizational forms is visible when growth and complexity provoke shifts\u2014from benevolent dictator to committees to working groups\u2014altering decision latency and role pathways. Panarchy dynamics matter: foundation-level policies, platform norms, and downstream user communities create cross-scale constraints and opportunities (e.g., foundation programs accelerating onboarding). Two balancing loops dominate. First, quality preservation: when incidents or regressions rise, gatekeeping tightens (higher thresholds, longer probation), slowing transitions. Second, capacity relief: sustained review overload triggers policy to expand the maintainer pool, temporarily lowering thresholds to increase capacity. Punctuated episodes (major releases, security crises) can catalyze rapid elevation of trusted candidates, compressing delays but raising future variance in performance. Nonlinearities include quorum thresholds and veto rules: below quorum, nominations stall; single vetoes can reset candidacy, causing demotivation. Onboarding adds a 1\u20133 month delay during which new maintainers\u2019 effective capacity lags as they learn governance routines. Over time, the maintainer stock feeds back into review and mentoring capacity, stabilizing the pipeline from periphery to core.",
+        "theories_used": [
+          "The Coevolution of New Organizational Forms",
+          "Adaptive Structuration Theory",
+          "Panarchy Theory",
+          "Punctuated Equilibrium Theory in IS Research",
+          "Signaling Theory"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Ostrom's Institutional Analysis and Development (IAD) framework",
+            "rationale": "Provides a governance lens for commons-like resource stewardship in OSS\u2014rules-in-use, monitoring, graduated sanctions\u2014which shape gatekeeping thresholds, enforcement, and transition policies beyond what IS theories specify."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Review & Mentoring Throughput",
+            "connection_type": "feeds_into",
+            "description": "New maintainers increase review and mentoring capacity, reducing queue lengths."
+          },
+          {
+            "target_cluster": "Reputation, Trust & Role Readiness",
+            "connection_type": "receives_from",
+            "description": "Candidates eligible for nomination are supplied by the pool with sufficient reputation."
+          },
+          {
+            "target_cluster": "Knowledge Architecture & Transactive Memory",
+            "connection_type": "feeds_into",
+            "description": "New role-holders formalize ownership and update code stewardship maps, enriching transactive memory."
+          }
+        ]
+      },
+      {
+        "name": "Knowledge Architecture & Transactive Memory",
+        "narrative": "A stock of Individual Specialized Knowledge units (module-, tool-, and process-specific know-how) accumulates among contributors and maintainers as they work. Through coordination and documentation practices, these units aggregate into a stock of Project Transactive Memory\u2014shared awareness of who knows what and where knowledge resides. Routines that encode ownership (CODEOWNERS files, architecture decision records) increase the rate at which individual knowledge is externalized and indexed, while ad hoc practices slow aggregation. The SECI externalization and combination phases, supported by templates and ADRs, convert tacit insights into accessible artifacts. Absorptive capacity at the project level\u2014documentation quality, discoverability, and review norms\u2014determines how quickly new knowledge integrates and becomes actionable. A reinforcing loop strengthens the system: richer transactive memory reduces search and coordination costs, accelerating reviews and enabling faster onboarding; those efficiency gains free time to further invest in documentation and cross-training. A balancing loop arises from over-concentration: when knowledge clusters too tightly around a few individuals, responsiveness depends on their availability; burnout or departure (bus factor) drains the individual knowledge stock and causes a sudden drop in transactive memory. Nonlinearities appear when artifact quality crosses a threshold: once developers can resolve most questions via documented patterns, the marginal benefit of additional documentation declines. Periodic refactoring of the knowledge architecture (renaming modules, migrating repos) imposes delays as indexes update and people relearn locations, temporarily lowering effective transactive memory.",
+        "theories_used": [
+          "Routines and Transactive Memory Systems",
+          "Stability and Change in Organizational Routines",
+          "Nonaka's SECI Model",
+          "Absorptive Capacity"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Review & Mentoring Throughput",
+            "connection_type": "feeds_into",
+            "description": "Richer transactive memory reduces review effort per contribution and shortens cycle times."
+          },
+          {
+            "target_cluster": "Peripheral Learning & Skill Formation",
+            "connection_type": "feeds_into",
+            "description": "Accessible knowledge artifacts increase learning rates for peripheral contributors."
+          },
+          {
+            "target_cluster": "Governance Gatekeeping & Role Transition",
+            "connection_type": "receives_from",
+            "description": "Role assignments formalize ownership mappings that update project transactive memory."
+          }
+        ]
+      },
+      {
+        "name": "Motivation, Demands-Resources & Persistence",
+        "narrative": "A stock of Psychological Resources (self-efficacy, interest, social support) accumulates within contributors and drains under strain. This stock fuels a stock of Active Engagement (sustained participation time) that drives contribution frequency. Gains in psychological resources come from successful learning and recognized contributions (mastery experiences), vicarious learning from peers, and encouragement\u2014mechanisms emphasized by SCCT. The JD-R model shapes drains and replenishment: high demands (long review delays, complex tasks, conflict) consume resources; available resources (mentoring, automation, clear standards, supportive norms) buffer demands and enable recovery. A reinforcing loop operates when successes increase self-efficacy, which raises persistence and practice time, leading to more successes. A balancing loop engages when demands exceed resources: resource depletion leads to reduced engagement, increasing delays and failure rates, further depleting resources and culminating in attrition to a boundary stock. Nonlinearities occur at tipping points of delay and conflict frequency: beyond a threshold, even highly motivated contributors reduce effort sharply. Recovery has a delay\u2014rest and social support rebuild resources over weeks, not days\u2014so oscillations in engagement can emerge, especially around punctuated deadlines. Project-level policies (recognition rituals, mentorship programs) increase resource inflow, stabilizing engagement. Conversely, poorly handled incidents or public criticism can produce abrupt resource outflows, harming cohort motivation and slowing the periphery-to-core pipeline.",
+        "theories_used": [
+          "Social Cognitive Career Theory (SCCT)",
+          "Job Demands-Resources (JD-R) Model"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Peripheral Learning & Skill Formation",
+            "connection_type": "feeds_into",
+            "description": "Higher engagement increases practice time, raising learning rates."
+          },
+          {
+            "target_cluster": "Contribution Review & Mentoring Throughput",
+            "connection_type": "receives_from",
+            "description": "Review latency and feedback quality change perceived demands and resources."
+          },
+          {
+            "target_cluster": "Reputation, Trust & Role Readiness",
+            "connection_type": "feeds_into",
+            "description": "Sustained engagement produces more contribution outcomes, accelerating reputation growth."
+          }
+        ]
+      },
+      {
+        "name": "Network Diversity, Bridging & Innovation",
+        "narrative": "A stock of Bridging Social Capital builds as contributors interact across modules, teams, and adjacent projects, occupying boundary-spanning positions. This stock feeds an Innovative Proposals Pipeline\u2014novel cross-cutting refactors, integrations, or practices\u2014whose arrival rate depends on exposure to diverse perspectives and problem framings. Diversity Trumps Ability suggests that, up to a point, cognitively diverse collaborations outperform homogeneous teams on complex problems; thus, as bridging capital increases, the idea generation rate rises nonlinearly, especially when teams surpass a minimal diversity threshold. Social Capital and Structural Holes amplify the impact of proposals: brokers can assemble coalitions to shepherd controversial changes through review and governance. A reinforcing loop: successful innovative proposals further expand the network and reputation of the proposer, creating access to even more diverse collaborations. A balancing loop emerges from time and attention constraints: maintaining wide networks consumes bandwidth; if time budgets are tight (e.g., pre-release crunch), bridging interactions decline, slowing innovation. Diffusion dynamics affect acceptance: early-stage novel ideas face resistance until compatible with prevailing routines and tooling; pilot successes and compatibility adaptations increase adoption likelihood with a delay as others observe outcomes. The Innovative Proposals Pipeline feeds reputation when accepted and can accelerate role readiness by signaling architectural judgment\u2014often a prerequisite for core roles. Conversely, repeated rejection without feedback erodes motivation and narrows networks as contributors retreat to less controversial work.",
+        "theories_used": [
+          "Diversity Trumps Ability",
+          "Social Capital and Structural Holes",
+          "Diffusion of Innovations"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Reputation, Trust & Role Readiness",
+            "connection_type": "feeds_into",
+            "description": "Accepted innovative proposals produce strong signals of competence and architectural judgment."
+          },
+          {
+            "target_cluster": "Contribution Review & Mentoring Throughput",
+            "connection_type": "receives_from",
+            "description": "Review capacity and openness to change influence the acceptance rate of innovative proposals."
+          }
+        ]
+      },
+      {
+        "name": "Skill Drift, Task-Technology Fit & Absorption",
+        "narrative": "A stock of External Tech Innovations accumulates as new languages, frameworks, and practices emerge in the ecosystem. When the project adopts these, it increases a stock of Unmet Skills Inventory\u2014the gap between required and possessed skills across active contributors. Skill-Biased Technical Change drives this gap upward when adoption favors advanced skills. Absorptive capacity at both individual and project levels governs the depletion rate of this gap: training materials, exemplars, and pairing reduce time-to-competence. Task-Technology Fit mediates productivity and quality during transitions: poor fit between contributor skills and newly adopted tech raises review rework and failure rates, swelling queues and delaying acceptance. A reinforcing loop exists: contributors who close their skill gaps faster produce higher-quality work, which yields more complex assignments and additional learning opportunities, further shrinking their gaps. Conversely, a balancing loop appears at the system level: if Unmet Skills Inventory grows too large, throughput drops, incident risk rises, and governance may slow adoption or invest in documentation and training, reducing the inflow of new gap. Nonlinearities include threshold effects where a minimum fraction of maintainers must be competent in a new stack before the project\u2019s routines stabilize; below this fraction, the project experiences high rework and slow reviews. Delays of several months are typical between adoption decisions and widespread competence. The size of the gap influences career paths by raising the effective bar for role readiness and increasing attrition risk among contributors unable to retool in time.",
+        "theories_used": [
+          "Skill-Biased Technical Change",
+          "Task-Technology Fit (TTF)",
+          "Absorptive Capacity",
+          "Diffusion of Innovations"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Peripheral Learning & Skill Formation",
+            "connection_type": "feeds_into",
+            "description": "Training materials and exemplars created during adoption accelerate individual learning to close skill gaps."
+          },
+          {
+            "target_cluster": "Contribution Review & Mentoring Throughput",
+            "connection_type": "feedback_loop",
+            "description": "Large skill gaps increase rework and queue lengths; prolonged delays discourage further adoption until gaps close."
+          },
+          {
+            "target_cluster": "Governance Gatekeeping & Role Transition",
+            "connection_type": "feedback_loop",
+            "description": "Rising complexity elevates role thresholds; governance may adapt policies (e.g., module-specific maintainers) to manage skill bias."
+          }
+        ]
+      },
+      {
+        "name": "Release Cadence & Punctuated Pressure",
+        "narrative": "A stock of Work Backlog (open issues/PRs slated for release) accumulates over a cycle. As release deadlines approach, policies tighten (freeze windows), shifting work into a Release Queue that drains at release events. This generates Pressure Waves\u2014periods of heightened demand on reviewers and contributors\u2014followed by quieter intervals. Punctuated Equilibrium explains the bursty rhythm: long stretches of incremental change punctuated by concentrated stabilization and integration pushes. Panarchy adds cross-scale coupling: upstream platform releases, foundation events, or ecosystem security advisories synchronize multiple projects, amplifying pressure across scales. A balancing loop acts as teams respond to high backlog by focusing on bug-fixes and deferring features, reducing inflow temporarily; after release, pent-up features re-enter, restarting accumulation. Reinforcing dynamics appear when reliable cadence and smooth releases build confidence, attracting more users and contributors, which increases inflow, requiring further capacity. Nonlinearities include threshold effects at code freeze: contributions missing the cut fall into the next cycle, elongating feedback delays and risking contributor dropout. The cadence modulates other processes: during high-pressure periods, review capacity for mentoring declines, acceptance criteria tighten, and governance may temporarily elevate trusted reviewers to hit dates. After release, recovery periods allow routine refinement and documentation, restoring transactive memory and mentoring capacity. The timing and magnitude of these pressure waves produce oscillations in motivation, throughput, and progression rates from periphery to core.",
+        "theories_used": [
+          "Punctuated Equilibrium Theory in IS Research",
+          "Panarchy Theory"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Review & Mentoring Throughput",
+            "connection_type": "feeds_into",
+            "description": "Pre-release freezes change acceptance criteria and shift reviewer focus, altering throughput."
+          },
+          {
+            "target_cluster": "Motivation, Demands-Resources & Persistence",
+            "connection_type": "feedback_loop",
+            "description": "Pressure waves increase demands and reduce resources temporarily; post-release recovery restores resources."
+          },
+          {
+            "target_cluster": "Governance Gatekeeping & Role Transition",
+            "connection_type": "feeds_into",
+            "description": "High-pressure periods can trigger temporary delegation or accelerated elevation of trusted contributors."
+          }
+        ]
+      }
+    ],
+    "overall_narrative": "The system traces an open source contributor\u2019s progression from periphery to core through interconnected processes. Visibility and signaling attract newcomers into the Attraction & Entry Funnel, which supplies the Peripheral Learning & Skill Formation process where tacit knowledge is internalized and basic competence forms. Competent contributors submit work into Contribution Review & Mentoring Throughput, a central throttle whose routines and capacity determine feedback speed. Accepted work generates Reputation, Trust & Role Readiness; as reputation crosses thresholds, Governance Gatekeeping & Role Transition elevates candidates into the Core Developers/Maintainers stock. The growing core strengthens Knowledge Architecture & Transactive Memory, which increases onboarding and review efficiency, reinforcing earlier processes. Motivation, Demands-Resources & Persistence mediates whether individuals remain engaged long enough to traverse these stages, while Network Diversity, Bridging & Innovation injects high-impact proposals that accelerate reputation and legitimacy. Skill Drift, Task-Technology Fit & Absorption shapes the moving target of competence; when the project adopts new technologies, the skills bar rises, altering review throughput and role thresholds. Release Cadence & Punctuated Pressure periodically tightens constraints, creating oscillations in feedback, motivation, and governance decisions. Across the system, reinforcing loops (competence \u2192 acceptance \u2192 reputation \u2192 role \u2192 capacity \u2192 faster feedback \u2192 faster learning) compete with balancing loops (capacity limits, quality gates, demand surges, skill gaps). Governance serves as the policy layer that adapts thresholds, routines, and authority allocation to maintain quality and sustain capacity, thereby shaping the tempo and equity of the career path from novice periphery to core developer."
+  }
+}

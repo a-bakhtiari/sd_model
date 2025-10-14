@@ -93,6 +93,10 @@ def create_planning_prompt(
 
     prompt = f"""{prompt_title}
 
+Think step by step. You are a system dynamics expert researcher with deep knowledge of SD patterns, and theory-based modeling. Be thorough and precise in crafting research-grade mechanistically rich narratives that capture dynamic behavior.
+
+This stage creates the causal diagram structure for now, but design it to be simulation-ready: proper stock-flow relationships and clear causal connections that will support future quantification and testing.
+
 ## Context
 
 {task_description}
@@ -127,12 +131,13 @@ Each cluster is a **mini-model**—a focused, independently understandable part 
 - Has a clear primary input stock (what accumulates as input) and primary output stock (what accumulates as output)
 - Contains its own stocks, flows, and feedback loops internally
 
-**Hierarchical System Design:**
-- **Process level**: Each process is its own system with internal dynamics (stocks, flows, feedback)
-- **Overall system level**: Processes are elements in the larger system, which can exhibit system-wide feedback loops and dynamics
-- **Connectivity**: Every process must connect to the rest of the system (no isolated processes)
-- Keep inter-process connections minimal for clarity (typically one primary path through each process)
-- Add feedback connections between processes only where system dynamics clearly require them
+**SISO Architecture (Single Input Single Output):**
+- Each process has EXACTLY ONE input stock (what enters/accumulates at the start)
+- Each process has EXACTLY ONE output stock (what exits/accumulates at the end)
+- Processes connect via flows: Output stock of Process A → Flow → Input stock of Process B
+- The overall pipeline MAY form a loop (e.g., last process feeds back to first process for circular dynamics)
+- SISO means single I/O per process, NOT that the overall system must be linear—system-level feedback is allowed
+- This creates clean process boundaries while allowing rich system-level dynamics
 
 ## SD Elements Fundamentals
 
@@ -252,16 +257,17 @@ Each process must have:
 - **Name**: Clear, descriptive process name
 - **Narrative**: Mechanistically rich (300-500 words, per guidelines above)
 - **Theories Used**: Which theories inform this process
-- **Connections** (`connections_to_other_clusters`): Explicitly map how this process relates to others—what flows between them and in which direction:
-  - **feeds_into**: Output of this process → input of target (e.g., "approved materials → production")
-  - **receives_from**: Input from another process (e.g., "receives feedback from quality control")
-  - **feedback_loop**: Circular causal chain where one process influences another, which influences the first back (directly or through other processes). Simple example: "production affects inventory, which signals back to production"
+- **Connections** (`connections_to_other_clusters`): Specify how this process connects to others:
+  - **connection_type**: One of: `feeds_into`, `receives_from`, or `feedback_loop`
+  - **target_cluster**: Name of the connected process
+  - **description**: Brief explanation of what flows between them
+  - Most processes will primarily use `feeds_into` for the main pipeline flow
+  - Use `feedback_loop` when the last process feeds back to an earlier one for circular system dynamics
 
 Additional Design Principles:
 - **Small, focused processes** - Each cluster describes one coherent part of the system with its own dynamics
-- **Clear I/O boundaries** - Be explicit about what flows into and out of each process
-- **System thinking** - Processes can connect to multiple other processes (not just sequential)
-- **Allow feedback loops** - Later processes can feed back to earlier ones if it is needed in the overall system dynamics
+- **Clear I/O boundaries** - Each process has exactly one input stock and one output stock (SISO)
+- **Pipeline with optional loops** - Primary flow through processes, with optional system-level feedback
 - **Modularity** - Each process should be independently understandable as a mini-model
 
 ## Output Format

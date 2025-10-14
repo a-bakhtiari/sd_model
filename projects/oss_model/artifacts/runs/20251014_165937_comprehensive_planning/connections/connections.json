@@ -1,0 +1,1060 @@
+{
+  "connections": [
+    {
+      "id": "C01",
+      "from_var": "Software Quality and Features",
+      "to_var": "Project Reputation",
+      "relationship": "positive"
+    },
+    {
+      "id": "C02",
+      "from_var": "User Base",
+      "to_var": "Project Reputation",
+      "relationship": "positive"
+    },
+    {
+      "id": "C03",
+      "from_var": "Core Developer",
+      "to_var": "PR Review Delay",
+      "relationship": "positive"
+    },
+    {
+      "id": "C04",
+      "from_var": "PR Review Delay",
+      "to_var": "PR Feedback",
+      "relationship": "positive"
+    },
+    {
+      "id": "C05",
+      "from_var": "Pull Request Under review",
+      "to_var": "PR Feedback",
+      "relationship": "positive"
+    },
+    {
+      "id": "C06",
+      "from_var": "Project's Implicit Knowledge",
+      "to_var": "Implicit Knowledge Transfer (Mentorship)",
+      "relationship": "positive"
+    },
+    {
+      "id": "C07",
+      "from_var": "Core Developer",
+      "to_var": "Implicit Knowledge Transfer (Mentorship)",
+      "relationship": "positive"
+    },
+    {
+      "id": "C08",
+      "from_var": "PR Feedback",
+      "to_var": "New Contributors",
+      "relationship": "positive"
+    },
+    {
+      "id": "C09",
+      "from_var": "PR Feedback",
+      "to_var": "Experienced Contributors",
+      "relationship": "positive"
+    },
+    {
+      "id": "C10",
+      "from_var": "PR Feedback",
+      "to_var": "Core Developer",
+      "relationship": "positive"
+    },
+    {
+      "id": "C11",
+      "from_var": "New Contributors",
+      "to_var": "PR Feedback",
+      "relationship": "positive"
+    },
+    {
+      "id": "C12",
+      "from_var": "Experienced Contributors",
+      "to_var": "PR Feedback",
+      "relationship": "positive"
+    },
+    {
+      "id": "C13",
+      "from_var": "PR Feedback",
+      "to_var": "Pull Request Under review",
+      "relationship": "positive"
+    },
+    {
+      "id": "C14",
+      "from_var": "Projects's Explicit Knowledge",
+      "to_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "relationship": "positive"
+    },
+    {
+      "id": "C15",
+      "from_var": "PR Feedback",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "positive"
+    },
+    {
+      "id": "C16",
+      "from_var": "Closed Issues",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "positive"
+    },
+    {
+      "id": "C17",
+      "from_var": "Searchable Knowledge Base",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "positive"
+    },
+    {
+      "id": "C18",
+      "from_var": "Discussions",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "positive"
+    },
+    {
+      "id": "C19",
+      "from_var": "Project Reputation",
+      "to_var": "User Base",
+      "relationship": "positive"
+    },
+    {
+      "id": "C20",
+      "from_var": "Open Issues",
+      "to_var": "Feedback",
+      "relationship": "positive"
+    },
+    {
+      "id": "C21",
+      "from_var": "Feedback",
+      "to_var": "Open Issues",
+      "relationship": "positive"
+    },
+    {
+      "id": "C22",
+      "from_var": "Community Health",
+      "to_var": "Project Reputation",
+      "relationship": "positive"
+    },
+    {
+      "id": "C23",
+      "from_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "to_var": "Joining Rate_1",
+      "relationship": "undeclared"
+    },
+    {
+      "id": "C24",
+      "from_var": "Governance strategy",
+      "to_var": "Joining Rate_1",
+      "relationship": "undeclared"
+    },
+    {
+      "id": "C25",
+      "from_var": "Governance strategy",
+      "to_var": "Joining Rate",
+      "relationship": "undeclared"
+    },
+    {
+      "id": "C26",
+      "from_var": "Starter Task Curation Rate",
+      "to_var": "Starter Tasks Inventory",
+      "relationship": "positive"
+    },
+    {
+      "id": "C27",
+      "from_var": "Starter Tasks Inventory",
+      "to_var": "Starter Task Consumption Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C28",
+      "from_var": "CI Stability",
+      "to_var": "Onboarding Scaffolding Index",
+      "relationship": "positive"
+    },
+    {
+      "id": "C29",
+      "from_var": "Run Instructions Completeness",
+      "to_var": "Onboarding Scaffolding Index",
+      "relationship": "positive"
+    },
+    {
+      "id": "C30",
+      "from_var": "CI Stability",
+      "to_var": "Entry Conversion Friction",
+      "relationship": "negative"
+    },
+    {
+      "id": "C31",
+      "from_var": "Run Instructions Completeness",
+      "to_var": "Entry Conversion Friction",
+      "relationship": "negative"
+    },
+    {
+      "id": "C32",
+      "from_var": "Legitimate Opportunity Availability",
+      "to_var": "Practice Interaction Accumulation",
+      "relationship": "positive"
+    },
+    {
+      "id": "C33",
+      "from_var": "Practice Interaction Accumulation",
+      "to_var": "Practice Interactions Completed",
+      "relationship": "positive"
+    },
+    {
+      "id": "C34",
+      "from_var": "Available Mentors",
+      "to_var": "Feedback Latency",
+      "relationship": "negative"
+    },
+    {
+      "id": "C35",
+      "from_var": "Knowledge Artifacts",
+      "to_var": "Effective Absorptive Capacity",
+      "relationship": "positive"
+    },
+    {
+      "id": "C36",
+      "from_var": "Training Materials",
+      "to_var": "Effective Absorptive Capacity",
+      "relationship": "positive"
+    },
+    {
+      "id": "C37",
+      "from_var": "Practice Interactions Completed",
+      "to_var": "Practice Threshold Multiplier",
+      "relationship": "positive"
+    },
+    {
+      "id": "C38",
+      "from_var": "Reviewer Cognitive Load",
+      "to_var": "Energy Drain Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C39",
+      "from_var": "Pressure Level",
+      "to_var": "Energy Drain Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C40",
+      "from_var": "Pressure Level",
+      "to_var": "Energy Recovery Rate",
+      "relationship": "negative"
+    },
+    {
+      "id": "C41",
+      "from_var": "Post-Release Recovery Rate",
+      "to_var": "Energy Recovery Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C42",
+      "from_var": "Energy Recovery Rate",
+      "to_var": "Reviewer Energy Reserve",
+      "relationship": "positive"
+    },
+    {
+      "id": "C43",
+      "from_var": "Energy Drain Rate",
+      "to_var": "Reviewer Energy Reserve",
+      "relationship": "negative"
+    },
+    {
+      "id": "C44",
+      "from_var": "Reviewer Energy Reserve",
+      "to_var": "Effective Review Capacity",
+      "relationship": "positive"
+    },
+    {
+      "id": "C45",
+      "from_var": "Review Routine Maturity",
+      "to_var": "Effective Review Capacity",
+      "relationship": "positive"
+    },
+    {
+      "id": "C46",
+      "from_var": "Routine Improvement Rate",
+      "to_var": "Review Routine Maturity",
+      "relationship": "positive"
+    },
+    {
+      "id": "C47",
+      "from_var": "Routine Disruption Rate",
+      "to_var": "Review Routine Maturity",
+      "relationship": "negative"
+    },
+    {
+      "id": "C48",
+      "from_var": "Automation Level",
+      "to_var": "Routine Improvement Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C49",
+      "from_var": "Adopted Innovations",
+      "to_var": "Routine Disruption Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C50",
+      "from_var": "Review Queue Length",
+      "to_var": "Review Latency",
+      "relationship": "positive"
+    },
+    {
+      "id": "C51",
+      "from_var": "Effective Review Capacity",
+      "to_var": "Review Latency",
+      "relationship": "negative"
+    },
+    {
+      "id": "C52",
+      "from_var": "Review Latency",
+      "to_var": "Abandonment Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C53",
+      "from_var": "Quality Gate Strictness",
+      "to_var": "Acceptance Probability",
+      "relationship": "negative"
+    },
+    {
+      "id": "C54",
+      "from_var": "Mentoring Hours Replenishment",
+      "to_var": "Mentoring Hours Available",
+      "relationship": "positive"
+    },
+    {
+      "id": "C55",
+      "from_var": "Mentoring Hours Used",
+      "to_var": "Mentoring Hours Available",
+      "relationship": "negative"
+    },
+    {
+      "id": "C56",
+      "from_var": "Pressure Level",
+      "to_var": "Mentoring Hours Replenishment",
+      "relationship": "negative"
+    },
+    {
+      "id": "C57",
+      "from_var": "New Maintainers in Onboarding",
+      "to_var": "Mentoring Hours Used",
+      "relationship": "positive"
+    },
+    {
+      "id": "C58",
+      "from_var": "Mentoring Hours Available",
+      "to_var": "Submission Quality",
+      "relationship": "positive"
+    },
+    {
+      "id": "C59",
+      "from_var": "Submission Quality",
+      "to_var": "Acceptance Probability",
+      "relationship": "positive"
+    },
+    {
+      "id": "C60",
+      "from_var": "Task-Technology Fit",
+      "to_var": "Acceptance Probability",
+      "relationship": "positive"
+    },
+    {
+      "id": "C61",
+      "from_var": "Freeze Strictness",
+      "to_var": "Quality Gate Strictness",
+      "relationship": "positive"
+    },
+    {
+      "id": "C62",
+      "from_var": "Freeze Strictness",
+      "to_var": "Effective Review Capacity",
+      "relationship": "negative"
+    },
+    {
+      "id": "C63",
+      "from_var": "Signal Strength",
+      "to_var": "Reputation Accumulation Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C64",
+      "from_var": "Social Capital Multiplier",
+      "to_var": "Reputation Accumulation Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C65",
+      "from_var": "Recent Activity Level",
+      "to_var": "Reputation Decay Rate",
+      "relationship": "negative"
+    },
+    {
+      "id": "C66",
+      "from_var": "Accepted Innovative Proposals",
+      "to_var": "Signal Strength",
+      "relationship": "positive"
+    },
+    {
+      "id": "C67",
+      "from_var": "Task Difficulty",
+      "to_var": "Signal Strength",
+      "relationship": "positive"
+    },
+    {
+      "id": "C68",
+      "from_var": "Maintainer Endorsements",
+      "to_var": "Signal Strength",
+      "relationship": "positive"
+    },
+    {
+      "id": "C69",
+      "from_var": "Role Threshold Level",
+      "to_var": "Role Readiness Gap",
+      "relationship": "positive"
+    },
+    {
+      "id": "C70",
+      "from_var": "Effective Review Capacity",
+      "to_var": "Review Overload Indicator",
+      "relationship": "negative"
+    },
+    {
+      "id": "C71",
+      "from_var": "Review Latency",
+      "to_var": "Incident Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C72",
+      "from_var": "Quality Gate Strictness",
+      "to_var": "Incident Rate",
+      "relationship": "negative"
+    },
+    {
+      "id": "C73",
+      "from_var": "Incident Rate",
+      "to_var": "Governance Gatekeeping Strictness",
+      "relationship": "positive"
+    },
+    {
+      "id": "C74",
+      "from_var": "Review Overload Indicator",
+      "to_var": "Governance Gatekeeping Strictness",
+      "relationship": "negative"
+    },
+    {
+      "id": "C75",
+      "from_var": "Governance Gatekeeping Strictness",
+      "to_var": "Role Threshold Level",
+      "relationship": "positive"
+    },
+    {
+      "id": "C76",
+      "from_var": "New Maintainers in Onboarding",
+      "to_var": "Onboarding Completion Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C77",
+      "from_var": "Governance Tooling Improvement Rate",
+      "to_var": "Governance Tooling Maturity",
+      "relationship": "positive"
+    },
+    {
+      "id": "C78",
+      "from_var": "Tooling Change Disruption Rate",
+      "to_var": "Governance Tooling Maturity",
+      "relationship": "negative"
+    },
+    {
+      "id": "C79",
+      "from_var": "Adopted Innovations",
+      "to_var": "Tooling Change Disruption Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C80",
+      "from_var": "Governance Tooling Maturity",
+      "to_var": "Vetting Speed",
+      "relationship": "positive"
+    },
+    {
+      "id": "C81",
+      "from_var": "Vetting Speed",
+      "to_var": "Onboarding Completion Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C82",
+      "from_var": "Knowledge Artifact Creation Rate",
+      "to_var": "Knowledge Artifacts",
+      "relationship": "positive"
+    },
+    {
+      "id": "C83",
+      "from_var": "Knowledge Artifacts",
+      "to_var": "Artifact Obsolescence Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C84",
+      "from_var": "Knowledge Artifacts",
+      "to_var": "Documentation Quality",
+      "relationship": "positive"
+    },
+    {
+      "id": "C85",
+      "from_var": "Documentation Quality",
+      "to_var": "Discoverability Index",
+      "relationship": "positive"
+    },
+    {
+      "id": "C86",
+      "from_var": "Knowledge Artifacts",
+      "to_var": "Discoverability Index",
+      "relationship": "positive"
+    },
+    {
+      "id": "C87",
+      "from_var": "Discoverability Index",
+      "to_var": "Effective Absorptive Capacity",
+      "relationship": "positive"
+    },
+    {
+      "id": "C88",
+      "from_var": "Ownership Clarity Index",
+      "to_var": "Review Effort per PR",
+      "relationship": "negative"
+    },
+    {
+      "id": "C89",
+      "from_var": "Review Effort per PR",
+      "to_var": "Effective Review Capacity",
+      "relationship": "negative"
+    },
+    {
+      "id": "C90",
+      "from_var": "Governance Tooling Maturity",
+      "to_var": "Ownership Clarity Index",
+      "relationship": "positive"
+    },
+    {
+      "id": "C91",
+      "from_var": "Review Latency",
+      "to_var": "Demands Level",
+      "relationship": "positive"
+    },
+    {
+      "id": "C92",
+      "from_var": "Pressure Level",
+      "to_var": "Demands Level",
+      "relationship": "positive"
+    },
+    {
+      "id": "C93",
+      "from_var": "Conflict Frequency",
+      "to_var": "Demands Level",
+      "relationship": "positive"
+    },
+    {
+      "id": "C94",
+      "from_var": "Mentoring Hours Available",
+      "to_var": "Resource Supports Level",
+      "relationship": "positive"
+    },
+    {
+      "id": "C95",
+      "from_var": "Automation Level",
+      "to_var": "Resource Supports Level",
+      "relationship": "positive"
+    },
+    {
+      "id": "C96",
+      "from_var": "Clear Standards Level",
+      "to_var": "Resource Supports Level",
+      "relationship": "positive"
+    },
+    {
+      "id": "C97",
+      "from_var": "Review Routine Maturity",
+      "to_var": "Clear Standards Level",
+      "relationship": "positive"
+    },
+    {
+      "id": "C98",
+      "from_var": "Recognition Rituals Level",
+      "to_var": "Psychological Resource Recovery Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C99",
+      "from_var": "Mentorship Program Coverage",
+      "to_var": "Psychological Resource Recovery Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C100",
+      "from_var": "Resource Supports Level",
+      "to_var": "Psychological Resource Recovery Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C101",
+      "from_var": "Demands Level",
+      "to_var": "Psychological Resource Drain Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C102",
+      "from_var": "Feedback Latency",
+      "to_var": "Engagement Attrition Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C103",
+      "from_var": "Adopted Innovations",
+      "to_var": "Task Complexity",
+      "relationship": "positive"
+    },
+    {
+      "id": "C104",
+      "from_var": "Task Complexity",
+      "to_var": "Demands Level",
+      "relationship": "positive"
+    },
+    {
+      "id": "C105",
+      "from_var": "Brokerage Strength",
+      "to_var": "Coalition Support Level",
+      "relationship": "positive"
+    },
+    {
+      "id": "C106",
+      "from_var": "Pressure Level",
+      "to_var": "Time Budget for Bridging",
+      "relationship": "negative"
+    },
+    {
+      "id": "C107",
+      "from_var": "Time Budget for Bridging",
+      "to_var": "Innovative Proposal Arrival Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C108",
+      "from_var": "Diversity Index",
+      "to_var": "Innovative Proposal Arrival Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C109",
+      "from_var": "Innovative Proposal Arrival Rate",
+      "to_var": "Innovative Proposals Pending",
+      "relationship": "positive"
+    },
+    {
+      "id": "C110",
+      "from_var": "Effective Review Capacity",
+      "to_var": "Innovative Proposal Review Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C111",
+      "from_var": "Innovative Proposal Review Rate",
+      "to_var": "Innovative Proposals Pending",
+      "relationship": "negative"
+    },
+    {
+      "id": "C112",
+      "from_var": "Freeze Strictness",
+      "to_var": "Openness to Change",
+      "relationship": "negative"
+    },
+    {
+      "id": "C113",
+      "from_var": "Openness to Change",
+      "to_var": "Innovative Proposal Acceptance Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C114",
+      "from_var": "Coalition Support Level",
+      "to_var": "Innovative Proposal Acceptance Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C115",
+      "from_var": "Innovative Proposal Acceptance Rate",
+      "to_var": "Accepted Innovative Proposals",
+      "relationship": "positive"
+    },
+    {
+      "id": "C116",
+      "from_var": "Innovative Proposal Rejection Rate",
+      "to_var": "Innovative Proposals Pending",
+      "relationship": "negative"
+    },
+    {
+      "id": "C117",
+      "from_var": "Review Latency",
+      "to_var": "Innovative Proposal Rejection Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C118",
+      "from_var": "Adoption Rate_1",
+      "to_var": "Adopted Innovations",
+      "relationship": "undeclared"
+    },
+    {
+      "id": "C119",
+      "from_var": "De-adoption Rate",
+      "to_var": "Adopted Innovations",
+      "relationship": "negative"
+    },
+    {
+      "id": "C120",
+      "from_var": "Training Creation Rate",
+      "to_var": "Training Materials",
+      "relationship": "positive"
+    },
+    {
+      "id": "C121",
+      "from_var": "Training Materials",
+      "to_var": "Training Obsolescence Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C122",
+      "from_var": "Training Materials",
+      "to_var": "Effective Absorptive Capacity",
+      "relationship": "undeclared"
+    },
+    {
+      "id": "C123",
+      "from_var": "Competent Maintainers Fraction",
+      "to_var": "Task-Technology Fit",
+      "relationship": "positive"
+    },
+    {
+      "id": "C124",
+      "from_var": "Task-Technology Fit",
+      "to_var": "Acceptance Probability",
+      "relationship": "undeclared"
+    },
+    {
+      "id": "C125",
+      "from_var": "Training Materials",
+      "to_var": "Rework Rate Multiplier",
+      "relationship": "negative"
+    },
+    {
+      "id": "C126",
+      "from_var": "Review Routine Maturity",
+      "to_var": "Rework Rate Multiplier",
+      "relationship": "negative"
+    },
+    {
+      "id": "C127",
+      "from_var": "Rework Rate Multiplier",
+      "to_var": "Review Latency",
+      "relationship": "positive"
+    },
+    {
+      "id": "C128",
+      "from_var": "Competent Maintainers Fraction",
+      "to_var": "Review Routine Maturity",
+      "relationship": "positive"
+    },
+    {
+      "id": "C129",
+      "from_var": "Review Queue Length",
+      "to_var": "Adoption Slowdown Policy",
+      "relationship": "positive"
+    },
+    {
+      "id": "C130",
+      "from_var": "Adoption Slowdown Policy",
+      "to_var": "Adoption Rate_1",
+      "relationship": "undeclared"
+    },
+    {
+      "id": "C131",
+      "from_var": "Synchrony with Upstream",
+      "to_var": "Pressure Accumulation Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C132",
+      "from_var": "Pressure Accumulation Rate",
+      "to_var": "Pressure Level",
+      "relationship": "positive"
+    },
+    {
+      "id": "C133",
+      "from_var": "Pressure Dissipation Rate",
+      "to_var": "Pressure Level",
+      "relationship": "negative"
+    },
+    {
+      "id": "C134",
+      "from_var": "Pressure Level",
+      "to_var": "Freeze Strictness",
+      "relationship": "positive"
+    },
+    {
+      "id": "C135",
+      "from_var": "Freeze Strictness",
+      "to_var": "Quality Gate Strictness",
+      "relationship": "undeclared"
+    },
+    {
+      "id": "C136",
+      "from_var": "Freeze Strictness",
+      "to_var": "Effective Review Capacity",
+      "relationship": "undeclared"
+    },
+    {
+      "id": "C137",
+      "from_var": "Pressure Level",
+      "to_var": "Psychological Resource Drain Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C138",
+      "from_var": "Post-Release Recovery Rate",
+      "to_var": "Psychological Resource Recovery Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C139",
+      "from_var": "Pressure Level",
+      "to_var": "Time Budget for Bridging",
+      "relationship": "undeclared"
+    },
+    {
+      "id": "C140",
+      "from_var": "Project Reputation",
+      "to_var": "Joining Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C141",
+      "from_var": "Maintainer time",
+      "to_var": "Issue Resolution Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C142",
+      "from_var": "Issue Resolution Rate",
+      "to_var": "Closed Issues",
+      "relationship": "positive"
+    },
+    {
+      "id": "C143",
+      "from_var": "Issue Creation Rate",
+      "to_var": "Open Issues",
+      "relationship": "positive"
+    },
+    {
+      "id": "C144",
+      "from_var": "Issue Resolution Rate",
+      "to_var": "Open Issues",
+      "relationship": "negative"
+    },
+    {
+      "id": "C145",
+      "from_var": "Source Code",
+      "to_var": "Issue Creation Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C146",
+      "from_var": "Reputation Building",
+      "to_var": "Project Reputation",
+      "relationship": "positive"
+    },
+    {
+      "id": "C147",
+      "from_var": "Reputation Decline",
+      "to_var": "Project Reputation",
+      "relationship": "negative"
+    },
+    {
+      "id": "C148",
+      "from_var": "Explicit to Implicit Conversion",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "negative"
+    },
+    {
+      "id": "C149",
+      "from_var": "Knowledge Conversion Rate",
+      "to_var": "Projects's Explicit Knowledge",
+      "relationship": "positive"
+    },
+    {
+      "id": "C150",
+      "from_var": "Adoption Rate",
+      "to_var": "User Base",
+      "relationship": "positive"
+    },
+    {
+      "id": "C151",
+      "from_var": "User Churn Rate",
+      "to_var": "User Base",
+      "relationship": "negative"
+    },
+    {
+      "id": "C152",
+      "from_var": "Merge/Commit",
+      "to_var": "Pull Request Under review",
+      "relationship": "negative"
+    },
+    {
+      "id": "C153",
+      "from_var": "Rejection Rate",
+      "to_var": "Pull Request Under review",
+      "relationship": "negative"
+    },
+    {
+      "id": "C154",
+      "from_var": "Review Rate",
+      "to_var": "Pull Request Under review",
+      "relationship": "positive"
+    },
+    {
+      "id": "C155",
+      "from_var": "Merge/Commit",
+      "to_var": "Source Code",
+      "relationship": "positive"
+    },
+    {
+      "id": "C156",
+      "from_var": "Explicit Knowledge Transfer (Documentation, Contributor's Guides)",
+      "to_var": "Skill up",
+      "relationship": "positive"
+    },
+    {
+      "id": "C157",
+      "from_var": "Implicit Knowledge Transfer (Mentorship)",
+      "to_var": "Skill up",
+      "relationship": "positive"
+    },
+    {
+      "id": "C158",
+      "from_var": "Community engagement",
+      "to_var": "Searchable Knowledge Base",
+      "relationship": "positive"
+    },
+    {
+      "id": "C159",
+      "from_var": "Open Issues",
+      "to_var": "New Pr rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C160",
+      "from_var": "New Pr rate",
+      "to_var": "New Pull request",
+      "relationship": "positive"
+    },
+    {
+      "id": "C161",
+      "from_var": "Review Rate",
+      "to_var": "New Pull request",
+      "relationship": "negative"
+    },
+    {
+      "id": "C162",
+      "from_var": "Developer's Turnover",
+      "to_var": "Core Developer",
+      "relationship": "negative"
+    },
+    {
+      "id": "C163",
+      "from_var": "Promotion Rate",
+      "to_var": "Core Developer",
+      "relationship": "positive"
+    },
+    {
+      "id": "C164",
+      "from_var": "Implicit Knowledge Transfer (Mentorship)",
+      "to_var": "Promotion Rate",
+      "relationship": "positive"
+    },
+    {
+      "id": "C165",
+      "from_var": "Developer's Turnover",
+      "to_var": "Depreciation/Loss of Knowledge",
+      "relationship": "positive"
+    },
+    {
+      "id": "C166",
+      "from_var": "Promotion Rate",
+      "to_var": "Experienced Contributors",
+      "relationship": "negative"
+    },
+    {
+      "id": "C167",
+      "from_var": "Skill up",
+      "to_var": "Experienced Contributors",
+      "relationship": "positive"
+    },
+    {
+      "id": "C168",
+      "from_var": "Joining Rate",
+      "to_var": "New Contributors",
+      "relationship": "positive"
+    },
+    {
+      "id": "C169",
+      "from_var": "Skill up",
+      "to_var": "New Contributors",
+      "relationship": "negative"
+    },
+    {
+      "id": "C170",
+      "from_var": "Depreciation/Loss of Knowledge",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "negative"
+    },
+    {
+      "id": "C171",
+      "from_var": "Explicit to Implicit Conversion",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "positive"
+    },
+    {
+      "id": "C172",
+      "from_var": "Knowledge Conversion Rate",
+      "to_var": "Project's Implicit Knowledge",
+      "relationship": "negative"
+    },
+    {
+      "id": "C173",
+      "from_var": "Adoption Slowdown Policy",
+      "to_var": "Adoption Rate",
+      "relationship": "negative"
+    },
+    {
+      "id": "C174",
+      "from_var": "Culture Erosion",
+      "to_var": "Community Health",
+      "relationship": "negative"
+    },
+    {
+      "id": "C175",
+      "from_var": "Trust Building",
+      "to_var": "Community Health",
+      "relationship": "positive"
+    },
+    {
+      "id": "C176",
+      "from_var": "Adoption Rate",
+      "to_var": "Adopted Innovations",
+      "relationship": "positive"
+    }
+  ]
+}
