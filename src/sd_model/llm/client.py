@@ -69,11 +69,14 @@ class LLMClient:
 
         try:
             if self._provider == "openai" and self._openai:
-                result = self._openai.responses.create(
-                    model=self.model,
-                    input=prompt,
-                    reasoning={"effort": "low"}
-                )
+                kwargs = {
+                    "model": self.model,
+                    "input": prompt,
+                    "reasoning": {"effort": "high"}
+                }
+                if max_tokens:
+                    kwargs["max_output_tokens"] = max_tokens
+                result = self._openai.responses.create(**kwargs)
                 return result.output_text
 
             if self._provider == "deepseek" and self._api_key:
@@ -84,7 +87,8 @@ class LLMClient:
                     "stream": False,
                 }
                 if max_tokens:
-                    payload["max_tokens"] = max_tokens
+                    # DeepSeek has a max_tokens limit of 8192
+                    payload["max_tokens"] = min(max_tokens, 8192)
 
                 response = requests.post(
                     "https://api.deepseek.com/v1/chat/completions",
@@ -98,6 +102,14 @@ class LLMClient:
                 response.raise_for_status()
                 data = response.json()
                 return data["choices"][0]["message"]["content"]
+        except requests.exceptions.HTTPError as exc:
+            # Include response body for debugging API errors
+            error_details = ""
+            try:
+                error_details = f" - Response: {exc.response.text}"
+            except:
+                pass
+            raise RuntimeError(f"LLM API call failed: {exc}{error_details}")
         except Exception as exc:
             raise RuntimeError(f"LLM API call failed: {exc}")
 
@@ -138,7 +150,8 @@ class LLMClient:
                     "stream": False,
                 }
                 if max_tokens:
-                    payload["max_tokens"] = max_tokens
+                    # DeepSeek has a max_tokens limit of 8192
+                    payload["max_tokens"] = min(max_tokens, 8192)
 
                 response = requests.post(
                     "https://api.deepseek.com/v1/chat/completions",
@@ -195,7 +208,8 @@ class LLMClient:
                     "stream": True,
                 }
                 if max_tokens:
-                    payload["max_tokens"] = max_tokens
+                    # DeepSeek has a max_tokens limit of 8192
+                    payload["max_tokens"] = min(max_tokens, 8192)
 
                 response = requests.post(
                     "https://api.deepseek.com/v1/chat/completions",

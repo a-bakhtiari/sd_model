@@ -84,9 +84,9 @@ def run_pipeline(
     logger.info(f"Starting pipeline for project: {project}")
     cfg = load_config()
 
-    # Generate run ID if save_run is enabled
+    # Always generate run ID for theory enhancement
     run_id = None
-    if save_run is not None:
+    if save_run is not None or run_theory_enhancement:
         from .run_metadata import generate_run_id
         run_id = generate_run_id(save_run if save_run else None)
         logger.info(f"Versioned run mode enabled: {run_id}")
@@ -421,14 +421,14 @@ def run_pipeline(
                     from .pipeline.theory_planning import run_theory_planning
                     from .pipeline.theory_concretization import run_theory_concretization, convert_to_legacy_format
 
-                    # Step 1: Strategic Planning
+                    # Step 1: Strategic Planning (uses GPT if configured in .env)
                     planning_result = run_theory_planning(
                         theories=theories,
                         variables=variables_data,
                         connections={"connections": connections_named},
                         plumbing=plumbing_data,
                         mdl_path=mdl_path,
-                        llm_client=client,
+                        llm_client=None,  # Let module choose GPT/DeepSeek based on config
                         recreate_mode=recreate_from_theory
                     )
 
@@ -444,14 +444,14 @@ def run_pipeline(
                     ])
                     logger.info(f"  ✓ Step 1 complete: {theory_count_planned} theories planned")
 
-                    # Step 2: Concrete Generation
+                    # Step 2: Concrete Generation (uses GPT if configured in .env)
                     logger.info("  Step 2: Concrete SD Element Generation...")
                     concretization_result = run_theory_concretization(
                         planning_result=planning_result,
                         variables=variables_data,
                         connections={"connections": connections_named},
                         plumbing=plumbing_data,
-                        llm_client=client,
+                        llm_client=None,  # Let module choose GPT/DeepSeek based on config
                         recreate_mode=recreate_from_theory
                     )
 
@@ -571,7 +571,8 @@ def run_pipeline(
                             theory_enh_data=theory_enh,
                             mdl_summary=mdl_summary,
                             enhanced_mdl_content=enhanced_mdl_content,
-                            original_mdl_name=mdl_path.name
+                            original_mdl_name=mdl_path.name,
+                            custom_name=save_run
                         )
 
                         # Clean up temp file
@@ -682,7 +683,8 @@ def run_pipeline(
                             theory_enh_data=archetype_enh,
                             mdl_summary=mdl_summary,
                             enhanced_mdl_content=archetype_mdl_content,
-                            original_mdl_name=base_name + ".mdl"
+                            original_mdl_name=base_name + ".mdl",
+                            custom_name=save_run
                         )
 
                         # Clean up temp file

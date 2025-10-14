@@ -106,7 +106,15 @@ For each theory, decide:
 
 ## 2. Process-Based Clustering
 
-Design 3-5 process clusters that represent distinct system aspects. Each cluster should be a self-contained process that transforms inputs to outputs.
+Design process clusters that COMPREHENSIVELY cover the theories provided.
+
+SCALING GUIDANCE - Generate proportionally to theory count:
+- 2-4 theories → Design 2-3 focused processes
+- 5-8 theories → Design 4-6 processes
+- 9-12 theories → Design 6-8 processes
+- 13+ theories → Design 8-10 processes
+
+Note: Only include theories that genuinely apply to the model context. Each cluster should be a self-contained process that transforms inputs to outputs.
 
 ## Writing Mechanistic Narratives
 
@@ -195,7 +203,8 @@ Return ONLY valid JSON:
 
 ✓ Write mechanistic narratives WITHOUT type labels
 ✓ Include accumulations, rates, feedbacks, delays
-✓ Design 3-5 focused process clusters
+✓ Design process clusters scaled to theory count
+✓ Each narrative must be comprehensive (300-400 words for 8+ processes, 400-500 words for fewer)
 ✓ Ensure processes connect (no isolated clusters)
 ✓ Use additional theories if needed for completeness
 """
@@ -254,7 +263,10 @@ def run_theory_planning(
     # Call LLM
     if llm_client is None:
         from ..config import should_use_gpt
+        import logging
+        logger = logging.getLogger(__name__)
         provider, model = should_use_gpt("theory_planning")
+        logger.info(f"  → Step 1 using: {provider.upper()} ({model})")
         llm_client = LLMClient(provider=provider, model=model)
 
     response = llm_client.complete(prompt, temperature=0.3, max_tokens=16000)

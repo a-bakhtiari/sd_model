@@ -1,0 +1,588 @@
+{
+  "processes": [
+    {
+      "process_name": "Developer Onboarding and Peripheral Participation",
+      "variables": [
+        {
+          "name": "Potential Newcomers",
+          "type": "Stock"
+        },
+        {
+          "name": "Active Peripheral Participants",
+          "type": "Stock"
+        },
+        {
+          "name": "Successful Onboarded Developers",
+          "type": "Stock"
+        },
+        {
+          "name": "Newcomer Arrival Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Peripheral Transition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Onboarding Completion Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Project Visibility",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Mentor Capacity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Onboarding Pathway Clarity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Newcomer-to-Mentor Ratio",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Mentoring Effectiveness",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Potential Newcomers",
+          "to": "Peripheral Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Active Peripheral Participants",
+          "to": "Onboarding Completion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Project Visibility",
+          "to": "Newcomer Arrival Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentor Capacity",
+          "to": "Peripheral Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Onboarding Pathway Clarity",
+          "to": "Peripheral Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Active Peripheral Participants",
+          "to": "Newcomer-to-Mentor Ratio",
+          "relationship": "positive"
+        },
+        {
+          "from": "Newcomer-to-Mentor Ratio",
+          "to": "Mentoring Effectiveness",
+          "relationship": "negative"
+        },
+        {
+          "from": "Mentoring Effectiveness",
+          "to": "Peripheral Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Successful Onboarded Developers",
+          "to": "Project Visibility",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Newcomer Arrival Rate",
+          "type": "source",
+          "connects_to": "Potential Newcomers"
+        },
+        {
+          "name": "Onboarding Completion Rate",
+          "type": "sink",
+          "connects_to": "Successful Onboarded Developers"
+        }
+      ]
+    },
+    {
+      "process_name": "Knowledge Creation and Skill Development",
+      "variables": [
+        {
+          "name": "Individual Knowledge Stock",
+          "type": "Stock"
+        },
+        {
+          "name": "Collective Knowledge Base",
+          "type": "Stock"
+        },
+        {
+          "name": "Developer Competence Level",
+          "type": "Stock"
+        },
+        {
+          "name": "Knowledge Acquisition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Knowledge Transfer Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Skill Advancement Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Learning Opportunities",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Communication Frequency",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Transactive Memory Effectiveness",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Competence Threshold",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Feedback Quality",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Individual Knowledge Stock",
+          "to": "Knowledge Transfer Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Collective Knowledge Base",
+          "to": "Knowledge Acquisition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Developer Competence Level",
+          "to": "Skill Advancement Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Learning Opportunities",
+          "to": "Knowledge Acquisition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Communication Frequency",
+          "to": "Knowledge Transfer Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Transactive Memory Effectiveness",
+          "to": "Knowledge Transfer Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Developer Competence Level",
+          "to": "Learning Opportunities",
+          "relationship": "positive"
+        },
+        {
+          "from": "Collective Knowledge Base",
+          "to": "Transactive Memory Effectiveness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Developer Competence Level",
+          "to": "Feedback Quality",
+          "relationship": "negative"
+        },
+        {
+          "from": "Feedback Quality",
+          "to": "Skill Advancement Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Developer Competence Level",
+          "to": "Competence Threshold",
+          "relationship": "positive"
+        },
+        {
+          "from": "Competence Threshold",
+          "to": "Skill Advancement Rate",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Knowledge Acquisition Rate",
+          "type": "source",
+          "connects_to": "Individual Knowledge Stock"
+        },
+        {
+          "name": "Skill Advancement Rate",
+          "type": "sink",
+          "connects_to": "Developer Competence Level"
+        }
+      ]
+    },
+    {
+      "process_name": "Career Progression and Role Transition",
+      "variables": [
+        {
+          "name": "Social Capital",
+          "type": "Stock"
+        },
+        {
+          "name": "Self-Efficacy",
+          "type": "Stock"
+        },
+        {
+          "name": "Role Advancement Level",
+          "type": "Stock"
+        },
+        {
+          "name": "Trust Building Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Self-Efficacy Growth Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Role Transition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Interaction Success Rate",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Mentor Relationship Strength",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Core Position Availability",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Job Demands",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Available Resources",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Burnout Risk",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Social Capital",
+          "to": "Role Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Self-Efficacy",
+          "to": "Role Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Interaction Success Rate",
+          "to": "Trust Building Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentor Relationship Strength",
+          "to": "Self-Efficacy Growth Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Core Position Availability",
+          "to": "Role Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Role Advancement Level",
+          "to": "Interaction Success Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Role Advancement Level",
+          "to": "Job Demands",
+          "relationship": "positive"
+        },
+        {
+          "from": "Social Capital",
+          "to": "Available Resources",
+          "relationship": "positive"
+        },
+        {
+          "from": "Job Demands",
+          "to": "Burnout Risk",
+          "relationship": "positive"
+        },
+        {
+          "from": "Available Resources",
+          "to": "Burnout Risk",
+          "relationship": "negative"
+        },
+        {
+          "from": "Burnout Risk",
+          "to": "Role Transition Rate",
+          "relationship": "negative"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Trust Building Rate",
+          "type": "source",
+          "connects_to": "Social Capital"
+        },
+        {
+          "name": "Role Transition Rate",
+          "type": "sink",
+          "connects_to": "Role Advancement Level"
+        }
+      ]
+    },
+    {
+      "process_name": "Governance and Community Structure",
+      "variables": [
+        {
+          "name": "Governance Legitimacy",
+          "type": "Stock"
+        },
+        {
+          "name": "Organizational Routines",
+          "type": "Stock"
+        },
+        {
+          "name": "Decision-Making Authority Distribution",
+          "type": "Stock"
+        },
+        {
+          "name": "Legitimacy Accumulation Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Routine Institutionalization Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Authority Redistribution Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Governance Effectiveness",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Community Size",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Complexity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Change Resistance",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Task-Technology Fit",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Coordination Efficiency",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Governance Legitimacy",
+          "to": "Legitimacy Accumulation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Organizational Routines",
+          "to": "Routine Institutionalization Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Effectiveness",
+          "to": "Legitimacy Accumulation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Community Size",
+          "to": "Authority Redistribution Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Complexity",
+          "to": "Change Resistance",
+          "relationship": "positive"
+        },
+        {
+          "from": "Change Resistance",
+          "to": "Authority Redistribution Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Decision-Making Authority Distribution",
+          "to": "Governance Complexity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Task-Technology Fit",
+          "to": "Governance Effectiveness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Effectiveness",
+          "to": "Coordination Efficiency",
+          "relationship": "positive"
+        },
+        {
+          "from": "Coordination Efficiency",
+          "to": "Routine Institutionalization Rate",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Legitimacy Accumulation Rate",
+          "type": "source",
+          "connects_to": "Governance Legitimacy"
+        },
+        {
+          "name": "Authority Redistribution Rate",
+          "type": "sink",
+          "connects_to": "Decision-Making Authority Distribution"
+        }
+      ]
+    }
+  ],
+  "cluster_positions": {
+    "Developer Onboarding and Peripheral Participation": [
+      0,
+      0
+    ],
+    "Knowledge Creation and Skill Development": [
+      0,
+      1
+    ],
+    "Career Progression and Role Transition": [
+      1,
+      0
+    ],
+    "Governance and Community Structure": [
+      1,
+      1
+    ]
+  },
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Developer Onboarding and Peripheral Participation",
+        "narrative": "The pool of peripheral newcomers accumulates as new developers discover the project through various channels, with the growth rate determined by project visibility and community outreach efforts. These newcomers transition to active peripheral participants at a rate limited by available mentors and the clarity of onboarding pathways. Legitimate peripheral participation occurs through small, low-risk tasks that build confidence and familiarity. The speed of initial skill acquisition depends on the quality of documentation and the responsiveness of community feedback. A reinforcing feedback loop emerges: successful onboarding experiences increase project reputation, attracting more newcomers. However, a balancing loop exists where mentor capacity becomes saturated when the newcomer-to-mentor ratio exceeds 8:1, slowing transition rates. It typically takes 2-4 months for newcomers to become comfortable with basic contribution workflows, with progress accelerating after 5-10 successful interactions with core members.",
+        "theories_used": [
+          "Legitimate Peripheral Participation",
+          "Communities of Practice (Wenger)",
+          "Signaling Theory"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Knowledge Creation and Skill Development",
+            "connection_type": "feeds_into",
+            "description": "Peripheral participants become inputs for skill development and knowledge acquisition processes"
+          },
+          {
+            "target_cluster": "Governance and Community Structure",
+            "connection_type": "receives_from",
+            "description": "Receives governance policies and community norms that shape onboarding pathways"
+          }
+        ]
+      },
+      {
+        "name": "Knowledge Creation and Skill Development",
+        "narrative": "Individual knowledge accumulates through learning-by-doing and social learning processes, with the rate of knowledge acquisition limited by absorptive capacity and available learning opportunities. The community's collective knowledge base grows through the SECI model's socialization, externalization, combination, and internalization cycles. Knowledge transfer occurs at speeds determined by communication frequency and the quality of knowledge articulation. A strong reinforcing loop exists: increased knowledge enables more complex contributions, which generates new learning opportunities and further knowledge accumulation. Transactive memory systems develop over 6-12 months, allowing developers to know 'who knows what' and accelerating problem-solving. Skill development follows a nonlinear pattern where progress accelerates dramatically after reaching competence thresholds, typically requiring 50-100 successful contributions. The rate of skill advancement is constrained by available challenging tasks and feedback quality, with effectiveness saturating when developers reach expertise levels where few peers can provide meaningful guidance.",
+        "theories_used": [
+          "Nonaka's SECI Model",
+          "Absorptive Capacity",
+          "Routines and Transactive Memory Systems",
+          "A Dynamic Theory of Organizational Knowledge Creation"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Career Progression and Role Transition",
+            "connection_type": "feeds_into",
+            "description": "Accumulated knowledge and skills enable role transitions and career advancement"
+          },
+          {
+            "target_cluster": "Developer Onboarding and Peripheral Participation",
+            "connection_type": "feedback_loop",
+            "description": "Knowledge creation processes both draw from and contribute to onboarding experiences"
+          }
+        ]
+      },
+      {
+        "name": "Career Progression and Role Transition",
+        "narrative": "Social capital accumulates through repeated successful interactions and relationship building, with trust developing slowly over 3-6 months of consistent participation. Career progression follows Social Cognitive Career Theory patterns where self-efficacy builds through mastery experiences and social persuasion. The transition rate from peripheral to core roles depends on demonstrated competence, social integration, and available core position openings. A critical reinforcing loop exists: increased responsibility leads to more visibility and recognition, which builds social capital and enables further advancement. However, the Job Demands-Resources model creates balancing pressures where excessive demands without adequate resources can lead to burnout and attrition. Role transitions typically occur in punctuated equilibrium patterns, with long periods of gradual skill building followed by rapid status changes when key opportunities arise. The speed of progression is nonlinear, often accelerating after crossing competence thresholds and building strong mentor relationships. Core team capacity acts as a constraint, with transition rates slowing when core-to-peripheral ratios exceed optimal levels.",
+        "theories_used": [
+          "Social Cognitive Career Theory (SCCT)",
+          "Social Capital and Structural Holes",
+          "Job Demands-Resources (JD-R) Model",
+          "Punctuated Equilibrium Theory in IS Research"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Governance and Community Structure",
+            "connection_type": "feeds_into",
+            "description": "Advanced developers take on governance roles and shape community structure"
+          },
+          {
+            "target_cluster": "Knowledge Creation and Skill Development",
+            "connection_type": "feedback_loop",
+            "description": "Career progression both requires and enables continued knowledge development"
+          }
+        ]
+      },
+      {
+        "name": "Governance and Community Structure",
+        "narrative": "Organizational routines and governance structures evolve through adaptive structuration, where practices are adopted, adapted, and institutionalized over time. The legitimacy of governance mechanisms accumulates through consistent application and demonstrated effectiveness. Decision-making authority distribution changes at rates influenced by community size, complexity, and conflict frequency. A key balancing loop maintains stability: as governance complexity increases, resistance to further changes grows, preventing constant restructuring. Innovation diffusion follows predictable patterns where new governance practices spread through social networks, with adoption rates accelerating after reaching critical mass (typically 15-20% of core members). Time delays of 3-9 months occur between governance changes and their full effects becoming apparent. Task-technology fit dynamics ensure that governance tools and processes remain aligned with community needs, with misfits creating friction that slows all other processes. Structural holes in social networks create both opportunities for brokerage and potential communication bottlenecks that affect coordination efficiency.",
+        "theories_used": [
+          "Adaptive Structuration Theory",
+          "Stability and Change in Organizational Routines",
+          "Diffusion of Innovations",
+          "Task-Technology Fit (TTF)"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Career Progression and Role Transition",
+            "connection_type": "receives_from",
+            "description": "Receives advanced developers who take on governance responsibilities"
+          },
+          {
+            "target_cluster": "Developer Onboarding and Peripheral Participation",
+            "connection_type": "feedback_loop",
+            "description": "Governance structures shape onboarding while being influenced by participant experiences"
+          }
+        ]
+      }
+    ],
+    "overall_narrative": "The four processes form an integrated system where newcomers flow through onboarding into knowledge development, enabling career progression that ultimately feeds back into governance. The system exhibits multiple cross-cluster feedback loops: governance structures shape onboarding experiences, which influence knowledge acquisition rates, affecting career progression speeds, which in turn determines who shapes future governance. Time delays create complex dynamics - governance changes take months to affect onboarding quality, and career progression requires sustained knowledge accumulation. Reinforcing loops drive growth when all processes align, but balancing loops and capacity constraints prevent runaway expansion. The system's overall performance depends on the alignment between these processes, with misalignments creating bottlenecks that slow the entire developer progression pipeline from novice periphery to core contributor."
+  }
+}

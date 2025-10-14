@@ -47,15 +47,39 @@ def list_runs(project: str) -> List[str]:
     cfg = load_config()
     runs_dir = cfg.projects_dir / project / "artifacts" / "runs"
 
-    runs = ["Latest (default)"]  # Default option uses root artifacts/
+    runs = ["Latest (default)"]  # Default option uses latest symlink
 
     if runs_dir.exists():
         # Get all run directories, sorted by name (which includes timestamp)
         for p in sorted(runs_dir.iterdir(), reverse=True):
-            if p.is_dir():
+            if p.is_dir() and p.name != "latest":  # Exclude the symlink from list
                 runs.append(p.name)
 
     return runs
+
+
+def get_latest_run_id(project: str) -> str:
+    """Get the actual run ID that 'latest' symlink points to.
+
+    Returns the run ID, or None if no runs exist.
+    """
+    cfg = load_config()
+    latest_link = cfg.projects_dir / project / "artifacts" / "runs" / "latest"
+
+    if latest_link.exists() and latest_link.is_symlink():
+        # Resolve symlink to get actual directory name
+        target = latest_link.resolve()
+        return target.name
+
+    # Fallback: get most recent run by name (timestamp sorting)
+    runs_dir = cfg.projects_dir / project / "artifacts" / "runs"
+    if runs_dir.exists():
+        runs = [p for p in sorted(runs_dir.iterdir(), reverse=True)
+                if p.is_dir() and p.name != "latest"]
+        if runs:
+            return runs[0].name
+
+    return None
 
 
 def _load_existing_artifacts(project: str, run_id: str = None) -> Dict[str, Path]:
@@ -1131,8 +1155,17 @@ def main() -> None:
     )
     st.session_state["selected_run"] = selected_run
 
-    # Convert selection to run_id (None for default, otherwise the folder name)
-    run_id = None if selected_run == "Latest (default)" else selected_run
+    # Convert selection to run_id
+    if selected_run == "Latest (default)":
+        # Use the actual latest run from symlink or most recent
+        run_id = get_latest_run_id(project)
+        if run_id:
+            st.info(f"📌 Loading from latest run: `{run_id}`")
+        else:
+            st.warning("⚠️ No versioned runs found. Run the pipeline with theory enhancement first.")
+            return
+    else:
+        run_id = selected_run
 
     # Tabs
     model_dev_tab, rq_tab, data_tables_tab, chat_tab, dashboard_tab, stage2_tab = st.tabs([
@@ -1674,79 +1707,144 @@ def main() -> None:
                     st.markdown("#### 📊 Theory Enhancement Suggestions")
                     st.caption("Theory-based additions to strengthen your model")
 
-                    # Check if new format (with clustering_scheme) or old format
-                    clustering_scheme = theory_enh.get("clustering_scheme")
+                    # Check if new format (with clustering_strategy/processes) or old format (with theories)
+                    clustering_strategy = theory_enh.get("clustering_strategy")
+                    processes = theory_enh.get("processes", [])
 
-                    if clustering_scheme:
+                    if clustering_strategy or processes:
                         # NEW FORMAT: Show process-based clusters
                         st.markdown("##### 🎯 Strategic Process Organization")
 
-                        overall_narrative = clustering_scheme.get("overall_narrative", "")
+                        overall_narrative = clustering_strategy.get("overall_narrative", "") if clustering_strategy else ""
                         if overall_narrative:
                             st.info(f"**Overall System Flow:** {overall_narrative}")
 
-                        clusters = clustering_scheme.get("clusters", [])
+                        clusters = clustering_strategy.get("clusters", []) if clustering_strategy else []
                         if clusters:
                             st.markdown(f"**{len(clusters)} Process Modules:**")
 
                             for idx, cluster in enumerate(clusters):
                                 with st.expander(f"📦 **{cluster.get('name', 'Unknown Process')}**", expanded=(idx == 0)):
-                                    st.markdown(f"**Narrative:** {cluster.get('narrative', 'N/A')}")
+                                    # Format the narrative for better readability
+                                    narrative = cluster.get('narrative', 'N/A')
 
-                                    # Display theories used
-                                    theories_used = cluster.get('theories_used', [])
-                                    if theories_used:
-                                        st.markdown(f"**📚 Theories Used:** {', '.join(theories_used)}")
+                                    # Better formatting with info boxes for each section
+                                    if narrative != 'N/A':
+                                        # Split narrative into sections
+                                        sections = {
+                                            "Accumulations:": "💧 **What Accumulates**",
+                                            "Rates and speeds:": "⚡ **Flow Rates**",
+                                            "Feedback loops:": "🔄 **Feedback Dynamics**",
+                                            "Time delays:": "⏱️ **Time Delays**",
+                                            "Nonlinearities:": "📈 **Nonlinearities**",
+                                            "Causal relationships:": "🔗 **Causal Drivers**"
+                                        }
 
-                                    # Display additional theories used (if any)
-                                    additional_theories = cluster.get('additional_theories_used', [])
-                                    if additional_theories:
-                                        st.markdown("**➕ Additional Theories Used:**")
-                                        for add_theory in additional_theories:
-                                            theory_name = add_theory.get('theory_name', 'Unknown')
-                                            rationale = add_theory.get('rationale', 'No rationale provided')
-                                            st.markdown(f"- *{theory_name}*: {rationale}")
+                                        for key, header in sections.items():
+                                            if key in narrative:
+                                                start = narrative.find(key) + len(key)
+                                                # Find the next section or end of narrative
+                                                end = len(narrative)
+                                                for next_key in sections.keys():
+                                                    next_pos = narrative.find(next_key, start)
+                                                    if next_pos != -1 and next_pos < end:
+                                                        end = next_pos
 
-                                    # Display connections to other clusters
-                                    connections = cluster.get('connections_to_other_clusters', [])
-                                    if connections:
-                                        st.markdown("**🔗 Connections to Other Clusters:**")
-                                        for conn in connections:
-                                            target = conn.get('target_cluster', 'Unknown')
-                                            conn_type = conn.get('connection_type', 'unknown')
-                                            description = conn.get('description', 'No description')
+                                                section_text = narrative[start:end].strip()
 
-                                            # Choose emoji based on connection type
-                                            if conn_type == 'feeds_into':
-                                                emoji = "➡️"
-                                            elif conn_type == 'receives_from':
-                                                emoji = "⬅️"
-                                            elif conn_type == 'feedback_loop':
-                                                emoji = "🔄"
-                                            else:
-                                                emoji = "🔗"
+                                                # Use info boxes for better visual separation
+                                                if "Accumulations" in key:
+                                                    st.info(f"{header}\n\n{section_text}")
+                                                elif "Feedback" in key:
+                                                    # Split reinforcing and balancing if present
+                                                    if "Reinforcing" in section_text and "Balancing" in section_text:
+                                                        st.success(f"🔄 **Feedback Dynamics**")
+                                                        # Split at 'Balancing'
+                                                        parts = section_text.split("Balancing")
+                                                        reinforcing = parts[0].replace("Reinforcing—", "").replace("Reinforcing:", "").strip()
+                                                        balancing = parts[1].replace("—", "").strip() if len(parts) > 1 else ""
 
-                                            st.markdown(f"- {emoji} **{target}** ({conn_type}): {description}")
+                                                        col1, col2 = st.columns(2)
+                                                        with col1:
+                                                            st.success(f"**➕ Reinforcing**\n{reinforcing}")
+                                                        with col2:
+                                                            st.warning(f"**➖ Balancing**\n{balancing}")
+                                                    else:
+                                                        st.success(f"{header}\n\n{section_text}")
+                                                elif "Time" in key:
+                                                    st.info(f"{header}\n\n{section_text}")
+                                                else:
+                                                    st.markdown(f"**{header}**")
+                                                    st.markdown(section_text)
+                                                    st.markdown("")
+                                    else:
+                                        st.markdown(narrative)
 
-                                    variables = cluster.get('variables', [])
-                                    if variables:
-                                        st.markdown(f"**Variables ({len(variables)}):**")
-                                        st.write(", ".join(variables))
+                                    # Theories and Connections in a cleaner layout
+                                    st.markdown("---")
+
+                                    # Use columns for theories and connections
+                                    col1, col2 = st.columns([1, 1])
+
+                                    with col1:
+                                        # Display theories used
+                                        theories_used = cluster.get('theories_used', [])
+                                        if theories_used:
+                                            st.markdown("**📚 Core Theories**")
+                                            for theory in theories_used[:3]:  # Show first 3
+                                                st.markdown(f"• {theory}")
+                                            if len(theories_used) > 3:
+                                                with st.expander(f"+ {len(theories_used) - 3} more theories"):
+                                                    for theory in theories_used[3:]:
+                                                        st.markdown(f"• {theory}")
+
+                                        # Display additional theories
+                                        additional_theories = cluster.get('additional_theories_used', [])
+                                        if additional_theories:
+                                            with st.expander("➕ Supporting Theories"):
+                                                for add_theory in additional_theories:
+                                                    theory_name = add_theory.get('theory_name', 'Unknown')
+                                                    rationale = add_theory.get('rationale', 'No rationale provided')
+                                                    st.markdown(f"**{theory_name}**")
+                                                    st.caption(rationale)
+
+                                    with col2:
+                                        # Display connections to other clusters
+                                        connections = cluster.get('connections_to_other_clusters', [])
+                                        if connections:
+                                            st.markdown("**🔗 Process Links**")
+                                            for conn in connections:
+                                                target = conn.get('target_cluster', 'Unknown')
+                                                conn_type = conn.get('connection_type', 'unknown')
+                                                description = conn.get('description', 'No description')
+
+                                                # Simpler display
+                                                if conn_type == 'feeds_into':
+                                                    st.markdown(f"→ **{target}**")
+                                                elif conn_type == 'receives_from':
+                                                    st.markdown(f"← **{target}**")
+                                                elif conn_type == 'feedback_loop':
+                                                    st.markdown(f"↔ **{target}**")
+                                                else:
+                                                    st.markdown(f"— **{target}**")
+
+                                                st.caption(description[:100] + "..." if len(description) > 100 else description)
 
                         st.markdown("---")
                         st.markdown("##### ✅ Concrete Additions")
 
-                        # Show aggregated additions from all theories
-                        theories = theory_enh.get("theories", [])
+                        # Show aggregated additions from all processes
                         all_vars = []
                         all_conns = []
                         all_boundary_flows = []
 
-                        for theory in theories:
-                            additions = theory.get("additions", {})
-                            all_vars.extend(additions.get("variables", []))
-                            all_conns.extend(additions.get("connections", []))
-                            all_boundary_flows.extend(additions.get("boundary_flows", []))
+                        for process in processes:
+                            # Variables
+                            all_vars.extend(process.get("variables", []))
+                            # Connections
+                            all_conns.extend(process.get("connections", []))
+                            # Boundary flows
+                            all_boundary_flows.extend(process.get("boundary_flows", []))
 
                         col1, col2, col3 = st.columns(3)
 

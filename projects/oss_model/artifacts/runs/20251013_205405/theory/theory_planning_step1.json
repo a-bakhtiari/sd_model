@@ -1,0 +1,430 @@
+{
+  "theory_decisions": [
+    {
+      "theory_name": "Communities of Practice (Wenger)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Nonaka's SECI Model",
+      "decision": "include"
+    },
+    {
+      "theory_name": "The Coevolution of New Organizational Forms",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Adaptive Structuration Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Stability and Change in Organizational Routines",
+      "decision": "include"
+    },
+    {
+      "theory_name": "A Dynamic Theory of Organizational Knowledge Creation",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Routines and Transactive Memory Systems",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Communities of Practice",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Punctuated Equilibrium Theory in IS Research",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Panarchy Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Legitimate Peripheral Participation",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Absorptive Capacity",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Diversity Trumps Ability",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Hidden Order: How Adaptation Builds Complexity",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Social Cognitive Career Theory (SCCT)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Diffusion of Innovations",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Task-Technology Fit (TTF)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Skill-Biased Technical Change",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Social Capital and Structural Holes",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Signaling Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Job Demands-Resources (JD-R) Model",
+      "decision": "include"
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Peripheral Entry and Legitimate Participation Conversion",
+        "narrative": "Accumulations include a pool of prospective newcomers (observers/lurkers), a stock of active peripheral contributors, and accumulated self-efficacy and trust. These grow when newcomers discover the project, make first contacts, and complete initial tasks; they deplete via discouragement, stalled PRs, or poor experiences. Conversion from observer to peripheral contributor occurs at a rate driven by accessibility of tasks (good-first-issues), frequency of welcoming interactions, and perceived psychological safety. First-PR merge rate and review turnaround speed set the pace of early wins; typical delays are 2\u20136 weeks for first contribution and 3\u20136 months to become a regular contributor. A reinforcing loop emerges: more active peripheral contributors generate more mentors and timely review capacity, which increases merge velocity and newcomer confidence, producing more contributors. A balancing loop counters this: as the review queue and cognitive load on mentors grow, response times slow and first-time acceptance rates fall, raising dropout. Nonlinearities occur: confidence tends to tip upward after a threshold of 3\u20135 successful micro-interactions; below that, small setbacks disproportionately raise exit. Mentorship availability saturates when mentor-to-newcomer ratios exceed about 1:8, causing diminishing onboarding effectiveness. Causally, diffusion of onboarding practices increases discovery rate; legitimate peripheral participation channels novices toward low-risk, socially legitimate tasks; communities of practice norms align expectations; and self-efficacy (SCCT) amplifies persistence when early outcomes are positive. Perceived fairness and responsiveness in governance (decision visibility, code of conduct enforcement) modulate entry\u2014transparent triage and clear contribution pathways increase attraction and lower anxiety. Signals such as labels, contributor badges, and merged-PR counts shape expectations of inclusion before contact; strong positive signals accelerate conversion. Constraints include mentor time, review bandwidth, and availability of bite-sized tasks. The transition rate from peripheral to regular contributor accelerates once novices build minimal trust with at least one core reviewer and gain fluency with project conventions; this typically requires 5\u201310 interactions over 2\u20134 months. Exit increases sharply if the median review wait exceeds two weeks or if more than two consecutive PRs are declined without actionable feedback. The process outputs a flow of reliably engaged peripheral contributors with rising self-efficacy and initial trust ties, primed to learn, accrue reputation, and graduate toward core roles.",
+        "theories_used": [
+          "Communities of Practice (Wenger)",
+          "Legitimate Peripheral Participation",
+          "Diffusion of Innovations",
+          "Social Cognitive Career Theory (SCCT)"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Signaling Theory",
+            "rationale": "Contribution badges, first-PR labels, and merged-PR counts shape expectations and reduce uncertainty during entry."
+          },
+          {
+            "theory_name": "Social Capital and Structural Holes",
+            "rationale": "Early ties to mentors bridge structural holes and accelerate newcomer integration."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Knowledge Creation, Absorption, and Shared Memory",
+            "connection_type": "feeds_into",
+            "description": "New peripheral contributors add examples and questions that seed documentation and tacit-to-explicit conversion."
+          },
+          {
+            "target_cluster": "Social Capital, Reputation, and Role Mobility",
+            "connection_type": "feeds_into",
+            "description": "Successful first contributions create initial trust ties and visible signals that start reputation accumulation."
+          },
+          {
+            "target_cluster": "Workload, Motivation, and Retention Dynamics",
+            "connection_type": "receives_from",
+            "description": "Engagement and burnout levels modulate mentors\u2019 availability, affecting newcomer conversion rates."
+          },
+          {
+            "target_cluster": "Governance Coevolution and Decision Rights Allocation",
+            "connection_type": "receives_from",
+            "description": "Transparent governance and fair review policies increase newcomer attraction and reduce early exit."
+          }
+        ]
+      },
+      {
+        "name": "Knowledge Creation, Absorption, and Shared Memory",
+        "narrative": "Accumulations include explicit knowledge artifacts (docs, patterns, ADRs), tacit shared know-how embedded in interactions, absorptive capacity (ability to recognize and assimilate new knowledge), and the accuracy of the project\u2019s transactive memory (who knows what). These grow via cycles of socialization, externalization, combination, and internalization. The rate of explicit artifact creation depends on available reviewer time for codifying rationale and the density of examples in the codebase; internalization speeds with paired work and code reviews that link artifacts to practice. Typical delays: 1\u20132 sprints to externalize lessons from incidents into ADRs; 3\u20136 months for tacit norms to be widely internalized. A reinforcing loop: more high-quality artifacts increase absorptive capacity; higher capacity accelerates learning from contributions and incidents; that, in turn, produces more artifacts and better transactive memory accuracy. Balancing loops include documentation sprawl: as artifacts accumulate without curation, findability drops and duplicate or conflicting guidance emerges, slowing assimilation and increasing rework. Nonlinearities arise via thresholds: a critical mass of 5\u20137 curated exemplars per common pattern enables rapid generalization; below that, learning is fragile. Saturation occurs when marginal artifacts add little value relative to maintenance cost, turning attention toward pruning. Causally, absorptive capacity is boosted by diversity of prior experience and by repeated exposure to boundary objects (templates, checklists) that anchor meaning across sub-teams. Transactive memory improves as contributors conduct reviews across modules, broadcasting expertise locations; overly siloed reviewing lowers accuracy. The speed of knowledge transfer is constrained by reviewer availability, clarity of rationales in PRs, and the alignment of artifacts with current tooling and routines. Benefits of new artifacts often appear with a lag of 4\u20138 weeks as examples propagate through reviews. The process outputs increased learning velocity, reduced error rates, and more reliable recall of who can solve which problem, which lowers coordination costs and speeds the novice-to-core progression.",
+        "theories_used": [
+          "Nonaka's SECI Model",
+          "A Dynamic Theory of Organizational Knowledge Creation",
+          "Absorptive Capacity",
+          "Routines and Transactive Memory Systems"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Diversity Trumps Ability",
+            "rationale": "Heterogeneous backgrounds expand the variety of prior schemas, raising absorptive capacity and recombination potential."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Tool Appropriation and Task-Technology Fit Optimization",
+            "connection_type": "feeds_into",
+            "description": "Codified practices inform how tools are appropriated and configured; transactive memory guides who can tailor tooling."
+          },
+          {
+            "target_cluster": "Routine Evolution and Punctuated Change in Practices",
+            "connection_type": "feeds_into",
+            "description": "New patterns and lessons seed experiments that reshape routines."
+          },
+          {
+            "target_cluster": "Peripheral Entry and Legitimate Participation Conversion",
+            "connection_type": "feeds_into",
+            "description": "Starter guides and exemplars reduce cognitive load for newcomers, increasing conversion and first-PR success."
+          },
+          {
+            "target_cluster": "Innovation Through Diversity and Adjacent Possible",
+            "connection_type": "feeds_into",
+            "description": "A richer knowledge base enlarges the recombination space for novel solutions."
+          }
+        ]
+      },
+      {
+        "name": "Tool Appropriation and Task-Technology Fit Optimization",
+        "narrative": "Accumulations include contributor tool proficiency, the coverage and quality of automation (CI/CD checks, linters, codegen), a repertoire of appropriations (scripts, templates), and the perceived fit between tasks and tools. These grow as contributors adopt and adapt platform features; they erode via tool obsolescence and drift between tool configurations and evolving tasks. Adoption and adaptation rates follow an S-curve, sped by credible demonstrations, social proof in reviews, and low switching costs. Typical delays: 2\u20138 weeks from initial exposure to stable usage; 1\u20132 releases for automation to measurably reduce cycle time. A reinforcing loop: higher perceived fit yields fewer errors and faster feedback, freeing time to refine tooling; improved automation then further increases fit and reduces demands. A balancing loop: over-configuration raises cognitive load and coordination cost, leading to misfit and rework; poor fit discourages further investment in tooling. Nonlinearities include thresholds where adding key checks (e.g., fast local test rigs) shifts perceived fit sharply upward; beyond a saturation point, additional plugins offer diminishing returns or conflicts. Causally, structuration occurs as teams appropriate tools, reinforcing certain workflows and norms; these in turn constrain future choices. Diffusion dynamics govern how innovations in one sub-team spread, influenced by opinion leaders and perceived relative advantage. Skill-biased technical change pushes the task frontier upward\u2014new services and infra raise the baseline skill required for effective tooling; insufficient proficiency widens the skill gap and depresses fit until training or simplification occurs. Constraints include CI capacity, maintenance of automation scripts, and reviewer expertise with the toolchain. Benefits from new automation often show a 1\u20132 sprint lag while false positives are tuned down. The process outputs higher throughput, lower defect rates, and reduced cognitive load, which supports contributor engagement and speeds readiness for core responsibilities.",
+        "theories_used": [
+          "Adaptive Structuration Theory",
+          "Task-Technology Fit (TTF)",
+          "Diffusion of Innovations"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Skill-Biased Technical Change",
+            "rationale": "Rising technical complexity increases the skill threshold to realize high tool-task fit, affecting who can appropriate advanced capabilities."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Routine Evolution and Punctuated Change in Practices",
+            "connection_type": "feeds_into",
+            "description": "Stable appropriations become standardized steps in routines; misfit triggers routine adjustments."
+          },
+          {
+            "target_cluster": "Workload, Motivation, and Retention Dynamics",
+            "connection_type": "feeds_into",
+            "description": "Better fit and automation reduce demands and increase control, boosting engagement."
+          },
+          {
+            "target_cluster": "Skill Trajectories under Skill-Biased Technical Change",
+            "connection_type": "feedback_loop",
+            "description": "Proficiency growth enables advanced tooling; advanced tooling raises the skill frontier and learning requirements."
+          }
+        ]
+      },
+      {
+        "name": "Routine Evolution and Punctuated Change in Practices",
+        "narrative": "Accumulations include the coherence of development routines (how consistently steps are executed), a backlog of routine-change proposals, technical debt embedded in practices, and inertia in release cadence. Coherence strengthens with repeated successful cycles and clear templates; it degrades when exceptions proliferate or context shifts. Routine reinforcement occurs at a rate tied to cycle time and variance in outcomes; change proposals accumulate as mismatches between current routines and environment are noted. Delays are common: 1\u20133 release cycles before new practices stabilize; 3\u20136 months for substantial shifts to percolate across modules. A reinforcing loop: as routines stabilize, throughput and predictability increase, encouraging further standardization and tool-supported enforcement. A balancing loop: growing misfit with new architectures or contributor mix increases exceptions and workarounds, adding to technical debt and triggering experiments; once a threshold of accumulated misfit is crossed, a punctuation occurs, with rapid reconfiguration of steps (e.g., migrating build systems). Nonlinearities include tipping points where a small push (e.g., a major incident) leads to widespread routine revision; post-punctuation aftershocks can temporarily depress throughput until learning catches up. Cross-scale constraints mean that upstream ecosystem or foundation-level changes (e.g., deprecation policies) can force local routine shifts with little warning. The rate of adopting proposed changes depends on evidence strength (benchmarks, incidents avoided), governance bandwidth to approve changes, and the availability of automation to embed the new routine. Excessive routine complexity increases cognitive load, raising error rates and eroding adherence. Benefits of improved routines often lag by one or two cycles as teams internalize them; failure to prune deprecated steps causes decay. The process outputs more resilient practices with clearer guardrails or, alternatively, a surge of change work that must be balanced against delivery, influencing contributor experience and readiness to assume core duties.",
+        "theories_used": [
+          "Stability and Change in Organizational Routines",
+          "Punctuated Equilibrium Theory in IS Research"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Panarchy Theory",
+            "rationale": "Cross-scale dependencies (ecosystem changes, foundation policies) periodically force local routine shifts or enable renewal."
+          },
+          {
+            "theory_name": "Hidden Order: How Adaptation Builds Complexity",
+            "rationale": "Local adaptations accrete into complex, path-dependent routines that occasionally need simplification to escape local minima."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Workload, Motivation, and Retention Dynamics",
+            "connection_type": "feeds_into",
+            "description": "Routine coherence and release cadence determine demand volatility and recovery opportunities."
+          },
+          {
+            "target_cluster": "Governance Coevolution and Decision Rights Allocation",
+            "connection_type": "feeds_into",
+            "description": "Adoption of routine changes requires decisions, role updates, and enforcement mechanisms."
+          },
+          {
+            "target_cluster": "Tool Appropriation and Task-Technology Fit Optimization",
+            "connection_type": "receives_from",
+            "description": "New tooling enables routine standardization; misfit triggers change proposals."
+          },
+          {
+            "target_cluster": "Innovation Through Diversity and Adjacent Possible",
+            "connection_type": "receives_from",
+            "description": "Novel ideas inject alternative patterns that, if selected, become routine updates."
+          }
+        ]
+      },
+      {
+        "name": "Social Capital, Reputation, and Role Mobility",
+        "narrative": "Accumulations include bonding ties (trust within modules), bridging ties (links across modules or communities), and reputation capital (credibility from merged PRs, reviews, releases). These grow through visible, high-quality contributions, helpful reviews, and cross-team collaborations; they decay as ties lapse or controversial actions erode trust. The rate of tie formation depends on interaction frequency and diversity of collaborators; reputation growth depends on the visibility and impact of work, amplified by respected reviewers\u2019 endorsements. Typical delays: 3\u20139 months for sufficient reputation to support nomination to maintainer roles; 2\u20134 weeks for visible signals (release notes, stars) to propagate. A reinforcing loop exists: higher reputation increases invitations to impactful work and review authority, generating more visibility and further reputation gains. Another reinforcing loop: bridging ties open access to structural holes, allowing contributors to broker knowledge and assemble novel solutions, further enhancing reputation. Balancing forces include reviewer fatigue (reducing visible endorsements) and reputation saturation where additional minor contributions add little marginal credibility. Nonlinearities occur in signaling: once a contributor surpasses a threshold (e.g., 10+ merged substantive PRs and 20+ helpful reviews), nomination likelihood rises sharply, provided trust ties span multiple maintainers. Misleading signals (vanity metrics) can inflate expectations without underlying trust, leading to backlash. Causally, communities of practice govern the meaning of credible signals; project norms define what \u201ccounts.\u201d Strong social capital buffers against occasional mistakes, sustaining mobility; weak ties alone seldom suffice for role transitions without cross-validation from multiple maintainers. Constraints include review bandwidth to observe work, platform visibility, and inclusive governance that recognizes varied contribution types (docs, triage, security). The process outputs a pipeline of candidates with validated reputation and cross-cutting ties, enabling movement from periphery to core when decision rights become available.",
+        "theories_used": [
+          "Social Capital and Structural Holes",
+          "Signaling Theory",
+          "Communities of Practice (Wenger)"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Social Cognitive Career Theory (SCCT)",
+            "rationale": "Positive outcome expectations from credible signals sustain persistence toward core roles."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Governance Coevolution and Decision Rights Allocation",
+            "connection_type": "feeds_into",
+            "description": "Reputation and cross-validated trust inform nominations, elections, and code ownership allocations."
+          },
+          {
+            "target_cluster": "Innovation Through Diversity and Adjacent Possible",
+            "connection_type": "feeds_into",
+            "description": "Bridging ties bring in heterogeneous ideas and partner projects, enlarging the solution space."
+          },
+          {
+            "target_cluster": "Peripheral Entry and Legitimate Participation Conversion",
+            "connection_type": "feedback_loop",
+            "description": "Visible, supportive reviewers attract newcomers; newcomer successes add to mentors\u2019 reputation."
+          }
+        ]
+      },
+      {
+        "name": "Governance Coevolution and Decision Rights Allocation",
+        "narrative": "Accumulations include the number and distribution of decision rights (maintainers, reviewers, code owners), the complexity and clarity of governance rules, perceived legitimacy (fairness, transparency), and enforcement capacity. These grow as the project scales and formalizes processes; they degrade when rules become misaligned with practice or enforcement lags. Decision-rights allocation occurs at a rate governed by nomination pipelines, voting/consensus cycles, and probationary periods; typical delays are 3\u201312 months from candidate readiness to formal role assignment. Rule evolution occurs as issues surface, with a 1\u20133 release cycle lag before effects stabilize. A reinforcing loop: credible governance increases legitimacy, which boosts compliance and reduces conflict, freeing bandwidth to mentor and deliberate well, further strengthening legitimacy. A balancing loop: as rules proliferate, decision latency and contribution friction increase, raising attrition and eroding legitimacy, prompting simplification. Nonlinearities include quorum thresholds for elections and saturation in maintainers: beyond a certain point, coordination costs rise faster than capacity, lowering net responsiveness. Coevolution is shaped by technology and routines: new architectures prompt creation of specialized code ownership; platform features for review policies alter authority enactment (adaptive structuration). Cross-scale dynamics (panarchy) matter: foundation-level policy changes or ecosystem shocks (e.g., security standards) drive local governance adjustments; local innovations (e.g., RFC processes) may diffuse upstream. Causally, reputation and trust from the social capital process supply credible candidates; workload and engagement set feasible role expansion rates; routine changes require governance endorsement. Constraints include volunteer time, clarity of escalation paths, and inclusivity mechanisms that broaden the pipeline (recognizing docs/triage/security). The process outputs aligned decision rights, stable yet adaptable rules, and legitimacy sufficient to sustain contributor retention and orderly advancement from periphery to core.",
+        "theories_used": [
+          "The Coevolution of New Organizational Forms",
+          "Panarchy Theory",
+          "Adaptive Structuration Theory"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Stability and Change in Organizational Routines",
+            "rationale": "Routine shifts create governance needs (policies, roles) and test enforcement mechanisms."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Social Capital, Reputation, and Role Mobility",
+            "connection_type": "receives_from",
+            "description": "Candidate pools and trust evidence inform nominations and rights allocation."
+          },
+          {
+            "target_cluster": "Workload, Motivation, and Retention Dynamics",
+            "connection_type": "feeds_into",
+            "description": "Governance choices adjust resources (review policies, limits), affecting demands, fairness, and engagement."
+          },
+          {
+            "target_cluster": "Peripheral Entry and Legitimate Participation Conversion",
+            "connection_type": "feeds_into",
+            "description": "Transparent policies and timelines for reviews and merges increase newcomer attraction and reduce early exits."
+          },
+          {
+            "target_cluster": "Routine Evolution and Punctuated Change in Practices",
+            "connection_type": "feedback_loop",
+            "description": "Governance ratifies routine changes; routine outcomes feed back into rule revisions."
+          }
+        ]
+      },
+      {
+        "name": "Skill Trajectories under Skill-Biased Technical Change",
+        "narrative": "Accumulations include contributors\u2019 competencies across languages, frameworks, architecture, and domain knowledge; the moving skill frontier set by the project\u2019s technical stack; and the distribution of skill gaps. Competence grows via deliberate practice, review feedback, pair work, and challenging assignments; it decays through obsolescence and inactivity. Learning rates depend on absorptive capacity, availability of scaffolded tasks, and time for practice; typical delays are 6\u201318 months to move from proficient peripheral contributor to core-level competence in key subsystems. A reinforcing loop: higher competence yields selection into more complex tasks and more informative reviews, accelerating learning; visible mastery attracts mentorship opportunities, further deepening skills. A balancing loop: as the technical frontier rises (new infra, performance constraints), the gap widens for many contributors, slowing progress and increasing dropout risk unless training, documentation, or simplification counteracts it. Nonlinearities include plateaus in learning curves (e.g., architectural reasoning) and threshold promotions: once a contributor demonstrates consistent competence across critical subsystems and reliability under pressure, core role eligibility jumps. Causally, absorptive capacity is shaped by prior experience and the quality of artifacts; task-technology fit affects whether practice time translates to skill or just rework. Governance can throttle progression via probation policies and code ownership gates that ensure readiness before granting rights. Constraints are time, access to suitable challenges, and reviewer capacity to provide developmental feedback. Skill obsolescence accelerates when routines or tooling leap ahead, requiring targeted upskilling campaigns or modularization to reduce the required breadth. The process outputs a rising number of contributors with narrowed skill gaps relative to the frontier, feeding the pool of viable core candidates; it also signals where the frontier outpaces learning, informing governance and tooling simplification.",
+        "theories_used": [
+          "Skill-Biased Technical Change",
+          "Absorptive Capacity"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Social Cognitive Career Theory (SCCT)",
+            "rationale": "Self-efficacy and outcome expectations determine persistence through plateaus and pursuit of stretch tasks."
+          },
+          {
+            "theory_name": "Task-Technology Fit (TTF)",
+            "rationale": "Effective fit ensures practice improves competence instead of generating discouraging rework."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Tool Appropriation and Task-Technology Fit Optimization",
+            "connection_type": "feedback_loop",
+            "description": "Higher competence enables advanced tooling; advanced tooling raises the skill frontier and learning requirements."
+          },
+          {
+            "target_cluster": "Social Capital, Reputation, and Role Mobility",
+            "connection_type": "feeds_into",
+            "description": "Demonstrated mastery raises reputation and trust, supporting nominations."
+          },
+          {
+            "target_cluster": "Workload, Motivation, and Retention Dynamics",
+            "connection_type": "receives_from",
+            "description": "Adequate resources and recovery time sustain learning rates; overload stalls skill growth."
+          },
+          {
+            "target_cluster": "Governance Coevolution and Decision Rights Allocation",
+            "connection_type": "receives_from",
+            "description": "Promotion gates and probation policies shape the speed of role transition given competence."
+          }
+        ]
+      },
+      {
+        "name": "Workload, Motivation, and Retention Dynamics",
+        "narrative": "Accumulations include job demands (PR review queues, issue backlog, incident load), job resources (mentorship, automation, autonomy), engagement energy (vigor, absorption), and burnout risk. Demands rise with growth in contributions and incidents; resources grow with mentoring capacity, supportive governance, and tooling; engagement builds through meaningful progress and social support, and decays through sustained overload and low control. Processing rates for PRs, support, and incidents determine how quickly queues shrink; typical delays: 1\u20132 weeks for PR reviews, 1\u20133 months for backlog reduction campaigns, 2\u20134 weeks for recovery after a crunch. A reinforcing loop: sufficient resources and quick feedback create wins that boost engagement, which raises throughput and reduces queues, further improving the work climate. A balancing loop: when queues exceed reviewer capacity (e.g., >2x), wait times stretch and contributors face more interruptions, raising strains; engagement erodes, slowing throughput and causing queues to swell further until governance intervenes. Nonlinearities include thresholds in responsiveness: beyond a certain backlog, each additional PR disproportionately increases perceived unfairness and exit risk. Transparent governance decisions that prioritize review fairness and limit blast radius (e.g., setting SLA-like targets or triaging responsibly) increase perceived justice, which elevates engagement. Social capital buffers strain, as supportive ties provide help and recognition; poor fit with tooling raises demands per task. Causally, job demands-resources balance mediates retention and learning capacity; engagement fuels persistence and mentoring availability, while burnout propagates through reduced reviewer capacity. Constraints include volunteer time, time zones, and automation run times. Benefits from resource investments (e.g., adding auto-merge) show after 2\u20134 weeks as queues stabilize. The process outputs sustained participation, stable review capacity, and predictable flow, providing the environment in which contributors can progress toward core roles without excessive attrition.",
+        "theories_used": [
+          "Job Demands-Resources (JD-R) Model"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Adaptive Structuration Theory",
+            "rationale": "Policies and platform features (e.g., review assignment) shape perceived control and resource availability."
+          },
+          {
+            "theory_name": "Social Capital and Structural Holes",
+            "rationale": "Supportive ties reduce perceived strains and speed resolution of blockers."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Peripheral Entry and Legitimate Participation Conversion",
+            "connection_type": "feeds_into",
+            "description": "Higher engagement and review responsiveness increase newcomer conversion and early success."
+          },
+          {
+            "target_cluster": "Skill Trajectories under Skill-Biased Technical Change",
+            "connection_type": "feeds_into",
+            "description": "Adequate resources and recovery time enable sustained learning and practice."
+          },
+          {
+            "target_cluster": "Tool Appropriation and Task-Technology Fit Optimization",
+            "connection_type": "receives_from",
+            "description": "Better tool fit reduces demands and stabilizes engagement."
+          },
+          {
+            "target_cluster": "Governance Coevolution and Decision Rights Allocation",
+            "connection_type": "receives_from",
+            "description": "Governance choices adjust resources/demands (review SLAs, code ownership), affecting engagement and retention."
+          }
+        ]
+      },
+      {
+        "name": "Innovation Through Diversity and Adjacent Possible",
+        "narrative": "Accumulations include diversity of perspectives (skills, backgrounds), an idea backlog of proposed improvements, the size of the adjacent possible (reachable design/feature combinations), and the count of adopted innovations. Idea generation and recombination rates increase with heterogeneity of contributors, cross-boundary collaborations, and exposure to external communities; selection and adoption rates depend on evaluation capacity, governance openness, and ability to embed changes into routines and tools. Typical delays: 1\u20132 release cycles from ideation to adoption; 2\u20136 months for innovations to diffuse and show impact. A reinforcing loop: as diversity increases, recombination yields more promising ideas; visible wins attract additional diverse contributors, further enlarging the solution space. A balancing loop: excessive heterogeneity without integrating mechanisms raises coordination costs and lowers adoption rates; unresolved conflicts drain energy and slow diffusion. Nonlinearities include U-shaped diversity effects\u2014too little diversity yields few novel ideas; too much without integration reduces coherence; an intermediate zone maximizes net innovation. The adjacent possible expands as new tools, patterns, and partnerships are added; once a key capability appears (e.g., cross-project APIs), idea productivity can jump discretely. Causally, bridging social capital connects distant knowledge pools, while transactive memory helps locate complementary expertise to form effective innovation teams. Diffusion dynamics determine whether adopted innovations spread beyond early adopters; strong opinion leaders and credible evidence accelerate spread. Hidden-order dynamics imply that small, local adaptations can unlock new combinatorial pathways, but also risk local minima that require punctuation (major refactor) to escape. Constraints include review and evaluation bandwidth, experimentation sandboxes, and governance willingness to trial and sunset experiments. The process outputs a stream of vetted innovations that fuel routine evolution, improve tool-task fit, and signal project vitality\u2014factors that attract and retain talent and create avenues for peripheral contributors to demonstrate leadership en route to core roles.",
+        "theories_used": [
+          "Diversity Trumps Ability",
+          "Diffusion of Innovations",
+          "Hidden Order: How Adaptation Builds Complexity"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Routines and Transactive Memory Systems",
+            "rationale": "Knowing where expertise resides speeds assembly of cross-functional innovation teams."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Routine Evolution and Punctuated Change in Practices",
+            "connection_type": "feeds_into",
+            "description": "Adopted innovations become standardized routines or trigger punctuated shifts."
+          },
+          {
+            "target_cluster": "Tool Appropriation and Task-Technology Fit Optimization",
+            "connection_type": "feeds_into",
+            "description": "Innovations specify new configurations or automation, improving fit."
+          },
+          {
+            "target_cluster": "Governance Coevolution and Decision Rights Allocation",
+            "connection_type": "feeds_into",
+            "description": "Pilots require decision frameworks for experimentation, rollout, and sunsetting."
+          },
+          {
+            "target_cluster": "Social Capital, Reputation, and Role Mobility",
+            "connection_type": "receives_from",
+            "description": "Bridging ties supply heterogeneous inputs and sponsors for ideas."
+          }
+        ]
+      }
+    ],
+    "overall_narrative": "The integrated system traces a contributor\u2019s path from curious observer to core developer through interdependent processes that shape learning, performance, legitimacy, and well-being. Entry flows (Peripheral Entry and Legitimate Participation Conversion) convert newcomers into active contributors when welcoming practices, credible signals, and early success build self-efficacy. Those contributors deepen capability as Knowledge Creation, Absorption, and Shared Memory turns incidents and exemplars into artifacts and shared awareness of expertise locations, accelerating learning and reducing coordination cost. Tool Appropriation and Task-Technology Fit Optimization translates that knowledge into effective workflows and automation, raising throughput and freeing time. In tandem, Routine Evolution and Punctuated Change in Practices stabilizes successful patterns and, when misfit accumulates, triggers punctuations that realign practices with the environment.\n\nAs contributors deliver visible results and helpful reviews, Social Capital, Reputation, and Role Mobility amplifies their credibility and cross-cutting ties, creating a pipeline of legitimate candidates for expanded decision rights. Governance Coevolution and Decision Rights Allocation absorbs those candidates, evolving rules and role distributions to maintain legitimacy and responsiveness while balancing friction. Skill Trajectories under Skill-Biased Technical Change ensures that contributors keep pace with a rising technical frontier; governance gates, scaffolding, and tool fit regulate how fast readiness turns into role transitions.\n\nWorkload, Motivation, and Retention Dynamics provides the climate within which all other processes operate: stable engagement and manageable demands sustain review capacity, mentorship, and persistence; overload erodes queues, conversion, and learning. Innovation Through Diversity and Adjacent Possible injects novelty by recombining diverse perspectives, enlarging the solution space and seeding routine and tooling upgrades that attract newcomers and energize veterans.\n\nFeedbacks knit these processes together: governance quality shapes onboarding fairness and retention; social capital feeds governance nominations; tool fit reduces demands and frees cognitive resources to document and mentor; innovations catalyze routine shifts that, in turn, require governance updates. Time delays (weeks for reviews, months for routine change, quarters for role transitions) and nonlinearities (thresholds in trust, quorum, diversity) create dynamics that can either propel sustained advancement to the core or stall contributors at the periphery. This architecture embeds governance explicitly at decision points that allocate rights, manage friction, and maintain legitimacy, ensuring the model can explore career dynamics under alternative governance designs."
+  }
+}

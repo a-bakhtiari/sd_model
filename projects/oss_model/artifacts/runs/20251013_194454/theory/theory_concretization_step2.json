@@ -1,0 +1,1056 @@
+{
+  "processes": [
+    {
+      "process_name": "Onboarding and Legitimacy Pathway",
+      "variables": [
+        {
+          "name": "Observers Pool",
+          "type": "Stock"
+        },
+        {
+          "name": "First Contribution Work-In-Progress",
+          "type": "Stock"
+        },
+        {
+          "name": "Peripheral Contributors",
+          "type": "Stock"
+        },
+        {
+          "name": "Regular Contributors",
+          "type": "Stock"
+        },
+        {
+          "name": "Observer Conversion to First Contribution",
+          "type": "Flow"
+        },
+        {
+          "name": "First PR Acceptance",
+          "type": "Flow"
+        },
+        {
+          "name": "Progression to Regular",
+          "type": "Flow"
+        },
+        {
+          "name": "Entry Gate Clarity Input",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Mentor Availability Index",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "First Response Time Estimate",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Visible Newcomer Success",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Newcomer Conversion Signal",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Observers Pool",
+          "to": "Observer Conversion to First Contribution",
+          "relationship": "positive"
+        },
+        {
+          "from": "Entry Gate Clarity Input",
+          "to": "Observer Conversion to First Contribution",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentor Availability Index",
+          "to": "Observer Conversion to First Contribution",
+          "relationship": "positive"
+        },
+        {
+          "from": "First Response Time Estimate",
+          "to": "Observer Conversion to First Contribution",
+          "relationship": "negative"
+        },
+        {
+          "from": "Observer Conversion to First Contribution",
+          "to": "First Contribution Work-In-Progress",
+          "relationship": "positive"
+        },
+        {
+          "from": "First Contribution Work-In-Progress",
+          "to": "First PR Acceptance",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentor Availability Index",
+          "to": "First PR Acceptance",
+          "relationship": "positive"
+        },
+        {
+          "from": "First Response Time Estimate",
+          "to": "First PR Acceptance",
+          "relationship": "negative"
+        },
+        {
+          "from": "First PR Acceptance",
+          "to": "Peripheral Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from": "Peripheral Contributors",
+          "to": "Progression to Regular",
+          "relationship": "positive"
+        },
+        {
+          "from": "Progression to Regular",
+          "to": "Regular Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from": "Regular Contributors",
+          "to": "Mentor Availability Index",
+          "relationship": "positive"
+        },
+        {
+          "from": "First Contribution Work-In-Progress",
+          "to": "Mentor Availability Index",
+          "relationship": "negative"
+        },
+        {
+          "from": "First PR Acceptance",
+          "to": "Visible Newcomer Success",
+          "relationship": "positive"
+        },
+        {
+          "from": "Visible Newcomer Success",
+          "to": "Newcomer Attraction Inflow",
+          "relationship": "positive"
+        },
+        {
+          "from": "First PR Acceptance",
+          "to": "Newcomer Conversion Signal",
+          "relationship": "positive"
+        },
+        {
+          "from": "Progression to Regular",
+          "to": "Newcomer Conversion Signal",
+          "relationship": "positive"
+        },
+        {
+          "from": "Newcomer Conversion Signal",
+          "to": "New Contributor Inflow Signal",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Newcomer Attraction Inflow",
+          "type": "source",
+          "connects_to": "Observers Pool"
+        },
+        {
+          "name": "First Contribution Abandonment",
+          "type": "sink",
+          "connects_to": "First Contribution Work-In-Progress"
+        },
+        {
+          "name": "Peripheral Contributor Dropout",
+          "type": "sink",
+          "connects_to": "Peripheral Contributors"
+        },
+        {
+          "name": "Regular Contributor Attrition",
+          "type": "sink",
+          "connects_to": "Regular Contributors"
+        }
+      ]
+    },
+    {
+      "process_name": "Knowledge Development and Expertise Consolidation",
+      "variables": [
+        {
+          "name": "Uncodified Knowledge Backlog",
+          "type": "Stock"
+        },
+        {
+          "name": "Shared Knowledge Artifacts",
+          "type": "Stock"
+        },
+        {
+          "name": "Documentation Debt",
+          "type": "Stock"
+        },
+        {
+          "name": "Transactive Memory Gaps",
+          "type": "Stock"
+        },
+        {
+          "name": "Transactive Memory Accuracy",
+          "type": "Stock"
+        },
+        {
+          "name": "Documentation Creation Flow",
+          "type": "Flow"
+        },
+        {
+          "name": "Documentation Debt Paydown",
+          "type": "Flow"
+        },
+        {
+          "name": "Transactive Memory Gap Closure",
+          "type": "Flow"
+        },
+        {
+          "name": "New Contributor Inflow Signal",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "New Insight Generation Rate",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Time Available for Documentation",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Discoverability of Artifacts",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Expertise Output Signal",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "New Contributor Inflow Signal",
+          "to": "New Insight Generation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "New Insight Generation Rate",
+          "to": "New Insights Injection Inflow",
+          "relationship": "positive"
+        },
+        {
+          "from": "Uncodified Knowledge Backlog",
+          "to": "Documentation Creation Flow",
+          "relationship": "positive"
+        },
+        {
+          "from": "Time Available for Documentation",
+          "to": "Documentation Creation Flow",
+          "relationship": "positive"
+        },
+        {
+          "from": "Documentation Creation Flow",
+          "to": "Shared Knowledge Artifacts",
+          "relationship": "positive"
+        },
+        {
+          "from": "Documentation Creation Flow",
+          "to": "Uncodified Knowledge Backlog",
+          "relationship": "negative"
+        },
+        {
+          "from": "Documentation Debt",
+          "to": "Documentation Debt Paydown",
+          "relationship": "positive"
+        },
+        {
+          "from": "Discoverability of Artifacts",
+          "to": "Documentation Debt Paydown",
+          "relationship": "positive"
+        },
+        {
+          "from": "Documentation Debt Paydown",
+          "to": "Shared Knowledge Artifacts",
+          "relationship": "positive"
+        },
+        {
+          "from": "Documentation Debt Paydown",
+          "to": "Documentation Debt",
+          "relationship": "negative"
+        },
+        {
+          "from": "Transactive Memory Gaps",
+          "to": "Transactive Memory Gap Closure",
+          "relationship": "positive"
+        },
+        {
+          "from": "Transactive Memory Gap Closure",
+          "to": "Transactive Memory Accuracy",
+          "relationship": "positive"
+        },
+        {
+          "from": "Transactive Memory Gap Closure",
+          "to": "Transactive Memory Gaps",
+          "relationship": "negative"
+        },
+        {
+          "from": "Shared Knowledge Artifacts",
+          "to": "Discoverability of Artifacts",
+          "relationship": "positive"
+        },
+        {
+          "from": "Documentation Debt",
+          "to": "Time Available for Documentation",
+          "relationship": "negative"
+        },
+        {
+          "from": "Transactive Memory Accuracy",
+          "to": "Time Available for Documentation",
+          "relationship": "positive"
+        },
+        {
+          "from": "Shared Knowledge Artifacts",
+          "to": "Expertise Output Signal",
+          "relationship": "positive"
+        },
+        {
+          "from": "Transactive Memory Accuracy",
+          "to": "Expertise Output Signal",
+          "relationship": "positive"
+        },
+        {
+          "from": "Documentation Debt",
+          "to": "Expertise Output Signal",
+          "relationship": "negative"
+        },
+        {
+          "from": "Expertise Output Signal",
+          "to": "Expertise Input Signal",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "New Insights Injection Inflow",
+          "type": "source",
+          "connects_to": "Uncodified Knowledge Backlog"
+        },
+        {
+          "name": "Artifact Obsolescence",
+          "type": "sink",
+          "connects_to": "Shared Knowledge Artifacts"
+        },
+        {
+          "name": "Documentation Debt Accrual",
+          "type": "source",
+          "connects_to": "Documentation Debt"
+        },
+        {
+          "name": "Transactive Memory Drift",
+          "type": "source",
+          "connects_to": "Transactive Memory Gaps"
+        }
+      ]
+    },
+    {
+      "process_name": "Contribution Throughput and Quality Control Pipeline",
+      "variables": [
+        {
+          "name": "Submission Backlog",
+          "type": "Stock"
+        },
+        {
+          "name": "Accepted Changes",
+          "type": "Stock"
+        },
+        {
+          "name": "Technical Debt",
+          "type": "Stock"
+        },
+        {
+          "name": "Review and Merge Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Rework Return Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Debt Accrual Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Debt Paydown Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Expertise Input Signal",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Reviewer Capacity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Acceptance Probability",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Cycle Time Estimate",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Pipeline Performance Signal",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Submission Backlog",
+          "to": "Review and Merge Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Reviewer Capacity",
+          "to": "Review and Merge Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Acceptance Probability",
+          "to": "Review and Merge Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review and Merge Rate",
+          "to": "Accepted Changes",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review and Merge Rate",
+          "to": "Submission Backlog",
+          "relationship": "negative"
+        },
+        {
+          "from": "Expertise Input Signal",
+          "to": "Acceptance Probability",
+          "relationship": "positive"
+        },
+        {
+          "from": "Acceptance Probability",
+          "to": "Rework Return Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Rework Return Rate",
+          "to": "Submission Backlog",
+          "relationship": "positive"
+        },
+        {
+          "from": "Submission Backlog",
+          "to": "Debt Accrual Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Debt Accrual Rate",
+          "to": "Technical Debt",
+          "relationship": "positive"
+        },
+        {
+          "from": "Technical Debt",
+          "to": "Debt Paydown Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Debt Paydown Rate",
+          "to": "Accepted Changes",
+          "relationship": "positive"
+        },
+        {
+          "from": "Submission Backlog",
+          "to": "Cycle Time Estimate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Reviewer Capacity",
+          "to": "Cycle Time Estimate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Cycle Time Estimate",
+          "to": "Pipeline Performance Signal",
+          "relationship": "negative"
+        },
+        {
+          "from": "Review and Merge Rate",
+          "to": "Pipeline Performance Signal",
+          "relationship": "positive"
+        },
+        {
+          "from": "Acceptance Probability",
+          "to": "Pipeline Performance Signal",
+          "relationship": "positive"
+        },
+        {
+          "from": "Submission Backlog",
+          "to": "Pipeline Performance Signal",
+          "relationship": "negative"
+        },
+        {
+          "from": "Pipeline Performance Signal",
+          "to": "Pipeline Performance Input",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "New Submissions Arrival",
+          "type": "source",
+          "connects_to": "Submission Backlog"
+        },
+        {
+          "name": "Release Deployment",
+          "type": "sink",
+          "connects_to": "Accepted Changes"
+        }
+      ]
+    },
+    {
+      "process_name": "Motivation, Workload, and Retention Dynamics",
+      "variables": [
+        {
+          "name": "Psychological Energy",
+          "type": "Stock"
+        },
+        {
+          "name": "Burnout Exhaustion",
+          "type": "Stock"
+        },
+        {
+          "name": "Job Resources",
+          "type": "Stock"
+        },
+        {
+          "name": "Perceived Career Capital",
+          "type": "Stock"
+        },
+        {
+          "name": "Energy Drain",
+          "type": "Flow"
+        },
+        {
+          "name": "Recovery Flow",
+          "type": "Flow"
+        },
+        {
+          "name": "Sponsorship Investment",
+          "type": "Flow"
+        },
+        {
+          "name": "Pipeline Performance Input",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Demand Load Index",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Recognition Rate",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Rest and Recovery Effectiveness",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Role Readiness Signal",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Pipeline Performance Input",
+          "to": "Demand Load Index",
+          "relationship": "negative"
+        },
+        {
+          "from": "Job Resources",
+          "to": "Demand Load Index",
+          "relationship": "negative"
+        },
+        {
+          "from": "Demand Load Index",
+          "to": "Energy Drain",
+          "relationship": "positive"
+        },
+        {
+          "from": "Energy Drain",
+          "to": "Burnout Exhaustion",
+          "relationship": "positive"
+        },
+        {
+          "from": "Rest and Recovery Effectiveness",
+          "to": "Recovery Flow",
+          "relationship": "positive"
+        },
+        {
+          "from": "Burnout Exhaustion",
+          "to": "Recovery Flow",
+          "relationship": "negative"
+        },
+        {
+          "from": "Recovery Flow",
+          "to": "Psychological Energy",
+          "relationship": "positive"
+        },
+        {
+          "from": "Recognition Rate",
+          "to": "Sponsorship Investment",
+          "relationship": "positive"
+        },
+        {
+          "from": "Job Resources",
+          "to": "Sponsorship Investment",
+          "relationship": "positive"
+        },
+        {
+          "from": "Sponsorship Investment",
+          "to": "Perceived Career Capital",
+          "relationship": "positive"
+        },
+        {
+          "from": "Recognition Rate",
+          "to": "Rest and Recovery Effectiveness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Pipeline Performance Input",
+          "to": "Recognition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Psychological Energy",
+          "to": "Role Readiness Signal",
+          "relationship": "positive"
+        },
+        {
+          "from": "Perceived Career Capital",
+          "to": "Role Readiness Signal",
+          "relationship": "positive"
+        },
+        {
+          "from": "Burnout Exhaustion",
+          "to": "Role Readiness Signal",
+          "relationship": "negative"
+        },
+        {
+          "from": "Role Readiness Signal",
+          "to": "Role Readiness Input",
+          "relationship": "positive"
+        },
+        {
+          "from": "Recognition Rate",
+          "to": "Resource Funding Inflow",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Resource Funding Inflow",
+          "type": "source",
+          "connects_to": "Job Resources"
+        },
+        {
+          "name": "Resource Attrition",
+          "type": "sink",
+          "connects_to": "Job Resources"
+        },
+        {
+          "name": "Voluntary Exit",
+          "type": "sink",
+          "connects_to": "Psychological Energy"
+        }
+      ]
+    },
+    {
+      "process_name": "Governance, Decision Rights, and Role Transitions",
+      "variables": [
+        {
+          "name": "Governance Proposal Backlog",
+          "type": "Stock"
+        },
+        {
+          "name": "Governance Clarity",
+          "type": "Stock"
+        },
+        {
+          "name": "Maintainer Candidate Pool",
+          "type": "Stock"
+        },
+        {
+          "name": "Maintainer Pool",
+          "type": "Stock"
+        },
+        {
+          "name": "Codification Adoption Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Policy Revision Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Promotion to Maintainer Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Role Readiness Input",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Consensus Bandwidth",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Policy Stringency Index",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Reviewer Allocation Capacity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Output Signal",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Role Readiness Input",
+          "to": "Candidate Pool Inflow",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Proposal Backlog",
+          "to": "Codification Adoption Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Codification Adoption Rate",
+          "to": "Governance Clarity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Clarity",
+          "to": "Policy Revision Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Policy Revision Rate",
+          "to": "Governance Proposal Backlog",
+          "relationship": "positive"
+        },
+        {
+          "from": "Maintainer Candidate Pool",
+          "to": "Promotion to Maintainer Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Policy Stringency Index",
+          "to": "Promotion to Maintainer Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Promotion to Maintainer Rate",
+          "to": "Maintainer Pool",
+          "relationship": "positive"
+        },
+        {
+          "from": "Maintainer Pool",
+          "to": "Reviewer Allocation Capacity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Clarity",
+          "to": "Governance Output Signal",
+          "relationship": "positive"
+        },
+        {
+          "from": "Reviewer Allocation Capacity",
+          "to": "Governance Output Signal",
+          "relationship": "positive"
+        },
+        {
+          "from": "Maintainer Pool",
+          "to": "Consensus Bandwidth",
+          "relationship": "negative"
+        },
+        {
+          "from": "Consensus Bandwidth",
+          "to": "Codification Adoption Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Output Signal",
+          "to": "Entry Gate Clarity Input",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Candidate Pool Inflow",
+          "type": "source",
+          "connects_to": "Maintainer Candidate Pool"
+        },
+        {
+          "name": "Maintainer Exit Rate",
+          "type": "sink",
+          "connects_to": "Maintainer Pool"
+        },
+        {
+          "name": "Clarity Decay Rate",
+          "type": "sink",
+          "connects_to": "Governance Clarity"
+        },
+        {
+          "name": "Governance Proposal Intake",
+          "type": "source",
+          "connects_to": "Governance Proposal Backlog"
+        }
+      ]
+    }
+  ],
+  "cluster_positions": {
+    "Onboarding and Legitimacy Pathway": [
+      0,
+      0
+    ],
+    "Knowledge Development and Expertise Consolidation": [
+      0,
+      1
+    ],
+    "Contribution Throughput and Quality Control Pipeline": [
+      0,
+      2
+    ],
+    "Motivation, Workload, and Retention Dynamics": [
+      1,
+      2
+    ],
+    "Governance, Decision Rights, and Role Transitions": [
+      1,
+      1
+    ]
+  },
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Onboarding and Legitimacy Pathway",
+        "narrative": "Accumulations: (1) a pool of observers/newcomers grows with project visibility and shrinks as they attempt or abandon first contributions; (2) a cohort of peripheral contributors builds as first pull requests are accepted; (3) personal reputation/trust accumulates through successful interactions and code reviews. Rates and speeds: Attraction into observing occurs at a rate driven by external signals (stars, social media, badges) and word-of-mouth; conversion from observer to first-time contributor occurs at a pace limited by onboarding clarity and mentor availability; movement from peripheral to regular contributor accelerates with repeat interactions and timely review turnaround. Feedback loops: Reinforcing\u2014visible newcomer success (fast merges, thanks in release notes) increases attraction, which raises the count of first-time contributors and the likelihood of further visible successes; Balancing\u2014if review capacity is exceeded, first-response time lengthens, discouraging newcomers and lowering conversion. Time delays: It typically takes 2\u20136 weeks for a newcomer to complete a first contribution, and 3\u20136 months of intermittent activity to be recognized as a regular; recognition and trust often require 5\u201310 positive interactions, creating a threshold effect. Nonlinearities: Progress towards regular status jumps after several reciprocated interactions (e.g., >5 reviews responded to); acceptance probability saturates when mentor-to-newcomer ratios exceed about 1:8; missing or ambiguous governance (CLA, code of conduct) creates stepwise drop-offs at the gate. Causal relationships: Conversion rate is limited by available mentors and the clarity of contribution rules; first-PR acceptance likelihood increases with task scoping (good-first-issue density) and task-technology fit for the tools used; social capital (bridging ties to insiders) and credible signals (prior OSS track record) raise the rate of moving from periphery to regular contributor.",
+        "theories_used": [
+          "Legitimate Peripheral Participation",
+          "Communities of Practice (Wenger)",
+          "Social Cognitive Career Theory (SCCT)",
+          "Social Capital and Structural Holes",
+          "Signaling Theory",
+          "Diffusion of Innovations"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Absorptive Capacity",
+            "rationale": "Prior related knowledge boosts the speed at which newcomers grasp project norms and APIs, increasing first-PR success."
+          },
+          {
+            "theory_name": "Adaptive Structuration Theory",
+            "rationale": "Clear appropriation of rules/resources (e.g., contribution templates) reduces ambiguity at entry and speeds legitimacy acquisition."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Knowledge Development and Expertise Consolidation",
+            "connection_type": "feeds_into",
+            "description": "Regular contributors bring fresh absorptive capacity and participate in knowledge socialization and documentation."
+          },
+          {
+            "target_cluster": "Contribution Throughput and Quality Control Pipeline",
+            "connection_type": "feeds_into",
+            "description": "New contributions and first PRs enter the review queue."
+          },
+          {
+            "target_cluster": "Governance, Decision Rights, and Role Transitions",
+            "connection_type": "receives_from",
+            "description": "Entry gates (CLA, CoC, contribution policies) and role criteria shape conversion probabilities."
+          },
+          {
+            "target_cluster": "Motivation, Workload, and Retention Dynamics",
+            "connection_type": "feedback_loop",
+            "description": "Recognition and response times affect newcomer motivation; motivated newcomers amplify word-of-mouth attraction."
+          }
+        ]
+      },
+      {
+        "name": "Knowledge Development and Expertise Consolidation",
+        "narrative": "Accumulations: (1) individual technical skill and project-specific tacit knowledge deepen with cycles of contribution and review; (2) shared artifacts (docs, tests, architecture notes) accumulate through externalization and combination; (3) an internal map of who-knows-what (transactive memory) becomes more accurate with collaboration history. Rates and speeds: Internalization of tacit knowledge proceeds at a rate dependent on prior experience and mentoring intensity; externalization into documentation occurs at a slower pace limited by available time and documentation routines; integration/combination into the codebase depends on maintainer bandwidth and architectural stability. Feedback loops: Reinforcing\u2014more high-quality docs and tests reduce onboarding time and rework, freeing time to create even better artifacts; Balancing\u2014rising codebase complexity increases the amount of tacit knowledge needed to be effective, which slows learning and reduces time available for documentation, risking documentation debt. Time delays: Meaningful internalization often requires 1\u20133 months of active contribution; documentation improvements show benefits after 1\u20132 release cycles; module-level expertise typically builds over 6\u201312 months. Nonlinearities: Absorptive capacity exhibits diminishing returns at high workload; once a contributor\u2019s knowledge passes a threshold (e.g., repeated success on a module), productivity jumps as fewer reviews request rework; the benefit of adding more docs saturates if discoverability is poor. Causal relationships: Knowledge transfer rate depends on mentor availability and review depth; adoption of new tools (linters, CI) can shift the skill mix required (skill-biased change), raising thresholds for effective contribution unless offset by training and better docs.",
+        "theories_used": [
+          "Nonaka's SECI Model",
+          "Absorptive Capacity",
+          "Routines and Transactive Memory Systems",
+          "Skill-Biased Technical Change"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Communities of Practice (Wenger)",
+            "rationale": "Shared repertoire (patterns, stories, norms) structures knowledge reuse and legitimate teaching opportunities."
+          },
+          {
+            "theory_name": "Stability and Change in Organizational Routines",
+            "rationale": "Documentation and review templates evolve as routines that regulate knowledge codification speed and quality."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Throughput and Quality Control Pipeline",
+            "connection_type": "feeds_into",
+            "description": "Higher expertise and better artifacts reduce rework and shorten review times, increasing acceptance throughput."
+          },
+          {
+            "target_cluster": "Governance, Decision Rights, and Role Transitions",
+            "connection_type": "feeds_into",
+            "description": "Accumulated expertise and demonstrated architectural stewardship inform promotion to maintainer roles."
+          },
+          {
+            "target_cluster": "Onboarding and Legitimacy Pathway",
+            "connection_type": "receives_from",
+            "description": "A steady inflow of new contributors provides fresh cognitive diversity and increases opportunities for socialization."
+          }
+        ]
+      },
+      {
+        "name": "Contribution Throughput and Quality Control Pipeline",
+        "narrative": "Accumulations: (1) a queue of open issues and pull requests builds as submissions arrive faster than reviews; (2) technical debt/test debt accrues when fixes and tests are deferred; (3) release readiness accumulates as accepted changes pass tests and documentation gates. Rates and speeds: Submission rate is driven by contributor availability and tooling fit; review and merge rates are limited by reviewer capacity, automation coverage, and routine efficiency; rework rate depends on defect discovery in CI and reviewer feedback. Feedback loops: Reinforcing\u2014better tooling (CI/CD, linters, bots) and fit with tasks speed reviews, increase acceptance, and motivate further contributions; Balancing\u2014when the review queue exceeds reviewer capacity, cycle time lengthens, discouraging submissions and increasing rework due to staleness. Time delays: CI/test cycles take hours; typical review cycles span 1\u20137 days; adopting new pipeline tools or routines takes 2\u20133 months to yield throughput gains. Nonlinearities: When the review queue exceeds roughly 2\u00d7 active reviewer capacity, cycle times rise sharply; acceptance probability increases nonlinearly with contributor reputation and prior success; stringent policies improve quality but can lengthen lead time past a tipping point where newcomer attrition escalates. Causal relationships: Throughput is constrained by reviewer bandwidth and clarity of routines (templates, checklists); diffusion of new tools shifts the throughput frontier; governance sets WIP limits and quality gates that trade off speed and quality.",
+        "theories_used": [
+          "Task-Technology Fit (TTF)",
+          "Stability and Change in Organizational Routines",
+          "Routines and Transactive Memory Systems",
+          "Diffusion of Innovations"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "The Coevolution of New Organizational Forms",
+            "rationale": "As the project scales, pipeline roles and coordination mechanisms coevolve with technology and community size."
+          },
+          {
+            "theory_name": "Adaptive Structuration Theory",
+            "rationale": "Teams appropriate and adapt review rules and templates, shaping actual practice and throughput."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Motivation, Workload, and Retention Dynamics",
+            "connection_type": "feeds_into",
+            "description": "Lead time, acceptance rates, and backlog size influence recognition, stress, and burnout."
+          },
+          {
+            "target_cluster": "Onboarding and Legitimacy Pathway",
+            "connection_type": "feedback_loop",
+            "description": "Response times and newcomer PR success rates determine conversion and subsequent submission volumes."
+          },
+          {
+            "target_cluster": "Governance, Decision Rights, and Role Transitions",
+            "connection_type": "receives_from",
+            "description": "Policies (WIP limits, review SLAs, code ownership) and role assignments allocate reviewer capacity."
+          },
+          {
+            "target_cluster": "Knowledge Development and Expertise Consolidation",
+            "connection_type": "receives_from",
+            "description": "Expertise and better docs/tests reduce rework and shorten review cycles."
+          }
+        ]
+      },
+      {
+        "name": "Governance, Decision Rights, and Role Transitions",
+        "narrative": "Accumulations: (1) a reservoir of shared governance clarity (documented policies, role definitions, decision rights) grows with explicit codification; (2) project-level trust and reputation capital build through reliable decisions, quality reviews, and community behavior; (3) the maintainer pool expands as qualified contributors are promoted and contracts with demotions or attrition; (4) a backlog of governance proposals (RFCs, policy changes) accumulates between cycles. Rates and speeds: Promotion to reviewer/maintainer occurs at a rate determined by reputation thresholds, peer endorsements, and tenure; governance change adoption proceeds at a pace limited by consensus-building bandwidth and cross-scale constraints (foundation or ecosystem rules); demotion or role exit occurs based on inactivity or trust loss. Feedback loops: Reinforcing\u2014more trusted maintainers increase review throughput and clarity, which boosts contributor success and trust, enlarging the pool of candidates for future maintainers; Balancing\u2014beyond an optimal maintainer-to-contributor ratio (about 1:8 to 1:12), coordination overhead and decision fragmentation slow policy change and reviews. Time delays: Accumulating sufficient trust for commit rights typically takes 3\u201312 months; introducing or revising major policies often requires 1\u20133 months; reputational recovery after a policy failure may take multiple release cycles. Nonlinearities: Role changes are thresholded (votes or criteria must be met); crises (security incidents, governance disputes) trigger punctuated shifts in rules and centralization; external ecosystem rules can impose ceilings on autonomy. Causal relationships: Decision rights are shaped by how rules and resources are appropriated in practice; cross-level constraints (project, foundation, ecosystem) modulate feasible changes; credible signals (sustained quality, responsible behavior) and bridging ties accelerate promotion.",
+        "theories_used": [
+          "Adaptive Structuration Theory",
+          "Panarchy Theory",
+          "Punctuated Equilibrium Theory in IS Research",
+          "The Coevolution of New Organizational Forms"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Signaling Theory",
+            "rationale": "Promotion and delegation rely on observable signals (quality reviews, incident response, architectural stewardship)."
+          },
+          {
+            "theory_name": "Legitimate Peripheral Participation",
+            "rationale": "Legitimacy for role transitions is earned through sustained participation in core practices and boundary work."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Throughput and Quality Control Pipeline",
+            "connection_type": "feeds_into",
+            "description": "Sets WIP limits, code ownership, review SLAs, and quality gates; allocates reviewer capacity via role assignments."
+          },
+          {
+            "target_cluster": "Onboarding and Legitimacy Pathway",
+            "connection_type": "feeds_into",
+            "description": "Clarifies entry gates and contribution norms, affecting newcomer conversion and legitimacy acquisition."
+          },
+          {
+            "target_cluster": "Motivation, Workload, and Retention Dynamics",
+            "connection_type": "feeds_into",
+            "description": "Fair, transparent decisions and recognition policies increase perceived justice and resources; poor governance elevates demands."
+          },
+          {
+            "target_cluster": "Knowledge Development and Expertise Consolidation",
+            "connection_type": "receives_from",
+            "description": "Evidence of expertise and stewardship supports promotion decisions and policy delegation."
+          },
+          {
+            "target_cluster": "Contribution Throughput and Quality Control Pipeline",
+            "connection_type": "receives_from",
+            "description": "Operational metrics (lead time, backlog) trigger governance adjustments (e.g., add maintainers, change policies)."
+          }
+        ]
+      },
+      {
+        "name": "Motivation, Workload, and Retention Dynamics",
+        "narrative": "Accumulations: (1) personal motivation/engagement grows with recognition, autonomy, and progress, and declines with frustration; (2) exhaustion/burnout accumulates under sustained workload and conflict; (3) job resources (peer support, mentoring, sponsorship, tooling) build as governance and community invest in them; (4) perceived career capital (skills, visibility, network) grows with successful contributions. Rates and speeds: Demand accrual rate follows backlog growth, interruptions, and after-hours obligations; resource replenishment rate depends on mentoring frequency, recognition (e.g., release acknowledgments), and sponsorship; recovery from burnout is slower than its buildup. Feedback loops: Reinforcing positive\u2014recognition increases motivation and contributions, which bring more recognition; Reinforcing negative\u2014overload increases exhaustion, slowing reviews, growing backlog, and further raising overload; Balancing\u2014investment in resources (automation, mentoring) counteracts demands, stabilizing participation. Time delays: Burnout typically accumulates over 8\u201312 weeks of sustained overload, with recovery taking 4\u201312 weeks; recognition effects on motivation are near-immediate to 1 week; sponsorship or funding impacts materialize over 1\u20132 months. Nonlinearities: Attrition risk sharply increases when response times exceed about 7 days for new contributors; if demands exceed resources for several consecutive sprints, participation drops abruptly; diversity and inclusion investments show delayed but compounding gains in resilience and problem-solving. Causal relationships: Motivation is driven by self-efficacy and outcome expectations (career advancement, reputation) and by fairness and clarity of governance; demands are driven by pipeline backlog and role load; resources are boosted by mentoring programs, automation, and inclusive practices.",
+        "theories_used": [
+          "Job Demands-Resources (JD-R) Model",
+          "Social Cognitive Career Theory (SCCT)",
+          "Diversity Trumps Ability"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Panarchy Theory",
+            "rationale": "External shocks (ecosystem incidents, upstream API breaks) cascade across scales, temporarily increasing demands."
+          },
+          {
+            "theory_name": "Punctuated Equilibrium Theory in IS Research",
+            "rationale": "Crises or major releases create bursts of workload and subsequent rebalancing, affecting retention."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Throughput and Quality Control Pipeline",
+            "connection_type": "receives_from",
+            "description": "Backlog growth and lead times add to demands; successful merges and automation add to resources."
+          },
+          {
+            "target_cluster": "Onboarding and Legitimacy Pathway",
+            "connection_type": "feeds_into",
+            "description": "High motivation and positive experiences increase word-of-mouth attraction and newcomer conversion."
+          },
+          {
+            "target_cluster": "Governance, Decision Rights, and Role Transitions",
+            "connection_type": "feeds_into",
+            "description": "Willingness to assume reviewer/maintainer roles depends on sustained motivation and manageable demands."
+          },
+          {
+            "target_cluster": "Knowledge Development and Expertise Consolidation",
+            "connection_type": "feeds_into",
+            "description": "Engaged contributors invest more in learning and documentation, raising expertise accumulation."
+          }
+        ]
+      }
+    ],
+    "overall_narrative": "Novices are attracted and acquire legitimacy through clear contribution rules, mentoring, and early successes (Onboarding and Legitimacy Pathway). As they participate, they absorb tacit knowledge, codify insights into artifacts, and build an accurate map of who knows what (Knowledge Development and Expertise Consolidation). Their work enters the contribution pipeline, where routines, tooling fit, and reviewer capacity determine throughput, quality, and cycle time (Contribution Throughput and Quality Control Pipeline). Governance allocates decision rights, sets policies and quality gates, and promotes trusted contributors to reviewer/maintainer roles, periodically adjusting structures in response to performance and crises (Governance, Decision Rights, and Role Transitions). Motivation and workload dynamics determine whether contributors persist toward core status or exit; recognition and resources reinforce engagement, while overload and long response times accelerate burnout (Motivation, Workload, and Retention Dynamics). These processes form interlocked feedback: effective governance and routines accelerate throughput and recognition, which fosters motivation and knowledge growth, increasing the pool of candidates for governance roles. Conversely, when reviewer capacity is outpaced, delays depress newcomer conversion and motivation, build backlog, and trigger governance interventions (e.g., role expansions, policy changes). Cross-scale constraints (ecosystem/foundation) and punctuated events create step changes in governance and workload, shaping the trajectory from peripheral to core developer over 6\u201318 months for typical cases, with thresholds in reputation, trust, and capacity acting as gates along the path."
+  }
+}

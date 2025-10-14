@@ -1,0 +1,425 @@
+{UTF-8}
+colored stock  = A FUNCTION OF( )
+	~	
+	~		|
+
+New Contributors  = A FUNCTION OF( colored stock,-Skill up)
+	~	
+	~		|
+
+Core Developer  = A FUNCTION OF( -Developer's Turnover,Promotion Rate)
+	~	
+	~		|
+
+Experienced Contributors  = A FUNCTION OF( -Promotion Rate,Skill up)
+	~	
+	~		|
+
+"Explicit Knowledge Transfer (Documentation, Contributor's Guides)"  = A FUNCTION OF(\
+		 )
+	~	
+	~		|
+
+"Implicit Knowledge Transfer (Mentorship)"  = A FUNCTION OF( Core Developer)
+	~	
+	~		|
+
+Skill up  = A FUNCTION OF( "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"\
+		,"Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Promotion Rate  = A FUNCTION OF( "Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Developer's Turnover  = A FUNCTION OF( )
+	~	
+	~		|
+
+Newcomer Pool  = A FUNCTION OF( )
+	~	
+	~		|
+
+Peripheral Contributors  = A FUNCTION OF( )
+	~	
+	~		|
+
+Explicit Knowledge Base  = A FUNCTION OF( )
+	~	
+	~		|
+
+Newcomer Inflow  = A FUNCTION OF( )
+	~	
+	~		|
+
+Onboarding Completion Rate  = A FUNCTION OF( Onboarding Effectiveness)
+	~	
+	~		|
+
+Early Attrition Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Knowledge Externalization Rate  = A FUNCTION OF( Peripheral Contributors)
+	~	
+	~		|
+
+Onboarding Input Signal  = A FUNCTION OF( Quality Output Signal)
+	~	
+	~		|
+
+Onboarding Output Signal  = A FUNCTION OF( Explicit Knowledge Base,Peripheral Contributors)
+	~	
+	~		|
+
+Mentoring Capacity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Documentation Clarity  = A FUNCTION OF( Onboarding Input Signal,Explicit Knowledge Base)
+	~	
+	~		|
+
+Onboarding Effectiveness  = A FUNCTION OF( Mentoring Capacity,Documentation Clarity,-Peripheral Contributors)
+	~	
+	~		|
+
+PR Backlog  = A FUNCTION OF( )
+	~	
+	~		|
+
+Accepted Changes  = A FUNCTION OF( )
+	~	
+	~		|
+
+Reputation Capital  = A FUNCTION OF( )
+	~	
+	~		|
+
+Core Developer Pool  = A FUNCTION OF( )
+	~	
+	~		|
+
+PR Submissions Rate  = A FUNCTION OF( Contribution Input Signal,-Review Latency)
+	~	
+	~		|
+
+Review and Acceptance Rate  = A FUNCTION OF( Reviewer Bandwidth)
+	~	
+	~		|
+
+Reputation Accrual Rate  = A FUNCTION OF( Accepted Changes)
+	~	
+	~		|
+
+Promotions to Core Rate  = A FUNCTION OF( Reputation Capital,-Promotion Threshold)
+	~	
+	~		|
+
+Contribution Input Signal  = A FUNCTION OF( Onboarding Output Signal)
+	~	
+	~		|
+
+Contribution Output Signal  = A FUNCTION OF( PR Backlog,Review Latency,-Core Developer Pool)
+	~	
+	~		|
+
+Reviewer Bandwidth  = A FUNCTION OF( Core Developer Pool)
+	~	
+	~		|
+
+Review Latency  = A FUNCTION OF( PR Backlog,-Reviewer Bandwidth)
+	~	
+	~		|
+
+Promotion Threshold  = A FUNCTION OF( )
+	~	
+	~		|
+
+Policy Proposal Queue  = A FUNCTION OF( )
+	~	
+	~		|
+
+Governance Maturity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Maintainer Trust and Cohesion  = A FUNCTION OF( )
+	~	
+	~		|
+
+Policy Proposal Submission Rate  = A FUNCTION OF( Policy Tuning Intensity)
+	~	
+	~		|
+
+Policy Adoption Rate  = A FUNCTION OF( Policy Proposal Queue,Role Clarity)
+	~	
+	~		|
+
+Governance Drift Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Trust Accumulation Rate  = A FUNCTION OF( Governance Maturity)
+	~	
+	~		|
+
+Governance Input Signal  = A FUNCTION OF( Contribution Output Signal)
+	~	
+	~		|
+
+Governance Output Signal  = A FUNCTION OF( Maintainer Trust and Cohesion,Governance Maturity,Gatekeeping Strictness)
+	~	
+	~		|
+
+Policy Tuning Intensity  = A FUNCTION OF( Governance Input Signal)
+	~	
+	~		|
+
+Role Clarity  = A FUNCTION OF( Governance Maturity)
+	~	
+	~		|
+
+Gatekeeping Strictness  = A FUNCTION OF( Governance Maturity)
+	~	
+	~		|
+
+Vulnerability Backlog  = A FUNCTION OF( )
+	~	
+	~		|
+
+Automation Maturity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Quality Debt Backlog  = A FUNCTION OF( )
+	~	
+	~		|
+
+Vulnerability Discovery Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Vulnerability Patching Rate  = A FUNCTION OF( Patch Throughput Multiplier)
+	~	
+	~		|
+
+Automation Investment Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Automation Erosion Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Quality Input Signal  = A FUNCTION OF( Governance Output Signal)
+	~	
+	~		|
+
+Quality Output Signal  = A FUNCTION OF( -Vulnerability Backlog,Automation Maturity,CI Feedback Speed)
+	~	
+	~		|
+
+Risk Policy Strictness  = A FUNCTION OF( Quality Input Signal,Vulnerability Backlog,Quality Debt Backlog)
+	~	
+	~		|
+
+CI Feedback Speed  = A FUNCTION OF( Automation Maturity)
+	~	
+	~		|
+
+Patch Throughput Multiplier  = A FUNCTION OF( CI Feedback Speed,-Risk Policy Strictness)
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,67,2
+10,1,New Contributors,1257,581,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Core Developer,1684,584,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,3,48,1861,584,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,6,2,100,0,0,22,0,192,0,-1--1--1,,1|(1757,584)|
+1,5,6,3,4,0,0,22,0,192,0,-1--1--1,,1|(1823,584)|
+11,6,0,1790,584,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,7,Developer's Turnover,1790,618,56,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,8,Experienced Contributors,1475,584,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,11,1,100,0,0,22,0,192,0,-1--1--1,,1|(1342,585)|
+1,10,11,8,4,0,0,22,0,192,0,-1--1--1,,1|(1391,585)|
+11,11,0,1368,585,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,12,Skill up,1368,619,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,13,15,8,100,0,0,22,0,192,0,-1--1--1,,1|(1563,583)|
+1,14,15,2,4,0,0,22,0,192,0,-1--1--1,,1|(1617,583)|
+11,15,0,1591,583,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,16,Promotion Rate,1591,617,46,26,40,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,17,"Implicit Knowledge Transfer (Mentorship)",1535,413,57,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,18,17,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,19,17,15,0,0,43,0,0,192,0,-1--1--1,,1|(0,0)|
+1,20,2,17,1,0,43,0,0,192,0,-1--1--1,,1|(1653,468)|
+10,21,"Explicit Knowledge Transfer (Documentation, Contributor's Guides)",1274,404,91,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,22,21,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,23,colored stock,1067,817,46,26,3,3,0,1,-1,1,0,0,252-102-255,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,24,Newcomer Pool,3000,100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,25,Peripheral Contributors,3250,100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,26,Explicit Knowledge Base,3500,100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,27,Newcomer Inflow,3750,100,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,28,Onboarding Completion Rate,4000,100,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,29,Early Attrition Rate,3000,250,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,30,Knowledge Externalization Rate,3250,250,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,31,Onboarding Input Signal,3500,250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,32,Onboarding Output Signal,3750,250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,33,Mentoring Capacity,4000,250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,34,Documentation Clarity,3000,400,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,35,Onboarding Effectiveness,3250,400,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,36,PR Backlog,4500,100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,37,Accepted Changes,4750,100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,38,Reputation Capital,5000,100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,39,Core Developer Pool,5250,100,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,40,PR Submissions Rate,5500,100,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,41,Review and Acceptance Rate,4500,250,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,42,Reputation Accrual Rate,4750,250,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,43,Promotions to Core Rate,5000,250,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,44,Contribution Input Signal,5250,250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,45,Contribution Output Signal,5500,250,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,46,Reviewer Bandwidth,4500,400,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,47,Review Latency,4750,400,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,48,Promotion Threshold,5000,400,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,49,Policy Proposal Queue,4500,900,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,50,Governance Maturity,4750,900,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,51,Maintainer Trust and Cohesion,5000,900,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,52,Policy Proposal Submission Rate,5250,900,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,53,Policy Adoption Rate,5500,900,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,54,Governance Drift Rate,4500,1050,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,55,Trust Accumulation Rate,4750,1050,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,56,Governance Input Signal,5000,1050,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,57,Governance Output Signal,5250,1050,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,58,Policy Tuning Intensity,5500,1050,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,59,Role Clarity,4500,1200,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,60,Gatekeeping Strictness,4750,1200,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,61,Vulnerability Backlog,3000,900,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,62,Automation Maturity,3250,900,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,63,Quality Debt Backlog,3500,900,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,64,Vulnerability Discovery Rate,3750,900,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,65,Vulnerability Patching Rate,4000,900,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,66,Automation Investment Rate,3000,1050,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,67,Automation Erosion Rate,3250,1050,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,68,Quality Input Signal,3500,1050,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,69,Quality Output Signal,3750,1050,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,70,Risk Policy Strictness,4000,1050,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,71,CI Feedback Speed,3000,1200,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,72,Patch Throughput Multiplier,3250,1200,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,24,23,1,0,0,0,0,1,192,0,251-2-128,|||0-0-0,1|(0,0)|
+1,25,31,34,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,26,26,34,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,27,33,35,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,28,34,35,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,29,25,35,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,30,35,28,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,31,25,30,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,32,26,32,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,33,25,32,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,34,32,44,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,35,44,40,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,36,39,46,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,37,36,47,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,38,46,47,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,39,46,41,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,40,47,40,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,41,37,42,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,42,38,43,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,43,48,43,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,44,36,45,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,45,47,45,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,46,39,45,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,47,45,56,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,48,56,58,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,49,58,52,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,50,49,53,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,51,59,53,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,52,50,59,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,53,50,60,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,54,50,55,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,55,51,57,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,56,50,57,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,57,60,57,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,58,57,68,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,59,68,70,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,60,61,70,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,61,63,70,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,62,62,71,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,63,71,72,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,64,70,72,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,65,72,65,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,66,61,69,0,0,43,22,0,0,0,1,-1--1--1,,1|(0,0)|
+1,67,62,69,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,68,71,69,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+1,69,69,31,0,0,0,22,0,0,0,0,-1--1--1,,1|(0,0)|
+12,25,0,2204,386,80,40,3,7,0,1,-1,1,0,0,251-2-7,0-0-0,|||0-0-0,0,0,0,0,0,0
+This is a test comment written in red just to help you see how to make a comment.
+12,26,0,2209,537,80,40,3,7,0,1,-1,1,0,0,255-255-10,0-0-0,|||0-0-0,0,0,0,0,0,0
+Here is another comment with yellow outline
+12,27,0,2188,708,80,40,3,7,0,1,-1,1,0,0,33-255-6,0-0-0,|||0-0-0,0,0,0,0,0,0
+Here is yet another comment with green outline
+12,28,0,1928,826,80,40,8,7,0,0,-1,1,0,0,0,0,0,0,0,0
+Comment
+12,29,0,1461,301,80,40,8,7,0,0,-1,1,0,0,0,0,0,0,0,0
+Comment
+///---\\\
+:L<%^E!@
+5:New Contributors
+19:67,0
+24:0
+25:0
+26:0
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Vensim Sans|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

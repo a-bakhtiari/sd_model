@@ -1,0 +1,164 @@
+{
+  "theory_decisions": [
+    {
+      "theory_name": "Communities of Practice (Wenger)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Nonaka's SECI Model",
+      "decision": "include"
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Onboarding and Knowledge Creation",
+        "narrative": "Accumulations: (1) The pool of peripheral contributors grows when newcomers complete first issues and shrinks via early attrition; (2) The shared knowledge base (guides, patterns, FAQs) accumulates as tacit know-how is externalized and erodes when it becomes stale; (3) Trust and initial reputation build through repeated, constructive review interactions. Rates and speeds: Newcomers transition into active periphery at a rate driven by available mentors and documentation clarity; knowledge externalization occurs at a writing pace constrained by reviewer/editor attention; attrition from the periphery rises when review latency is high; trust grows slowly per interaction and quickens with higher feedback frequency. Feedback loops: Reinforcing\u2014richer knowledge base and helpful peer exchanges reduce onboarding effort, which increases successful first contributions that further enrich the knowledge base. Balancing\u2014mentor overload (mentor-to-newcomer ratio above ~1:5) slows onboarding, increasing wait times and attrition, which eventually relieves pressure. Time delays: First-PR cycle typically takes 2\u20136 weeks; reliable trust for meaningful responsibilities forms over 3\u201312 months. Nonlinearities: After ~10 meaningful interactions (code reviews, chats, small fixes), confidence and trust accelerate; onboarding effectiveness saturates when documentation coverage is high and additional pages add little. Causal drivers: Onboarding speed is limited by mentor bandwidth, review responsiveness, and the accessibility of explicit practices; time zone dispersion and language barriers increase communication delays; clearer contribution templates reduce the need for synchronous mentorship.",
+        "theories_used": [
+          "Communities of Practice (Wenger)",
+          "Nonaka's SECI Model"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Throughput and Reputation Progression",
+            "connection_type": "feeds_into",
+            "description": "Supplies active peripheral contributors with initial reputation, increasing PR submissions; better knowledge artifacts reduce review rework."
+          },
+          {
+            "target_cluster": "Governance, Decision Rights, and Coordination",
+            "connection_type": "receives_from",
+            "description": "Mentorship norms, codes of conduct, and contribution guidelines set expected behaviors and define escalation paths."
+          },
+          {
+            "target_cluster": "Quality, Security, and Resilience Management",
+            "connection_type": "feedback_loop",
+            "description": "CI feedback and checklists speed newcomer learning; newcomers add docs/tests that strengthen the quality knowledge base."
+          }
+        ]
+      },
+      {
+        "name": "Contribution Throughput and Reputation Progression",
+        "narrative": "Accumulations: (1) Review/PR backlog grows with submission rate and drains with review throughput; (2) Individual/community reputation capital builds with accepted, useful changes and decays with inactivity or rejections; (3) The core developer pool increases via promotions and shrinks via churn. Rates and speeds: Submission rate depends on active periphery size and perceived responsiveness; review throughput depends on maintainer bandwidth and automation; acceptance rate rises with test quality and guideline adherence; promotion rate is gated by reputation crossing thresholds and availability of maintainers to sponsor. Feedback loops: Reinforcing\u2014accepted contributions raise reputation, which grants more decision rights and access, enabling higher-impact contributions that are more likely to be accepted. Balancing\u2014when review backlog grows, review latency lengthens (1\u20132 weeks typical), lowering contributor satisfaction and new submissions, which gradually reduces backlog. Time delays: Earning enough reputation for elevated permissions takes 2\u20134 months of consistent contributions; promotions to core typically occur after 3\u201312 months. Nonlinearities: Promotion often occurs once a reputation threshold is crossed (step change in access); repeated very small PRs yield diminishing reputation gains beyond ~5\u201310 trivial fixes; severe backlog spikes cause abrupt drops in submission rate as perceived responsiveness falls. Causal drivers: Throughput is constrained by the number of active reviewers, the share of changes covered by automated checks, and code ownership boundaries; clear, codified contribution pathways increase acceptance probability and reduce rework.",
+        "theories_used": [
+          "Communities of Practice (Wenger)",
+          "Nonaka's SECI Model"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Queuing Theory (e.g., Little\u2019s Law)",
+            "rationale": "To relate submission rate, reviewer capacity, and average wait time, and to identify conditions where backlog-induced delays trigger attrition."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Onboarding and Knowledge Creation",
+            "connection_type": "receives_from",
+            "description": "Inflow of prepared contributors and better docs increases submission quality and reduces rework."
+          },
+          {
+            "target_cluster": "Governance, Decision Rights, and Coordination",
+            "connection_type": "receives_from",
+            "description": "Policies for reviews, code ownership, and promotion thresholds determine acceptance gates and role transitions."
+          },
+          {
+            "target_cluster": "Quality, Security, and Resilience Management",
+            "connection_type": "feedback_loop",
+            "description": "Automation and test signals accelerate acceptance; merged code increases attack surface while added tests reduce future defects."
+          },
+          {
+            "target_cluster": "Governance, Decision Rights, and Coordination",
+            "connection_type": "feeds_into",
+            "description": "Backlog size, conflict frequency, and bus-factor metrics create pressure for policy updates and reallocation of decision rights."
+          }
+        ]
+      },
+      {
+        "name": "Governance, Decision Rights, and Coordination",
+        "narrative": "Accumulations: (1) Governance maturity increases as roles, decision rules, and escalation processes are clarified and documented, and decays when practices drift; (2) Maintainer trust and cohesion build through transparent decisions and degrade with unresolved conflicts. Rates and speeds: Policy update rate is paced by proposal, deliberation, and ratification capacity; reviewer assignment and escalation rates depend on coordinator bandwidth; role transition rate (e.g., granting write access) is limited by sponsor availability and audit requirements. Feedback loops: Balancing\u2014rising conflict or review backlog triggers governance work (e.g., refining code ownership, setting SLAs), which after a 1\u20133 month delay reduces disputes and cycle time. Reinforcing\u2014clearer rules reduce coordination failures, freeing maintainer bandwidth to further improve processes, accelerating maturity. Time delays: Policy proposals to adoption take 1\u20133 months; reviewer assignment typically within days; cultural adoption of new norms lags formal rule change by weeks. Nonlinearities: Decision quorums create thresholds where below-minimum participation stalls changes; over-centralization (few gatekeepers) raises gatekeeping risk and increases contributor attrition; a bus factor below ~2 on critical modules sharply increases incident and delay risk. Causal drivers: Governance maturity increases promotion throughput by making criteria explicit; risk policies (e.g., required approvals, mandatory CI checks) gate merges; codes of conduct reduce toxic interactions and protect retention.",
+        "theories_used": [
+          "Communities of Practice (Wenger)",
+          "Nonaka's SECI Model"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Ostrom\u2019s Institutional Analysis and Development (Polycentric Governance)",
+            "rationale": "To design clear, enforceable, and adaptive rules for shared resource management (the codebase), distribute decision rights, and align incentives with community norms."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Onboarding and Knowledge Creation",
+            "connection_type": "feeds_into",
+            "description": "Defines mentorship expectations, codes of conduct, and contribution guidelines that shape onboarding friction."
+          },
+          {
+            "target_cluster": "Contribution Throughput and Reputation Progression",
+            "connection_type": "feeds_into",
+            "description": "Sets review requirements, promotion thresholds, and code ownership that determine throughput and role transitions."
+          },
+          {
+            "target_cluster": "Quality, Security, and Resilience Management",
+            "connection_type": "feeds_into",
+            "description": "Risk acceptance criteria, release gates, and vulnerability SLAs prioritize security and quality work."
+          },
+          {
+            "target_cluster": "Contribution Throughput and Reputation Progression",
+            "connection_type": "receives_from",
+            "description": "Signals from backlog, conflict rates, and uneven load prompt policy refinement and redistribution of rights."
+          },
+          {
+            "target_cluster": "Quality, Security, and Resilience Management",
+            "connection_type": "receives_from",
+            "description": "Incident frequency and vulnerability backlog drive stricter gating, more reviewers, or emergency governance actions."
+          }
+        ]
+      },
+      {
+        "name": "Quality, Security, and Resilience Management",
+        "narrative": "Accumulations: (1) Vulnerability backlog grows with discovery and shrinks with patching; (2) Automation maturity (tests, CI/CD, scanning) grows with investment and erodes when infrastructure breaks or becomes obsolete; (3) Quality debt backlog accumulates when shortcuts are taken and falls with refactoring. Rates and speeds: Vulnerabilities are discovered at a rate tied to code size, dependency exposure, and audit intensity; patching rate depends on available maintainers and triage effectiveness; test coverage grows at a pace limited by contributor skill and CI stability; debt repayment is constrained by allocated time. Feedback loops: Reinforcing\u2014better automation reduces regression risk and shortens CI feedback, freeing maintainer time to further improve automation; code quality improvements increase acceptance confidence, further raising throughput for well-tested changes. Balancing\u2014when the vulnerability backlog rises, governance tightens gates and shifts effort toward patching, reducing backlog but slowing feature flow. Time delays: CVE disclosure to patched release typically takes 1\u20134 weeks; automation investments produce noticeable cycle-time reductions after 1\u20132 sprints; dependency update risks may surface weeks after merging. Nonlinearities: Attack surface grows superlinearly with lines of code and third-party dependencies; once test coverage crosses ~80%, escaped defects drop sharply; when vulnerability backlog exceeds a critical threshold, reputation risk and contributor caution increase abruptly. Causal drivers: More merged code increases exposure; more core maintainers and clearer risk policies raise patch throughput; pre-commit checks and required reviews gate low-quality code before it reaches mainline.",
+        "theories_used": [
+          "Nonaka's SECI Model"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "DevSecOps / Secure SDLC",
+            "rationale": "To integrate security checks and automation into the development workflow and quantify gating effects on throughput and risk."
+          },
+          {
+            "theory_name": "Resilience Engineering",
+            "rationale": "To capture how monitoring, learning from incidents, and adaptive capacity reduce the likelihood and impact of failures."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Throughput and Reputation Progression",
+            "connection_type": "receives_from",
+            "description": "Merged code and tests affect attack surface and provide refactoring capacity; CI signals flow back into acceptance decisions."
+          },
+          {
+            "target_cluster": "Governance, Decision Rights, and Coordination",
+            "connection_type": "receives_from",
+            "description": "Policies enforce required checks, reviewer counts, and vulnerability SLAs."
+          },
+          {
+            "target_cluster": "Contribution Throughput and Reputation Progression",
+            "connection_type": "feeds_into",
+            "description": "CI pass/fail and scan results change acceptance speed; higher automation frees reviewer time, increasing throughput."
+          },
+          {
+            "target_cluster": "Onboarding and Knowledge Creation",
+            "connection_type": "feeds_into",
+            "description": "Checklists, secure coding guides, and test examples externalize tacit quality practices and shorten newcomer learning curves."
+          },
+          {
+            "target_cluster": "Governance, Decision Rights, and Coordination",
+            "connection_type": "feedback_loop",
+            "description": "Incidents and backlog spikes prompt stricter or revised policies; improved resilience may allow policy relaxation later."
+          }
+        ]
+      }
+    ],
+    "overall_narrative": "Newcomers enter through Onboarding and Knowledge Creation, where tacit practices are externalized into explicit guides and trust forms via small interactions. As the periphery grows, Contribution Throughput and Reputation Progression converts their effort into reviewed and accepted changes; reputation accumulates, and some members cross promotion thresholds into the core. Governance, Decision Rights, and Coordination sets the rules of the game\u2014mentorship norms, review gates, promotion criteria, and risk policies\u2014that shape both onboarding friction and contribution flow; signals from backlog, conflicts, bus factor, and security incidents trigger governance adjustments after delays. Quality, Security, and Resilience Management closes the loop by gating merges with automated checks and tests, managing the vulnerability backlog, and freeing capacity through automation improvements; these signals accelerate or slow acceptance and feed back into documentation that supports newcomers. Together, reinforcing loops (knowledge and automation flywheels; merit progression) drive growth from novice to core, while balancing loops (mentor overload, backlog drag, governance gating under risk) prevent overshoot and reduce failures and vulnerabilities."
+  }
+}

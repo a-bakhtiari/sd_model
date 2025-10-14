@@ -57,13 +57,15 @@ def generate_theory_abbreviations(theories: List[Dict]) -> str:
 
 def create_enhancement_folder(
     mdl_dir: Path,
-    theory_enh_data: Dict
+    theory_enh_data: Dict,
+    custom_name: str = None
 ) -> Path:
     """Create timestamped enhancement folder.
 
     Args:
         mdl_dir: Base MDL directory (e.g., projects/oss_model/mdl)
         theory_enh_data: Theory enhancement JSON data
+        custom_name: Optional custom name for folder (instead of timestamp)
 
     Returns:
         Path to the created enhancement folder
@@ -80,7 +82,13 @@ def create_enhancement_folder(
     theory_abbr = generate_theory_abbreviations(theories)
 
     # Create folder name
-    folder_name = f"{timestamp}_{theory_abbr}"
+    if custom_name and custom_name.strip():
+        # Sanitize custom name (remove special chars, replace spaces with hyphens)
+        safe_name = "".join(c if c.isalnum() or c in "-_" else "-" for c in custom_name)
+        safe_name = safe_name.strip("-_")
+        folder_name = safe_name
+    else:
+        folder_name = f"{timestamp}_{theory_abbr}"
 
     # Create the enhanced directory and subfolder
     enhanced_dir = mdl_dir / "enhanced"
@@ -174,7 +182,8 @@ def save_enhancement(
     theory_enh_data: Dict,
     mdl_summary: Dict,
     enhanced_mdl_content: str,
-    original_mdl_name: str
+    original_mdl_name: str,
+    custom_name: str = None
 ) -> Path:
     """Save enhanced MDL with metadata to timestamped folder.
 
@@ -185,12 +194,18 @@ def save_enhancement(
         mdl_summary: Summary from MDL generation
         enhanced_mdl_content: Content of enhanced MDL file
         original_mdl_name: Name of original MDL file
+        custom_name: Optional custom name for folder (or if artifacts_dir is versioned, save there)
 
     Returns:
         Path to saved enhanced MDL file
     """
-    # Create enhancement folder
-    enhancement_folder = create_enhancement_folder(mdl_dir, theory_enh_data)
+    # Check if artifacts_dir is a versioned run (contains /runs/ in path)
+    if "/runs/" in str(artifacts_dir) or "\\runs\\" in str(artifacts_dir):
+        # Save directly in the run's artifacts directory
+        enhancement_folder = artifacts_dir
+    else:
+        # Create enhancement folder in mdl/enhanced/ (legacy behavior)
+        enhancement_folder = create_enhancement_folder(mdl_dir, theory_enh_data, custom_name)
 
     # Save enhanced MDL
     mdl_filename = f"{Path(original_mdl_name).stem}_enhanced.mdl"

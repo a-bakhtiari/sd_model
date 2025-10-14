@@ -1,0 +1,304 @@
+{
+  "theory_decisions": [
+    {
+      "theory_name": "Communities of Practice (Wenger)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Nonaka's SECI Model",
+      "decision": "include"
+    },
+    {
+      "theory_name": "The Coevolution of New Organizational Forms",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Adaptive Structuration Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Stability and Change in Organizational Routines",
+      "decision": "include"
+    },
+    {
+      "theory_name": "A Dynamic Theory of Organizational Knowledge Creation",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Routines and Transactive Memory Systems",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Communities of Practice",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Punctuated Equilibrium Theory in IS Research",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Panarchy Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Legitimate Peripheral Participation",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Absorptive Capacity",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Diversity Trumps Ability",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Hidden Order: How Adaptation Builds Complexity",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Social Cognitive Career Theory (SCCT)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Diffusion of Innovations",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Task-Technology Fit (TTF)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Skill-Biased Technical Change",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Social Capital and Structural Holes",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Signaling Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Job Demands-Resources (JD-R) Model",
+      "decision": "include"
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Onboarding and Legitimacy Pathway",
+        "narrative": "Accumulations: (1) a pool of observers/newcomers grows with project visibility and shrinks as they attempt or abandon first contributions; (2) a cohort of peripheral contributors builds as first pull requests are accepted; (3) personal reputation/trust accumulates through successful interactions and code reviews. Rates and speeds: Attraction into observing occurs at a rate driven by external signals (stars, social media, badges) and word-of-mouth; conversion from observer to first-time contributor occurs at a pace limited by onboarding clarity and mentor availability; movement from peripheral to regular contributor accelerates with repeat interactions and timely review turnaround. Feedback loops: Reinforcing\u2014visible newcomer success (fast merges, thanks in release notes) increases attraction, which raises the count of first-time contributors and the likelihood of further visible successes; Balancing\u2014if review capacity is exceeded, first-response time lengthens, discouraging newcomers and lowering conversion. Time delays: It typically takes 2\u20136 weeks for a newcomer to complete a first contribution, and 3\u20136 months of intermittent activity to be recognized as a regular; recognition and trust often require 5\u201310 positive interactions, creating a threshold effect. Nonlinearities: Progress towards regular status jumps after several reciprocated interactions (e.g., >5 reviews responded to); acceptance probability saturates when mentor-to-newcomer ratios exceed about 1:8; missing or ambiguous governance (CLA, code of conduct) creates stepwise drop-offs at the gate. Causal relationships: Conversion rate is limited by available mentors and the clarity of contribution rules; first-PR acceptance likelihood increases with task scoping (good-first-issue density) and task-technology fit for the tools used; social capital (bridging ties to insiders) and credible signals (prior OSS track record) raise the rate of moving from periphery to regular contributor.",
+        "theories_used": [
+          "Legitimate Peripheral Participation",
+          "Communities of Practice (Wenger)",
+          "Social Cognitive Career Theory (SCCT)",
+          "Social Capital and Structural Holes",
+          "Signaling Theory",
+          "Diffusion of Innovations"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Absorptive Capacity",
+            "rationale": "Prior related knowledge boosts the speed at which newcomers grasp project norms and APIs, increasing first-PR success."
+          },
+          {
+            "theory_name": "Adaptive Structuration Theory",
+            "rationale": "Clear appropriation of rules/resources (e.g., contribution templates) reduces ambiguity at entry and speeds legitimacy acquisition."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Knowledge Development and Expertise Consolidation",
+            "connection_type": "feeds_into",
+            "description": "Regular contributors bring fresh absorptive capacity and participate in knowledge socialization and documentation."
+          },
+          {
+            "target_cluster": "Contribution Throughput and Quality Control Pipeline",
+            "connection_type": "feeds_into",
+            "description": "New contributions and first PRs enter the review queue."
+          },
+          {
+            "target_cluster": "Governance, Decision Rights, and Role Transitions",
+            "connection_type": "receives_from",
+            "description": "Entry gates (CLA, CoC, contribution policies) and role criteria shape conversion probabilities."
+          },
+          {
+            "target_cluster": "Motivation, Workload, and Retention Dynamics",
+            "connection_type": "feedback_loop",
+            "description": "Recognition and response times affect newcomer motivation; motivated newcomers amplify word-of-mouth attraction."
+          }
+        ]
+      },
+      {
+        "name": "Knowledge Development and Expertise Consolidation",
+        "narrative": "Accumulations: (1) individual technical skill and project-specific tacit knowledge deepen with cycles of contribution and review; (2) shared artifacts (docs, tests, architecture notes) accumulate through externalization and combination; (3) an internal map of who-knows-what (transactive memory) becomes more accurate with collaboration history. Rates and speeds: Internalization of tacit knowledge proceeds at a rate dependent on prior experience and mentoring intensity; externalization into documentation occurs at a slower pace limited by available time and documentation routines; integration/combination into the codebase depends on maintainer bandwidth and architectural stability. Feedback loops: Reinforcing\u2014more high-quality docs and tests reduce onboarding time and rework, freeing time to create even better artifacts; Balancing\u2014rising codebase complexity increases the amount of tacit knowledge needed to be effective, which slows learning and reduces time available for documentation, risking documentation debt. Time delays: Meaningful internalization often requires 1\u20133 months of active contribution; documentation improvements show benefits after 1\u20132 release cycles; module-level expertise typically builds over 6\u201312 months. Nonlinearities: Absorptive capacity exhibits diminishing returns at high workload; once a contributor\u2019s knowledge passes a threshold (e.g., repeated success on a module), productivity jumps as fewer reviews request rework; the benefit of adding more docs saturates if discoverability is poor. Causal relationships: Knowledge transfer rate depends on mentor availability and review depth; adoption of new tools (linters, CI) can shift the skill mix required (skill-biased change), raising thresholds for effective contribution unless offset by training and better docs.",
+        "theories_used": [
+          "Nonaka's SECI Model",
+          "Absorptive Capacity",
+          "Routines and Transactive Memory Systems",
+          "Skill-Biased Technical Change"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Communities of Practice (Wenger)",
+            "rationale": "Shared repertoire (patterns, stories, norms) structures knowledge reuse and legitimate teaching opportunities."
+          },
+          {
+            "theory_name": "Stability and Change in Organizational Routines",
+            "rationale": "Documentation and review templates evolve as routines that regulate knowledge codification speed and quality."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Throughput and Quality Control Pipeline",
+            "connection_type": "feeds_into",
+            "description": "Higher expertise and better artifacts reduce rework and shorten review times, increasing acceptance throughput."
+          },
+          {
+            "target_cluster": "Governance, Decision Rights, and Role Transitions",
+            "connection_type": "feeds_into",
+            "description": "Accumulated expertise and demonstrated architectural stewardship inform promotion to maintainer roles."
+          },
+          {
+            "target_cluster": "Onboarding and Legitimacy Pathway",
+            "connection_type": "receives_from",
+            "description": "A steady inflow of new contributors provides fresh cognitive diversity and increases opportunities for socialization."
+          }
+        ]
+      },
+      {
+        "name": "Contribution Throughput and Quality Control Pipeline",
+        "narrative": "Accumulations: (1) a queue of open issues and pull requests builds as submissions arrive faster than reviews; (2) technical debt/test debt accrues when fixes and tests are deferred; (3) release readiness accumulates as accepted changes pass tests and documentation gates. Rates and speeds: Submission rate is driven by contributor availability and tooling fit; review and merge rates are limited by reviewer capacity, automation coverage, and routine efficiency; rework rate depends on defect discovery in CI and reviewer feedback. Feedback loops: Reinforcing\u2014better tooling (CI/CD, linters, bots) and fit with tasks speed reviews, increase acceptance, and motivate further contributions; Balancing\u2014when the review queue exceeds reviewer capacity, cycle time lengthens, discouraging submissions and increasing rework due to staleness. Time delays: CI/test cycles take hours; typical review cycles span 1\u20137 days; adopting new pipeline tools or routines takes 2\u20133 months to yield throughput gains. Nonlinearities: When the review queue exceeds roughly 2\u00d7 active reviewer capacity, cycle times rise sharply; acceptance probability increases nonlinearly with contributor reputation and prior success; stringent policies improve quality but can lengthen lead time past a tipping point where newcomer attrition escalates. Causal relationships: Throughput is constrained by reviewer bandwidth and clarity of routines (templates, checklists); diffusion of new tools shifts the throughput frontier; governance sets WIP limits and quality gates that trade off speed and quality.",
+        "theories_used": [
+          "Task-Technology Fit (TTF)",
+          "Stability and Change in Organizational Routines",
+          "Routines and Transactive Memory Systems",
+          "Diffusion of Innovations"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "The Coevolution of New Organizational Forms",
+            "rationale": "As the project scales, pipeline roles and coordination mechanisms coevolve with technology and community size."
+          },
+          {
+            "theory_name": "Adaptive Structuration Theory",
+            "rationale": "Teams appropriate and adapt review rules and templates, shaping actual practice and throughput."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Motivation, Workload, and Retention Dynamics",
+            "connection_type": "feeds_into",
+            "description": "Lead time, acceptance rates, and backlog size influence recognition, stress, and burnout."
+          },
+          {
+            "target_cluster": "Onboarding and Legitimacy Pathway",
+            "connection_type": "feedback_loop",
+            "description": "Response times and newcomer PR success rates determine conversion and subsequent submission volumes."
+          },
+          {
+            "target_cluster": "Governance, Decision Rights, and Role Transitions",
+            "connection_type": "receives_from",
+            "description": "Policies (WIP limits, review SLAs, code ownership) and role assignments allocate reviewer capacity."
+          },
+          {
+            "target_cluster": "Knowledge Development and Expertise Consolidation",
+            "connection_type": "receives_from",
+            "description": "Expertise and better docs/tests reduce rework and shorten review cycles."
+          }
+        ]
+      },
+      {
+        "name": "Governance, Decision Rights, and Role Transitions",
+        "narrative": "Accumulations: (1) a reservoir of shared governance clarity (documented policies, role definitions, decision rights) grows with explicit codification; (2) project-level trust and reputation capital build through reliable decisions, quality reviews, and community behavior; (3) the maintainer pool expands as qualified contributors are promoted and contracts with demotions or attrition; (4) a backlog of governance proposals (RFCs, policy changes) accumulates between cycles. Rates and speeds: Promotion to reviewer/maintainer occurs at a rate determined by reputation thresholds, peer endorsements, and tenure; governance change adoption proceeds at a pace limited by consensus-building bandwidth and cross-scale constraints (foundation or ecosystem rules); demotion or role exit occurs based on inactivity or trust loss. Feedback loops: Reinforcing\u2014more trusted maintainers increase review throughput and clarity, which boosts contributor success and trust, enlarging the pool of candidates for future maintainers; Balancing\u2014beyond an optimal maintainer-to-contributor ratio (about 1:8 to 1:12), coordination overhead and decision fragmentation slow policy change and reviews. Time delays: Accumulating sufficient trust for commit rights typically takes 3\u201312 months; introducing or revising major policies often requires 1\u20133 months; reputational recovery after a policy failure may take multiple release cycles. Nonlinearities: Role changes are thresholded (votes or criteria must be met); crises (security incidents, governance disputes) trigger punctuated shifts in rules and centralization; external ecosystem rules can impose ceilings on autonomy. Causal relationships: Decision rights are shaped by how rules and resources are appropriated in practice; cross-level constraints (project, foundation, ecosystem) modulate feasible changes; credible signals (sustained quality, responsible behavior) and bridging ties accelerate promotion.",
+        "theories_used": [
+          "Adaptive Structuration Theory",
+          "Panarchy Theory",
+          "Punctuated Equilibrium Theory in IS Research",
+          "The Coevolution of New Organizational Forms"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Signaling Theory",
+            "rationale": "Promotion and delegation rely on observable signals (quality reviews, incident response, architectural stewardship)."
+          },
+          {
+            "theory_name": "Legitimate Peripheral Participation",
+            "rationale": "Legitimacy for role transitions is earned through sustained participation in core practices and boundary work."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Throughput and Quality Control Pipeline",
+            "connection_type": "feeds_into",
+            "description": "Sets WIP limits, code ownership, review SLAs, and quality gates; allocates reviewer capacity via role assignments."
+          },
+          {
+            "target_cluster": "Onboarding and Legitimacy Pathway",
+            "connection_type": "feeds_into",
+            "description": "Clarifies entry gates and contribution norms, affecting newcomer conversion and legitimacy acquisition."
+          },
+          {
+            "target_cluster": "Motivation, Workload, and Retention Dynamics",
+            "connection_type": "feeds_into",
+            "description": "Fair, transparent decisions and recognition policies increase perceived justice and resources; poor governance elevates demands."
+          },
+          {
+            "target_cluster": "Knowledge Development and Expertise Consolidation",
+            "connection_type": "receives_from",
+            "description": "Evidence of expertise and stewardship supports promotion decisions and policy delegation."
+          },
+          {
+            "target_cluster": "Contribution Throughput and Quality Control Pipeline",
+            "connection_type": "receives_from",
+            "description": "Operational metrics (lead time, backlog) trigger governance adjustments (e.g., add maintainers, change policies)."
+          }
+        ]
+      },
+      {
+        "name": "Motivation, Workload, and Retention Dynamics",
+        "narrative": "Accumulations: (1) personal motivation/engagement grows with recognition, autonomy, and progress, and declines with frustration; (2) exhaustion/burnout accumulates under sustained workload and conflict; (3) job resources (peer support, mentoring, sponsorship, tooling) build as governance and community invest in them; (4) perceived career capital (skills, visibility, network) grows with successful contributions. Rates and speeds: Demand accrual rate follows backlog growth, interruptions, and after-hours obligations; resource replenishment rate depends on mentoring frequency, recognition (e.g., release acknowledgments), and sponsorship; recovery from burnout is slower than its buildup. Feedback loops: Reinforcing positive\u2014recognition increases motivation and contributions, which bring more recognition; Reinforcing negative\u2014overload increases exhaustion, slowing reviews, growing backlog, and further raising overload; Balancing\u2014investment in resources (automation, mentoring) counteracts demands, stabilizing participation. Time delays: Burnout typically accumulates over 8\u201312 weeks of sustained overload, with recovery taking 4\u201312 weeks; recognition effects on motivation are near-immediate to 1 week; sponsorship or funding impacts materialize over 1\u20132 months. Nonlinearities: Attrition risk sharply increases when response times exceed about 7 days for new contributors; if demands exceed resources for several consecutive sprints, participation drops abruptly; diversity and inclusion investments show delayed but compounding gains in resilience and problem-solving. Causal relationships: Motivation is driven by self-efficacy and outcome expectations (career advancement, reputation) and by fairness and clarity of governance; demands are driven by pipeline backlog and role load; resources are boosted by mentoring programs, automation, and inclusive practices.",
+        "theories_used": [
+          "Job Demands-Resources (JD-R) Model",
+          "Social Cognitive Career Theory (SCCT)",
+          "Diversity Trumps Ability"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Panarchy Theory",
+            "rationale": "External shocks (ecosystem incidents, upstream API breaks) cascade across scales, temporarily increasing demands."
+          },
+          {
+            "theory_name": "Punctuated Equilibrium Theory in IS Research",
+            "rationale": "Crises or major releases create bursts of workload and subsequent rebalancing, affecting retention."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Throughput and Quality Control Pipeline",
+            "connection_type": "receives_from",
+            "description": "Backlog growth and lead times add to demands; successful merges and automation add to resources."
+          },
+          {
+            "target_cluster": "Onboarding and Legitimacy Pathway",
+            "connection_type": "feeds_into",
+            "description": "High motivation and positive experiences increase word-of-mouth attraction and newcomer conversion."
+          },
+          {
+            "target_cluster": "Governance, Decision Rights, and Role Transitions",
+            "connection_type": "feeds_into",
+            "description": "Willingness to assume reviewer/maintainer roles depends on sustained motivation and manageable demands."
+          },
+          {
+            "target_cluster": "Knowledge Development and Expertise Consolidation",
+            "connection_type": "feeds_into",
+            "description": "Engaged contributors invest more in learning and documentation, raising expertise accumulation."
+          }
+        ]
+      }
+    ],
+    "overall_narrative": "Novices are attracted and acquire legitimacy through clear contribution rules, mentoring, and early successes (Onboarding and Legitimacy Pathway). As they participate, they absorb tacit knowledge, codify insights into artifacts, and build an accurate map of who knows what (Knowledge Development and Expertise Consolidation). Their work enters the contribution pipeline, where routines, tooling fit, and reviewer capacity determine throughput, quality, and cycle time (Contribution Throughput and Quality Control Pipeline). Governance allocates decision rights, sets policies and quality gates, and promotes trusted contributors to reviewer/maintainer roles, periodically adjusting structures in response to performance and crises (Governance, Decision Rights, and Role Transitions). Motivation and workload dynamics determine whether contributors persist toward core status or exit; recognition and resources reinforce engagement, while overload and long response times accelerate burnout (Motivation, Workload, and Retention Dynamics). These processes form interlocked feedback: effective governance and routines accelerate throughput and recognition, which fosters motivation and knowledge growth, increasing the pool of candidates for governance roles. Conversely, when reviewer capacity is outpaced, delays depress newcomer conversion and motivation, build backlog, and trigger governance interventions (e.g., role expansions, policy changes). Cross-scale constraints (ecosystem/foundation) and punctuated events create step changes in governance and workload, shaping the trajectory from peripheral to core developer over 6\u201318 months for typical cases, with thresholds in reputation, trust, and capacity acting as gates along the path."
+  }
+}

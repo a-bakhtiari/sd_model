@@ -1,0 +1,184 @@
+{
+  "theory_decisions": [
+    {
+      "theory_name": "Communities of Practice (Wenger)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Nonaka's SECI Model",
+      "decision": "include"
+    },
+    {
+      "theory_name": "The Coevolution of New Organizational Forms",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Adaptive Structuration Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Stability and Change in Organizational Routines",
+      "decision": "include"
+    },
+    {
+      "theory_name": "A Dynamic Theory of Organizational Knowledge Creation",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Routines and Transactive Memory Systems",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Communities of Practice",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Punctuated Equilibrium Theory in IS Research",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Panarchy Theory",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Legitimate Peripheral Participation",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Absorptive Capacity",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Diversity Trumps Ability",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Hidden Order: How Adaptation Builds Complexity",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Social Cognitive Career Theory (SCCT)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Diffusion of Innovations",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Task-Technology Fit (TTF)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Skill-Biased Technical Change",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Social Capital and Structural Holes",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Signaling Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Job Demands-Resources (JD-R) Model",
+      "decision": "include"
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Developer Onboarding and Peripheral Participation",
+        "narrative": "The pool of peripheral newcomers accumulates as new developers discover the project through various channels, with the growth rate determined by project visibility and community outreach efforts. These newcomers transition to active peripheral participants at a rate limited by available mentors and the clarity of onboarding pathways. Legitimate peripheral participation occurs through small, low-risk tasks that build confidence and familiarity. The speed of initial skill acquisition depends on the quality of documentation and the responsiveness of community feedback. A reinforcing feedback loop emerges: successful onboarding experiences increase project reputation, attracting more newcomers. However, a balancing loop exists where mentor capacity becomes saturated when the newcomer-to-mentor ratio exceeds 8:1, slowing transition rates. It typically takes 2-4 months for newcomers to become comfortable with basic contribution workflows, with progress accelerating after 5-10 successful interactions with core members.",
+        "theories_used": [
+          "Legitimate Peripheral Participation",
+          "Communities of Practice (Wenger)",
+          "Signaling Theory"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Knowledge Creation and Skill Development",
+            "connection_type": "feeds_into",
+            "description": "Peripheral participants become inputs for skill development and knowledge acquisition processes"
+          },
+          {
+            "target_cluster": "Governance and Community Structure",
+            "connection_type": "receives_from",
+            "description": "Receives governance policies and community norms that shape onboarding pathways"
+          }
+        ]
+      },
+      {
+        "name": "Knowledge Creation and Skill Development",
+        "narrative": "Individual knowledge accumulates through learning-by-doing and social learning processes, with the rate of knowledge acquisition limited by absorptive capacity and available learning opportunities. The community's collective knowledge base grows through the SECI model's socialization, externalization, combination, and internalization cycles. Knowledge transfer occurs at speeds determined by communication frequency and the quality of knowledge articulation. A strong reinforcing loop exists: increased knowledge enables more complex contributions, which generates new learning opportunities and further knowledge accumulation. Transactive memory systems develop over 6-12 months, allowing developers to know 'who knows what' and accelerating problem-solving. Skill development follows a nonlinear pattern where progress accelerates dramatically after reaching competence thresholds, typically requiring 50-100 successful contributions. The rate of skill advancement is constrained by available challenging tasks and feedback quality, with effectiveness saturating when developers reach expertise levels where few peers can provide meaningful guidance.",
+        "theories_used": [
+          "Nonaka's SECI Model",
+          "Absorptive Capacity",
+          "Routines and Transactive Memory Systems",
+          "A Dynamic Theory of Organizational Knowledge Creation"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Career Progression and Role Transition",
+            "connection_type": "feeds_into",
+            "description": "Accumulated knowledge and skills enable role transitions and career advancement"
+          },
+          {
+            "target_cluster": "Developer Onboarding and Peripheral Participation",
+            "connection_type": "feedback_loop",
+            "description": "Knowledge creation processes both draw from and contribute to onboarding experiences"
+          }
+        ]
+      },
+      {
+        "name": "Career Progression and Role Transition",
+        "narrative": "Social capital accumulates through repeated successful interactions and relationship building, with trust developing slowly over 3-6 months of consistent participation. Career progression follows Social Cognitive Career Theory patterns where self-efficacy builds through mastery experiences and social persuasion. The transition rate from peripheral to core roles depends on demonstrated competence, social integration, and available core position openings. A critical reinforcing loop exists: increased responsibility leads to more visibility and recognition, which builds social capital and enables further advancement. However, the Job Demands-Resources model creates balancing pressures where excessive demands without adequate resources can lead to burnout and attrition. Role transitions typically occur in punctuated equilibrium patterns, with long periods of gradual skill building followed by rapid status changes when key opportunities arise. The speed of progression is nonlinear, often accelerating after crossing competence thresholds and building strong mentor relationships. Core team capacity acts as a constraint, with transition rates slowing when core-to-peripheral ratios exceed optimal levels.",
+        "theories_used": [
+          "Social Cognitive Career Theory (SCCT)",
+          "Social Capital and Structural Holes",
+          "Job Demands-Resources (JD-R) Model",
+          "Punctuated Equilibrium Theory in IS Research"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Governance and Community Structure",
+            "connection_type": "feeds_into",
+            "description": "Advanced developers take on governance roles and shape community structure"
+          },
+          {
+            "target_cluster": "Knowledge Creation and Skill Development",
+            "connection_type": "feedback_loop",
+            "description": "Career progression both requires and enables continued knowledge development"
+          }
+        ]
+      },
+      {
+        "name": "Governance and Community Structure",
+        "narrative": "Organizational routines and governance structures evolve through adaptive structuration, where practices are adopted, adapted, and institutionalized over time. The legitimacy of governance mechanisms accumulates through consistent application and demonstrated effectiveness. Decision-making authority distribution changes at rates influenced by community size, complexity, and conflict frequency. A key balancing loop maintains stability: as governance complexity increases, resistance to further changes grows, preventing constant restructuring. Innovation diffusion follows predictable patterns where new governance practices spread through social networks, with adoption rates accelerating after reaching critical mass (typically 15-20% of core members). Time delays of 3-9 months occur between governance changes and their full effects becoming apparent. Task-technology fit dynamics ensure that governance tools and processes remain aligned with community needs, with misfits creating friction that slows all other processes. Structural holes in social networks create both opportunities for brokerage and potential communication bottlenecks that affect coordination efficiency.",
+        "theories_used": [
+          "Adaptive Structuration Theory",
+          "Stability and Change in Organizational Routines",
+          "Diffusion of Innovations",
+          "Task-Technology Fit (TTF)"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Career Progression and Role Transition",
+            "connection_type": "receives_from",
+            "description": "Receives advanced developers who take on governance responsibilities"
+          },
+          {
+            "target_cluster": "Developer Onboarding and Peripheral Participation",
+            "connection_type": "feedback_loop",
+            "description": "Governance structures shape onboarding while being influenced by participant experiences"
+          }
+        ]
+      }
+    ],
+    "overall_narrative": "The four processes form an integrated system where newcomers flow through onboarding into knowledge development, enabling career progression that ultimately feeds back into governance. The system exhibits multiple cross-cluster feedback loops: governance structures shape onboarding experiences, which influence knowledge acquisition rates, affecting career progression speeds, which in turn determines who shapes future governance. Time delays create complex dynamics - governance changes take months to affect onboarding quality, and career progression requires sustained knowledge accumulation. Reinforcing loops drive growth when all processes align, but balancing loops and capacity constraints prevent runaway expansion. The system's overall performance depends on the alignment between these processes, with misalignments creating bottlenecks that slow the entire developer progression pipeline from novice periphery to core contributor."
+  }
+}

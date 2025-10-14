@@ -119,10 +119,26 @@ Match narratives to these patterns:
 - Effectiveness (0-1), gaps, time constants, thresholds
 - Enable feedback: Stock → Auxiliary → Flow → Stock
 
-## 4. Requirements Per Process
-✓ 3-5 Stocks (capture key accumulations from narrative)
-✓ 2-4 Flows (rates of change between stocks)
-✓ 3-5 Auxiliaries (factors that modulate flows)
+## 4. Requirements Per Process - SCALE WITH THEORY COMPLEXITY
+
+Generate variables proportional to the richness of theories informing each process:
+
+**For processes informed by 1-2 theories:**
+• 4-6 Stocks
+• 3-4 Flows
+• 4-6 Auxiliaries
+
+**For processes informed by 3-4 theories:**
+• 6-8 Stocks
+• 4-6 Flows
+• 6-8 Auxiliaries
+
+**For processes informed by 5+ theories:**
+• 8-12 Stocks
+• 6-8 Flows
+• 8-12 Auxiliaries
+
+Include SD elements that capture the essential mechanisms from theories informing this process.
 ✓ At least 1 feedback loop (reinforcing or balancing)
 ✓ SISO connections to other processes
 
@@ -206,7 +222,10 @@ def run_theory_concretization(
     # Call LLM
     if llm_client is None:
         from ..config import should_use_gpt
+        import logging
+        logger = logging.getLogger(__name__)
         provider, model = should_use_gpt("theory_concretization")
+        logger.info(f"  → Step 2 using: {provider.upper()} ({model})")
         llm_client = LLMClient(provider=provider, model=model)
 
     response = llm_client.complete(prompt, temperature=0.3, max_tokens=16000)

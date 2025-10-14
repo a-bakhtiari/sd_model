@@ -1,0 +1,699 @@
+{
+  "connections": [
+    {
+      "id": "28",
+      "from": 27,
+      "to": 6,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "43",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1928,
+          551
+        ]
+      ]
+    },
+    {
+      "id": "29",
+      "from": 5,
+      "to": 6,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1788,
+          742
+        ]
+      ]
+    },
+    {
+      "id": "70",
+      "from": 2,
+      "to": 41,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1051,
+          335
+        ]
+      ]
+    },
+    {
+      "id": "71",
+      "from": 41,
+      "to": 3,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          884,
+          482
+        ]
+      ]
+    },
+    {
+      "id": "86",
+      "from": 56,
+      "to": 3,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          799,
+          607
+        ]
+      ]
+    },
+    {
+      "id": "94",
+      "from": 49,
+      "to": 93,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "0",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "97",
+      "from": 2,
+      "to": 93,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "43",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1040,
+          99
+        ]
+      ]
+    },
+    {
+      "id": "107",
+      "from": 3,
+      "to": 1,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          667,
+          418
+        ]
+      ]
+    },
+    {
+      "id": "108",
+      "from": 3,
+      "to": 72,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          783,
+          347
+        ]
+      ]
+    },
+    {
+      "id": "109",
+      "from": 3,
+      "to": 2,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          932,
+          375
+        ]
+      ]
+    },
+    {
+      "id": "110",
+      "from": 1,
+      "to": 3,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          712,
+          353
+        ]
+      ]
+    },
+    {
+      "id": "111",
+      "from": 72,
+      "to": 3,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          826,
+          363
+        ]
+      ]
+    },
+    {
+      "id": "112",
+      "from": 3,
+      "to": 56,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          835,
+          555
+        ]
+      ]
+    },
+    {
+      "id": "115",
+      "from": 50,
+      "to": 114,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "0",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "133",
+      "from": 3,
+      "to": 106,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          425,
+          386
+        ]
+      ]
+    },
+    {
+      "id": "134",
+      "from": 113,
+      "to": 106,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          40,
+          326
+        ]
+      ]
+    },
+    {
+      "id": "135",
+      "from": 106,
+      "to": 50,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "43",
+        "field6": "0"
+      },
+      "points": [
+        [
+          108,
+          -27
+        ]
+      ]
+    },
+    {
+      "id": "137",
+      "from": 136,
+      "to": 106,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          222,
+          170
+        ]
+      ]
+    },
+    {
+      "id": "139",
+      "from": 6,
+      "to": 5,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1731,
+          516
+        ]
+      ]
+    },
+    {
+      "id": "147",
+      "from": 48,
+      "to": 146,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          134,
+          578
+        ]
+      ]
+    },
+    {
+      "id": "148",
+      "from": 146,
+      "to": 48,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          204,
+          573
+        ]
+      ]
+    },
+    {
+      "id": "150",
+      "from": 30,
+      "to": 6,
+      "polarity": "POSITIVE",
+      "params": {
+        "field3": "1",
+        "field4": "0",
+        "field5": "43",
+        "field6": "0"
+      },
+      "points": [
+        [
+          1964,
+          482
+        ]
+      ]
+    },
+    {
+      "id": "151",
+      "from": 114,
+      "to": 138,
+      "polarity": "UNDECLARED",
+      "params": {
+        "field3": "0",
+        "field4": "1",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "155",
+      "from": 154,
+      "to": 138,
+      "polarity": "UNDECLARED",
+      "params": {
+        "field3": "0",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "156",
+      "from": 154,
+      "to": 85,
+      "polarity": "UNDECLARED",
+      "params": {
+        "field3": "0",
+        "field4": "0",
+        "field5": "0",
+        "field6": "0"
+      },
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "256",
+      "from": 6,
+      "to": 85,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "257",
+      "from": 152,
+      "to": 126,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "259",
+      "from": 126,
+      "to": 113,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "261",
+      "from": 122,
+      "to": 48,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "262",
+      "from": 126,
+      "to": 48,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "267",
+      "from": 4,
+      "to": 122,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "269",
+      "from": 21,
+      "to": 6,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "270",
+      "from": 26,
+      "to": 6,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "273",
+      "from": 105,
+      "to": 50,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "274",
+      "from": 101,
+      "to": 50,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "276",
+      "from": 11,
+      "to": 5,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "278",
+      "from": 16,
+      "to": 5,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "279",
+      "from": 64,
+      "to": 56,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "281",
+      "from": 69,
+      "to": 56,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "282",
+      "from": 60,
+      "to": 56,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "284",
+      "from": 64,
+      "to": 4,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "285",
+      "from": 114,
+      "to": 76,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "286",
+      "from": 93,
+      "to": 76,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "288",
+      "from": 132,
+      "to": 106,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "291",
+      "from": 48,
+      "to": 55,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "292",
+      "from": 55,
+      "to": 47,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "293",
+      "from": 60,
+      "to": 47,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "294",
+      "from": 46,
+      "to": 2,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "296",
+      "from": 80,
+      "to": 2,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "297",
+      "from": 93,
+      "to": 80,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "298",
+      "from": 46,
+      "to": 91,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "300",
+      "from": 80,
+      "to": 72,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "301",
+      "from": 76,
+      "to": 72,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "305",
+      "from": 85,
+      "to": 1,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "307",
+      "from": 76,
+      "to": 1,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "308",
+      "from": 91,
+      "to": 49,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "309",
+      "from": 105,
+      "to": 49,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    },
+    {
+      "id": "310",
+      "from": 101,
+      "to": 49,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "311",
+      "from": 40,
+      "to": 30,
+      "polarity": "NEGATIVE",
+      "source": "equation"
+    },
+    {
+      "id": "312",
+      "from": 35,
+      "to": 30,
+      "polarity": "POSITIVE",
+      "source": "equation"
+    }
+  ]
+}
