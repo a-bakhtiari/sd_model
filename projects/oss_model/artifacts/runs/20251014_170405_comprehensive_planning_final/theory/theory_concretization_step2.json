@@ -1,0 +1,1907 @@
+{
+  "processes": [
+    {
+      "process_name": "Attraction and Enrollment into the Periphery",
+      "variables": [
+        {
+          "name": "Prospective Contributors Considering Project",
+          "type": "Stock"
+        },
+        {
+          "name": "Peripheral Participants",
+          "type": "Stock"
+        },
+        {
+          "name": "Visibility-Driven Consideration Inflow",
+          "type": "Flow"
+        },
+        {
+          "name": "Enrollment Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Consideration Drop-off Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "External Visibility",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Social Proof",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Reputation Propagation Delay",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Perceived Task-Technology Fit",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Self-Efficacy",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Good First Issue Signal Strength",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Welcoming Documentation Quality",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "First Response Latency",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Onboarding Capacity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Mentoring Response Effectiveness",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Negative Word-of-Mouth Strength",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Latency Threshold for Word-of-Mouth",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Diversity Promoting Cues Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Visibility Threshold for Conversion Acceleration",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Transparency Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Expected Cost-Benefit Differential",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Consideration Conversion Fraction",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Consideration Inflow Scaling Factor",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Recognized Leaders",
+          "to": "External Visibility",
+          "relationship": "positive"
+        },
+        {
+          "from": "Recognized Leaders",
+          "to": "Social Proof",
+          "relationship": "positive"
+        },
+        {
+          "from": "External Visibility",
+          "to": "Visibility-Driven Consideration Inflow",
+          "relationship": "positive"
+        },
+        {
+          "from": "Social Proof",
+          "to": "Visibility-Driven Consideration Inflow",
+          "relationship": "positive"
+        },
+        {
+          "from": "Reputation Propagation Delay",
+          "to": "External Visibility",
+          "relationship": "negative"
+        },
+        {
+          "from": "Governance Transparency Level",
+          "to": "Consideration Conversion Fraction",
+          "relationship": "positive"
+        },
+        {
+          "from": "Good First Issue Signal Strength",
+          "to": "Consideration Conversion Fraction",
+          "relationship": "positive"
+        },
+        {
+          "from": "Welcoming Documentation Quality",
+          "to": "Consideration Conversion Fraction",
+          "relationship": "positive"
+        },
+        {
+          "from": "Perceived Task-Technology Fit",
+          "to": "Consideration Conversion Fraction",
+          "relationship": "positive"
+        },
+        {
+          "from": "Self-Efficacy",
+          "to": "Consideration Conversion Fraction",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentoring and Governance Capacity",
+          "to": "Onboarding Capacity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Onboarding Capacity",
+          "to": "First Response Latency",
+          "relationship": "negative"
+        },
+        {
+          "from": "Mentoring Response Effectiveness",
+          "to": "First Response Latency",
+          "relationship": "negative"
+        },
+        {
+          "from": "First Response Latency",
+          "to": "Consideration Conversion Fraction",
+          "relationship": "negative"
+        },
+        {
+          "from": "First Response Latency",
+          "to": "Negative Word-of-Mouth Strength",
+          "relationship": "positive"
+        },
+        {
+          "from": "Latency Threshold for Word-of-Mouth",
+          "to": "Negative Word-of-Mouth Strength",
+          "relationship": "negative"
+        },
+        {
+          "from": "Negative Word-of-Mouth Strength",
+          "to": "Visibility-Driven Consideration Inflow",
+          "relationship": "negative"
+        },
+        {
+          "from": "Diversity Promoting Cues Level",
+          "to": "Consideration Conversion Fraction",
+          "relationship": "positive"
+        },
+        {
+          "from": "Visibility Threshold for Conversion Acceleration",
+          "to": "Consideration Conversion Fraction",
+          "relationship": "negative"
+        },
+        {
+          "from": "Expected Cost-Benefit Differential",
+          "to": "Consideration Drop-off Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Consideration Conversion Fraction",
+          "to": "Enrollment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Prospective Contributors Considering Project",
+          "to": "Enrollment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Enrollment Rate",
+          "to": "Peripheral Participants",
+          "relationship": "positive"
+        },
+        {
+          "from": "Visibility-Driven Consideration Inflow",
+          "to": "Prospective Contributors Considering Project",
+          "relationship": "positive"
+        },
+        {
+          "from": "Prospective Contributors Considering Project",
+          "to": "Consideration Drop-off Rate",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Visibility-Driven Consideration Inflow",
+          "type": "source",
+          "connects_to": "Prospective Contributors Considering Project"
+        },
+        {
+          "name": "Consideration Drop-off Rate",
+          "type": "sink",
+          "connects_to": "Prospective Contributors Considering Project"
+        }
+      ]
+    },
+    {
+      "process_name": "Peripheral Socialization and Legitimate Participation",
+      "variables": [
+        {
+          "name": "Peripheral Participants",
+          "type": "Stock"
+        },
+        {
+          "name": "Engaged Newcomers",
+          "type": "Stock"
+        },
+        {
+          "name": "Peripheral Progression Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Peripheral Attrition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Micro-Tasks Availability",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Communication Channel Accessibility",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Timely Feedback Quality",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Mentor-to-Newcomer Ratio",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Psychological Safety Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Job Demands (Periphery)",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Job Resources (Periphery)",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "JD-R Balance (Periphery)",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Review Queue Size",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Review Queue Length Threshold",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Bottleneck Nonlinearity Factor",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Artifacts Quality",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Socialization Delay",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Attrition Sensitivity to Queueing",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Peer Assistance Level",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Peripheral Participants",
+          "to": "Peripheral Progression Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Peripheral Progression Rate",
+          "to": "Engaged Newcomers",
+          "relationship": "positive"
+        },
+        {
+          "from": "Peripheral Participants",
+          "to": "Peripheral Attrition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Micro-Tasks Availability",
+          "to": "Peripheral Progression Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Communication Channel Accessibility",
+          "to": "Peripheral Progression Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Timely Feedback Quality",
+          "to": "Peripheral Progression Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentor-to-Newcomer Ratio",
+          "to": "Timely Feedback Quality",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentoring and Governance Capacity",
+          "to": "Mentor-to-Newcomer Ratio",
+          "relationship": "positive"
+        },
+        {
+          "from": "Peripheral Participants",
+          "to": "Mentor-to-Newcomer Ratio",
+          "relationship": "negative"
+        },
+        {
+          "from": "JD-R Balance (Periphery)",
+          "to": "Peripheral Attrition Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Job Demands (Periphery)",
+          "to": "JD-R Balance (Periphery)",
+          "relationship": "negative"
+        },
+        {
+          "from": "Job Resources (Periphery)",
+          "to": "JD-R Balance (Periphery)",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Artifacts Quality",
+          "to": "Job Resources (Periphery)",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Artifacts Quality",
+          "to": "Psychological Safety Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Timely Feedback Quality",
+          "to": "Psychological Safety Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Psychological Safety Level",
+          "to": "Peripheral Attrition Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Review Queue Size",
+          "to": "Timely Feedback Quality",
+          "relationship": "negative"
+        },
+        {
+          "from": "Review Queue Size",
+          "to": "Peripheral Attrition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review Queue Size",
+          "to": "Bottleneck Nonlinearity Factor",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review Queue Length Threshold",
+          "to": "Bottleneck Nonlinearity Factor",
+          "relationship": "negative"
+        },
+        {
+          "from": "Bottleneck Nonlinearity Factor",
+          "to": "Peripheral Attrition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentoring and Governance Capacity",
+          "to": "Timely Feedback Quality",
+          "relationship": "positive"
+        },
+        {
+          "from": "Engaged Newcomers",
+          "to": "Peer Assistance Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Peer Assistance Level",
+          "to": "Peripheral Progression Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Trusted Module Owners",
+          "to": "Review Queue Size",
+          "relationship": "negative"
+        },
+        {
+          "from": "Socialization Delay",
+          "to": "Peripheral Progression Rate",
+          "relationship": "negative"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Peripheral Attrition Rate",
+          "type": "sink",
+          "connects_to": "Peripheral Participants"
+        }
+      ]
+    },
+    {
+      "process_name": "Knowledge Absorption and Creation Cycle",
+      "variables": [
+        {
+          "name": "Engaged Newcomers",
+          "type": "Stock"
+        },
+        {
+          "name": "Knowledgeable Contributors",
+          "type": "Stock"
+        },
+        {
+          "name": "Internalization Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Knowledge Stage Attrition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Potential Absorptive Capacity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Realized Absorptive Capacity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Interaction Intensity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Interaction Quality",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Codebase Complexity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Documentation Quality Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Review Guidance Quality",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Learning Cycle Time",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "PR Milestone Threshold Crossed",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Interaction Density",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Tacit Knowledge Threshold",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Transactive Memory Cues Maturity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Externalization Practices Strength",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Engaged Newcomers",
+          "to": "Internalization Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Internalization Rate",
+          "to": "Knowledgeable Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from": "Engaged Newcomers",
+          "to": "Knowledge Stage Attrition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Potential Absorptive Capacity",
+          "to": "Realized Absorptive Capacity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Interaction Intensity",
+          "to": "Realized Absorptive Capacity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Interaction Quality",
+          "to": "Realized Absorptive Capacity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Realized Absorptive Capacity",
+          "to": "Internalization Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Codebase Complexity",
+          "to": "Internalization Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Documentation Quality Level",
+          "to": "Internalization Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review Guidance Quality",
+          "to": "Internalization Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Learning Cycle Time",
+          "to": "Internalization Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Engaged Newcomers",
+          "to": "Interaction Density",
+          "relationship": "positive"
+        },
+        {
+          "from": "Interaction Density",
+          "to": "Realized Absorptive Capacity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Tacit Knowledge Threshold",
+          "to": "Internalization Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Transactive Memory Cues Maturity",
+          "to": "Internalization Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Externalization Practices Strength",
+          "to": "Documentation Quality Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentoring and Governance Capacity",
+          "to": "Documentation Quality Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentoring and Governance Capacity",
+          "to": "Review Guidance Quality",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Milestone Threshold Crossed",
+          "to": "Internalization Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Codebase Complexity",
+          "to": "Knowledge Stage Attrition Rate",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Knowledge Stage Attrition Rate",
+          "type": "sink",
+          "connects_to": "Engaged Newcomers"
+        }
+      ]
+    },
+    {
+      "process_name": "Task-Technology Fit and Tooling Mastery",
+      "variables": [
+        {
+          "name": "Knowledgeable Contributors",
+          "type": "Stock"
+        },
+        {
+          "name": "Productive Contributors",
+          "type": "Stock"
+        },
+        {
+          "name": "Tooling Mastery Transition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Tooling Stall or Exit Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Task-Technology Fit Index",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Toolchain Friction",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "CI/CD Reliability",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Linter and Pre-Commit Adoption Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Appropriation Quality of Tools and Rules-in-Use",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Skill-Biased Technical Change Rate",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Upskilling Rate",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Build Success Count",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Build Success Threshold",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Tool Adoption Delay",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Cognitive Diversity Index",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Knowledgeable Contributors",
+          "to": "Tooling Mastery Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Tooling Mastery Transition Rate",
+          "to": "Productive Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from": "Knowledgeable Contributors",
+          "to": "Tooling Stall or Exit Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Task-Technology Fit Index",
+          "to": "Tooling Mastery Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Toolchain Friction",
+          "to": "Tooling Mastery Transition Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "CI/CD Reliability",
+          "to": "Tooling Mastery Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Linter and Pre-Commit Adoption Level",
+          "to": "Tooling Mastery Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Appropriation Quality of Tools and Rules-in-Use",
+          "to": "Toolchain Friction",
+          "relationship": "negative"
+        },
+        {
+          "from": "Automation Coverage",
+          "to": "Toolchain Friction",
+          "relationship": "negative"
+        },
+        {
+          "from": "Skill-Biased Technical Change Rate",
+          "to": "Toolchain Friction",
+          "relationship": "positive"
+        },
+        {
+          "from": "Upskilling Rate",
+          "to": "Toolchain Friction",
+          "relationship": "negative"
+        },
+        {
+          "from": "Build Success Count",
+          "to": "Task-Technology Fit Index",
+          "relationship": "positive"
+        },
+        {
+          "from": "Build Success Threshold",
+          "to": "Tooling Mastery Transition Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Governance Tool Adoption Delay",
+          "to": "Appropriation Quality of Tools and Rules-in-Use",
+          "relationship": "negative"
+        },
+        {
+          "from": "Cognitive Diversity Index",
+          "to": "Task-Technology Fit Index",
+          "relationship": "positive"
+        },
+        {
+          "from": "Toolchain Friction",
+          "to": "Tooling Stall or Exit Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "CI/CD Reliability",
+          "to": "Tooling Stall or Exit Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Mentoring and Governance Capacity",
+          "to": "CI/CD Reliability",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Tooling Stall or Exit Rate",
+          "type": "sink",
+          "connects_to": "Knowledgeable Contributors"
+        }
+      ]
+    },
+    {
+      "process_name": "Integration into Routines and Transactive Memory",
+      "variables": [
+        {
+          "name": "Productive Contributors",
+          "type": "Stock"
+        },
+        {
+          "name": "Trusted Module Owners",
+          "type": "Stock"
+        },
+        {
+          "name": "Entrustment Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Productive Attrition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Reliability Score",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Responsiveness Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Collaborative Signal Strength",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Review Queue Size",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Cycle Time",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Ownership Fragmentation Index",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Ownership Concentration Index",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Coordination Overhead",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Burnout Risk",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Role Clarity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Trust Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Transactive Memory Maturity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Bus Factor",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Bus Factor Threshold",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Artifacts for Routines Quality",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Entrustment Delay",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Productive Contributors",
+          "to": "Entrustment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Entrustment Rate",
+          "to": "Trusted Module Owners",
+          "relationship": "positive"
+        },
+        {
+          "from": "Productive Contributors",
+          "to": "Productive Attrition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Reliability Score",
+          "to": "Entrustment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Responsiveness Level",
+          "to": "Entrustment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Collaborative Signal Strength",
+          "to": "Entrustment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review Queue Size",
+          "to": "Entrustment Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Cycle Time",
+          "to": "Entrustment Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Ownership Fragmentation Index",
+          "to": "Coordination Overhead",
+          "relationship": "positive"
+        },
+        {
+          "from": "Ownership Concentration Index",
+          "to": "Burnout Risk",
+          "relationship": "positive"
+        },
+        {
+          "from": "Coordination Overhead",
+          "to": "Entrustment Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Burnout Risk",
+          "to": "Productive Attrition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Role Clarity",
+          "to": "Entrustment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Trust Level",
+          "to": "Entrustment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Transactive Memory Maturity",
+          "to": "Cycle Time",
+          "relationship": "negative"
+        },
+        {
+          "from": "Transactive Memory Maturity",
+          "to": "Review Queue Size",
+          "relationship": "negative"
+        },
+        {
+          "from": "Bus Factor",
+          "to": "Entrustment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Bus Factor Threshold",
+          "to": "Entrustment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Artifacts for Routines Quality",
+          "to": "Role Clarity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentoring and Governance Capacity",
+          "to": "Governance Artifacts for Routines Quality",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentoring and Governance Capacity",
+          "to": "Entrustment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Entrustment Delay",
+          "to": "Entrustment Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Trusted Module Owners",
+          "to": "Transactive Memory Maturity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Trusted Module Owners",
+          "to": "Review Queue Size",
+          "relationship": "negative"
+        },
+        {
+          "from": "Trusted Module Owners",
+          "to": "Bus Factor",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Productive Attrition Rate",
+          "type": "sink",
+          "connects_to": "Productive Contributors"
+        }
+      ]
+    },
+    {
+      "process_name": "Reputation and Social Capital Accrual",
+      "variables": [
+        {
+          "name": "Trusted Module Owners",
+          "type": "Stock"
+        },
+        {
+          "name": "Recognized Leaders",
+          "type": "Stock"
+        },
+        {
+          "name": "Leadership Recognition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Owner Attrition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Reputation Signal Strength",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Network Centrality",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Bridging Ties Strength",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Audience Fatigue",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Visibility Event Salience",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Diversity of Visible Leaders",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Trusted Module Owners",
+          "to": "Leadership Recognition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Leadership Recognition Rate",
+          "to": "Recognized Leaders",
+          "relationship": "positive"
+        },
+        {
+          "from": "Trusted Module Owners",
+          "to": "Owner Attrition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Network Centrality",
+          "to": "Reputation Signal Strength",
+          "relationship": "positive"
+        },
+        {
+          "from": "Bridging Ties Strength",
+          "to": "Reputation Signal Strength",
+          "relationship": "positive"
+        },
+        {
+          "from": "Visibility Event Salience",
+          "to": "Reputation Signal Strength",
+          "relationship": "positive"
+        },
+        {
+          "from": "Reputation Signal Strength",
+          "to": "Leadership Recognition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Audience Fatigue",
+          "to": "Leadership Recognition Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Recognized Leaders",
+          "to": "External Visibility",
+          "relationship": "positive"
+        },
+        {
+          "from": "Diversity of Visible Leaders",
+          "to": "External Visibility",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Owner Attrition Rate",
+          "type": "sink",
+          "connects_to": "Trusted Module Owners"
+        }
+      ]
+    },
+    {
+      "process_name": "Governance Participation and Authority Accrual",
+      "variables": [
+        {
+          "name": "Recognized Leaders",
+          "type": "Stock"
+        },
+        {
+          "name": "Governance Actors",
+          "type": "Stock"
+        },
+        {
+          "name": "Appointment Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Pre-Appointment Withdrawal Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Stewardship Score",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Cross-Module Coordination Skill",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Peer Trust Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Rules Complexity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Tools Appropriation Quality",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Perceived Legitimacy Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Consensus Cost",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Quorum Threshold",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Quorum Efficient Zone Occupancy",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Panarchy Alignment Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Appointment Lag",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Recognized Leaders",
+          "to": "Appointment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Appointment Rate",
+          "to": "Governance Actors",
+          "relationship": "positive"
+        },
+        {
+          "from": "Recognized Leaders",
+          "to": "Pre-Appointment Withdrawal Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Stewardship Score",
+          "to": "Appointment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Cross-Module Coordination Skill",
+          "to": "Appointment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Peer Trust Level",
+          "to": "Appointment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Rules Complexity",
+          "to": "Appointment Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Governance Tools Appropriation Quality",
+          "to": "Appointment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Perceived Legitimacy Level",
+          "to": "Appointment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Consensus Cost",
+          "to": "Appointment Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Mentoring and Governance Capacity",
+          "to": "Consensus Cost",
+          "relationship": "negative"
+        },
+        {
+          "from": "Mentoring and Governance Capacity",
+          "to": "Governance Tools Appropriation Quality",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Actors",
+          "to": "Consensus Cost",
+          "relationship": "positive"
+        },
+        {
+          "from": "Quorum Threshold",
+          "to": "Consensus Cost",
+          "relationship": "negative"
+        },
+        {
+          "from": "Quorum Efficient Zone Occupancy",
+          "to": "Consensus Cost",
+          "relationship": "negative"
+        },
+        {
+          "from": "Panarchy Alignment Level",
+          "to": "Consensus Cost",
+          "relationship": "negative"
+        },
+        {
+          "from": "Panarchy Alignment Level",
+          "to": "Appointment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Appointment Lag",
+          "to": "Appointment Rate",
+          "relationship": "negative"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Pre-Appointment Withdrawal Rate",
+          "type": "sink",
+          "connects_to": "Recognized Leaders"
+        }
+      ]
+    },
+    {
+      "process_name": "Core Developer Performance and Sustainability",
+      "variables": [
+        {
+          "name": "Governance Actors",
+          "type": "Stock"
+        },
+        {
+          "name": "Stable Core Developers",
+          "type": "Stock"
+        },
+        {
+          "name": "Stabilization Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Governance Actors Attrition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Demand Load",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Resource Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "JD-R Balance (Core)",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Delegation Effectiveness",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Punctuated Workload Intensity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Recovery Delay",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Sleep Debt",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Burnout Tipping Threshold",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Diversity of Core Team",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Procedures Clarity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Automation Coverage",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Competent Co-Owners Availability",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Governance Actors",
+          "to": "Stabilization Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Stabilization Rate",
+          "to": "Stable Core Developers",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Actors",
+          "to": "Governance Actors Attrition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Demand Load",
+          "to": "JD-R Balance (Core)",
+          "relationship": "negative"
+        },
+        {
+          "from": "Resource Level",
+          "to": "JD-R Balance (Core)",
+          "relationship": "positive"
+        },
+        {
+          "from": "JD-R Balance (Core)",
+          "to": "Stabilization Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "JD-R Balance (Core)",
+          "to": "Governance Actors Attrition Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Delegation Effectiveness",
+          "to": "Demand Load",
+          "relationship": "negative"
+        },
+        {
+          "from": "Punctuated Workload Intensity",
+          "to": "Demand Load",
+          "relationship": "positive"
+        },
+        {
+          "from": "Recovery Delay",
+          "to": "Sleep Debt",
+          "relationship": "positive"
+        },
+        {
+          "from": "Sleep Debt",
+          "to": "JD-R Balance (Core)",
+          "relationship": "negative"
+        },
+        {
+          "from": "Burnout Tipping Threshold",
+          "to": "Governance Actors Attrition Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Diversity of Core Team",
+          "to": "Resource Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Procedures Clarity",
+          "to": "Demand Load",
+          "relationship": "negative"
+        },
+        {
+          "from": "Automation Coverage",
+          "to": "Demand Load",
+          "relationship": "negative"
+        },
+        {
+          "from": "Stable Core Developers",
+          "to": "Automation Coverage",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentoring and Governance Capacity",
+          "to": "Demand Load",
+          "relationship": "negative"
+        },
+        {
+          "from": "Trusted Module Owners",
+          "to": "Competent Co-Owners Availability",
+          "relationship": "positive"
+        },
+        {
+          "from": "Competent Co-Owners Availability",
+          "to": "Resource Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Competent Co-Owners Availability",
+          "to": "Delegation Effectiveness",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Governance Actors Attrition Rate",
+          "type": "sink",
+          "connects_to": "Governance Actors"
+        }
+      ]
+    },
+    {
+      "process_name": "Succession, Mentorship Capacity, and Institutional Memory",
+      "variables": [
+        {
+          "name": "Stable Core Developers",
+          "type": "Stock"
+        },
+        {
+          "name": "Mentoring and Governance Capacity",
+          "type": "Stock"
+        },
+        {
+          "name": "Capacity Formation Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Capacity Decay Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Time Allocation to Mentoring Fraction",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Codification Rate",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Artifact Obsolescence Rate",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Time Scarcity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Panarchy Shock Intensity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Cross-Project Mentoring Program Strength",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Mentors per Newcomer Ratio",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Mentor Critical Mass Threshold",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Newcomer Load",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Response Time to Newcomers",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Entrustment Policies Quality",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Documentation Quality and Coverage",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Institutional Memory Retention",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Playbooks Coverage",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Stable Core Developers",
+          "to": "Capacity Formation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Capacity Formation Rate",
+          "to": "Mentoring and Governance Capacity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Time Allocation to Mentoring Fraction",
+          "to": "Capacity Formation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Codification Rate",
+          "to": "Capacity Formation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Time Scarcity",
+          "to": "Time Allocation to Mentoring Fraction",
+          "relationship": "negative"
+        },
+        {
+          "from": "Demand Load",
+          "to": "Time Scarcity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Artifact Obsolescence Rate",
+          "to": "Capacity Decay Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Panarchy Shock Intensity",
+          "to": "Capacity Decay Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Cross-Project Mentoring Program Strength",
+          "to": "Capacity Formation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Peripheral Participants",
+          "to": "Newcomer Load",
+          "relationship": "positive"
+        },
+        {
+          "from": "Newcomer Load",
+          "to": "Mentors per Newcomer Ratio",
+          "relationship": "negative"
+        },
+        {
+          "from": "Mentoring and Governance Capacity",
+          "to": "Mentors per Newcomer Ratio",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentors per Newcomer Ratio",
+          "to": "Response Time to Newcomers",
+          "relationship": "negative"
+        },
+        {
+          "from": "Mentoring and Governance Capacity",
+          "to": "Response Time to Newcomers",
+          "relationship": "negative"
+        },
+        {
+          "from": "Entrustment Policies Quality",
+          "to": "Mentors per Newcomer Ratio",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentoring and Governance Capacity",
+          "to": "Documentation Quality and Coverage",
+          "relationship": "positive"
+        },
+        {
+          "from": "Institutional Memory Retention",
+          "to": "Documentation Quality and Coverage",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentoring and Governance Capacity",
+          "to": "Governance Playbooks Coverage",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Playbooks Coverage",
+          "to": "Governance Tools Appropriation Quality",
+          "relationship": "positive"
+        },
+        {
+          "from": "Documentation Quality and Coverage",
+          "to": "Welcoming Documentation Quality",
+          "relationship": "positive"
+        },
+        {
+          "from": "Response Time to Newcomers",
+          "to": "First Response Latency",
+          "relationship": "positive"
+        }
+      ],
+      "boundary_flows": [
+        {
+          "name": "Capacity Decay Rate",
+          "type": "sink",
+          "connects_to": "Mentoring and Governance Capacity"
+        }
+      ]
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Attraction and Enrollment into the Periphery",
+        "narrative": "A pool of prospective contributors considering the project grows as developers become aware via diffusion channels (stars, forks, social media, conferences) and credible signals (release cadence, CI status, transparent governance). This pool increases at a rate proportional to external visibility and social proof, with a delay of 1\u20133 months as signals propagate and reputations consolidate. Candidates convert to the periphery when the perceived task-technology fit seems achievable and self-efficacy is high; conversion speed accelerates with clear \u201cgood first issue\u201d signals, welcoming documentation, and quick response expectations. A reinforcing loop amplifies attraction: visible success and recognized leaders boost social proof, increasing inflow, which leads to more contributions that further strengthen external signals. A balancing loop tempers conversion when onboarding capacity is tight\u2014if first-response latency to newcomers\u2019 inquiries or PRs rises beyond a threshold (e.g., 7\u201310 days), negative word-of-mouth dampens the consideration inflow after a lag. Diversity-promoting cues (inclusive language, codes of conduct) widen the reachable audience and raise conversion for underrepresented groups, creating nonlinearity: below a visibility threshold, conversion remains low; above it, conversion accelerates sharply. The stock drains to the periphery through an enrollment flow and to an external sink via drop-off when expected costs exceed perceived benefits. Governance transparency (clear contribution rules, code ownership maps) lowers uncertainty, nudging a higher fraction into the periphery. The process transforms diffuse attention into actual peripheral participation, constrained by credibility, capacity, and perceived fit, with delays and thresholds that can create surges or droughts in newcomer entry.",
+        "theories_used": [
+          "Diffusion of Innovations",
+          "Signaling Theory",
+          "Social Cognitive Career Theory (SCCT)",
+          "Diversity Trumps Ability",
+          "Communities of Practice (Wenger)"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Peripheral Socialization and Legitimate Participation",
+            "connection_type": "feeds_into",
+            "description": "Enrollment flow of newcomers who move from consideration into the periphery."
+          },
+          {
+            "target_cluster": "Reputation and Social Capital Accrual",
+            "connection_type": "receives_from",
+            "description": "External reputation signals from recognized leaders raise the consideration inflow (feedback effect)."
+          },
+          {
+            "target_cluster": "Succession, Mentorship Capacity, and Institutional Memory",
+            "connection_type": "receives_from",
+            "description": "Mentoring/governance capacity reduces first-response latency, improving conversion (feedback effect)."
+          }
+        ]
+      },
+      {
+        "name": "Peripheral Socialization and Legitimate Participation",
+        "narrative": "A cohort of peripheral participants accumulates as newcomers arrive, observe work practices, and try small, low-risk tasks. Progression to engaged newcomers occurs as individuals achieve legitimate peripheral participation through observation, shadowing, and micro-contributions. The advancement rate rises with the availability of micro-tasks, accessible communication channels, and timely feedback from mentors. A reinforcing loop emerges: as more engaged newcomers succeed, they model behavior for others, increase peer assistance, and create micro-documentation, which makes additional progression easier. A balancing loop sets in when the mentor-to-newcomer ratio falls below a viable threshold (e.g., 1:5\u20131:10): response quality and psychological safety erode, increasing peripheral attrition to the sink and reducing progression. The balance between job demands and resources shapes persistence; higher complexity and ambiguous norms increase demands, while clear templates, warm triage, and responsive reviews boost resources. Delays are prominent: it typically takes 2\u20138 weeks for a newcomer to move from passive observation to regular small contributions, and feedback delays compound when review queues lengthen. Nonlinearities appear around attention bottlenecks: once the queue of unreviewed contributions exceeds a moderate limit (e.g., 20 items), perceived neglect rises sharply, doubling attrition. Governance artifacts (codes of conduct, contributing guides, triage policies) shape legitimate participation by clarifying expectations and sanctions, reducing uncertainty and accelerating transition. The process transforms peripheral participants into engaged newcomers, limited by mentoring capacity and attention dynamics, with strong sensitivity to queueing delays and psychosocial supports.",
+        "theories_used": [
+          "Legitimate Peripheral Participation",
+          "Communities of Practice (Wenger)",
+          "Communities of Practice",
+          "Job Demands-Resources (JD-R) Model"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Self-Determination Theory (SDT)",
+            "rationale": "Explains autonomy, competence, and relatedness needs that govern motivation to persist through early hurdles."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Knowledge Absorption and Creation Cycle",
+            "connection_type": "feeds_into",
+            "description": "Engaged newcomers who begin to internalize and create project knowledge."
+          },
+          {
+            "target_cluster": "Succession, Mentorship Capacity, and Institutional Memory",
+            "connection_type": "receives_from",
+            "description": "Mentoring capacity and onboarding materials raise progression rates and reduce attrition (feedback)."
+          }
+        ]
+      },
+      {
+        "name": "Knowledge Absorption and Creation Cycle",
+        "narrative": "Engaged newcomers build project-specific knowledge through iterative cycles of socialization, externalization, combination, and internalization. The pace of absorption depends on prior related experience (potential absorptive capacity) and the intensity/quality of interactions (realized absorptive capacity). As individuals complete review cycles and postmortems, they codify learning into documentation and scripts; this creates a reinforcing loop: better artifacts accelerate subsequent learning-by-doing for the next cohort, which in turn improves artifacts. A counteracting loop arises from codebase complexity: as architectural intricacy and implicit conventions grow, the marginal effort to understand dependencies increases, slowing internalization. Delays are material: meaningful internalization often takes 2\u20136 months, with recognizable step-changes after milestones such as the first 10 merged PRs or first successful release contribution. Nonlinearities surface as tacit-knowledge thresholds\u2014below a critical interaction density, learning stagnates; above it, understanding accelerates. Transactive memory cues (who knows what) crystallize as contributors ask, review, and co-edit, which reduces misrouting of questions and rework. Governance practices (required design docs, ADRs, review templates) boost externalization quality, lowering knowledge leakage and speeding convergence on shared standards. This process transforms engaged newcomers into contributors who hold robust, project-specific knowledge and can reason about socio-technical trade-offs, thereby preparing them for higher-throughput, higher-autonomy work in the next stage.",
+        "theories_used": [
+          "Nonaka's SECI Model",
+          "A Dynamic Theory of Organizational Knowledge Creation",
+          "Absorptive Capacity",
+          "Routines and Transactive Memory Systems"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Task-Technology Fit and Tooling Mastery",
+            "connection_type": "feeds_into",
+            "description": "Knowledgeable contributors who are ready to appropriate tools and increase throughput."
+          },
+          {
+            "target_cluster": "Succession, Mentorship Capacity, and Institutional Memory",
+            "connection_type": "receives_from",
+            "description": "Availability of high-quality documentation and mentors increases internalization rates (feedback)."
+          }
+        ]
+      },
+      {
+        "name": "Task-Technology Fit and Tooling Mastery",
+        "narrative": "Contributors with growing domain knowledge advance as their tasks align with their skills and the project\u2019s toolchain. The transition to productive contributors depends on task-technology fit: when issues match skill profiles and CI/CD, linters, and review tools are appropriated effectively, throughput per person increases. Adaptive structuration explains how contributors appropriate tools and rules-in-use; positive appropriation (e.g., pre-commit hooks, test scaffolds) reduces cognitive load, shortens cycle time, and stabilizes quality. A reinforcing loop develops when improved tooling reduces build/test friction, freeing time to invest back into further automation. A balancing loop appears with skill-biased technical change: if the toolchain modernizes (e.g., containerized builds, complex monorepos) faster than user upskilling, contributors without prior exposure slow down or stall, lowering progression rates. Nonlinear learning curves are common: below a threshold of successful end-to-end build cycles (e.g., 5\u201310), confidence and velocity remain low; once past it, throughput rises steeply. Governance decisions about tool adoption and deprecation gates impose delays (evaluation, consensus, migration) that can temporarily suppress throughput while enabling longer-run gains. Diversity in cognitive styles and backgrounds tends to increase the chance that someone finds a fit to novel tools or tasks, insulating the system against single-skill bottlenecks. This process converts knowledgeable contributors into productive contributors able to deliver sustained, quality output at shorter cadences, contingent on alignment between tasks, tools, and skills.",
+        "theories_used": [
+          "Task-Technology Fit (TTF)",
+          "Adaptive Structuration Theory",
+          "Skill-Biased Technical Change",
+          "Diversity Trumps Ability"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Integration into Routines and Transactive Memory",
+            "connection_type": "feeds_into",
+            "description": "Productive contributors ready to be entrusted with regular review and ownership routines."
+          }
+        ]
+      },
+      {
+        "name": "Integration into Routines and Transactive Memory",
+        "narrative": "Productive contributors become woven into stable work routines and the project\u2019s transactive memory. Entrustment to routine roles (code review, release chores, maintenance of modules) accelerates as reliability, responsiveness, and collaborative signals accumulate. A reinforcing loop strengthens routines: as more contributors are entrusted, review queues shrink and cycle time drops, which raises perceived reliability and makes further entrustment easier. A counter-loop appears when ownership becomes fragmented or over-concentrated: too many owners cause coordination overhead and conflict; too few create bottlenecks and burnout risk. Trust and role clarity rise with repeated successful interactions, but typically require 3\u20139 months of consistent delivery. Transactive memory consolidates around module boundaries and practice communities; as knowledge of \u201cwho knows what\u201d spreads, misrouted requests decline and cross-module changes route to the right reviewers faster. Routines adapt via incremental change punctuated by occasional resets (e.g., adopting a new branching model). Governance artifacts (CODEOWNERS, review SLAs, release calendars) stabilize expectations but require periodic recalibration to prevent drift. Nonlinearities are evident at the \u201cbus factor\u201d: when a module\u2019s bus factor is below 2, entrustment to new owners is prioritized; once it rises above 3, marginal returns on adding owners diminish and coordination costs grow. This process transforms productive contributors into trusted module owners with predictable responsibilities embedded in project routines.",
+        "theories_used": [
+          "Stability and Change in Organizational Routines",
+          "Routines and Transactive Memory Systems",
+          "Adaptive Structuration Theory",
+          "Punctuated Equilibrium Theory in IS Research"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Reputation and Social Capital Accrual",
+            "connection_type": "feeds_into",
+            "description": "Trusted owners whose visible stewardship and cross-boundary interactions seed reputation and bridging ties."
+          },
+          {
+            "target_cluster": "Succession, Mentorship Capacity, and Institutional Memory",
+            "connection_type": "receives_from",
+            "description": "Mentoring and documented routines enable faster entrustment and healthier bus factors (feedback)."
+          }
+        ]
+      },
+      {
+        "name": "Reputation and Social Capital Accrual",
+        "narrative": "Trusted module owners accumulate reputation and bridging social capital as their contributions, reviews, and community service become visible signals of competence and commitment. Recognition flows from merged complex PRs, incident leadership, helpful reviews, talks, and cross-project collaborations. A reinforcing loop develops: higher reputation increases centrality in the network, creating more opportunities to lead and signal, which further lifts reputation. Bridging structural holes by connecting subcommunities or external ecosystems multiplies influence and information access, accelerating both technical and social impact. A balancing loop arises through reputation decay and audience fatigue: when activity dips or signals are crowded by many loud voices, recognition growth slows; over-claiming or low-quality visibility can even erode standing. Nonlinear threshold effects are common: visibility may remain low until a notable event (major release, keynote) crosses a salience threshold, after which recognition accelerates. Diversity in the visible set of leaders enhances group problem-solving and widens the contributor funnel by providing multiple identification points for newcomers, improving long-run inflows to the pipeline. Reputation not only feeds forward into governance selection but also feeds back to attraction\u2014external social proof raises the consideration inflow. This process transforms trusted owners into recognized leaders with broad influence and dense social ties, ready for governance roles.",
+        "theories_used": [
+          "Signaling Theory",
+          "Social Capital and Structural Holes",
+          "Diversity Trumps Ability",
+          "Diffusion of Innovations"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Governance Participation and Authority Accrual",
+            "connection_type": "feeds_into",
+            "description": "Recognized leaders who are candidates for maintainer/committer roles."
+          },
+          {
+            "target_cluster": "Attraction and Enrollment into the Periphery",
+            "connection_type": "feedback_loop",
+            "description": "External reputation increases visibility and perceived project quality, boosting newcomer consideration."
+          }
+        ]
+      },
+      {
+        "name": "Governance Participation and Authority Accrual",
+        "narrative": "Recognized leaders transition into formal authority through processes such as nomination, voting, and appointment to maintainer, committer, or steering roles. The advancement rate grows with demonstrated stewardship, cross-module coordination skill, and peer trust, and is bounded by governance rules-in-use and multi-level structures (module, project, foundation). Adaptive structuration explains how participants appropriate governance tools (voting platforms, RFC processes, escalation paths); good appropriations increase fairness and throughput of decisions. A reinforcing loop operates when increased governance capacity distributes decision load, shortens policy cycle time, and improves contributor experience, which further legitimizes the process and encourages more leaders to step up. A balancing loop reflects coordination overhead: as the number of decision-makers rises beyond a quorum-efficient zone, consensus costs and policy contention grow, slowing decisions and dampening the rate of new appointments. Panarchy dynamics matter: local module councils and project-wide bodies must align; misalignment induces delays and policy resistance. Clear membership criteria, transparent monitoring, graduated sanctions, and accessible conflict resolution improve perceived legitimacy, reducing turnover and speeding accession. Nonlinearities appear at quorum thresholds (e.g., minimum active maintainers per module) and in legitimacy perception; below a legitimacy threshold, contention spikes and appointment rates fall. This process transforms recognized leaders into governance actors with formal authority and responsibilities.",
+        "theories_used": [
+          "Adaptive Structuration Theory",
+          "Panarchy Theory",
+          "The Coevolution of New Organizational Forms"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Ostrom's Design Principles for Commons Governance",
+            "rationale": "Explains legitimacy, boundary rules, monitoring, sanctions, and conflict resolution sustaining open-source governance."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Core Developer Performance and Sustainability",
+            "connection_type": "feeds_into",
+            "description": "Governance actors who now face core responsibilities and workload."
+          },
+          {
+            "target_cluster": "Succession, Mentorship Capacity, and Institutional Memory",
+            "connection_type": "receives_from",
+            "description": "Mentoring/governance capacity and institutional memory reduce coordination costs and improve appointment throughput (feedback)."
+          }
+        ]
+      },
+      {
+        "name": "Core Developer Performance and Sustainability",
+        "narrative": "Governance actors stabilize into durable core developers as they balance sustained workload with resources and supports. The stabilization rate rises when demands (incident load, review queues, policy work, release pressure) are countered by resources (automation, competent co-owners, psychological safety, supportive norms, time buffers). A reinforcing loop supports sustainability when investments in automation and delegation reduce routine burden, freeing time for strategic work that further reduces future emergencies. A balancing loop can trigger burnout: during punctuated periods (feature freezes, security incidents), demands spike, sleep debt accumulates, and recovery lags; if average demand exceeds resources for several cycles, attrition increases and stabilization falls. Delays are multi-scale: recovery from intense releases may require weeks; trust in delegation takes months; automation payoffs often lag by quarters. Nonlinear effects include tipping points where queue length or incident frequency crosses a threshold, after which perceived overload escalates sharply, eroding motivation and increasing exit risk. Diversity in the core team buffers shocks by distributing perspective and availability, while clear governance procedures reduce decision thrash. This process transforms governance actors into stable core developers (or, if unmanaged, drains them to inactivity), with sustainability hinging on proactive resource building and cadence design.",
+        "theories_used": [
+          "Job Demands-Resources (JD-R) Model",
+          "Punctuated Equilibrium Theory in IS Research",
+          "Diversity Trumps Ability"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Self-Determination Theory (SDT)",
+            "rationale": "Supports mechanisms for intrinsic motivation and resilience (autonomy, competence, relatedness) that moderate burnout risk."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Succession, Mentorship Capacity, and Institutional Memory",
+            "connection_type": "feeds_into",
+            "description": "Stable core developers who can invest time into mentoring, documentation, and governance capacity-building."
+          }
+        ]
+      },
+      {
+        "name": "Succession, Mentorship Capacity, and Institutional Memory",
+        "narrative": "Stable core developers convert a portion of their time and expertise into mentoring hours, onboarding materials, architectural decision records, and governance playbooks. This stock of mentoring and governance capacity grows with deliberate allocation (e.g., office hours, review pairing, onboarding cohorts) and with codification of tacit knowledge into durable artifacts. A reinforcing loop operates when higher capacity accelerates newcomer progression and reduces review queues upstream, easing core workload and enabling further investment in mentoring. A balancing loop arises because capacity is finite and drains through time scarcity, turnover, and obsolescence of artifacts as technology shifts; without renewal, mentoring capacity decays and onboarding quality deteriorates. Panarchy is central: capacity at module level scales to project and ecosystem levels through cross-project mentoring and foundation-run programs; shocks at higher scales (ecosystem deprecations, CVEs) can rapidly consume capacity. Coevolution appears as governance structures adapt to maintain a healthy pipeline (e.g., rotating maintainerships, emeritus policies). Nonlinearities include critical mass effects: below a threshold of mentors per newcomer (e.g., 1:8), response times and perceived support drop steeply; above it, progression accelerates. Hidden order emerges when simple local rules (tagging issues, pairing reviews) generate robust global onboarding patterns. This process transforms stable core developer availability into a durable stock of mentoring and governance capacity that feeds back to improve attraction, socialization, knowledge absorption, entrustment, and governance throughput.",
+        "theories_used": [
+          "Panarchy Theory",
+          "The Coevolution of New Organizational Forms",
+          "Hidden Order: How Adaptation Builds Complexity"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Ostrom's Design Principles for Commons Governance",
+            "rationale": "Guides investment rules and shared responsibilities for sustaining common mentoring resources."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Attraction and Enrollment into the Periphery",
+            "connection_type": "feedback_loop",
+            "description": "Improved first-response and visible mentoring raises conversion from consideration to periphery."
+          },
+          {
+            "target_cluster": "Peripheral Socialization and Legitimate Participation",
+            "connection_type": "feedback_loop",
+            "description": "Mentor hours and onboarding kits increase progression and reduce attrition."
+          },
+          {
+            "target_cluster": "Knowledge Absorption and Creation Cycle",
+            "connection_type": "feedback_loop",
+            "description": "Better documentation and review guidance accelerate internalization."
+          },
+          {
+            "target_cluster": "Integration into Routines and Transactive Memory",
+            "connection_type": "feedback_loop",
+            "description": "Entrustment policies and documented routines raise safe delegation and bus factors."
+          },
+          {
+            "target_cluster": "Governance Participation and Authority Accrual",
+            "connection_type": "feedback_loop",
+            "description": "Clear criteria, playbooks, and mentorship increase appointment throughput and legitimacy."
+          },
+          {
+            "target_cluster": "Core Developer Performance and Sustainability",
+            "connection_type": "feedback_loop",
+            "description": "Mentoring and institutional memory reduce demands on core workload, mitigating burnout."
+          }
+        ]
+      }
+    ],
+    "overall_narrative": "The model organizes the career trajectory of open-source developers as an aging chain of people stocks linked by flows, with governance and capacity stocks providing critical feedback. Prospective contributors become peripheral participants as external reputation and signaling overcome uncertainty, moderated by onboarding capacity and first-response delays. Peripheral members legitimize participation through small tasks within communities of practice; progression is governed by the mentor-to-newcomer ratio and JD-R balance. Engaged newcomers convert effort into project-specific knowledge via SECI cycles and absorptive capacity, then capitalizing on task-technology fit and adaptive structuration to increase throughput. Productive contributors integrate into routines and the community\u2019s transactive memory, crossing thresholds that enable entrustment as module owners. Their sustained, visible stewardship accumulates reputation and bridging social capital, producing recognized leaders. Governance bodies (modules, project, foundation) then formalize authority, with adaptive structuration, panarchy alignment, and commons governance principles shaping appointment throughput and legitimacy. Core developers stabilize or exit based on JD-R dynamics and punctuated workloads. Finally, stable core developers convert time and tacit knowledge into mentoring and governance capacity\u2014an enabling stock that feeds back to every upstream stage, improving attraction, socialization, knowledge absorption, entrustment, governance throughput, and core sustainability. Nonlinear thresholds (review backlog, bus factor, quorum), multiscale delays (learning cycles, release cadences), and competing reinforcing/balancing loops (visibility-driven growth vs. capacity-driven limits) generate the observed dynamics of movement from periphery to core."
+  }
+}

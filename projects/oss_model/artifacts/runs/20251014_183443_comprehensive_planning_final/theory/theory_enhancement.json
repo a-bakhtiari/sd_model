@@ -1,0 +1,2025 @@
+{
+  "processes": [
+    {
+      "process_name": "Attraction and Conversion to Engagement",
+      "input_stock": "Prospective Observers",
+      "output_stock": "Engaged Newcomers",
+      "variables": [
+        {
+          "name": "Prospective Observers",
+          "type": "Stock"
+        },
+        {
+          "name": "Engaged Newcomers",
+          "type": "Stock"
+        },
+        {
+          "name": "General Developer Pool",
+          "type": "Cloud"
+        },
+        {
+          "name": "Interest Fade Sink",
+          "type": "Cloud"
+        },
+        {
+          "name": "Awareness Inflow",
+          "type": "Flow"
+        },
+        {
+          "name": "Prospective Churn",
+          "type": "Flow"
+        },
+        {
+          "name": "Conversion to Engagement",
+          "type": "Flow"
+        },
+        {
+          "name": "Perceived Legitimacy Signal",
+          "type": "Stock"
+        },
+        {
+          "name": "Legitimacy Accrual",
+          "type": "Flow"
+        },
+        {
+          "name": "Legitimacy Decay",
+          "type": "Flow"
+        },
+        {
+          "name": "Awareness Momentum",
+          "type": "Stock"
+        },
+        {
+          "name": "Endorsement Assimilation",
+          "type": "Flow"
+        },
+        {
+          "name": "Momentum Decay",
+          "type": "Flow"
+        },
+        {
+          "name": "Project Visibility Signal",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Endorsements",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Stars and Badges Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Release Stability Signal",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Responsiveness Signal",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Perceived Benefits",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Perceived Costs",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Conversion Attractiveness",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Conversion Fraction",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Anticipated Response Time",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Response Time Threshold",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Identity Cues Strength",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Diversity of Entry Points",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Conversion Elasticity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Social Proof Generation Rate",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Awareness Surge Delay",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "General Developer Pool",
+          "to": "Awareness Inflow",
+          "relationship": "positive"
+        },
+        {
+          "from": "Awareness Inflow",
+          "to": "Prospective Observers",
+          "relationship": "positive"
+        },
+        {
+          "from": "Prospective Observers",
+          "to": "Prospective Churn",
+          "relationship": "positive"
+        },
+        {
+          "from": "Prospective Churn",
+          "to": "Interest Fade Sink",
+          "relationship": "positive"
+        },
+        {
+          "from": "Prospective Observers",
+          "to": "Conversion to Engagement",
+          "relationship": "positive"
+        },
+        {
+          "from": "Conversion to Engagement",
+          "to": "Engaged Newcomers",
+          "relationship": "positive"
+        },
+        {
+          "from": "Endorsements",
+          "to": "Project Visibility Signal",
+          "relationship": "positive"
+        },
+        {
+          "from": "Stars and Badges Level",
+          "to": "Project Visibility Signal",
+          "relationship": "positive"
+        },
+        {
+          "from": "Perceived Legitimacy Signal",
+          "to": "Project Visibility Signal",
+          "relationship": "positive"
+        },
+        {
+          "from": "Awareness Momentum",
+          "to": "Project Visibility Signal",
+          "relationship": "positive"
+        },
+        {
+          "from": "Project Visibility Signal",
+          "to": "Awareness Inflow",
+          "relationship": "positive"
+        },
+        {
+          "from": "Engaged Newcomers",
+          "to": "Social Proof Generation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Social Proof Generation Rate",
+          "to": "Legitimacy Accrual",
+          "relationship": "positive"
+        },
+        {
+          "from": "Legitimacy Accrual",
+          "to": "Perceived Legitimacy Signal",
+          "relationship": "positive"
+        },
+        {
+          "from": "Legitimacy Decay",
+          "to": "Perceived Legitimacy Signal",
+          "relationship": "negative"
+        },
+        {
+          "from": "Awareness Surge Delay",
+          "to": "Endorsement Assimilation",
+          "relationship": "negative"
+        },
+        {
+          "from": "Endorsement Assimilation",
+          "to": "Awareness Momentum",
+          "relationship": "positive"
+        },
+        {
+          "from": "Momentum Decay",
+          "to": "Awareness Momentum",
+          "relationship": "negative"
+        },
+        {
+          "from": "Release Stability Signal",
+          "to": "Perceived Benefits",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Responsiveness Signal",
+          "to": "Perceived Benefits",
+          "relationship": "positive"
+        },
+        {
+          "from": "Perceived Legitimacy Signal",
+          "to": "Perceived Benefits",
+          "relationship": "positive"
+        },
+        {
+          "from": "Perceived Benefits",
+          "to": "Conversion Attractiveness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Perceived Costs",
+          "to": "Conversion Attractiveness",
+          "relationship": "negative"
+        },
+        {
+          "from": "Identity Cues Strength",
+          "to": "Conversion Fraction",
+          "relationship": "positive"
+        },
+        {
+          "from": "Diversity of Entry Points",
+          "to": "Conversion Elasticity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Conversion Elasticity",
+          "to": "Conversion Fraction",
+          "relationship": "positive"
+        },
+        {
+          "from": "Conversion Attractiveness",
+          "to": "Conversion to Engagement",
+          "relationship": "positive"
+        },
+        {
+          "from": "Anticipated Response Time",
+          "to": "Conversion Attractiveness",
+          "relationship": "negative"
+        },
+        {
+          "from": "Response Time Threshold",
+          "to": "Conversion Attractiveness",
+          "relationship": "positive"
+        }
+      ]
+    },
+    {
+      "process_name": "Legitimate Peripheral Socialization",
+      "input_stock": "Engaged Newcomers",
+      "output_stock": "Peripheral Participants",
+      "variables": [
+        {
+          "name": "Engaged Newcomers",
+          "type": "Stock"
+        },
+        {
+          "name": "Peripheral Participants",
+          "type": "Stock"
+        },
+        {
+          "name": "Newcomer Inactivity Sink",
+          "type": "Cloud"
+        },
+        {
+          "name": "Progression to Peripheral Participation",
+          "type": "Flow"
+        },
+        {
+          "name": "Reversion to Inactivity",
+          "type": "Flow"
+        },
+        {
+          "name": "Unanswered Questions Backlog",
+          "type": "Stock"
+        },
+        {
+          "name": "Incoming Questions",
+          "type": "Flow"
+        },
+        {
+          "name": "Question Response Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Socialization Bandwidth",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Mentoring Capacity Proxy",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Legitimate Opportunity Availability",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Perceived Risk of First Actions",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Peer Help Density",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Documentation Clarity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Time to First Response",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Response Threshold",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Micro-Actions Success Rate",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Newcomer Self-Efficacy",
+          "type": "Stock"
+        },
+        {
+          "name": "Self-Efficacy Gains",
+          "type": "Flow"
+        },
+        {
+          "name": "Self-Efficacy Decay",
+          "type": "Flow"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Engaged Newcomers",
+          "to": "Incoming Questions",
+          "relationship": "positive"
+        },
+        {
+          "from": "Incoming Questions",
+          "to": "Unanswered Questions Backlog",
+          "relationship": "positive"
+        },
+        {
+          "from": "Question Response Rate",
+          "to": "Unanswered Questions Backlog",
+          "relationship": "negative"
+        },
+        {
+          "from": "Mentoring Capacity Proxy",
+          "to": "Socialization Bandwidth",
+          "relationship": "positive"
+        },
+        {
+          "from": "Socialization Bandwidth",
+          "to": "Question Response Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Unanswered Questions Backlog",
+          "to": "Time to First Response",
+          "relationship": "positive"
+        },
+        {
+          "from": "Time to First Response",
+          "to": "Progression to Peripheral Participation",
+          "relationship": "negative"
+        },
+        {
+          "from": "Documentation Clarity",
+          "to": "Perceived Risk of First Actions",
+          "relationship": "negative"
+        },
+        {
+          "from": "Peer Help Density",
+          "to": "Perceived Risk of First Actions",
+          "relationship": "negative"
+        },
+        {
+          "from": "Peripheral Participants",
+          "to": "Peer Help Density",
+          "relationship": "positive"
+        },
+        {
+          "from": "Legitimate Opportunity Availability",
+          "to": "Progression to Peripheral Participation",
+          "relationship": "positive"
+        },
+        {
+          "from": "Perceived Risk of First Actions",
+          "to": "Progression to Peripheral Participation",
+          "relationship": "negative"
+        },
+        {
+          "from": "Newcomer Self-Efficacy",
+          "to": "Progression to Peripheral Participation",
+          "relationship": "positive"
+        },
+        {
+          "from": "Documentation Clarity",
+          "to": "Micro-Actions Success Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Question Response Rate",
+          "to": "Micro-Actions Success Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Micro-Actions Success Rate",
+          "to": "Self-Efficacy Gains",
+          "relationship": "positive"
+        },
+        {
+          "from": "Self-Efficacy Gains",
+          "to": "Newcomer Self-Efficacy",
+          "relationship": "positive"
+        },
+        {
+          "from": "Self-Efficacy Decay",
+          "to": "Newcomer Self-Efficacy",
+          "relationship": "negative"
+        },
+        {
+          "from": "Engaged Newcomers",
+          "to": "Progression to Peripheral Participation",
+          "relationship": "positive"
+        },
+        {
+          "from": "Time to First Response",
+          "to": "Reversion to Inactivity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Response Threshold",
+          "to": "Reversion to Inactivity",
+          "relationship": "negative"
+        },
+        {
+          "from": "Reversion to Inactivity",
+          "to": "Newcomer Inactivity Sink",
+          "relationship": "positive"
+        }
+      ]
+    },
+    {
+      "process_name": "Task-Fit Onboarding and First Contribution",
+      "input_stock": "Peripheral Participants",
+      "output_stock": "Active PR Submitters",
+      "variables": [
+        {
+          "name": "Peripheral Participants",
+          "type": "Stock"
+        },
+        {
+          "name": "Active PR Submitters",
+          "type": "Stock"
+        },
+        {
+          "name": "Abandonment Sink",
+          "type": "Cloud"
+        },
+        {
+          "name": "First PR Completion Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "First PR Abandonment Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "First PR Review Queue",
+          "type": "Stock"
+        },
+        {
+          "name": "First PR Submission Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "First PR Reviews Completed",
+          "type": "Flow"
+        },
+        {
+          "name": "Review Throughput Proxy",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Review Latency",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Review Latency Threshold",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Task-Technology Fit",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Setup Friction Index",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Template Quality",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Appropriation Consistency",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Acceptance Probability",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "CI Alignment Factor",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Local Environment Setup Time",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Onboarding Clarity",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Peripheral Participants",
+          "to": "First PR Submission Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "First PR Submission Rate",
+          "to": "First PR Review Queue",
+          "relationship": "positive"
+        },
+        {
+          "from": "First PR Reviews Completed",
+          "to": "First PR Review Queue",
+          "relationship": "negative"
+        },
+        {
+          "from": "Review Throughput Proxy",
+          "to": "First PR Reviews Completed",
+          "relationship": "positive"
+        },
+        {
+          "from": "First PR Review Queue",
+          "to": "Review Latency",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review Latency",
+          "to": "First PR Submission Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Review Latency",
+          "to": "First PR Abandonment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review Latency Threshold",
+          "to": "First PR Submission Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review Latency Threshold",
+          "to": "First PR Abandonment Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Task-Technology Fit",
+          "to": "First PR Completion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Setup Friction Index",
+          "to": "First PR Completion Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Template Quality",
+          "to": "Appropriation Consistency",
+          "relationship": "positive"
+        },
+        {
+          "from": "Appropriation Consistency",
+          "to": "Acceptance Probability",
+          "relationship": "positive"
+        },
+        {
+          "from": "Acceptance Probability",
+          "to": "First PR Completion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "CI Alignment Factor",
+          "to": "Task-Technology Fit",
+          "relationship": "positive"
+        },
+        {
+          "from": "Local Environment Setup Time",
+          "to": "Setup Friction Index",
+          "relationship": "positive"
+        },
+        {
+          "from": "Onboarding Clarity",
+          "to": "Setup Friction Index",
+          "relationship": "negative"
+        },
+        {
+          "from": "Peripheral Participants",
+          "to": "First PR Completion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "First PR Completion Rate",
+          "to": "Active PR Submitters",
+          "relationship": "positive"
+        },
+        {
+          "from": "First PR Abandonment Rate",
+          "to": "Abandonment Sink",
+          "relationship": "positive"
+        }
+      ]
+    },
+    {
+      "process_name": "Knowledge Internalization and Architectural Understanding",
+      "input_stock": "Active PR Submitters",
+      "output_stock": "Competent Contributors",
+      "variables": [
+        {
+          "name": "Active PR Submitters",
+          "type": "Stock"
+        },
+        {
+          "name": "Competent Contributors",
+          "type": "Stock"
+        },
+        {
+          "name": "Architectural Understanding",
+          "type": "Stock"
+        },
+        {
+          "name": "Learning Episode Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Knowledge Decay",
+          "type": "Flow"
+        },
+        {
+          "name": "Competence Transition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Contribution Frequency",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Cycle Time",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Review Feedback Density",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Prior Related Knowledge Index",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Absorptive Capacity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Codebase Complexity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Codebase Volatility",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Learning Threshold",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Contribution Diversity",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Active PR Submitters",
+          "to": "Learning Episode Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review Feedback Density",
+          "to": "Learning Episode Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Prior Related Knowledge Index",
+          "to": "Absorptive Capacity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Absorptive Capacity",
+          "to": "Learning Episode Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Learning Episode Rate",
+          "to": "Architectural Understanding",
+          "relationship": "positive"
+        },
+        {
+          "from": "Knowledge Decay",
+          "to": "Architectural Understanding",
+          "relationship": "negative"
+        },
+        {
+          "from": "Architectural Understanding",
+          "to": "Cycle Time",
+          "relationship": "negative"
+        },
+        {
+          "from": "Cycle Time",
+          "to": "Contribution Frequency",
+          "relationship": "negative"
+        },
+        {
+          "from": "Contribution Frequency",
+          "to": "Learning Episode Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Architectural Understanding",
+          "to": "Competence Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Codebase Complexity",
+          "to": "Competence Transition Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Codebase Volatility",
+          "to": "Competence Transition Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Review Feedback Density",
+          "to": "Competence Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Learning Threshold",
+          "to": "Competence Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Contribution Diversity",
+          "to": "Competence Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Active PR Submitters",
+          "to": "Competence Transition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Competence Transition Rate",
+          "to": "Competent Contributors",
+          "relationship": "positive"
+        }
+      ]
+    },
+    {
+      "process_name": "Reputation Accumulation and Social Capital",
+      "input_stock": "Competent Contributors",
+      "output_stock": "Recognized Contributors",
+      "variables": [
+        {
+          "name": "Competent Contributors",
+          "type": "Stock"
+        },
+        {
+          "name": "Recognized Contributors",
+          "type": "Stock"
+        },
+        {
+          "name": "Visible Reputation",
+          "type": "Stock"
+        },
+        {
+          "name": "Trust Accrual Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Trust Decay",
+          "type": "Flow"
+        },
+        {
+          "name": "Brokerage Position Strength",
+          "type": "Stock"
+        },
+        {
+          "name": "Tie Formation Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Tie Decay",
+          "type": "Flow"
+        },
+        {
+          "name": "Recognition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Recognition Bandwidth",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Signal Quality Index",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Recognition Threshold",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Signal Noise Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Brokerage Advantage Factor",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Competent Contributors",
+          "to": "Trust Accrual Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Signal Quality Index",
+          "to": "Trust Accrual Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Visible Reputation",
+          "to": "Trust Accrual Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Trust Accrual Rate",
+          "to": "Visible Reputation",
+          "relationship": "positive"
+        },
+        {
+          "from": "Trust Decay",
+          "to": "Visible Reputation",
+          "relationship": "negative"
+        },
+        {
+          "from": "Tie Formation Rate",
+          "to": "Brokerage Position Strength",
+          "relationship": "positive"
+        },
+        {
+          "from": "Tie Decay",
+          "to": "Brokerage Position Strength",
+          "relationship": "negative"
+        },
+        {
+          "from": "Brokerage Advantage Factor",
+          "to": "Tie Formation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Visible Reputation",
+          "to": "Recognition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Recognition Bandwidth",
+          "to": "Recognition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Recognition Threshold",
+          "to": "Recognition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Signal Noise Level",
+          "to": "Recognition Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Brokerage Position Strength",
+          "to": "Recognition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Competent Contributors",
+          "to": "Recognition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Recognition Rate",
+          "to": "Recognized Contributors",
+          "relationship": "positive"
+        }
+      ]
+    },
+    {
+      "process_name": "Role Expansion into Governance Work",
+      "input_stock": "Recognized Contributors",
+      "output_stock": "Maintainer Candidates",
+      "variables": [
+        {
+          "name": "Recognized Contributors",
+          "type": "Stock"
+        },
+        {
+          "name": "Maintainer Candidates",
+          "type": "Stock"
+        },
+        {
+          "name": "Governance Contributors",
+          "type": "Stock"
+        },
+        {
+          "name": "Start Governance Work Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Candidacy Nomination Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Candidacy Reset Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Vetting Capacity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Rule Clarity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Appropriation Effectiveness",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Reliability Index",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Breach Probability",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Policy Violation Event Rate",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Crisis Intervention Events",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Recognized Contributors",
+          "to": "Start Governance Work Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Start Governance Work Rate",
+          "to": "Governance Contributors",
+          "relationship": "positive"
+        },
+        {
+          "from": "Rule Clarity",
+          "to": "Appropriation Effectiveness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Appropriation Effectiveness",
+          "to": "Governance Reliability Index",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Reliability Index",
+          "to": "Candidacy Nomination Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Vetting Capacity",
+          "to": "Candidacy Nomination Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Contributors",
+          "to": "Candidacy Nomination Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Candidacy Nomination Rate",
+          "to": "Maintainer Candidates",
+          "relationship": "positive"
+        },
+        {
+          "from": "Policy Violation Event Rate",
+          "to": "Breach Probability",
+          "relationship": "positive"
+        },
+        {
+          "from": "Breach Probability",
+          "to": "Candidacy Reset Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Candidacy Reset Rate",
+          "to": "Maintainer Candidates",
+          "relationship": "negative"
+        },
+        {
+          "from": "Crisis Intervention Events",
+          "to": "Governance Reliability Index",
+          "relationship": "positive"
+        }
+      ]
+    },
+    {
+      "process_name": "Maintainer Selection and Gatekeeping",
+      "input_stock": "Maintainer Candidates",
+      "output_stock": "Maintainers/Core Developers",
+      "variables": [
+        {
+          "name": "Maintainer Candidates",
+          "type": "Stock"
+        },
+        {
+          "name": "Maintainers/Core Developers",
+          "type": "Stock"
+        },
+        {
+          "name": "Selection Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Candidate Attrition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Criteria Stringency",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Coordination Overhead",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Team Size Effect",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Incident Shock Severity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Threshold for Selection",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Reliability Signal Strength",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Responsiveness Signal",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Conflict Resolution Skill Signal",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Review Quality Signal",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Voting/Consensus Delay",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Time to Selection",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Attrition Sink",
+          "type": "Cloud"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Maintainer Candidates",
+          "to": "Selection Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Reliability Signal Strength",
+          "to": "Selection Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Responsiveness Signal",
+          "to": "Selection Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Conflict Resolution Skill Signal",
+          "to": "Selection Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review Quality Signal",
+          "to": "Selection Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Criteria Stringency",
+          "to": "Selection Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Coordination Overhead",
+          "to": "Criteria Stringency",
+          "relationship": "positive"
+        },
+        {
+          "from": "Team Size Effect",
+          "to": "Coordination Overhead",
+          "relationship": "positive"
+        },
+        {
+          "from": "Incident Shock Severity",
+          "to": "Criteria Stringency",
+          "relationship": "positive"
+        },
+        {
+          "from": "Voting/Consensus Delay",
+          "to": "Selection Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Selection Rate",
+          "to": "Maintainers/Core Developers",
+          "relationship": "positive"
+        },
+        {
+          "from": "Coordination Overhead",
+          "to": "Time to Selection",
+          "relationship": "positive"
+        },
+        {
+          "from": "Time to Selection",
+          "to": "Candidate Attrition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Candidate Attrition Rate",
+          "to": "Attrition Sink",
+          "relationship": "positive"
+        }
+      ]
+    },
+    {
+      "process_name": "Maintainer Workload, Support, and Retention",
+      "input_stock": "Maintainers/Core Developers",
+      "output_stock": "Sustainable Maintainers",
+      "variables": [
+        {
+          "name": "Maintainers/Core Developers",
+          "type": "Stock"
+        },
+        {
+          "name": "Sustainable Maintainers",
+          "type": "Stock"
+        },
+        {
+          "name": "Attrition Sink",
+          "type": "Cloud"
+        },
+        {
+          "name": "On Hiatus Maintainers",
+          "type": "Stock"
+        },
+        {
+          "name": "Maintainer Stress",
+          "type": "Stock"
+        },
+        {
+          "name": "Stress Accumulation Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Recovery Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Hiatus Entry Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Return from Hiatus Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Permanent Attrition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Sustainment Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Sustainability Loss Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Automation Level",
+          "type": "Stock"
+        },
+        {
+          "name": "Automation Investment Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Automation Decay Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Review Queue",
+          "type": "Stock"
+        },
+        {
+          "name": "PR Arrival Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "PR Processing Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Reviewer Pool Depth",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Per-Maintainer Capacity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "JD-R Demand Index",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "JD-R Resource Index",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Demand-to-Resource Ratio",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Burnout Tipping Threshold",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Psychological Safety Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Incident Load",
+          "type": "Stock"
+        },
+        {
+          "name": "Incident Arrival Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Incident Resolution Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Coordination Overhead",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "PR Latency",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Mentoring Time Allocation",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "PR Arrival Rate",
+          "to": "Review Queue",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Processing Rate",
+          "to": "Review Queue",
+          "relationship": "negative"
+        },
+        {
+          "from": "Sustainable Maintainers",
+          "to": "PR Processing Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Automation Level",
+          "to": "PR Processing Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Reviewer Pool Depth",
+          "to": "PR Processing Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review Queue",
+          "to": "PR Latency",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Latency",
+          "to": "Stress Accumulation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Incident Load",
+          "to": "Stress Accumulation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "JD-R Demand Index",
+          "to": "Stress Accumulation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Psychological Safety Level",
+          "to": "Stress Accumulation Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Stress Accumulation Rate",
+          "to": "Maintainer Stress",
+          "relationship": "positive"
+        },
+        {
+          "from": "Recovery Rate",
+          "to": "Maintainer Stress",
+          "relationship": "negative"
+        },
+        {
+          "from": "Maintainer Stress",
+          "to": "Hiatus Entry Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Maintainer Stress",
+          "to": "Permanent Attrition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "JD-R Resource Index",
+          "to": "Sustainment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "JD-R Demand Index",
+          "to": "Sustainment Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Demand-to-Resource Ratio",
+          "to": "Recovery Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Burnout Tipping Threshold",
+          "to": "Permanent Attrition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Maintainers/Core Developers",
+          "to": "Sustainment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Sustainment Rate",
+          "to": "Sustainable Maintainers",
+          "relationship": "positive"
+        },
+        {
+          "from": "Sustainability Loss Rate",
+          "to": "Sustainable Maintainers",
+          "relationship": "negative"
+        },
+        {
+          "from": "Hiatus Entry Rate",
+          "to": "On Hiatus Maintainers",
+          "relationship": "positive"
+        },
+        {
+          "from": "Return from Hiatus Rate",
+          "to": "On Hiatus Maintainers",
+          "relationship": "negative"
+        },
+        {
+          "from": "On Hiatus Maintainers",
+          "to": "Return from Hiatus Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Automation Investment Rate",
+          "to": "Automation Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Automation Decay Rate",
+          "to": "Automation Level",
+          "relationship": "negative"
+        },
+        {
+          "from": "Sustainable Maintainers",
+          "to": "Incident Resolution Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Automation Level",
+          "to": "Incident Resolution Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Incident Arrival Rate",
+          "to": "Incident Load",
+          "relationship": "positive"
+        },
+        {
+          "from": "Incident Resolution Rate",
+          "to": "Incident Load",
+          "relationship": "negative"
+        },
+        {
+          "from": "Coordination Overhead",
+          "to": "PR Processing Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Sustainable Maintainers",
+          "to": "Reviewer Pool Depth",
+          "relationship": "positive"
+        },
+        {
+          "from": "Sustainable Maintainers",
+          "to": "Mentoring Time Allocation",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentoring Time Allocation",
+          "to": "JD-R Resource Index",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Latency",
+          "to": "JD-R Demand Index",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review Queue",
+          "to": "JD-R Demand Index",
+          "relationship": "positive"
+        },
+        {
+          "from": "Permanent Attrition Rate",
+          "to": "Attrition Sink",
+          "relationship": "positive"
+        }
+      ]
+    },
+    {
+      "process_name": "Governance Capacity, Routine Evolution, and Project Reputation",
+      "input_stock": "Sustainable Maintainers",
+      "output_stock": "Governance Capacity",
+      "variables": [
+        {
+          "name": "Sustainable Maintainers",
+          "type": "Stock"
+        },
+        {
+          "name": "Governance Capacity",
+          "type": "Stock"
+        },
+        {
+          "name": "Capacity Loss Sink",
+          "type": "Cloud"
+        },
+        {
+          "name": "Project Reputation and Visibility",
+          "type": "Stock"
+        },
+        {
+          "name": "Routine Maturity",
+          "type": "Stock"
+        },
+        {
+          "name": "Governance Automation Level",
+          "type": "Stock"
+        },
+        {
+          "name": "Governance Decision Backlog",
+          "type": "Stock"
+        },
+        {
+          "name": "Capacity Formation Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Capacity Erosion Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Reputation Accrual Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Reputation Decay Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Routine Improvement Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Routine Drift Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "New Governance Issues Inflow",
+          "type": "Flow"
+        },
+        {
+          "name": "Decision Completion Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Release Cadence",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Cycle Time for Governance Decisions",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Decision Throughput",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Coordination Overhead",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Quality Signal",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Ecosystem Shock Incidence",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Upstream Change Load",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Security Incident Severity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Panarchy Coupling Strength",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Release Reliability",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Diffusion Delay",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Hidden Micro-Improvement Effect",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Automation Investment Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Governance Automation Decay Rate",
+          "type": "Flow"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Sustainable Maintainers",
+          "to": "Capacity Formation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Capacity Formation Rate",
+          "to": "Governance Capacity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Capacity Erosion Rate",
+          "to": "Governance Capacity",
+          "relationship": "negative"
+        },
+        {
+          "from": "Governance Decision Backlog",
+          "to": "Cycle Time for Governance Decisions",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Capacity",
+          "to": "Decision Throughput",
+          "relationship": "positive"
+        },
+        {
+          "from": "Routine Maturity",
+          "to": "Decision Throughput",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Automation Level",
+          "to": "Decision Throughput",
+          "relationship": "positive"
+        },
+        {
+          "from": "Decision Throughput",
+          "to": "Governance Decision Backlog",
+          "relationship": "negative"
+        },
+        {
+          "from": "New Governance Issues Inflow",
+          "to": "Governance Decision Backlog",
+          "relationship": "positive"
+        },
+        {
+          "from": "Ecosystem Shock Incidence",
+          "to": "New Governance Issues Inflow",
+          "relationship": "positive"
+        },
+        {
+          "from": "Upstream Change Load",
+          "to": "New Governance Issues Inflow",
+          "relationship": "positive"
+        },
+        {
+          "from": "Panarchy Coupling Strength",
+          "to": "Upstream Change Load",
+          "relationship": "positive"
+        },
+        {
+          "from": "Security Incident Severity",
+          "to": "New Governance Issues Inflow",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Decision Backlog",
+          "to": "Coordination Overhead",
+          "relationship": "positive"
+        },
+        {
+          "from": "Coordination Overhead",
+          "to": "Capacity Erosion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Capacity",
+          "to": "Release Cadence",
+          "relationship": "positive"
+        },
+        {
+          "from": "Release Cadence",
+          "to": "Reputation Accrual Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Quality Signal",
+          "to": "Reputation Accrual Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Release Reliability",
+          "to": "Reputation Accrual Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Reputation Accrual Rate",
+          "to": "Project Reputation and Visibility",
+          "relationship": "positive"
+        },
+        {
+          "from": "Reputation Decay Rate",
+          "to": "Project Reputation and Visibility",
+          "relationship": "negative"
+        },
+        {
+          "from": "Routine Improvement Rate",
+          "to": "Routine Maturity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Routine Drift Rate",
+          "to": "Routine Maturity",
+          "relationship": "negative"
+        },
+        {
+          "from": "Hidden Micro-Improvement Effect",
+          "to": "Routine Improvement Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Diffusion Delay",
+          "to": "Routine Improvement Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Governance Automation Investment Rate",
+          "to": "Governance Automation Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Automation Decay Rate",
+          "to": "Governance Automation Level",
+          "relationship": "negative"
+        }
+      ]
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Attraction and Conversion to Engagement",
+        "narrative": "A stock of Prospective Observers accumulates as developers become aware of the project through search, social mentions, and ecosystem channels. Their inflow is driven by project visibility, endorsements, and perceived legitimacy; their outflow is churn back to the general developer pool when interest fades. A conversion flow moves Prospective Observers into Engaged Newcomers when perceived benefits outweigh perceived costs. Benefits are signaled by stars, badges, release stability, and responsive governance; costs are estimated onboarding time, uncertainty about norms, and expected review latency. Conversion accelerates when the project\u2019s signals are credible (Signaling Theory) and when newcomers see peers like themselves participating (Communities of Practice identity cues, SCCT outcome expectations and self-efficacy). Diversity of entry points (documentation, design, localization, triage) increases the probability that at least one pathway fits a newcomer\u2019s skills and preferences, increasing conversion elasticity (Diversity Trumps Ability). Diffusion of Innovations governs the movement from awareness to interest; early adopters\u2019 endorsements propagate through networks, with a 2\u20138 week delay before visible surges. A reinforcing loop operates as Engaged Newcomers produce social proof (issues, discussions), which raises perceived legitimacy and boosts future inflow. A balancing loop emerges when anticipated response time exceeds a tacit threshold (e.g., PRs sit >7\u201310 days), depressing conversion. Nonlinearity appears as a social-proof threshold: below visible sustained activity, conversion remains low; once activity crosses a perceptual threshold, conversion rises sharply. Time-to-conversion typically ranges from days to a few weeks; spikes occur after major releases or positive press with a 1\u20132 week lag.",
+        "theories_used": [
+          "Diffusion of Innovations",
+          "Signaling Theory",
+          "Social Cognitive Career Theory (SCCT)",
+          "Communities of Practice (Wenger)",
+          "Communities of Practice",
+          "Diversity Trumps Ability"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Legitimate Peripheral Socialization",
+            "connection_type": "feeds_into",
+            "description": "Engaged Newcomers flow into the peripheral socialization stage."
+          },
+          {
+            "target_cluster": "Governance Capacity, Routine Evolution, and Project Reputation",
+            "connection_type": "feedback_loop",
+            "description": "Project reputation and release credibility increase the arrival rate of Prospective Observers and the conversion fraction to Engaged Newcomers."
+          }
+        ]
+      },
+      {
+        "name": "Legitimate Peripheral Socialization",
+        "narrative": "Engaged Newcomers accumulate as individuals who have signaled interest and begun observing or asking questions. They transition to Peripheral Participants by taking low-risk, legitimate tasks (e.g., clarifying docs, tagging issues) at a rate limited by access to legitimate opportunities and socialization bandwidth. Legitimate Peripheral Participation explains that newcomers learn norms and practice by participating at the edge, with practice-based identity building as they observe and mimic. Communities of Practice dynamics provide a reinforcing loop: as Peripheral Participants grow, more peer help and examples become available, which lowers the perceived risk of first actions and increases progression speed. However, mentoring capacity and clarity of contribution rules create a balancing loop. When the volume of Engaged Newcomers exceeds available response bandwidth, questions go unanswered, increasing time-to-first-response; progression slows and some revert to inactivity. SCCT mechanisms operate as successful micro-actions (merged typo fixes, answered questions) raise self-efficacy, increasing the hazard rate of transitioning to more complex tasks. Task-technology friction (setup pain, unclear issue templates) shows up as nonlinearity: below a minimum effective documentation clarity (e.g., up-to-date setup scripts), progression is very slow; above it, transition rates increase sharply. Delays of 1\u20134 weeks are typical between initial engagement and first peripheral acts; seasonal effects arise around major releases. Adaptive social norms and mentoring behaviors are appropriated and reinforced over time, with drift toward inclusivity when feedback loops highlight that gentle guidance increases retention.",
+        "theories_used": [
+          "Legitimate Peripheral Participation",
+          "Communities of Practice (Wenger)",
+          "Communities of Practice",
+          "Social Cognitive Career Theory (SCCT)",
+          "Task-Technology Fit (TTF)"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Task-Fit Onboarding and First Contribution",
+            "connection_type": "feeds_into",
+            "description": "Peripheral Participants become ready to attempt their first substantial contribution."
+          },
+          {
+            "target_cluster": "Maintainer Workload, Support, and Retention",
+            "connection_type": "feedback_loop",
+            "description": "Mentoring and response bandwidth from maintainers modulates progression rates through socialization."
+          }
+        ]
+      },
+      {
+        "name": "Task-Fit Onboarding and First Contribution",
+        "narrative": "Peripheral Participants accumulate as individuals who have completed small, low-risk actions and internalized basic norms. They advance to Active PR Submitters via a First-PR rate determined by task-technology fit, review capacity, and clarity of processes. Task-Technology Fit governs productivity: if local environment setup, CI, and linters align well with the newcomer\u2019s OS, language version, and IDE, the cycle time to first working change shortens; poor fit creates friction and abandonment. SECI processes translate tacit heuristics embedded in templates and exemplars into explicit steps (externalization), which newcomers then recombine to craft their first contributions (combination). Adaptive Structuration Theory explains how contributors appropriate tooling (issue templates, PR bots) and rules (style checks) as resources to accomplish tasks; consistent appropriation reduces variance in PR quality, increasing acceptance probability. A reinforcing loop occurs when the stock of accepted first contributions grows: newcomers see a shorter and more predictable review queue, which boosts attempt rates. A balancing loop is the review backlog: if PR queue length or time-to-first-review exceeds a threshold (e.g., >5 business days), first-PR attempts slow, and abandonment increases. Nonlinearities arise at two thresholds: setup friction (below which virtually no first PRs complete) and review latency (beyond which abandonment accelerates). Typical delays include 1\u20133 days for environment setup and 1\u20132 weeks from submission to merge. Hidden Order suggests that local, incremental improvements (e.g., better templates) can produce disproportionate gains in throughput by aligning micro-rules with emergent work patterns.",
+        "theories_used": [
+          "Task-Technology Fit (TTF)",
+          "Nonaka's SECI Model",
+          "A Dynamic Theory of Organizational Knowledge Creation",
+          "Adaptive Structuration Theory",
+          "Diffusion of Innovations",
+          "Hidden Order: How Adaptation Builds Complexity"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Knowledge Internalization and Architectural Understanding",
+            "connection_type": "feeds_into",
+            "description": "Active PR Submitters move on to deepen codebase understanding through repeated contribution cycles."
+          },
+          {
+            "target_cluster": "Maintainer Workload, Support, and Retention",
+            "connection_type": "feedback_loop",
+            "description": "Review throughput and feedback quality from maintainers shape first-PR acceptance probability and cycle time."
+          },
+          {
+            "target_cluster": "Governance Capacity, Routine Evolution, and Project Reputation",
+            "connection_type": "feedback_loop",
+            "description": "Clarity and stability of contribution routines, automation, and release cadence affect first-PR completion and acceptance rates."
+          }
+        ]
+      },
+      {
+        "name": "Knowledge Internalization and Architectural Understanding",
+        "narrative": "Active PR Submitters accumulate as individuals with at least one substantive PR experience. They become Competent Contributors when they internalize architectural patterns, module boundaries, and review heuristics, enabling faster, higher-quality contributions with less guidance. Absorptive Capacity governs this transition: prior related knowledge (language, framework) and the frequency of meaningful interactions with the code and reviewers jointly determine the learning rate. SECI processes continue as tacit reviewer heuristics are internalized through repeated feedback, and contributors begin to combine multiple modules\u2019 practices to produce more integrated changes. Transactive Memory Systems emerge as contributors learn who knows what and how to route questions; this reduces search costs and increases effective problem-solving capacity. A reinforcing learning curve operates: as competence increases, cycle time drops, enabling more contribution episodes per unit time, which further deepens architectural understanding. A balancing loop arises from codebase complexity and volatility; as the project adopts new paradigms or refactors, the gap between current mental models and code reality widens, temporarily slowing progression. Skill-Biased Technical Change can raise the bar for competence when the project adopts more sophisticated tooling or languages, stretching time to competence for some. Typical delays are 3\u20139 months from first PR to stable competence, with nonlinear acceleration after crossing a threshold of roughly several dozen contributions or successful reviews in diverse modules. When review feedback becomes sparse (e.g., during maintainer overload), the learning loop weakens, slowing transitions despite ongoing activity.",
+        "theories_used": [
+          "Absorptive Capacity",
+          "Nonaka's SECI Model",
+          "A Dynamic Theory of Organizational Knowledge Creation",
+          "Routines and Transactive Memory Systems",
+          "Skill-Biased Technical Change"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Reputation Accumulation and Social Capital",
+            "connection_type": "feeds_into",
+            "description": "Competent Contributors begin to accrue visible signals and ties that translate competence into trust."
+          }
+        ]
+      },
+      {
+        "name": "Reputation Accumulation and Social Capital",
+        "narrative": "Competent Contributors accumulate and begin to convert performance into trust by building recognizable signals and brokerage ties. They transition into Recognized Contributors when their visible track record, reliability, and network position cross community thresholds. Signaling operates through accepted PR ratios, turnaround time, issue triage quality, release-related tasks, and constructive review comments. Social Capital and Structural Holes highlight that contributors who bridge sub-teams or modules gain disproportionate reputational returns by reducing coordination costs and connecting knowledge islands. A reinforcing loop emerges: as recognition grows, contributors are invited to review and triage, further increasing visibility and accelerating recognition. A balancing loop comes from recognition bandwidth\u2014maintainers have limited attention to confer trust, and signal noise (e.g., low-impact PR volume) can dilute perceived quality, slowing recognition. Communities of Practice dynamics matter: alignment with core norms and identity signals accelerates trust formation, while perceived norm violations (even if technically competent) slow it. Diversity Trumps Ability suggests that heterogeneity in the recognition pool can improve problem-solving and resilience, prompting governance to diversify recognition criteria, which can lower hidden barriers and enhance throughput. Nonlinearities include threshold effects: after a few high-salience contributions (e.g., fixing a critical bug), perceived trust can jump discretely. Typical lags are 2\u20136 months from competence to recognition, with faster paths when review scarcity allows competent contributors to fill gaps, amplifying their visibility.",
+        "theories_used": [
+          "Signaling Theory",
+          "Social Capital and Structural Holes",
+          "Communities of Practice (Wenger)",
+          "Communities of Practice",
+          "Diversity Trumps Ability"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Role Expansion into Governance Work",
+            "connection_type": "feeds_into",
+            "description": "Recognized Contributors are given or volunteer for governance-adjacent responsibilities (triage, reviews, release chores)."
+          }
+        ]
+      },
+      {
+        "name": "Role Expansion into Governance Work",
+        "narrative": "Recognized Contributors accumulate as trusted actors and begin appropriating governance-related tasks\u2014issue triage, moderation, release preparation, and policy discussions. They transition to Maintainer Candidates when they demonstrate sustained reliability in these roles and appropriate project rules effectively. Adaptive Structuration Theory explains how contributors appropriate rules and resources (e.g., label taxonomies, CODEOWNERS, voting procedures). Effective appropriation both follows and shapes local norms; recurring successful appropriations crystallize into routines (Stability and Change in Organizational Routines). Ostrom-inspired governance principles (monitoring, graduated sanctions, collective-choice arrangements) help maintain rule credibility: consistent enforcement and transparent deliberation increase candidates\u2019 willingness to invest in governance work. A reinforcing loop: more contributors taking on triage/review reduces maintainer workload and PR latency, which improves project climate and increases opportunities for more role expansion. A balancing loop: vetting capacity is finite; when many recognized contributors seek governance roles, maintainers slow down promotions to preserve quality, elongating time-to-candidacy. Nonlinearities arise at trust thresholds: a single breach (e.g., policy violation) can reset candidacy to zero, while a handful of crisis interventions (e.g., resolving a flameout) can accelerate candidacy sharply. Typical delays are 2\u20136 months of consistent governance contributions before nomination.",
+        "theories_used": [
+          "Adaptive Structuration Theory",
+          "Stability and Change in Organizational Routines"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Ostrom\u2019s Design Principles for Governing the Commons",
+            "rationale": "Models how participatory rule-making, monitoring, and enforcement sustain credible, community-based governance that shapes role expansion and candidacy."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Maintainer Selection and Gatekeeping",
+            "connection_type": "feeds_into",
+            "description": "Maintainer Candidates are nominated or put forward for formal selection."
+          },
+          {
+            "target_cluster": "Governance Capacity, Routine Evolution, and Project Reputation",
+            "connection_type": "feedback_loop",
+            "description": "Evolving routines, rule clarity, and decision transparency alter the ease of appropriating governance work and the candidacy nomination rate."
+          }
+        ]
+      },
+      {
+        "name": "Maintainer Selection and Gatekeeping",
+        "narrative": "Maintainer Candidates accumulate as individuals who have demonstrated sustained governance and technical reliability. They become Maintainers/Core Developers through formal or informal selection mechanisms: consensus, voting, or meritocratic appointment. Signaling remains central\u2014reliability, responsiveness, quality of reviews, conflict resolution skill, and crisis performance act as high-credibility signals of readiness. Coevolution of New Organizational Forms and routine dynamics govern selection criteria drift: as project scale and complexity increase, coordination needs shift, and the community adjusts what it values (e.g., release engineering or security becomes more salient). Skill-Biased Technical Change raises selection thresholds as the project adopts advanced tooling or stricter security/reliability requirements, increasing time-to-selection in periods of technological shift. A reinforcing loop: more maintainers expand review and decision throughput, which improves project climate and legitimacy, attracting and retaining more contributors who become future candidates. A balancing loop: coordination and governance costs rise with team size (more meetings, more policy deliberation), causing selection rates to slow after a point. Punctuated changes occur after incidents (security breach, governance crisis) that trigger sudden tightening of criteria, temporarily lowering promotion rates. Typical delays are 1\u20134 months from candidacy to selection in stable periods; they lengthen during crises or rapid technological transitions.",
+        "theories_used": [
+          "Signaling Theory",
+          "The Coevolution of New Organizational Forms",
+          "Stability and Change in Organizational Routines",
+          "Skill-Biased Technical Change",
+          "Punctuated Equilibrium Theory in IS Research"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Maintainer Workload, Support, and Retention",
+            "connection_type": "feeds_into",
+            "description": "Newly selected Maintainers enter the workload-and-retention dynamics."
+          }
+        ]
+      },
+      {
+        "name": "Maintainer Workload, Support, and Retention",
+        "narrative": "Maintainers/Core Developers accumulate as a stock of individuals responsible for reviews, triage, releases, and governance. They transition to Sustainable Maintainers when their job demands are matched by resources and recovery. The JD-R model structures the dynamics: demands include PR/issue volume, coordination overhead, and incident load; resources include co-maintainers, reviewer pool depth, automation (CI bots, triage tools), institutional support, and psychological safety. A reinforcing loop operates when sufficient resources reduce cycle times, lowering backlog and perceived demands; this eases stress, maintains motivation, and supports mentoring, which further expands resources. A competing reinforcing loop can be negative: as backlog grows, review latency increases, creating more rework and escalations, which amplifies demands and accelerates burnout and attrition. A balancing loop appears via recruitment and role expansion feeding in from earlier processes, gradually increasing resources and reducing individual load. Nonlinearities include a burnout tipping point: beyond a demand-to-resource ratio threshold (e.g., PRs per maintainer per week), sustainable engagement drops sharply and time-to-recovery lengthens. Delays are significant\u2014stress accumulates over months; automation investments or corporate sponsorships may require weeks to months before reducing demands. Attrition removes maintainers from the stock; return from hiatus is possible but typically slow. Sustained, predictable cadence and visible support create resilience against spikes (e.g., releases) by increasing the buffer of available resources and shared mental models.",
+        "theories_used": [
+          "Job Demands-Resources (JD-R) Model",
+          "Routines and Transactive Memory Systems"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Governance Capacity, Routine Evolution, and Project Reputation",
+            "connection_type": "feeds_into",
+            "description": "Sustainable Maintainers provide the capacity that underpins governance throughput, routine maintenance, and release cadence."
+          },
+          {
+            "target_cluster": "Legitimate Peripheral Socialization",
+            "connection_type": "feedback_loop",
+            "description": "Mentoring availability and responsiveness from Sustainable Maintainers accelerates peripheral socialization."
+          },
+          {
+            "target_cluster": "Task-Fit Onboarding and First Contribution",
+            "connection_type": "feedback_loop",
+            "description": "Review throughput and feedback quality from Sustainable Maintainers increase first-PR acceptance rate."
+          }
+        ]
+      },
+      {
+        "name": "Governance Capacity, Routine Evolution, and Project Reputation",
+        "narrative": "Sustainable Maintainers accumulate into Governance Capacity\u2014the ability to make timely, legitimate decisions, maintain routines, and deliver releases. Governance Capacity grows with maintainer time, effective routines, and automation, and decays through coordination overhead, conflict, and attrition. From this stock, Project Reputation and Visibility accrue as the community experiences reliable releases, fair and transparent decision-making, and high code quality. SECI and dynamic knowledge creation operate as governance knowledge (how to run releases, codes of conduct) is externalized into explicit routines and documentation, then internalized by newcomers. Routine theory explains stability and drift; continuous improvement increases throughput (e.g., refining PR labels), while drift or fragmentation during stress reduces capacity. Punctuated Equilibrium appears during crises, producing step-changes: governance reforms or tooling overhauls that temporarily lower throughput but raise medium-term capacity. Panarchy locates the project within the broader OSS ecosystem: upstream changes, foundation policies, or ecosystem shocks (e.g., security incidents) cascade across scales, altering governance load and reputation. Coevolution describes mutual adaptation between project form (e.g., moving from benevolent-dictator to committee) and technological/market context. Diffusion of Innovations governs adoption of new governance practices and automation across sub-teams, with 1\u20133 release cycles delay. Hidden Order reflects how micro-changes (e.g., better triage heuristics) compound into reliable cadence. A reinforcing loop: higher capacity \u2192 shorter cycle times \u2192 higher reputation \u2192 larger inflow of potential contributors. A balancing loop: rising codebase and process complexity (Skill-Biased Technical Change) increases the cognitive load of governance, slowing capacity growth unless offset by automation or role specialization. Reputation decays without ongoing delivery, with a half-life of months unless refreshed by releases or public engagement.",
+        "theories_used": [
+          "Nonaka's SECI Model",
+          "A Dynamic Theory of Organizational Knowledge Creation",
+          "Stability and Change in Organizational Routines",
+          "Punctuated Equilibrium Theory in IS Research",
+          "Panarchy Theory",
+          "The Coevolution of New Organizational Forms",
+          "Diffusion of Innovations",
+          "Hidden Order: How Adaptation Builds Complexity",
+          "Skill-Biased Technical Change"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Ostrom\u2019s Design Principles for Governing the Commons",
+            "rationale": "Explains how credible, participatory governance maintains rule legitimacy, enabling sustained capacity and reputation."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Attraction and Conversion to Engagement",
+            "connection_type": "feedback_loop",
+            "description": "Higher reputation and visible cadence increase the conversion of Prospective Observers to Engaged Newcomers."
+          },
+          {
+            "target_cluster": "Task-Fit Onboarding and First Contribution",
+            "connection_type": "feedback_loop",
+            "description": "Routine clarity and automation reduce onboarding friction and review latency for first contributions."
+          },
+          {
+            "target_cluster": "Maintainer Selection and Gatekeeping",
+            "connection_type": "feedback_loop",
+            "description": "Evolving governance forms and criteria adjust selection thresholds and rates for new maintainers."
+          }
+        ]
+      }
+    ],
+    "overall_narrative": "The model traces a pipeline of people moving from Prospective Observers to Engaged Newcomers, Peripheral Participants, Active PR Submitters, Competent Contributors, Recognized Contributors, Maintainer Candidates, Maintainers, and Sustainable Maintainers. Each process is a SISO mini-system that transforms one stock into the next at rates shaped by learnable routines, social signals, governance rules, and resource constraints. Multiple cross-process feedbacks weave these modules into a dynamic architecture: sustainable maintainers increase review throughput and mentoring, speeding both first-PR completion and peripheral socialization; governance capacity and release cadence amplify project reputation, which increases attraction at the front of the pipeline; routine clarity and automation lower friction for onboarding; selection criteria coevolve with project complexity, modulating the gate from candidacy to maintainership. Dominant system archetypes include Limits to Growth (inflow growth constrained by review and governance capacity), Success to the Successful (recognized contributors gain visibility that accelerates promotion), Growth and Underinvestment (demand growth outpacing automation and governance investment), and Balancing with Delay (burnout and recovery lags shaping maintainer retention). Nonlinear thresholds\u2014social proof for attraction, setup friction for first PRs, trust for recognition, and burnout tipping points\u2014produce phase shifts and punctuations in trajectory. Governance is explicit in three places: role expansion into governance work, maintainer selection and gatekeeping, and the governance capacity module that transforms maintainer time into legitimate decisions and reliable releases. Panarchy and coevolution connect the project to the broader OSS ecosystem, enabling simulation of shocks (e.g., security incidents, upstream changes) and governance reforms. The structure is ready to be parameterized with observed rates (e.g., PR latency, release cadence, attrition) to test policies such as adding automation, diversifying entry pathways, adjusting selection criteria, or investing in mentoring to accelerate movement from periphery to core while sustaining governance quality."
+  }
+}

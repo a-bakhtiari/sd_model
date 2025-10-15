@@ -13,6 +13,122 @@ import json
 from .llm.client import LLMClient
 
 
+def _deduplicate_variables_smart(processes: List[Dict]) -> Tuple[List[Dict], List[Dict], Dict[str, str]]:
+    """
+    Smart deduplication:
+    - Stocks: Keep first occurrence only (shared between processes)
+    - Flows/Auxiliaries/Clouds: Rename with process suffix to make unique
+
+    Returns:
+        tuple: (deduplicated_variables, updated_connections, rename_map)
+    """
+    seen_stocks = {}  # name -> variable dict
+    stock_processes = {}  # name -> list of process names that use this stock
+    seen_names = set()  # all variable names (after renaming)
+    all_variables = []
+    all_connections = []
+    rename_map = {}  # old_name -> new_name
+
+    print("\n" + "="*70)
+    print("Processing variables with smart deduplication:")
+    print("="*70)
+
+    # First pass: track which processes declare each stock
+    for process in processes:
+        process_name = process.get('process_name', 'Unknown')
+        variables = process.get('variables', [])
+
+        for var in variables:
+            var_name = var['name']
+            var_type = var.get('type', 'Auxiliary')
+
+            if var_type == 'Stock':
+                if var_name not in stock_processes:
+                    stock_processes[var_name] = []
+                stock_processes[var_name].append(process_name)
+
+    # Second pass: deduplicate
+    for process in processes:
+        process_name = process.get('process_name', 'Unknown')
+        variables = process.get('variables', [])
+        connections = process.get('connections', [])
+
+        print(f"\n📦 Process: {process_name}")
+        print(f"   Input variables: {len(variables)}")
+
+        for var in variables:
+            var_name = var['name']
+            var_type = var.get('type', 'Auxiliary')
+
+            if var_type == 'Stock':
+                # Stocks: deduplicate (keep first occurrence)
+                if var_name in seen_stocks:
+                    print(f"   ⚠️  SKIP duplicate stock: {var_name}")
+                    continue
+                else:
+                    # If stock is shared, assign to first process; otherwise current process
+                    # Mark shared stocks with a special cluster assignment
+                    if len(stock_processes[var_name]) > 1:
+                        var['cluster'] = stock_processes[var_name][0]  # First process that declares it
+                        var['shared_across'] = stock_processes[var_name]  # Track all processes
+                        print(f"   ✓ Stock (shared): {var_name} across {len(stock_processes[var_name])} processes")
+                    else:
+                        var['cluster'] = process_name
+                        print(f"   ✓ Stock: {var_name}")
+
+                    seen_stocks[var_name] = var
+                    seen_names.add(var_name)
+                    all_variables.append(var)
+
+            else:
+                # Flows/Auxiliaries/Clouds: rename if duplicate
+                if var_name in seen_names:
+                    # Generate unique name with process suffix
+                    new_name = f"{var_name} ({process_name})"
+
+                    # Handle edge case: if suffix version also exists, add number
+                    counter = 2
+                    while new_name in seen_names:
+                        new_name = f"{var_name} ({process_name} {counter})"
+                        counter += 1
+
+                    print(f"   🔄 RENAME {var_type}: {var_name} → {new_name}")
+                    rename_map[var_name] = new_name
+
+                    var['name'] = new_name
+                    var['cluster'] = process_name
+                    seen_names.add(new_name)
+                    all_variables.append(var)
+                else:
+                    var['cluster'] = process_name
+                    seen_names.add(var_name)
+                    all_variables.append(var)
+                    print(f"   ✓ {var_type}: {var_name}")
+
+        # Update connections to use renamed variables
+        for conn in connections:
+            from_var = conn.get('from', '')
+            to_var = conn.get('to', '')
+
+            # Apply renames
+            if from_var in rename_map:
+                conn['from'] = rename_map[from_var]
+            if to_var in rename_map:
+                conn['to'] = rename_map[to_var]
+
+            all_connections.append(conn)
+
+    print("\n" + "="*70)
+    print(f"✅ Deduplication complete:")
+    print(f"   Total unique variables: {len(all_variables)}")
+    print(f"   Stocks deduplicated: {len([v for v in all_variables if v.get('type') == 'Stock'])}")
+    print(f"   Variables renamed: {len(rename_map)}")
+    print(f"   Total connections: {len(all_connections)}")
+    print("="*70)
+
+    return all_variables, all_connections, rename_map
+
+
 def create_mdl_from_scratch(
     theory_concretization: Dict,
     output_path: Path,
@@ -46,21 +162,10 @@ def create_mdl_from_scratch(
     from .mdl_text_patcher import apply_text_patch_enhancements
 
     # Extract all variables and connections from theory enhancement
-    all_variables = []
-    all_connections = []
-
     processes = theory_concretization.get('processes', [])
-    for process in processes:
-        process_name = process.get('process_name', 'Unknown')
-        variables = process.get('variables', [])
-        connections = process.get('connections', [])
 
-        # Add cluster assignment to each variable
-        for var in variables:
-            var['cluster'] = process_name
-
-        all_variables.extend(variables)
-        all_connections.extend(connections)
+    # Apply smart deduplication before positioning
+    all_variables, all_connections, rename_map = _deduplicate_variables_smart(processes)
 
     if not all_variables:
         return {
@@ -107,22 +212,42 @@ def create_mdl_from_scratch(
                 var['x'] = base_x + (i % VARS_PER_ROW) * VAR_SPACING_X
                 var['y'] = base_y + (i // VARS_PER_ROW) * VAR_SPACING_Y
     else:
-        # Fallback: simple vertical stacking (for old JSON files without cluster_positions)
-        print("No cluster positions found, using vertical stacking layout")
-        y_offset = 100
+        # Fallback: horizontal side-by-side layout (clusters arranged left-to-right)
+        print("No cluster positions found, using horizontal side-by-side layout")
+
+        # Build a map of process name -> x_offset for positioning shared stocks
+        process_x_positions = {}
+        x_offset = X_OFFSET
+        y_base = 100
+
         for process in processes:
             process_name = process['process_name']
             process_vars = [v for v in all_variables if v.get('cluster') == process_name]
 
+            process_x_positions[process_name] = x_offset
+
             # Position variables in this process cluster in a grid
             for i, var in enumerate(process_vars):
-                var['x'] = X_OFFSET + (i % VARS_PER_ROW) * VAR_SPACING_X
-                var['y'] = y_offset + (i // VARS_PER_ROW) * VAR_SPACING_Y
+                var['x'] = x_offset + (i % VARS_PER_ROW) * VAR_SPACING_X
+                var['y'] = y_base + (i // VARS_PER_ROW) * VAR_SPACING_Y
 
-            # Move down for next process cluster
+            # Move right for next process cluster
             if process_vars:
-                rows_needed = (len(process_vars) + 4) // VARS_PER_ROW  # Ceiling division
-                y_offset += rows_needed * VAR_SPACING_Y + 200  # Extra 200px gap between processes
+                x_offset += CLUSTER_WIDTH  # Move to next horizontal position
+
+        # Position shared stocks between the clusters they connect
+        for var in all_variables:
+            if 'shared_across' in var and len(var['shared_across']) >= 2:
+                # Calculate midpoint between first and last process
+                first_process = var['shared_across'][0]
+                last_process = var['shared_across'][-1]
+
+                first_x = process_x_positions.get(first_process, X_OFFSET)
+                last_x = process_x_positions.get(last_process, X_OFFSET)
+
+                # Position at midpoint horizontally, at baseline (same Y as other variables)
+                var['x'] = (first_x + last_x) // 2 + (VARS_PER_ROW // 2) * VAR_SPACING_X
+                var['y'] = y_base  # Same Y as baseline to align with flows
 
     # Use regular addition mode with offset variables
     # This is proven, stable code that works perfectly
@@ -372,7 +497,7 @@ def _generate_mdl_from_template(
             type_code = 3
         elif var_type == 'Flow':
             type_code = 40
-        else:  # Auxiliary
+        else:  # Auxiliary or Cloud
             type_code = 0
 
         # Quote name if needed

@@ -166,8 +166,13 @@ class MDLTextPatcher:
             width = var.get('width', 60)
             height = var.get('height', 26)
 
-            # Type codes: 3=Stock, 40=Flow, 8=Auxiliary
-            type_code = 3 if var_type == 'Stock' else (40 if var_type == 'Flow' else 8)
+            # Type codes: 3=Stock, 40=Flow, 8=Auxiliary, 8=Cloud (drawn as auxiliary)
+            if var_type == 'Stock':
+                type_code = 3
+            elif var_type == 'Flow':
+                type_code = 40
+            else:  # Auxiliary or Cloud
+                type_code = 8
 
             # Build variable line
             if add_colors:

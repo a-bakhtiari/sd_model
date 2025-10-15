@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-10-14T18:57:16.791237",
+  "original_mdl": "untitled.mdl",
+  "theories_applied": [],
+  "summary": {
+    "total_variables_added": 186,
+    "total_connections_added": 193,
+    "total_theories": 0
+  },
+  "source_artifacts": {
+    "theory_enhancement": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251014_183443_comprehensive_planning_final/theory/theory_enhancement.json",
+    "theory_enhancement_mdl": "/Users/alibakhtiari/Desktop/Thesis/SD_model/projects/oss_model/artifacts/runs/20251014_183443_comprehensive_planning_final/theory/theory_enhancement_mdl.json"
+  },
+  "mdl_generation_details": {
+    "variables_added": 186,
+    "connections_added": 193
+  }
+}

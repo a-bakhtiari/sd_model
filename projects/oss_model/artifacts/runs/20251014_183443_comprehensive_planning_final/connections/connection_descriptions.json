@@ -1,0 +1,244 @@
+{
+  "descriptions": [
+    {
+      "id": "C01",
+      "description": "High-quality software with more features enhances the project's public perception and credibility."
+    },
+    {
+      "id": "C02",
+      "description": "A larger user base provides more testimonials and visibility, which bolsters the project's reputation."
+    },
+    {
+      "id": "C03",
+      "description": "More core developers increases the total workload for reviews, potentially slowing down the process."
+    },
+    {
+      "id": "C04",
+      "description": "Longer review delays mean more time is available to provide detailed, constructive feedback."
+    },
+    {
+      "id": "C05",
+      "description": "A larger backlog of pull requests under review generates a greater volume of feedback activity."
+    },
+    {
+      "id": "C06",
+      "description": "A rich base of implicit knowledge provides more material for experienced members to share via mentorship."
+    },
+    {
+      "id": "C07",
+      "description": "More core developers increases the capacity for one-on-one mentorship and implicit knowledge transfer."
+    },
+    {
+      "id": "C08",
+      "description": "Timely and helpful feedback encourages newcomers to stay and formally join the contributor community."
+    },
+    {
+      "id": "C09",
+      "description": "Constructive feedback helps experienced contributors refine their skills and solidify their role."
+    },
+    {
+      "id": "C10",
+      "description": "Positive feedback and successful contributions are a key pathway for promoting contributors to core developers."
+    },
+    {
+      "id": "C11",
+      "description": "New contributors actively participate in discussions, asking questions and generating feedback loops."
+    },
+    {
+      "id": "C12",
+      "description": "Experienced contributors provide more frequent and higher-quality feedback on pull requests."
+    },
+    {
+      "id": "C13",
+      "description": "The process of giving and receiving feedback keeps pull requests in an active, reviewed state."
+    },
+    {
+      "id": "C14",
+      "description": "Well-documented explicit knowledge makes it easier to create guides and onboard new contributors."
+    },
+    {
+      "id": "C15",
+      "description": "Feedback from code reviews contains valuable insights that are archived into the knowledge base."
+    },
+    {
+      "id": "C16",
+      "description": "Resolved issues provide solutions and patterns that are documented in the searchable knowledge base."
+    },
+    {
+      "id": "C17",
+      "description": "A comprehensive knowledge base directly expands the project's repository of explicit, documented knowledge."
+    },
+    {
+      "id": "C18",
+      "description": "Community discussions generate questions, answers, and decisions that enrich the knowledge base."
+    },
+    {
+      "id": "C19",
+      "description": "A strong reputation attracts more users to adopt and try the software."
+    },
+    {
+      "id": "C20",
+      "description": "A high number of open issues prompts more user and developer comments, questions, and feedback."
+    },
+    {
+      "id": "C21",
+      "description": "Active feedback on issues often reveals new aspects or problems, leading to more open issues."
+    },
+    {
+      "id": "C22",
+      "description": "A healthy, collaborative community is a positive signal that enhances the project's overall reputation."
+    },
+    {
+      "id": "C23",
+      "description": "Good documentation lowers the barrier to entry, making it easier for new contributors to join."
+    },
+    {
+      "id": "C24",
+      "description": "A clear and fair governance strategy makes the project more attractive for potential contributors to join."
+    },
+    {
+      "id": "C25",
+      "description": "An effective governance strategy encourages participation, increasing the rate of new contributors joining."
+    },
+    {
+      "id": "C26",
+      "description": "A project with a high reputation attracts more developers who want to contribute and be associated with it."
+    },
+    {
+      "id": "C27",
+      "description": "More time dedicated by maintainers allows for a faster rate of identifying, fixing, and closing issues."
+    },
+    {
+      "id": "C28",
+      "description": "As issues are resolved, they are moved from the open state to the closed state, increasing the stock."
+    },
+    {
+      "id": "C29",
+      "description": "The ongoing creation of new issues adds to the stock of open, unresolved problems."
+    },
+    {
+      "id": "C30",
+      "description": "Faster issue resolution depletes the backlog of open issues, reducing the stock."
+    },
+    {
+      "id": "C31",
+      "description": "A larger and more complex codebase provides more surface area for bugs and feature requests, generating more issues."
+    },
+    {
+      "id": "C32",
+      "description": "Positive project activities and outcomes accumulate over time, building up the project's reputation."
+    },
+    {
+      "id": "C33",
+      "description": "Negative events or stagnation gradually erode the project's standing and perceived value."
+    },
+    {
+      "id": "C34",
+      "description": "As documented knowledge is internalized by contributors, it becomes implicit, reducing the explicit stock."
+    },
+    {
+      "id": "C35",
+      "description": "The act of codifying new discoveries and practices adds to the repository of explicit knowledge."
+    },
+    {
+      "id": "C36",
+      "description": "New users adopting the software increase the total user base."
+    },
+    {
+      "id": "C37",
+      "description": "Users leaving or stopping their use of the software decrease the total user base."
+    },
+    {
+      "id": "C38",
+      "description": "Merging or committing a pull request removes it from the 'under review' queue."
+    },
+    {
+      "id": "C39",
+      "description": "Rejecting a pull request removes it from the 'under review' queue without merging."
+    },
+    {
+      "id": "C40",
+      "description": "Initiating a review on a new pull request moves it into the 'under review' stock."
+    },
+    {
+      "id": "C41",
+      "description": "Merging a pull request integrates new code into the main codebase, increasing its size and functionality."
+    },
+    {
+      "id": "C42",
+      "description": "Access to good documentation accelerates the learning process and skill development for contributors."
+    },
+    {
+      "id": "C43",
+      "description": "Direct mentorship transfers tacit knowledge quickly, accelerating a contributor's skill development."
+    },
+    {
+      "id": "C44",
+      "description": "Active community engagement in forums and chats produces content that is added to the knowledge base."
+    },
+    {
+      "id": "C45",
+      "description": "Open issues represent work to be done, inspiring contributors to submit pull requests as solutions."
+    },
+    {
+      "id": "C46",
+      "description": "The submission of new pull requests adds to the stock of contributions awaiting initial review."
+    },
+    {
+      "id": "C47",
+      "description": "When a review starts, the pull request moves from 'new' to 'under review', reducing this stock."
+    },
+    {
+      "id": "C48",
+      "description": "Core developers leaving the project reduces the number of experienced maintainers."
+    },
+    {
+      "id": "C49",
+      "description": "Promoting experienced contributors to core developer status increases the core team size."
+    },
+    {
+      "id": "C50",
+      "description": "Effective mentorship prepares and qualifies experienced contributors for promotion to core developers."
+    },
+    {
+      "id": "C51",
+      "description": "When developers leave, they take their unique, unrecorded knowledge with them, causing a loss."
+    },
+    {
+      "id": "C52",
+      "description": "Promoting an experienced contributor to core developer moves them out of the experienced contributor stock."
+    },
+    {
+      "id": "C53",
+      "description": "As new contributors develop their skills, they graduate into the experienced contributor stock."
+    },
+    {
+      "id": "C54",
+      "description": "New contributors joining the project increases the pool of novice developers."
+    },
+    {
+      "id": "C55",
+      "description": "As new contributors skill up, they graduate out of the 'new' category into experienced contributors."
+    },
+    {
+      "id": "C56",
+      "description": "The departure of experienced developers depletes the project's collective tacit knowledge."
+    },
+    {
+      "id": "C57",
+      "description": "As contributors internalize documented knowledge, it becomes part of the team's implicit know-how."
+    },
+    {
+      "id": "C58",
+      "description": "The process of formally codifying implicit knowledge removes it from the tacit knowledge stock."
+    },
+    {
+      "id": "C59",
+      "description": "Negative interactions and burnout degrade the collaborative spirit and well-being of the community."
+    },
+    {
+      "id": "C60",
+      "description": "Positive interactions and reliable collaboration build mutual respect and a healthier community."
+    }
+  ]
+}

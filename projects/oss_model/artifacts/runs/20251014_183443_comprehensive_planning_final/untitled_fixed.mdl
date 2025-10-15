@@ -1,0 +1,1392 @@
+{UTF-8}
+Governance strategy  = A FUNCTION OF( )
+	~	
+	~		|
+
+Joining Rate  = A FUNCTION OF( "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"\
+		,Governance strategy) ~~|
+Joining Rate  = A FUNCTION OF( Project Reputation)
+	~	
+	~		|
+
+Maintainer time  = A FUNCTION OF( )
+	~	
+	~		|
+
+Issue Resolution Rate  = A FUNCTION OF( Maintainer time)
+	~	
+	~		|
+
+"Explicit Knowledge Transfer (Documentation, Contributor's Guides)"  = A FUNCTION OF(\
+		 Projects's Explicit Knowledge)
+	~	
+	~		|
+
+Closed Issues  = A FUNCTION OF( Issue Resolution Rate)
+	~	
+	~		|
+
+Community engagement  = A FUNCTION OF( )
+	~	
+	~		|
+
+Open Issues  = A FUNCTION OF( Feedback,Issue Creation Rate,-Issue Resolution Rate)
+	~	
+	~		|
+
+PR Feedback  = A FUNCTION OF( Experienced Contributors,New Contributors,PR Review Delay\
+		,Pull Request Under review)
+	~	
+	~		|
+
+Issue Creation Rate  = A FUNCTION OF( Source Code)
+	~	
+	~		|
+
+Project Reputation  = A FUNCTION OF( Community Health,Reputation Building,-Reputation Decline\
+		,Software Quality and Features,User Base)
+	~	
+	~		|
+
+Discussions  = A FUNCTION OF( )
+	~	
+	~		|
+
+Projects's Explicit Knowledge  = A FUNCTION OF( -Explicit to Implicit Conversion,Knowledge Conversion Rate\
+		,Searchable Knowledge Base)
+	~	
+	~		|
+
+User Base  = A FUNCTION OF( Adoption Rate,Project Reputation,-User Churn Rate)
+	~	
+	~		|
+
+Pull Request Under review  = A FUNCTION OF( -"Merge/Commit",PR Feedback,-Rejection Rate\
+		,Review Rate)
+	~	
+	~		|
+
+Feedback  = A FUNCTION OF( Open Issues)
+	~	
+	~		|
+
+hi  = A FUNCTION OF( )
+	~	
+	~		|
+
+Source Code  = A FUNCTION OF( "Merge/Commit")
+	~	
+	~		|
+
+Skill up  = A FUNCTION OF( "Explicit Knowledge Transfer (Documentation, Contributor's Guides)"\
+		,"Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+Searchable Knowledge Base  = A FUNCTION OF( Closed Issues,Community engagement,Discussions\
+		,PR Feedback)
+	~	
+	~		|
+
+New Pr rate  = A FUNCTION OF( Open Issues)
+	~	
+	~		|
+
+New Pull request  = A FUNCTION OF( New Pr rate,-Review Rate)
+	~	
+	~		|
+
+Knowledge Conversion Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Core Developer  = A FUNCTION OF( -Developer's Turnover,PR Feedback,Promotion Rate)
+	~	
+	~		|
+
+Culture Erosion  = A FUNCTION OF( )
+	~	
+	~		|
+
+Promotion Rate  = A FUNCTION OF( "Implicit Knowledge Transfer (Mentorship)")
+	~	
+	~		|
+
+"Depreciation/Loss of Knowledge"  = A FUNCTION OF( Developer's Turnover)
+	~	
+	~		|
+
+Rejection Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Experienced Contributors  = A FUNCTION OF( PR Feedback,-Promotion Rate,Skill up)
+	~	
+	~		|
+
+Explicit to Implicit Conversion  = A FUNCTION OF( )
+	~	
+	~		|
+
+PR Review Delay  = A FUNCTION OF( Core Developer)
+	~	
+	~		|
+
+"Implicit Knowledge Transfer (Mentorship)"  = A FUNCTION OF( Core Developer,Project's Implicit Knowledge\
+		)
+	~	
+	~		|
+
+"Merge/Commit"  = A FUNCTION OF( )
+	~	
+	~		|
+
+New Contributors  = A FUNCTION OF( Joining Rate,PR Feedback,-Skill up)
+	~	
+	~		|
+
+Project's Implicit Knowledge  = A FUNCTION OF( -"Depreciation/Loss of Knowledge",Explicit to Implicit Conversion\
+		,-Knowledge Conversion Rate)
+	~	
+	~		|
+
+Review Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Trust Building  = A FUNCTION OF( )
+	~	
+	~		|
+
+Adoption Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Community Health  = A FUNCTION OF( -Culture Erosion,Trust Building)
+	~	
+	~		|
+
+Developer's Turnover  = A FUNCTION OF( )
+	~	
+	~		|
+
+Reputation Building  = A FUNCTION OF( )
+	~	
+	~		|
+
+Reputation Decline  = A FUNCTION OF( )
+	~	
+	~		|
+
+Software Quality and Features  = A FUNCTION OF( )
+	~	
+	~		|
+
+User Churn Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Prospective Observers  = A FUNCTION OF( Awareness Inflow)
+	~	
+	~		|
+
+Engaged Newcomers  = A FUNCTION OF( Conversion to Engagement)
+	~	
+	~		|
+
+General Developer Pool  = A FUNCTION OF( )
+	~	
+	~		|
+
+Interest Fade Sink  = A FUNCTION OF( Prospective Churn)
+	~	
+	~		|
+
+Awareness Inflow  = A FUNCTION OF( General Developer Pool,Project Visibility Signal)
+	~	
+	~		|
+
+Prospective Churn  = A FUNCTION OF( Prospective Observers)
+	~	
+	~		|
+
+Conversion to Engagement  = A FUNCTION OF( Prospective Observers,Conversion Attractiveness\
+		)
+	~	
+	~		|
+
+Perceived Legitimacy Signal  = A FUNCTION OF( Legitimacy Accrual,-Legitimacy Decay)
+	~	
+	~		|
+
+Legitimacy Accrual  = A FUNCTION OF( Social Proof Generation Rate)
+	~	
+	~		|
+
+Legitimacy Decay  = A FUNCTION OF( )
+	~	
+	~		|
+
+Awareness Momentum  = A FUNCTION OF( Endorsement Assimilation,-Momentum Decay)
+	~	
+	~		|
+
+Endorsement Assimilation  = A FUNCTION OF( -Awareness Surge Delay)
+	~	
+	~		|
+
+Momentum Decay  = A FUNCTION OF( )
+	~	
+	~		|
+
+Project Visibility Signal  = A FUNCTION OF( Endorsements,Stars and Badges Level,Perceived Legitimacy Signal\
+		,Awareness Momentum)
+	~	
+	~		|
+
+Endorsements  = A FUNCTION OF( )
+	~	
+	~		|
+
+Stars and Badges Level  = A FUNCTION OF( )
+	~	
+	~		|
+
+Release Stability Signal  = A FUNCTION OF( )
+	~	
+	~		|
+
+Governance Responsiveness Signal  = A FUNCTION OF( )
+	~	
+	~		|
+
+Perceived Benefits  = A FUNCTION OF( Release Stability Signal,Governance Responsiveness Signal\
+		,Perceived Legitimacy Signal)
+	~	
+	~		|
+
+Perceived Costs  = A FUNCTION OF( )
+	~	
+	~		|
+
+Conversion Attractiveness  = A FUNCTION OF( Perceived Benefits,-Perceived Costs,-Anticipated Response Time\
+		,Response Time Threshold)
+	~	
+	~		|
+
+Conversion Fraction  = A FUNCTION OF( Identity Cues Strength,Conversion Elasticity)
+	~	
+	~		|
+
+Anticipated Response Time  = A FUNCTION OF( )
+	~	
+	~		|
+
+Response Time Threshold  = A FUNCTION OF( )
+	~	
+	~		|
+
+Identity Cues Strength  = A FUNCTION OF( )
+	~	
+	~		|
+
+Diversity of Entry Points  = A FUNCTION OF( )
+	~	
+	~		|
+
+Conversion Elasticity  = A FUNCTION OF( Diversity of Entry Points)
+	~	
+	~		|
+
+Social Proof Generation Rate  = A FUNCTION OF( Engaged Newcomers)
+	~	
+	~		|
+
+Awareness Surge Delay  = A FUNCTION OF( )
+	~	
+	~		|
+
+Peripheral Participants  = A FUNCTION OF( )
+	~	
+	~		|
+
+Newcomer Inactivity Sink  = A FUNCTION OF( Reversion to Inactivity)
+	~	
+	~		|
+
+Reversion to Inactivity  = A FUNCTION OF( Time to First Response,-Response Threshold)
+	~	
+	~		|
+
+Unanswered Questions Backlog  = A FUNCTION OF( Incoming Questions,-Question Response Rate\
+		)
+	~	
+	~		|
+
+Incoming Questions  = A FUNCTION OF( Engaged Newcomers)
+	~	
+	~		|
+
+Question Response Rate  = A FUNCTION OF( Socialization Bandwidth)
+	~	
+	~		|
+
+Socialization Bandwidth  = A FUNCTION OF( Mentoring Capacity Proxy)
+	~	
+	~		|
+
+Mentoring Capacity Proxy  = A FUNCTION OF( )
+	~	
+	~		|
+
+Legitimate Opportunity Availability  = A FUNCTION OF( )
+	~	
+	~		|
+
+Perceived Risk of First Actions  = A FUNCTION OF( -Documentation Clarity,-Peer Help Density\
+		)
+	~	
+	~		|
+
+Peer Help Density  = A FUNCTION OF( Peripheral Participants)
+	~	
+	~		|
+
+Documentation Clarity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Time to First Response  = A FUNCTION OF( Unanswered Questions Backlog)
+	~	
+	~		|
+
+Response Threshold  = A FUNCTION OF( )
+	~	
+	~		|
+
+Active PR Submitters  = A FUNCTION OF( First PR Completion Rate)
+	~	
+	~		|
+
+Abandonment Sink  = A FUNCTION OF( First PR Abandonment Rate)
+	~	
+	~		|
+
+First PR Abandonment Rate  = A FUNCTION OF( Review Latency,-Review Latency Threshold)
+	~	
+	~		|
+
+First PR Review Queue  = A FUNCTION OF( First PR Submission Rate,-First PR Reviews Completed\
+		)
+	~	
+	~		|
+
+First PR Submission Rate  = A FUNCTION OF( Peripheral Participants,-Review Latency,Review Latency Threshold\
+		)
+	~	
+	~		|
+
+First PR Reviews Completed  = A FUNCTION OF( Review Throughput Proxy)
+	~	
+	~		|
+
+Review Throughput Proxy  = A FUNCTION OF( )
+	~	
+	~		|
+
+Review Latency  = A FUNCTION OF( First PR Review Queue)
+	~	
+	~		|
+
+Review Latency Threshold  = A FUNCTION OF( )
+	~	
+	~		|
+
+Setup Friction Index  = A FUNCTION OF( Local Environment Setup Time,-Onboarding Clarity\
+		)
+	~	
+	~		|
+
+Template Quality  = A FUNCTION OF( )
+	~	
+	~		|
+
+Appropriation Consistency  = A FUNCTION OF( Template Quality)
+	~	
+	~		|
+
+Acceptance Probability  = A FUNCTION OF( Appropriation Consistency)
+	~	
+	~		|
+
+CI Alignment Factor  = A FUNCTION OF( )
+	~	
+	~		|
+
+Local Environment Setup Time  = A FUNCTION OF( )
+	~	
+	~		|
+
+Onboarding Clarity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Competent Contributors  = A FUNCTION OF( Competence Transition Rate)
+	~	
+	~		|
+
+Architectural Understanding  = A FUNCTION OF( Learning Episode Rate,-Knowledge Decay)
+	~	
+	~		|
+
+Learning Episode Rate  = A FUNCTION OF( Active PR Submitters,Review Feedback Density,\
+		Absorptive Capacity,Contribution Frequency)
+	~	
+	~		|
+
+Knowledge Decay  = A FUNCTION OF( )
+	~	
+	~		|
+
+Competence Transition Rate  = A FUNCTION OF( Architectural Understanding,-Codebase Complexity\
+		,-Codebase Volatility,Review Feedback Density,Learning Threshold,Contribution Diversity\
+		,Active PR Submitters)
+	~	
+	~		|
+
+Contribution Frequency  = A FUNCTION OF( -Cycle Time)
+	~	
+	~		|
+
+Cycle Time  = A FUNCTION OF( -Architectural Understanding)
+	~	
+	~		|
+
+Review Feedback Density  = A FUNCTION OF( )
+	~	
+	~		|
+
+Prior Related Knowledge Index  = A FUNCTION OF( )
+	~	
+	~		|
+
+Absorptive Capacity  = A FUNCTION OF( Prior Related Knowledge Index)
+	~	
+	~		|
+
+Codebase Complexity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Codebase Volatility  = A FUNCTION OF( )
+	~	
+	~		|
+
+Learning Threshold  = A FUNCTION OF( )
+	~	
+	~		|
+
+Contribution Diversity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Recognized Contributors  = A FUNCTION OF( Recognition Rate)
+	~	
+	~		|
+
+Visible Reputation  = A FUNCTION OF( Trust Accrual Rate,-Trust Decay)
+	~	
+	~		|
+
+Trust Accrual Rate  = A FUNCTION OF( Competent Contributors,Signal Quality Index,Visible Reputation\
+		)
+	~	
+	~		|
+
+Trust Decay  = A FUNCTION OF( )
+	~	
+	~		|
+
+Brokerage Position Strength  = A FUNCTION OF( Tie Formation Rate,-Tie Decay)
+	~	
+	~		|
+
+Tie Formation Rate  = A FUNCTION OF( Brokerage Advantage Factor)
+	~	
+	~		|
+
+Tie Decay  = A FUNCTION OF( )
+	~	
+	~		|
+
+Recognition Rate  = A FUNCTION OF( Visible Reputation,Recognition Bandwidth,Recognition Threshold\
+		,-Signal Noise Level,Brokerage Position Strength,Competent Contributors)
+	~	
+	~		|
+
+Recognition Bandwidth  = A FUNCTION OF( )
+	~	
+	~		|
+
+Signal Quality Index  = A FUNCTION OF( )
+	~	
+	~		|
+
+Recognition Threshold  = A FUNCTION OF( )
+	~	
+	~		|
+
+Signal Noise Level  = A FUNCTION OF( )
+	~	
+	~		|
+
+Brokerage Advantage Factor  = A FUNCTION OF( )
+	~	
+	~		|
+
+Maintainer Candidates  = A FUNCTION OF( Candidacy Nomination Rate,-Candidacy Reset Rate\
+		)
+	~	
+	~		|
+
+Governance Contributors  = A FUNCTION OF( Start Governance Work Rate)
+	~	
+	~		|
+
+Start Governance Work Rate  = A FUNCTION OF( Recognized Contributors)
+	~	
+	~		|
+
+Candidacy Nomination Rate  = A FUNCTION OF( Governance Reliability Index,Vetting Capacity\
+		,Governance Contributors)
+	~	
+	~		|
+
+Candidacy Reset Rate  = A FUNCTION OF( Breach Probability)
+	~	
+	~		|
+
+Vetting Capacity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Rule Clarity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Appropriation Effectiveness  = A FUNCTION OF( Rule Clarity)
+	~	
+	~		|
+
+Governance Reliability Index  = A FUNCTION OF( Appropriation Effectiveness,Crisis Intervention Events\
+		)
+	~	
+	~		|
+
+Breach Probability  = A FUNCTION OF( Policy Violation Event Rate)
+	~	
+	~		|
+
+Policy Violation Event Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Crisis Intervention Events  = A FUNCTION OF( )
+	~	
+	~		|
+
+Candidate Attrition Rate  = A FUNCTION OF( Time to Selection)
+	~	
+	~		|
+
+Criteria Stringency  = A FUNCTION OF( Coordination Overhead,Incident Shock Severity)
+	~	
+	~		|
+
+Coordination Overhead  = A FUNCTION OF( Team Size Effect)
+	~	
+	~		|
+
+Team Size Effect  = A FUNCTION OF( )
+	~	
+	~		|
+
+Incident Shock Severity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Threshold for Selection  = A FUNCTION OF( )
+	~	
+	~		|
+
+Reliability Signal Strength  = A FUNCTION OF( )
+	~	
+	~		|
+
+Responsiveness Signal  = A FUNCTION OF( )
+	~	
+	~		|
+
+Conflict Resolution Skill Signal  = A FUNCTION OF( )
+	~	
+	~		|
+
+Review Quality Signal  = A FUNCTION OF( )
+	~	
+	~		|
+
+Time to Selection  = A FUNCTION OF( Coordination Overhead)
+	~	
+	~		|
+
+Attrition Sink  = A FUNCTION OF( Candidate Attrition Rate)
+	~	
+	~		|
+
+Sustainable Maintainers  = A FUNCTION OF( Sustainment Rate,-Sustainability Loss Rate)
+	~	
+	~		|
+
+"Attrition Sink (Maintainer Workload, Support, and Retention)"  = A FUNCTION OF( Permanent Attrition Rate\
+		)
+	~	
+	~		|
+
+On Hiatus Maintainers  = A FUNCTION OF( Hiatus Entry Rate,-Return from Hiatus Rate)
+	~	
+	~		|
+
+Maintainer Stress  = A FUNCTION OF( Stress Accumulation Rate,-Recovery Rate)
+	~	
+	~		|
+
+Hiatus Entry Rate  = A FUNCTION OF( Maintainer Stress)
+	~	
+	~		|
+
+Return from Hiatus Rate  = A FUNCTION OF( On Hiatus Maintainers)
+	~	
+	~		|
+
+Permanent Attrition Rate  = A FUNCTION OF( Maintainer Stress,Burnout Tipping Threshold\
+		)
+	~	
+	~		|
+
+Sustainability Loss Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Automation Level  = A FUNCTION OF( Automation Investment Rate,-Automation Decay Rate)
+	~	
+	~		|
+
+Automation Investment Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Automation Decay Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Review Queue  = A FUNCTION OF( PR Arrival Rate,-PR Processing Rate)
+	~	
+	~		|
+
+PR Arrival Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+PR Processing Rate  = A FUNCTION OF( Sustainable Maintainers,Automation Level,Reviewer Pool Depth\
+		,-"Coordination Overhead (Maintainer Workload, Support, and Retention)")
+	~	
+	~		|
+
+Reviewer Pool Depth  = A FUNCTION OF( Sustainable Maintainers)
+	~	
+	~		|
+
+Burnout Tipping Threshold  = A FUNCTION OF( )
+	~	
+	~		|
+
+Psychological Safety Level  = A FUNCTION OF( )
+	~	
+	~		|
+
+Incident Load  = A FUNCTION OF( Incident Arrival Rate,-Incident Resolution Rate)
+	~	
+	~		|
+
+Incident Arrival Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Incident Resolution Rate  = A FUNCTION OF( Sustainable Maintainers,Automation Level)
+	~	
+	~		|
+
+"Coordination Overhead (Maintainer Workload, Support, and Retention)"  = A FUNCTION OF\
+		( )
+	~	
+	~		|
+
+PR Latency  = A FUNCTION OF( Review Queue)
+	~	
+	~		|
+
+Mentoring Time Allocation  = A FUNCTION OF( Sustainable Maintainers)
+	~	
+	~		|
+
+Governance Capacity  = A FUNCTION OF( Capacity Formation Rate,-Capacity Erosion Rate)
+	~	
+	~		|
+
+Capacity Loss Sink  = A FUNCTION OF( )
+	~	
+	~		|
+
+Project Reputation and Visibility  = A FUNCTION OF( Reputation Accrual Rate,-Reputation Decay Rate\
+		)
+	~	
+	~		|
+
+Routine Maturity  = A FUNCTION OF( Routine Improvement Rate,-Routine Drift Rate)
+	~	
+	~		|
+
+Governance Automation Level  = A FUNCTION OF( Governance Automation Investment Rate,-\
+		Governance Automation Decay Rate)
+	~	
+	~		|
+
+Governance Decision Backlog  = A FUNCTION OF( -Decision Throughput,New Governance Issues Inflow\
+		)
+	~	
+	~		|
+
+Capacity Formation Rate  = A FUNCTION OF( Sustainable Maintainers)
+	~	
+	~		|
+
+Capacity Erosion Rate  = A FUNCTION OF( "Coordination Overhead (Governance Capacity, Routine Evolution, and Project Reputation)"\
+		)
+	~	
+	~		|
+
+Reputation Accrual Rate  = A FUNCTION OF( Release Cadence,Governance Quality Signal,Release Reliability\
+		)
+	~	
+	~		|
+
+Reputation Decay Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Routine Drift Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+New Governance Issues Inflow  = A FUNCTION OF( Ecosystem Shock Incidence,Upstream Change Load\
+		,Security Incident Severity)
+	~	
+	~		|
+
+Decision Completion Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Release Cadence  = A FUNCTION OF( Governance Capacity)
+	~	
+	~		|
+
+Cycle Time for Governance Decisions  = A FUNCTION OF( Governance Decision Backlog)
+	~	
+	~		|
+
+Decision Throughput  = A FUNCTION OF( Governance Capacity,Routine Maturity,Governance Automation Level\
+		)
+	~	
+	~		|
+
+"Coordination Overhead (Governance Capacity, Routine Evolution, and Project Reputation)"\
+		  = A FUNCTION OF( Governance Decision Backlog)
+	~	
+	~		|
+
+Governance Quality Signal  = A FUNCTION OF( )
+	~	
+	~		|
+
+Ecosystem Shock Incidence  = A FUNCTION OF( )
+	~	
+	~		|
+
+Upstream Change Load  = A FUNCTION OF( Panarchy Coupling Strength)
+	~	
+	~		|
+
+Security Incident Severity  = A FUNCTION OF( )
+	~	
+	~		|
+
+Panarchy Coupling Strength  = A FUNCTION OF( )
+	~	
+	~		|
+
+Release Reliability  = A FUNCTION OF( )
+	~	
+	~		|
+
+Diffusion Delay  = A FUNCTION OF( )
+	~	
+	~		|
+
+Governance Automation Investment Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+Governance Automation Decay Rate  = A FUNCTION OF( )
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,108,2
+10,1,New Contributors,-11333,263,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Core Developer,-10906,266,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,PR Feedback,-11227,562,54,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,Source Code,-10828,702,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,5,User Base,-10350,677,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,6,Project Reputation,-10034,673,50,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,7,48,-10502,677,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,8,10,7,100,0,0,22,0,192,0,-1--1--1,,1|(-10471,677)|
+1,9,10,5,4,0,0,22,0,192,0,-1--1--1,,1|(-10417,677)|
+11,10,0,-10444,677,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,11,Adoption Rate,-10444,711,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,12,48,-10190,677,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,13,15,5,100,0,0,22,0,192,0,-1--1--1,,1|(-10281,677)|
+1,14,15,12,4,0,0,22,0,192,0,-1--1--1,,1|(-10223,677)|
+11,15,0,-10252,677,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,16,User Churn Rate,-10252,711,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,17,48,-10146,670,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,18,20,17,100,0,0,22,0,192,0,-1--1--1,,1|(-10126,670)|
+1,19,20,6,4,0,0,22,0,192,0,-1--1--1,,1|(-10094,670)|
+11,20,0,-10110,670,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,21,Reputation Building,-10110,704,52,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,22,48,-9823,673,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,23,25,6,100,0,0,22,0,192,0,-1--1--1,,1|(-9950,673)|
+1,24,25,22,4,0,0,22,0,192,0,-1--1--1,,1|(-9868,673)|
+11,25,0,-9909,673,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,26,Reputation Decline,-9909,707,51,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,27,Software Quality and Features,-10096,541,55,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,28,27,6,1,0,43,0,0,192,0,-1--1--1,,1|(-10049,602)|
+1,29,5,6,1,0,0,0,0,192,0,-1--1--1,,1|(-10189,793)|
+10,30,Community Health,-10198,368,50,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,31,48,-10349,365,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,32,34,31,100,0,0,22,0,192,0,-1--1--1,,1|(-10320,365)|
+1,33,34,30,4,0,0,22,0,192,0,-1--1--1,,1|(-10269,365)|
+11,34,0,-10295,365,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,35,Trust Building,-10295,399,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,36,48,-9939,368,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,37,39,30,100,0,0,22,0,192,0,-1--1--1,,1|(-10089,368)|
+1,38,39,36,4,0,0,22,0,192,0,-1--1--1,,1|(-9984,368)|
+11,39,0,-10024,368,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,40,Culture Erosion,-10024,402,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,41,PR Review Delay,-10989,492,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,42,48,-10729,266,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,43,45,2,100,0,0,22,0,192,0,-1--1--1,,1|(-10833,266)|
+1,44,45,42,4,0,0,22,0,192,0,-1--1--1,,1|(-10767,266)|
+11,45,0,-10800,266,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,46,Developer's Turnover,-10800,300,56,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,47,New Pull request,-11356,696,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,48,Open Issues,-11812,534,46,26,3,3,0,2,-1,1,0,0,0-0-0,0-0-0,|||0-0-0,0,0,0,0,0,0
+10,49,Project's Implicit Knowledge,-11058,-80,51,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,50,Projects's Explicit Knowledge,-11330,-82,50,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,51,48,-11568,699,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,52,54,51,100,0,0,22,0,192,0,-1--1--1,,1|(-11530,699)|
+1,53,54,47,4,0,0,22,0,192,0,-1--1--1,,1|(-11444,699)|
+11,54,0,-11494,699,8,6,33,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,55,New Pr rate,-11494,731,47,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,56,Pull Request Under review,-11111,706,51,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,57,59,47,100,0,0,22,0,192,0,-1--1--1,,1|(-11270,700)|
+1,58,59,56,4,0,0,22,0,192,0,-1--1--1,,1|(-11190,700)|
+11,59,0,-11224,700,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,60,Review Rate,-11224,734,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,61,63,56,100,0,0,22,0,192,0,-1--1--1,,1|(-11013,701)|
+1,62,63,4,4,0,0,22,0,192,0,-1--1--1,,1|(-10912,701)|
+11,63,0,-10958,701,8,6,33,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,64,"Merge/Commit",-10958,733,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,65,48,-11111,827,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,66,68,56,100,0,0,22,0,192,0,-1--1--1,,1|(-11111,750)|
+1,67,68,65,4,0,0,22,0,192,0,-1--1--1,,1|(-11111,800)|
+11,68,0,-11111,775,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,69,Rejection Rate,-11057,775,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,70,2,41,1,0,0,0,0,192,0,-1--1--1,,1|(-10926,386)|
+1,71,41,3,1,0,0,0,0,192,0,-1--1--1,,1|(-11093,533)|
+10,72,Experienced Contributors,-11115,266,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,73,75,1,100,0,0,22,0,192,0,-1--1--1,,1|(-11248,267)|
+1,74,75,72,4,0,0,22,0,192,0,-1--1--1,,1|(-11199,267)|
+11,75,0,-11222,267,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,76,Skill up,-11222,301,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,77,79,72,100,0,0,22,0,192,0,-1--1--1,,1|(-11027,265)|
+1,78,79,2,4,0,0,22,0,192,0,-1--1--1,,1|(-10973,265)|
+11,79,0,-10999,265,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,80,Promotion Rate,-10999,299,46,26,40,3,0,0,-1,1,0,0,0,0,0,0,0,0
+12,81,48,-11567,264,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,82,84,81,100,0,0,22,0,192,0,-1--1--1,,1|(-11517,264)|
+1,83,84,1,4,0,0,22,0,192,0,-1--1--1,,1|(-11432,264)|
+11,84,0,-11471,264,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,85,Joining Rate,-11471,298,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,86,56,3,1,0,0,0,0,192,0,-1--1--1,,1|(-11178,658)|
+12,87,48,-10816,-79,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,88,90,49,100,0,0,22,0,192,0,-1--1--1,,1|(-10961,-79)|
+1,89,90,87,4,0,0,22,0,192,0,-1--1--1,,1|(-10865,-79)|
+11,90,0,-10909,-79,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,91,"Depreciation/Loss of Knowledge",-10909,-45,55,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,92,45,90,1,0,43,0,0,192,0,-1--1--1,,1|(-10770,66)|
+10,93,"Implicit Knowledge Transfer (Mentorship)",-11055,95,57,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,94,49,93,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,95,93,75,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,96,93,79,0,0,43,0,0,192,0,-1--1--1,,1|(0,0)|
+1,97,2,93,1,0,43,0,0,192,0,-1--1--1,,1|(-10937,150)|
+1,98,100,49,100,0,0,22,0,192,0,-1--1--1,,1|(-11149,-81)|
+1,99,100,50,4,0,0,22,0,192,0,-1--1--1,,1|(-11241,-81)|
+11,100,0,-11195,-81,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,101,Knowledge Conversion Rate,-11195,-47,60,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,102,104,50,100,0,0,22,0,192,0,-1--1--1,,1|(-11330,-232)|
+1,103,104,49,4,0,0,22,0,192,0,-1--1--1,,1|(-11064,-165)|
+11,104,0,-11064,-232,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,105,Explicit to Implicit Conversion,-11064,-198,47,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,106,Searchable Knowledge Base,-11850,228,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,107,3,1,1,0,0,0,0,192,0,-1--1--1,,1|(-11310,469)|
+1,108,3,72,1,0,0,0,0,192,0,-1--1--1,,1|(-11194,398)|
+1,109,3,2,1,0,0,0,0,192,0,-1--1--1,,1|(-11045,426)|
+1,110,1,3,1,0,0,0,0,192,0,-1--1--1,,1|(-11265,404)|
+1,111,72,3,1,0,0,0,0,192,0,-1--1--1,,1|(-11151,414)|
+1,112,3,56,1,0,0,0,0,192,0,-1--1--1,,1|(-11142,606)|
+10,113,Closed Issues,-11999,532,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,114,"Explicit Knowledge Transfer (Documentation, Contributor's Guides)",-11316,86,91,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,115,50,114,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,116,114,84,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,117,114,75,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+12,118,48,-11647,531,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,119,121,118,100,0,0,22,0,192,0,-1--1--1,,1|(-11674,531)|
+1,120,121,48,4,0,0,22,0,192,0,-1--1--1,,1|(-11735,531)|
+11,121,0,-11697,531,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,122,Issue Creation Rate,-11697,565,51,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,123,125,48,100,0,0,22,0,192,0,-1--1--1,,1|(-11881,531)|
+1,124,125,113,4,0,0,22,0,192,0,-1--1--1,,1|(-11935,531)|
+11,125,0,-11910,531,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,126,Issue Resolution Rate,-11910,565,56,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,127,48,54,1,0,43,0,0,192,0,-1--1--1,,1|(-11571,542)|
+12,128,48,-11854,101,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,129,131,128,100,0,0,22,0,192,0,-1--1--1,,1|(-11854,123)|
+1,130,131,106,4,0,0,22,0,192,0,-1--1--1,,1|(-11854,176)|
+11,131,0,-11854,144,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,132,Community engagement,-11782,144,64,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,133,3,106,1,0,0,0,0,192,0,-1--1--1,,1|(-11552,437)|
+1,134,113,106,1,0,0,0,0,192,0,-1--1--1,,1|(-11937,377)|
+1,135,106,50,1,0,43,0,0,192,0,-1--1--1,,1|(-11869,24)|
+10,136,Discussions,-11662,205,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,137,136,106,1,0,0,0,0,192,0,-1--1--1,,1|(-11755,221)|
+10,138,Joining Rate,-11415,424,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,139,6,5,1,0,0,0,0,192,0,-1--1--1,,1|(-10246,567)|
+10,140,hi,-12393,471,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,141,48,-12393,356,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+11,142,0,-12393,404,8,6,1,3,0,0,1,0,0,0,0,0,0,0,0,0
+1,143,142,141,100,0,0,22,0,192,0,-1--1--1,,1|(-12393,381)|
+1,144,142,140,4,0,0,22,0,192,0,-1--1--1,,1|(-12393,427)|
+12,145,48,-12364,587,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,146,Feedback,-11809,710,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,147,48,146,1,0,0,0,0,192,0,-1--1--1,,1|(-11843,629)|
+1,148,146,48,1,0,0,0,0,192,0,-1--1--1,,1|(-11773,624)|
+1,149,4,121,1,0,0,0,0,192,0,-1--1--1,,1|(-11167,912)|
+1,150,30,6,1,0,43,0,0,192,0,-1--1--1,,1|(-10013,533)|
+1,151,114,138,0,1,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,152,Maintainer time,-11870,441,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,153,152,125,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,154,Governance strategy,-11563,351,55,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,155,Prospective Observers,-8977,151,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,156,Engaged Newcomers,-7727,51,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,157,General Developer Pool,-8477,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,158,Interest Fade Sink,-8227,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,159,Awareness Inflow,-7977,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,160,Prospective Churn,-8977,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,161,Conversion to Engagement,-8727,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,162,Perceived Legitimacy Signal,-8477,301,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,163,Legitimacy Accrual,-8227,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,164,Legitimacy Decay,-7977,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,165,Awareness Momentum,-8977,451,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,166,Endorsement Assimilation,-8727,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,167,Momentum Decay,-8477,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,168,Project Visibility Signal,-8227,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,169,Endorsements,-7977,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,170,Stars and Badges Level,-8977,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,171,Release Stability Signal,-8727,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,172,Governance Responsiveness Signal,-8477,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,173,Perceived Benefits,-8227,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,174,Perceived Costs,-7977,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,175,Conversion Attractiveness,-8977,751,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,176,Conversion Fraction,-8727,751,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,177,Anticipated Response Time,-8477,751,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,178,Response Time Threshold,-8227,751,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,179,Identity Cues Strength,-7977,751,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,180,Diversity of Entry Points,-8977,901,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,181,Conversion Elasticity,-8727,901,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,182,Social Proof Generation Rate,-8477,901,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,183,Awareness Surge Delay,-8227,901,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,184,Peripheral Participants,-6227,51,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,185,Newcomer Inactivity Sink,-7227,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,186,Reversion to Inactivity,-6727,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,187,Unanswered Questions Backlog,-6477,151,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,188,Incoming Questions,-7477,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,189,Question Response Rate,-7227,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,190,Socialization Bandwidth,-6977,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,191,Mentoring Capacity Proxy,-6727,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,192,Legitimate Opportunity Availability,-6477,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,193,Perceived Risk of First Actions,-7477,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,194,Peer Help Density,-7227,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,195,Documentation Clarity,-6977,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,196,Time to First Response,-6727,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,197,Response Threshold,-6477,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,198,Active PR Submitters,-4727,51,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,199,Abandonment Sink,-5727,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,200,First PR Completion Rate,-5477,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,201,First PR Abandonment Rate,-5227,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,202,First PR Review Queue,-4977,151,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,203,First PR Submission Rate,-5977,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,204,First PR Reviews Completed,-5727,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,205,Review Throughput Proxy,-5477,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,206,Review Latency,-5227,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,207,Review Latency Threshold,-4977,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,208,Setup Friction Index,-5727,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,209,Template Quality,-5477,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,210,Appropriation Consistency,-5227,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,211,Acceptance Probability,-4977,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,212,CI Alignment Factor,-5977,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,213,Local Environment Setup Time,-5727,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,214,Onboarding Clarity,-5477,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,215,Competent Contributors,-3227,51,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,216,Architectural Understanding,-4227,151,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,217,Learning Episode Rate,-3977,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,218,Knowledge Decay,-3727,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,219,Competence Transition Rate,-3477,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,220,Contribution Frequency,-4477,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,221,Cycle Time,-4227,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,222,Review Feedback Density,-3977,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,223,Prior Related Knowledge Index,-3727,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,224,Absorptive Capacity,-3477,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,225,Codebase Complexity,-4477,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,226,Codebase Volatility,-4227,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,227,Learning Threshold,-3977,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,228,Contribution Diversity,-3727,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,229,Recognized Contributors,-1730,206,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,230,Visible Reputation,-2727,151,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,231,Trust Accrual Rate,-2477,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,232,Trust Decay,-2227,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,233,Brokerage Position Strength,-1990,76,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,234,Tie Formation Rate,-2977,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,235,Tie Decay,-2727,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,236,Recognition Rate,-2039,453,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,237,Recognition Bandwidth,-2227,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,238,Signal Quality Index,-1977,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,239,Recognition Threshold,-2977,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,240,Signal Noise Level,-2727,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,241,Brokerage Advantage Factor,-2477,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,242,Maintainer Candidates,-227,51,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,243,Governance Contributors,-1227,151,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,244,Start Governance Work Rate,-1436,103,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,245,Candidacy Nomination Rate,-727,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,246,Candidacy Reset Rate,-477,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,247,Vetting Capacity,-1477,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,248,Rule Clarity,-1227,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,249,Appropriation Effectiveness,-977,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,250,Governance Reliability Index,-727,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,251,Breach Probability,-477,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,252,Policy Violation Event Rate,-1477,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,253,Crisis Intervention Events,-1227,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,254,Candidate Attrition Rate,523,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,255,Criteria Stringency,773,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,256,Coordination Overhead,1023,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,257,Team Size Effect,23,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,258,Incident Shock Severity,273,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,259,Threshold for Selection,523,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,260,Reliability Signal Strength,773,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,261,Responsiveness Signal,1023,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,262,Conflict Resolution Skill Signal,23,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,263,Review Quality Signal,273,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,264,Time to Selection,773,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,265,Attrition Sink,1023,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,266,Sustainable Maintainers,2773,51,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,267,"Attrition Sink (Maintainer Workload, Support, and Retention)",1773,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,268,On Hiatus Maintainers,2023,151,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,269,Maintainer Stress,2273,151,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,270,Stress Accumulation Rate,2523,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,271,Recovery Rate,1523,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,272,Hiatus Entry Rate,1773,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,273,Return from Hiatus Rate,2023,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,274,Permanent Attrition Rate,2273,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,275,Sustainment Rate,2523,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,276,Sustainability Loss Rate,1523,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,277,Automation Level,1773,451,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,278,Automation Investment Rate,2023,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,279,Automation Decay Rate,2273,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,280,Review Queue,2523,451,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,281,PR Arrival Rate,1523,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,282,PR Processing Rate,1773,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,283,Reviewer Pool Depth,2023,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,284,Burnout Tipping Threshold,2023,751,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,285,Psychological Safety Level,2273,751,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,286,Incident Load,2523,751,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,287,Incident Arrival Rate,1523,901,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,288,Incident Resolution Rate,1773,901,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,289,"Coordination Overhead (Maintainer Workload, Support, and Retention)",2023,901,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,290,PR Latency,2273,901,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,291,Mentoring Time Allocation,2523,901,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,292,Governance Capacity,3023,151,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,293,Capacity Loss Sink,3273,151,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,294,Project Reputation and Visibility,3523,151,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,295,Routine Maturity,3773,151,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,296,Governance Automation Level,4023,151,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,297,Governance Decision Backlog,3023,301,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,298,Capacity Formation Rate,3273,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,299,Capacity Erosion Rate,3523,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,300,Reputation Accrual Rate,3773,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,301,Reputation Decay Rate,4023,301,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,302,Routine Improvement Rate,3023,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,303,Routine Drift Rate,3273,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,304,New Governance Issues Inflow,3523,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,305,Decision Completion Rate,3773,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,306,Release Cadence,4023,451,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,307,Cycle Time for Governance Decisions,3023,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,308,Decision Throughput,3273,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,309,"Coordination Overhead (Governance Capacity, Routine Evolution, and Project Reputation)",3523,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,310,Governance Quality Signal,3773,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,311,Ecosystem Shock Incidence,4023,601,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,312,Upstream Change Load,3023,751,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,313,Security Incident Severity,3273,751,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,314,Panarchy Coupling Strength,3523,751,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,315,Release Reliability,3773,751,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,316,Diffusion Delay,4023,751,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,317,Governance Automation Investment Rate,3273,901,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,318,Governance Automation Decay Rate,3523,901,60,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,319,154,85,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,320,154,138,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,321,159,155,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,322,161,156,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,323,160,158,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,324,157,159,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,325,168,159,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,326,155,160,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,327,175,161,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,328,155,161,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,329,163,162,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,330,164,162,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,331,182,163,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,332,166,165,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,333,167,165,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,334,183,166,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,335,165,168,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,336,169,168,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,337,162,168,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,338,170,168,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,339,172,173,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,340,162,173,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,341,171,173,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,342,177,175,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,343,173,175,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,344,174,175,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,345,178,175,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,346,181,176,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,347,179,176,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,348,180,181,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,349,156,182,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,350,186,185,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,351,197,186,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,352,196,186,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,353,188,187,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,354,189,187,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,355,156,188,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,356,190,189,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,357,191,190,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,358,195,193,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,359,194,193,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,360,184,194,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,361,187,196,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,362,200,198,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,363,201,199,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,364,206,201,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,365,207,201,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,366,204,202,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,367,203,202,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,368,184,203,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,369,206,203,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,370,207,203,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,371,205,204,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,372,202,206,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,373,213,208,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,374,214,208,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,375,209,210,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,376,210,211,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,377,219,215,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,378,218,216,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,379,217,216,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,380,224,217,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,381,198,217,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,382,220,217,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,383,222,217,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,384,198,219,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,385,216,219,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,386,225,219,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,387,226,219,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,388,228,219,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,389,227,219,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,390,222,219,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,391,221,220,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,392,216,221,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,393,223,224,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,394,236,229,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,395,231,230,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,396,232,230,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,397,215,231,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,398,238,231,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,399,230,231,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,400,235,233,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,401,234,233,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,402,241,234,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,403,233,236,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,404,215,236,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,405,237,236,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,406,239,236,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,407,240,236,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,408,230,236,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,409,245,242,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,410,246,242,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,411,244,243,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,412,229,244,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,413,243,245,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,414,250,245,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,415,247,245,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,416,251,246,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,417,248,249,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,418,249,250,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,419,253,250,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,420,252,251,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,421,264,254,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,422,256,255,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,423,258,255,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,424,257,256,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,425,256,264,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,426,254,265,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,427,276,266,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,428,275,266,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,429,274,267,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,430,272,268,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,431,273,268,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,432,271,269,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,433,270,269,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,434,269,272,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,435,268,273,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,436,284,274,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,437,269,274,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,438,279,277,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,439,278,277,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,440,281,280,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,441,282,280,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,442,277,282,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,443,289,282,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,444,283,282,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,445,266,282,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,446,266,283,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,447,287,286,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,448,288,286,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,449,277,288,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,450,266,288,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,451,280,290,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,452,266,291,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,453,299,292,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,454,298,292,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,455,300,294,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,456,301,294,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,457,303,295,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,458,302,295,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,459,318,296,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,460,317,296,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,461,308,297,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,462,304,297,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,463,266,298,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,464,309,299,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,465,310,300,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,466,306,300,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,467,315,300,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,468,311,304,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,469,313,304,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,470,312,304,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,471,292,306,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,472,297,307,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,473,296,308,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,474,292,308,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,475,295,308,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,476,297,309,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,477,314,312,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+///---\\\
+:L<%^E!@
+5:Brokerage Position Strength
+19:108,0
+24:0
+25:0
+26:0
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Vensim Sans|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

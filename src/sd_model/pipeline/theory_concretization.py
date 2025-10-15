@@ -105,24 +105,26 @@ Your task: Implement these design decisions by identifying concrete SD elements.
 
 ## 1. SISO Architecture: Process Connections
 
-Step 1 has planned a pipeline with SISO (Single Input Single Output) per process:
-- Each process has EXACTLY ONE input stock and EXACTLY ONE output stock
-- Processes connect via flows: Output stock of Process A → Flow → Input stock of Process B
-- The system MAY form loops (e.g., last process → first process for circular dynamics)
-- Implement connections specified in `connections_to_other_clusters` from Step 1:
-  - **feeds_into**: Primary forward flow to next process
-  - **receives_from**: Input from another process
-  - **feedback_loop**: System-level circular connection (e.g., last → first)
+SISO (Single Input Single Output) means each process is a modular unit with clear boundaries:
 
-## 1.5 Module Interfaces: Stock-to-Stock Connections (REQUIRED)
+**Within each process:**
+- Can have MULTIPLE stocks internally (2, 3, 4, or more stocks for internal dynamics)
+- Can have MULTIPLE flows internally (connecting internal stocks)
+- Can have ANY number of auxiliaries
+- ALL internal connections stay within the process
 
-Each process should have:
-- **Primary input stock**: What accumulates as this process receives input
-- **Primary output stock**: What accumulates at this process's endpoint
+**Between processes (SISO boundaries):**
+- EXACTLY ONE designated input stock (receives flow from previous process)
+- EXACTLY ONE designated output stock (sends flow to next process)
+- NO other cross-process connections allowed (no auxiliaries or flows connecting across processes)
 
-Connect processes via flows:
+**Connection rules:**
 - Output stock of Process A → Flow → Input stock of Process B
-- Example: "Onboarded Contributors" → "Promotion Rate" → "Active Contributors"
+- Example: Process A's "Active Contributors" (output) → "Promotion Flow" → Process B's "Active Contributors" (input)
+- The input stock of Process B may have the same name as output stock of Process A (they're the same accumulation)
+- All other variables must ONLY connect within their own process
+
+Implement the sequential pipeline specified in Step 1's `connections_to_other_clusters` (feeds_into connections).
 
 ## 2. Your Task: Identify SD Elements in Narratives
 
@@ -148,7 +150,12 @@ Connect processes via flows:
 - "Gap between target and actual..." → Auxiliary: Gap
 - "Time constant of 3 months..." → Auxiliary: Time Constant
 
-**Connectivity requirement**: Every variable must connect to the rest of the process structure. No isolated variables—each stock, flow, and auxiliary should have causal relationships with other elements. If a narrative describes an element, it also describes how that element relates to others. If the connection is not clear from the narrative for a variable, infer it.
+**Identify Clouds** - Look for system boundaries (sources/sinks):
+- "Contributors enter from external job market..." → Cloud: External Job Market (source)
+- "Contributors exit the system through attrition..." → Cloud: Attrition Sink (sink)
+- Clouds represent the edge of your system boundary
+
+**Connectivity requirement**: Every variable must connect to other variables WITHIN THE SAME PROCESS. No isolated variables—each stock, flow, and auxiliary should have causal relationships with other elements in its process. CRITICAL: Do not create connections to variables in other processes (except the designated input/output stock connections).
 
 **Variable-Connection Consistency**: Every variable referenced in connections must first be extracted in the variables list. Extract all stocks/flows mentioned in narratives BEFORE creating connections to them. No dangling references.
 
@@ -195,9 +202,11 @@ Real processes often (not always) combine multiple patterns: aging chain + resou
 **Flow**: Rates of change between stocks or between stocks and boundaries (units: things/time)
 - Examples: hiring rate, creation rate, depletion rate (people/month, documents/week)
 
-**Boundary (Cloud)**: System edge - sources that fill stocks or sinks that drain stocks
-- Source: External supply entering the system (e.g., Cloud → hiring flow → employees stock)
-- Sink: Outflow leaving the system (e.g., employees stock → attrition flow → Cloud)
+**Cloud**: System boundary representing sources or sinks
+- Type: Use type "Cloud" for boundary variables
+- Source: External supply entering (e.g., Cloud "External Market" → hiring flow → employees stock)
+- Sink: Outflow leaving (e.g., employees stock → attrition flow → Cloud "Attrition Sink")
+- Clouds connect via flows just like stocks, but represent the edge of your system
 
 **Auxiliary**: Calculated variables (not stocks or flows) computed from other model elements
 - Used to clarify causal relationships and represent factors that influence system behavior
@@ -222,8 +231,11 @@ Be specific and descriptive:
 # Validation Checklist
 
 Before finalizing:
-- ✓ All variables in connections exist in some process's variables list
+- ✓ All variables in connections exist in the SAME process's variables list (except input/output stocks)
 - ✓ No undefined references
+- ✓ No cross-process connections (except output stock → input stock of next process)
+- ✓ Each process has multiple internal stocks with rich dynamics
+- ✓ Exactly 1 input stock and 1 output stock designated per process
 
 ---
 
@@ -235,21 +247,16 @@ Return ONLY valid JSON:
   "processes": [
     {{
       "process_name": "Process Name from Step 1",
+      "input_stock": "Name of designated input stock (receives from previous process)",
+      "output_stock": "Name of designated output stock (sends to next process)",
       "variables": [
-        {{"name": "Variable Name", "type": "Stock|Flow|Auxiliary"}}
+        {{"name": "Variable Name", "type": "Stock|Flow|Auxiliary|Cloud"}}
       ],
       "connections": [
         {{
           "from": "Source Variable",
           "to": "Target Variable",
           "relationship": "positive|negative"
-        }}
-      ],
-      "boundary_flows": [
-        {{
-          "name": "Flow Name",
-          "type": "source|sink",
-          "connects_to": "Stock Name"
         }}
       ]
     }}

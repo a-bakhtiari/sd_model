@@ -370,7 +370,7 @@ def run_theory_planning(
         logger.info(f"  → Step 1 using: {provider.upper()} ({model})")
         llm_client = LLMClient(provider=provider, model=model)
 
-    response = llm_client.complete(prompt, temperature=0.3, max_tokens=16000)
+    response = llm_client.complete(prompt, temperature=0.3, max_tokens=64000)
 
     # Parse response
     try:
