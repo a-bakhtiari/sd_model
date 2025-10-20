@@ -1781,7 +1781,7 @@ def main() -> None:
                                                 else:
                                                     st.markdown(f"— **{target}**")
 
-                                                st.caption(description[:100] + "..." if len(description) > 100 else description)
+                                                st.caption(description)
 
                         st.markdown("---")
                         st.markdown("##### ✅ Concrete Additions")
