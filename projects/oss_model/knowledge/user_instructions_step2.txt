@@ -1,0 +1,14 @@
+# User Instructions for Theory Concretization (Step 2)
+# Your instructions below:
+
+## Extraction Principles
+
+When extracting SD elements from Step 1 narratives:
+
+- **Be faithful to the narratives**: Extract what's actually described in the narratives from Step 1. Don't add elements that weren't mentioned.
+
+- **Focus on core dynamics**: Prioritize the main dynamics and feedback loops described in the narratives. Don't over-complicate by adding peripheral elements.
+
+- **Maintain connectivity**: Ensure all processes connect to each other as specified in Step 1's connections. No isolated processes.
+
+- **Preserve multi-scale design**: The extracted SD elements should support both macro-level (main pipeline) and micro-level (internal process dynamics) understanding.

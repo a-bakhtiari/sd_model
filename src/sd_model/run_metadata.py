@@ -90,6 +90,39 @@ def save_run_metadata(
     return metadata_path
 
 
+def find_latest_step1_run(project_base_dir: Path) -> Optional[str]:
+    """Find the most recent run that has Step 1 (theory planning) output.
+
+    Args:
+        project_base_dir: Base directory for the project (e.g., projects/oss_model)
+
+    Returns:
+        Run ID of the most recent run with Step 1 output, or None if not found
+    """
+    runs_dir = project_base_dir / "artifacts" / "runs"
+
+    if not runs_dir.exists():
+        return None
+
+    # Find all run directories with Step 1 output
+    step1_runs = []
+    for run_dir in runs_dir.iterdir():
+        if not run_dir.is_dir():
+            continue
+
+        step1_path = run_dir / "theory" / "theory_planning_step1.json"
+        if step1_path.exists():
+            step1_runs.append(run_dir.name)
+
+    if not step1_runs:
+        return None
+
+    # Sort by run_id (timestamp is in the name, so lexicographic sort works)
+    # Most recent will be last
+    step1_runs.sort()
+    return step1_runs[-1]
+
+
 def update_latest_symlink(base_artifacts_dir: Path, run_id: str) -> None:
     """Create or update 'latest' symlink to point to most recent run.
 

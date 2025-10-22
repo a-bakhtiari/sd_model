@@ -1,0 +1,334 @@
+{
+  "theory_decisions": [
+    {
+      "theory_name": "Communities of Practice (Wenger)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Nonaka's SECI Model",
+      "decision": "include"
+    },
+    {
+      "theory_name": "A Dynamic Theory of Organizational Knowledge Creation",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Routines and Transactive Memory Systems",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Absorptive Capacity",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Diversity Trumps Ability",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Hidden Order: How Adaptation Builds Complexity",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Social Cognitive Career Theory (SCCT)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Task-Technology Fit (TTF)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Social Capital and Structural Holes",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Signaling Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Job Demands-Resources (JD-R) Model",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Cognitive Apprenticeship",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Self-Determination Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Motivation Crowding Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Deliberate Practice",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Social Identity Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Status Characteristics Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Institutional Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Conway's Law",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Technical Debt Theory",
+      "decision": "include"
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Discovery and Legitimation Funnel",
+        "narrative": "Input stock: Prospects (developers who have discovered the project and are observing). Output stock: Entry-level/Newcomer (developers who have taken first legitimate actions such as joining chat, commenting on issues, or attempting a first PR).\nProspects accumulate as the project broadcasts activity (releases, merged PRs, issue triage) and is discovered via search and social channels. The conversion flow from Prospects to Newcomers is driven by three levers: signaling strength, perceived self-efficacy gap, and governance clarity. Signaling strength rises when merge throughput is high and responsiveness is quick: frequent merges and friendly reviews publicly signal a healthy, welcoming community, accelerating discovery and conversion after a short attention-to-action delay (days to weeks). Governance clarity (well-scoped CONTRIBUTING.md, first-timer labels, code of conduct) reduces ambiguity, shrinking the evaluation delay between observing and attempting. The perceived self-efficacy gap is narrowed when the codebase is comprehensible and issues are right-sized; this reduces the psychological hurdle to trying. A reinforcing loop emerges: more Newcomers attempt small tasks, increasing the number of visible accepted changes; this boosts signaling strength, attracts more Prospects, and accelerates conversion. A balancing loop counteracts this: when governance is opaque or code complexity is high, friction rises; Prospects linger longer, and many abandon (outflow to boundary) before attempting. Nonlinearity appears as social proof thresholds: below a visible baseline of active maintainers and recent merges, conversion collapses as observers infer project dormancy. Inclusivity policies and welcoming tone reduce stereotype threat and extend the pool by increasing identity alignment; when inclusive labels and mentorship programs are present, conversion from underrepresented Prospects rises disproportionately, which strengthens cognitive diversity down the pipeline. Overly formal gatekeeping (mandatory pre-approvals before any interaction) crowds out intrinsic motivation, suppressing conversion until such policies are relaxed. Time constants matter: most Prospects observe for several weeks and require multiple positive signals before committing; sudden surges in activity can create transient spikes in conversion that fall back if responsiveness cannot be sustained. The process transforms diffuse interest into legitimate peripheral entry, governed by public signals, identity alignment, and policy legibility.",
+        "theories_used": [
+          "Signaling Theory",
+          "Communities of Practice (Wenger)",
+          "Social Cognitive Career Theory (SCCT)",
+          "Social Identity Theory",
+          "Institutional Theory",
+          "Motivation Crowding Theory",
+          "Diversity Trumps Ability",
+          "Task-Technology Fit (TTF)"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Apprenticeship Socialization",
+            "connection_type": "feeds_into",
+            "description": "Flow of Entry-level/Newcomers who begin guided participation and onboarding."
+          },
+          {
+            "target_cluster": "Governance and Review Throughput",
+            "connection_type": "receives_from",
+            "description": "Visible responsiveness (merge latency, review tone) strengthens signals that convert Prospects."
+          },
+          {
+            "target_cluster": "Codebase Evolution and Technical Debt",
+            "connection_type": "receives_from",
+            "description": "Higher code comprehensibility lowers perceived self-efficacy gap, increasing conversion."
+          },
+          {
+            "target_cluster": "Stewardship and Core Leadership",
+            "connection_type": "receives_from",
+            "description": "Outreach, release cadence, and public roadmaps by core increase discovery and legitimation."
+          }
+        ]
+      },
+      {
+        "name": "Apprenticeship Socialization",
+        "narrative": "Input stock: Entry-level/Newcomer. Output stock: Apprentice/Peripheral Participant (newcomers who regularly engage in small, legitimate tasks with guidance).\nNewcomers progress by being scaffolded into practice. Mentoring capacity (a stock co-produced by Practicing Contributors and Experts) allocates across newcomers via a matching rate; when the newcomer-to-mentor ratio exceeds a threshold (e.g., 8:1), mentoring quality declines nonlinearly, stretching the time needed to internalize norms and skills. A backlog of legit tasks (good-first-issues, doc fixes) energizes guided participation: newcomers pull tasks whose difficulty must match their absorptive capacity (a function of prior knowledge and recent learning). Tacit knowledge internalizes through observation, coaching, and articulation cycles; explicit artifacts (docs, examples) provide scaffolds that convert tacit-to-explicit and back (SECI). Self-determination needs (autonomy, competence, relatedness) accelerate persistence: when mentors respond, grant small choices, and celebrate wins, progression speeds up; when feedback is delayed or controlling, motivation crowds out and dropout rises to the boundary.\nTwo loops shape dynamics. Reinforcing: higher mentoring capacity and better scaffolds increase successful completions, which elevate newcomer self-efficacy; confident newcomers attempt slightly harder tasks, which deepens learning, yielding more Apprentices who soon contribute back as near-peers\u2014expanding mentoring capacity with a delay of months. Balancing: overload kicks in when influx exceeds capacity; cognitive load from complex code and sparse docs increases rework; with limited mentor attention, response times slip, slowing progression, causing some newcomers to churn before reaching peripheral regularity. Governance policies intersect: branch protection and PR requirements provide safe boundaries for guided attempts, but when rules are unclear or scattered, the onboarding task backlog becomes contaminated with hidden prerequisites, inflating time-to-first-accepted-change. Social capital matters: newcomers bridged to central members receive faster feedback and better task selection; isolated newcomers wander and stall. Diversity enhances learning opportunities by broadening problem frames, but without inclusive mentoring norms, heterogeneity initially raises coordination costs and lowers perceived belonging.\nTime delays are prominent: consistent engagement over 6\u201312 weeks is usually needed to stabilize routines and internalize practices. Crossing participation thresholds (e.g., 5\u201310 small wins) often triggers a sharp increase in autonomy and speed, at which point Apprentices emerge as reliable peripheral participants.",
+        "theories_used": [
+          "Cognitive Apprenticeship",
+          "Communities of Practice (Wenger)",
+          "Absorptive Capacity",
+          "Nonaka's SECI Model",
+          "Job Demands-Resources (JD-R) Model",
+          "Self-Determination Theory",
+          "Social Capital and Structural Holes",
+          "Task-Technology Fit (TTF)"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Cognitive Load Theory",
+            "rationale": "Models how code complexity and documentation quality modulate learning throughput and rework probability."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Practice and Contribution Growth",
+            "connection_type": "feeds_into",
+            "description": "Apprentice/Peripheral Participants who have stabilized routines move into regular contribution practice."
+          },
+          {
+            "target_cluster": "Stewardship and Core Leadership",
+            "connection_type": "receives_from",
+            "description": "Mentoring capacity and scaffolding guidelines provided by core maintainers."
+          },
+          {
+            "target_cluster": "Codebase Evolution and Technical Debt",
+            "connection_type": "receives_from",
+            "description": "Comprehensible/Modular Code lowers cognitive load, raising onboarding success rates."
+          },
+          {
+            "target_cluster": "Governance and Review Throughput",
+            "connection_type": "receives_from",
+            "description": "Clarity of contribution rules and reviewer responsiveness shape feedback frequency and progression."
+          }
+        ]
+      },
+      {
+        "name": "Practice and Contribution Growth",
+        "narrative": "Input stock: Apprentice/Peripheral Participant. Output stock: Practicing Contributor (developers submitting and landing meaningful changes with moderate autonomy).\nApprentices accelerate by doing: they allocate hours to deliberate practice\u2014iteratively submitting, receiving review, and revising. A queue of pending contributions captures work-in-process; its cycle time depends on reviewer capacity and policy strictness. Acceptance events reinforce learning and status: each merged change increases self-efficacy, expands trust, and sharpens the contributor\u2019s transactive memory (who knows what), which improves future task selection and reduces coordination overhead. As contributors learn where knowledge resides, they route questions efficiently, reducing wasted cycles. SECI dynamics operate as contributors externalize tacit know-how into tests and docs, combine it with existing artifacts, and internalize new patterns.\nReinforcing loops: (1) Skill loop\u2014accepted contributions raise competence and reviewer trust, which increases the probability of streamlined reviews and future acceptance, encouraging higher practice intensity; (2) Network loop\u2014successful interactions create bridging ties to core members, improving guidance and early feedback, boosting effective hours and throughput; (3) Visibility loop\u2014consistent contributions increase public presence, which mildly attracts more Apprentices who emulate patterns (with a delay). Balancing loops: (A) Queue congestion\u2014when pending work exceeds reviewer capacity, cycle times lengthen, increasing context-switching and reducing motivation; some contributors stall or reduce submissions; (B) Complexity drag\u2014technical debt and architectural mismatch increase rework; contributors spend more time untangling code than adding value; (C) Policy friction\u2014escalating gate strictness (tests, required approvals) raises quality but also inflates resubmission, which can crowd out intrinsic motivation if not paired with supportive feedback.\nNonlinearities include reputation thresholds: after around 10\u201320 accepted contributions, projects often grant lightweight permissions (labeling issues, triaging), which gates faster feedback and reduces WIP; this produces a step-change in contributor velocity. Task-technology fit matters: when local dev tooling, CI feedback, and codebase modularity align with task demands, practice hours convert to merged contributions at a higher yield; misfit produces thrash. Diversity in the contributor cohort tends to improve problem-solving breadth and code review quality, but only when inclusion norms are enforced; otherwise, coordination costs dominate. Time constants span days to weeks per iteration; improvements compound over 3\u20136 months as routines stabilize, transitioning contributors into the practicing pool.",
+        "theories_used": [
+          "Deliberate Practice",
+          "Nonaka's SECI Model",
+          "Absorptive Capacity",
+          "Routines and Transactive Memory Systems",
+          "Job Demands-Resources (JD-R) Model",
+          "Motivation Crowding Theory",
+          "Task-Technology Fit (TTF)",
+          "Social Capital and Structural Holes",
+          "Diversity Trumps Ability"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Cognitive Load Theory",
+            "rationale": "Captures nonlinear rework and error rates as complexity rises against contributor expertise."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Stewardship and Core Leadership",
+            "connection_type": "feeds_into",
+            "description": "Practicing Contributors who accumulate reputation and architectural fluency become candidates for core roles."
+          },
+          {
+            "target_cluster": "Governance and Review Throughput",
+            "connection_type": "feeds_into",
+            "description": "Submissions from Practicing Contributors add to the Pending Contributions inflow."
+          },
+          {
+            "target_cluster": "Codebase Evolution and Technical Debt",
+            "connection_type": "feedback_loop",
+            "description": "Refactoring and documentation contributions initiated by practitioners drive transformation of Legacy/Complex Code."
+          },
+          {
+            "target_cluster": "Apprenticeship Socialization",
+            "connection_type": "receives_from",
+            "description": "Influx of Apprentices ready to scale practice and submission cadence."
+          }
+        ]
+      },
+      {
+        "name": "Stewardship and Core Leadership",
+        "narrative": "Input stock: Practicing Contributor. Output stock: Expert/Core Developer (maintainers with architectural authority and governance responsibilities).\nPractitioners cross into stewardship by accumulating reputation, architectural judgments, and demonstrated reliability. A nomination and vetting pipeline aggregates signals: sustained merge history, thoughtful reviews, and community conduct. Status characteristics (visibility, perceived expertise) accelerate selection once thresholds are crossed, but also risk bias\u2014without explicit criteria, early core members over-select their network, potentially narrowing diversity. Upon entry to core, individuals gain direct commit rights, review authority, and governance duties (issue triage, releases). These privileges create leverage: core throughput raises review capacity, shortens cycles, and stabilizes architecture. A reinforcing loop emerges\u2014more core capacity reduces review latency, which increases acceptance and contributor satisfaction, ultimately producing more practitioners eligible for core (with a delay of months).\nBalancing dynamics arise from job demands: as core grows, so do cumulative demands (review queues, security, community moderation). Without deliberate workload management and role rotation, core attention fragments; review quality or timeliness slips, lengthening cycle times upstream. This is a growth-and-underinvestment archetype: demand grows faster than capacity if nomination and onboarding are delayed, leading to burnout and core attrition (outflow to boundary), which further overloads remaining maintainers. Institutionalization cements governance (branch protection, required approvals, CODEOWNERS). Such policies shape reliability, but excessive strictness increases reviewer load per change and can crowd out intrinsic stewardship among borderline candidates, delaying their progression. Communities of Practice solidify identity: as contributors internalize the project\u2019s practices and values, they self-organize around subsystems; this segmentation, aligned with Conway\u2019s Law, can improve modularity when mirrored in code. Deliberate practice persists at higher abstraction: core invest hours in architectural reviews and mentoring; this mentoring generates mentoring capacity for earlier stages with a delay, turning core members into force multipliers. Nonlinear thresholds include the \u201cbus factor\u201d: below a minimal number of active maintainers per module, review latency explodes and outages risk rises, stalling the pipeline. Conversely, crossing a critical mass enables specialization and faster decision-making.\nOverall, this process transforms reliable practitioners into stewards who set standards, review and merge at scale, and cultivate the next generation, while being constrained by workload, institutional rules, and cognitive limits.",
+        "theories_used": [
+          "Communities of Practice (Wenger)",
+          "Status Characteristics Theory",
+          "Institutional Theory",
+          "Job Demands-Resources (JD-R) Model",
+          "Deliberate Practice",
+          "Social Identity Theory",
+          "Routines and Transactive Memory Systems",
+          "Motivation Crowding Theory",
+          "Conway's Law"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Governance and Review Throughput",
+            "connection_type": "feedback_loop",
+            "description": "Core reviewers supply review capacity and set/adjust policies that shape queue throughput and quality gates."
+          },
+          {
+            "target_cluster": "Apprenticeship Socialization",
+            "connection_type": "feedback_loop",
+            "description": "Core mentoring and scaffolding guidelines increase mentoring capacity and onboarding quality."
+          },
+          {
+            "target_cluster": "Codebase Evolution and Technical Debt",
+            "connection_type": "feedback_loop",
+            "description": "Core architects prioritize refactoring and standards that re-balance code health."
+          }
+        ]
+      },
+      {
+        "name": "Codebase Evolution and Technical Debt",
+        "narrative": "Input stock: Legacy/Complex Code (modules with high cognitive load, weak tests/docs, tangled dependencies). Output stock: Comprehensible/Modular Code (well-factored, documented, well-tested modules aligned with team boundaries).\nMerged changes from the review pipeline add functionality but also inject debt proportionally to rush, low test coverage, and architectural mismatch. By default, new code lands into Legacy/Complex Code unless deliberately refactored; refactoring and documentation flows transfer modules to Comprehensible/Modular Code. Entropy and drift operate in reverse: when interfaces change without synchronized docs/tests, or when teams re-org without re-modularizing, Comprehensible code decays back into Legacy at a slow but persistent rate. Technical Debt theory governs tradeoffs: investing time in refactoring reduces future change costs, lowering the cognitive load barrier for newcomers and apprentices. A reinforcing loop forms: as Comprehensible code grows, entry-level comprehension improves; more contributors attempt refactoring and write clearer docs/tests, accelerating the transfer from Legacy to Comprehensible. Another reinforcing loop can be harmful: surges of features under deadline pressure increase debt faster than refactoring can pay it down, raising complexity; higher complexity slows review and reduces contributor success, which reduces available capacity to refactor.\nBalancing mechanisms include institutionalized coding standards and CI checks: when defect or rework rates rise, policies tighten (required approvals, coverage thresholds), reducing low-quality inflow but also slowing throughput. Conway\u2019s Law ties module boundaries to communication patterns: when teams split around coherent subsystems, modularity improves; if communication is fragmented without clear ownership, cross-module tangles grow. Nonlinearities appear as comprehension cliffs: beyond certain complexity thresholds, the probability that newcomers understand a module plummets, starving that area of contributions and concentrating workload in few experts, which accelerates burnout and further debt accumulation. Time delays are significant: refactoring campaigns require weeks-months to plan, and benefits propagate gradually to progression rates upstream as documentation, examples, and API stability improve.\nThis process transforms the stock of difficult code into approachable, well-factored modules and, through cognitive load pathways, strongly modulates the rates at which people advance along the participation pipeline.",
+        "theories_used": [
+          "Technical Debt Theory",
+          "Conway's Law",
+          "Institutional Theory",
+          "Routines and Transactive Memory Systems",
+          "Nonaka's SECI Model",
+          "Task-Technology Fit (TTF)"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Lehman's Laws of Software Evolution",
+            "rationale": "Explains inherent growth, complexity increase, and the need for ongoing restructuring to maintain evolvability."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Governance and Review Throughput",
+            "connection_type": "receives_from",
+            "description": "Merged Contributions add functionality and debt to Legacy/Complex Code stock."
+          },
+          {
+            "target_cluster": "Apprenticeship Socialization",
+            "connection_type": "feedback_loop",
+            "description": "Comprehensible/Modular Code reduces onboarding cognitive load and increases legitimate task availability."
+          },
+          {
+            "target_cluster": "Practice and Contribution Growth",
+            "connection_type": "feedback_loop",
+            "description": "Higher code comprehensibility increases acceptance probability and lowers rework for practitioners."
+          },
+          {
+            "target_cluster": "Stewardship and Core Leadership",
+            "connection_type": "feedback_loop",
+            "description": "Architectural coherence set by core influences refactoring priorities and slows legacy re-accumulation."
+          }
+        ]
+      },
+      {
+        "name": "Governance and Review Throughput",
+        "narrative": "Input stock: Pending Contributions (PRs, patches, ADRs awaiting review/merge). Output stock: Merged Contributions (changes incorporated into mainline).\nSubmissions arrive from Apprentices and Practicing Contributors. The review system operates as a queue with capacity provided by reviewers (core and trusted contributors). Throughput depends on reviewer availability, policy strictness (required approvals, CI gates, CODEOWNERS), and variability. When utilization approaches capacity, cycle time increases nonlinearly (Kingman\u2019s law), leading to long waits. Long waits reduce submitter motivation and resubmission speed, lowering arrival rates with a delay; they also reduce the visibility of accepted changes, dampening project signals. Conversely, when capacity exceeds arrival rate, the queue drains, cycle times fall, and acceptance creates positive signals that attract Prospects and encourage more submissions, reinforcing growth.\nPolicies shape the mix of speed and quality. Stricter gates raise quality and reduce downstream defects, but each increment of strictness raises per-PR review workload; poorly tuned gates can crowd out reviewer time and induce burnout. Direct commit rights for core act as a bypass lane, converting certain changes directly into Merged Contributions; this boosts throughput but risks debt if not backed by high standards. Queue discipline (triage SLAs, prioritizing newcomers\u2019 first PRs) strategically reduces time-to-first-merge, which is critical for retention. Social capital influences routing: reviewers prioritize PRs from known, reliable contributors, which increases their throughput and can inadvertently stall newcomers unless offset by explicit newcomer-friendly policies.\nFeedback loops span the organization. Reinforcing: more core reviewers increase throughput, shorten cycle time, and raise acceptance rates, which encourage more contributions and sustain reviewer morale. Balancing: as pending work grows, cycle time grows; submitter satisfaction falls; arrivals drop; reviewers face higher demands and may burn out (reducing capacity), further increasing cycle time. Time delays arise from time zones, batching of review sessions, and CI run duration. Threshold effects are common: once backlog exceeds a visible size (e.g., >100 PRs), external perception deteriorates and arrivals drop sharply. The process converts a flow of proposals into merged changes under governance rules, while its latency and tone send signals upstream that materially affect entry, learning, and persistence.",
+        "theories_used": [
+          "Institutional Theory",
+          "Task-Technology Fit (TTF)",
+          "Signaling Theory",
+          "Job Demands-Resources (JD-R) Model",
+          "Routines and Transactive Memory Systems",
+          "Social Capital and Structural Holes",
+          "Conway's Law"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Queuing Theory (Little\u2019s Law, Kingman\u2019s Formula)",
+            "rationale": "Explains nonlinear cycle time growth as utilization rises and how variability and WIP drive delays."
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Codebase Evolution and Technical Debt",
+            "connection_type": "feeds_into",
+            "description": "Merged Contributions update the codebase, adding functionality and potential debt to Legacy/Complex Code."
+          },
+          {
+            "target_cluster": "Discovery and Legitimation Funnel",
+            "connection_type": "feedback_loop",
+            "description": "Shorter merge latency and visible acceptance increase signals that convert Prospects to Newcomers."
+          },
+          {
+            "target_cluster": "Practice and Contribution Growth",
+            "connection_type": "receives_from",
+            "description": "Submissions from Practicing Contributors increase the Pending Contributions inflow."
+          },
+          {
+            "target_cluster": "Stewardship and Core Leadership",
+            "connection_type": "receives_from",
+            "description": "Core reviewers supply capacity and set/adjust review policies (strictness, direct commit privileges)."
+          },
+          {
+            "target_cluster": "Apprenticeship Socialization",
+            "connection_type": "receives_from",
+            "description": "Newcomer and Apprentice micro-contributions (docs, small fixes) enter the queue and require fast-lane triage."
+          }
+        ]
+      }
+    ],
+    "overall_narrative": "At the macro scale, the pipeline progresses Prospects \u2192 Entry-level/Newcomers \u2192 Apprentices/Peripheral Participants \u2192 Practicing Contributors \u2192 Expert/Core Developers. Two cross-cutting infrastructures\u2014the Governance/Review pipeline and the Codebase\u2014mediate progression rates and create system-level feedback.\nGrowth is initiated by signals: responsive governance and visible merges attract Prospects who convert to Newcomers when governance is legible and cognitive load is manageable. Apprenticeship dynamics\u2014mentoring, scaffolding, and guided participation\u2014convert Newcomers into Apprentices, limited by mentoring capacity and code comprehensibility. As Apprentices practice, they generate Pending Contributions; Governance converts these into Merged Contributions with latency determined by reviewer capacity and policy strictness. Accepted changes and supportive review tone reinforce participation, while long delays and harsh tone depress it. Practitioners who accrue accepted changes, reputation, and architectural fluency transition to Core. Core members amplify system capacity by mentoring, reviewing, and setting standards; however, their workload creates balancing pressures via burnout and policy over-tightening.\nThe Codebase acts as a cognitive medium: features and rushed merges accumulate as Legacy/Complex Code; deliberate refactoring and documentation transfer modules into Comprehensible/Modular Code, which lowers the cognitive barrier for upstream stages. When debt dominates, complexity drags learning, slows reviews, and starves the pipeline\u2014an endogenous limit to growth. Conversely, when comprehensibility grows, the system self-reinforces: faster learning, quicker reviews, more accepted changes, and more maintainers.\nKey loops: (R1) Mentor Flywheel\u2014more core \u2192 more mentoring capacity \u2192 faster newcomer progression \u2192 more practitioners \u2192 more core; (R2) Responsiveness Signal\u2014faster merge throughput \u2192 stronger public signals \u2192 more Prospects/Newcomers \u2192 more submissions \u2192 more merged changes; (B1) Review Congestion\u2014pending > capacity \u2192 longer cycle time \u2192 lower arrivals and reviewer burnout \u2192 lower capacity; (B2) Debt Drag\u2014technical debt \u2191 \u2192 cognitive load \u2191 \u2192 acceptance \u2193 and learning \u2193 \u2192 fewer refactorers \u2192 debt persists; (B3) Steward Load\u2014core demands \u2191 \u2192 burnout \u2191 \u2192 core \u2193 \u2192 queue \u2191. Delays (weeks to months) between investments in mentoring/refactoring and visible effects create oscillation risks if policies react myopically. Governance choices (PR-first vs. direct-commit privileges, approval counts, triage SLAs) tune the position of these equilibria. The model\u2019s causal structure supports simulation of policy scenarios that jointly shape skill development and community participation trajectories."
+  }
+}

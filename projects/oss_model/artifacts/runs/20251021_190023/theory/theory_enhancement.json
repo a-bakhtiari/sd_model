@@ -1,0 +1,1725 @@
+{
+  "processes": [
+    {
+      "process_name": "Discovery & Legitimate Entry",
+      "input_stock": "Prospective Developers",
+      "output_stock": "Entry-level/Newcomer",
+      "variables": [
+        {
+          "name": "Prospective Developers",
+          "type": "Stock"
+        },
+        {
+          "name": "Entry-level/Newcomer",
+          "type": "Stock"
+        },
+        {
+          "name": "Wider Talent Pool",
+          "type": "Cloud"
+        },
+        {
+          "name": "Prospect Attrition Sink",
+          "type": "Cloud"
+        },
+        {
+          "name": "Onboarding Dropout Sink",
+          "type": "Cloud"
+        },
+        {
+          "name": "Discovery Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Join Conversion Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Prospective Abandonment Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Newcomer Abandonment Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Project Visibility Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Welcoming Signaling Quality",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Setup Automation Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Documentation Quality",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Starter Task Availability",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Entry Friction",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Strictness Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Entry Gate Overhead",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Onboarding Support Visibility",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Early Success Rate",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Newcomer Self-Efficacy",
+          "type": "Stock"
+        },
+        {
+          "name": "Self-Efficacy Gain Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Self-Efficacy Decay Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Persistence Factor",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Codebase Maintainability Proxy",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Code Complexity Perceived",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Adjustment Delay",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Discovery-to-Attempt Delay",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Low-quality Attempts Rate",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Perceived Risk Level",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Project Visibility Level",
+          "to": "Discovery Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Welcoming Signaling Quality",
+          "to": "Discovery Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Discovery Rate",
+          "to": "Prospective Developers",
+          "relationship": "positive"
+        },
+        {
+          "from": "Prospective Developers",
+          "to": "Join Conversion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Prospective Developers",
+          "to": "Prospective Abandonment Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Join Conversion Rate",
+          "to": "Entry-level/Newcomer",
+          "relationship": "positive"
+        },
+        {
+          "from": "Prospective Abandonment Rate",
+          "to": "Prospective Developers",
+          "relationship": "negative"
+        },
+        {
+          "from": "Newcomer Abandonment Rate",
+          "to": "Entry-level/Newcomer",
+          "relationship": "negative"
+        },
+        {
+          "from": "Entry Friction",
+          "to": "Join Conversion Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Entry Gate Overhead",
+          "to": "Entry Friction",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Strictness Level",
+          "to": "Entry Gate Overhead",
+          "relationship": "positive"
+        },
+        {
+          "from": "Setup Automation Level",
+          "to": "Entry Friction",
+          "relationship": "negative"
+        },
+        {
+          "from": "Documentation Quality",
+          "to": "Join Conversion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Documentation Quality",
+          "to": "Prospective Abandonment Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Starter Task Availability",
+          "to": "Join Conversion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Onboarding Support Visibility",
+          "to": "Early Success Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Early Success Rate",
+          "to": "Self-Efficacy Gain Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Self-Efficacy Gain Rate",
+          "to": "Newcomer Self-Efficacy",
+          "relationship": "positive"
+        },
+        {
+          "from": "Self-Efficacy Decay Rate",
+          "to": "Newcomer Self-Efficacy",
+          "relationship": "negative"
+        },
+        {
+          "from": "Newcomer Self-Efficacy",
+          "to": "Persistence Factor",
+          "relationship": "positive"
+        },
+        {
+          "from": "Persistence Factor",
+          "to": "Join Conversion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Persistence Factor",
+          "to": "Prospective Abandonment Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Persistence Factor",
+          "to": "Newcomer Abandonment Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Codebase Maintainability Proxy",
+          "to": "Entry Friction",
+          "relationship": "negative"
+        },
+        {
+          "from": "Codebase Maintainability Proxy",
+          "to": "Join Conversion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Code Complexity Perceived",
+          "to": "Entry Friction",
+          "relationship": "positive"
+        },
+        {
+          "from": "Low-quality Attempts Rate",
+          "to": "Perceived Risk Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Perceived Risk Level",
+          "to": "Governance Strictness Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Governance Adjustment Delay",
+          "to": "Governance Strictness Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Discovery-to-Attempt Delay",
+          "to": "Join Conversion Rate",
+          "relationship": "negative"
+        }
+      ]
+    },
+    {
+      "process_name": "Apprenticeship & Guided Participation",
+      "input_stock": "Entry-level/Newcomer",
+      "output_stock": "Apprentice/Peripheral Participant",
+      "variables": [
+        {
+          "name": "Entry-level/Newcomer",
+          "type": "Stock"
+        },
+        {
+          "name": "Apprentice/Peripheral Participant",
+          "type": "Stock"
+        },
+        {
+          "name": "Apprenticeship Dropout Sink",
+          "type": "Cloud"
+        },
+        {
+          "name": "Mentor Attrition Sink",
+          "type": "Cloud"
+        },
+        {
+          "name": "Mentored Progression Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Newcomer Dropout Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Apprentice Dropout Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Mentor Pool",
+          "type": "Stock"
+        },
+        {
+          "name": "Mentor Formation Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Mentor Attrition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Mentoring Capacity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Newcomer-to-Mentor Ratio",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Overload Factor",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Absorptive Capacity",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Learning Effectiveness",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Interaction Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Average Interactions per Newcomer",
+          "type": "Stock"
+        },
+        {
+          "name": "Interaction Forgetting Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Scaffolded Task Availability",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Task-Technology Fit",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Feedback Cycle Time",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Threshold Crossing Effect",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Dropout Pressure",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Relationship Formation Delay",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Skill Consolidation Delay",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Policy Strictness Level Proxy",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Scaffolding Burden",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Mentor Pool",
+          "to": "Mentoring Capacity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Entry-level/Newcomer",
+          "to": "Newcomer-to-Mentor Ratio",
+          "relationship": "positive"
+        },
+        {
+          "from": "Newcomer-to-Mentor Ratio",
+          "to": "Overload Factor",
+          "relationship": "positive"
+        },
+        {
+          "from": "Overload Factor",
+          "to": "Mentoring Capacity",
+          "relationship": "negative"
+        },
+        {
+          "from": "Overload Factor",
+          "to": "Feedback Cycle Time",
+          "relationship": "positive"
+        },
+        {
+          "from": "Overload Factor",
+          "to": "Dropout Pressure",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentoring Capacity",
+          "to": "Interaction Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentoring Capacity",
+          "to": "Mentored Progression Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Interaction Rate",
+          "to": "Average Interactions per Newcomer",
+          "relationship": "positive"
+        },
+        {
+          "from": "Interaction Forgetting Rate",
+          "to": "Average Interactions per Newcomer",
+          "relationship": "negative"
+        },
+        {
+          "from": "Average Interactions per Newcomer",
+          "to": "Threshold Crossing Effect",
+          "relationship": "positive"
+        },
+        {
+          "from": "Threshold Crossing Effect",
+          "to": "Learning Effectiveness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Scaffolded Task Availability",
+          "to": "Interaction Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Scaffolded Task Availability",
+          "to": "Learning Effectiveness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Task-Technology Fit",
+          "to": "Learning Effectiveness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Absorptive Capacity",
+          "to": "Learning Effectiveness",
+          "relationship": "positive"
+        },
+        {
+          "from": "Learning Effectiveness",
+          "to": "Mentored Progression Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Feedback Cycle Time",
+          "to": "Mentored Progression Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Dropout Pressure",
+          "to": "Newcomer Dropout Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Dropout Pressure",
+          "to": "Apprentice Dropout Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Apprentice/Peripheral Participant",
+          "to": "Mentor Formation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentor Formation Rate",
+          "to": "Mentor Pool",
+          "relationship": "positive"
+        },
+        {
+          "from": "Mentor Attrition Rate",
+          "to": "Mentor Pool",
+          "relationship": "negative"
+        },
+        {
+          "from": "Mentored Progression Rate",
+          "to": "Apprentice/Peripheral Participant",
+          "relationship": "positive"
+        },
+        {
+          "from": "Newcomer Dropout Rate",
+          "to": "Entry-level/Newcomer",
+          "relationship": "negative"
+        },
+        {
+          "from": "Apprentice Dropout Rate",
+          "to": "Apprentice/Peripheral Participant",
+          "relationship": "negative"
+        },
+        {
+          "from": "Relationship Formation Delay",
+          "to": "Mentored Progression Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Skill Consolidation Delay",
+          "to": "Mentored Progression Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Policy Strictness Level Proxy",
+          "to": "Scaffolding Burden",
+          "relationship": "positive"
+        },
+        {
+          "from": "Scaffolding Burden",
+          "to": "Learning Effectiveness",
+          "relationship": "negative"
+        },
+        {
+          "from": "Scaffolding Burden",
+          "to": "Mentoring Capacity",
+          "relationship": "negative"
+        }
+      ]
+    },
+    {
+      "process_name": "Contribution Throughput & Review Flow",
+      "input_stock": "Apprentice/Peripheral Participant",
+      "output_stock": "Practicing Contributor",
+      "variables": [
+        {
+          "name": "Apprentice/Peripheral Participant",
+          "type": "Stock"
+        },
+        {
+          "name": "Practicing Contributor",
+          "type": "Stock"
+        },
+        {
+          "name": "PR Abandonment Sink",
+          "type": "Cloud"
+        },
+        {
+          "name": "Practicing Contributor Attrition Sink",
+          "type": "Cloud"
+        },
+        {
+          "name": "PR Review Queue",
+          "type": "Stock"
+        },
+        {
+          "name": "PR Submission Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "PR Acceptance Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "PR Rejection Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "PR Processing Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Progression to Practicing Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Apprentice Dropout from Contribution Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Practicing Contributor Attrition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Median PR Wait Time",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Effective Review Capacity Proxy",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Strictness Level Proxy",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Maintainability Level Proxy",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "PR Size",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Rework Fraction",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Contributor Frustration Level",
+          "type": "Stock"
+        },
+        {
+          "name": "Frustration Build Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Frustration Recovery Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Distributed Review Permission Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "New Practicing Reviewer Participation",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Review Assignment Delay",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "PR Rework Time",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Apprentice/Peripheral Participant",
+          "to": "PR Submission Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Submission Rate",
+          "to": "PR Review Queue",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Review Queue",
+          "to": "Median PR Wait Time",
+          "relationship": "positive"
+        },
+        {
+          "from": "Effective Review Capacity Proxy",
+          "to": "PR Processing Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Processing Rate",
+          "to": "PR Review Queue",
+          "relationship": "negative"
+        },
+        {
+          "from": "Governance Strictness Level Proxy",
+          "to": "PR Acceptance Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Governance Strictness Level Proxy",
+          "to": "Median PR Wait Time",
+          "relationship": "positive"
+        },
+        {
+          "from": "Maintainability Level Proxy",
+          "to": "PR Acceptance Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Maintainability Level Proxy",
+          "to": "PR Processing Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Size",
+          "to": "PR Processing Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Rework Fraction",
+          "to": "PR Processing Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "PR Rework Time",
+          "to": "PR Processing Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "PR Acceptance Rate",
+          "to": "Progression to Practicing Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Progression to Practicing Rate",
+          "to": "Practicing Contributor",
+          "relationship": "positive"
+        },
+        {
+          "from": "Median PR Wait Time",
+          "to": "PR Submission Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Median PR Wait Time",
+          "to": "Frustration Build Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Frustration Build Rate",
+          "to": "Contributor Frustration Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Frustration Recovery Rate",
+          "to": "Contributor Frustration Level",
+          "relationship": "negative"
+        },
+        {
+          "from": "Contributor Frustration Level",
+          "to": "Apprentice Dropout from Contribution Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Apprentice Dropout from Contribution Rate",
+          "to": "Apprentice/Peripheral Participant",
+          "relationship": "negative"
+        },
+        {
+          "from": "Distributed Review Permission Level",
+          "to": "New Practicing Reviewer Participation",
+          "relationship": "positive"
+        },
+        {
+          "from": "New Practicing Reviewer Participation",
+          "to": "PR Processing Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review Assignment Delay",
+          "to": "PR Processing Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Practicing Contributor Attrition Rate",
+          "to": "Practicing Contributor",
+          "relationship": "negative"
+        },
+        {
+          "from": "PR Acceptance Rate",
+          "to": "PR Review Queue",
+          "relationship": "negative"
+        },
+        {
+          "from": "PR Rejection Rate",
+          "to": "PR Review Queue",
+          "relationship": "negative"
+        }
+      ]
+    },
+    {
+      "process_name": "Core Accession & Maintainer Formation",
+      "input_stock": "Practicing Contributor",
+      "output_stock": "Expert/Core Developer",
+      "variables": [
+        {
+          "name": "Practicing Contributor",
+          "type": "Stock"
+        },
+        {
+          "name": "Expert/Core Developer",
+          "type": "Stock"
+        },
+        {
+          "name": "Core Attrition Sink",
+          "type": "Cloud"
+        },
+        {
+          "name": "Promotion to Core Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Core Attrition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Average Reputation Capital",
+          "type": "Stock"
+        },
+        {
+          "name": "Reputation Accumulation Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Reputation Decay Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Nomination Threshold",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Promotion Probability",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Governance Threshold Strictness",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Review Participation Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Prosocial Behavior Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Social Belonging Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Burnout Pressure",
+          "type": "Stock"
+        },
+        {
+          "name": "Burnout Accumulation Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Burnout Recovery Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Core Workload Demand",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Maintainer Time Allocation to Governing",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Transactive Memory Maturity",
+          "type": "Stock"
+        },
+        {
+          "name": "TMS Formation Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "TMS Decay Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Initial Onboarding Dip Fraction",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Perceived Gatekeeping Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Recognition Delay",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Practicing Contributor",
+          "to": "Reputation Accumulation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review Participation Level",
+          "to": "Reputation Accumulation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Prosocial Behavior Level",
+          "to": "Reputation Accumulation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Reputation Accumulation Rate",
+          "to": "Average Reputation Capital",
+          "relationship": "positive"
+        },
+        {
+          "from": "Reputation Decay Rate",
+          "to": "Average Reputation Capital",
+          "relationship": "negative"
+        },
+        {
+          "from": "Average Reputation Capital",
+          "to": "Promotion Probability",
+          "relationship": "positive"
+        },
+        {
+          "from": "Nomination Threshold",
+          "to": "Promotion Probability",
+          "relationship": "negative"
+        },
+        {
+          "from": "Governance Threshold Strictness",
+          "to": "Promotion Probability",
+          "relationship": "negative"
+        },
+        {
+          "from": "Perceived Gatekeeping Level",
+          "to": "Promotion Probability",
+          "relationship": "negative"
+        },
+        {
+          "from": "Promotion Probability",
+          "to": "Promotion to Core Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Promotion to Core Rate",
+          "to": "Expert/Core Developer",
+          "relationship": "positive"
+        },
+        {
+          "from": "Expert/Core Developer",
+          "to": "Core Workload Demand",
+          "relationship": "negative"
+        },
+        {
+          "from": "Core Workload Demand",
+          "to": "Burnout Accumulation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Burnout Accumulation Rate",
+          "to": "Burnout Pressure",
+          "relationship": "positive"
+        },
+        {
+          "from": "Burnout Recovery Rate",
+          "to": "Burnout Pressure",
+          "relationship": "negative"
+        },
+        {
+          "from": "Burnout Pressure",
+          "to": "Core Attrition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Social Belonging Level",
+          "to": "Core Attrition Rate",
+          "relationship": "negative"
+        },
+        {
+          "from": "Core Attrition Rate",
+          "to": "Expert/Core Developer",
+          "relationship": "negative"
+        },
+        {
+          "from": "Expert/Core Developer",
+          "to": "TMS Formation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "TMS Formation Rate",
+          "to": "Transactive Memory Maturity",
+          "relationship": "positive"
+        },
+        {
+          "from": "TMS Decay Rate",
+          "to": "Transactive Memory Maturity",
+          "relationship": "negative"
+        },
+        {
+          "from": "Transactive Memory Maturity",
+          "to": "Initial Onboarding Dip Fraction",
+          "relationship": "negative"
+        },
+        {
+          "from": "Initial Onboarding Dip Fraction",
+          "to": "Core Workload Demand",
+          "relationship": "positive"
+        },
+        {
+          "from": "Maintainer Time Allocation to Governing",
+          "to": "Core Workload Demand",
+          "relationship": "positive"
+        },
+        {
+          "from": "Recognition Delay",
+          "to": "Promotion to Core Rate",
+          "relationship": "negative"
+        }
+      ]
+    },
+    {
+      "process_name": "Governance, Review Policy & Automation",
+      "input_stock": "Expert/Core Developer",
+      "output_stock": "Effective Review Capacity",
+      "variables": [
+        {
+          "name": "Expert/Core Developer",
+          "type": "Stock"
+        },
+        {
+          "name": "Effective Review Capacity",
+          "type": "Stock"
+        },
+        {
+          "name": "Capacity Build Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Capacity Erosion Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Authorized Reviewers",
+          "type": "Stock"
+        },
+        {
+          "name": "Reviewer Onboarding Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Reviewer Offboarding Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Automation Assets",
+          "type": "Stock"
+        },
+        {
+          "name": "Automation Build Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Automation Decay Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Policy Strictness Level",
+          "type": "Stock"
+        },
+        {
+          "name": "Strictness Increase Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Strictness Relaxation Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Maintainer Motivation Level",
+          "type": "Stock"
+        },
+        {
+          "name": "Motivation Gain Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Motivation Loss Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Quality Gate Overhead",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Review Time per PR Baseline",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "PR Cycle Time Proxy",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Perceived Defect Risk Proxy",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "PR Queue Pressure Proxy",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "JD-R Imbalance Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Time Allocation to Review",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Institutional Pressure Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "CI Reliability Level",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Expert/Core Developer",
+          "to": "Reviewer Onboarding Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Reviewer Onboarding Rate",
+          "to": "Authorized Reviewers",
+          "relationship": "positive"
+        },
+        {
+          "from": "Reviewer Offboarding Rate",
+          "to": "Authorized Reviewers",
+          "relationship": "negative"
+        },
+        {
+          "from": "Authorized Reviewers",
+          "to": "Capacity Build Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Time Allocation to Review",
+          "to": "Capacity Build Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Automation Assets",
+          "to": "Capacity Build Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Capacity Build Rate",
+          "to": "Effective Review Capacity",
+          "relationship": "positive"
+        },
+        {
+          "from": "Capacity Erosion Rate",
+          "to": "Effective Review Capacity",
+          "relationship": "negative"
+        },
+        {
+          "from": "Policy Strictness Level",
+          "to": "Quality Gate Overhead",
+          "relationship": "positive"
+        },
+        {
+          "from": "Quality Gate Overhead",
+          "to": "Capacity Erosion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Perceived Defect Risk Proxy",
+          "to": "Strictness Increase Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "PR Queue Pressure Proxy",
+          "to": "Strictness Relaxation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Strictness Increase Rate",
+          "to": "Policy Strictness Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Strictness Relaxation Rate",
+          "to": "Policy Strictness Level",
+          "relationship": "negative"
+        },
+        {
+          "from": "Maintainer Motivation Level",
+          "to": "Time Allocation to Review",
+          "relationship": "positive"
+        },
+        {
+          "from": "JD-R Imbalance Level",
+          "to": "Maintainer Motivation Level",
+          "relationship": "negative"
+        },
+        {
+          "from": "JD-R Imbalance Level",
+          "to": "Reviewer Offboarding Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Effective Review Capacity",
+          "to": "PR Cycle Time Proxy",
+          "relationship": "negative"
+        },
+        {
+          "from": "PR Cycle Time Proxy",
+          "to": "PR Queue Pressure Proxy",
+          "relationship": "negative"
+        },
+        {
+          "from": "Automation Build Rate",
+          "to": "Automation Assets",
+          "relationship": "positive"
+        },
+        {
+          "from": "Automation Decay Rate",
+          "to": "Automation Assets",
+          "relationship": "negative"
+        },
+        {
+          "from": "CI Reliability Level",
+          "to": "Automation Build Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Automation Assets",
+          "to": "Maintainer Motivation Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Institutional Pressure Level",
+          "to": "Strictness Increase Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Policy Strictness Level",
+          "to": "Review Time per PR Baseline",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review Time per PR Baseline",
+          "to": "Capacity Erosion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Expert/Core Developer",
+          "to": "JD-R Imbalance Level",
+          "relationship": "negative"
+        }
+      ]
+    },
+    {
+      "process_name": "Codebase Evolution & Technical Debt Management",
+      "input_stock": "Unmaintainable/Complex Code Units",
+      "output_stock": "Maintainable/Well-factored Code Units",
+      "variables": [
+        {
+          "name": "Unmaintainable/Complex Code Units",
+          "type": "Stock"
+        },
+        {
+          "name": "Maintainable/Well-factored Code Units",
+          "type": "Stock"
+        },
+        {
+          "name": "Feature Demand Pool",
+          "type": "Cloud"
+        },
+        {
+          "name": "Code Removal Sink",
+          "type": "Cloud"
+        },
+        {
+          "name": "Feature Addition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Refactoring Conversion Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Removal Rate - Unmaintainable",
+          "type": "Flow"
+        },
+        {
+          "name": "Removal Rate - Maintainable",
+          "type": "Flow"
+        },
+        {
+          "name": "Rushed Merge Fraction",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Schedule Pressure Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Review Capacity Proxy",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Refactoring Budget Fraction",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Architectural Complexity Level",
+          "type": "Stock"
+        },
+        {
+          "name": "Complexity Accumulation Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Complexity Reduction Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Comprehension Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Test Coverage Level",
+          "type": "Stock"
+        },
+        {
+          "name": "Test Addition Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Test Coverage Decay Rate",
+          "type": "Flow"
+        },
+        {
+          "name": "Modularity Level",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Debt Pressure",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "Maintainability Index",
+          "type": "Auxiliary"
+        },
+        {
+          "name": "CI Reliability Proxy",
+          "type": "Auxiliary"
+        }
+      ],
+      "connections": [
+        {
+          "from": "Feature Demand Pool",
+          "to": "Feature Addition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Schedule Pressure Level",
+          "to": "Rushed Merge Fraction",
+          "relationship": "positive"
+        },
+        {
+          "from": "Review Capacity Proxy",
+          "to": "Rushed Merge Fraction",
+          "relationship": "negative"
+        },
+        {
+          "from": "Rushed Merge Fraction",
+          "to": "Feature Addition Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Feature Addition Rate",
+          "to": "Unmaintainable/Complex Code Units",
+          "relationship": "positive"
+        },
+        {
+          "from": "Refactoring Conversion Rate",
+          "to": "Unmaintainable/Complex Code Units",
+          "relationship": "negative"
+        },
+        {
+          "from": "Refactoring Conversion Rate",
+          "to": "Maintainable/Well-factored Code Units",
+          "relationship": "positive"
+        },
+        {
+          "from": "Removal Rate - Unmaintainable",
+          "to": "Unmaintainable/Complex Code Units",
+          "relationship": "negative"
+        },
+        {
+          "from": "Removal Rate - Maintainable",
+          "to": "Maintainable/Well-factored Code Units",
+          "relationship": "negative"
+        },
+        {
+          "from": "Unmaintainable/Complex Code Units",
+          "to": "Complexity Accumulation Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Complexity Accumulation Rate",
+          "to": "Architectural Complexity Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Complexity Reduction Rate",
+          "to": "Architectural Complexity Level",
+          "relationship": "negative"
+        },
+        {
+          "from": "Maintainable/Well-factored Code Units",
+          "to": "Comprehension Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Architectural Complexity Level",
+          "to": "Comprehension Level",
+          "relationship": "negative"
+        },
+        {
+          "from": "Comprehension Level",
+          "to": "Refactoring Conversion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Refactoring Budget Fraction",
+          "to": "Refactoring Conversion Rate",
+          "relationship": "positive"
+        },
+        {
+          "from": "Test Addition Rate",
+          "to": "Test Coverage Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Test Coverage Decay Rate",
+          "to": "Test Coverage Level",
+          "relationship": "negative"
+        },
+        {
+          "from": "Test Coverage Level",
+          "to": "Comprehension Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Modularity Level",
+          "to": "Comprehension Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Unmaintainable/Complex Code Units",
+          "to": "Debt Pressure",
+          "relationship": "positive"
+        },
+        {
+          "from": "Maintainable/Well-factored Code Units",
+          "to": "Debt Pressure",
+          "relationship": "negative"
+        },
+        {
+          "from": "Maintainability Index",
+          "to": "Comprehension Level",
+          "relationship": "positive"
+        },
+        {
+          "from": "Maintainable/Well-factored Code Units",
+          "to": "Maintainability Index",
+          "relationship": "positive"
+        },
+        {
+          "from": "Unmaintainable/Complex Code Units",
+          "to": "Maintainability Index",
+          "relationship": "negative"
+        },
+        {
+          "from": "Maintainability Index",
+          "to": "CI Reliability Proxy",
+          "relationship": "positive"
+        }
+      ]
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Discovery & Legitimate Entry",
+        "narrative": "Primary input stock: Prospective Developers (people aware of the project but not yet engaged). Primary output stock: Entry-level/Newcomer. Prospective Developers accumulate from the wider talent pool at a discovery rate driven by project visibility (stars, social exposure, release cadence) and signaling (welcoming language, badges, \"good first issue\" labels). A reinforcing loop lifts discovery: as downstream contribution and releases increase, visibility rises, which draws more prospects. Conversion from Prospects to Newcomers is constrained by entry friction: environment setup time, tool-task fit, governance gatekeeping (CLA signing, required templates), and clarity of legitimate peripheral roles (observation, triage, docs fixes). A balancing loop operates: stricter governance and higher code complexity raise entry friction, reducing join conversion; when spam or low-quality attempts rise, governance tends to tighten with a delay of weeks. Another reinforcing loop emerges when onboarding support is visible: responsive maintainers and clear guidance increase the success rate of first interactions; early success boosts self-efficacy (SCCT), which increases persistence, improving conversion. Nonlinearities: below a documentation quality threshold, setup failure rates jump; above a minimum set of labeled starter tasks, conversion sharply increases. Diversity expands the idea space and can improve fit for varied tasks, but also interacts with status cues\u2014biased signaling can dampen conversion for underrepresented groups. Time delays: discovery-to-attempt lags days to weeks; governance adjustments lag defect incidents by weeks. Rate-determining factors include setup automation (devcontainer, CI-provided checks), policy overhead, and availability of legitimate peripheral tasks. Accumulation consequence: a growing Newcomer stock when discovery and conversion outpace dropout (abandoning setup). Cascading effects: surges of Newcomers increase mentoring demand downstream; if mentoring capacity is not expanded, later balancing loops reduce perceived responsiveness and conversion in future periods via reputation.",
+        "theories_used": [
+          "Communities of Practice (Wenger)",
+          "Social Cognitive Career Theory (SCCT)",
+          "Task-Technology Fit (TTF)",
+          "Institutional Theory",
+          "Signaling Theory",
+          "Social Identity Theory",
+          "Diversity Trumps Ability"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Apprenticeship & Guided Participation",
+            "connection_type": "feeds_into",
+            "description": "Flow of people who successfully join becomes Entry-level/Newcomers."
+          },
+          {
+            "target_cluster": "Codebase Evolution & Technical Debt Management",
+            "connection_type": "receives_from",
+            "description": "Maintainable Code Units reduce setup and comprehension friction, raising conversion from Prospects to Newcomers."
+          },
+          {
+            "target_cluster": "Governance, Review Policy & Automation",
+            "connection_type": "receives_from",
+            "description": "Effective Review Capacity and policy strictness determine entry gate overhead (CLAs, templates), altering join success."
+          }
+        ]
+      },
+      {
+        "name": "Apprenticeship & Guided Participation",
+        "narrative": "Primary input stock: Entry-level/Newcomer. Primary output stock: Apprentice/Peripheral Participant. Newcomers progress via cognitive apprenticeship: observing experts, receiving coaching and scaffolding, then gradually taking on more responsibility. Progression rate is governed by mentoring capacity, which is a function of available mentors (contributors and core), their time allocation, and the newcomer-to-mentor ratio. A reinforcing loop: as more Apprentices emerge, they become near-peer mentors, expanding capacity and accelerating subsequent progression. A balancing loop activates when the newcomer-to-mentor ratio exceeds a threshold (e.g., 8:1): mentoring quality degrades, feedback cycles slow, and progression rates fall; dropout increases due to unmet relatedness and low competence signals (Self-Determination). Nonlinearities: apprenticeship accelerates after a newcomer accrues around 8\u201312 meaningful interactions (pairing sessions, code reviews responded to), crossing a tacit understanding threshold. Learning effectiveness depends on absorptive capacity (prior knowledge, domain familiarity) and task-technology fit (tooling, CI feedback clarity). SECI dynamics operate: socialization (chat, pairing) builds tacit context; externalization (writing down steps, starter templates) codifies guidance; combination (curation of docs) scales it; internalization (doing the task) consolidates skill. Job demands-resources shape persistence: high task demands (ambiguous issues, brittle tests) with low resources (mentor time, examples) elevate strain and dropout. Deliberate practice matters: scoped tasks with quick feedback loops build skill faster than large, ambiguous assignments. Time delays are significant: relationship formation (weeks), skill consolidation (1\u20133 months), and identity transition from outsider to legitimate peripheral participant (Wenger) lag behind mentoring inputs. Accumulation consequence: the Apprentice stock grows when sponsorship formation and guided task completion rates exceed dropout. Cascading: apprenticeship throughput seeds the next stage\u2019s PR creation quality; overload here propagates as low-quality submissions and review queues later.",
+        "theories_used": [
+          "Cognitive Apprenticeship",
+          "Communities of Practice (Wenger)",
+          "Absorptive Capacity",
+          "Nonaka's SECI Model",
+          "Job Demands-Resources (JD-R) Model",
+          "Self-Determination Theory",
+          "Deliberate Practice",
+          "Social Capital and Structural Holes"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Throughput & Review Flow",
+            "connection_type": "feeds_into",
+            "description": "Apprentice/Peripheral Participants proceed to submit PRs and begin regular contribution."
+          },
+          {
+            "target_cluster": "Governance, Review Policy & Automation",
+            "connection_type": "receives_from",
+            "description": "Effective Review Capacity competes with mentor time; stricter policies increase scaffolding burden, altering progression."
+          },
+          {
+            "target_cluster": "Codebase Evolution & Technical Debt Management",
+            "connection_type": "receives_from",
+            "description": "Higher Maintainable Code Units reduce cognitive load and increase learning rate per interaction."
+          },
+          {
+            "target_cluster": "Core Accession & Maintainer Formation",
+            "connection_type": "receives_from",
+            "description": "More Experts increase mentoring capacity and sponsorship availability for Apprentices."
+          }
+        ]
+      },
+      {
+        "name": "Contribution Throughput & Review Flow",
+        "narrative": "Primary input stock: Apprentice/Peripheral Participant. Primary output stock: Practicing Contributor. Apprentices begin producing changes that enter a Pull Request (PR) Review Queue (internal stock). PR submission rate rises with Apprentice activity and self-efficacy; acceptance depends on PR quality, codebase maintainability, governance strictness, and effective review capacity. A balancing loop forms around the PR Queue: when submissions exceed review capacity, queue length and cycle time increase, reducing acceptance probability and disheartening contributors (Self-Determination), which decreases submission and progression rates. A reinforcing loop appears as new Practicing Contributors join: they start reviewing simple PRs, shrinking the queue and accelerating progression for others\u2014provided governance permits distributed review. Governance introduces a quality-throughput tradeoff: stricter policies (required checks, multi-review approvals) reduce defects and rework (balancing defects loop) but lengthen cycle times. Automation (CI checks, linters) shifts the frontier outward, increasing effective review hours without consuming human time. Technical debt and code complexity lengthen review and rework per PR, creating a second balancing loop: higher complexity slows throughput, queue grows, which further delays merges. Nonlinearities: when median PR wait exceeds a threshold (e.g., 7\u201310 days), dropout probability rises sharply; when test coverage passes a threshold, rework rates drop nonlinearly. Time delays: review assignment (hours to days), revision cycles (days), and acceptance feedback on contributor identity (weeks). Rate-determining factors include reviewer availability, CI reliability, and PR size. Accumulation consequence: the Practicing Contributor stock increases when accepted PRs and sustained activity exceed attrition. Cascading: acceptance builds reputation signals, improves status, and increases willingness to review, feeding back to shrink the queue; conversely, queue spikes can ripple back to apprenticeship by starving timely feedback.",
+        "theories_used": [
+          "Task-Technology Fit (TTF)",
+          "Technical Debt Theory",
+          "Nonaka's SECI Model",
+          "Job Demands-Resources (JD-R) Model",
+          "Self-Determination Theory",
+          "Motivation Crowding Theory",
+          "Communities of Practice (Wenger)"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Core Accession & Maintainer Formation",
+            "connection_type": "feeds_into",
+            "description": "Practicing Contributors accumulate and some progress toward Expert/Core."
+          },
+          {
+            "target_cluster": "Governance, Review Policy & Automation",
+            "connection_type": "receives_from",
+            "description": "Effective Review Capacity and policy strictness set PR throughput and acceptance probability."
+          },
+          {
+            "target_cluster": "Codebase Evolution & Technical Debt Management",
+            "connection_type": "feedback_loop",
+            "description": "Merged PRs add code units (often initially unmaintainable); refactoring later converts them to maintainable code."
+          },
+          {
+            "target_cluster": "Apprenticeship & Guided Participation",
+            "connection_type": "receives_from",
+            "description": "Apprentice quality and readiness set initial PR quality and rework required."
+          }
+        ]
+      },
+      {
+        "name": "Core Accession & Maintainer Formation",
+        "narrative": "Primary input stock: Practicing Contributor. Primary output stock: Expert/Core Developer. Practicing Contributors accrue reputation capital through consistent, high-quality contributions, helpful reviews, and prosocial behaviors (triage, documentation). This reputation accumulation follows status and signaling dynamics: visible signals (commit history, reviewer endorsements) and status characteristics (role expectations) shape nomination probability. A reinforcing loop: as reputation grows, contributors are trusted with more complex work and review rights; success at these tasks accelerates further growth. A balancing loop arises from governance standards: the community sets thresholds (tenure, number of accepted PRs, demonstration of values) for granting maintainer rights; stricter thresholds dampen the promotion rate to control risk. Transactive memory systems form among the core, enabling rapid assignment of reviewers and issues to the right experts; newcomers to the core initially lack this map, creating a short-term capacity dip (learning the ropes). Job demands-resources affect sustainability: as maintainers take on review, release, and governance work, demands may exceed resources; burnout and role overload trigger attrition, balancing growth. Social identity and belonging retain contributors; conversely, perceived bias or gatekeeping discourages borderline candidates. Time delays: recognition lags contributions by months; governance nominations and vote cycles add weeks; policy changes lag incidents by months. Nonlinearities: once a contributor passes a competence and prosocial behavior threshold (e.g., 6\u201312 months consistent activity with review participation), nomination likelihood increases sharply. Accumulation consequence: Expert/Core Developers grow when promotion outpaces core attrition. Cascading: increased core size expands mentoring and review capacity downstream; however, without investment in automation and delegation, more core members may become trapped in governance load, slowing feature work and demotivating contributors.",
+        "theories_used": [
+          "Communities of Practice (Wenger)",
+          "Signaling Theory",
+          "Status Characteristics Theory",
+          "Routines and Transactive Memory Systems",
+          "Institutional Theory",
+          "Job Demands-Resources (JD-R) Model",
+          "Self-Determination Theory",
+          "Social Identity Theory"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Governance, Review Policy & Automation",
+            "connection_type": "feeds_into",
+            "description": "Experts/Core feed the creation of Effective Review Capacity and policy stewardship."
+          },
+          {
+            "target_cluster": "Apprenticeship & Guided Participation",
+            "connection_type": "feedback_loop",
+            "description": "Growth in Experts increases mentor supply and sponsorship rates for Apprentices."
+          },
+          {
+            "target_cluster": "Codebase Evolution & Technical Debt Management",
+            "connection_type": "feedback_loop",
+            "description": "Experts invest time in refactoring and architectural decisions, increasing conversion of unmaintainable to maintainable code."
+          },
+          {
+            "target_cluster": "Discovery & Legitimate Entry",
+            "connection_type": "feedback_loop",
+            "description": "Visible expert activity and stable releases increase project visibility, raising prospect inflow."
+          }
+        ]
+      },
+      {
+        "name": "Codebase Evolution & Technical Debt Management",
+        "narrative": "Primary input stock: Unmaintainable/Complex Code Units. Primary output stock: Maintainable/Well-factored Code Units. Feature additions, urgent fixes, and rushed merges add units to the Unmaintainable stock. Refactoring and disciplined development convert units from Unmaintainable to Maintainable; deprecation and removal drain both stocks to the boundary. A reinforcing cleanliness loop operates: as Maintainable units increase, comprehension improves and change risk falls, making further refactoring and clean implementation faster; this reduces the unit cost of maintainability improvements. A balancing debt loop also operates: schedule pressure and insufficient review capacity increase the fraction of rushed code, swelling Unmaintainable units; more technical debt lengthens cycle times and review effort, which further reduces time available for refactoring, reinforcing debt accumulation until a threshold triggers corrective action. Nonlinearities: when complexity exceeds architectural capacity (e.g., module coupling thresholds), small changes trigger widespread breakage, dramatically increasing rework; conversely, when test coverage and modularity pass thresholds, rework drops and merge velocity rises sharply. Conway\u2019s Law links social modularity to technical modularity: fragmented communication structures increase coupling and accidental complexity. SECI dynamics convert tacit design rationales into ADRs and docs, sustaining maintainability. Time delays: technical debt manifests gradually; refactoring payoffs appear after weeks to months; architectural rewrites have long, risky delays. Accumulation consequence: the balance between inflow (rushed adds) and conversion (refactoring) determines the maintainable fraction of the codebase. Cascading: higher Maintainable Code Units reduce newcomer comprehension time, lower PR rework, and shorten review cycles; excess Unmaintainable units slow throughput, inflate governance strictness (more checks), and reduce contributor motivation. Governance policies that earmark refactoring budget or enforce quality gates shift the balance toward maintainability, while over-strict gates without automation can stall throughput and starve refactoring bandwidth.",
+        "theories_used": [
+          "Technical Debt Theory",
+          "Conway's Law",
+          "Task-Technology Fit (TTF)",
+          "Nonaka's SECI Model",
+          "A Dynamic Theory of Organizational Knowledge Creation",
+          "Communities of Practice (Wenger)"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Throughput & Review Flow",
+            "connection_type": "receives_from",
+            "description": "Merged PRs increase Unmaintainable units initially; rework and refactoring convert units to Maintainable."
+          },
+          {
+            "target_cluster": "Core Accession & Maintainer Formation",
+            "connection_type": "receives_from",
+            "description": "Expert/Core investment in architecture and refactoring increases conversion to Maintainable."
+          },
+          {
+            "target_cluster": "Discovery & Legitimate Entry",
+            "connection_type": "feedback_loop",
+            "description": "Maintainable units lower entry friction and increase newcomer comprehension, raising join conversion."
+          },
+          {
+            "target_cluster": "Apprenticeship & Guided Participation",
+            "connection_type": "feedback_loop",
+            "description": "Maintainability increases learning rate and effective scaffolding; complexity slows apprenticeship."
+          },
+          {
+            "target_cluster": "Contribution Throughput & Review Flow",
+            "connection_type": "feedback_loop",
+            "description": "Maintainable code shortens review time and reduces rework; debt increases review effort and queue length."
+          }
+        ]
+      },
+      {
+        "name": "Governance, Review Policy & Automation",
+        "narrative": "Primary input stock: Expert/Core Developer. Primary output stock: Effective Review Capacity (review-hours per period, inclusive of automation). Expert/Core members allocate time to create and maintain governance routines, recruit/authorize reviewers, and invest in automation (CI, linters, bots). A reinforcing capacity loop: as Effective Review Capacity grows, PR cycle time falls and defect escapes drop; freed time enables further automation and reviewer onboarding, which increases capacity again. A balancing stringency loop: perceived risk (defect rate, security incidents) raises policy strictness (more required reviews, checks), which improves quality but reduces throughput; rising queues increase contributor frustration and reduce submissions, temporarily easing load but hurting culture and progression. Motivation crowding can occur: overly controlling governance language or rigid processes reduce intrinsic motivation; contributors shift away from reviewing, decreasing capacity. JD-R dynamics govern maintainer sustainability: when governance demands exceed resources (few active maintainers, high PR volume), burnout depletes capacity with a delay. Routines and transactive memory streamline triage and assignment, improving utilization of capacity. Institutional pressures shape policy (compliance, ecosystem norms) with multi-month delays. Nonlinearities: past a CI reliability threshold, capacity gains from automation accelerate; above certain strictness without automation, capacity collapses as every PR demands costly human checks. Accumulation consequence: Effective Review Capacity increases via maintainer onboarding, reviewer time allocation, and automation; it declines through attrition and policy drag. Cascading: capacity sets the PR processing rate in the contribution process; strictness and templates set newcomer entry friction; reviewer time trades off against mentoring time, throttling apprenticeship if review load spikes; policy overemphasis on features at the expense of refactoring inflates technical debt, which later inflates review effort.",
+        "theories_used": [
+          "Institutional Theory",
+          "Routines and Transactive Memory Systems",
+          "Job Demands-Resources (JD-R) Model",
+          "Motivation Crowding Theory",
+          "Signaling Theory",
+          "Self-Determination Theory"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Throughput & Review Flow",
+            "connection_type": "feedback_loop",
+            "description": "Effective Review Capacity and policy strictness set PR throughput and acceptance thresholds."
+          },
+          {
+            "target_cluster": "Apprenticeship & Guided Participation",
+            "connection_type": "feedback_loop",
+            "description": "Maintainer time allocated to review reduces mentoring availability; policy dictates scaffolding requirements."
+          },
+          {
+            "target_cluster": "Discovery & Legitimate Entry",
+            "connection_type": "feedback_loop",
+            "description": "Entry gates (CLAs, templates) change onboarding effort and conversion rates from Prospects to Newcomers."
+          },
+          {
+            "target_cluster": "Codebase Evolution & Technical Debt Management",
+            "connection_type": "feedback_loop",
+            "description": "Quality gates and refactoring budget mandates reallocate effort toward maintainability; over-strict gates without automation can stall conversions."
+          },
+          {
+            "target_cluster": "Core Accession & Maintainer Formation",
+            "connection_type": "receives_from",
+            "description": "Expert/Core Developers supply the human base for governance and enable growth in Effective Review Capacity."
+          }
+        ]
+      }
+    ],
+    "overall_narrative": "The model\u2019s backbone is a people pipeline with four main stocks: Entry-level/Newcomer, Apprentice/Peripheral Participant, Practicing Contributor, and Expert/Core Developer. Upstream Prospective Developers feed the first transition in the Discovery & Legitimate Entry process; conversion is shaped by signaling, tooling fit, and governance entry gates, and is eased by maintainable code. Newcomers move to Apprentices via mentored, scaffolded practice; progression is accelerated by mentoring capacity and slowed by overload, with delays as skill and identity develop. Apprentices become Practicing Contributors by navigating PR submission and review; throughput is limited by the PR queue and Effective Review Capacity, and is modulated by codebase maintainability and governance strictness. Practicing Contributors accumulate experience and trust; some become Expert/Core Developers through recognition and social endorsement, with delays and balancing thresholds to control risk and load. Two side processes govern the environment and close system-level feedbacks. Codebase Evolution transforms Unmaintainable into Maintainable units through refactoring; feature influx and debt dynamics shape complexity that then feeds back to onboarding, learning, and review cycle times. Governance, Review Policy & Automation transforms Expert/Core time into Effective Review Capacity through onboarding reviewers and building automation; it also sets quality gates that trade off throughput and risk, and diverts time between reviewing, mentoring, feature work, and refactoring. Together these clusters generate reinforcing dynamics (growth in mentors and maintainers increases capacity; cleaner code accelerates further improvement) and balancing dynamics (overloaded mentoring, review queues, and governance strictness slow progression). Multiple delays (recognition, refactoring payoff, institutional change) create oscillation risks: surges of Prospects can overwhelm mentoring; PR backlogs can spike before capacity adjusts; debt can silently grow until productivity collapses. The integrated system makes governance and artifact quality first-class levers that shape the rate of movement between the four core stocks, enabling simulation of policies such as relaxing gates with more automation, earmarking refactoring budgets, or investing in mentorship to stabilize flow."
+  }
+}

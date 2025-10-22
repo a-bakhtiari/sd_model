@@ -1,0 +1,267 @@
+{
+  "theory_decisions": [
+    {
+      "theory_name": "Communities of Practice (Wenger)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Nonaka's SECI Model",
+      "decision": "include"
+    },
+    {
+      "theory_name": "The Coevolution of New Organizational Forms",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Adaptive Structuration Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Stability and Change in Organizational Routines",
+      "decision": "include"
+    },
+    {
+      "theory_name": "A Dynamic Theory of Organizational Knowledge Creation",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Routines and Transactive Memory Systems",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Communities of Practice",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Punctuated Equilibrium Theory in IS Research",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Panarchy Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Legitimate Peripheral Participation",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Absorptive Capacity",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Diversity Trumps Ability",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Hidden Order: How Adaptation Builds Complexity",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Social Cognitive Career Theory (SCCT)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Task-Technology Fit (TTF)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Skill-Biased Technical Change",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Social Capital and Structural Holes",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Signaling Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Job Demands-Resources (JD-R) Model",
+      "decision": "include"
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Attraction and Entry Socialization",
+        "narrative": "Prospects accumulate as people discover the project through visibility signals (stars, social mentions, downstream use). Discovery inflow rises when recognized contributors and core developers amplify outreach and when the codebase feels approachable. Prospects convert into Newcomer at a join rate that reacts to entry friction: environment setup time, clarity of contribution guidelines, and the presence of labeled starter tasks. Governance practices act directly here: when the repository requires heavy gatekeeping up front (mandatory CLA, multi-step authorization, locked discussions), the effective join rate falls; when governance advertises low-risk pathways (good first issues, triage permissions before code), conversion accelerates. SCCT dynamics shape conversion: higher perceived self-efficacy and positive outcome expectations increase the probability that a prospect acts; accessible code surface lowers the self-efficacy threshold needed to try. A reinforcing loop emerges when conversions create more welcoming responses: more Newcomer trigger more interactions, which raise perceived responsiveness, which further lifts conversion. A balancing loop counters this: when newcomer-to-mentor ratio exceeds a threshold, response delays lengthen, perceived friction rises, and the join rate slackens. Time delays matter: visibility gains today translate into Prospects with weeks of lag; their first meaningful interaction often takes several days after joining. Nonlinearity appears with onboarding friction: when setup time exceeds two hours, the probability of abandonment rises sharply. Diversity in outreach broadens the prospect pool through new social channels; bridging ties pull in people from structural holes, which increases discovery inflow. Task-technology fit shapes perceived entry cost: good templates, reproducible dev containers, and clear issue templates lower the cognitive and technical hurdles. The process moves Prospects to Newcomer while leaking dropouts to the boundary; its speed is determined by accessibility signals, governance openness, and mentoring responsiveness, which accumulate through feedback from downstream stocks.",
+        "theories_used": [
+          "Communities of Practice (Wenger)",
+          "Legitimate Peripheral Participation",
+          "Social Cognitive Career Theory (SCCT)",
+          "Task-Technology Fit (TTF)",
+          "Signaling Theory",
+          "Diversity Trumps Ability",
+          "Adaptive Structuration Theory"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Legitimate Peripheral Participation Enablement",
+            "connection_type": "feeds_into",
+            "description": "Newcomer flows into peripheral participant at a rate shaped by early socialization success."
+          },
+          {
+            "target_cluster": "Codebase Assimilation and Structural Evolution",
+            "connection_type": "receives_from",
+            "description": "Accessible code surface raises join rate by lowering perceived skill threshold and setup difficulty."
+          },
+          {
+            "target_cluster": "Maintainer Accession and Governance Evolution",
+            "connection_type": "receives_from",
+            "description": "Governance openness and project reputation increase prospect discovery and reduce entry friction."
+          }
+        ]
+      },
+      {
+        "name": "Legitimate Peripheral Participation Enablement",
+        "narrative": "Newcomer accumulate practical exposure and convert into peripheral participant by repeatedly performing low-risk, high-feedback actions: commenting, triaging, reproducing issues, documentation edits, and micro-fixes. The progression rate rises with mentoring capacity and the supply of suitably scoped tasks. A reinforcing loop operates when growing pools of peripheral participant and recognized contributors expand mentoring hours; higher mentor-to-newcomer ratios increase the frequency and quality of feedback, which shortens time-to-first-meaningful-contribution, which accelerates progression. A balancing loop counteracts this when the backlog of easy tasks is depleted faster than replenished; as the stock of labeled easy issues falls below a threshold, time to locate a fit rises nonlinearly, stalling newcomers. Governance drives both levers: labeling discipline, contribution guidelines, and triage policies renew the easy-task stock; when governance lags, the stock decays. SECI dynamics convert tacit norms into artifacts: issue templates, CONTRIBUTING files, and playbooks externalize practices that newcomers internalize through doing; absorptive capacity grows with repeated interactions, increasing the probability that a newcomer crosses the competence threshold. TTF improves with supportive tooling like automated linting and preview builds that return immediate feedback; without it, error cycles prolong and discourage participation. Time delays are salient: observation and small actions cumulate for weeks before confidence inflects upward; an interaction threshold functions nonlinearly\u2014below roughly ten meaningful exchanges, advancement is slow, after which the learning curve steepens dramatically. JD-R dynamics apply: when demands (unclear tasks, slow responses) exceed resources (mentoring, documentation), dropout risk increases. Social capital forms as newcomers bridge to insiders via chat and code review threads; those ties reduce uncertainty and shorten retry cycles. The process transforms Newcomer into peripheral participant, limited by mentoring capacity, easy-task regeneration, and governance discipline, and amplified by socialization loops and tooling fit.",
+        "theories_used": [
+          "Legitimate Peripheral Participation",
+          "Communities of Practice (Wenger)",
+          "Nonaka's SECI Model",
+          "Absorptive Capacity",
+          "Task-Technology Fit (TTF)",
+          "Job Demands-Resources (JD-R) Model",
+          "Social Capital and Structural Holes"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Governance-Mediated Contribution and Recognition",
+            "connection_type": "feeds_into",
+            "description": "peripheral participant submit changes and accumulate accepted contributions that trigger recognition."
+          },
+          {
+            "target_cluster": "Codebase Assimilation and Structural Evolution",
+            "connection_type": "receives_from",
+            "description": "Accessible code surface raises the probability that peripheral tasks are discoverable and doable."
+          },
+          {
+            "target_cluster": "Maintainer Accession and Governance Evolution",
+            "connection_type": "receives_from",
+            "description": "Mentoring hours, triage discipline, and labeling policies increase progression capacity."
+          }
+        ]
+      },
+      {
+        "name": "Governance-Mediated Contribution and Recognition",
+        "narrative": "peripheral participant propose changes that accumulate in an internal Open PRs queue. Review and merge operate under governance rules: number of required reviewers, CI gating, code ownership, and merge windows. Review capacity is supplied by recognized contributors and core developers; capacity rises as those pools grow, and falls as JD-R workload accumulates. A reinforcing loop forms when faster review increases acceptance velocity: quick feedback and fair outcomes lift contributor effort, increasing submission quality and throughput, which further stabilizes review and recognition. A balancing loop arises when PR queue length outpaces review capacity; queue age increases, perceived responsiveness deteriorates, and peripheral participant reduce submission or exit. Nonlinearities appear at capacity thresholds: once the PRs-to-reviewer ratio exceeds about 8, mean cycle time escalates sharply; when CI flakiness exceeds a small tolerance, retry cycles crowd the queue disproportionately. Recognition is awarded after a moving-window count of accepted contributions, weighted by difficulty and social endorsement; signaling theory explains how merged PRs, invitations to triage, and badges broadcast competence, raising the probability of transition to recognized contributors. Adaptive structuration is visible as the team internalizes platform features\u2014required checks and code owners formalize routines; when routines stabilize, acceptance quality improves but over-strictness lowers throughput. Punctuated equilibrium shows up around releases and freezes: governance tightens, acceptance slows, and token accumulation toward recognition stalls temporarily, then rebounds post-release. Time delays matter: earning trust typically takes months of consistent merged work; long waiting times (>14 days) increase dropout hazard steeply. Diversity in reviewers and time zones smooths capacity across peaks. The process moves people from peripheral participant to recognized contributors via the gate of recurring accepted contributions, with governance settings and review resources determining the rate, while accepted changes simultaneously populate an integration stream for the codebase.",
+        "theories_used": [
+          "Adaptive Structuration Theory",
+          "Stability and Change in Organizational Routines",
+          "Routines and Transactive Memory Systems",
+          "Signaling Theory",
+          "Job Demands-Resources (JD-R) Model",
+          "Punctuated Equilibrium Theory in IS Research",
+          "Diversity Trumps Ability",
+          "Absorptive Capacity"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Maintainer Accession and Governance Evolution",
+            "connection_type": "feeds_into",
+            "description": "recognized contributors emerge from repeated accepted contributions and feed the maintainer pipeline."
+          },
+          {
+            "target_cluster": "Codebase Assimilation and Structural Evolution",
+            "connection_type": "feedback_loop",
+            "description": "Accepted changes generated here flow into the Integrated changes pending assimilation stock."
+          },
+          {
+            "target_cluster": "Maintainer Accession and Governance Evolution",
+            "connection_type": "receives_from",
+            "description": "Core reviewer capacity and policy strictness set review throughput and acceptance probability."
+          },
+          {
+            "target_cluster": "Codebase Assimilation and Structural Evolution",
+            "connection_type": "receives_from",
+            "description": "Current complexity and debt levels lengthen review time and lower acceptance for risky changes."
+          }
+        ]
+      },
+      {
+        "name": "Maintainer Accession and Governance Evolution",
+        "narrative": "recognized contributors transition to core developers when trust, domain ownership, and governance needs converge. Promotion rate rises as bus factor risk increases in modules with high activity and low maintainer coverage; transactive memory helps identify who already operates as de facto experts. Governance maturity accumulates as policies, checklists, and automation stabilize; higher maturity increases review throughput per maintainer and reduces defect escapes, but too much strictness slows progression upstream. A reinforcing loop exists: more core developers raise review capacity, which shortens PR cycle time, increases contributor satisfaction, and grows the recognized pool, creating more candidates and further increasing core capacity. Two balancing loops counter it. First, JD-R pressure: rising maintenance load (issues, security advisories, community support) expands demands. If automation and policy adaptation lag, burnout and exit intensify, cutting core developers. Second, growth and underinvestment: when demand grows faster than investment in CI, bots, and documentation governance, throughput falters and queues swell, damping promotions. Punctuated adjustments occur after incidents or release failures: strictness is tightened, direct commit rights are curtailed, or code ownership is expanded after delays; these changes propagate with multi-release delays as panarchy dynamics link micro events (defects) to macro policy shifts. Social capital and signaling determine who is nominated and accepted; consistent helpful review comments and cross-module bridging ties weigh heavily. Diversity improves resilience and spreads time-zone coverage, reducing peak loads and smoothing queues. Time delays are significant: nomination and consensus-building typically take months; the effect of policy changes on throughput manifests with lag as tools are configured and teams learn new routines. The process transforms recognized contributors into core developers while coevolving governance; the resulting core capacity and policy strictness feed back into upstream review and mentoring, and shape downstream refactoring and release gates.",
+        "theories_used": [
+          "The Coevolution of New Organizational Forms",
+          "Adaptive Structuration Theory",
+          "Stability and Change in Organizational Routines",
+          "Routines and Transactive Memory Systems",
+          "Job Demands-Resources (JD-R) Model",
+          "Social Capital and Structural Holes",
+          "Signaling Theory",
+          "Punctuated Equilibrium Theory in IS Research",
+          "Panarchy Theory",
+          "Diversity Trumps Ability"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Codebase Assimilation and Structural Evolution",
+            "connection_type": "feedback_loop",
+            "description": "Core capacity, release gating, and refactoring budgets enable assimilation and debt reduction."
+          },
+          {
+            "target_cluster": "Attraction and Entry Socialization",
+            "connection_type": "feedback_loop",
+            "description": "Governance openness and reputation from core stewardship increase prospect discovery and reduce entry friction."
+          },
+          {
+            "target_cluster": "Legitimate Peripheral Participation Enablement",
+            "connection_type": "feedback_loop",
+            "description": "Mentoring hours and triage discipline provided by core accelerate newcomer progression."
+          },
+          {
+            "target_cluster": "Governance-Mediated Contribution and Recognition",
+            "connection_type": "feedback_loop",
+            "description": "Reviewer capacity and policy strictness set review cycle time and acceptance thresholds."
+          }
+        ]
+      },
+      {
+        "name": "Codebase Assimilation and Structural Evolution",
+        "narrative": "Integrated changes pending assimilation accumulate after merge. They are not yet fully internalized by the codebase until tests, documentation, and architectural alignment catch up. Assimilation drains this stock at a rate limited by maintainer attention, CI reliability, and the clarity of architectural boundaries. Successful assimilation grows the Accessible code surface stock\u2014readable, modular, well-documented areas that newcomers can navigate and modify with low risk. Technical debt builds internally when integration outpaces assimilation; debt raises cognitive load and increases the hidden coupling that slows future assimilation. A balancing loop governs assimilation: as debt grows relative to core capacity, assimilation speed falls, queues lengthen, and changes age; this slows submission success upstream. A reinforcing loop appears when accessible code expands: lower cognitive load accelerates refactoring and documentation improvements, which further expands accessible surface and speeds future assimilation. Nonlinearities emerge at critical thresholds: when debt-to-core ratio crosses a limit, teams trigger refactoring bursts or release freezes (punctuated equilibrium), redirecting capacity from features to cleanup; after a delay of weeks to months, debt drops and accessibility rises sharply. Skill-biased technical change appears as feature growth increases complexity; without proportional investments in modularization, required skill to contribute rises, narrowing the pool of feasible contributors. Absorptive capacity increases as SECI processes convert tacit conventions into explicit tests and docs; this gradually raises assimilation efficiency. Task-technology fit matters: strong CI, linters, and code owners automate guardrails and enable faster, safer refactoring. Panarchy links micro-level change quality to macro-level health\u2014many small clean changes aggregate into robust architecture, while repeated quick fixes decay it. Time delays are ubiquitous: refactoring benefits lag because understanding and testing take time; accessibility gains influence newcomer behavior only after communication via docs and examples. The process transforms Integrated changes pending assimilation into Accessible code surface, while coevolving technical debt and complexity that, in turn, shape all upstream social processes.",
+        "theories_used": [
+          "Punctuated Equilibrium Theory in IS Research",
+          "Panarchy Theory",
+          "Absorptive Capacity",
+          "Nonaka's SECI Model",
+          "Task-Technology Fit (TTF)",
+          "Skill-Biased Technical Change"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Attraction and Entry Socialization",
+            "connection_type": "feedback_loop",
+            "description": "Accessible code surface reduces required self-efficacy and increases join rate."
+          },
+          {
+            "target_cluster": "Legitimate Peripheral Participation Enablement",
+            "connection_type": "feedback_loop",
+            "description": "Accessible code surface and replenished easy issues speed peripheral progression."
+          },
+          {
+            "target_cluster": "Governance-Mediated Contribution and Recognition",
+            "connection_type": "feedback_loop",
+            "description": "Higher complexity and debt slow review and lower acceptance; clean architecture speeds both."
+          },
+          {
+            "target_cluster": "Governance-Mediated Contribution and Recognition",
+            "connection_type": "receives_from",
+            "description": "Accepted changes from recognition process populate the Integrated changes pending assimilation stock."
+          },
+          {
+            "target_cluster": "Maintainer Accession and Governance Evolution",
+            "connection_type": "receives_from",
+            "description": "Core refactoring budgets, release gating, and automation investments raise assimilation and debt paydown rates."
+          }
+        ]
+      }
+    ],
+    "overall_narrative": "The model\u2019s backbone carries people through Newcomer, peripheral participant, recognized contributors, and core developers. Prospects feed Newcomer when accessibility and governance openness lower entry friction. Newcomer become peripheral participant as mentoring, easy tasks, and tool fit accelerate legitimate peripheral participation; overload and empty shelves slow it. peripheral participant become recognized contributors through a governance-mediated submission and review cycle, where queue dynamics, reviewer capacity, and policy strictness set cycle time and fairness; accepted contributions simultaneously feed the artifact pipeline. recognized contributors progress to core developers as governance coevolves with demand, raising review capacity and mentoring while risking burnout if automation and norms lag. In parallel, integrated changes accumulate until assimilated into an Accessible code surface; debt swells when assimilation lags, triggering punctuated refactoring that restores accessibility. Two large reinforcing loops drive growth: more core developers increase review and mentoring capacity, accelerating upstream progression and recognition, expanding the talent base; growing accessible code surface lowers cognitive barriers, increasing participation and throughput, which\u2014with sufficient assimilation\u2014further enlarges accessibility. Balancing loops impose limits: PR queues and reviewer overload slow recognition; technical debt throttles assimilation and raises skill thresholds; JD-R pressures trigger attrition. Governance is an active lever throughout: policies on PR review, direct commit rights, code ownership, and CI gating continuously reshape both social and technical flows. Time delays at every stage\u2014trust building, policy learning, and refactoring outcomes\u2014create oscillation risks when inflows surge faster than capacities adapt. The integrated structure is simulation-ready: person stocks and code stocks coevolve through explicit flows and feedback to produce the observed migration from the periphery toward the core."
+  }
+}

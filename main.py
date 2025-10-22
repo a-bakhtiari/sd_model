@@ -74,6 +74,18 @@ def main() -> None:
         help="Use decomposed 3-step theory enhancement (strategic planning → concrete generation → positioning)"
     )
     parser.add_argument(
+        "--step",
+        type=int,
+        choices=[1, 2],
+        help="Run specific step only (1=planning, 2=concretization). Requires --decomposed-theory. Default: run both steps"
+    )
+    parser.add_argument(
+        "--resume-run",
+        type=str,
+        metavar="RUN_ID",
+        help="Resume from existing run_id (for Step 2). Auto-detects latest Step 1 if not specified"
+    )
+    parser.add_argument(
         "--archetype-detection",
         action="store_true",
         help="Detect system archetypes and suggest missing loops/variables"
@@ -160,6 +172,14 @@ def main() -> None:
         if not args.citations:
             args.citations = True
 
+    # Validate --step requires --decomposed-theory
+    if args.step and not args.decomposed_theory:
+        parser.error("--step requires --decomposed-theory flag")
+
+    # Auto-enable theory enhancement when using decomposed-theory
+    if args.decomposed_theory:
+        args.theory_enhancement = True
+
     setup_logging()
     logger = logging.getLogger(__name__)
 
@@ -177,6 +197,8 @@ def main() -> None:
             use_full_relayout=args.full_relayout,
             recreate_from_theory=args.recreate_model,
             use_decomposed_theory=args.decomposed_theory,
+            theory_step=args.step if hasattr(args, 'step') else None,
+            resume_run=args.resume_run if hasattr(args, 'resume_run') else None,
             run_archetype_detection=args.archetype_detection,
             run_rq_analysis=args.rq_analysis,
             run_theory_discovery=args.theory_discovery,

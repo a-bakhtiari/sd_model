@@ -1,0 +1,84 @@
+# Enterprise AI Transformation Research Project
+
+## Project Purpose
+PhD dissertation on organizational transformation driven by AI adoption in established enterprises.
+
+## Research Focus
+Understanding HOW enterprises navigate AI transformation through a process-oriented system dynamics model that captures:
+- Organizational mechanisms determining success/failure at each transformation stage
+- Strategic decision-making patterns (governance, investment, scope)
+- Technical implementation dynamics (infrastructure, applications, integration)
+- Organizational adaptation processes (skills, roles, culture, resistance)
+- Value capture patterns (productivity, innovation, competitive advantage)
+
+## Career Positioning Strategy
+This dissertation is designed to build expertise for post-graduation career as:
+
+### Primary Role: Strategic AI Transformation Consultant/Advisor
+- Help executives understand where/how to deploy AI
+- Guide organizational redesign and transformation processes
+- Provide diagnostic frameworks and intervention strategies
+
+### Secondary Role: Technical AI Implementer
+- Build and architect AI applications for enterprises
+- Bridge strategy and technical implementation
+
+## Target Organizations
+- **Primary**: Large enterprises (Fortune 500) undergoing AI transformation
+- **Secondary**: Mid-size companies in growth phase, scaling with AI
+- **Domain**: Software/tech industry initially (leveraging OSS expertise), with generalizable frameworks
+
+## Theoretical Approach
+- **Balance**: Theory-heavy (PhD rigor) with practical applicability
+- **Foundation**: Process theory, institutional theory, organizational change theories
+- **Method**: System dynamics modeling to capture temporal evolution and feedback dynamics
+- **Contribution**: Novel process theory of enterprise AI transformation
+
+## Empirical Strategy
+- **Initial Focus**: AI adoption for software development in tech enterprises
+  - Leverage OSS ecosystem data and domain expertise
+  - Interview CTOs, AI leads, transformation executives
+  - 3-5 case studies at different transformation stages
+- **Generalization**: Design theory to extend beyond software to other knowledge work domains
+
+## Timeline
+- **Duration**: 2-3 years full-time PhD work
+- **Deliverables**:
+  - 9-chapter dissertation
+  - Academic papers (theory, methodology, empirics)
+  - Practitioner framework (diagnostic tool + intervention playbook)
+
+## Differentiation from OSS Project
+This project is fundamentally different from the OSS developer skill progression model:
+- **Unit of analysis**: Organizations (not individuals)
+- **Question**: How do organizations transform? (not how do developers learn?)
+- **Theories**: Institutional + process + strategic change (not apprenticeship + communities of practice)
+- **Context**: Enterprise organizations (not open source communities)
+- **Dynamics**: Strategic decisions, governance, resource allocation (not skill development and mentoring)
+
+## Skills Development Goals
+Using this dissertation to develop capabilities currently lacking but needed for career success:
+
+**Current Strengths:**
+- System thinking and SD modeling
+- AI/programming technical skills
+- OSS domain expertise
+
+**Strategic Skill Gaps to Build:**
+- Enterprise decision-making and transformation processes
+- Organizational change and redesign expertise
+- Strategic frameworks for AI deployment
+- Consulting and advisory capabilities
+- Understanding how large organizations actually make and implement strategic technology decisions
+
+## Key Questions Under Exploration
+1. What stages do enterprises progress through in AI transformation?
+2. What organizational mechanisms enable/hinder progression between stages?
+3. How do strategic decisions, technical implementation, organizational adaptation, and value capture interact dynamically?
+4. What intervention strategies work at each stage?
+5. What patterns/archetypes exist across different transformation journeys?
+
+## Related Files
+- Research question: [knowledge/RQ.txt](knowledge/RQ.txt)
+- Theoretical foundation: [knowledge/theories.csv](knowledge/theories.csv)
+- Detailed overview: [PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md)

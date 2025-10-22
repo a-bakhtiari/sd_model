@@ -1,0 +1,335 @@
+{
+  "theory_decisions": [
+    {
+      "theory_name": "Communities of Practice (Wenger)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Nonaka's SECI Model",
+      "decision": "include"
+    },
+    {
+      "theory_name": "The Coevolution of New Organizational Forms",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Adaptive Structuration Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Stability and Change in Organizational Routines",
+      "decision": "include"
+    },
+    {
+      "theory_name": "A Dynamic Theory of Organizational Knowledge Creation",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Routines and Transactive Memory Systems",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Communities of Practice",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Punctuated Equilibrium Theory in IS Research",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Panarchy Theory",
+      "decision": "exclude"
+    },
+    {
+      "theory_name": "Legitimate Peripheral Participation",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Absorptive Capacity",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Diversity Trumps Ability",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Hidden Order: How Adaptation Builds Complexity",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Social Cognitive Career Theory (SCCT)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Diffusion of Innovations",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Task-Technology Fit (TTF)",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Skill-Biased Technical Change",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Social Capital and Structural Holes",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Signaling Theory",
+      "decision": "include"
+    },
+    {
+      "theory_name": "Job Demands-Resources (JD-R) Model",
+      "decision": "include"
+    }
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Attraction and Entry (Prospects \u2192 Newcomers)",
+        "narrative": "Input stock is Prospects (developers aware of the project but not yet interacting). Output stock is Newcomers (people who have taken a first observable onboarding action such as joining chat, forking the repo, or posting a question). Prospects accumulate from the external developer population at a discovery rate driven by project visibility, network diffusion, and signaling from recognized contributors and core developers. They convert to Newcomers at a joining rate that rises with perceived welcoming governance (clear contribution policies, code of conduct enforcement, permissive pull request policies, labeled good first issues) and the task-technology fit between prospect skills and the stack. The conversion pace is limited by onboarding friction (documentation completeness, build reproducibility, local dev setup reliability) and by perceived queue times for first-time interactions. Reinforcing feedback: as Recognized Contributors and Core Developers grow, social proof and visible momentum increase discovery and lower perceived risk, raising joining rate and expanding the Newcomer pool. Balancing feedback: when Codebase Maintainability falls below a comprehension threshold, cognitive cost of entry jumps, reducing joining rate despite high visibility. Governance can adjust this balance: relaxing contribution policies (allowing PRs from forks, fewer mandatory checks) increases approachability, while overly rigid gatekeeping suppresses entry. Nonlinearity arises because prospects respond to a minimum viable clarity in contribution guidelines; below that clarity threshold, small improvements in visibility do not increase joining. Delays of 1\u20134 weeks are typical between discovery and joining action; release pulses and media coverage create punctuated bursts that overshoot community response capacity, temporarily raising unanswered newcomer queries and reducing perceived responsiveness, which in turn depresses joining until the backlog clears.",
+        "theories_used": [
+          "Diffusion of Innovations",
+          "Task-Technology Fit (TTF)",
+          "Signaling Theory",
+          "Communities of Practice (Wenger)",
+          "Social Cognitive Career Theory (SCCT)",
+          "Adaptive Structuration Theory"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Cognitive Load Theory",
+            "rationale": "To represent the effect of documentation and setup complexity on entry decisions via perceived cognitive effort"
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Peripheral Socialization (Newcomers \u2192 Peripheral Participants)",
+            "connection_type": "feeds_into",
+            "description": "Flow of people who have taken first onboarding action"
+          },
+          {
+            "target_cluster": "Codebase\u2013Governance Coevolution (Open PR Backlog \u2192 Codebase Maintainability)",
+            "connection_type": "feedback_loop",
+            "description": "Perceived maintainability and policy openness alter joining rate; joining surges trigger governance tweaks to onboarding assets"
+          },
+          {
+            "target_cluster": "Recognition and Legitimation (Active PR Submitters \u2192 Recognized Contributors)",
+            "connection_type": "feedback_loop",
+            "description": "Visible recognized contributors signal project health, raising discovery and joining rates"
+          }
+        ]
+      },
+      {
+        "name": "Peripheral Socialization (Newcomers \u2192 Peripheral Participants)",
+        "narrative": "Input stock is Newcomers. Output stock is Peripheral Participants (individuals who actively lurk and perform low-risk actions like triaging issues, commenting, updating docs, or reproducing bugs). Newcomers advance at an engagement rate shaped by legitimate peripheral participation: access to real work, ability to observe routines, and opportunities to contribute without risk. Social and technical absorptive capacity moderates speed\u2014prior experience with the language, tools, and domain enables faster knowledge uptake. Mentoring and community responsiveness are capacity constraints; as mentor hours per newcomer drop, the engagement rate falls with a short delay because questions queue up and social reinforcement weakens. Nonaka\u2019s socialization and externalization processes convert tacit project know-how into explicit onboarding assets (guides, playbooks). As peripheral participants accumulate, peer help increases, creating a reinforcing loop that accelerates socialization and reduces load on core mentors\u2014until a saturation point where coordination overhead emerges, flattening engagement gains. Governance influences progression by assigning triage rights, running office hours, and enacting code of conduct norms that increase psychological safety; weak enforcement reduces participation persistence. Nonlinearity appears around a minimum interaction threshold (e.g., 3\u20135 meaningful exchanges); below the threshold, newcomers tend to drop out; surpassing it yields confidence and higher subsequent engagement. Typical delay from newcomer to peripheral is 2\u20138 weeks, shortened when documentation depth is high and issue templates standardize expectations. If codebase maintainability or CI stability is poor, even peripheral tasks stall, lengthening time to first meaningful contribution and raising dropout. Conversely, modular architecture and labeled starter tasks lower cognitive load, amplifying the rate at which Newcomers become Peripheral Participants.",
+        "theories_used": [
+          "Legitimate Peripheral Participation",
+          "Communities of Practice",
+          "Absorptive Capacity",
+          "Nonaka's SECI Model",
+          "Routines and Transactive Memory Systems",
+          "Social Cognitive Career Theory (SCCT)"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Cognitive Load Theory",
+            "rationale": "Models how modularity and documentation reduce cognitive burden and raise engagement probability"
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Activation to PR (Peripheral Participants \u2192 Active PR Submitters)",
+            "connection_type": "feeds_into",
+            "description": "Peripheral participants who take on code changes become PR submitters"
+          },
+          {
+            "target_cluster": "Codebase\u2013Governance Coevolution (Open PR Backlog \u2192 Codebase Maintainability)",
+            "connection_type": "feedback_loop",
+            "description": "Documentation and CI stability from the artifact cluster change the engagement rate; peripheral feedback triggers governance to refine contribution guidelines"
+          }
+        ]
+      },
+      {
+        "name": "Activation to PR (Peripheral Participants \u2192 Active PR Submitters)",
+        "narrative": "Input stock is Peripheral Participants. Output stock is Active PR Submitters (people producing code changes via pull requests). The activation rate depends on opportunity discovery and execution friction. Opportunity supply is the flow of appropriately scoped issues (good first issues, help wanted) with clear acceptance criteria; when this inventory is low, activation stalls. Execution friction arises from local environment setup, test flakiness, and CI cycle time. Task-technology fit increases when tooling matches contributor skill and when automation scaffolds tests and linting, reducing the probability of early rejection. Self-efficacy grows with small wins and timely feedback; long review delays dampen confidence and lower subsequent PR initiation. Nonlinearity emerges via expected review time: when open PR backlog exceeds review throughput, Little\u2019s Law implies that expected wait time grows roughly linearly with backlog size; beyond a 1\u20132 week threshold, first-time submitters defer or abandon PRs, sharply reducing activation. Codebase maintainability affects comprehension and editability; high coupling increases the risk that small changes cascade, further lowering activation. Governance choices\u2014automated checks, required approvals, clear templates\u2014can reduce reviewer effort per PR and stabilize throughput; conversely, opaque rules and high approval counts raise perceived cost of trying. Typical delay from peripheral engagement to first PR spans 2\u20136 weeks, compressed by mentoring programs and starter kits. Reinforcing loop: as more Active PR Submitters complete merges, they contribute back improvements to templates and tests, lowering future friction and raising activation. Balancing loop: if PR arrivals exceed review capacity, queues grow, feedback slows, and activation drops until backlog is reduced or capacity/governance policies are adjusted.",
+        "theories_used": [
+          "Task-Technology Fit (TTF)",
+          "Absorptive Capacity",
+          "Social Cognitive Career Theory (SCCT)",
+          "Nonaka's SECI Model",
+          "Routines and Transactive Memory Systems",
+          "Diffusion of Innovations"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Queuing Theory (Little's Law)",
+            "rationale": "Relates open PR backlog, throughput, and expected wait time to activation probability"
+          },
+          {
+            "theory_name": "Cognitive Load Theory",
+            "rationale": "Links maintainability and tooling to perceived effort of first PR"
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Recognition and Legitimation (Active PR Submitters \u2192 Recognized Contributors)",
+            "connection_type": "feeds_into",
+            "description": "Submitters whose PRs are accepted accumulate toward recognition thresholds"
+          },
+          {
+            "target_cluster": "Codebase\u2013Governance Coevolution (Open PR Backlog \u2192 Codebase Maintainability)",
+            "connection_type": "feedback_loop",
+            "description": "Activation increases PR arrival rate; review throughput and policy settings feed back by changing expected wait time and acceptance probability"
+          }
+        ]
+      },
+      {
+        "name": "Recognition and Legitimation (Active PR Submitters \u2192 Recognized Contributors)",
+        "narrative": "Input stock is Active PR Submitters. Output stock is Recognized Contributors (individuals with project-level status such as acknowledged contributors, triagers, or reviewers). The transition rate depends on accepted PRs, breadth of contributions (code, docs, triage), and governance-defined criteria for recognition (e.g., number and quality thresholds, code of conduct adherence). Signaling dynamics amplify the process: visible acknowledgments, badges, and inclusion in release notes increase reputation, which improves access to tacit knowledge and reviewer attention, raising subsequent acceptance odds. Social capital matters: bridging ties to core developers reduce review uncertainty and help submitters target changes to fit architectural conventions. Routine stability in code review (consistent standards and checklists) yields predictable feedback that accelerates learning and raises pass rates; frequent un-signaled changes in standards create latent rework that slows progression. Nonlinearity typically appears as a threshold effect: once submitters achieve a base level of accepted contributions (for example, 3\u20135 high-quality PRs), their review latency drops and confidence rises, leading to accelerated recognition\u2014a success-to-success dynamic. Balancing forces arise when review capacity is tight; to protect quality, governance may raise required approvals, which slows acceptance and recognition. Delays from first PR to recognition commonly span 3\u20139 months, compressible by intentional mentoring and inclusive policies that count non-code contributions. As the pool of Recognized Contributors grows, they can assume triage and reviewing responsibilities, increasing throughput, which raises acceptance rate and speeds recognition for others. Conversely, if policy stringency increases without adding reviewing capacity, queues lengthen, discouraging submitters and reducing inflow to recognition.",
+        "theories_used": [
+          "Signaling Theory",
+          "Social Capital and Structural Holes",
+          "Stability and Change in Organizational Routines",
+          "Adaptive Structuration Theory",
+          "Communities of Practice",
+          "Nonaka's SECI Model"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Cognitive Load Theory",
+            "rationale": "Recognition likelihood rises when reviewers reduce cognitive overhead via consistent templates and standards"
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Maintainer Accession (Recognized Contributors \u2192 Core Developers)",
+            "connection_type": "feeds_into",
+            "description": "Recognized contributors eligible for promotion accumulate here"
+          },
+          {
+            "target_cluster": "Codebase\u2013Governance Coevolution (Open PR Backlog \u2192 Codebase Maintainability)",
+            "connection_type": "feedback_loop",
+            "description": "Recognized contributors add review capacity and triage, altering merge throughput and policy execution"
+          },
+          {
+            "target_cluster": "Attraction and Entry (Prospects \u2192 Newcomers)",
+            "connection_type": "feedback_loop",
+            "description": "Public recognition signals project health to prospects, increasing discovery and joining"
+          }
+        ]
+      },
+      {
+        "name": "Maintainer Accession (Recognized Contributors \u2192 Core Developers)",
+        "narrative": "Input stock is Recognized Contributors. Output stock is Core Developers (maintainers with merge/commit rights and governance voice). Transition occurs at a promotion rate determined by trust accumulation, architectural competence, and governance rules (e.g., required number of sustained contributions, nominations, voting). As bus factor risk rises (few maintainers relative to subsystems), promotion pressure increases; in response, projects relax thresholds or proactively recruit, shortening time-to-core. Transactive memory maturity\u2014knowing who knows what\u2014reduces risk in granting rights because responsibilities are scoped to modules, not the entire codebase. Governance design (e.g., two-approver rules, protected branches) can safely absorb more maintainers by bounding individual decision risk. Nonlinearity arises in coordination overhead: adding maintainers initially raises review throughput, but beyond an optimal range, communication costs and policy negotiation delays offset capacity gains; without clear routines, Brooks\u2019s law effects slow integration. Skill-biased technical change complicates accession when the codebase evolves toward more specialized stacks; promotion requires higher skill breadth, lengthening time-to-core unless modularization reduces coupling. Typical promotion delays range from 6\u201318 months of sustained contributions. Reinforcing loop: more core developers increase review throughput and mentoring, accelerating the progression of recognized contributors into the promotion pool. Balancing loop: if governance tightens standards after quality incidents (more required approvals, stricter policies), promotion slows, keeping the core small and overburdened. Core developers themselves adjust governance (adaptive structuration) when queues grow: they lower approval counts for low-risk areas, delegate review powers, and invest in CI tooling, which increases safe throughput and supports accession.",
+        "theories_used": [
+          "The Coevolution of New Organizational Forms",
+          "Adaptive Structuration Theory",
+          "Routines and Transactive Memory Systems",
+          "Stability and Change in Organizational Routines",
+          "Skill-Biased Technical Change",
+          "Job Demands-Resources (JD-R) Model"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Brooks's Law (Mythical Man-Month)",
+            "rationale": "Captures diminishing returns and communication overhead when adding maintainers"
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Core Sustainment and Attrition (Core Developers \u2192 Alumni/Inactive)",
+            "connection_type": "feeds_into",
+            "description": "Promoted maintainers accumulate in the core prior to potential attrition"
+          },
+          {
+            "target_cluster": "Codebase\u2013Governance Coevolution (Open PR Backlog \u2192 Codebase Maintainability)",
+            "connection_type": "feedback_loop",
+            "description": "Core size governs review throughput, policy stringency, and refactoring allocation, which in turn affects maintainability and earlier transitions"
+          }
+        ]
+      },
+      {
+        "name": "Core Sustainment and Attrition (Core Developers \u2192 Alumni/Inactive)",
+        "narrative": "Input stock is Core Developers. Output stock is Alumni/Inactive (maintainers who step back or churn). The attrition rate follows job demands-resources dynamics: demands rise with review queues, release pressure, governance overhead, and community conflict; resources include shared review load, automation, recognition, and autonomy. When demands exceed resources, strain accumulates and eventually crosses a burnout threshold, leading to exit; there is a delay as strain builds over months. Punctuated peaks around major releases can cause temporary overwork and spikes in attrition unless buffered with capacity or schedule flexibility. Routines that distribute load (rotating triage, code ownership maps, release captains) and governance that delegates decisions mitigate demands. Recognition and community support replenish resources, slowing attrition. Nonlinearity arises because attrition reduces review capacity, increasing queues and perceived demand for the remaining core, potentially triggering a cascade of exits unless policies shift or new maintainers are promoted\u2014an erosion dynamic. Conversely, when core size is healthy, time can be allocated to refactoring and automation, which reduces cognitive load and future demands, reinforcing retention. Alumni may remain socially connected; while not modeled as a return flow in the backbone, their mentoring and occasional PRs can dampen peaks by contributing during releases. Governance acts as both a lever and a constraint: increasing required approvals or centralizing decisions can protect quality but elevates core workload; relaxing rules or expanding reviewer rights distributes work, lowering demands at potential quality risk. Typical time in core roles spans 1\u20133 years; attrition spikes signal underinvestment in resources or over-tight governance. Adding promotion candidates to the core, strengthening CI, and revising policies are common delayed responses that restore balance.",
+        "theories_used": [
+          "Job Demands-Resources (JD-R) Model",
+          "Punctuated Equilibrium Theory in IS Research",
+          "Stability and Change in Organizational Routines",
+          "Social Capital and Structural Holes"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Maintainer Accession (Recognized Contributors \u2192 Core Developers)",
+            "connection_type": "feedback_loop",
+            "description": "Attrition creates promotion pressure; high churn prompts relaxed promotion criteria or expanded mentoring to backfill"
+          },
+          {
+            "target_cluster": "Codebase\u2013Governance Coevolution (Open PR Backlog \u2192 Codebase Maintainability)",
+            "connection_type": "feedback_loop",
+            "description": "Core exits reduce review and refactoring capacity, increasing PR queues and technical debt unless governance or automation compensates"
+          }
+        ]
+      },
+      {
+        "name": "Codebase\u2013Governance Coevolution (Open PR Backlog \u2192 Codebase Maintainability)",
+        "narrative": "Input stock is Open PR Backlog (pending change proposals). Output stock is Codebase Maintainability, an aggregate quality level that increases with refactoring, modularization, tests, and documentation, and decreases with debt-adding merges and architectural drift. PR arrival rate comes from activation dynamics; review and merge throughput depend on reviewer capacity (recognition and core size), policy stringency (approvals required, CI gates), and tool reliability. Little\u2019s Law relates backlog to expected wait time; when queues grow, submitter behavior changes and activation slows, creating a balancing loop. Governance adjusts policies in response to defect rates and throughput: after quality incidents, policy tightens (more checks, approvals), reducing merge rate; when queues are long without quality issues, policy loosens or automation is invested in. Merges add features and sometimes debt; refactoring and documentation flows consume reviewer and core time to increase maintainability. Allocation of core time between features and refactoring is a pivotal decision; bias toward features accelerates growth at the cost of rising complexity and future slowdown\u2014a classic limits-to-growth pattern. Nonlinearity appears via comprehension thresholds: below a maintainability threshold, newcomers struggle to build and navigate the code, sharply reducing activation and recognition progression until refactoring raises maintainability. Delays are inherent: refactoring benefits manifest after planning and review cycles; policy changes take time to diffuse into routines. Coevolution occurs as architecture mirrors team structure; as more maintainers specialize, modules become clearer (Conway\u2019s law), reducing coupling and cognitive load, which then enables broader participation. Skill-biased technical change raises bar for contributions unless offset by wrappers, scaffolding, and documentation. Release cycles create punctuated bursts of merging followed by stabilization sprints. Overall, this cluster governs the tempo of the pipeline by translating human capacity and governance choices into review throughput, quality gates, and the evolving artifact that either invites or repels new contributors.",
+        "theories_used": [
+          "Adaptive Structuration Theory",
+          "The Coevolution of New Organizational Forms",
+          "Stability and Change in Organizational Routines",
+          "Nonaka's SECI Model",
+          "Skill-Biased Technical Change",
+          "Punctuated Equilibrium Theory in IS Research",
+          "Task-Technology Fit (TTF)"
+        ],
+        "additional_theories_used": [
+          {
+            "theory_name": "Queuing Theory (Little's Law)",
+            "rationale": "Maps PR arrival, throughput, and backlog to expected review time and acceptance dynamics"
+          },
+          {
+            "theory_name": "Conway's Law",
+            "rationale": "Links communication structure with modularity and maintainability"
+          }
+        ],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Activation to PR (Peripheral Participants \u2192 Active PR Submitters)",
+            "connection_type": "feedback_loop",
+            "description": "Backlog size and expected review time alter activation; activation drives PR arrivals"
+          },
+          {
+            "target_cluster": "Recognition and Legitimation (Active PR Submitters \u2192 Recognized Contributors)",
+            "connection_type": "feedback_loop",
+            "description": "Throughput and acceptance rates drive recognition; recognized reviewers increase throughput"
+          },
+          {
+            "target_cluster": "Maintainer Accession (Recognized Contributors \u2192 Core Developers)",
+            "connection_type": "feedback_loop",
+            "description": "Core size and policy choices determine review and refactor capacity; maintainability then affects promotion needs"
+          },
+          {
+            "target_cluster": "Attraction and Entry (Prospects \u2192 Newcomers)",
+            "connection_type": "feedback_loop",
+            "description": "Maintainability and governance openness change onboarding friction and perceived project health, affecting joining"
+          },
+          {
+            "target_cluster": "Peripheral Socialization (Newcomers \u2192 Peripheral Participants)",
+            "connection_type": "feedback_loop",
+            "description": "Documentation depth, test stability, and modularity alter socialization speed; peripheral feedback informs governance updates"
+          },
+          {
+            "target_cluster": "Core Sustainment and Attrition (Core Developers \u2192 Alumni/Inactive)",
+            "connection_type": "feedback_loop",
+            "description": "Debt levels and queue lengths change core workload and burnout risk; attrition shifts available capacity for refactoring"
+          }
+        ]
+      }
+    ],
+    "overall_narrative": "The backbone is a seven-stock career pipeline: Prospects \u2192 Newcomers \u2192 Peripheral Participants \u2192 Active PR Submitters \u2192 Recognized Contributors \u2192 Core Developers \u2192 Alumni/Inactive. Six pipeline processes transform people through progressively deeper participation; a seventh process models the codebase and governance that continuously shape these transitions. Attraction and Entry convert awareness into initial participation via visibility, policy openness, and task-technology fit. Peripheral Socialization builds tacit and explicit know-how through legitimate peripheral participation limited by mentoring capacity. Activation to PR turns peripheral engagement into tangible change proposals, constrained by opportunity supply and queuing dynamics. Recognition and Legitimation formalize status as contributors through accepted work and social signaling. Maintainer Accession promotes trusted contributors into core roles via routines and governance tuned to bus factor and architectural demands. Core Sustainment and Attrition govern the persistence of the core under job demands-resources dynamics and release pulses. The Codebase\u2013Governance Coevolution process integrates human capacity into review throughput, technical debt, maintainability, and policy stringency. Feedbacks span scales: maintainability and governance openness modulate onboarding friction and activation; recognition and core growth expand review and mentoring capacity; backlog and defect signals trigger policy tightening or loosening; attrition reduces capacity, lengthening queues and raising demands; refactoring investments recover maintainability, lowering cognitive load and reigniting inflows. Competing loops produce characteristic dynamics: reinforcing loops enable growth through mentoring and recognition, while balancing loops arise from capacity constraints, quality gates, and cognitive thresholds. Delays in learning, policy diffusion, and refactoring generate oscillations around releases. The architecture is SISO per process with clear stock-flow boundaries, ready for quantification: person counts and transition rates in the career chain; PR arrivals, throughput, and backlog; maintainability and debt accumulation; and governance policy levels that endogenously adjust to performance signals."
+  }
+}

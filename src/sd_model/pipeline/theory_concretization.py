@@ -18,6 +18,8 @@ def create_concretization_prompt(
     variables: Dict,
     connections: Dict,
     plumbing: Dict = None,
+    user_instructions_path: str = None,
+    project_path: Path = None,
     recreate_mode: bool = False
 ) -> str:
     """Create prompt for theory concretization (Step 2) - CONDENSED VERSION.
@@ -27,11 +29,33 @@ def create_concretization_prompt(
         variables: Current model variables (may be empty in recreate mode)
         connections: Current model connections (may be empty in recreate mode)
         plumbing: Optional plumbing data for boundary flows
+        user_instructions_path: Optional path to user instructions file
+        project_path: Optional project path for finding user instructions
         recreate_mode: If True, building complete model from scratch
 
     Returns:
         Prompt string for LLM
     """
+
+    # Read user instructions if provided
+    user_instructions = ""
+    if user_instructions_path is None:
+        # Default path: Look for project-specific step 2 instructions
+        if project_path:
+            user_instructions_path = project_path / "knowledge" / "user_instructions_step2.txt"
+
+    if user_instructions_path and Path(user_instructions_path).exists():
+        try:
+            with open(user_instructions_path, 'r') as f:
+                content = f.read().strip()
+                # Filter out comment lines starting with #
+                lines = [line for line in content.split('\n') if not line.strip().startswith('#')]
+                user_content = '\n'.join(lines).strip()
+                if user_content:
+                    user_instructions = f"\n## User-Specific Instructions\n\n{user_content}\n"
+        except Exception as e:
+            # Silently ignore if can't read file
+            pass
 
     # Extract clustering strategy from planning result
     clustering_strategy = planning_result.get('clustering_strategy', {})
@@ -83,7 +107,7 @@ Step 1 has planned a hierarchical system:
 - **Connectivity**: Every process must connect to others (no isolated processes)
 
 Your task: Implement these design decisions by identifying concrete SD elements.
-
+{user_instructions}
 ---
 
 {model_section}
@@ -262,6 +286,13 @@ Return ONLY valid JSON:
     }}
   ]
 }}
+
+IMPORTANT: Ensure all JSON is syntactically correct:
+- Close all objects with }} not )
+- Match all opening braces {{ with closing braces }}
+- Match all opening brackets [ with closing brackets ]
+- All strings must be properly quoted
+- Use commas between array/object elements
 """
 
     return prompt
@@ -272,7 +303,9 @@ def run_theory_concretization(
     variables: Dict,
     connections: Dict,
     plumbing: Dict = None,
+    mdl_path: Path = None,
     llm_client: LLMClient = None,
+    user_instructions_path: str = None,
     recreate_mode: bool = False
 ) -> Dict:
     """Execute Step 2: Theory Concretization with condensed prompt.
@@ -282,12 +315,21 @@ def run_theory_concretization(
         variables: Current model variables
         connections: Current model connections
         plumbing: Optional plumbing data
+        mdl_path: Optional MDL path to derive project path
         llm_client: Optional LLM client
+        user_instructions_path: Optional path to user instructions file
         recreate_mode: If True, creating complete model from scratch
 
     Returns:
         Dict with concrete SD elements
     """
+
+    # Derive project path from mdl_path if not explicitly provided
+    project_path = None
+    if mdl_path:
+        # mdl_path is like: /path/to/projects/oss_model/mdl/file.mdl
+        # project_path should be: /path/to/projects/oss_model
+        project_path = mdl_path.parent.parent
 
     # Create prompt
     prompt = create_concretization_prompt(
@@ -295,6 +337,8 @@ def run_theory_concretization(
         variables,
         connections,
         plumbing,
+        user_instructions_path=user_instructions_path,
+        project_path=project_path,
         recreate_mode=recreate_mode
     )
 

@@ -65,6 +65,15 @@ def cmd_run(args: argparse.Namespace) -> None:
     if args.verify_citations and not args.citations:
         args.citations = True
 
+    # Validate --step requires --decomposed-theory
+    if hasattr(args, 'step') and args.step and not args.decomposed_theory:
+        logger.error("--step requires --decomposed-theory flag")
+        return
+
+    # Auto-enable theory enhancement when using decomposed-theory
+    if args.decomposed_theory:
+        args.theory_enhancement = True
+
     result = run_pipeline(
         project=args.project,
         # Core optional features
@@ -74,6 +83,10 @@ def cmd_run(args: argparse.Namespace) -> None:
         # Model improvement features
         run_theory_enhancement=args.theory_enhancement,
         use_full_relayout=args.full_relayout,
+        recreate_from_theory=args.recreate_model if hasattr(args, 'recreate_model') else False,
+        use_decomposed_theory=args.decomposed_theory if hasattr(args, 'decomposed_theory') else False,
+        theory_step=args.step if hasattr(args, 'step') else None,
+        resume_run=args.resume_run if hasattr(args, 'resume_run') else None,
         run_archetype_detection=args.archetype_detection,
         run_rq_analysis=args.rq_analysis,
         run_theory_discovery=args.theory_discovery,
@@ -148,6 +161,10 @@ def build_parser() -> argparse.ArgumentParser:
     # Model improvement features
     p_run.add_argument("--theory-enhancement", action="store_true", help="Suggest theory-based model enhancements and generate enhanced MDL file")
     p_run.add_argument("--full-relayout", action="store_true", help="Use full relayout (reposition ALL variables) instead of incremental placement")
+    p_run.add_argument("--recreate-model", action="store_true", help="Recreate model from scratch using ONLY theory-generated variables (discards existing model)")
+    p_run.add_argument("--decomposed-theory", action="store_true", help="Use decomposed 3-step theory enhancement (strategic planning → concrete generation → positioning)")
+    p_run.add_argument("--step", type=int, choices=[1, 2], help="Run specific step only (1=planning, 2=concretization). Requires --decomposed-theory. Default: run both steps")
+    p_run.add_argument("--resume-run", type=str, metavar="RUN_ID", help="Resume from existing run_id (for Step 2). Auto-detects latest Step 1 if not specified")
     p_run.add_argument("--archetype-detection", action="store_true", help="Detect system archetypes and suggest missing loops/variables")
     p_run.add_argument("--rq-analysis", action="store_true", help="Run research question alignment and refinement")
     p_run.add_argument("--theory-discovery", action="store_true", help="Discover relevant theories for the model")

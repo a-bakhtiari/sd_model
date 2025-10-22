@@ -1,0 +1,251 @@
+{
+  "theory_decisions": [
+    {"theory_name": "Communities of Practice (Wenger)", "decision": "include"},
+    {"theory_name": "Nonaka's SECI Model", "decision": "include"},
+    {"theory_name": "A Dynamic Theory of Organizational Knowledge Creation", "decision": "include"},
+    {"theory_name": "Routines and Transactive Memory Systems", "decision": "include"},
+    {"theory_name": "Absorptive Capacity", "decision": "include"},
+    {"theory_name": "Diversity Trumps Ability", "decision": "include"},
+    {"theory_name": "Hidden Order: How Adaptation Builds Complexity", "decision": "exclude"},
+    {"theory_name": "Social Cognitive Career Theory (SCCT)", "decision": "include"},
+    {"theory_name": "Task-Technology Fit (TTF)", "decision": "include"},
+    {"theory_name": "Social Capital and Structural Holes", "decision": "include"},
+    {"theory_name": "Signaling Theory", "decision": "include"},
+    {"theory_name": "Job Demands-Resources (JD-R) Model", "decision": "include"},
+    {"theory_name": "Cognitive Apprenticeship", "decision": "include"},
+    {"theory_name": "Self-Determination Theory", "decision": "include"},
+    {"theory_name": "Motivation Crowding Theory", "decision": "include"},
+    {"theory_name": "Deliberate Practice", "decision": "include"},
+    {"theory_name": "Social Identity Theory", "decision": "include"},
+    {"theory_name": "Status Characteristics Theory", "decision": "include"},
+    {"theory_name": "Institutional Theory", "decision": "include"},
+    {"theory_name": "Conway's Law", "decision": "include"},
+    {"theory_name": "Technical Debt Theory", "decision": "include"}
+  ],
+  "clustering_strategy": {
+    "clusters": [
+      {
+        "name": "Discovery & Legitimate Entry",
+        "narrative": "Primary input stock: Prospective Developers (people aware of the project but not yet engaged). Primary output stock: Entry-level/Newcomer. Prospective Developers accumulate from the wider talent pool at a discovery rate driven by project visibility (stars, social exposure, release cadence) and signaling (welcoming language, badges, \"good first issue\" labels). A reinforcing loop lifts discovery: as downstream contribution and releases increase, visibility rises, which draws more prospects. Conversion from Prospects to Newcomers is constrained by entry friction: environment setup time, tool-task fit, governance gatekeeping (CLA signing, required templates), and clarity of legitimate peripheral roles (observation, triage, docs fixes). A balancing loop operates: stricter governance and higher code complexity raise entry friction, reducing join conversion; when spam or low-quality attempts rise, governance tends to tighten with a delay of weeks. Another reinforcing loop emerges when onboarding support is visible: responsive maintainers and clear guidance increase the success rate of first interactions; early success boosts self-efficacy (SCCT), which increases persistence, improving conversion. Nonlinearities: below a documentation quality threshold, setup failure rates jump; above a minimum set of labeled starter tasks, conversion sharply increases. Diversity expands the idea space and can improve fit for varied tasks, but also interacts with status cues—biased signaling can dampen conversion for underrepresented groups. Time delays: discovery-to-attempt lags days to weeks; governance adjustments lag defect incidents by weeks. Rate-determining factors include setup automation (devcontainer, CI-provided checks), policy overhead, and availability of legitimate peripheral tasks. Accumulation consequence: a growing Newcomer stock when discovery and conversion outpace dropout (abandoning setup). Cascading effects: surges of Newcomers increase mentoring demand downstream; if mentoring capacity is not expanded, later balancing loops reduce perceived responsiveness and conversion in future periods via reputation.",
+        "theories_used": [
+          "Communities of Practice (Wenger)",
+          "Social Cognitive Career Theory (SCCT)",
+          "Task-Technology Fit (TTF)",
+          "Institutional Theory",
+          "Signaling Theory",
+          "Social Identity Theory",
+          "Diversity Trumps Ability"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Apprenticeship & Guided Participation",
+            "connection_type": "feeds_into",
+            "description": "Flow of people who successfully join becomes Entry-level/Newcomers."
+          },
+          {
+            "target_cluster": "Codebase Evolution & Technical Debt Management",
+            "connection_type": "receives_from",
+            "description": "Maintainable Code Units reduce setup and comprehension friction, raising conversion from Prospects to Newcomers."
+          },
+          {
+            "target_cluster": "Governance, Review Policy & Automation",
+            "connection_type": "receives_from",
+            "description": "Effective Review Capacity and policy strictness determine entry gate overhead (CLAs, templates), altering join success."
+          }
+        ]
+      },
+      {
+        "name": "Apprenticeship & Guided Participation",
+        "narrative": "Primary input stock: Entry-level/Newcomer. Primary output stock: Apprentice/Peripheral Participant. Newcomers progress via cognitive apprenticeship: observing experts, receiving coaching and scaffolding, then gradually taking on more responsibility. Progression rate is governed by mentoring capacity, which is a function of available mentors (contributors and core), their time allocation, and the newcomer-to-mentor ratio. A reinforcing loop: as more Apprentices emerge, they become near-peer mentors, expanding capacity and accelerating subsequent progression. A balancing loop activates when the newcomer-to-mentor ratio exceeds a threshold (e.g., 8:1): mentoring quality degrades, feedback cycles slow, and progression rates fall; dropout increases due to unmet relatedness and low competence signals (Self-Determination). Nonlinearities: apprenticeship accelerates after a newcomer accrues around 8–12 meaningful interactions (pairing sessions, code reviews responded to), crossing a tacit understanding threshold. Learning effectiveness depends on absorptive capacity (prior knowledge, domain familiarity) and task-technology fit (tooling, CI feedback clarity). SECI dynamics operate: socialization (chat, pairing) builds tacit context; externalization (writing down steps, starter templates) codifies guidance; combination (curation of docs) scales it; internalization (doing the task) consolidates skill. Job demands-resources shape persistence: high task demands (ambiguous issues, brittle tests) with low resources (mentor time, examples) elevate strain and dropout. Deliberate practice matters: scoped tasks with quick feedback loops build skill faster than large, ambiguous assignments. Time delays are significant: relationship formation (weeks), skill consolidation (1–3 months), and identity transition from outsider to legitimate peripheral participant (Wenger) lag behind mentoring inputs. Accumulation consequence: the Apprentice stock grows when sponsorship formation and guided task completion rates exceed dropout. Cascading: apprenticeship throughput seeds the next stage’s PR creation quality; overload here propagates as low-quality submissions and review queues later.",
+        "theories_used": [
+          "Cognitive Apprenticeship",
+          "Communities of Practice (Wenger)",
+          "Absorptive Capacity",
+          "Nonaka's SECI Model",
+          "Job Demands-Resources (JD-R) Model",
+          "Self-Determination Theory",
+          "Deliberate Practice",
+          "Social Capital and Structural Holes"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Throughput & Review Flow",
+            "connection_type": "feeds_into",
+            "description": "Apprentice/Peripheral Participants proceed to submit PRs and begin regular contribution."
+          },
+          {
+            "target_cluster": "Governance, Review Policy & Automation",
+            "connection_type": "receives_from",
+            "description": "Effective Review Capacity competes with mentor time; stricter policies increase scaffolding burden, altering progression."
+          },
+          {
+            "target_cluster": "Codebase Evolution & Technical Debt Management",
+            "connection_type": "receives_from",
+            "description": "Higher Maintainable Code Units reduce cognitive load and increase learning rate per interaction."
+          },
+          {
+            "target_cluster": "Core Accession & Maintainer Formation",
+            "connection_type": "receives_from",
+            "description": "More Experts increase mentoring capacity and sponsorship availability for Apprentices."
+          }
+        ]
+      },
+      {
+        "name": "Contribution Throughput & Review Flow",
+        "narrative": "Primary input stock: Apprentice/Peripheral Participant. Primary output stock: Practicing Contributor. Apprentices begin producing changes that enter a Pull Request (PR) Review Queue (internal stock). PR submission rate rises with Apprentice activity and self-efficacy; acceptance depends on PR quality, codebase maintainability, governance strictness, and effective review capacity. A balancing loop forms around the PR Queue: when submissions exceed review capacity, queue length and cycle time increase, reducing acceptance probability and disheartening contributors (Self-Determination), which decreases submission and progression rates. A reinforcing loop appears as new Practicing Contributors join: they start reviewing simple PRs, shrinking the queue and accelerating progression for others—provided governance permits distributed review. Governance introduces a quality-throughput tradeoff: stricter policies (required checks, multi-review approvals) reduce defects and rework (balancing defects loop) but lengthen cycle times. Automation (CI checks, linters) shifts the frontier outward, increasing effective review hours without consuming human time. Technical debt and code complexity lengthen review and rework per PR, creating a second balancing loop: higher complexity slows throughput, queue grows, which further delays merges. Nonlinearities: when median PR wait exceeds a threshold (e.g., 7–10 days), dropout probability rises sharply; when test coverage passes a threshold, rework rates drop nonlinearly. Time delays: review assignment (hours to days), revision cycles (days), and acceptance feedback on contributor identity (weeks). Rate-determining factors include reviewer availability, CI reliability, and PR size. Accumulation consequence: the Practicing Contributor stock increases when accepted PRs and sustained activity exceed attrition. Cascading: acceptance builds reputation signals, improves status, and increases willingness to review, feeding back to shrink the queue; conversely, queue spikes can ripple back to apprenticeship by starving timely feedback.",
+        "theories_used": [
+          "Task-Technology Fit (TTF)",
+          "Technical Debt Theory",
+          "Nonaka's SECI Model",
+          "Job Demands-Resources (JD-R) Model",
+          "Self-Determination Theory",
+          "Motivation Crowding Theory",
+          "Communities of Practice (Wenger)"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Core Accession & Maintainer Formation",
+            "connection_type": "feeds_into",
+            "description": "Practicing Contributors accumulate and some progress toward Expert/Core.")
+          },
+          {
+            "target_cluster": "Governance, Review Policy & Automation",
+            "connection_type": "receives_from",
+            "description": "Effective Review Capacity and policy strictness set PR throughput and acceptance probability."
+          },
+          {
+            "target_cluster": "Codebase Evolution & Technical Debt Management",
+            "connection_type": "feedback_loop",
+            "description": "Merged PRs add code units (often initially unmaintainable); refactoring later converts them to maintainable code."
+          },
+          {
+            "target_cluster": "Apprenticeship & Guided Participation",
+            "connection_type": "receives_from",
+            "description": "Apprentice quality and readiness set initial PR quality and rework required."
+          }
+        ]
+      },
+      {
+        "name": "Core Accession & Maintainer Formation",
+        "narrative": "Primary input stock: Practicing Contributor. Primary output stock: Expert/Core Developer. Practicing Contributors accrue reputation capital through consistent, high-quality contributions, helpful reviews, and prosocial behaviors (triage, documentation). This reputation accumulation follows status and signaling dynamics: visible signals (commit history, reviewer endorsements) and status characteristics (role expectations) shape nomination probability. A reinforcing loop: as reputation grows, contributors are trusted with more complex work and review rights; success at these tasks accelerates further growth. A balancing loop arises from governance standards: the community sets thresholds (tenure, number of accepted PRs, demonstration of values) for granting maintainer rights; stricter thresholds dampen the promotion rate to control risk. Transactive memory systems form among the core, enabling rapid assignment of reviewers and issues to the right experts; newcomers to the core initially lack this map, creating a short-term capacity dip (learning the ropes). Job demands-resources affect sustainability: as maintainers take on review, release, and governance work, demands may exceed resources; burnout and role overload trigger attrition, balancing growth. Social identity and belonging retain contributors; conversely, perceived bias or gatekeeping discourages borderline candidates. Time delays: recognition lags contributions by months; governance nominations and vote cycles add weeks; policy changes lag incidents by months. Nonlinearities: once a contributor passes a competence and prosocial behavior threshold (e.g., 6–12 months consistent activity with review participation), nomination likelihood increases sharply. Accumulation consequence: Expert/Core Developers grow when promotion outpaces core attrition. Cascading: increased core size expands mentoring and review capacity downstream; however, without investment in automation and delegation, more core members may become trapped in governance load, slowing feature work and demotivating contributors.",
+        "theories_used": [
+          "Communities of Practice (Wenger)",
+          "Signaling Theory",
+          "Status Characteristics Theory",
+          "Routines and Transactive Memory Systems",
+          "Institutional Theory",
+          "Job Demands-Resources (JD-R) Model",
+          "Self-Determination Theory",
+          "Social Identity Theory"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Governance, Review Policy & Automation",
+            "connection_type": "feeds_into",
+            "description": "Experts/Core feed the creation of Effective Review Capacity and policy stewardship."
+          },
+          {
+            "target_cluster": "Apprenticeship & Guided Participation",
+            "connection_type": "feedback_loop",
+            "description": "Growth in Experts increases mentor supply and sponsorship rates for Apprentices."
+          },
+          {
+            "target_cluster": "Codebase Evolution & Technical Debt Management",
+            "connection_type": "feedback_loop",
+            "description": "Experts invest time in refactoring and architectural decisions, increasing conversion of unmaintainable to maintainable code."
+          },
+          {
+            "target_cluster": "Discovery & Legitimate Entry",
+            "connection_type": "feedback_loop",
+            "description": "Visible expert activity and stable releases increase project visibility, raising prospect inflow."
+          }
+        ]
+      },
+      {
+        "name": "Codebase Evolution & Technical Debt Management",
+        "narrative": "Primary input stock: Unmaintainable/Complex Code Units. Primary output stock: Maintainable/Well-factored Code Units. Feature additions, urgent fixes, and rushed merges add units to the Unmaintainable stock. Refactoring and disciplined development convert units from Unmaintainable to Maintainable; deprecation and removal drain both stocks to the boundary. A reinforcing cleanliness loop operates: as Maintainable units increase, comprehension improves and change risk falls, making further refactoring and clean implementation faster; this reduces the unit cost of maintainability improvements. A balancing debt loop also operates: schedule pressure and insufficient review capacity increase the fraction of rushed code, swelling Unmaintainable units; more technical debt lengthens cycle times and review effort, which further reduces time available for refactoring, reinforcing debt accumulation until a threshold triggers corrective action. Nonlinearities: when complexity exceeds architectural capacity (e.g., module coupling thresholds), small changes trigger widespread breakage, dramatically increasing rework; conversely, when test coverage and modularity pass thresholds, rework drops and merge velocity rises sharply. Conway’s Law links social modularity to technical modularity: fragmented communication structures increase coupling and accidental complexity. SECI dynamics convert tacit design rationales into ADRs and docs, sustaining maintainability. Time delays: technical debt manifests gradually; refactoring payoffs appear after weeks to months; architectural rewrites have long, risky delays. Accumulation consequence: the balance between inflow (rushed adds) and conversion (refactoring) determines the maintainable fraction of the codebase. Cascading: higher Maintainable Code Units reduce newcomer comprehension time, lower PR rework, and shorten review cycles; excess Unmaintainable units slow throughput, inflate governance strictness (more checks), and reduce contributor motivation. Governance policies that earmark refactoring budget or enforce quality gates shift the balance toward maintainability, while over-strict gates without automation can stall throughput and starve refactoring bandwidth.",
+        "theories_used": [
+          "Technical Debt Theory",
+          "Conway's Law",
+          "Task-Technology Fit (TTF)",
+          "Nonaka's SECI Model",
+          "A Dynamic Theory of Organizational Knowledge Creation",
+          "Communities of Practice (Wenger)"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Throughput & Review Flow",
+            "connection_type": "receives_from",
+            "description": "Merged PRs increase Unmaintainable units initially; rework and refactoring convert units to Maintainable."
+          },
+          {
+            "target_cluster": "Core Accession & Maintainer Formation",
+            "connection_type": "receives_from",
+            "description": "Expert/Core investment in architecture and refactoring increases conversion to Maintainable."
+          },
+          {
+            "target_cluster": "Discovery & Legitimate Entry",
+            "connection_type": "feedback_loop",
+            "description": "Maintainable units lower entry friction and increase newcomer comprehension, raising join conversion."
+          },
+          {
+            "target_cluster": "Apprenticeship & Guided Participation",
+            "connection_type": "feedback_loop",
+            "description": "Maintainability increases learning rate and effective scaffolding; complexity slows apprenticeship."
+          },
+          {
+            "target_cluster": "Contribution Throughput & Review Flow",
+            "connection_type": "feedback_loop",
+            "description": "Maintainable code shortens review time and reduces rework; debt increases review effort and queue length."
+          }
+        ]
+      },
+      {
+        "name": "Governance, Review Policy & Automation",
+        "narrative": "Primary input stock: Expert/Core Developer. Primary output stock: Effective Review Capacity (review-hours per period, inclusive of automation). Expert/Core members allocate time to create and maintain governance routines, recruit/authorize reviewers, and invest in automation (CI, linters, bots). A reinforcing capacity loop: as Effective Review Capacity grows, PR cycle time falls and defect escapes drop; freed time enables further automation and reviewer onboarding, which increases capacity again. A balancing stringency loop: perceived risk (defect rate, security incidents) raises policy strictness (more required reviews, checks), which improves quality but reduces throughput; rising queues increase contributor frustration and reduce submissions, temporarily easing load but hurting culture and progression. Motivation crowding can occur: overly controlling governance language or rigid processes reduce intrinsic motivation; contributors shift away from reviewing, decreasing capacity. JD-R dynamics govern maintainer sustainability: when governance demands exceed resources (few active maintainers, high PR volume), burnout depletes capacity with a delay. Routines and transactive memory streamline triage and assignment, improving utilization of capacity. Institutional pressures shape policy (compliance, ecosystem norms) with multi-month delays. Nonlinearities: past a CI reliability threshold, capacity gains from automation accelerate; above certain strictness without automation, capacity collapses as every PR demands costly human checks. Accumulation consequence: Effective Review Capacity increases via maintainer onboarding, reviewer time allocation, and automation; it declines through attrition and policy drag. Cascading: capacity sets the PR processing rate in the contribution process; strictness and templates set newcomer entry friction; reviewer time trades off against mentoring time, throttling apprenticeship if review load spikes; policy overemphasis on features at the expense of refactoring inflates technical debt, which later inflates review effort.",
+        "theories_used": [
+          "Institutional Theory",
+          "Routines and Transactive Memory Systems",
+          "Job Demands-Resources (JD-R) Model",
+          "Motivation Crowding Theory",
+          "Signaling Theory",
+          "Self-Determination Theory"
+        ],
+        "additional_theories_used": [],
+        "connections_to_other_clusters": [
+          {
+            "target_cluster": "Contribution Throughput & Review Flow",
+            "connection_type": "feedback_loop",
+            "description": "Effective Review Capacity and policy strictness set PR throughput and acceptance thresholds."
+          },
+          {
+            "target_cluster": "Apprenticeship & Guided Participation",
+            "connection_type": "feedback_loop",
+            "description": "Maintainer time allocated to review reduces mentoring availability; policy dictates scaffolding requirements."
+          },
+          {
+            "target_cluster": "Discovery & Legitimate Entry",
+            "connection_type": "feedback_loop",
+            "description": "Entry gates (CLAs, templates) change onboarding effort and conversion rates from Prospects to Newcomers."
+          },
+          {
+            "target_cluster": "Codebase Evolution & Technical Debt Management",
+            "connection_type": "feedback_loop",
+            "description": "Quality gates and refactoring budget mandates reallocate effort toward maintainability; over-strict gates without automation can stall conversions."
+          },
+          {
+            "target_cluster": "Core Accession & Maintainer Formation",
+            "connection_type": "receives_from",
+            "description": "Expert/Core Developers supply the human base for governance and enable growth in Effective Review Capacity."
+          }
+        ]
+      }
+    ],
+    "overall_narrative": "The model’s backbone is a people pipeline with four main stocks: Entry-level/Newcomer, Apprentice/Peripheral Participant, Practicing Contributor, and Expert/Core Developer. Upstream Prospective Developers feed the first transition in the Discovery & Legitimate Entry process; conversion is shaped by signaling, tooling fit, and governance entry gates, and is eased by maintainable code. Newcomers move to Apprentices via mentored, scaffolded practice; progression is accelerated by mentoring capacity and slowed by overload, with delays as skill and identity develop. Apprentices become Practicing Contributors by navigating PR submission and review; throughput is limited by the PR queue and Effective Review Capacity, and is modulated by codebase maintainability and governance strictness. Practicing Contributors accumulate experience and trust; some become Expert/Core Developers through recognition and social endorsement, with delays and balancing thresholds to control risk and load. Two side processes govern the environment and close system-level feedbacks. Codebase Evolution transforms Unmaintainable into Maintainable units through refactoring; feature influx and debt dynamics shape complexity that then feeds back to onboarding, learning, and review cycle times. Governance, Review Policy & Automation transforms Expert/Core time into Effective Review Capacity through onboarding reviewers and building automation; it also sets quality gates that trade off throughput and risk, and diverts time between reviewing, mentoring, feature work, and refactoring. Together these clusters generate reinforcing dynamics (growth in mentors and maintainers increases capacity; cleaner code accelerates further improvement) and balancing dynamics (overloaded mentoring, review queues, and governance strictness slow progression). Multiple delays (recognition, refactoring payoff, institutional change) create oscillation risks: surges of Prospects can overwhelm mentoring; PR backlogs can spike before capacity adjusts; debt can silently grow until productivity collapses. The integrated system makes governance and artifact quality first-class levers that shape the rate of movement between the four core stocks, enabling simulation of policies such as relaxing gates with more automation, earmarking refactoring budgets, or investing in mentorship to stabilize flow."
+  }
+}

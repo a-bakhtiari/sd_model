@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import logging
 from pathlib import Path
-from typing import Dict
+from typing import Dict, Optional
 
 from .config import load_config
 from .paths import first_mdl_file, for_project
@@ -33,6 +33,56 @@ from .knowledge.loader import load_research_questions, load_theories
 logger = logging.getLogger(__name__)
 
 
+def load_cached_data(paths):
+    """Load cached parsing and connection data from a previous run.
+
+    Used when resuming Step 2 to avoid re-parsing and re-generating descriptions.
+
+    Returns:
+        Tuple of (variables_data, connections_data, plumbing_data, connections_named, parsed, client)
+    """
+    logger.info("Loading cached data from previous run...")
+
+    # Load parsed data
+    variables_data = json.loads(paths.parsed_variables_path.read_text(encoding="utf-8"))
+    connections_data = json.loads(paths.parsed_connections_path.read_text(encoding="utf-8"))
+    plumbing_data = json.loads((paths.parsing_dir / "plumbing.json").read_text(encoding="utf-8"))
+
+    # Build connections_named from cached data
+    id_to_name = {int(v["id"]): v["name"] for v in variables_data.get("variables", [])}
+    connections_named = []
+    for idx, edge in enumerate(connections_data.get("connections", [])):
+        from_name = id_to_name.get(int(edge.get("from")))
+        to_name = id_to_name.get(int(edge.get("to")))
+        if from_name and to_name:
+            polarity = str(edge.get("polarity", "UNDECLARED")).upper()
+            if polarity == "POSITIVE":
+                relationship = "positive"
+            elif polarity == "NEGATIVE":
+                relationship = "negative"
+            else:
+                relationship = "undeclared"
+            connections_named.append({
+                "id": f"C{idx+1:02d}",
+                "from_var": from_name,
+                "to_var": to_name,
+                "relationship": relationship,
+            })
+
+    # Build parsed dict
+    parsed = {
+        "variables": [v["name"] for v in variables_data.get("variables", [])],
+        "equations": {},
+    }
+
+    # Initialize LLM client
+    client = LLMClient()
+
+    logger.info(f"✓ Loaded {len(variables_data['variables'])} variables, {len(connections_data['connections'])} connections from cache")
+
+    return variables_data, connections_data, plumbing_data, connections_named, parsed, client
+
+
 def run_pipeline(
     project: str,
     # Core optional features
@@ -43,6 +93,8 @@ def run_pipeline(
     use_full_relayout: bool = False,
     recreate_from_theory: bool = False,
     use_decomposed_theory: bool = False,
+    theory_step: Optional[int] = None,
+    resume_run: Optional[str] = None,
     run_archetype_detection: bool = False,
     run_rq_analysis: bool = False,
     run_theory_discovery: bool = False,
@@ -72,6 +124,8 @@ def run_pipeline(
         use_full_relayout: Reposition ALL variables (existing + new) using LLM layout
         recreate_from_theory: Recreate model from scratch using ONLY theory-generated variables
         use_decomposed_theory: Use 3-step decomposed approach for theory enhancement
+        theory_step: Run specific step only (1=planning, 2=concretization). None runs both steps
+        resume_run: Resume from existing run_id (for Step 2). Auto-detects latest if not specified
         run_rq_analysis: Run research question alignment and refinement
         run_theory_discovery: Discover relevant theories for the model
         run_gap_analysis: Identify unsupported connections (requires run_citations)
@@ -84,9 +138,26 @@ def run_pipeline(
     logger.info(f"Starting pipeline for project: {project}")
     cfg = load_config()
 
-    # Always generate run ID for theory enhancement
+    # Determine run_id based on context
     run_id = None
-    if save_run is not None or run_theory_enhancement:
+    if theory_step == 2:
+        # Step 2: Resume from existing run (auto-detect or explicit)
+        if resume_run:
+            run_id = resume_run
+            logger.info(f"Resuming from specified run: {run_id}")
+        else:
+            # Auto-detect most recent Step 1 run
+            from .run_metadata import find_latest_step1_run
+            project_base = cfg.projects_dir / project
+            run_id = find_latest_step1_run(project_base)
+            if not run_id:
+                raise ValueError(
+                    "No Step 1 run found for auto-resume. "
+                    "Please run Step 1 first or specify --resume-run RUN_ID"
+                )
+            logger.info(f"Auto-detected most recent Step 1 run: {run_id}")
+    elif save_run is not None or run_theory_enhancement:
+        # Step 1 or full pipeline: Generate new run_id
         from .run_metadata import generate_run_id
         run_id = generate_run_id(save_run if save_run else None)
         logger.info(f"Versioned run mode enabled: {run_id}")
@@ -94,78 +165,96 @@ def run_pipeline(
     paths = for_project(cfg, project, run_id=run_id)
     paths.ensure()
 
+    # Validate Step 2 resume: Ensure Step 1 output exists
+    if theory_step == 2:
+        step1_path = paths.theory_dir / "theory_planning_step1.json"
+        if not step1_path.exists():
+            raise FileNotFoundError(
+                f"Run '{run_id}' does not have Step 1 output at {step1_path}. "
+                f"Please run Step 1 first using: --decomposed-theory --step 1"
+            )
+        logger.info(f"✓ Found Step 1 output: {step1_path}")
+
+    # Determine if we should skip foundation work (Step 2 resume mode)
+    skip_foundation = (theory_step == 2 and run_id is not None)
+
     logger.info(f"Looking for .mdl file in {paths.mdl_dir}")
     mdl_path = first_mdl_file(paths)
     if mdl_path is None:
         raise FileNotFoundError(f"No .mdl file found in {paths.mdl_dir}")
     logger.info(f"Found MDL file: {mdl_path.name}")
 
-    logger.info("Parsing MDL file (full parser with plumbing)...")
-    parser = MDLParser(mdl_path)
-    parsed_data = parser.parse()
+    # Foundation work: Parse MDL and generate descriptions (OR load from cache)
+    if not skip_foundation:
+        logger.info("Parsing MDL file (full parser with plumbing)...")
+        parser = MDLParser(mdl_path)
+        parsed_data = parser.parse()
 
-    # Save parsed data
-    paths.parsing_dir.mkdir(parents=True, exist_ok=True)
+        # Save parsed data
+        paths.parsing_dir.mkdir(parents=True, exist_ok=True)
 
-    variables_data = {"variables": parsed_data["variables"]}
-    connections_data = {"connections": parsed_data["connections"]}
-    plumbing_data = {
-        "clouds": parsed_data["clouds"],
-        "valves": parsed_data["valves"],
-        "flows": parsed_data["flows"]
-    }
+        variables_data = {"variables": parsed_data["variables"]}
+        connections_data = {"connections": parsed_data["connections"]}
+        plumbing_data = {
+            "clouds": parsed_data["clouds"],
+            "valves": parsed_data["valves"],
+            "flows": parsed_data["flows"]
+        }
 
-    paths.parsed_variables_path.write_text(json.dumps(variables_data, indent=2), encoding="utf-8")
-    paths.parsed_connections_path.write_text(json.dumps(connections_data, indent=2), encoding="utf-8")
-    (paths.parsing_dir / "plumbing.json").write_text(json.dumps(plumbing_data, indent=2), encoding="utf-8")
+        paths.parsed_variables_path.write_text(json.dumps(variables_data, indent=2), encoding="utf-8")
+        paths.parsed_connections_path.write_text(json.dumps(connections_data, indent=2), encoding="utf-8")
+        (paths.parsing_dir / "plumbing.json").write_text(json.dumps(plumbing_data, indent=2), encoding="utf-8")
 
-    logger.info(f"✓ Parsed {len(parsed_data['variables'])} variables, {len(parsed_data['connections'])} connections, {len(parsed_data['clouds'])} clouds")
+        logger.info(f"✓ Parsed {len(parsed_data['variables'])} variables, {len(parsed_data['connections'])} connections, {len(parsed_data['clouds'])} clouds")
 
-    logger.info("Initializing LLM client for downstream tasks...")
-    client = LLMClient()
+        logger.info("Initializing LLM client for downstream tasks...")
+        client = LLMClient()
 
-    # Extract and save diagram style configuration
-    style_data = extract_diagram_style(mdl_path)
-    paths.diagram_style_path.write_text(json.dumps(style_data, indent=2), encoding="utf-8")
+        # Extract and save diagram style configuration
+        style_data = extract_diagram_style(mdl_path)
+        paths.diagram_style_path.write_text(json.dumps(style_data, indent=2), encoding="utf-8")
 
-    # Build compatibility artifacts
-    id_to_name = {int(v["id"]): v["name"] for v in variables_data.get("variables", [])}
-    parsed = {
-        "variables": [v["name"] for v in variables_data.get("variables", [])],
-        "equations": {},
-    }
-    paths.parsed_path.write_text(json.dumps(parsed, indent=2), encoding="utf-8")
+        # Build compatibility artifacts
+        id_to_name = {int(v["id"]): v["name"] for v in variables_data.get("variables", [])}
+        parsed = {
+            "variables": [v["name"] for v in variables_data.get("variables", [])],
+            "equations": {},
+        }
+        paths.parsed_path.write_text(json.dumps(parsed, indent=2), encoding="utf-8")
 
-    connections_named = []
-    for idx, edge in enumerate(connections_data.get("connections", [])):
-        from_name = id_to_name.get(int(edge.get("from", -1)))
-        to_name = id_to_name.get(int(edge.get("to", -1)))
-        if not from_name or not to_name:
-            continue
-        polarity = str(edge.get("polarity", "UNDECLARED")).upper()
-        if polarity == "POSITIVE":
-            relationship = "positive"
-        elif polarity == "NEGATIVE":
-            relationship = "negative"
-        else:
-            relationship = "undeclared"
-        connections_named.append(
-            {
-                "id": f"C{idx+1:02d}",  # Python generates sequential ID
-                "from_var": from_name,
-                "to_var": to_name,
-                "relationship": relationship,
-            }
-        )
+        connections_named = []
+        for idx, edge in enumerate(connections_data.get("connections", [])):
+            from_name = id_to_name.get(int(edge.get("from", -1)))
+            to_name = id_to_name.get(int(edge.get("to", -1)))
+            if not from_name or not to_name:
+                continue
+            polarity = str(edge.get("polarity", "UNDECLARED")).upper()
+            if polarity == "POSITIVE":
+                relationship = "positive"
+            elif polarity == "NEGATIVE":
+                relationship = "negative"
+            else:
+                relationship = "undeclared"
+            connections_named.append(
+                {
+                    "id": f"C{idx+1:02d}",  # Python generates sequential ID
+                    "from_var": from_name,
+                    "to_var": to_name,
+                    "relationship": relationship,
+                }
+            )
 
-    paths.connections_path.write_text(json.dumps({"connections": connections_named}, indent=2), encoding="utf-8")
+        paths.connections_path.write_text(json.dumps({"connections": connections_named}, indent=2), encoding="utf-8")
 
-    log_event(paths.db_dir / "provenance.sqlite", "parsed", {"variables": len(parsed["variables"])})
+        log_event(paths.db_dir / "provenance.sqlite", "parsed", {"variables": len(parsed["variables"])})
+    else:
+        # Step 2 resume: Load cached data from previous run
+        variables_data, connections_data, plumbing_data, connections_named, parsed, client = load_cached_data(paths)
 
-    # Optional: Feedback loops
+    # Optional: Feedback loops (skip if resuming Step 2)
     loops = None
     loop_descriptions = None
-    if run_loops:
+    if not skip_foundation and run_loops:
         logger.info("Computing feedback loops...")
         loops = compute_loops(
             parsed,
@@ -188,20 +277,22 @@ def run_pipeline(
         logger.info(f"✓ Generated {len(loop_descriptions.get('descriptions', []))} loop descriptions")
         log_event(paths.db_dir / "provenance.sqlite", "loop_descriptions", {"count": len(loop_descriptions.get("descriptions", []))})
 
-    # Generate connection descriptions
-    logger.info("Generating connection descriptions...")
-    descriptions = generate_connection_descriptions(
-        connections_data={"connections": connections_named},
-        variables_data=variables_data,
-        llm_client=client,
-        out_path=paths.connection_descriptions_path
-    )
-    logger.info(f"✓ Generated {len(descriptions.get('descriptions', []))} connection descriptions")
-    log_event(paths.db_dir / "provenance.sqlite", "connection_descriptions", {"count": len(descriptions.get("descriptions", []))})
+    # Generate connection descriptions (skip if resuming Step 2)
+    descriptions = None
+    if not skip_foundation:
+        logger.info("Generating connection descriptions...")
+        descriptions = generate_connection_descriptions(
+            connections_data={"connections": connections_named},
+            variables_data=variables_data,
+            llm_client=client,
+            out_path=paths.connection_descriptions_path
+        )
+        logger.info(f"✓ Generated {len(descriptions.get('descriptions', []))} connection descriptions")
+        log_event(paths.db_dir / "provenance.sqlite", "connection_descriptions", {"count": len(descriptions.get("descriptions", []))})
 
-    # Optional: Find citations for connections
+    # Optional: Find citations for connections (skip if resuming Step 2)
     conn_citations = None
-    if run_citations:
+    if not skip_foundation and run_citations:
         logger.info("Finding citations for connections...")
         conn_citations = find_connection_citations(
             connections_data={"connections": connections_named},
@@ -212,9 +303,9 @@ def run_pipeline(
         logger.info(f"✓ Found {len(conn_citations.get('citations', []))} connection citations")
         log_event(paths.db_dir / "provenance.sqlite", "connection_citations", {"count": len(conn_citations.get("citations", []))})
 
-    # Optional: Find citations for loops (requires both run_citations and run_loops)
+    # Optional: Find citations for loops (skip if resuming Step 2)
     loop_cites = None
-    if run_citations and run_loops:
+    if not skip_foundation and run_citations and run_loops:
         logger.info("Finding citations for loops...")
         loop_cites = find_loop_citations(
             loops_data=loops,
@@ -225,10 +316,10 @@ def run_pipeline(
         logger.info(f"✓ Found {len(loop_cites.get('citations', []))} loop citations")
         log_event(paths.db_dir / "provenance.sqlite", "loop_citations", {"count": len(loop_cites.get("citations", []))})
 
-    # Optional: Verify LLM-generated citations via Semantic Scholar
+    # Optional: Verify LLM-generated citations via Semantic Scholar (skip if resuming Step 2)
     verified_conn_citations = None
     verified_loop_citations = None
-    if run_citations:
+    if not skip_foundation and run_citations:
         from .external.semantic_scholar import SemanticScholarClient
         s2_client = SemanticScholarClient()
 
@@ -272,9 +363,9 @@ def run_pipeline(
     citations_verified_path = paths.improvements_dir / "citations_verified.json"
     paper_suggestions_path = paths.improvements_dir / "paper_suggestions.json"
 
-    # Optional: Gap analysis (identify unsupported connections)
+    # Optional: Gap analysis (skip if resuming Step 2)
     gaps = None
-    if run_gap_analysis:
+    if not skip_foundation and run_gap_analysis:
         # Gap analysis requires citations to be generated first
         if not run_citations:
             logger.warning("Gap analysis requires --citations flag, skipping...")
@@ -348,9 +439,9 @@ def run_pipeline(
         patched_file = apply_model_patch(mdl_path, paths.model_improvements_path, out_copy_path)
         log_event(paths.db_dir / "provenance.sqlite", "apply_patch", {"output": str(patched_file)})
 
-    # Generate CSV exports (only if citations are generated and verified)
+    # Generate CSV exports (skip if resuming Step 2)
     conn_csv_rows = None
-    if run_citations:
+    if not skip_foundation and run_citations:
         conn_csv_rows = generate_connections_csv(
             connections_path=paths.connections_path,
             descriptions_path=paths.connection_descriptions_path,
@@ -361,7 +452,7 @@ def run_pipeline(
         log_event(paths.db_dir / "provenance.sqlite", "csv_export_connections", {"rows": conn_csv_rows})
 
     loop_csv_rows = None
-    if run_citations and run_loops:
+    if not skip_foundation and run_citations and run_loops:
         loop_csv_rows = generate_loops_csv(
             loops_path=paths.loops_path,
             descriptions_path=paths.loop_descriptions_path,
@@ -416,62 +507,92 @@ def run_pipeline(
             # Choose between decomposed (3-step) or single-call approach
             if use_decomposed_theory:
                 logger.info("Running Theory Enhancement module (DECOMPOSED 3-step approach)...")
-                logger.info("  Step 1: Strategic Theory Planning...")
                 try:
                     from .pipeline.theory_planning import run_theory_planning
                     from .pipeline.theory_concretization import run_theory_concretization, convert_to_legacy_format
 
-                    # Step 1: Strategic Planning (uses GPT if configured in .env)
-                    planning_result = run_theory_planning(
-                        theories=theories,
-                        variables=variables_data,
-                        connections={"connections": connections_named},
-                        plumbing=plumbing_data,
-                        mdl_path=mdl_path,
-                        llm_client=None,  # Let module choose GPT/DeepSeek based on config
-                        recreate_mode=recreate_from_theory
-                    )
-
-                    # Save Step 1 output for inspection
                     paths.theory_dir.mkdir(parents=True, exist_ok=True)
-                    (paths.theory_dir / "theory_planning_step1.json").write_text(
-                        json.dumps(planning_result, indent=2), encoding="utf-8"
-                    )
+                    step1_path = paths.theory_dir / "theory_planning_step1.json"
+                    step2_path = paths.theory_dir / "theory_concretization_step2.json"
 
-                    theory_count_planned = len([
-                        t for t in planning_result.get('theory_decisions', [])
-                        if t.get('decision') in ['include', 'adapt']
-                    ])
-                    logger.info(f"  ✓ Step 1 complete: {theory_count_planned} theories planned")
+                    # Determine which steps to run
+                    run_step1 = theory_step is None or theory_step == 1
+                    run_step2 = theory_step is None or theory_step == 2
 
-                    # Step 2: Concrete Generation (uses GPT if configured in .env)
-                    logger.info("  Step 2: Concrete SD Element Generation...")
-                    concretization_result = run_theory_concretization(
-                        planning_result=planning_result,
-                        variables=variables_data,
-                        connections={"connections": connections_named},
-                        plumbing=plumbing_data,
-                        llm_client=None,  # Let module choose GPT/DeepSeek based on config
-                        recreate_mode=recreate_from_theory
-                    )
+                    planning_result = None
 
-                    # Save Step 2 output for inspection
-                    (paths.theory_dir / "theory_concretization_step2.json").write_text(
-                        json.dumps(concretization_result, indent=2), encoding="utf-8"
-                    )
+                    # Step 1: Strategic Planning
+                    if run_step1:
+                        logger.info("  Step 1: Strategic Theory Planning...")
+                        planning_result = run_theory_planning(
+                            theories=theories,
+                            variables=variables_data,
+                            connections={"connections": connections_named},
+                            plumbing=plumbing_data,
+                            mdl_path=mdl_path,
+                            llm_client=None,  # Let module choose GPT/DeepSeek based on config
+                            recreate_mode=recreate_from_theory
+                        )
 
-                    total_vars = concretization_result.get('summary', {}).get('total_variables_added', 0)
-                    total_conns = concretization_result.get('summary', {}).get('total_connections_added', 0)
-                    logger.info(f"  ✓ Step 2 complete: {total_vars} variables, {total_conns} connections")
+                        # Save Step 1 output for inspection
+                        step1_path.write_text(
+                            json.dumps(planning_result, indent=2), encoding="utf-8"
+                        )
 
-                    # Convert to legacy format for existing MDL enhancement code
-                    # Unless we're in recreate mode, then use concretization directly
-                    if recreate_from_theory:
-                        theory_enh = concretization_result
-                        logger.info("  ✓ Using concretization result directly for model recreation")
-                    else:
-                        theory_enh = convert_to_legacy_format(concretization_result)
-                        logger.info("  ✓ Converted to legacy format for MDL generation")
+                        theory_count_planned = len([
+                            t for t in planning_result.get('theory_decisions', [])
+                            if t.get('decision') in ['include', 'adapt']
+                        ])
+                        logger.info(f"  ✓ Step 1 complete: {theory_count_planned} theories planned")
+                        logger.info(f"  ✓ Step 1 output saved to: {step1_path}")
+
+                        # If only running step 1, stop here
+                        if theory_step == 1:
+                            logger.info("  Step 1 only mode - stopping before concretization")
+                            logger.info("  To run Step 2, use: --decomposed-theory --step 2")
+                            theory_enh = None  # Signal that we're not applying changes yet
+
+                    # Step 2: Concrete Generation
+                    if run_step2:
+                        # Load Step 1 output if not already in memory
+                        if planning_result is None:
+                            if not step1_path.exists():
+                                raise FileNotFoundError(
+                                    f"Step 1 output not found at {step1_path}. "
+                                    "Please run Step 1 first using: --decomposed-theory --step 1"
+                                )
+                            logger.info(f"  Loading Step 1 output from: {step1_path}")
+                            planning_result = json.loads(step1_path.read_text(encoding="utf-8"))
+
+                        logger.info("  Step 2: Concrete SD Element Generation...")
+                        concretization_result = run_theory_concretization(
+                            planning_result=planning_result,
+                            variables=variables_data,
+                            connections={"connections": connections_named},
+                            plumbing=plumbing_data,
+                            mdl_path=mdl_path,  # Pass mdl_path to derive project_path
+                            llm_client=None,  # Let module choose GPT/DeepSeek based on config
+                            recreate_mode=recreate_from_theory
+                        )
+
+                        # Save Step 2 output for inspection
+                        step2_path.write_text(
+                            json.dumps(concretization_result, indent=2), encoding="utf-8"
+                        )
+
+                        total_vars = concretization_result.get('summary', {}).get('total_variables_added', 0)
+                        total_conns = concretization_result.get('summary', {}).get('total_connections_added', 0)
+                        logger.info(f"  ✓ Step 2 complete: {total_vars} variables, {total_conns} connections")
+                        logger.info(f"  ✓ Step 2 output saved to: {step2_path}")
+
+                        # Convert to legacy format for existing MDL enhancement code
+                        # Unless we're in recreate mode, then use concretization directly
+                        if recreate_from_theory:
+                            theory_enh = concretization_result
+                            logger.info("  ✓ Using concretization result directly for model recreation")
+                        else:
+                            theory_enh = convert_to_legacy_format(concretization_result)
+                            logger.info("  ✓ Converted to legacy format for MDL generation")
 
                 except Exception as e:
                     logger.error(f"✗ Decomposed Theory Enhancement failed: {e}")
@@ -493,106 +614,110 @@ def run_pipeline(
                     theory_enh = {"error": str(e), "theories": []}
 
             # Common logic for both approaches
-            try:
-                if "error" in theory_enh:
-                    logger.warning(f"Theory Enhancement returned error: {theory_enh.get('error')}")
-                paths.theory_enhancement_path.write_text(
-                    json.dumps(theory_enh, indent=2), encoding="utf-8"
-                )
-                # Count from appropriate format based on mode
-                if recreate_from_theory:
-                    # In recreate mode, theory_enh is concretization_result with "processes" key
-                    theory_count = len(theory_enh.get('processes', []))
-                    total_vars = sum(len(p.get('variables', [])) for p in theory_enh.get('processes', []))
-                    total_conns = sum(len(p.get('connections', [])) for p in theory_enh.get('processes', []))
-                    logger.info(f"✓ Theory Enhancement complete: {theory_count} processes, {total_vars} variables, {total_conns} connections")
-
-                    # Check if processes have variables/connections
-                    has_changes = any(
-                        len(p.get('variables', [])) > 0 or
-                        len(p.get('connections', [])) > 0
-                        for p in theory_enh.get('processes', [])
+            # Skip if theory_enh is None (e.g., when running step 1 only)
+            if theory_enh is None:
+                logger.info("Theory planning complete. No MDL changes applied (step 1 only mode).")
+            else:
+                try:
+                    if "error" in theory_enh:
+                        logger.warning(f"Theory Enhancement returned error: {theory_enh.get('error')}")
+                    paths.theory_enhancement_path.write_text(
+                        json.dumps(theory_enh, indent=2), encoding="utf-8"
                     )
-                else:
-                    # In enhancement mode, theory_enh is legacy format with "theories" key
-                    theory_count = len(theory_enh.get('theories', []))
-                    total_vars = sum(len(t.get('additions', {}).get('variables', [])) for t in theory_enh.get('theories', []))
-                    total_conns = sum(len(t.get('additions', {}).get('connections', [])) for t in theory_enh.get('theories', []))
-                    logger.info(f"✓ Theory Enhancement complete: {theory_count} theories, {total_vars} variables, {total_conns} connections")
-
-                    # Check if any theories have additions, modifications, or removals
-                    has_changes = any(
-                        len(t.get('additions', {}).get('variables', [])) > 0 or
-                        len(t.get('additions', {}).get('connections', [])) > 0 or
-                        len(t.get('modifications', {}).get('variables', [])) > 0 or
-                        len(t.get('modifications', {}).get('connections', [])) > 0 or
-                        len(t.get('removals', {}).get('variables', [])) > 0 or
-                        len(t.get('removals', {}).get('connections', [])) > 0
-                        for t in theory_enh.get('theories', [])
-                    )
-
-                log_event(paths.db_dir / "provenance.sqlite", "theory_enhancement", {})
-                if "error" not in theory_enh and has_changes:
+                    # Count from appropriate format based on mode
                     if recreate_from_theory:
-                        logger.info("Recreating model from scratch using theory-generated variables...")
+                        # In recreate mode, theory_enh is concretization_result with "processes" key
+                        theory_count = len(theory_enh.get('processes', []))
+                        total_vars = sum(len(p.get('variables', [])) for p in theory_enh.get('processes', []))
+                        total_conns = sum(len(p.get('connections', [])) for p in theory_enh.get('processes', []))
+                        logger.info(f"✓ Theory Enhancement complete: {theory_count} processes, {total_vars} variables, {total_conns} connections")
+
+                        # Check if processes have variables/connections
+                        has_changes = any(
+                            len(p.get('variables', [])) > 0 or
+                            len(p.get('connections', [])) > 0
+                            for p in theory_enh.get('processes', [])
+                        )
                     else:
-                        logger.info("Applying theory enhancements to MDL...")
-                    try:
-                        from .mdl_text_patcher import apply_theory_enhancements
-                        from .mdl_enhancement_utils import save_enhancement
+                        # In enhancement mode, theory_enh is legacy format with "theories" key
+                        theory_count = len(theory_enh.get('theories', []))
+                        total_vars = sum(len(t.get('additions', {}).get('variables', [])) for t in theory_enh.get('theories', []))
+                        total_conns = sum(len(t.get('additions', {}).get('connections', [])) for t in theory_enh.get('theories', []))
+                        logger.info(f"✓ Theory Enhancement complete: {theory_count} theories, {total_vars} variables, {total_conns} connections")
 
-                        # Extract clustering scheme if present
-                        clustering_scheme = theory_enh.get('clustering_scheme', None)
-                        if clustering_scheme and theory_should_relayout:
-                            logger.info(f"✓ Using clustering scheme with {len(clustering_scheme.get('clusters', []))} clusters")
-
-                        # Generate enhanced MDL in memory first
-                        temp_mdl_path = paths.artifacts_dir / f"{mdl_path.stem}_temp.mdl"
-
-                        mdl_summary = apply_theory_enhancements(
-                            mdl_path,
-                            theory_enh,
-                            temp_mdl_path,
-                            add_colors=True,
-                            use_llm_layout=not theory_should_relayout,  # Use incremental only if not using full relayout
-                            use_full_relayout=theory_should_relayout,
-                            recreate_mode=recreate_from_theory,
-                            llm_client=client,
-                            clustering_scheme=clustering_scheme if theory_should_relayout else None
+                        # Check if any theories have additions, modifications, or removals
+                        has_changes = any(
+                            len(t.get('additions', {}).get('variables', [])) > 0 or
+                            len(t.get('additions', {}).get('connections', [])) > 0 or
+                            len(t.get('modifications', {}).get('variables', [])) > 0 or
+                            len(t.get('modifications', {}).get('connections', [])) > 0 or
+                            len(t.get('removals', {}).get('variables', [])) > 0 or
+                            len(t.get('removals', {}).get('connections', [])) > 0
+                            for t in theory_enh.get('theories', [])
                         )
 
-                        # Read the generated MDL content
-                        enhanced_mdl_content = temp_mdl_path.read_text(encoding="utf-8")
+                    log_event(paths.db_dir / "provenance.sqlite", "theory_enhancement", {})
+                    if "error" not in theory_enh and has_changes:
+                        if recreate_from_theory:
+                            logger.info("Recreating model from scratch using theory-generated variables...")
+                        else:
+                            logger.info("Applying theory enhancements to MDL...")
+                        try:
+                            from .mdl_text_patcher import apply_theory_enhancements
+                            from .mdl_enhancement_utils import save_enhancement
 
-                        # Save with versioning and metadata
-                        enhanced_mdl_path = save_enhancement(
-                            mdl_dir=paths.mdl_dir,
-                            artifacts_dir=paths.artifacts_dir,
-                            theory_enh_data=theory_enh,
-                            mdl_summary=mdl_summary,
-                            enhanced_mdl_content=enhanced_mdl_content,
-                            original_mdl_name=mdl_path.name,
-                            custom_name=save_run
-                        )
+                            # Extract clustering scheme if present
+                            clustering_scheme = theory_enh.get('clustering_scheme', None)
+                            if clustering_scheme and theory_should_relayout:
+                                logger.info(f"✓ Using clustering scheme with {len(clustering_scheme.get('clusters', []))} clusters")
 
-                        # Clean up temp file
-                        temp_mdl_path.unlink()
+                            # Generate enhanced MDL in memory first
+                            temp_mdl_path = paths.artifacts_dir / f"{mdl_path.stem}_temp.mdl"
 
-                        logger.info(f"✓ MDL Enhancement complete: {mdl_summary['variables_added']} vars, {mdl_summary['connections_added']} conns")
-                        logger.info(f"✓ Enhanced MDL saved to: {enhanced_mdl_path}")
-                        log_event(paths.db_dir / "provenance.sqlite", "mdl_enhancement", mdl_summary)
-                    except Exception as e:
-                        logger.error(f"✗ MDL Enhancement failed: {e}")
-                        logger.exception("Full traceback:")
-                        enhanced_mdl_path = None
+                            mdl_summary = apply_theory_enhancements(
+                                mdl_path,
+                                theory_enh,
+                                temp_mdl_path,
+                                add_colors=True,
+                                use_llm_layout=False,  # Disabled - use simple grid layout instead
+                                use_full_relayout=theory_should_relayout,
+                                recreate_mode=recreate_from_theory,
+                                llm_client=client,
+                                clustering_scheme=clustering_scheme if theory_should_relayout else None
+                            )
 
-            except Exception as e:
-                logger.error(f"✗ Theory Enhancement failed: {e}")
-                logger.exception("Full traceback:")
-                # Write empty result so file exists
-                paths.theory_enhancement_path.write_text(
-                    json.dumps({"error": str(e), "theories": []}, indent=2), encoding="utf-8"
-                )
+                            # Read the generated MDL content
+                            enhanced_mdl_content = temp_mdl_path.read_text(encoding="utf-8")
+
+                            # Save with versioning and metadata
+                            enhanced_mdl_path = save_enhancement(
+                                mdl_dir=paths.mdl_dir,
+                                artifacts_dir=paths.artifacts_dir,
+                                theory_enh_data=theory_enh,
+                                mdl_summary=mdl_summary,
+                                enhanced_mdl_content=enhanced_mdl_content,
+                                original_mdl_name=mdl_path.name,
+                                custom_name=save_run
+                            )
+
+                            # Clean up temp file
+                            temp_mdl_path.unlink()
+
+                            logger.info(f"✓ MDL Enhancement complete: {mdl_summary['variables_added']} vars, {mdl_summary['connections_added']} conns")
+                            logger.info(f"✓ Enhanced MDL saved to: {enhanced_mdl_path}")
+                            log_event(paths.db_dir / "provenance.sqlite", "mdl_enhancement", mdl_summary)
+                        except Exception as e:
+                            logger.error(f"✗ MDL Enhancement failed: {e}")
+                            logger.exception("Full traceback:")
+                            enhanced_mdl_path = None
+
+                except Exception as e:
+                    logger.error(f"✗ Theory Enhancement failed: {e}")
+                    logger.exception("Full traceback:")
+                    # Write empty result so file exists
+                    paths.theory_enhancement_path.write_text(
+                        json.dumps({"error": str(e), "theories": []}, indent=2), encoding="utf-8"
+                    )
 
         # Module 2.5: Archetype Detection (optional)
         if run_archetype_detection:

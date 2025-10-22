@@ -1,18 +1,27 @@
 # User Instructions for Theory Planning (Step 1)
-#
-# Add any specific instructions or requirements for the theory planning phase here.
-# These will be included in the Step 1 prompt to guide the LLM.
-#
-# Leave this file empty if you don't have specific instructions.
-#
-# Examples:
-# - "Focus on governance mechanisms in the model"
-# - "Emphasize feedback loops related to trust building"
-# - "Include decision-making processes"
-# - "Consider power dynamics between different actor groups"
-#
 # Your instructions below:
 
+## Core Theoretical Requirements
+The model must capture both:
+1. **Apprenticeship dynamics**: How newcomers learn from experts through mentoring, coaching, scaffolding, and guided participation. Entry-level developers progress to expertise through these apprenticeship relationships.
+2. **Community of practice dynamics**: How developers move from legitimate peripheral participation to full community membership and core participation.
+
+These two theoretical lenses (Cognitive Apprenticeship and Communities of Practice) are central to understanding how entry-level developers progress to expertise.
+
+## Specific Design Requirements
+
+Please include governance in your design where it fits and let it affect the system. By governance I mean the way they govern their repository or organization (do they commit directly? do they allow pull requests? what's their procedure? what are the policies?)
+
+Please have the following stocks in the main pipeline of overall system dynamic as the career progression: Entry-level/Newcomer, Apprentice/Peripheral Participant, Practicing Contributor, Expert/Core Developer
+
+Please include the software artifact (the codebase) and it's interaction with the developers and how it affects everything in the process (For example, code getting more complex triggering refactoring that makes code become easier to understand and allowing more people to understand it with less knowledge of the project). I would also like to see the dynamic of the artifacts and the teams in the system.
+
+I want my SD to have more emphasize on the dynamics and actions and loop rather than elements (one analogy is that I want to have more verbs than nouns)
+
+Design for multi-scale understanding:
+- Main pipeline (macro): The main progression is the BACKBONE - visible at a glance
+- Each transition between main stocks can have rich INTERNAL dynamics (micro level)
+- When zoomed out: See the flow (Prospects → Newcomers → Contributors → Maintainers)
+- When zoomed in: See the mechanisms (delays, feedback loops, interactions, constraints within each process)
 
 
-Please include governance in your design

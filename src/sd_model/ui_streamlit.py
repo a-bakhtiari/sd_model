@@ -1624,17 +1624,82 @@ def main() -> None:
         theory_enh_path = paths.theory_enhancement_path
         theory_disc_path = paths.theory_discovery_path
         archetype_enh_path = paths.archetype_enhancement_path
+        step1_path = paths.theory_dir / "theory_planning_step1.json"
 
-        if not theory_enh_path.exists() and not theory_disc_path.exists() and not archetype_enh_path.exists():
+        if not theory_enh_path.exists() and not theory_disc_path.exists() and not archetype_enh_path.exists() and not step1_path.exists():
             st.warning("⚠️ No model development results found. Run the pipeline with `--improve-model` flag.")
             st.code("python -m sd_model.cli run --project " + project + " --improve-model", language="bash")
         else:
             # Create nested sub-tabs
-            archetype_tab, theory_enh_tab, theory_disc_tab = st.tabs([
+            step1_tab, archetype_tab, theory_enh_tab, theory_disc_tab = st.tabs([
+                "🎯 Step 1: Planning",
                 "🔄 Archetype Detection",
-                "📊 Theory Enhancement",
+                "📊 Theory Enhancement (Step 2)",
                 "🌟 Theory Discovery"
             ])
+
+            with step1_tab:
+                step1_path = paths.theory_dir / "theory_planning_step1.json"
+
+                if not step1_path.exists():
+                    st.info("⚠️ No Step 1 output found. Run: `python main.py --project " + project + " --theory-enhancement --decomposed-theory --step 1`")
+                else:
+                    step1 = json.loads(step1_path.read_text(encoding="utf-8"))
+
+                    st.markdown("#### 🎯 Theory Planning (Step 1)")
+                    st.caption("Strategic process design and theory selection")
+
+                    # Metrics
+                    theories = step1.get("theory_decisions", [])
+                    clusters = step1.get("clustering_strategy", {}).get("clusters", [])
+                    selected = [t for t in theories if t.get("decision") in ["include", "adapt"]]
+
+                    c1, c2, c3 = st.columns(3)
+                    c1.metric("Theories Selected", len(selected))
+                    c2.metric("Theories Excluded", len(theories) - len(selected))
+                    c3.metric("Processes Designed", len(clusters))
+
+                    st.markdown("---")
+
+                    # Theory decisions
+                    st.markdown("### Theory Selection")
+                    sel_tab, exc_tab = st.tabs([f"✅ Selected ({len(selected)})", f"❌ Excluded ({len(theories)-len(selected)})"])
+
+                    with sel_tab:
+                        for t in [x for x in theories if x.get("decision") in ["include", "adapt"]]:
+                            with st.expander(f"✅ {t.get('theory_name', 'Unknown')}"):
+                                st.markdown(f"**Rationale:** {t.get('rationale', '')}")
+
+                    with exc_tab:
+                        for t in [x for x in theories if x.get("decision") == "exclude"]:
+                            with st.expander(f"❌ {t.get('theory_name', 'Unknown')}"):
+                                st.markdown(f"**Rationale:** {t.get('rationale', '')}")
+
+                    st.markdown("---")
+
+                    # Processes
+                    st.markdown("### Process Clusters")
+                    overall = step1.get("clustering_strategy", {}).get("overall_narrative", "")
+                    if overall:
+                        with st.expander("📖 Overall System Narrative", expanded=True):
+                            st.markdown(overall)
+
+                    for i, cluster in enumerate(clusters):
+                        name = cluster.get("name", f"Process {i+1}")
+                        with st.expander(f"**Process {i+1}: {name}**", expanded=(i==0)):
+                            theories_list = cluster.get("theories_used", [])
+                            st.markdown(f"**Theories:** {', '.join(theories_list) if theories_list else 'None'}")
+
+                            conns = cluster.get("connections_to_other_clusters", [])
+                            if conns:
+                                st.markdown("**Connects to:**")
+                                for c in conns:
+                                    st.markdown(f"- → {c.get('target_cluster', 'Unknown')}: {c.get('description', '')}")
+
+                            st.markdown("---")
+                            st.markdown("**Narrative:**")
+                            narrative = cluster.get("narrative", "")
+                            st.markdown(f'<div style="padding: 12px; background: #1e1e1e; border-left: 3px solid #4a9eff; border-radius: 4px;">{narrative}</div>', unsafe_allow_html=True)
 
             with archetype_tab:
                 # Archetype Detection Section

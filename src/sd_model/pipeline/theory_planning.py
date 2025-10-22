@@ -38,8 +38,12 @@ def create_planning_prompt(
     # Read user instructions if provided
     user_instructions = ""
     if user_instructions_path is None:
-        # Default path
-        user_instructions_path = Path(__file__).parent.parent.parent.parent / "user_instructions.txt"
+        # Default path: Look for project-specific step 1 instructions
+        if project_path:
+            user_instructions_path = project_path / "knowledge" / "user_instructions_step1.txt"
+        else:
+            # Fallback to old global location for backward compatibility
+            user_instructions_path = Path(__file__).parent.parent.parent.parent / "user_instructions.txt"
 
     if user_instructions_path and Path(user_instructions_path).exists():
         try:
@@ -123,8 +127,18 @@ Design process clusters that COMPREHENSIVELY cover the theories provided. Only i
 
 **Using Additional Theories**: Primarily use theories from the provided list. However, if you need additional theories beyond this list to build complete, coherent narratives, you may use them. Report any such theories in `additional_theories_used` with a brief rationale.
 
-SCALING GUIDANCE (rough guidance): Generate proportionally to theory count:
-- 2-4 theories → 2-3 processes | 5-8 theories → 4-6 processes | 9-12 theories → 6-8 processes | 13+ theories → 8-10 processes
+**Design Principle: Parsimony with Richness**
+- Simple structure (fewer processes), complex behavior (rich internal dynamics)
+- Focus on core processes that drive the system's defining behavior
+- Avoid peripheral processes unless they create critical system-level feedback loops
+- Quality over coverage: Better to deeply model a few processes than shallowly model many
+
+PROCESS COUNT GUIDANCE:
+Design the MINIMUM number of processes needed to capture the essential system dynamics.
+- Focus on core processes where meaningful accumulations occur and change over time
+- Multiple theories can inform a single process—don't create one process per theory
+- Typical range: 4-8 processes for most systems, but let dynamics drive the count
+- Quality over quantity: Fewer well-designed processes > many shallow processes
 
 **What is a Process Cluster?**
 Each cluster is a **mini-model**—a focused, independently understandable part of the system with its own dynamics:
@@ -169,28 +183,28 @@ Each cluster is a **mini-model**—a focused, independently understandable part 
 
 ### What is a Narrative?
 
-A narrative is a mechanistic story describing how a process unfolds over time. Write in natural language (not variables or equations) to capture the dynamic behavior—what accumulates, what drives rates, how feedback operates.
+A narrative is a mechanistic story describing how a process unfolds over time. Write in natural language (not variables or equations) to capture the dynamic behavior—how feedback loops drive change, what accelerates or constrains the system, how causal chains and feedback mechanisms create the behavior patterns.
 
-**Expected Length** (not a rule but rough numbers): 200-400 words per process narrative
-- For models with 8+ processes: aim for ~200-300 words each
-- For models with fewer processes: aim for ~300-400 words each
-
-This ensures sufficient mechanistic detail for Step 2 to identify concrete SD elements.
+**Narrative Length**: Let the complexity of the dynamics determine length naturally.
+- Write enough to clearly describe: the dynamics
+- Simpler processes (single stock with one feedback loop) → shorter narratives
+- Complex processes (multiple stocks, competing loops, delays, etc.) → longer narratives
 
 ### Required Elements to Include:
 
-1. **Accumulations**: What builds up/depletes — "Pool of members grows when..." or "Trust accumulates through..."
-2. **Rates and Speeds**: How fast things change — "Transition at rate determined by..." or "Adoption pace depends on..."
-3. **Feedback Loops**: Reinforcing or balancing — "More X → more Y → more X" or "Gap increases → adjustment closes gap"
-4. **Time Delays**: How long processes take — "Takes 6-12 months for..." or "Benefits appear after 3-month delay..."
-5. **Nonlinearities**: Thresholds, saturation, tipping points — "Accelerates after 10+ interactions" or "Saturates when ratio exceeds 1:8"
-6. **Causal Relationships**: What drives what — "Rate limited by available mentors" or "Quality increases with expert contributions"
+1. **Feedback Loops**: Reinforcing or balancing dynamics, and how they interact with each other — "More contributors accelerate knowledge sharing, which attracts more contributors" or "Growing backlog triggers prioritization that reduces the backlog, but also signals activity that attracts contributors, creating competing pressures"
+2. **Causal Chains**: What drives what — "Code complexity constrains newcomer understanding, which slows their progression rate" or "Governance strictness reduces contribution ease, decreasing submission rates"
+3. **Time Delays**: How long dynamics take to unfold — "Recognition emerges after 6-12 months of consistent contributions" or "Trust builds gradually through repeated positive interactions"
+4. **Nonlinearities**: Thresholds, saturation, tipping points — "Engagement accelerates sharply after 10+ meaningful interactions" or "Mentoring effectiveness degrades when the mentor-to-newcomer ratio exceeds 1:8"
+5. **Rate-Determining Factors**: What speeds up or slows down change — "Progression rate limited by available mentoring capacity" or "Adoption pace constrained by documentation quality"
+6. **Accumulations** (as consequences): What builds or depletes due to the above dynamics — "These dynamics cause the contributor pool to grow" or "Trust levels rise when positive interactions outpace negative ones"
+7. **Interactions and Cascading Effects**: How elements influence each other, creating chains of causality and emergent behavior — "Code complexity triggers stricter review, which slows merges, which reduces satisfaction, which decreases submissions" or "Successful mentoring creates new mentors who retain the culture, perpetuating mentoring quality"
 
 **Example Contrast** (Good ✅ vs Insufficient ❌):
 
 ❌ **Insufficient**: "New members join the community and learn by observing workflows. They gain experience through interactions and eventually become contributors who help other members."
 
-✅ **Mechanistically Rich**: "A **pool of newcomers accumulates** as they discover the project at a **rate** influenced by community visibility (5-10 per month). They **build tacit knowledge** through observation, with the **pace** limited by interaction frequency (typically 3-5 meaningful exchanges per week). Members **transition to active contributor status** after a **socialization period of 6-9 months**, at a **rate** determined by available mentoring capacity (2-3 mentor-hours per week currently available). As the contributor base grows, more experienced members become available to mentor, which increases the capacity to support newcomers and **accelerates their progression rate**. However, when the newcomer pool exceeds 20 people, the mentor-to-newcomer ratio becomes unfavorable, and mentoring quality **begins to deteriorate**, slowing transition rates. Individual progress shows a **nonlinear pattern**—newcomers who complete fewer than 10 meaningful interactions show minimal advancement, but those surpassing this threshold experience **sharply accelerated** skill development."
+✅ **Mechanistically Rich (Dynamics-Focused)**: "**A reinforcing loop drives contributor growth**: as more contributors join, they increase mentoring capacity, which **accelerates** newcomer progression into the contributor pool, creating even more mentors. Community visibility **amplifies** this loop—higher project prominence **attracts** more discoverers (5-10 per month), feeding the newcomer pool. However, **a balancing dynamic emerges** when newcomers accumulate faster than mentors can support them: when the ratio exceeds 1:8, mentoring quality **degrades**, which **slows** progression rates until the imbalance corrects. **Time delays shape the dynamics**—newcomers require 6-9 months of socialization before contributing effectively, meaning today's mentoring efforts **manifest** as contributors 6-9 months later. This delay creates **oscillation risk**: rapid newcomer influx can overwhelm mentoring capacity before new contributors mature to help. **A nonlinear threshold governs engagement**: newcomers completing fewer than 10 meaningful interactions show minimal advancement, but crossing this threshold **triggers sharply accelerated** skill development. Interaction frequency (3-5 exchanges per week) **determines** how quickly individuals reach this tipping point."
 
 *Note the feedback loops: (1) **Reinforcing** - as contributors grow, mentoring capacity increases, accelerating newcomer progression, creating more contributors; (2) **Balancing** - when newcomers exceed capacity, mentoring quality degrades, slowing progression until the imbalance corrects.*
 
@@ -299,6 +313,13 @@ Return ONLY valid JSON:
     "overall_narrative": "How processes connect as integrated system..."
   }}
 }}
+
+IMPORTANT: Ensure all JSON is syntactically correct:
+- Close all objects with }} not )
+- Match all opening braces {{ with closing braces }}
+- Match all opening brackets [ with closing brackets ]
+- All strings must be properly quoted
+- Use commas between array/object elements
 
 ## Critical Instructions
 
