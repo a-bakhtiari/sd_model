@@ -111,6 +111,25 @@ def main() -> None:
         help="Find papers for unsupported connections (requires --gap-analysis or enables it automatically)"
     )
 
+    # Enhancement suggestions
+    parser.add_argument(
+        "--enhance-suggestions",
+        action="store_true",
+        help="Generate enhancement suggestions for existing model (outputs JSON for UI)"
+    )
+    parser.add_argument(
+        "--target-mdl",
+        type=str,
+        metavar="PATH",
+        help="Path to MDL file to analyze for enhancement (default: latest run)"
+    )
+    parser.add_argument(
+        "--target-run",
+        type=str,
+        metavar="RUN_ID",
+        help="Run ID to get theory metadata from (default: latest run)"
+    )
+
     # Convenience flags
     parser.add_argument(
         "--all",
@@ -204,6 +223,10 @@ def main() -> None:
             run_theory_discovery=args.theory_discovery,
             run_gap_analysis=args.gap_analysis,
             discover_papers=args.discover_papers,
+            # Enhancement suggestions
+            run_enhancement_suggestions=args.enhance_suggestions,
+            target_mdl=args.target_mdl if hasattr(args, 'target_mdl') else None,
+            target_run=args.target_run if hasattr(args, 'target_run') else None,
             # Other options
             apply_patch=args.apply_patch,
             save_run=args.save_run,

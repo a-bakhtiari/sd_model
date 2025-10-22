@@ -100,6 +100,10 @@ def run_pipeline(
     run_theory_discovery: bool = False,
     run_gap_analysis: bool = False,
     discover_papers: bool = False,
+    # Enhancement suggestions
+    run_enhancement_suggestions: bool = False,
+    target_mdl: Optional[str] = None,
+    target_run: Optional[str] = None,
     # Other options
     apply_patch: bool = False,
     save_run: Optional[str] = None,
@@ -164,6 +168,70 @@ def run_pipeline(
 
     paths = for_project(cfg, project, run_id=run_id)
     paths.ensure()
+
+    # Enhancement Suggestions Mode - Separate flow, returns early
+    if run_enhancement_suggestions:
+        logger.info("Running Enhancement Suggestions mode...")
+        from .pipeline.enhancement_suggestions import generate_enhancement_suggestions, save_suggestions
+
+        # Determine target MDL
+        if target_mdl:
+            mdl_file = Path(target_mdl)
+            if not mdl_file.exists():
+                raise FileNotFoundError(f"Specified MDL file not found: {target_mdl}")
+        else:
+            # Default: use latest run's MDL
+            if target_run:
+                run_folder = paths.base_dir / "artifacts" / "runs" / target_run
+            else:
+                # Use latest run
+                latest_link = paths.base_dir / "artifacts" / "runs" / "latest"
+                if latest_link.exists():
+                    run_folder = latest_link.resolve()
+                else:
+                    raise FileNotFoundError("No latest run found. Specify --target-mdl or --target-run")
+
+            # Find MDL in run folder
+            mdl_candidates = list(run_folder.glob("*.mdl"))
+            if not mdl_candidates:
+                raise FileNotFoundError(f"No MDL file found in {run_folder}")
+            mdl_file = mdl_candidates[0]
+            logger.info(f"Using MDL from {run_folder}: {mdl_file.name}")
+
+        # Determine run folder for theory metadata
+        if target_run:
+            run_folder = paths.base_dir / "artifacts" / "runs" / target_run
+        elif mdl_file.parent.name == "mdl":
+            # MDL is in project mdl/ folder, try to find associated run
+            latest_link = paths.base_dir / "artifacts" / "runs" / "latest"
+            if latest_link.exists():
+                run_folder = latest_link.resolve()
+            else:
+                raise ValueError("Cannot determine run folder. Specify --target-run")
+        else:
+            # MDL is in a run folder
+            run_folder = mdl_file.parent
+
+        logger.info(f"Using theory metadata from: {run_folder}")
+
+        # Generate suggestions
+        suggestions = generate_enhancement_suggestions(
+            mdl_path=mdl_file,
+            run_folder=run_folder,
+            project_root=paths.base_dir,
+            llm_client=None  # Let module choose
+        )
+
+        # Save suggestions
+        output_dir = paths.base_dir / "artifacts" / "enhancement_suggestions"
+        save_suggestions(suggestions, output_dir)
+
+        logger.info("✓ Enhancement suggestions complete!")
+        return {
+            "mode": "enhancement_suggestions",
+            "suggestions_file": str(output_dir / "latest.json"),
+            "suggestions_count": suggestions["summary"]["total_suggestions"]
+        }
 
     # Validate Step 2 resume: Ensure Step 1 output exists
     if theory_step == 2:

@@ -1,0 +1,20 @@
+# Your Specific Questions for Enhancement
+
+# This file contains your questions about the current model that you want the enhancement
+# system to address. Be specific about what you're uncertain about or what you want to improve.
+
+# Example questions:
+# 1. How can I better represent burnout dynamics? The current "Overload Level" auxiliary feels too simple.
+# 2. Should trust be a stock that accumulates, or an auxiliary that's calculated from interactions?
+# 3. The model doesn't show how documentation quality decays over time - is this missing?
+# 4. Are there feedback loops I'm missing between skill development and community participation?
+# 5. How should I represent the role of "small wins" in building contributor confidence?
+
+# Your questions:
+
+1. How can I better represent trust dynamics in the model? The current model seems to lack explicit trust-building mechanisms.
+
+2. Should reputation be a stock that accumulates, or an auxiliary that's calculated from contributions?
+
+3. Are there important feedback loops I'm missing between skill development and community participation?
+

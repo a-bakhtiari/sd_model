@@ -9,7 +9,13 @@ import base64
 import pandas as pd
 import streamlit as st
 from streamlit.components.v1 import html
-import graphviz
+
+# Optional graphviz import for visualizations
+try:
+    import graphviz
+    HAS_GRAPHVIZ = True
+except ImportError:
+    HAS_GRAPHVIZ = False
 
 from .config import load_config
 from .paths import for_project
@@ -174,8 +180,11 @@ def _df_theories(tv: Dict) -> Tuple[pd.DataFrame, pd.DataFrame]:
 
 
 @st.cache_data(show_spinner=False)
-def _connection_graphviz(selected_var: str, connections: List[Dict], var_types: Dict[str, str]) -> graphviz.Digraph:
+def _connection_graphviz(selected_var: str, connections: List[Dict], var_types: Dict[str, str]):
     """Generate Graphviz diagram for connection explorer with SD conventions."""
+    if not HAS_GRAPHVIZ:
+        return None
+
     # Check if selected is a Flow (can't be center node)
     selected_type = var_types.get(selected_var, "Auxiliary").lower()
     if selected_type == "flow":
@@ -290,8 +299,11 @@ def _cached_mermaid_diagram(selected: str, edges: Tuple[Tuple[str, str, str], ..
     return _mermaid_diagram(cons, selected, var_types)
 
 
-def _loop_graphviz(loop_edges: List[Dict[str, str]], var_types: Dict[str, str], theory_status: Dict | None = None) -> graphviz.Digraph:
+def _loop_graphviz(loop_edges: List[Dict[str, str]], var_types: Dict[str, str], theory_status: Dict | None = None):
     """Generate Graphviz diagram for a feedback loop with SD conventions."""
+    if not HAS_GRAPHVIZ:
+        return None
+
     dot = graphviz.Digraph(engine='circo')  # Circular layout for feedback loops
     dot.attr(bgcolor='#fdfaf3', overlap='false', splines='true')
     dot.attr('node', fontname='Arial', fontsize='12', style='filled')
@@ -1631,11 +1643,12 @@ def main() -> None:
             st.code("python -m sd_model.cli run --project " + project + " --improve-model", language="bash")
         else:
             # Create nested sub-tabs
-            step1_tab, archetype_tab, theory_enh_tab, theory_disc_tab = st.tabs([
+            step1_tab, archetype_tab, theory_enh_tab, theory_disc_tab, enhance_suggest_tab = st.tabs([
                 "🎯 Step 1: Planning",
                 "🔄 Archetype Detection",
                 "📊 Theory Enhancement (Step 2)",
-                "🌟 Theory Discovery"
+                "🌟 Theory Discovery",
+                "💡 Enhancement Suggestions"
             ])
 
             with step1_tab:
@@ -1998,6 +2011,126 @@ def main() -> None:
                             st.warning("No theory recommendations found.")
                 else:
                     st.info("⚠️ No theory discovery results found. Run with `--theory-discovery` flag.")
+
+            with enhance_suggest_tab:
+                # Enhancement Suggestions Section
+                suggest_path = paths.base_dir / "artifacts" / "enhancement_suggestions" / "latest.json"
+
+                if not suggest_path.exists():
+                    st.info("⚠️ No enhancement suggestions found. Run enhancement mode to generate suggestions.")
+                    st.code("python main.py --project " + project + " --enhance-suggestions", language="bash")
+                else:
+                    enhance_data = json.loads(suggest_path.read_text(encoding="utf-8"))
+
+                    st.markdown("#### 💡 Model Enhancement Suggestions")
+                    st.caption("AI-generated suggestions to improve your model based on theory, user questions, and peer feedback")
+
+                    # Model Info
+                    model_info = enhance_data.get("model_analyzed", {})
+                    timestamp = enhance_data.get("timestamp", "Unknown")
+
+                    with st.expander("📊 Model Analyzed", expanded=False):
+                        col1, col2, col3, col4 = st.columns(4)
+                        col1.metric("Variables", model_info.get("variables", 0))
+                        col2.metric("Connections", model_info.get("connections", 0))
+                        col3.metric("Processes", model_info.get("processes", 0))
+                        col4.metric("Analyzed", timestamp.split("T")[0] if "T" in timestamp else timestamp)
+
+                    # Summary Metrics
+                    summary = enhance_data.get("summary", {})
+                    by_priority = summary.get("by_priority", {})
+                    by_category = summary.get("by_category", {})
+
+                    col1, col2, col3 = st.columns(3)
+                    with col1:
+                        st.metric("Total Suggestions", summary.get("total_suggestions", 0))
+                    with col2:
+                        st.metric("High Priority", by_priority.get("high", 0), delta="Critical")
+                    with col3:
+                        st.metric("Medium Priority", by_priority.get("medium", 0))
+
+                    st.markdown("---")
+
+                    # Category Badges
+                    st.markdown("**Suggestion Types:**")
+                    cat_cols = st.columns(len(by_category))
+                    category_emojis = {
+                        "add_variable": "➕",
+                        "modify_variable": "🔧",
+                        "add_feedback_loop": "🔄",
+                        "add_connection": "🔗",
+                        "structural_change": "🏗️",
+                        "theory_recommendation": "📚"
+                    }
+                    for idx, (cat, count) in enumerate(by_category.items()):
+                        emoji = category_emojis.get(cat, "📌")
+                        cat_name = cat.replace("_", " ").title()
+                        cat_cols[idx].markdown(f"{emoji} **{cat_name}**: {count}")
+
+                    st.markdown("---")
+
+                    # Suggestions grouped by priority
+                    suggestions = enhance_data.get("suggestions", [])
+
+                    # Priority colors and sort order
+                    priority_order = {"high": 0, "medium": 1, "low": 2}
+                    priority_colors = {"high": "🔴", "medium": "🟡", "low": "🟢"}
+                    priority_labels = {"high": "HIGH PRIORITY", "medium": "MEDIUM PRIORITY", "low": "LOW PRIORITY"}
+
+                    # Group suggestions by priority
+                    by_priority_groups = {"high": [], "medium": [], "low": []}
+                    for suggestion in suggestions:
+                        priority = suggestion.get("priority", "low")
+                        by_priority_groups[priority].append(suggestion)
+
+                    # Display each priority group
+                    for priority in ["high", "medium", "low"]:
+                        priority_suggestions = by_priority_groups[priority]
+                        if not priority_suggestions:
+                            continue
+
+                        color = priority_colors[priority]
+                        label = priority_labels[priority]
+
+                        st.markdown(f"### {color} {label}")
+
+                        for suggestion in priority_suggestions:
+                            title = suggestion.get("title", "Untitled")
+                            category = suggestion.get("category", "unknown")
+                            category_emoji = category_emojis.get(category, "📌")
+                            category_name = category.replace("_", " ").title()
+
+                            # Create expander for each suggestion
+                            with st.expander(f"{category_emoji} **{title}** ({category_name})", expanded=(priority == "high")):
+                                # Theory Basis
+                                theory_basis = suggestion.get("theory_basis", "N/A")
+                                st.markdown(f"**📚 Theory Basis:** {theory_basis}")
+
+                                st.markdown("---")
+
+                                # Rationale
+                                st.markdown("**💡 Why This Matters:**")
+                                rationale = suggestion.get("rationale", "No rationale provided")
+                                st.markdown(f'<div style="color: #e8e8e8; line-height: 1.8; font-size: 0.95em; padding: 12px; background: #1e1e1e; border-left: 3px solid #4a9eff; border-radius: 4px; margin-bottom: 12px;">{rationale}</div>', unsafe_allow_html=True)
+
+                                # Specific Change
+                                st.markdown("**✅ What To Do:**")
+                                specific_change = suggestion.get("specific_change", {})
+                                action = specific_change.get("action", "No action specified")
+                                st.markdown(f'<div style="color: #c9d1d9; line-height: 1.8; font-size: 0.95em; padding: 12px; background: #0d1117; border-left: 3px solid #58a6ff; border-radius: 4px; margin-bottom: 12px;">{action}</div>', unsafe_allow_html=True)
+
+                                # Related Variables
+                                related_vars = suggestion.get("related_variables", [])
+                                if related_vars:
+                                    st.markdown("**🔗 Related Variables:**")
+                                    # Display in columns for better readability
+                                    var_cols = st.columns(min(3, len(related_vars)))
+                                    for idx, var in enumerate(related_vars):
+                                        col_idx = idx % 3
+                                        var_cols[col_idx].markdown(f"• `{var}`")
+
+                    st.markdown("---")
+                    st.caption("💡 Suggestions are AI-generated. Review carefully and apply manually in Vensim as appropriate for your research context.")
 
     with rq_tab:
         st.markdown("### 📋 Research Questions Development")
