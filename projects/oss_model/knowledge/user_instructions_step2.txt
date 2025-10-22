@@ -12,3 +12,9 @@ When extracting SD elements from Step 1 narratives:
 - **Maintain connectivity**: Ensure all processes connect to each other as specified in Step 1's connections. No isolated processes.
 
 - **Preserve multi-scale design**: The extracted SD elements should support both macro-level (main pipeline) and micro-level (internal process dynamics) understanding.
+
+## Variable Extraction Guidelines
+
+**HARD CONSTRAINT: Extract a maximum of 60-90 total variables across all 4 processes.**
+
+**For this project:** Ensure both skill development variables (learning, practice, feedback, mentoring) and community participation variables (trust, reputation, belonging, identity, recognition) are explicitly extracted. Don't hide social mechanisms inside technical composites or vice versa. Both dimensions are central to the research question and need visible representation.

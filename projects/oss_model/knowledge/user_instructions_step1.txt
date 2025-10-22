@@ -10,16 +10,33 @@ These two theoretical lenses (Cognitive Apprenticeship and Communities of Practi
 
 ## Specific Design Requirements
 
-Please include governance in your design where it fits and let it affect the system. By governance I mean the way they govern their repository or organization (do they commit directly? do they allow pull requests? what's their procedure? what are the policies?)
+### Main Pipeline Structure (MANDATORY)
 
-Please have the following stocks in the main pipeline of overall system dynamic as the career progression: Entry-level/Newcomer, Apprentice/Peripheral Participant, Practicing Contributor, Expert/Core Developer
+Create EXACTLY 4 processes corresponding to the career progression pipeline:
 
-Please include the software artifact (the codebase) and it's interaction with the developers and how it affects everything in the process (For example, code getting more complex triggering refactoring that makes code become easier to understand and allowing more people to understand it with less knowledge of the project). I would also like to see the dynamic of the artifacts and the teams in the system.
+1. **Process 1**: Prospects → Entry-level/Newcomer
+2. **Process 2**: Entry-level/Newcomer → Apprentice/Peripheral Participant
+3. **Process 3**: Apprentice/Peripheral Participant → Practicing Contributor
+4. **Process 4**: Practicing Contributor → Expert/Core Developer
 
-I want my SD to have more emphasize on the dynamics and actions and loop rather than elements (one analogy is that I want to have more verbs than nouns)
+DO NOT create additional processes. Cross-cutting concerns (governance, codebase quality, review processes) should be woven into these 4 main processes.
 
-Design for multi-scale understanding:
-- Main pipeline (macro): The main progression is the BACKBONE - visible at a glance
-- Each transition between main stocks can have rich INTERNAL dynamics (micro level)
-- When zoomed out: See the flow (Prospects → Newcomers → Contributors → Maintainers)
-- When zoomed in: See the mechanisms (delays, feedback loops, interactions, constraints within each process)
+### Project-Specific Requirements
+
+For this OSS developer progression model, ensure narratives explicitly mention these mechanisms:
+
+**Skill Development Mechanisms:**
+- Learning processes: absorptive capacity, practice accumulation, feedback cycles
+- Mentoring: availability, quality, scaffolding patterns
+- Knowledge: documentation quality, examples, architectural understanding
+
+**Community Participation Mechanisms:**
+- Social integration: trust building, reputation accrual, recognition events
+- Belonging: identity formation, psychological safety, legitimacy signals
+- Relationships: mentor ties, peer connections, expert accessibility
+
+**Governance and Codebase Dynamics:**
+- Governance: review approval requirements, merge permissions, branch protection policies, triage processes
+- Codebase: code comprehensibility, technical debt level, API documentation coverage, module complexity
+
+These mechanisms should be named explicitly in narratives (not lumped as "learning happens", "community matters", or "governance affects").

@@ -174,6 +174,30 @@ Implement the sequential pipeline specified in Step 1's `connections_to_other_cl
 - "Gap between target and actual..." → Auxiliary: Gap
 - "Time constant of 3 months..." → Auxiliary: Time Constant
 
+### Variable Aggregation Discipline
+
+When extracting auxiliaries from narratives, apply discipline about when to combine vs. separate concepts:
+
+**When to combine concepts into ONE variable:**
+- They measure the same construct from the same theory
+- They always move together (perfectly correlated in practice)
+- They share the same root causes
+- Example: "Merge Latency" could combine PR wait time + review time if both driven by the same reviewer capacity constraint
+
+**When to keep concepts SEPARATE:**
+- They have different causes or require different interventions
+- They might move independently under some conditions
+- They come from different theories or represent different mechanisms
+- Example: Keep "Mentor Capacity" separate from "Documentation Quality" even though both support learning—they have different causes (people availability vs. writing investment) and different interventions (recruit mentors vs. write docs)
+
+**Red flags for over-aggregation:**
+- Variable names contain generic terms: "composite", "factor", "context", "environment", "support"
+- You cannot clearly explain what specifically increases or decreases the variable
+- The variable bundles unrelated concepts (e.g., "Crowding and Bias" combines capacity constraint with discrimination)
+- The variable would need to be decomposed during policy analysis or parameterization
+
+**Guiding rule:** If Step 1 narratives name distinct mechanisms explicitly (e.g., "mentor availability", "documentation quality", "psychological safety"), preserve them as distinct variables unless they're clearly measuring the exact same construct. Specificity in Step 1 should translate to specificity in Step 2, not get collapsed into vague composites.
+
 **Identify Clouds** - Look for system boundaries (sources/sinks):
 - "Contributors enter from external job market..." → Cloud: External Job Market (source)
 - "Contributors exit the system through attrition..." → Cloud: Attrition Sink (sink)

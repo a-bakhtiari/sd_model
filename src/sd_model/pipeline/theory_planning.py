@@ -210,6 +210,22 @@ A narrative is a mechanistic story describing how a process unfolds over time. W
 
 Systems typically have BOTH (not always) types competing. These may emerge in the overall system or in some of the processes.
 
+### Specificity Principle: Name Concrete Mechanisms
+
+When describing dynamics, **name specific, measurable mechanisms** rather than abstract categories or generic terms:
+
+❌ **Too Generic**: "governance affects progression", "codebase affects learning", "support enables success", "context matters", "environmental factors influence outcomes"
+
+✅ **Concrete and Specific**:
+- Instead of "governance affects" → Name specific policies: "review approval requirements", "merge permission gates", "branch protection rules"
+- Instead of "codebase affects" → Name measurable factors: "code comprehensibility index", "API documentation coverage", "technical debt density"
+- Instead of "support enables" → Name specific resources: "mentor availability ratio", "average question response time", "psychological safety norms"
+- Instead of "learning happens" → Name mechanisms: "absorptive capacity", "practice hour accumulation", "feedback cycle frequency"
+
+**Why this matters:** Generic references to "context", "environment", "factors", or "support" will create vague, unactionable variables in Step 2 extraction. Specific mechanisms create measurable, policy-relevant variables that can be parameterized and validated.
+
+**For socio-technical systems:** Both technical elements (tools, artifacts, infrastructure, code) and social elements (relationships, trust, norms, identities, reputation) drive outcomes. Ensure both dimensions receive explicit representation with named mechanisms. Don't let technical mechanisms dominate while social dynamics remain implicit or lumped into vague composites.
+
 ## Common SD Patterns from the System Zoo
 
 These canonical patterns appear frequently in well-designed SD models. Consider whether your process resembles any of these, but feel free to combine or adapt them as needed, or come up with your own if needed. These are examples to learn from, not strict templates.
